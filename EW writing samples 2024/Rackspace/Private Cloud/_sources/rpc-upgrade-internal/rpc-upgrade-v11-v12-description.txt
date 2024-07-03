@@ -1,0 +1,56 @@
+===========
+Description
+===========
+
+Actions performed by upgrade script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section describes the actions that are performed by the upgrade
+script.
+
+.. warning::
+
+   Do **not** actually perform these actions. This list is provided for
+   reference only.
+
+**File and configuration changes**
+
+-  The upgrade process modifies files residing in ``/etc/openstack_deploy``
+   directory in order to reflect new Liberty values.
+
+-  Some flag files are created by the migration scripts in order to achieve
+   idempotency. These files are placed in the `/etc/openstack_deploy.KILO`
+   directory.
+
+**Other changes and actions**
+
+-  MariaDB upgrade:
+   The version of MariaDB is upgraded from the 5.5 series to 10.0 in Liberty.
+   These changes are facilitated directly by the MariaDB/Galera roles
+   themselves.
+   For more details, see `repo-server-pip-conf-removal.yml
+   <http://docs.openstack.org/developer/openstack-ansible/liberty/upgrade-guide/upgrade-playbooks.html#setup-infra-playbook>`_.
+
+-  RabbitMQ upgrade
+   The RabbitMQ server can be upgraded during an OpenStack-Ansible upgrade.
+   When upgrading from an early Kilo release, the update will be mandatory.
+   For more details, see `repo-server-pip-conf-removal.yml
+   <http://docs.openstack.org/developer/openstack-ansible/liberty/upgrade-guide/upgrade-playbooks.html#setup-infra-playbook>`_.
+
+-  Neutron Port Security
+   OpenStack-Ansible enabled Neutron’s ML2 port security driver by default in
+   Liberty, but will keep the driver disabled in environments upgraded from
+   Kilo unless it has already been enabled in Kilo.
+   For more details, see `disable-neutron-port-security.yml <http://docs.openstack.org/developer/openstack-ansible/liberty/upgrade-guide/upgrade-playbooks.html#neutron-port-sec-playbook>`_.
+
+-  Ceph roles are acquired with ansible-galaxy instead of using submodules.
+
+-  Repo build of RPCO-specific packages is done as part of OSA build
+   repo build instead of as a clone.
+
+-  The upgrade script is able to specify additional pip packages to load onto
+   the repo server.
+
+For more information the playbooks that are used in the upgrade process, see
+`Upgrade Playbooks <http://docs.openstack.org/developer/openstack-ansible/liberty/upgrade-guide/upgrade-playbooks.html#deploy-config-changes-yml>`_.
+

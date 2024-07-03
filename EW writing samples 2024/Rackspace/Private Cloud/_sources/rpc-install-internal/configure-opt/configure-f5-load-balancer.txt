@@ -1,0 +1,37 @@
+=====================================================
+Generate an F5 load balancer configuration (optional)
+=====================================================
+
+If the Rackspace Private Cloud Powered By OpenStack (RPCO) deployment
+requires F5 load balancers, you must generate a configuration file and
+send it to NetSec for load balancer setup.
+
+Complete the following steps to create the configuration file:
+
+#. Run the OpenStack-Ansible Inventory script in the ``playbooks``
+   directory to generate an inventory of the hosts and containers in
+   the environment, as shown in the following example:
+
+   .. code-block:: console
+
+      $ cd /opt/rpc-openstack/openstack-ansible
+      $ playbooks/inventory/dynamic_inventory.py  --config /etc/openstack_deploy/
+
+
+#. Using the generated inventory file as input, run the configuration
+   script to create the F5 configuration file, as shown in the
+   following example. Replace ``INTERNAL_LB_VIP_ADDRESS`` with the
+   internal IP address of the load balancer.
+
+   .. code-block:: console
+
+      $ cd /opt/rpc-openstack
+      $ scripts/f5-config.py -f /etc/openstack_deploy/openstack_inventory.json -s INTERNAL_LB_VIP_ADDRESS --export
+
+
+.. note::
+
+     For additional information about generating the dynamic inventory
+     file, see the `OpenStack-Ansible Inventory script`_.
+
+.. _Openstack-Ansible Inventory script: http://docs.openstack.org/developer/openstack-ansible/developer-docs/inventory.html

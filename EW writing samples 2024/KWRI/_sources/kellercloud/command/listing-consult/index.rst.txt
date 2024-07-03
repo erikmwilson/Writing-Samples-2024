@@ -1,0 +1,11 @@
+
+.. _listing-consult-command-index:
+
+Listing Consult
+===============
+
+The following sections contain information about the
+Listing Consult application.
+
+.. toctree::
+   :maxdepth: 1

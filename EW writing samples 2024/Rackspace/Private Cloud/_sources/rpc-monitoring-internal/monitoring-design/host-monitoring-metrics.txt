@@ -1,0 +1,16 @@
+=======================
+Host monitoring metrics
+=======================
+
+The host metrics are collected and reported via the RPC monitoring
+agent. These metrics are gathered using a one-way egress communication,
+meaning the agent internally reports out only. Connectivity out to the
+Rackspace Cloud Monitoring endpoints is required in order to
+monitor your private cloud. Additional details about the Rackspace Cloud
+Monitoring platform can be found at
+http://www.rackspace.com/knowledge\_center/getting-started/cloud-monitoring.
+
+Note that the Cloud Monitoring platform is a multi-tenant system,
+of which conform to current PCI certification standards. The collected
+data is stored within a Cassandra database cluster across three
+Rackspace data centers.

@@ -1,0 +1,37 @@
+============================
+Network switch configuration
+============================
+
+The VLANs previously mentioned must be trunked into the network
+switches you are using for RPCO. There are no special switch port
+configurations to put in place. The host manages the active-passive
+bond.
+
+The following are example switch port configurations for one server
+(one of the Infrastructure nodes in this case):
+
+::
+
+    Switch 1:
+
+
+      interface Ethernet1/11
+      description controller1 NIC 0 port 0 bond0
+      switchport mode trunk
+      switchport trunk allowed vlan <vlan id>
+      spanning-tree port type edge trunk
+      spanning-tree bpduguard enable
+
+::
+
+    Switch 2:
+
+
+      interface Ethernet1/11
+      description controller1 NIC 1 port 0 bond0
+      switchport mode trunk
+      switchport trunk allowed vlan <vlan id>
+      spanning-tree port type edge trunk
+      spanning-tree bpduguard enable
+
+.. image:: ../figures/rpc-cdc-switchport-config-and-cabling.png

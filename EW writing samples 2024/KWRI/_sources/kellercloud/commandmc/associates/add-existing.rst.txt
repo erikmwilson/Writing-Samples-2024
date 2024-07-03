@@ -1,0 +1,21 @@
+
+.. _add-existing-associates-commandmc:
+
+Add Existing KW Associate
+=========================
+
+To add an exisitng KW associate to your Market Center, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Click **Add an Associate** and select **Add Existing KW Associate**.
+
+#. On the  **Add an Existing Active Associate** window, enter the **Associate's KWUID**, and click **Add Associate**.
+
+#. On the **Associate Confirmation** window, verify that the associate information is correct, and click **Confirm**.
+
+#. On the **Required Info to add Associate** window, indicate if the associate has a real estate license and if they should have access to CommandMC, and enter the associate's **National ID**.
+
+#. Click **Add Associate**.
+
+   The associate is added to your Market Center.

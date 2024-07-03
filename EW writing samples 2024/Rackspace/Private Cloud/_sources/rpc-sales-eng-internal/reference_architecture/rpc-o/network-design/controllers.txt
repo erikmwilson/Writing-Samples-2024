@@ -1,0 +1,24 @@
+===========
+Controllers
+===========
+
+Following are example logical network diagrams for controllers and for compute
+nodes.
+
+Logical network for controllers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: The following logical network diagram for controllers is a general
+          design and depicts only an example.
+
+.. image:: ../figures/rpco-logical-network-controllers.png
+   :alt: Logical network diagram for controllers
+
+Logical network for compute nodes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: The following logical network diagram for compute nodes is a general
+          design and depicts only an example.
+
+.. image:: ../figures/rpco-logical-network-compute.png
+   :alt: Logical network diagram for compute nodes

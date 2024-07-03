@@ -1,0 +1,21 @@
+
+.. _teams-contacts-command:
+
+Using Teams with Contacts
+=========================
+
+The following pages contain information about using Contacts with teams.
+
+.. toctree::
+   :maxdepth: 2
+
+   share-contacts
+   assign-contact-lead
+   lead-routing-contacts
+   claim-lead-notification
+   access-lead-pool
+   claim-lead-pool
+   transfer-contact-lead
+   view-shared-contacts
+   consumer-engagement
+   temp-stop-routing

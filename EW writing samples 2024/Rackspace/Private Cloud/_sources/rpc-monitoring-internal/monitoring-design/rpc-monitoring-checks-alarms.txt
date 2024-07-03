@@ -1,0 +1,12 @@
+================================================
+RPCO monitoring check, alarm, and metric details
+================================================
+
+This section provides details about all of the monitoring checks
+for each Rackspace Private Cloud deployment, broken down on a
+per-alarm basis. Each alarm contains one or more criteria upon
+which an alert is generated, and they are broken down by status, condition,
+and the message they'll send when alerted.
+
+Additionally, where user-configurable variables are supported for a check
+or specific alarm, they're denoted below with their default value.

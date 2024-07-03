@@ -1,0 +1,194 @@
+===============================================
+ Searching logs using the es2unix command line
+===============================================
+
+The **es2unix** command line tool provides an alternate way of
+interacting with the Elasticsearch API. Outputs for **es2unix** result
+in tabular format for compatibility with tools such as **grep**,
+**sort**, and **awk**. The tool is accessible via the utility container.
+
+
+Viewing general information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following examples show how to interact with the **es2unix** CLI in
+the utility container. Before beginning, use the **lxc-attach** command
+to attach to a utility container.
+
+ .. code-block:: console
+
+    # lxc-attach -n infra#_utility_container_ ########
+
+
+View current Elasticsearch version
+----------------------------------
+
+Provides the current version of Elasticsearch.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es version
+
+
+Get Elasticsearch health status
+-------------------------------
+
+Shows current health of the Elasticsearch cluster. The RPCO
+configuration of Elasticsearch is configured for 1 shard and no
+replicas per index.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es health
+
+
+List all indices
+----------------
+
+Shows current list of indices.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es indices
+
+
+View current number of logs
+---------------------------
+
+Shows current number of log documents in Elasticsearch. The number
+should increment each time the command is run to show Elasticsearch is
+indexing properly.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es count
+
+
+View current number of logs that match a query in Elasticsearch
+---------------------------------------------------------------
+
+Shows current number of log documents in Elasticsearch that match a
+specific query across all indices.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es count query
+
+    **Example:**
+
+    .. code-block:: console
+
+       root@infra#_utility_container-########: \
+       es count 90d01bf2-b360-4d5e-9cc4-cd7a0d2e9ed1
+
+
+Simple searches
+~~~~~~~~~~~~~~~
+
+Searches are performed with the **es search** command.
+
+
+View logs across all indices
+----------------------------
+
+When performing a simple search, es2unix returns the index, type, and
+id of 10 log documents.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search
+
+
+View specific field content from results
+----------------------------------------
+
+View the output from a specific field.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search *:* field
+
+**Example 1:**
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search *:* @message
+
+**Example 2:**
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search *:* @timestamp @message
+
+
+Search a query across all fields and indices
+--------------------------------------------
+
+Search for a specific query across all fields and indices.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search query
+
+**Example 1:**
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: \
+    es search 70454b5d9d6c4ad0a262633506fe72de
+
+**Example 2:**
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: \
+    es search 90d01bf2-b360-4d5e-9cc4-cd7a0d2e9ed1 @message
+
+
+Sorting results
+---------------
+
+Sort results with the **sort** command. This can be used to sort by
+date and time in ascending order.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search query field | sort
+
+**Example:**
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search \
+    e90502db-d5bf-4c2e-8ec7-73cbc8cc8169 @timestamp @message | sort -k5
+
+
+Complex queries
+~~~~~~~~~~~~~~~
+
+To perform complex queries with es2unix, use the same format and
+structure provided in `the section called “Complex
+queries” <logs-esapi-search-complex.html>`__.
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search \
+    "+field:query AND query +field:query"
+
+**Example 1:**
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search \
+    "+program:nova AND api NOT compute \
+    +@message:90d01bf2-b360-4d5e-9cc4-cd7a0d2e9ed1
+
+**Example 2:**
+
+ .. code-block:: console
+
+    root@infra#_utility_container-########: es search \
+    "+program:nova AND api NOT \
+    compute+@message:1874fdd4758b498482c53f1fc098b2a1' \
+    +@timestamp:"2015-02-19T20:00:00.000Z" TO "2015-02-19T21:00:00.000Z"" \
+    | sort -k5

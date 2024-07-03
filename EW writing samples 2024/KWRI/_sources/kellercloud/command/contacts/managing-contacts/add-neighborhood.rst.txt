@@ -1,0 +1,24 @@
+
+.. _neighborhood-contacts-command:
+
+Add a Neighborhood to a Contact
+===============================
+
+Neighborhoods are a big focus in Command and across Keller Cloud. You can select one or more of your client's favorite neighborhood in Contacts, which allows you to send them personalized Neighborhood Snapshots or even add them to a Monthly Neighborhood Nurture Smart Plan.
+
+To add a neighborhood to a contact, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. In the **Contacts** list, click the name of the contact you want to edit.
+
+#. Scroll to the **Neighborhoods** section and click **Add Neighborhood**, then click **Find on Map**.
+
+   Search for any neighborhood, click the neighborhood on the map, which will select it. Repeat to add multiple neighborhoods to a contact.
+
+#. After you add a neighborhood to a contact, Command creates an automatic neighborhood landing page, specific to this contact. To the left of the list of added neighborhoods, click **Copy Link**, to copy the link to this landing page for you to share with your contact.

@@ -1,0 +1,16 @@
+
+.. _change-designated-assignee-commandmc:
+
+Change the Default Designated Assignees
+=======================================
+
+To change the default designated assignees, complete the following steps:
+
+.. include:: smartplans-mc-login.rst
+
+#. Click the gear icon |settings-icon|, at the top-right of the page.
+
+   .. |settings-icon| image:: ../../../images/settings-icon.png
+      :height: 20
+
+#. :ref:`create-recruiting-tags-settings-commandmc`.

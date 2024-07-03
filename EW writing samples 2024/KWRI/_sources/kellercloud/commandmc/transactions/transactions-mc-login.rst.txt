@@ -1,0 +1,17 @@
+
+.. _access-tranasctions-commandmc:
+
+.. note::
+
+   CommandMC is available only to certain KW roles. For more information, see :ref:`command-mc-roles-command-ug`.
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-left corner, click **CommandMC**.
+
+#. On the left toolbar, click **Transactions** |transactions-icon|.
+
+   .. |transactions-icon| image:: ../../../images/transactions-icon.png
+      :height: 30

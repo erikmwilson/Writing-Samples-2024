@@ -1,0 +1,24 @@
+
+.. _docusign-opportunities-command:
+
+Using DocuSign with Command
+===========================
+
+The following pages contain information about using Docusign with Command.
+
+.. toctree::
+   :maxdepth: 1
+
+   existing-docusign
+   connect-docusign
+   docusign-rooms
+   create-room
+   access-room
+   sync-details
+   add-documents
+   split-pdf
+   create-send-envelope
+   correct-envelope
+   void-envelope
+   templates
+   zipforms

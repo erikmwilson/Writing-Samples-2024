@@ -1,0 +1,18 @@
+.. _create-event-feed-SDP-IG:
+
+=================
+Create event feed
+=================
+
+Use the following steps to create an event feed:
+
+1. Open ServiceNow.
+
+#. In the left-hand navigation pane, click **Pull Setup**.
+
+#. On the **Pull Setup** screen, click **New**.
+
+#. Complete the form and click **Submit**.
+
+   An Event Feed record must be created for each Identity Access entry
+   that is created.

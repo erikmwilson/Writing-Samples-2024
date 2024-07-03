@@ -1,0 +1,28 @@
+:deconsttitle: Standalone Object Storage Guide
+
+.. _rpc-swift:
+
+=========================================
+Stand-alone Object Storage for RPCO Guide
+=========================================
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+The information in this guide is intended for Rackspace Support and any other
+Rackers who are adding standalone OpenStack Object Storage (swift) capability
+for a customer in a Rackspace data center or a customer data center.
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   ../common/rpc-common-front.rst
+   ch-object-storage-overview.rst
+   ch-object-storage-prereqs.rst
+   ch-object-storage-install.rst
+   ch-object-storage-monitoring.rst
+   app-object-storage-configfiles.rst
+   ../common/rpc-common-end.rst

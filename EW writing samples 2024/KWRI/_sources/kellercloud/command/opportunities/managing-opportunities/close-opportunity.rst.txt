@@ -1,0 +1,30 @@
+
+.. _close-opportunities-command:
+
+Close an Opportunity
+====================
+
+Moving the Opportunity to the Closed phase completes the transaction.
+
+To close an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click and hold the Opportunity card to drag the Opportunity to the Closed phase.
+
+#. On the **Confirm Closing Date** pop-up, confirm or edit the **Closing Date** and click **Confirm Closing Date**.
+
+   .. note::
+
+      The closing date cannot be a future date. It can only be current or past dates. You will receive an error message when the closing date is in the future.
+
+      For leases, instead of Closing Date, Command uses the Lease Signed date.
+
+   After you move an Opportunity to the Closed phase, the transaction is complete. You can find the details for all funded transactions by checking the Closed phase of your Opportunities pipeline. Closed Opportunities remain in your pipelines for 30 days, after that, you must :ref:`search-opportunities-command` to view them.

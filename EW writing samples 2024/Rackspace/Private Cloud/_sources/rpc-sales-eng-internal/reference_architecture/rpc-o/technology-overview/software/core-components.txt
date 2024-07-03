@@ -1,0 +1,16 @@
+=====================
+RCPO core components
+=====================
+
+The RCPO IaaS cloud is implemented as a collection of interacting
+services that control compute, storage, and networking resources. The
+cloud can be managed with a web-based dashboard or command-line
+clients, which allow administrators to control, provision, and
+automate OpenStack resources. RCPO also has an extensive API, which
+is available to all cloud users.
+
+The following diagram provides a high-level overview of the OpenStack
+core services and their relationship with each other.
+
+.. image:: ../../figures/openstack-core-services.png
+   :alt: RCPO core services

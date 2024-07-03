@@ -1,0 +1,16 @@
+====================
+Rackspace advantages
+====================
+
+Unlike providers that deliver OpenStack using an outdated software
+distribution model, Rackspace makes OpenStack simple by delivering it
+as a managed service. We eliminate the complexities of OpenStack and
+deliver the most reliable OpenStack clouds in the world with a 99.99%
+API uptime SLA.
+
+.. toctree::
+   :maxdepth: 2
+
+   why-rackspace.rst
+   comprehensive-offering.rst
+   rackspace-engagement/index.rst

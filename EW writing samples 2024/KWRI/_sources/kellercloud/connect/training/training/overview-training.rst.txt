@@ -1,0 +1,54 @@
+
+.. _overview-training-connect:
+
+Training Overview
+=================
+
+Connect Training provides agents access to KW training materials to support constant growth support. Connect Training also tracks and measures agent's learning paths.
+
+Training consists of the following content types:
+
+* **On Demand Course**
+
+ An On Demand course is a self-study course that can be consumed on your own time or at your own pace. It includes lessons that can be consumed in a sequentially or freely - depending upon how it is created. Lessons can consist of learning objects such as: videos, document downloads, interactive, and help articles.
+
+* **Lessons**
+
+ Lessons are the individual components of a course.
+
+* **Learning Path**
+
+ A Learning Path consists of multiple courses that are in a particular order. Some Learning Paths must be completed in order while others can be self-navigated.
+
+* **Channels**
+
+ Channels are groups of content (Learning Paths, Courses, and Channel Resources) that correspond to a particular topic or role.
+
+* **Channel Resources**
+
+ Channel resources are one-off resources that can be consumed outside of a formal learning experience.
+
+Training consists of the following tabs:
+
+Library
+^^^^^^^
+
+The Library tab contains the following sections:
+
+* My Bookshelf - contains content that you have added to your bookshelf. For more information, see :ref:`add-training-my-bookshelf-connect`.
+
+* Explore Channels - contains channels and topics curated to interest KW agents.
+
+* Courses an Learning Paths - contains training materials accessible to all KW associates.
+
+Click on the section title to see more training, or use the left and right arrows to scroll.
+
+My Bookshelf
+^^^^^^^^^^^^
+
+The My Bookshelf tab contains content that you have added to your bookshelf. For more information, see :ref:`add-training-my-bookshelf-connect`.
+
+Channels
+^^^^^^^^
+
+The Channels tab contains channels and topics curated to interest KW agents.

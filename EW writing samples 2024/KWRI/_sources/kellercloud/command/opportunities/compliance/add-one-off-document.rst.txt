@@ -1,0 +1,56 @@
+
+.. _add-one-off-document-opportunities-command:
+
+Add a One-off Compliance Document to an Opportunity
+===================================================
+
+You manage and submit compliance documents for your transactions through Opportunities in Command. Your Market Center creates the compliance document checklists for you to use in your Opportunities. Compliance checklist are lists of documents that need to be added and submitted to your Market Center for approval, after they are signed and completed.
+
+Occasionally, you may need to submit a compliance document that is not in your normal workflow. Command gives you the ability to add these one-off documents to an Opportunity where they are included in the submitted checklist.
+
+To add a one-off compliance document to an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. On the left side of the page, choose the type of checklist you are creating a new version for from the Checklist Type drop-down.
+
+#. Choose the compliance event you are creating a new checklist version for:
+
+   * For **Listings** - Listed, Under Contract, Closed
+
+   * For **Buyers** - Consultation, Under Contract, Closed
+
+   * For **Leases**:
+
+     * **Tenant**: Under Contract, Closed
+
+     * **Landlord** - Listed, Under Contract, Closed
+
+   Depending on the situation, you may need to create a new checklist version for more than one of these compliance events.
+
+#. At the top of the checklist, click **Add Item**.
+
+#. Complete the **Add Item** pop-up:
+
+   a. Enter the **Document Name**.
+
+   #. Choose a **Document Type**.
+
+   #. Enter a comment to give your MCA or Compliance Coordinator context around this one-off document.
+
+   #. Add the document (manually, from Dotloop or DocuSign, or from a custom folder).
+
+   #. Click **Save**.
+
+   Your document appears in the checklist, which you can submit to your Market Center when you have added all of the required documents.

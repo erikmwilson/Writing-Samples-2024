@@ -1,0 +1,577 @@
+=============
+Prerequisites
+=============
+
+This section documents the manual tasks that must be performed before
+beginning an upgrade.
+
+.. caution::
+
+   Before upgrading to the current major release, you must first upgrade to
+   the latest minor release of the previous major release. For example, to
+   upgrade from version 10 to 11, upgrade to the latest 10.x release and
+   then upgrade to 11.
+
+.. warning::
+
+   Read the RPCO Release Notes before beginning the upgrade. The Release
+   Notes provide late-breaking information about known issues and any
+   required steps to correct them.
+
+Back up the environment
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The upgrade script performs a backup of the ``/etc/rpc_deploy``
+directory. However, it is recommended to perform a separate, full backup
+of the environment, including the source repository.
+
+Update Keystone scripts
+~~~~~~~~~~~~~~~~~~~~~~~
+
+As of v11, XML support for Keystone is no longer available. For planned
+upgrades, application scripts that interact with the Keystone service
+should be rewritten to parse JSON output rather than XML. The v11
+deployment scripts install a working ``keystone-paste.ini``
+configuration file.
+
+Remove specific MaaS checks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The MaaS checks listed in this section must be removed before beginning
+the upgrade process.
+
+The version 11 upgrade renames ``nova_spice`` containers to ``nova_console``.
+Use the Rackspace Intelligence user interface or an alternate method to remove
+the following MaaS checks:
+
+- ``nova_consoleauth_check--HOSTNAME_nova_spice_console_container-
+  CONTAINER_ID``
+
+- ``nova_spice_console_check--HOSTNAME_nova_spice_console_container-
+  CONTAINER_ID``
+
+Replace ``HOSTNAME`` and ``CONTAINER_ID`` as appropriate for your environment.
+
+The following ``lb`` MaaS checks are not updated correctly by the
+MaaS playbooks post-upgrade. They will only be created if they do not
+previously exist. Use the Rackspace Intelligence user interface or an
+alternate method to remove the following MaaS checks:
+
+- ``lb_api_check_horizon``
+
+- ``lb_ssl_cert_expiry_check``
+
+Verify that all remaining MaaS checks report ``OK`` state before
+beginning the upgrade.
+
+Set the MaaS token
+~~~~~~~~~~~~~~~~~~
+
+#. Generate a MaaS token using
+   `Pitchfork <https://pitchfork.eco.rackspace.com/monitoring/>`_ or the
+   following example script:
+
+   .. code-block:: ini
+
+      AUTH_USER=$(read -p 'Enter Username: ' username; echo $username) \
+      AUTH_PASS=$(read -s -p 'Enter Password: ' password; echo $password) \
+      MAAS_TOKEN=$(curl -s -X GET http://si.rackspace.com/auth/Token/AuthDetails \
+      -H "x-auth-user: $AUTH_USER" -H "x-auth-password: $AUTH_PASS" \
+      | sed 's/<[^>]*>//g') echo echo $MAAS_TOKEN
+
+#. Use this value for the ``maas_auth_token`` option in the
+   ``/etc/rpc_deploy/user_variables.yml`` file.
+
+Fix log file location for bare metal services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+During the upgrade process, services running on bare metal can cause
+problems with log files. For example, issues can occur when upgrading an
+RPCO v10 deployment with Cinder on bare metal to RPCO v11.
+
+For deployments with services on bare metal, execute the following steps
+to check for services that typically run in containers and symlink their
+log files into the correct directories.
+
+.. code-block:: console
+
+   $ cd /opt/openstack-ansible/rpc_deployment
+
+.. code-block:: console
+
+   # ansible hosts -m shell -a \
+   'for item in cinder glance heat horizon keystone nova neutron; \
+   do if [ ! -h "/var/log/$item" ] && [ -d "/var/log/$item" ]; \
+   then mv /var/log/$item /openstack/log/$(hostname -s)-$item; \
+   ln -s /openstack/log/$(hostname -s)-$item /var/log/$item; fi; \
+   done'
+
+.. _cinder-migrate:
+
+Migrate cinder volumes from a container to bare metal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+RPCO v11 deploys cinder on bare metal by default. Before upgrading,
+follow these steps to deploy cinder volumes on a host that contains the
+``cinder-volume`` container, migrate volumes to bare metal, and remove
+the original container.
+
+Prerequisites
+-------------
+
+#. Back up the cinder volumes.
+
+#. On environments such as labs where Cinder and some other service
+   (such as Nova or Neutron) are deployed on the same node, ensure that
+   at RPCO version 10.1.14 or later is installed, which includes the
+   following fix: https://review.openstack.org/221242/.
+
+Procedure
+---------
+
+#. Make the following changes in the ``rpc_environment.yml`` file:
+
+   -  Add ``is_metal: true`` below ``cinder_volumes_container`` in the
+      ``container_skel`` section.
+
+      .. code-block:: ini
+
+         cinder_volumes_container:
+            is_metal: true
+            belongs_to:
+            - storage_containers
+            contains:
+            - cinder_scheduler
+            - cinder_volume
+
+#. Make the following changes in the ``rpc_user_config.yml`` file:
+
+   -  Change ``environment_version`` to match the new md5sum of the
+      environment file.
+
+      To determine the md5sum, run the following command:
+
+      .. code-block:: console
+
+         $ md5sum /etc/rpc_deploy/rpc_environment.yml
+
+   -  Set the following variables for storage hosts:
+
+      .. code-block:: ini
+
+         storage_hosts:
+         12345-sample_storagehost:
+         ip: 172.16.0.2
+         container_vars:
+         storage_address: 10.142.0.2
+         storage_netmask: 255.255.255.0
+         cinder_backends:
+         lvm:
+         volume_group: cinder-volumes
+         volume_driver: cinder.volume.drivers.lvm.LVMISCSIDriver
+         volume_backend_name: LVM_iSCSI
+
+
+      The ``storage_address`` is the address on the ``br-storage``
+      bridge for the physical host and ``storage_netmask`` is the
+      netmask for the physical address on ``br-storage``. Obtain these
+      values from the physical hosts checking the address that is on the
+      storage bridge.
+
+   -  Ensure that the ``limit_container_types`` variable is removed for
+      the LVM ``cinder_backends`` for the ``storage_host``.
+
+      The following command removes this variable:
+
+      .. code-block:: console
+
+          $ sed -ie '/.*limit_container_types:.*$/d' \
+          /etc/rpc_deploy/rpc_user_config.yml
+
+#. Remove the ``cinder_volume`` containers from inventory, but do NOT
+   destroy them. This ensures that the inventory generator will
+   recognize the hosts as the new targets.
+
+   .. code-block:: console
+
+      $ for h in $(/opt/openstack-ansible/scripts/inventory-manage.py \
+      -f /etc/rpc_deploy/rpc_inventory.json -l | \
+      awk '/cinder_volumes_container/ {print $2}' ); \
+      do /opt/openstack-ansible/scripts/inventory-manage.py \
+      -f /etc/rpc_deploy/rpc_inventory.json -r $h; done
+
+   ..  note::
+
+       Record the IPs for later use.
+
+   #. Create the cinder user:
+
+      .. code-block:: console
+
+         $ cd /opt/rpc-openstack/openstack-ansible/playbooks
+
+      .. code-block:: console
+
+         $ ansible storage_hosts -m group -a 'name=cinder state=present'
+         $ ansible storage_hosts -m user -a 'name=cinder group=cinder \
+           shell=/bin/false home=/var/lib/cinder state=present'
+
+   #. Create the cinder log directory in
+      ``/openstack/log/[nodename]-cinder``. This is symlinked from
+      ``/var/log/cinder`` on the physical host.
+
+      .. code-block:: console
+
+         $ cd /opt/rpc-openstack/openstack-ansible/playbooks
+
+      .. code-block:: console
+
+         $ ansible storage_hosts -m shell -a \
+         'mkdir -p /openstack/log/$(hostname)-cinder; \
+         chown -R cinder:cinder /openstack/log/$(hostname)-cinder; \
+         ln -sf /openstack/log/$(hostname)-cinder /var/log/cinder'
+
+      As a best practice, perform this step before any tools create a
+      log (for example, before an Ansible run of the ``cinder-all.yml``
+      playbook). Logs are created on the respective storage hosts.
+
+#. Run the ``cinder_all.yml`` playbook to re-deploy a new cinder volume
+   instance on the storage host.
+
+#. Stop instances that are using cinder volumes (not using nova).
+
+   ..  warning::
+
+       Using ``nova stop`` gives instances only 30 seconds before forcibly
+       powering them off, which could cause applications and services within
+       the instance to not properly sync to their storage.
+
+#. Dump the table that maps volumes to hosts:
+
+   .. code-block:: console
+
+      $ mysqldump cinder > cinder_db.sql
+
+   When the dump is complete, create backups.
+
+#. Clean up iSCSI sessions.
+
+   -  Run the following command on the cinder hosts:
+
+      .. code-block:: console
+
+         $ tgtadm --lld iscsi --mode target --op show
+
+   If sessions still exist, run the following command for each target:
+
+   .. code-block:: console
+
+      $ iscsiadm -m node -u -T [target] --portal [portal]
+
+   For example, given the following output:
+
+   .. code-block:: console
+
+      $ iscsiadm --mode session
+      tcp: [1] 192.168.1.10:3260,1 iqn.2010-10.org.openstack:
+      volume-aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+
+   run the following command to remove the session:
+
+   .. code-block:: console
+
+      $ iscsiadm -m node -u -T iqn.2010-10.org.openstack:\
+      volume-aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa --portal 192.168.1.10:3260
+
+#. Remove ``autoboot`` from the LXC configuration file. This prevents
+   the cinder volume container from accidentally restarting. For
+   example:
+
+   .. code-block:: ini
+
+      /var/lib/lxc/[cinder-volumes_container]/config \
+      --> lxc.start.auto = 0
+
+   To disable autoboot, run the following command:
+
+   .. code-block:: console
+
+      $ cd /opt/openstack-ansible/rpc_deployment
+      $ ansible storage_hosts -m shell -a 'sed -i \
+      "s/lxc.start.auto.*/lxc.start.auto = 0/g" /var/lib/lxc/$(lxc-ls \
+      |grep cinder_volumes_container)/config'
+
+#. Stop the cinder volume containers:
+
+   .. code-block:: console
+
+      $ cd /opt/openstack-ansible/rpc_deployment
+      $ ansible storage_hosts -m shell -a 'lxc-stop -n \
+      (lxc-ls | grep cinder_volume)'
+
+#. Add the old container IP to the ``br-storage`` bridge.
+
+   ..  note::
+
+       Rackspace names these bridges ``br-storage``. Use the name that is
+       correct for your environment.
+
+   #. Create additional ``br-storage`` stanzas for the old and new IPs
+      in the ``/etc/network/interfaces.d/br-storage.cfg`` file, or the
+      appropriate network configuration file. This assigns a secondary
+      IP to the ``br-storage`` bridge.
+
+      .. code-block:: ini
+
+         $ iface br-storage inet static
+         address [container IP]
+         netmask [container netmask]
+
+   #. Restart ``br-storage``:
+
+      .. code-block:: console
+
+         $ ifdown br-storage && ifup br-storage
+
+   #. Ensure that the new IPs are on all of the storage hosts:
+
+      .. code-block:: console
+
+         $ ip -o a s br-storage
+
+#. Run the ``cinder-manage volume update_host`` command
+   across the storage hosts. This updates the host name in the cinder
+   database without manual DB intervention.
+
+   .. code-block:: console
+
+      $ ansible storage_hosts -m shell -a \
+        'c=$(lxc-ls | grep cinder_volumes); cinder-manage volume update_host \
+        --currenthost ${c}@lvm#LVM_iSCSI --newhost $(hostname)@lvm#LVM_iSCSI'
+
+   Verify success by running the following command on the utility
+   container or on any node with MySQL access:
+
+   .. code-block:: console
+
+      $ mysql cinder -e \
+        'select host from volumes where deleted = 0;'
+
+#. Restart the ``tgt`` service on the storage hosts:
+
+   .. code-block:: console
+
+      $ cd /opt/openstack-ansible/rpc_deployment
+      $ ansible storage_hosts -m service -a 'name=tgt state=restarted'
+
+#. Restart the ``cinder-volume`` service on the storage hosts so that it
+   listens on all IPs on the bridge:
+
+   .. code-block:: console
+
+      $ cd /opt/openstack-ansible/rpc_deployment
+      $ ansible storage_hosts -m service -a 'name=cinder-volume state=restarted'
+
+#. Start instances and test the environment to verify that you can
+   create volumes, attach volumes, and boot from a volume.
+
+#. Delete the cinder volume containers:
+
+   .. code-block:: console
+
+      $ cd /opt/openstack-ansible/rpc_deployment
+      $ ansible storage_hosts -m shell -a \
+      'lxc-destroy -n $(lxc-ls | grep cinder_volume)'
+
+#. Set ``deleted=1`` status on services that were in containers:
+
+   .. code-block:: console
+
+      $ mysql -e "update cinder.services set deleted=1 \
+        where host like'%container%';"
+
+Configure SSL certificates for Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For more information about configuring Dashboard SSL, refer to the
+*Securing Horizon communication with SSL certificates* section
+in the `OpenStack-Ansible Installation Guide
+<http://docs.openstack.org/developer/openstack-ansible/install-guide/>`_.
+
+In RPCO v10, the Dashboard playbooks generated an OpenSSL key and
+certificate for Apache to use when serving Dashboard. The variables in
+v10 were named and set as follows:
+
+.. code-block:: ini
+
+   horizon_ssl_cert: /etc/ssl/certs/apache.cert
+   horizon_ssl_key: /etc/ssl/private/apache.key
+   horizon_ssl_cert_path: /etc/ssl/certs
+
+An exiting RPCO installation that was not manually changed uses those
+values.
+
+In RPCO v11, the defaults for ``horizon_ssl_cert`` and
+``horizon_ssl_key`` changed, ``horizon_ssl_cert_path`` is removed, and
+these `new variables
+<https://github.com/openstack/openstack-ansible/blob/c110786e1f13c1f1758d280f6e69d4bcec5d7cc6/playbooks/roles/os_horizon/defaults/main.yml#L66..L75>`_
+are added.
+
+For more information, see
+`Bug 1477273 <https://bugs.launchpad.net/openstack-ansible/+bug/1477273>`_ and
+`Bug 1488578 <https://bugs.launchpad.net/openstack-ansible/+bug/1488578>`_.
+
+Understand upgrade scenarios
+----------------------------
+
+There are four primary scenarios that affect OpenSSL certificates and
+the actions required:
+
+#. You are using the defaults from v10 with a self-signed certificate
+   and want to continue using that certificate.
+
+#. You are using your own certificate, key, and so on, but the
+   configuration was done manually.
+
+#. You are using the defaults but now want to change something about
+   them.
+
+#. After upgrading RPCO, new security settings might cause older
+   browsers to fail to connect to Dashboard.
+
+Use the default certificates
+----------------------------
+
+You can choose to either rename the old files or update the user
+variables file, but not both.
+
+To rename the old files:
+
+.. code-block:: console
+
+   $ cd /opt/openstack-ansible/rpc_deployment
+   # ansible horizon_all -m shell -a 'mv /etc/ssl/certs/apache.cert \
+     /etc/ssl/private/horizon.pem'
+   # ansible horizon_all -m shell -a 'mv /etc/ssl/private/apache.key \
+     /etc/ssl/private/horizon.key'
+
+Alternatively, ensure that ``/etc/rpc_deploy/user_variables.yml``
+contains:
+
+.. code-block:: ini
+
+   horizon_ssl_cert: /etc/ssl/certs/apache.cert
+   horizon_ssl_key: /etc/ssl/private/apache.key
+
+Use your own key and certificate
+--------------------------------
+
+Set the ``horizon_user_ssl_cert``, ``horizon_user_ssl_key``, and
+``horizon_user_ca_cert`` variables in the
+``/etc/rpc_deploy/user_variables.yml`` file. This overrides any
+self-signed certificates in v11.
+
+If ``horizon_user_ssl_cert`` or ``horizon_user_ssl_key`` are not
+defined, the missing certificate and key are self generated on the first
+Dashboard container and distributed to other Dashboard containers.
+
+Regenerate self-signed certificates
+-----------------------------------
+
+There are two scenarios for regenerating self-signed certificates.
+
+To use the old paths but regenerate the certificates, set the variables
+as above and add the following line to the
+``/etc/rpc_deploy/user_variables.yml`` file:
+
+.. code-block:: ini
+
+   horizon_ssl_self_signed_regen: true
+
+Optionally, change the subject of the certificate as appropriate for
+your environment:
+
+.. code-block:: ini
+
+   horizon_ssl_self_signed_subject: "..."
+
+No action is required to use the new default certificate location. The
+old ``apache.cert`` and ``apache.key`` files are left and new keys,
+certificates, and so on are placed in the new default location. These
+are regenerated since the files don't yet exist in the new location.
+
+Fix connection issues with old browsers
+---------------------------------------
+
+Two of the `new variables
+<https://github.com/openstack/openstack-ansible/blob/c110786e1f13c1f1758d280f6e69d4bcec5d7cc6/playbooks/roles/os_horizon/defaults/main.yml#L66..L75>`_
+affect customers using old browsers such as Internet Explorer 6:
+``horizon_ssl_protocol`` and ``horizon_ssl_cipher_suite``.
+
+By default, both RPCO v10 and v11 disable unsafe SSLv2 and SSLv3
+protocols for Dashboard. Therefore, no modification is necessary.
+However, cipher suites differ. The cipher suite `currently is set for Dashboard
+<https://github.com/openstack/openstack-ansible/blob/ff9209b47c6d93dad717b99b399d3b201bfdd07c/rpc_deployment/roles/horizon_apache/templates/openstack-dashboard.conf#L23>`_
+in v10 is:
+
+.. code-block:: ini
+
+   EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256
+   EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL
+   !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4
+
+For v11 the settings are:
+
+.. code-block:: ini
+
+   ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:
+   DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+
+Since the v11 cipher list provides better transport security, it is not
+advisable to change the list to the old default. If users are unable to
+connect, check to see if changing the cipher list temporarily to a less
+secure setting enables connecting. To permanently change the cipher
+list, edit ``/etc/openstack_deploy/user_variables.yml`` after upgrade
+and run the ``os-horizon.yml`` playbook from the
+``/opt/rpc-openstack/openstack-ansible/playbooks`` directory.
+
+Enable the trusty-backports repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The trusty-backports repository is required to install or upgrade Object
+Storage. Add repository details in ``/etc/apt/sources.list``, and update
+the package list:
+
+.. code-block:: console
+
+   # cd /opt/rpc-openstack/openstack-ansible/playbooks
+   # ansible hosts -m lineinfile -a 'dest=/etc/apt/sources.list regexp="^deb \
+     http.*trusty-backports.*" line="deb http://mirror.rackspace.com/ubuntu \
+     trusty-backports main restricted universe multiverse" state=present'
+   # ansible hosts -m command -a "apt-get update"
+
+..  note::
+
+    The above assumes the ``/etc/apt/sources.list`` is using
+    http://mirror.rackspace.com/ubuntu for ``trusty``, ``trusty-updates``
+    distributions. Check to see which mirror is being used, and if
+    necessary, update the above command by placing
+    http://mirror.rackspace.com/ubuntu with the appropriate mirror.
+
+Truncate tables
+~~~~~~~~~~~~~~~
+
+If the ``dash.django_sessions`` and ``keystone.token`` tables
+are very large, the database will lock and API calls will fail for up to
+30 minutes. Run the following commands to truncate these tables.
+
+.. code-block:: console
+
+   # mysql -e 'TRUNCATE TABLE dash.django_session;'
+   # mysql -e 'TRUNCATE TABLE keystone.token;'
+
+Configure minimal load balancer checks for Galera cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Temporarily configure the load balancer to perform only TCP half-open
+checks on the Galera cluster.

@@ -1,0 +1,17 @@
+========
+Hardware
+========
+
+.. toctree::
+   :maxdepth: 2
+
+   aggregate-switches.rst
+   tor.rst
+   firewalls.rst
+   load-balancers.rst
+   controller-nodes.rst
+   logging-node.rst
+   compute-nodes.rst
+   cinder-nodes.rst
+   swift-nodes.rst
+   ceph-nodes.rst

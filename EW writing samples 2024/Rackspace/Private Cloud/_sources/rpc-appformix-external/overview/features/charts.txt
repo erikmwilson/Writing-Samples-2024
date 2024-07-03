@@ -1,0 +1,7 @@
+.. _charts-ug:
+
+======
+Charts
+======
+
+For information about charts, see `Charts <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-charts.html>`_ in the AppFormix User Guide.

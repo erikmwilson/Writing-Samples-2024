@@ -1,0 +1,22 @@
+
+.. _my-logs-settings-command:
+
+My Logs
+=======
+
+To view a history of imported contacts and download log files, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Import Logs**.
+
+#. Click **My Logs**.
+
+   The My Logs page displays a history of all imported contact files.
+
+#. To download the original imported contact file, click **Download** in the **Original File** column.
+
+#. If an imported contact list had errors, you can download the error file by clicking **Download** in the **Error File** column.

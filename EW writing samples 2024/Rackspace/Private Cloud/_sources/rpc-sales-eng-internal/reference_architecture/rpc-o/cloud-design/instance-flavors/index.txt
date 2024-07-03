@@ -1,0 +1,37 @@
+================
+Instance flavors
+================
+
+Instance templates provide a number of benefits. First they help enforce
+a standard machine configuration during deployment. Secondly they assist
+in reducing the deployment effort by enabling an instance to be deployed
+in minutes instead of days or weeks. Lastly they also enable scale-out
+application architectures to be managed rapidly and in the most flexible
+manner possible when associated orchestration designs.
+
+When the flavors are defined, make sure to include the following
+considerations:
+
+-  Each flavor should contain additional keys (extra\_specs) to aid in
+   flavor management and give the Cloud Consumer a description of what
+   the flavor was intended for.
+
+-  Make sure to mark each flavor as public or private. If marked as
+   private, access to that flavor must be granted to Tenant(s).
+
+-  Always try to keep the flavor disk size to the smallest size
+   possible. If additional storage is needed, use the ephemeral argument
+   to allocation additional storage. Ideally this would be accomplished
+   by utilizing Block storage instead.
+
+-  Do not be afraid to create as many flavors as needed to accommodate
+   supporting the Cloud Consumer.
+
+-  Mapping out the flavors allowed by a tenant ahead of allowing
+   resources to be consumed helps in keeping your cloud
+   standardized.
+
+.. toctree::
+   :maxdepth: 2
+
+   guest-os-Images.rst

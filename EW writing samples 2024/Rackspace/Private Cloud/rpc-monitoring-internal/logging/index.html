@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RPCO logging &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Getting Started" href="sec-logging-elasticsearchintro.html" />
+    <link rel="prev" title="Monitoring conntrack metrics" href="../monitoring-impl/monitoring-internal.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Monitoring and Logging Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-design/index.html">Rackspace monitoring design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-impl/index.html">RPCO monitoring implementation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RPCO logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sec-logging-elasticsearchintro.html">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-esapi.html">Searching logs using the Elasticsearch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-es2unix.html">Searching logs using the es2unix command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-head.html">Searching logs using the Head plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-kibana.html">Searching logs using Kibana plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#es2unix-commands">ES2Unix Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#http-requests">HTTP requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Monitoring and Logging Guide</a> &raquo;</li>
+        
+      <li>RPCO logging</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-monitoring-internal/logging/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rpco-logging">
+<h1>RPCO logging<a class="headerlink" href="#rpco-logging" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sec-logging-elasticsearchintro.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec-logging-elasticsearchintro.html#checking-current-elasticsearch-version">Checking current Elasticsearch version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec-logging-elasticsearchintro.html#viewing-all-indices">Viewing all indices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sec-logs-esapi.html">Searching logs using the Elasticsearch API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec-logs-esapi.html#simple-searches">Simple searches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec-logs-esapi.html#complex-queries">Complex queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sec-logs-es2unix.html">Searching logs using the es2unix command line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec-logs-es2unix.html#viewing-general-information">Viewing general information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec-logs-es2unix.html#simple-searches">Simple searches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec-logs-es2unix.html#complex-queries">Complex queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sec-logs-head.html">Searching logs using the Head plugin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec-logs-head.html#accessing-head">Accessing Head</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sec-logs-kibana.html">Searching logs using Kibana plugin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec-logs-kibana.html#accessing-kibana">Accessing Kibana</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div></blockquote>
+<p>In an RPCO deployment, each OpenStack service and infrastructure
+container stores log files in a bind-mount (<code class="docutils literal"><span class="pre">/openstack/log</span></code>) located
+on every host in the environment. The Rsyslog container on these hosts
+reads, parses, and ships log files to the Logstash container residing on
+the logger host. The Logstash container on the logger host is
+responsible for processing the logs received from Rsyslog containers and
+ensuring they are properly stored into Elasticsearch. The logs inside
+Elasticsearch are indexed and can be accessed via the Elasticsearch API,
+<strong>es2unix</strong> command line (CLI), or a variety of GUI plugins including
+Kibana and Head.</p>
+<blockquote>
+<div><div class="figure">
+<a class="reference internal image-reference" href="../../_images/RPC_Log_Flow.png"><img alt="RPCO Logging Work Flow" src="../../_images/RPC_Log_Flow.png" style="width: 6in;" /></a>
+</div>
+</div></blockquote>
+<p>By default, all API logs and system logs are collected. The logs are
+kept for 90 days. Contents and activities within VMs are not logged.</p>
+<div class="section" id="es2unix-commands">
+<h2>ES2Unix Commands<a class="headerlink" href="#es2unix-commands" title="Permalink to this headline">#</a></h2>
+<p>ES2Unix commands to assist debugging are described below with example outputs.
+For ease of administration, export the URL to Elasticsearch as ESURL:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">export</span> <span class="nv">ESURL</span><span class="o">=</span><span class="s2">&quot;http://</span><span class="k">$(</span> grep -A2 elasticsearch_container /etc/*_deploy/*_hostnames_ips.yml <span class="se">\</span>
+  <span class="p">|</span> tail -1 <span class="p">|</span> awk <span class="s1">&#39;/container_address/ { gsub(/&quot;/, &quot;&quot; ); print $2 }&#39;</span> <span class="k">)</span><span class="s2">:9200&quot;</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">Cluster health</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> es -v -u <span class="nv">$ESURL</span> health
+<span class="go">  time     cluster   status nodes data pri shards relo init unassign</span>
+<span class="go">  15:33:29 openstack green      1    1  18     18    0    0        0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">List all nodes in the cluster</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> es -v -u <span class="nv">$ESURL</span> nodes
+<span class="go">  id                     http-ip        port tran-ip        tran-port jdk       heap uptime data/client master? name</span>
+<span class="go">  QzoV-MlGSO6FkVKu_W-BRw 1.2.3.4 9200 1.2.3.4 9300      1.7.0_65 46.1%      0 d           *       Silver Scorpion</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">List available shards</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> es -v -u <span class="nv">$ESURL</span> shards
+<span class="go">  index               shard pri/rep state      docs size     bytes ip             node</span>
+<span class="go">  logstash-2014.10.13     0 p       STARTED   19337        8881563 1.2.3.4 Silver Scorpion</span>
+<span class="go">  logstash-2014.10.15     0 p       STARTED    8690        4320059 1.2.3.4 Silver Scorpion</span>
+<span class="go">  logstash-2014.10.12     0 p       STARTED      45          27893 1.2.3.4 Silver Scorpion</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="http-requests">
+<h2>HTTP requests<a class="headerlink" href="#http-requests" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p class="first">Single-query syntax</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">{</span>
+<span class="na">&quot;_source&quot; : [ &quot;Field1&quot;, &quot;Field2&quot;],                  #Comma seperated list of _source fields to return, if left out returns all fields.</span>
+<span class="na">&quot;query&quot; : {                                         #Start of Query line</span>
+    <span class="na">&quot;match&quot; : {                                     #Start match clause</span>
+        <span class="na">&quot;@message&quot; : &quot;Thing you are grepping for&quot;   #Define what we are matching</span>
+    <span class="na">}</span>
+<span class="na">},</span>
+<span class="na">&quot;size&quot;: &quot;Number of Results you want Returned&quot;,      #Defaults to 10 if left out</span>
+<span class="na">&quot;from&quot;: &quot;Offset to start results from&quot;              #Defaults to 0, starting at 10 will return results 10-X, etc.</span>
+<span class="na">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Multi-query syntax</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">{</span>
+<span class="na">&quot;_source&quot; : [ &quot;Field1&quot;, &quot;Field2&quot;],                  #Comma seperated list of _source fields to return, if left out returns all fields.</span>
+<span class="na">&quot;query&quot; : {                                         #Start of Query line</span>
+    <span class="na">&quot;bool&quot; : {                                      #Start of bool Query for multi-query requests</span>
+        <span class="na">&quot;must&quot; : [                                  #Start array of what must match. must_not and should are other options. Should is an &quot;OR&quot; clause.</span>
+            <span class="na">&quot;match&quot;: {                              #Define what you are matching</span>
+                <span class="na">&quot;program&quot; : {                       #Specify what we are matching</span>
+                    <span class="na">&quot;query&quot; : &quot;Search1 Search2&quot;,    #You can specify multiple search words using another query, likely the thing we&#39;re looking for</span>
+                    <span class="na">&quot;operator&quot; : &quot;and&quot; }            #The default is OR. AND makes it require both</span>
+                <span class="na">},                                  #Don&#39;t forget your Comma</span>
+            <span class="na">&quot;match&quot; : {</span>
+                <span class="na">&quot;@message&quot; : &quot;SEARCH_TERM&quot;          #Your UUID or whatever you would normally grep a log for</span>
+            <span class="na">}]</span>
+    <span class="na">}</span>
+<span class="na">},</span>
+<span class="na">&quot;size&quot;: &quot;Number of Results you want Returned&quot;,      #Defaults to 10 if left out</span>
+<span class="na">&quot;from&quot;: &quot;Offset to start results from&quot;              #Defaults to 0, starting at 10 will return results 10-X, etc.</span>
+<span class="na">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Search</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -X GET <span class="s2">&quot;</span><span class="nv">$ESURL</span><span class="s2">/_search?pretty&quot;</span> -d <span class="s1">&#39;{</span>
+<span class="s1">  &quot;query&quot;: {</span>
+<span class="s1">   &quot;query_string&quot;: {</span>
+<span class="s1">    &quot;query&quot;: &quot;@source_host:*cinder*&quot;</span>
+<span class="s1">  }</span>
+<span class="s1">},</span>
+<span class="s1">&quot;sort&quot;: [</span>
+<span class="s1">  {</span>
+<span class="s1">    &quot;@timestamp&quot;: &quot;desc&quot;</span>
+<span class="s1">  }</span>
+<span class="s1">],</span>
+<span class="s1">&quot;filter&quot;: {</span>
+<span class="s1">  &quot;range&quot;: {</span>
+<span class="s1">    &quot;@timestamp&quot;: {</span>
+<span class="s1">      &quot;from&quot;: &quot;2014-10-10T22:24:07&quot;,</span>
+<span class="s1">      &quot;to&quot;: &quot;2014-10-13T22:24:07&quot;</span>
+<span class="s1">     }</span>
+<span class="s1">   }</span>
+<span class="s1"> }</span>
+<span class="s1">}&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Retrieve size of index</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl -X GET <span class="s2">&quot;</span><span class="nv">$ESURL</span><span class="s2">/_cat/indices?v&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Remove indices</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl -X DELETE <span class="s2">&quot;</span><span class="nv">$ESURL</span><span class="s2">/logstash-YYYY.MM.DD&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Find all log entries of a single UUID</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ http GET http://<span class="nv">$ESURL</span>/_search <span class="o">&lt;&lt;&lt;</span> <span class="s1">&#39;{ &quot;_source&quot; : [ &quot;@fields.program&quot;, &quot;@message&quot;],</span>
+<span class="s1">  &quot;query&quot; : {</span>
+<span class="s1">    &quot;match&quot; : {</span>
+<span class="s1">        &quot;@message&quot; : &quot;acd45117-d0b1-462d-a0b2-31d492de4945&quot; }}}&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Find nova api log entries across all days for a UUID</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ http GET http://<span class="nv">$ESURL</span>/logstash-2015.01.28/_search <span class="o">&lt;&lt;&lt;</span> <span class="s1">&#39;{ &quot;_source&quot;: [&quot;@fields.program&quot;, &quot;@message&quot; ],</span>
+<span class="s1">  &quot;query&quot; : {</span>
+<span class="s1">   &quot;bool&quot; : {</span>
+<span class="s1">    &quot;must&quot;: [{</span>
+<span class="s1">       &quot;match&quot; : {</span>
+<span class="s1">           &quot;program&quot;: {</span>
+<span class="s1">               &quot;query&quot; : &quot;nova api&quot;,</span>
+<span class="s1">               &quot;operator&quot;: &quot;and&quot; }}},</span>
+<span class="s1">       {&quot;match&quot;: {</span>
+<span class="s1">           &quot;@message&quot; : &quot;acd45117-d0b1-462d-a0b2-31d492de4945&quot; }}]}}}&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Find nova api log entries across a single day for an instance ID</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ http GET http://<span class="nv">$ESURL</span>/_search <span class="o">&lt;&lt;&lt;</span> <span class="s1">&#39;{ &quot;_source&quot;: [&quot;@fields.program&quot;, &quot;@message&quot; ],</span>
+<span class="s1">  &quot;query&quot; : {</span>
+<span class="s1">   &quot;bool&quot; : {</span>
+<span class="s1">    &quot;must&quot;: [{</span>
+<span class="s1">       &quot;match&quot;: {</span>
+<span class="s1">           &quot;@message&quot; : &quot;acd45117-d0b1-462d-a0b2-31d492de4945&quot; }},</span>
+<span class="s1">       {&quot;range&quot; : {</span>
+<span class="s1">           &quot;@timestamp&quot; : {</span>
+<span class="s1">               &quot;gte&quot; : &quot;2015-01-28T15:30:00&quot;,</span>
+<span class="s1">               &quot;lte&quot; : &quot;2015-01-28T23:50:00&quot; }}}]}}}&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Find all Log entries for a single instance within a range of time</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ http GET http://172.29.236.1:9200/_search <span class="o">&lt;&lt;&lt;</span> <span class="s1">&#39;{ &quot;_source&quot;: [&quot;@fields.program&quot;, &quot;@message&quot; ],</span>
+<span class="s1">  &quot;query&quot; : {</span>
+<span class="s1">   &quot;bool&quot; : {</span>
+<span class="s1">    &quot;must&quot;: [{</span>
+<span class="s1">       &quot;match&quot; : {</span>
+<span class="s1">           &quot;program&quot;: {</span>
+<span class="s1">               &quot;query&quot; : &quot;nova api&quot;, &quot;operator&quot;: &quot;and&quot; }}},</span>
+<span class="s1">       {&quot;match&quot;: {</span>
+<span class="s1">           &quot;@message&quot; : &quot;acd45117-d0b1-462d-a0b2-31d492de4945&quot; }},</span>
+<span class="s1">       {&quot;range&quot; : {</span>
+<span class="s1">           &quot;@timestamp&quot; : {</span>
+<span class="s1">               &quot;gte&quot; : &quot;2015-01-28T15:30:00&quot;,</span>
+<span class="s1">               &quot;lte&quot; : &quot;2015-01-28T23:50:00&quot; }}}]}}}&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sec-logging-elasticsearchintro.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../monitoring-impl/monitoring-internal.html" class="btn btn-neutral float-left" title="Monitoring conntrack metrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

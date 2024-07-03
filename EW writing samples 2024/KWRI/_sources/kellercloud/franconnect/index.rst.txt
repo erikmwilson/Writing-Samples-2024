@@ -1,0 +1,23 @@
+
+.. _franconnect-index-ug:
+
+Organization Management
+=======================
+
+KW uses the third-party tool FranConnect to manage Market Centers, Business Centers, and leadership roles. FranConnect synchronizes with both White Pages and the KW AMS database.
+
+The following sections contain information about managing organizations and roles.
+
+.. note::
+
+   The following procedures requires the Corporate Administrator KW role.
+
+.. toctree::
+   :maxdepth: 1
+
+   add-organization
+   edit-market-center
+   edit-business-center
+   close-market-center
+   close-business-center
+   manage-roles

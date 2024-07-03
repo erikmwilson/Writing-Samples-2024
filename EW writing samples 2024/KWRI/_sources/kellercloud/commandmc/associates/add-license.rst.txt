@@ -1,0 +1,21 @@
+
+.. _add-license-associates-commandmc:
+
+Add a License to an Associate
+=============================
+
+To add a license to an associate, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the associate name to view the associate details.
+
+#. Click the **Business** tab.
+
+#. In the **Real Estate Licenses** section, click **Add a license**.
+
+#. On the **Add License Information** window, enter the **License Number**, **State/Province**, and **Expiration Date**. You can add and remove multiple licenses.
+
+#. Click **Save**.

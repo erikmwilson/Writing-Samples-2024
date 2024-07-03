@@ -1,0 +1,19 @@
+=================
+System management
+=================
+
+.. list-table:: **System management**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - SM6.0
+     - The system shall provide systems management including:
+   * - SM6.0.1
+     - The system shall provide a self-service capability for end
+       users.
+
+       **Solution:** Users will have a service catalogue in which they
+       can deploy VM’s and associated resources, which are governed by
+       the administrator-defined permission levels.

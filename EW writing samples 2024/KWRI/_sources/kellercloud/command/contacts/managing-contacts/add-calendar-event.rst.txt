@@ -1,0 +1,31 @@
+
+.. _add-calendar-event-contacts-command:
+
+Add a Calendar Event
+====================
+
+As you are working with a contact, you might need to setup an appointment or meeting. If you are using a Google Calendar, you can create that appointment in your calendar, directly from Command.
+
+To add a calendar event, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#.  In the **Contacts** list, click the name of the contact to which you want to add an activity.
+
+#. At the bottom right of the contact details page, click the blue circle |contacts-interactions-icon|.
+
+   .. |contacts-interactions-icon| image:: ../../../../images/contacts-interactions-icon.png
+      :height: 20
+
+#. Above the blue circle, options will appear. Choose the **Add Calendar Event** option.
+
+   The system takes you to a Google login page. Log in to the Google account that includes your Google Calendar.
+
+#. After you log in, a Google Calendar event creation screen displays, with the contact's email already added and an auto-filled event title labeled "Appointment with <Contact's Name>." Edit the event information, and click **Save**.
+
+   The event is populated on your Google Calendar.

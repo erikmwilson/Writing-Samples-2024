@@ -1,0 +1,8 @@
+===============
+Rack evaluation
+===============
+
+Following is an example of what a rack evaluation might look like.
+
+.. image:: ../figures/hp-1rack-elevation-5swift-5ceph-3compute.png
+   :alt: Rack evaluation

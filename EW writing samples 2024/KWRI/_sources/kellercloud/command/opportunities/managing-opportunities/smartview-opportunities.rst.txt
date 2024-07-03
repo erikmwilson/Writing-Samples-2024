@@ -1,0 +1,24 @@
+
+.. _smartview-opportunities-command:
+
+Create Smartviews for Opportunities
+===================================
+
+When you use a set of filters often, save that set of filters as a SmartView. You can then access that set of filters without having to reset them each time.
+
+To create Smartviews for Opportunities, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click **All Opportunities**, at the top of the page. A list displays of all the Opportunities that you own or to which you are assigned.
+
+#. After the desired filters have been selected, click the **All Opportunities** drop-down and select **Create SmartView**.
+
+   For more information on filtering Opportunities, see :ref:`filter-opportunities-command`.
+
+#. Name your SmartView, then click **Save Smartview**. To access this Smartview in the future, click the **All Opportunities** drop-down at the top of your opportunity list, and choose it from the list.

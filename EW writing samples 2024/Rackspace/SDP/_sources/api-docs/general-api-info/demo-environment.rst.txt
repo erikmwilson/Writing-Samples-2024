@@ -1,0 +1,92 @@
+.. _demo-environment-features:
+
+==========================
+Demo environment features
+==========================
+
+
+The demo environment has the ability to return error responses upon request.
+This is useful to test unusual responses that you rarely see when your
+application is running.
+
+To trigger any error, include the ``X-Mock-Error`` header populated with any
+of the error constants listed below. The API responds with the error condition.
+
+
+Request
+~~~~~~~
+
+.. code::
+
+    Method: POST
+    URL:    /tickets
+    Headers:
+      X-Auth-Token: xxxxxxx
+      Accept: application/json
+      X-Mock-Error: UNSUPPORTED_ACCOUNT_TYPE
+
+
+Response
+~~~~~~~~
+
+.. code::
+
+    HTTP/1.1 422 Unprocessable Entity
+    Content-Type: application/json
+    Retry-After: Tue, 01 Nov 2017 21:46:47 GMT
+    Date: Thu, 01 Nov 2017 21:45:47 GMT
+
+    {
+      "status": 422,
+      "message": "Account of this type is not supported",
+      "faultCode": "unprocessableEntity",
+      "transactionId": "94bd993f-6416-4b3c-bf5a-2cb619975572",
+      "moreInfo": "https://developer.rackspace.com/docs/ticketing/api-docs/general-api-info/faults#unprocessableEntity"
+    }
+
+List of error constants
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Insert one of the constants listed below in the ```X-Mock-Error`` header of
+any API request to trigger the corresponding error response from the API. Many
+errors are endpoint specific, check the API call documentation to see
+which errors apply.
+
+.. code::
+
+  ATTACHMENT_LONG_FILENAME
+  BOTH_STATUS_AND_COMMENT_PRESENT
+  CLOUD_ATTACHMENT_NOT_FOUND
+  EMPTY_UPDATE
+  FAILED_UPDATE_TICKET_NOT_REVIEWED
+  INVALID_ACCOUNT
+  INVALID_ATTACHMENT_FILE
+  INVALID_ATTACHMENT_FILENAME
+  INVALID_ATTACHMENT_FILE_EXTN
+  INVALID_CAT_SUBCAT_TICKET
+  INVALID_FIELD_TICKET
+  INVALID_RECIPIENT
+  INVALID_RESOURCE
+  INVALID_REVERSE_PARAM
+  INVALID_SERVER_ERROR
+  INVALID_SEVERITY
+  INVALID_UPDATE_RATING_COMMENT
+  INVALID_UPDATE_RATING_SCORE
+  MISSING_ACCOUNT_ID
+  MISSING_PERMISSION
+  MISSING_STATUS_AND_COMMENT
+  ONLY_SET_STATUS_TO_CLOSED
+  RACKER_TOKEN_NOT_ALLOWED
+  SERVICE_UNAVAILABLE
+  TICKET_NOT_FOUND
+  UNAPPROVED_ATTACHMENT_FILENAME_EXTN
+  UNAUTHORIZED_ACCOUNT_CREATE
+  UNAUTHORIZED_ACCOUNT_UPDATE
+  UNAUTHORIZED_RESOURCE_CREATE
+  UNAUTHORIZED_RESOURCE_UPDATE
+  UNSUPPORTED_ACCOUNT_TYPE
+  UPDATE_COMMENT_LONG_TEXT
+  UPDATE_COMMENT_NO_TEXT
+  UPDATE_INVALID_REQUEST
+  UPDATE_NOT_ALLOWED
+  UPSTREAM_UNAVAILABLE

@@ -1,0 +1,28 @@
+
+.. _edit-checklists-opportunities-commandmc:
+
+Edit Opportunity Checklists
+===========================
+
+After you customize your Opportunity pipelines and create your checklist templates, you are ready to start using the system to track your Opportunities. While using the system, you may need to make adjustments to your Opportunity Pipeline checklists.
+
+To edit checklists, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. On the Opportunities dashboard, click on the phase to which you want to add a checklist.
+
+#. Click **Edit Stages**, at the top-right of the page.
+
+#. Click on the checklist icon, |checklist-icon| for the stage you want to modify.
+
+   .. |checklist-icon| image:: ../../../../images/checklist-icon.png
+      :height: 30
+
+#. Click **Add Item**, to add a checklist item.
+
+#. To the right of each checklist item, click the three dots to edit or delete an existing checklist item.
+
+   Click and hold on a checklist item to move it to another position in the list.
+
+8. Click **Save**.

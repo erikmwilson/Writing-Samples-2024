@@ -1,0 +1,14 @@
+==========================
+Service quality management
+==========================
+
+.. list-table:: **Service quality management**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - SQM1.0
+     - The system shall provide Service Quality Management including:
+   * - SQM1.0.1
+     - The system shall have a 99.99 Uptime SLA.

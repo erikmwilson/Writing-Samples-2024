@@ -1,0 +1,58 @@
+
+.. _review-compliance-opportunities-commandmc:
+
+Review Submitted Compliance Requests
+====================================
+
+Market Centers review submitted compliance checklists in Command. Agents can use Dotloop or DocuSign (or a more traditional way) to complete their documents and import them into Command. After agents add all of the required, completed documents, they submit the documents for review. Market Center Administrators, Assistant MCAs and Compliance Coordinators review the documents in submitted checklists, and either accept them or return them to the agent.
+
+Market Center Administrators, Assistant MCAs and Compliance Coordinators can also flag missing documents and set the compliance event status.
+
+To review, approve, or return a submitted compliance request, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. At the top of the page, click the **Compliance Requests** tab to see a list of all submitted compliance requests.
+
+#. Find the correct compliance request.
+
+   For more information, see :ref:`search-compliance-requests-opportunities-commandmc`.
+
+#. On the compliance card, click **Review**.
+
+#. On the **Documents** tab for the Opportunity, on the left side of the tab, select the compliance event (for example, **Listed**, **Under Contract**, **Closed**) that holds the submitted documents.
+
+#. Click **Review** and choose one of the following options:
+
+   * **All Documents** - Review all documents, even documents you have already reviewed and taken action on.
+
+   * **New Documents** - Review documents that have not been approved or rejected.
+
+   * **Selected Documents** - Check the boxes next to the documents you want to review, if you want to target specific documents.
+
+#. Review the document. At the top of the page, click either **Approve Document** or **Reject Document**.
+
+   For more information, see :ref:`pdf-review-opportunities-commandmc`.
+
+   * If you approved the document, click the arrow on the right side of the page, to move to the next document.
+
+   * If you rejected the document, enter the **Reason for rejection** in the **Reject Document** pop-up and click **Reject Document**.
+
+   The document is tagged with a Rejected status. The agent can hover over the rejection comment |rejection-icon| icon, to find out why it was rejected. The agent must resubmit a new version of this document.
+
+   .. |rejection-icon| image:: ../../../../images/rejection-icon.png
+      :height: 20
+
+Flag Missing Documents
+^^^^^^^^^^^^^^^^^^^^^^
+
+After reviewing the submitted documents, there may be documents that should have been submitted, but were not. On that checklist item line, click the missing document button (next to **Add a File**).
+
+Set the Compliance Event Status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once you approve and/or reject submitted documents, use the **Status** drop-down, at the top-right of the page, and set the status for the Compliance Event (for example, Listed, Under Contract, Closed).
+
+The agent receives a Kelle and Command notification, notifying them that their submitted checklist was returned or accepted. The status also displays on the left side of the page, next to the Compliance Event.
+
+If an agent resubmits the checklist with updates, it appears with the **Replaced** status. You can then repeat the approval process until all of the documents, in every compliance event (Listed, Under Contract, and Closed), are in the **Approved** status.

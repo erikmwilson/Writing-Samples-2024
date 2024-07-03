@@ -1,0 +1,17 @@
+
+.. _view-opportunity-task-details-command:
+
+View Opportunity Task Details
+=============================
+
+To view Opportunity task details, complete the following steps:
+
+.. include:: tasks-login.rst
+
+#. Click the **Opportunity Tasks** tab, at the top of the page.
+
+#. From the **Show my task for** drop-down, select the time range.
+
+#. Click the **Contact Associated** name to view the Contact details.
+
+#. On the Contact details page, click the **Tasks** tab.

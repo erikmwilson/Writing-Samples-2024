@@ -1,0 +1,9 @@
+=================================
+Firewall physical cabling diagram
+=================================
+
+.. note:: The following firewall physical cabling diagram is a general design
+          and depicts only an example.
+
+.. image:: ../figures/rpco-physical-cabling-firewalls.png
+   :alt: Firewall wiring diagram

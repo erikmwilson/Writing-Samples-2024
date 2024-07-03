@@ -1,0 +1,44 @@
+
+.. _submit-documents-opportunities-command:
+
+Submit Compliance Documents to Your Market Center
+=================================================
+
+All document compliance is handled within Opportunities. After you finish adding all of the required documents for an Opportunity compliance event, you submit the documents to your MCA, or Compliance Coordinator, who then approves or rejects the completed forms.
+
+For more information, see :ref:`add-documents-opportunities-command`.
+
+To submit compliance documents to your Market Center, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. On the left side of the page, choose the type of checklist you are submitting from the Checklist Type drop-down.
+
+#. Choose the compliance event where the document will be added:
+
+   * For **Listings** - Listed, Under Contract, Closed
+
+   * For **Buyers** - Consultation, Under Contract, Closed
+
+   * For **Leases**:
+
+     * **Tenant**: Under Contract, Closed
+
+     * **Landlord** - Listed, Under Contract, Closed
+
+#. When all of the required documents listed for the compliance event have the Uploaded status, click **Submit to MC**.
+
+The documents submitted to your Market Center, MCA, or Compliance Coordinator, are either approved or rejected. If approved, the **Approved** status appears next to the document name.
+
+If the document is rejected, then you will have to make changes and resubmit. For more information, see :ref:`resubmit-documents-opportunities-command`.

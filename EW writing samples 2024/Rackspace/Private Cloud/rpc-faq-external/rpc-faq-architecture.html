@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Operating system and architecture &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Networking" href="rpc-faq-network.html" />
+    <link rel="prev" title="FAQ" href="rpc-technical-faq-content.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Technical FAQ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="rpc-technical-faq-content.html">FAQ</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Operating system and architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-network.html">Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-database.html">Database architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-clusteredqueue.html">Clustered queue management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-failoverha.html">Failover and high availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-loadbalance.html">Load balancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-logs.html">Log aggregation and management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-supported-software.html">Supported Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Technical FAQ</a> &raquo;</li>
+        
+          <li><a href="rpc-technical-faq-content.html">FAQ</a> &raquo;</li>
+        
+      <li>Operating system and architecture</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-faq-external/rpc-faq-architecture.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="operating-system-and-architecture">
+<h1>Operating system and architecture<a class="headerlink" href="#operating-system-and-architecture" title="Permalink to this headline">#</a></h1>
+<p>Get answers to common technical questions about the operating system and
+architecture for Rackspace Private Cloud Powered By OpenStack (RPCO) 14.0.</p>
+<p><strong>What host operating system does RPCO |release| use?</strong></p>
+<p>RPCO 14.0 uses and has been tested on Ubuntu 16.04. RPCO uses this
+version of Ubuntu because of its compatibility with Linux Containers (LXC),
+Virtual Extensible LAN (VXLAN), and LinuxBridge.</p>
+<p><strong>What is the recommended minimum number of hosts, and what does each
+host contain?</strong></p>
+<p>The recommended minimum number of hosts is five total: four Infrastructure and
+one Compute, although most production deployments will have many Compute
+hosts. Using Block Storage will require an additional host. RPCO also
+requires a hardware load balancer.</p>
+<ul class="simple">
+<li>Infrastructure hosts represent both scalable Control Plane hosts and
+a Logging host. Control Plane hosts contain all of the OpenStack APIs
+and service requirements such as Galera and RabbitMQ. Logging hosts
+contain Kibana, ElasticSearch, Rsyslog, and Logstash.</li>
+<li>Compute hosts contain nova-compute and the
+neutron-linuxbridge-agent dependent package.</li>
+<li>Storage hosts contain the cinder volume and scheduler services.</li>
+</ul>
+<p>Infrastructure nodes can also contain the database services and act as
+database nodes.</p>
+<div class="figure">
+<img alt="Host Layout Overview" src="../_images/rpc-layout.png" />
+</div>
+<p><strong>How is node scaling accomplished?</strong></p>
+<p>Ansible playbooks make scaling a node a relatively simple process:</p>
+<ol class="arabic simple">
+<li>Build a new node with Ubuntu 16.04.</li>
+<li>Add the node to the hosts group in the <code class="docutils literal"><span class="pre">rpc_user_config.yml</span></code> file.</li>
+<li>Run the required playbooks to assign the necessary roles to the node.</li>
+</ol>
+<p>** What are the scaling relationships between the services? Do some
+services need to be scaled together?**</p>
+<p>The neutron-linuxbridge-agent service scales out with the Compute
+containers. Otherwise, services do not need to be scaled together.</p>
+<p><strong>Do any of the services have scaling limits?</strong></p>
+<p>There is no known limit.</p>
+<p><strong>What is the maximum number of each service that can be deployed
+within a single environment?</strong></p>
+<p>There is no known maximum. However, each node should have only
+one nova-compute and one cinder-volume container. Neutron
+services with a strong relationship to other services are limited by
+those other services. For example, because the neutron-linuxbridge-agent is
+associated with nova-compute, each node has one of those agents.</p>
+<p>RPCO 14.0 is based on the OpenStack Newton release. By
+default, OSA deploys <code class="docutils literal"><span class="pre">cinder-volumes</span></code> on physical hosts (<code class="docutils literal"><span class="pre">is_metal:</span>
+<span class="pre">true</span></code> parameter) instead of in a container. Users must migrate their
+volumes if cinder backups switch to physical hosts from containers.
+For more information, see the <a class="reference internal" href="../rpc-upgrade-internal/rpc-upgrade-v10-v11-prereq.html#cinder-migrate"><span class="std std-ref">Migrate cinder volumes from a container to bare metal</span></a> section in the
+RPCO upgrade guide.</p>
+<p><strong>What advantages does Ansible provide as a deployment method over
+Chef?</strong></p>
+<p>Although Chef is a useful deployment method in many circumstances,
+the Ansible automation framework excels at deploying the RPCO
+container-based architecture and managing source code across multiple
+hosts. In addition, Ansible does not require any agents and is resource
+efficient, and the configuration methodology is easy to understand. The
+OpenStack-Ansible deployment process has become the reference Ansible
+deployment model for OpenStack.</p>
+<p><strong>What advantages does LXC provide in the context of OpenStack
+deployment?</strong></p>
+<p>LXC is stable and well-supported. Containers enable separation of host
+management from OpenStack management, and enable management of individual
+OpenStack components and configuration files.</p>
+<p><strong>Does RPCO support Telemetry service (ceilometer)?</strong></p>
+<p>At this time, RPCO does not support the Telemetry service because
+of stability, scalability, and performance issues.</p>
+<p><strong>What options do customers have for the Image service (glance) in a
+customer data center?</strong></p>
+<p>To use the Image service in their own data centers, customers have the
+following options:</p>
+<ul class="simple">
+<li>Provide Rackspace with an NFS mount point.</li>
+<li>Add the Object Storage (swift) service to act as the
+Image Storage back end.</li>
+<li>Create a Ceph object store.</li>
+</ul>
+<p><strong>What options do customers have for the Image service (glance) in a
+Rackspace data center?</strong></p>
+<p>To use the Image service in a Rackspace data center, customers have the
+following options:</p>
+<ul class="simple">
+<li>Use Cloud Files. Note that a Cloud Files back end may experience additional
+latency when retrieving or storing images, depending on the customer&#8217;s
+location.</li>
+<li>Use Red Hat Cluster Suite (RHCS) NFS.</li>
+<li>Add the Object Storage (swift) service to act as the Image service
+back end.</li>
+<li>Create a Ceph object store.</li>
+</ul>
+<p><strong>Can I list the instances that are backed by a given image in
+the Image service?</strong></p>
+<p>No, there are no native tools to do this. However, RPCO support
+created the <code class="docutils literal"><span class="pre">image_check.py</span></code> utility script that traverses all active
+instances and checks for deleted, orphaned, or mismatched images. The
+script works for all versions of RPCO. Run the script from the utility
+container. In RPCO 14.0, SQL query access to the database on the Galera
+container is restricted to local queries. Therefore, for RPCO 14.0 run
+<code class="docutils literal"><span class="pre">image_check.py</span></code> from within the Galera container.</p>
+<p>To create the script, paste the following text into
+<code class="docutils literal"><span class="pre">image_check.py</span></code> and mark the file as executable:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/bin/env python</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">MySQLdb</span>
+<span class="kn">import</span> <span class="nn">ConfigParser</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">mycnf</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOME&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/.my.cnf&#39;</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;client&#39;</span><span class="p">,</span><span class="s1">&#39;user&#39;</span><span class="p">)</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;client&#39;</span><span class="p">,</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s1">&#39;!! Unable to read mysql credentials from </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">f</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;user&#39;</span><span class="p">:</span><span class="n">user</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="n">password</span><span class="p">}</span>
+
+ <span class="k">def</span> <span class="nf">myquery</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">database</span><span class="p">):</span>
+     <span class="n">cred</span> <span class="o">=</span> <span class="n">mycnf</span><span class="p">()</span>
+     <span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">cred</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">],</span> <span class="n">passwd</span><span class="o">=</span><span class="n">cred</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">],</span> <span class="n">db</span><span class="o">=</span><span class="n">database</span><span class="p">)</span>
+     <span class="n">c</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+     <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+     <span class="n">results</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+     <span class="k">return</span> <span class="n">results</span>
+
+ <span class="k">def</span> <span class="nf">get_instances</span><span class="p">():</span>
+     <span class="n">i</span> <span class="o">=</span> <span class="n">myquery</span><span class="p">(</span><span class="s2">&quot;SELECT uuid,hostname,image_ref FROM instances WHERE deleted=0&quot;</span><span class="p">,</span> <span class="s1">&#39;nova&#39;</span><span class="p">)</span>
+     <span class="n">instances</span> <span class="o">=</span> <span class="p">{}</span>
+     <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+         <span class="n">uuid</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">image_ref</span> <span class="o">=</span> <span class="n">z</span>
+         <span class="n">instances</span><span class="p">[</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hostname&#39;</span><span class="p">:</span><span class="n">hostname</span><span class="p">,</span> <span class="s1">&#39;image_ref&#39;</span><span class="p">:</span> <span class="n">image_ref</span><span class="p">}</span>
+
+     <span class="k">return</span> <span class="n">instances</span>
+
+ <span class="k">def</span> <span class="nf">get_images</span><span class="p">():</span>
+     <span class="n">i</span> <span class="o">=</span> <span class="n">myquery</span><span class="p">(</span><span class="s2">&quot;SELECT id,name, deleted FROM images&quot;</span><span class="p">,</span> <span class="s1">&#39;glance&#39;</span><span class="p">)</span>
+     <span class="n">images</span> <span class="o">=</span> <span class="p">{}</span>
+     <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+         <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">deleted</span> <span class="o">=</span> <span class="n">z</span>
+         <span class="n">deleted</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deleted</span><span class="p">)</span>
+         <span class="n">images</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;deleted&#39;</span><span class="p">:</span><span class="n">deleted</span><span class="p">}</span>
+
+     <span class="k">return</span> <span class="n">images</span>
+
+ <span class="k">def</span> <span class="nf">get_images_ondisk</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/var/lib/glance/images&#39;</span><span class="p">):</span>
+     <span class="n">file_list</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+         <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+             <span class="n">file_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+     <span class="n">file_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
+
+ <span class="n">instances</span> <span class="o">=</span> <span class="n">get_instances</span><span class="p">()</span>
+ <span class="n">images</span> <span class="o">=</span> <span class="n">get_images</span><span class="p">()</span>
+ <span class="n">images_ondisk</span> <span class="o">=</span> <span class="n">get_images_ondisk</span><span class="p">()</span>
+
+ <span class="n">missing_images</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="n">unused_images</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="n">zombie_images</span> <span class="o">=</span> <span class="p">[]</span>
+
+ <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+ <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--all&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Show all types of images&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+ <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--missing&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Check for missing backing images&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+ <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--unused&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Check unused images&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+ <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--zombie&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Check images marked as deleted but on disk&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+ <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--ignore&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Used with --zombie to ignore images still in use&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+ <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--verbose&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print detailed list of images&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+ <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--technical&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Print only uuids&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+ <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+ <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> Check for missing backing images</span>
+<span class="sd"> &#39;&#39;&#39;</span>
+
+ <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">:</span>
+     <span class="k">try</span><span class="p">:</span>
+         <span class="k">if</span> <span class="ow">not</span> <span class="n">images</span><span class="p">[</span> <span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;image_ref&#39;</span><span class="p">]</span> <span class="p">][</span><span class="s1">&#39;deleted&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">missing</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">all</span><span class="p">:</span>
+                 <span class="k">print</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2"> does not have a backing image - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;hostname&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">,</span> <span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;image_ref&#39;</span><span class="p">])</span>
+             <span class="n">missing_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+     <span class="k">except</span><span class="p">:</span>
+         <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+
+ <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> Check for images marked as deleted in DB, but still on disk</span>
+<span class="sd"> &#39;&#39;&#39;</span>
+
+ <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">zombie</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">all</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">uuid</span> <span class="ow">in</span> <span class="n">images_ondisk</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+         <span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT name, status FROM images WHERE id=&#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">uuid</span>
+         <span class="n">result</span> <span class="o">=</span> <span class="n">myquery</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;glance&quot;</span><span class="p">)</span>
+         <span class="n">name</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+         <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;deleted&#39;</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                 <span class="k">print</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2"> is marked as deleted, but found on disk&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">uuid</span><span class="p">)</span>
+             <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">ignore</span><span class="p">:</span>
+                 <span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT uuid from nova.instances as n join glance.images as g on </span><span class="se">\</span>
+<span class="s2">                      g.id = n.image_ref where g.deleted=&#39;1&#39; and n.deleted=&#39;0&#39; and g.id=&#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">uuid</span>
+                 <span class="n">result</span> <span class="o">=</span> <span class="n">myquery</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;nova&quot;</span><span class="p">)</span>
+                 <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+                     <span class="n">zombie_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
+             <span class="k">else</span><span class="p">:</span>
+                     <span class="n">zombie_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">uuid</span><span class="p">)</span>
+
+ <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> List of unused images</span>
+<span class="sd"> &#39;&#39;&#39;</span>
+ <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">unused</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">all</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+         <span class="n">inuse</span> <span class="o">=</span> <span class="bp">False</span>
+         <span class="k">try</span><span class="p">:</span>
+             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">image</span> <span class="o">==</span> <span class="n">instances</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;image_ref&#39;</span><span class="p">]:</span>
+                     <span class="n">inuse</span> <span class="o">=</span> <span class="bp">True</span>
+         <span class="k">except</span><span class="p">:</span>
+             <span class="k">continue</span>
+
+         <span class="k">if</span> <span class="ow">not</span> <span class="n">inuse</span> <span class="ow">and</span> <span class="n">images</span><span class="p">[</span><span class="n">image</span><span class="p">][</span><span class="s1">&#39;deleted&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                 <span class="k">print</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:</span><span class="si">%s</span><span class="s1"> is NOT in use by instances&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="n">image</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">image</span><span class="p">)</span>
+             <span class="n">unused_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+ <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> Summary</span>
+<span class="sd"> &#39;&#39;&#39;</span>
+ <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+     <span class="k">print</span> <span class="s1">&#39;Summary:</span><span class="se">\n\t</span><span class="si">%i</span><span class="s1"> images</span><span class="se">\n\t</span><span class="si">%i</span><span class="s1"> instances</span><span class="se">\n\t</span><span class="si">%i</span><span class="s1"> instances missing backing image</span><span class="se">\</span>
+<span class="s1">            </span><span class="se">\n\t</span><span class="si">%i</span><span class="s1"> unused images</span><span class="se">\n\t</span><span class="si">%i</span><span class="s1"> marked as deleted but on disk&#39;</span> \
+            <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">instances</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_images</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">unused_images</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">zombie_images</span><span class="p">))</span>
+ <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">technical</span><span class="p">:</span>
+     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">missing</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s1">&#39;#missing&#39;</span>
+         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missing_images</span><span class="p">:</span>
+             <span class="k">print</span> <span class="n">i</span>
+     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">unused</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s1">&#39;#unused&#39;</span>
+         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">unused_images</span><span class="p">:</span>
+             <span class="k">print</span> <span class="n">i</span>
+     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">zombie</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s1">&#39;#zombie&#39;</span>
+         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">zombie_images</span><span class="p">:</span>
+             <span class="k">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>Alternatively, use the following database queries to list out all active
+instances by ID, then obtain the backing image for each instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">database</span> <span class="n">nova</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="n">uuid</span><span class="p">,</span><span class="n">hostname</span><span class="p">,</span><span class="n">image_ref</span> <span class="n">FROM</span> <span class="n">instances</span> <span class="n">WHERE</span> <span class="n">deleted</span><span class="o">=</span><span class="mi">0</span><span class="s2">&quot;;</span>
+
+<span class="n">use</span> <span class="n">database</span> <span class="n">glance</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span><span class="n">name</span><span class="p">,</span> <span class="n">deleted</span> <span class="n">FROM</span> <span class="n">images</span><span class="s2">&quot;;</span>
+</pre></div>
+</div>
+<p><strong>Can I find out which glance image my server instance depends on?</strong></p>
+<p>Yes. There are two methods:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>In the Horizon dashboard, in the Instances tab, click Details for a</dt>
+<dd><p class="first last">specific instance.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">From the API command line client, run the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova show <span class="p">|</span> grep image
+<span class="gp">$</span> openstack server show <span class="p">|</span> grep image
+</pre></div>
+</div>
+<p>The expected output contains the name and hexadecimal ID of the glance
+backing image.</p>
+</li>
+</ul>
+<p><strong>How do I determine if a specific commit for a bug is running in
+an upstream OpenStack Installation?</strong></p>
+<p>To determine if a given commit appears in an upstream installation, or a
+<code class="docutils literal"><span class="pre">.whl</span></code> archive deployed upstream, use the SHA identifier of the specific
+commit and the SHA identifier of the target installation. Find and confirm
+the commit SHA, and then compare it to the upstream installation SHA history,
+as follows:</p>
+<ol class="arabic">
+<li><p class="first">Record the SHA of the commit, which is
+<cite>9ff5bb967105451a1c3c1a6dbeb0ec979afaeb</cite> in this example.</p>
+</li>
+<li><p class="first">Log into the container where the OpenStack service resides. This example
+retrieves information about neutron:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># lxc-attach -n aio1_neutron_agents_container28d6792d</span>
+<span class="c1"># pbr info neutron</span>
+<span class="n">neutron</span> <span class="mf">2015.2</span><span class="o">.</span><span class="mi">4</span><span class="n">dev9</span>   <span class="n">pre</span><span class="o">-</span><span class="n">release</span> <span class="mi">1</span><span class="n">fafe42</span>
+</pre></div>
+</div>
+<p>The seven character entry that appears last on the line is the SHA of
+the commit used to build neutron in this OpenStack installation.</p>
+</li>
+<li><p class="first">Confirm whether the SHA in question appears inside the upstream OpenStack
+installation. On any Linux installation, clone the upstream repository
+and examine the commit history:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># git clone https://github.com/openstack/neutron.git</span>
+<span class="c1"># cd neutron</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Search the cloned repository for the SHA identifier, referencing the
+OpenStack service SHA:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># git rev-list 1fafe42 | grep 9ff5bb967105451a1c3c1a6dbeb0ec979afaeb</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">git</span> <span class="pre">rev-list</span></code> command lists all ancestor commits of the
+commit object <em>1fafe42</em> in this git repository, and the <code class="docutils literal"><span class="pre">|</span> <span class="pre">grep</span>
+<span class="pre">&lt;SHA&gt;</span></code> option searches for the commit SHA.Replace 1fafe42 with the SHA
+obtained from the <code class="docutils literal"><span class="pre">pbr</span> <span class="pre">info</span></code> command, and
+<cite>9ff5bb967105451a1c3c1a6dbeb0ec979afaeb</cite> with the specific commit SHA.
+If the command returns the commit SHA, the
+OpenStack installation contains the commit:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># git rev-list 1fafe42 | grep 9ff5bb967105451a1c3c1a6dbeb0ec979afaeb</span>
+<span class="mi">9</span><span class="n">ff5bb967105451a1c3c1a6dbeb0ec979afaeb</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>How do I recover from an Infrastructure node loss, and reattach
+the node to the cluster?</strong></p>
+<p>A manual procedure resets and reattaches the service or cluster
+inside the Infrastructure node. In the following example, the procedure
+restores a RabbitMQ cluster to the infrastructure nodes following a service
+failure.</p>
+<ol class="arabic">
+<li><p class="first">Log in to the <code class="docutils literal"><span class="pre">infra3</span></code> node, and stop the RabbitMQ service as the root
+user:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> rabbitmqctl stop_app
+</pre></div>
+</div>
+</li>
+<li><p class="first">Log in to the <code class="docutils literal"><span class="pre">infra1</span></code> node in a separate console instance, and remove
+the <code class="docutils literal"><span class="pre">infra3</span></code> configuration from the node:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> rabbitmqctl forget_cluster_node infra3
+</pre></div>
+</div>
+</li>
+<li><p class="first">Reattach the RabbitMQ configuration to the <code class="docutils literal"><span class="pre">infra1</span></code> node:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> rabbitmqctl join_cluster rabbit@infra1
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start the RabbitMQ service on the <code class="docutils literal"><span class="pre">infra1</span></code> node:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> rabbitmqctl start_app
+</pre></div>
+</div>
+</li>
+<li><p class="first">Check on the status of the RabbitMQ service:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> rabbitmqctl cluster_status
+</pre></div>
+</div>
+</li>
+<li><p class="first">Stop and restart the RabbitMQ service on each of the infrastructure nodes,
+infra1, infra2, and infra3 , as follows:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> service rabbitmq-server stop
+<span class="gp">#</span> service rabbitmq-server start
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc-faq-network.html" class="btn btn-neutral float-right" title="Networking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rpc-technical-faq-content.html" class="btn btn-neutral float-left" title="FAQ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

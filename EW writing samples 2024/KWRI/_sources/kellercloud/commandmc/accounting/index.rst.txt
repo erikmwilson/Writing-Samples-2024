@@ -1,0 +1,15 @@
+
+.. _accounting-index-commandmc:
+
+Accounting
+==========
+
+Use the Accounting applet to import and review financial reports.
+
+The following sections contain information about the
+Accounting applet.
+
+.. toctree::
+   :maxdepth: 1
+
+   access-accounting-spreadsheets

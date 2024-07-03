@@ -1,0 +1,1259 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure the Object Storage service (optional) &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Configure HAProxy (optional)" href="configure-haproxy.html" />
+    <link rel="prev" title="Configure the Block Storage service (optional)" href="configure-block-storage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-configure-optional.html">Configure the deployment (optional)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configure-proxy-environment.html">Configure proxy environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-hypervisor.html">Configure the hypervisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-image-service.html">Configure the Image service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-block-storage.html">Configure the Block Storage service</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configure the Object Storage service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-and-mount-storage-devices">Configure and mount storage devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-an-object-storage-deployment">Configure an Object Storage deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#object-storage-monitoring">Object Storage monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#allow-identity-users-to-use-object-storage-optional">Allow Identity users to use Object Storage (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deploy-object-storage-on-existing-rpco-software-optional">Deploy Object Storage on existing RPCO software (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integrate-object-storage-with-the-image-service-optional">Integrate Object Storage with the Image service (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-object-storage-for-multiple-regions-optional">Configure Object Storage for multiple regions (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#object-storage-tuning-optional">Object Storage tuning (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configure-haproxy.html">Configure HAProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-maas.html">Configure MaaS variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-f5-load-balancer.html">Generate F5 load balancer configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-ldap.html">Configure Active Directory or LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-dashboard-ssl.html">Configure Dashboard SSL settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-security-hardening.html">Configure security hardening</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Installation Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-configure-optional.html">Configure the deployment (optional)</a> &raquo;</li>
+        
+      <li>Configure the Object Storage service (optional)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-install-internal/configure-opt/configure-object-storage.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-the-object-storage-service-optional">
+<h1>Configure the Object Storage service (optional)<a class="headerlink" href="#configure-the-object-storage-service-optional" title="Permalink to this headline">#</a></h1>
+<p>Object Storage (swift) is a multi-project object storage system. It is
+highly scalable, can manage large amounts of unstructured data, and
+provides a RESTful HTTP API.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If Object Storage hosts exist in the environment, the following
+variables are automatically set in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file to use
+Object Storage:</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">glance_default_store</span></code> variable is set to <code class="docutils literal"><span class="pre">swift</span></code></li>
+<li><code class="docutils literal"><span class="pre">cinder_service_backup_program_enabled</span></code> variable is set to <code class="docutils literal"><span class="pre">True</span></code></li>
+</ul>
+</div>
+<p>The following topics describe how to set up storage devices and modify
+the Object Storage configuration files to enable Object Storage usage.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#configure-and-mount-storage-devices" id="id5">Configure and mount storage devices</a></li>
+<li><a class="reference internal" href="#configure-an-object-storage-deployment" id="id6">Configure an Object Storage deployment</a></li>
+<li><a class="reference internal" href="#object-storage-monitoring" id="id7">Object Storage monitoring</a></li>
+<li><a class="reference internal" href="#allow-identity-users-to-use-object-storage-optional" id="id8">Allow Identity users to use Object Storage (optional)</a></li>
+<li><a class="reference internal" href="#deploy-object-storage-on-existing-rpco-software-optional" id="id9">Deploy Object Storage on existing RPCO software (optional)</a></li>
+<li><a class="reference internal" href="#integrate-object-storage-with-the-image-service-optional" id="id10">Integrate Object Storage with the Image service (optional)</a></li>
+<li><a class="reference internal" href="#configure-object-storage-for-multiple-regions-optional" id="id11">Configure Object Storage for multiple regions (optional)</a></li>
+<li><a class="reference internal" href="#object-storage-tuning-optional" id="id12">Object Storage tuning (optional)</a></li>
+</ul>
+</div>
+<div class="section" id="configure-and-mount-storage-devices">
+<span id="id1"></span><h2><a class="toc-backref" href="#id5">Configure and mount storage devices</a><a class="headerlink" href="#configure-and-mount-storage-devices" title="Permalink to this headline">#</a></h2>
+<p>Before you can install Object Storage for RPCO, you must set up
+Object Storage storage devices. The storage devices must be set up
+before installing Object Storage.</p>
+<p><strong>Configuring and mounting storage devices</strong></p>
+<p>RPCO Object Storage requires a minimum of three Object Storage devices
+with mounted storage drives. The example commands in this procedure
+assume the storage devices for Object Storage are devices <code class="docutils literal"><span class="pre">sdc</span></code>
+through <code class="docutils literal"><span class="pre">sdg</span></code>.</p>
+<ol class="arabic">
+<li><p class="first">Determine the storage devices on the node to use for Object Storage.</p>
+</li>
+<li><p class="first">Format each of these devices with XFS. While
+formatting the devices, add a unique label for each device.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Without labels, a failed drive can cause mount points to shift and
+data to become inaccessible.</p>
+</div>
+<p>For example, create the file systems on the devices by using the
+<strong>mkfs</strong> command</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> apt-get -y install xfsprogs
+
+<span class="gp">#</span> mkfs.xfs -f -i <span class="nv">size</span><span class="o">=</span><span class="m">1024</span> -L sdc /dev/sdc
+<span class="gp">#</span> mkfs.xfs -f -i <span class="nv">size</span><span class="o">=</span><span class="m">1024</span> -L sdd /dev/sdd
+<span class="gp">#</span> mkfs.xfs -f -i <span class="nv">size</span><span class="o">=</span><span class="m">1024</span> -L sde /dev/sde
+<span class="gp">#</span> mkfs.xfs -f -i <span class="nv">size</span><span class="o">=</span><span class="m">1024</span> -L sdf /dev/sdf
+<span class="gp">#</span> mkfs.xfs -f -i <span class="nv">size</span><span class="o">=</span><span class="m">1024</span> -L sdg /dev/sdg
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add the mount locations to the <code class="docutils literal"><span class="pre">/etc/fstab</span></code> file so that the
+storage devices are remounted on boot. The following example mount
+options are recommended when using XFS.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Finish all modifications to the <code class="docutils literal"><span class="pre">/etc/fstab</span></code> file before mounting
+the new file systems created within the storage devices.</p>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">LABEL</span><span class="o">=</span><span class="s">sdc /srv/node/sdc xfs noatime,nodiratime,nobarrier,logbufs=8 0 0</span>
+<span class="na">LABEL</span><span class="o">=</span><span class="s">sdd /srv/node/sdd xfs noatime,nodiratime,nobarrier,logbufs=8 0 0</span>
+<span class="na">LABEL</span><span class="o">=</span><span class="s">sde /srv/node/sde xfs noatime,nodiratime,nobarrier,logbufs=8 0 0</span>
+<span class="na">LABEL</span><span class="o">=</span><span class="s">sdf /srv/node/sdf xfs noatime,nodiratime,nobarrier,logbufs=8 0 0</span>
+<span class="na">LABEL</span><span class="o">=</span><span class="s">sdg /srv/node/sdg xfs noatime,nodiratime,nobarrier,logbufs=8 0 0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create the mount points for the devices by using the <strong>mkdir</strong> command.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> mkdir -p /srv/node/sdc
+<span class="gp">#</span> mkdir -p /srv/node/sdd
+<span class="gp">#</span> mkdir -p /srv/node/sde
+<span class="gp">#</span> mkdir -p /srv/node/sdf
+<span class="gp">#</span> mkdir -p /srv/node/sdg
+</pre></div>
+</div>
+<p>The mount point is referenced as the <code class="docutils literal"><span class="pre">mount_point</span></code> parameter in the
+<code class="docutils literal"><span class="pre">swift.yml</span></code> file (<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml</span></code>).</p>
+</li>
+<li><p class="first">Mount the storage devices by using the <code class="docutils literal"><span class="pre">mount</span></code> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> mount /srv/node/sdc
+<span class="gp">#</span> mount /srv/node/sdd
+<span class="gp">#</span> mount /srv/node/sde
+<span class="gp">#</span> mount /srv/node/sdf
+<span class="gp">#</span> mount /srv/node/sdg
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To view an annotated example of the <code class="docutils literal"><span class="pre">swift.yml</span></code> file, see <a class="reference internal" href="../app-osa-configfiles.html#appendix-a"><span class="std std-ref">OpenStack-Ansible configuration files</span></a>.</p>
+<p>For the devices mounted in the preceding steps, the mount locations would
+be as follows:</p>
+<table border="1" class="colwidths-given docutils" id="id4">
+<caption><span class="caption-text">Mounted devices</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device</th>
+<th class="head">Mount location</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>/dev/sdc</td>
+<td>/srv/node/sdc</td>
+</tr>
+<tr class="row-odd"><td>/dev/sdd</td>
+<td>/srv/node/sdd</td>
+</tr>
+<tr class="row-even"><td>/dev/sde</td>
+<td>/srv/node/sde</td>
+</tr>
+<tr class="row-odd"><td>/dev/sdf</td>
+<td>/srv/node/sdf</td>
+</tr>
+<tr class="row-even"><td>/dev/sdg</td>
+<td>/srv/node/sdg</td>
+</tr>
+</tbody>
+</table>
+<p>The entry in the <code class="docutils literal"><span class="pre">swift.yml</span></code> file for the mounted devices would be as
+follows:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1">#    drives:</span>
+<span class="c1">#        - name: sdc</span>
+<span class="c1">#        - name: sdd</span>
+<span class="c1">#        - name: sde</span>
+<span class="c1">#        - name: sdf</span>
+<span class="c1">#        - name: sdg</span>
+<span class="c1">#    mount_point: /srv/node</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-an-object-storage-deployment">
+<span id="id2"></span><h2><a class="toc-backref" href="#id6">Configure an Object Storage deployment</a><a class="headerlink" href="#configure-an-object-storage-deployment" title="Permalink to this headline">#</a></h2>
+<p>Object Storage is configured using the following files:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml.example</span></code> file</li>
+<li><code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_defaults.yml</span></code> file</li>
+</ul>
+<p>The group variables in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml.example</span></code> file are used by
+the Ansible playbooks when installing Object Storage. Some variables
+cannot be changed after they are set, while some changes require
+re-running the playbooks. The values in the <code class="docutils literal"><span class="pre">swift_hosts</span></code> section
+supersede values in the <code class="docutils literal"><span class="pre">swift</span></code> section.</p>
+<p>To view the configuration files, including information about which
+variables are required and which are optional, see <a class="reference internal" href="../app-osa-configfiles.html#appendix-a"><span class="std std-ref">OpenStack-Ansible configuration files</span></a>.</p>
+<div class="section" id="update-the-object-storage-configuration-swift-yml-file">
+<h3>Update the Object Storage configuration swift.yml file<a class="headerlink" href="#update-the-object-storage-configuration-swift-yml-file" title="Permalink to this headline">#</a></h3>
+<ol class="arabic">
+<li><p class="first">Copy the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml.example</span></code> file to
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml</span></code>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> cp /etc/openstack_deploy/conf.d/swift.yml.example <span class="se">\</span>
+     /etc/openstack_deploy/conf.d/swift.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml</span></code> file, update the
+global override values as shown in the following example. The
+parameters explained following the example.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># global_overrides:</span>
+<span class="c1">#   swift:</span>
+<span class="c1">#     part_power: 8</span>
+<span class="c1">#     weight: 100</span>
+<span class="c1">#     min_part_hours: 1</span>
+<span class="c1">#     repl_number: 3</span>
+<span class="c1">#     storage_network: &#39;br-storage&#39;</span>
+<span class="c1">#     replication_network: &#39;br-repl&#39;</span>
+<span class="c1">#     drives:</span>
+<span class="c1">#       - name: sdc</span>
+<span class="c1">#       - name: sdd</span>
+<span class="c1">#       - name: sde</span>
+<span class="c1">#       - name: sdf</span>
+<span class="c1">#     mount_point: /mnt</span>
+<span class="c1">#     account:</span>
+<span class="c1">#     container:</span>
+<span class="c1">#     storage_policies:</span>
+<span class="c1">#       - policy:</span>
+<span class="c1">#           name: gold</span>
+<span class="c1">#           index: 0</span>
+<span class="c1">#           default: True</span>
+<span class="c1">#       - policy:</span>
+<span class="c1">#           name: silver</span>
+<span class="c1">#           index: 1</span>
+<span class="c1">#           repl_number: 3</span>
+<span class="c1">#           deprecated: True</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">part_power</span></code></dt>
+<dd><p class="first">Set the partition power value based on the total amount of
+storage the entire ring will use.</p>
+<p class="last">Multiply the maximum number of drives ever used with this Object
+Storage installation by 100 and round that value up to the
+closest power of 2 value. For example, a maximum of 6 drives,
+times 100, equals 600. The nearest power of 2 above 600 is 2
+to the power of 9, so the partition power is 9. The
+partition power cannot be changed after the Object Storage rings
+are built.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">weight</span></code></dt>
+<dd><p class="first last">The default weight is 100. If the drives are different sizes, set
+the weight value to avoid uneven distribution of data. For
+example, a 1 TB disk would have a weight of 100, while a 2 TB
+drive would have a weight of 200.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">min_part_hours</span></code></dt>
+<dd><p class="first">The default value is 1. Set the minimum partition hours to the
+amount of time to lock a partition&#8217;s replicas after a partition
+has been moved. Moving multiple replicas at the same time might
+make data inaccessible. This value can be set separately in the
+swift, container, account, and policy sections with the value in
+other sections superseding the value in the swift section.</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For account and container rings, <code class="docutils literal"><span class="pre">min_part_hours</span></code> and
+<code class="docutils literal"><span class="pre">repl_number</span></code> are the only values that can be set. Setting them
+in this section overrides the defaults for the specific ring.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">repl_number</span></code></dt>
+<dd><p class="first">The default value is 3. Set the replication number to the number
+of replicas of each object. This value can be set separately in
+the swift, container, account, and policy sections with the value
+in the more granular sections superseding the value in the swift
+section.</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For account and container rings, <code class="docutils literal"><span class="pre">min_part_hours</span></code> and
+<code class="docutils literal"><span class="pre">repl_number</span></code> are the only values that can be set. Setting them
+in this section overrides the defaults for the specific ring.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">storage_network</span></code></dt>
+<dd><p class="first">By default, the swift services will listen on the default
+management IP address. Optionally, specify the interface of the storage
+network.</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the <code class="docutils literal"><span class="pre">storage_network</span></code> value is not set, but the
+<code class="docutils literal"><span class="pre">storage_ips</span></code> value per host is set (or the <code class="docutils literal"><span class="pre">storage_ip</span></code> value
+is not set on the <code class="docutils literal"><span class="pre">storage_network</span></code> interface) the proxy server
+cannot connect to the storage services.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">replication_network</span></code></dt>
+<dd><p class="first">Optionally, specify a dedicated replication network interface, so
+dedicated replication can be set up. If this value is not
+specified, no dedicated replication network is set.</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Replication does not work properly if the <code class="docutils literal"><span class="pre">repl_ip</span></code> is not able
+to connect to other hosts&#8217; <code class="docutils literal"><span class="pre">repl_ip</span></code>.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">drives</span></code></dt>
+<dd><p class="first last">Set the default drives per host. This is useful when all hosts
+have the same drives. These values can be overridden for each host.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">mount_point</span></code></dt>
+<dd><p class="first last">Set the <code class="docutils literal"><span class="pre">mount_point</span></code> value to the location where the swift
+drives are mounted. For example, with a mount point of <code class="docutils literal"><span class="pre">/mnt</span></code>
+and a drive of <code class="docutils literal"><span class="pre">sdc</span></code>, a drive is mounted at <code class="docutils literal"><span class="pre">/mnt/sdc</span></code> on the
+<code class="docutils literal"><span class="pre">swift_host</span></code>. This value can be overridden for each host.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">storage_policies</span></code></dt>
+<dd><p class="first last">Storage policies determine on which hardware data is stored, how
+the data is stored across that hardware, and in which region the
+data resides. Each storage policy must have an unique <code class="docutils literal"><span class="pre">name</span></code>
+and a unique <code class="docutils literal"><span class="pre">index</span></code>. There must be a storage policy with an
+index of 0 in the <code class="docutils literal"><span class="pre">swift.yml</span></code> file to use any legacy containers
+created before storage policies were instituted.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">default</span></code></dt>
+<dd><p class="first last">Set the <code class="docutils literal"><span class="pre">default</span> <span class="pre">value</span></code> to <code class="docutils literal"><span class="pre">yes</span></code> for at least one policy. This is
+the default storage policy for any non-legacy containers that are
+created.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">deprecated</span></code></dt>
+<dd><p class="first">Set the <code class="docutils literal"><span class="pre">deprecated</span></code> value to <code class="docutils literal"><span class="pre">yes</span></code> to turn off storage policies.</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For account and container rings, <code class="docutils literal"><span class="pre">min_part_hours</span></code> and
+<code class="docutils literal"><span class="pre">repl_number</span></code> are the only values that can be set. Setting them
+in this section overrides the defaults for the specific ring.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml</span></code> file, update the
+Object Storage proxy hosts values by setting the <code class="docutils literal"><span class="pre">IP</span></code> address of
+the hosts to which Ansible will connect to deploy the swift-proxy
+containers. The <code class="docutils literal"><span class="pre">swift-proxy_hosts</span></code> value should match the infra
+nodes.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># swift-proxy_hosts:</span>
+<span class="c1">#   infra-node1:</span>
+<span class="c1">#     ip: 192.0.2.1</span>
+<span class="c1">#   infra-node2:</span>
+<span class="c1">#     ip: 192.0.2.2</span>
+<span class="c1">#   infra-node3:</span>
+<span class="c1">#     ip: 192.0.2.3</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml</span></code> file, update the
+Object Storage hosts values as shown in the following example. The
+parameters are explained following the example.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># swift_hosts:</span>
+<span class="c1">#   swift-node1:</span>
+<span class="c1">#     ip: 192.0.2.4</span>
+<span class="c1">#     container_vars:</span>
+<span class="c1">#       swift_vars:</span>
+<span class="c1">#         zone: 0</span>
+<span class="c1">#   swift-node2:</span>
+<span class="c1">#     ip: 192.0.2.5</span>
+<span class="c1">#     container_vars:</span>
+<span class="c1">#       swift_vars:</span>
+<span class="c1">#         zone: 1</span>
+<span class="c1">#   swift-node3:</span>
+<span class="c1">#     ip: 192.0.2.6</span>
+<span class="c1">#     container_vars:</span>
+<span class="c1">#       swift_vars:</span>
+<span class="c1">#         zone: 2</span>
+<span class="c1">#   swift-node4:</span>
+<span class="c1">#     ip: 192.0.2.7</span>
+<span class="c1">#     container_vars:</span>
+<span class="c1">#       swift_vars:</span>
+<span class="c1">#         zone: 3</span>
+<span class="c1">#   swift-node5:</span>
+<span class="c1">#     ip: 192.0.2.8</span>
+<span class="c1">#     container_vars:</span>
+<span class="c1">#       swift_vars:</span>
+<span class="c1">#         storage_ip: 198.51.100.8</span>
+<span class="c1">#         repl_ip: 203.0.113.8</span>
+<span class="c1">#         zone: 4</span>
+<span class="c1">#         region: 3</span>
+<span class="c1">#         weight: 200</span>
+<span class="c1">#         groups:</span>
+<span class="c1">#           - account</span>
+<span class="c1">#           - container</span>
+<span class="c1">#           - silver</span>
+<span class="c1">#         drives:</span>
+<span class="c1">#           - name: sdb</span>
+<span class="c1">#             weight: 75</span>
+<span class="c1">#             groups:</span>
+<span class="c1">#               - gold</span>
+<span class="c1">#           - name: sdc</span>
+<span class="c1">#           - name: sdd</span>
+<span class="c1">#           - name: sde</span>
+<span class="c1">#           - name: sdf</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">swift_hosts</span></code></dt>
+<dd><p class="first last">Specify the hosts to be used as the storage nodes. The <code class="docutils literal"><span class="pre">ip</span></code> value is
+the address of the host to which Ansible connects. Set the name
+and IP address of each Object Storage host. The <code class="docutils literal"><span class="pre">swift_hosts</span></code>
+section is not required.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">swift_vars</span></code></dt>
+<dd><p class="first last">Contains the values specific to the Object Storage host.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">storage_ip</span></code> and <code class="docutils literal"><span class="pre">repl_ip</span></code></dt>
+<dd><p class="first last">These values are based on the IP addresses of the host&#8217;s
+storage network or replication network. For example, if
+the <code class="docutils literal"><span class="pre">storage_network</span></code> is <code class="docutils literal"><span class="pre">br-storage</span></code> and host1 has an IP
+address of 1.1.1.1 on <code class="docutils literal"><span class="pre">br-storage</span></code>, then that IP address
+is used for the <code class="docutils literal"><span class="pre">storage_ip</span></code> value. If only the <code class="docutils literal"><span class="pre">storage_ip</span></code> value
+is specified, the <code class="docutils literal"><span class="pre">repl_ip</span></code> value defaults to the <code class="docutils literal"><span class="pre">storage_ip</span></code>
+value. If neither are specified, both will default to the host IP
+address.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">zone</span></code></dt>
+<dd><p class="first last">The default is 0. Optionally, set the Object Storage zone for the
+ring.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">region</span></code></dt>
+<dd><p class="first last">Optionally, set the Object Storage region for the ring.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">weight</span></code></dt>
+<dd><p class="first last">The default weight is 100. If the drives are different sizes, set
+the weight value to avoid uneven distribution of data. You can specify
+this value on a host or drive basis (if specified on both,
+the drive setting takes precedence).</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">groups</span></code></dt>
+<dd><p class="first last">Set this value to list the rings to which a host&#8217;s drive belongs.
+You can set this value on a per drive basis which overrides the host
+setting.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">drives</span></code></dt>
+<dd><p class="first last">Set the names of the drives on this Object Storage host. At least
+one name must be specified.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">weight</span></code></dt>
+<dd><p class="first last">The default weight is 100. If the drives are different sizes, set
+the weight value to avoid uneven distribution of data. You can specify
+this value on a host or drive basis (if specified on both,
+the drive setting takes precedence).</p>
+</dd>
+</dl>
+<p>In the following example, <code class="docutils literal"><span class="pre">swift-node5</span></code> shows values in the
+<code class="docutils literal"><span class="pre">swift_hosts</span></code> section that will override the global values.
+Groups are set, which overrides the global settings for drive
+<code class="docutils literal"><span class="pre">sdb</span></code>. The weight is overridden for the host and specifically
+adjusted for drive <code class="docutils literal"><span class="pre">sdb</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1">#  swift-node5:</span>
+<span class="c1">#     ip: 192.0.2.8</span>
+<span class="c1">#     container_vars:</span>
+<span class="c1">#       swift_vars:</span>
+<span class="c1">#         storage_ip: 198.51.100.8</span>
+<span class="c1">#         repl_ip: 203.0.113.8</span>
+<span class="c1">#         zone: 4</span>
+<span class="c1">#         region: 3</span>
+<span class="c1">#         weight: 200</span>
+<span class="c1">#         groups:</span>
+<span class="c1">#           - account</span>
+<span class="c1">#           - container</span>
+<span class="c1">#           - silver</span>
+<span class="c1">#         drives:</span>
+<span class="c1">#           - name: sdb</span>
+<span class="c1">#             weight: 75</span>
+<span class="c1">#             groups:</span>
+<span class="c1">#               - gold</span>
+<span class="c1">#           - name: sdc</span>
+<span class="c1">#           - name: sdd</span>
+<span class="c1">#           - name: sde</span>
+<span class="c1">#           - name: sdf</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Verify that the <code class="docutils literal"><span class="pre">swift.yml</span></code> file is in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/</span></code> folder.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="storage-policies">
+<h3>Storage policies<a class="headerlink" href="#storage-policies" title="Permalink to this headline">#</a></h3>
+<p>Storage policies allow segmenting the cluster for various purposes
+through the creation of multiple object rings. Using policies,
+different devices can belong to different rings with varying levels of
+replication. By supporting multiple object rings, Object Storage can
+segregate the objects within a single cluster.</p>
+<p>Storage policies can be used for the following situations:</p>
+<ul class="simple">
+<li>Differing levels of replication: You might want to offer 2x
+replication and 3x replication, but does not want to maintain two
+separate clusters. You can set up a 2x policy and a 3x policy and
+assign the nodes to their respective rings.</li>
+<li>Improving performance: Just as solid state drives (SSD) can be used
+as the exclusive members of an account or database ring, an SSD-only
+object ring can be created to implement a low-latency or high
+performance policy.</li>
+<li>Collecting nodes into groups: Different object rings can have
+different physical servers so that objects in specific storage
+policies are always placed in a specific data center or geography.</li>
+<li>Differing storage implementations: A policy can be used to direct
+traffic to collected nodes that use a different disk file (for
+example, Kinetic or GlusterFS).</li>
+</ul>
+<p>Most storage clusters do not require more than one storage policy. The
+following problems can occur if multiple storage policies are used per
+cluster:</p>
+<ul class="simple">
+<li>Creating a second storage policy without any specified drives (all
+drives are part of only the account, container, and default storage
+policy groups) creates an empty ring for that storage policy.</li>
+<li>A non-default storage policy is used only if it is specified when
+a container is created, by using the
+<code class="docutils literal"><span class="pre">X-Storage-Policy:</span> <span class="pre">&lt;policy-name&gt;</span></code> header. After the
+container is created, it uses the created storage policy. Other
+containers continue to use the default storage policy or a non-default
+storage policy that was specified when they were created.</li>
+</ul>
+<p>For more information about storage policies, see <a class="reference external" href="http://docs.openstack.org/developer/swift/overview_policies.html">Storage Policies</a> in the
+OpenStack documentation.</p>
+</div>
+</div>
+<div class="section" id="object-storage-monitoring">
+<h2><a class="toc-backref" href="#id7">Object Storage monitoring</a><a class="headerlink" href="#object-storage-monitoring" title="Permalink to this headline">#</a></h2>
+<p>The Rackspace Cloud Monitoring service enables Rackspace Private Cloud
+customers to monitor system performance and safeguard critical data.</p>
+<div class="section" id="service-and-response">
+<h3>Service and response<a class="headerlink" href="#service-and-response" title="Permalink to this headline">#</a></h3>
+<p>When a threshold is reached or functionality fails, the Rackspace Cloud
+Monitoring service generates an alert, which creates a ticket in the
+Rackspace ticketing system. This ticket moves into the RPCO support
+queue. Tickets flagged as monitoring alerts are given highest priority,
+and response is delivered according to the service level agreement
+(SLA). Refer to the SLA for detailed information about incident severity
+levels and corresponding response times.</p>
+<p>Specific monitoring alert guidelines can be set for the installation.
+These details should be arranged by a Rackspace account manager.</p>
+</div>
+<div class="section" id="object-storage-monitors">
+<h3>Object Storage monitors<a class="headerlink" href="#object-storage-monitors" title="Permalink to this headline">#</a></h3>
+<p>Object Storage has its own set of monitors and alerts.</p>
+<p>The following checks are performed on services:</p>
+<ul>
+<li><p class="first">Health checks on the services on each server</p>
+<p>Object Storage makes a request to <code class="docutils literal"><span class="pre">/healthcheck</span></code> for each service
+to ensure that it is responding appropriately. If this check fails,
+determine why the service is failing and fix it accordingly.</p>
+</li>
+<li><p class="first">Health check against the proxy service on the virtual IP address (VIP)</p>
+<p>Object Storage checks the load balancer address for the
+<code class="docutils literal"><span class="pre">swift-proxy-server</span></code> service, and monitors the proxy servers as a
+service health checks. If this check fails, it suggests that there is
+no access to the VIP address or all of the services are failing.</p>
+</li>
+</ul>
+<p>The following checks are performed against the output of the swift-recon
+middleware:</p>
+<ul>
+<li><p class="first">md5sum checks on the ring files across all Object Storage nodes.</p>
+<p>This check ensures that the ring files are the same on each node. If
+this check fails, determine why the md5sum for the ring is different
+and determine which of the ring files is correct. Copy the correct
+ring file onto the node that is causing the md5sum check to fail.</p>
+</li>
+<li><p class="first">md5sum checks on the <code class="docutils literal"><span class="pre">swift.conf</span></code> files across all swift nodes.</p>
+<p>If this check fails, determine why the <code class="docutils literal"><span class="pre">swift.conf</span></code> file is different
+and determine which of the <code class="docutils literal"><span class="pre">swift.conf</span></code> files is correct. Copy the
+correct <code class="docutils literal"><span class="pre">swift.conf</span></code> file onto the node that is causing the md5sum check
+to fail.</p>
+</li>
+<li><p class="first">Asyncs pending requests</p>
+<p>This check monitors the average number of async pending requests and
+the percentage of requests that are put in async pending status. This
+happens when a PUT or DELETE operation fails (because of timeouts,
+heavy usage, failed disk, or other reasons). If this check fails,
+determine why requests are failing and being put in async pending status,
+and fix accordingly.</p>
+</li>
+<li><p class="first">Quarantine</p>
+<p>This check monitors the percentage of objects that are quarantined
+(objects that are found to have errors and are moved to quarantine). An
+alert is set up against account, container, and object servers. If
+this check fails, determine the cause of the corrupted objects and fix
+accordingly.</p>
+</li>
+<li><p class="first">Replication</p>
+<p>This check monitors he percentage of replication success. An alert is set
+up against account, container, and object servers. If this check fails,
+determine why objects are not replicating and fix accordingly.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="allow-identity-users-to-use-object-storage-optional">
+<span id="allow-identity-users"></span><h2><a class="toc-backref" href="#id8">Allow Identity users to use Object Storage (optional)</a><a class="headerlink" href="#allow-identity-users-to-use-object-storage-optional" title="Permalink to this headline">#</a></h2>
+<p>Allow all Identity users to use Object Storage by setting
+<code class="docutils literal"><span class="pre">swift_allow_all_users</span></code> in the <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code>
+file to <code class="docutils literal"><span class="pre">True</span></code>. Any users with the <code class="docutils literal"><span class="pre">_member_</span></code> role (all authorized
+Identity (keystone) users) can create containers and upload objects to
+Object Storage.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If this value is <code class="docutils literal"><span class="pre">False</span></code>, then by default, only users with the
+admin or swiftoperator role are allowed to create containers or
+manage projects.</p>
+<p class="last">When the backend type for the Image Service (glance) is set to
+<code class="docutils literal"><span class="pre">swift</span></code>, the Image Service can access the Object Storage cluster
+regardless of whether this value is <code class="docutils literal"><span class="pre">True</span></code> or <code class="docutils literal"><span class="pre">False</span></code>.</p>
+</div>
+</div>
+<div class="section" id="deploy-object-storage-on-existing-rpco-software-optional">
+<h2><a class="toc-backref" href="#id9">Deploy Object Storage on existing RPCO software (optional)</a><a class="headerlink" href="#deploy-object-storage-on-existing-rpco-software-optional" title="Permalink to this headline">#</a></h2>
+<p>To deploy Object Storage on a previously installed version of RPCO,
+complete the following steps:</p>
+<ol class="arabic">
+<li><p class="first"><a class="reference internal" href="#configure-and-mount-storage-devices"><span class="std std-ref">Configure and mount storage devices</span></a>.</p>
+</li>
+<li><p class="first"><a class="reference internal" href="#configure-an-object-storage-deployment"><span class="std std-ref">Configure an Object Storage deployment</span></a>.</p>
+</li>
+<li><p class="first"><a class="reference internal" href="#allow-identity-users"><span class="std std-ref">Allow Identity users to use Object Storage (optional)</span></a>.</p>
+</li>
+<li><p class="first">Run the Object Storage playbook:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/openstack-ansible/playbooks
+<span class="gp">#</span> openstack-ansible os-swift-install.yml
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="integrate-object-storage-with-the-image-service-optional">
+<h2><a class="toc-backref" href="#id10">Integrate Object Storage with the Image service (optional)</a><a class="headerlink" href="#integrate-object-storage-with-the-image-service-optional" title="Permalink to this headline">#</a></h2>
+<p>The images created by the Image service (glance) can be
+stored using Object Storage.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the Image service (glance) already has a back end (for example,
+Cloud Files) but you want to add Object Storage (swift) as the
+Image service back end, re-add any images from the Image service
+after moving to Object Storage. If the Image service variables are
+changed (as described in this section) and begin using Object
+Storage, any images in the Image service are no longer available.</p>
+</div>
+<p>This procedure requires the following software:</p>
+<ul class="simple">
+<li>Rackspace Private Cloud Powered By OpenStack Newton software</li>
+<li>Object Storage</li>
+</ul>
+<ol class="arabic">
+<li><p class="first">In the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file,
+update the glance options. The options are defined following the example.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># Glance Options</span>
+<span class="nt">glance_default_store</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">swift</span>
+<span class="nt">glance_swift_store_auth_address</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">keystone_service_internalurl</span><span class="nv"> </span><span class="s">}}&#39;</span>
+<span class="nt">glance_swift_store_container</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">glance_images</span>
+<span class="nt">glance_swift_store_endpoint_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internalURL</span>
+<span class="nt">glance_swift_store_key</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">glance_service_password</span><span class="nv"> </span><span class="s">}}&#39;</span>
+<span class="nt">glance_swift_store_region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RegionOne</span>
+<span class="nt">glance_swift_store_user</span><span class="p">:</span> <span class="s">&#39;service:glance&#39;</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">glance_default_store</span></code>: Set the default store to <code class="docutils literal"><span class="pre">swift</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If Object Storage hosts exist in the environment,
+the <code class="docutils literal"><span class="pre">glance_default_store</span></code> variable is automatically
+set to <code class="docutils literal"><span class="pre">swift</span></code>.</p>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">glance_swift_store_auth_address</span></code>: Set to the local
+authentication address using the
+<code class="docutils literal"><span class="pre">'{{</span> <span class="pre">keystone_service_internalurl</span> <span class="pre">}}'</span></code> variable.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">glance_swift_store_container</span></code>: Set the container name.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">glance_swift_store_endpoint_type</span></code>: Set the endpoint type to
+<code class="docutils literal"><span class="pre">internalURL</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">glance_swift_store_key</span></code>: Set the Image service password using
+the <code class="docutils literal"><span class="pre">'{{</span> <span class="pre">glance_service_password</span> <span class="pre">}}'</span></code> variable.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">glance_swift_store_region</span></code>: Set the region. The default value
+is <code class="docutils literal"><span class="pre">RegionOne</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">glance_swift_store_user</span></code>: Set the project and user name to
+<code class="docutils literal"><span class="pre">'service:glance'</span></code>.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Rerun the Image service (glance) configuration plays.</p>
+</li>
+<li><p class="first">Run the Image Service (glance) playbook:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/openstack-ansible/playbooks
+<span class="gp">#</span> openstack-ansible os-glance-install.yml --tags “glance-config”
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-object-storage-for-multiple-regions-optional">
+<h2><a class="toc-backref" href="#id11">Configure Object Storage for multiple regions (optional)</a><a class="headerlink" href="#configure-object-storage-for-multiple-regions-optional" title="Permalink to this headline">#</a></h2>
+<p>Object Storage is currently designed, by default, to work in a single
+<cite>region</cite>. A region is defined as a group of servers with
+high-bandwidth, low-latency links between them. However, Object
+Storage can also be run as a multiregion cluster with one primary RPCO
+Object Storage deployment and multiple additional standalone Object
+Storage deployments. The hardware requirements are the same as an RPCO
+with Object Storage deployment or a standalone Object Storage
+deployment respectively.</p>
+<p><strong>Create a multiregion Object Storage cluster</strong></p>
+<ol class="arabic">
+<li><p class="first">Set up the <code class="docutils literal"><span class="pre">/etc/openstack-deploy/conf.d/swift.yml</span></code> configuration file.</p>
+<p>To view the configuration file, including information about which
+variables are required and which are optional, see <a class="reference internal" href="../app-osa-configfiles.html#appendix-a"><span class="std std-ref">OpenStack-Ansible configuration files</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You must specify the <code class="docutils literal"><span class="pre">region</span></code> value. This value is not specific to
+multiregion Object Storage, but it must be set specifically on a per
+region basis. The <code class="docutils literal"><span class="pre">region</span></code> value is used you set up the
+<code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code> file. The <code class="docutils literal"><span class="pre">swift_managed_regions</span></code>
+list in the <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code> file must match the
+<code class="docutils literal"><span class="pre">region</span></code> value for the <code class="docutils literal"><span class="pre">swift_hosts</span></code> in <code class="docutils literal"><span class="pre">swift.yml</span></code> file.</p>
+</div>
+</li>
+<li><p class="first">Set up the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_secrets.yml</span></code> file in each
+region. The following values in the <code class="docutils literal"><span class="pre">user_osa_secrets.yml</span></code> file should
+be identical for all regions:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1">## Swift Options:</span>
+<span class="nt">swift_hash_path_suffix</span><span class="p">:</span>
+<span class="nt">swift_hash_path_prefix</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>To view the configuration file, including information about which
+variables are required and which are optional, see <a class="reference internal" href="../app-osa-configfiles.html#appendix-a"><span class="std std-ref">OpenStack-Ansible configuration files</span></a>.</p>
+</li>
+<li><p class="first">For each region&#8217;s deployment, set the following entry in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file . Ensure
+that each region&#8217;s <code class="docutils literal"><span class="pre">swift_managed_regions</span></code> is specified correctly.
+For example, in the primary region, the value would be as follows:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">swift_managed_regions</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">swift_managed_regions</span></code> setting must match the <code class="docutils literal"><span class="pre">region:</span></code>
+values for hosts and drives in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift.yml</span></code> file for the region&#8217;s
+deployment.</p>
+</div>
+</li>
+<li><p class="first">Run a full RPCO deployment excluding Object Storage.</p>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">os-swift-setup.yml</span></code> playbook. This playbook installs the
+Object Storage services and sets up the SSH keys for the Object
+Storage user.</p>
+</li>
+<li><p class="first">Repeat steps 1 through 5 for each additional region.</p>
+</li>
+<li><p class="first">Populate the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/swift-remote.yml</span></code> file for
+each region. It should contain the storage hosts from the other
+regions and their storage IP addresses, and the proxy nodes
+from the other regions and their storage IP addresses.</p>
+<p>When deploying a new region, with a new deployment host, put the
+public keys from the existing deployment hosts and proxy nodes onto
+each of the hosts in the new region. Then put the public key from the
+new deployment host onto each of the hosts and proxy nodes in
+existing regions that are included in the <code class="docutils literal"><span class="pre">conf.d/swift-remote.yml</span></code> file.
+Doing this allows the public keys to synchronize through hosts and
+containers.</p>
+<p>For remote swift hosts only specify the IP address.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Specify the IP address on the shared
+network address range, which swift hosts and swift proxy_containers
+can access one another on, and not necessarily the ansible SSH host
+IP address from the remote Ansible installation. Additionally, for
+proxy_containers it is the IP addresss of the container itself,
+and not the IP address of the physical infrastructure host.
+See the following example:</p>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">swift-remote_hosts</span><span class="p">:</span>
+  <span class="nt">remote_storage01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.1</span>
+  <span class="nt">remote_storage02</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.2</span>
+  <span class="nt">remote_storage03</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.3</span>
+  <span class="nt">remote_storage04</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.4</span>
+  <span class="nt">remote_storage05</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.5</span>
+  <span class="nt">remote_proxy_container01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.6</span>
+  <span class="nt">remote_proxy_container02</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.7</span>
+  <span class="nt">remote_proxy_container03</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">198.51.100.8</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">os-swift-sync.yml</span></code> playbook on each region.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not run the playbook on more than one region at a time.
+If Object Storage has already been fully deployed on one region,
+begin with that region, and then, continue to run the playbook
+on to the remaining regions.</p>
+</div>
+</li>
+</ol>
+<div class="section" id="configure-object-storage-networks-for-multiple-regions">
+<h3>Configure Object Storage networks for multiple regions<a class="headerlink" href="#configure-object-storage-networks-for-multiple-regions" title="Permalink to this headline">#</a></h3>
+<p>This section provides an example of how to set up routing between
+multiple Object Storage regions. In this setup, a storage network is
+used for retrieving or placing objects from the proxy servers to the
+object, account, or container storage services and from the storage
+service to the storage service. A replication network can also be used
+for replicating objects, accounts, or containers from the storage
+service to the storage service. In cases where network traffic is high
+a replication network prevents saturation of the storage network.</p>
+<p><strong>Prerequisite</strong></p>
+<p>The deployment must have its VPN tunnels configured with all the
+relevant VLANs, tunnels, and routes ready to place on the host
+machines.</p>
+<p><strong>Configure networks for multiple regions</strong></p>
+<ol class="arabic">
+<li><p class="first">Enable <code class="docutils literal"><span class="pre">ip_forward</span></code> on the host machine:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv4/ip_forward
+</pre></div>
+</div>
+</li>
+<li><p class="first">On any host that will be part of the mesh, create a <code class="docutils literal"><span class="pre">br-storage</span></code>
+bridge that contains the host-local IP addresses. Any tunnels,
+VLANs, and so on that need to be on the host belong in this bridge.
+For more information about setting up a host, see the <a class="reference external" href="http://docs.openstack.org/project-deploy-guide/openstack-ansible/newton/targethosts-networkconfig.html">Networking
+configuration section</a>
+in the OpenStack-Ansible Deployment Guide.</p>
+<p>The replication provider <code class="docutils literal"><span class="pre">br-storage</span></code> bridge has the following attributes:</p>
+<ul class="simple">
+<li>Optional (but required for Object Storage for multiple regions)</li>
+<li>Provides access to the inter-region networking mesh</li>
+<li>Manually created and is given the host-local gateway IP addresses</li>
+<li>Attaches to <code class="docutils literal"><span class="pre">eth13</span></code> in each associated container</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Static routes to the inter-region network from the containers
+should be defined in the <code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code> file. See
+<a class="reference internal" href="../configure-req/configure-target-hosts-networking.html#configure-static-routes"><span class="std std-ref">configure static routes</span></a> for
+<code class="docutils literal"><span class="pre">static_routes</span></code> syntax.</p>
+</div>
+<p>The following is an example <code class="docutils literal"><span class="pre">br-storage</span></code> bridge for a simple
+point-to-point VPN:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># auto br-storage</span>
+<span class="c1">#   iface br-storage inet static</span>
+<span class="c1">#       bridge_stp off</span>
+<span class="c1">#       bridge_waitport 0</span>
+<span class="c1">#       bridge_fd 0</span>
+<span class="c1">#       bridge_ports none</span>
+<span class="c1">#       address HOST-LOCAL_GATEWAY</span>
+<span class="c1">#       netmask NETMASK</span>
+<span class="c1">#       # Create veth pair, ignore if already exists</span>
+<span class="c1">#       pre-up ip link add br-storage-veth type veth peer name eth13 || true</span>
+<span class="c1">#       # Set both ends UP</span>
+<span class="c1">#       pre-up ip link set eth13 up</span>
+<span class="c1">#       pre-up ip link set br-storage-veth up</span>
+<span class="c1">#       # Add the routes</span>
+<span class="c1">#       post-up ip route add MESH_CIDR via HOST-LOCAL_GATEWAY</span>
+<span class="c1">#       # Delete veth pair on DOWN</span>
+<span class="c1">#       post-down ip link del br-storage-veth || true</span>
+<span class="c1">#       bridge_ports br-storage-veth</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This step should be repeated for each bridge.</p>
+</div>
+</li>
+<li><p class="first">Add any additional interfaces into the bridge by using <code class="docutils literal"><span class="pre">bridge_ports</span></code>.</p>
+</li>
+<li><p class="first">After the host side networking has been completed, add a
+<code class="docutils literal"><span class="pre">static_routes</span></code> section to the
+<code class="docutils literal"><span class="pre">etc/openstack_deploy/openstack_user_config.yml</span></code> file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># - network:</span>
+<span class="c1">#  container_bridge: &quot;br-storage&quot;</span>
+<span class="c1">#  container_type: &quot;veth&quot;</span>
+<span class="c1">#  container_interface: &quot;eth13&quot;</span>
+<span class="c1">#  ip_from_q: &quot;storage&quot;</span>
+<span class="c1">#  group_binds:</span>
+<span class="c1">#    - swift_proxy</span>
+<span class="c1">#  static_routes:</span>
+<span class="c1">#    - cidr: MESH_CIDR</span>
+<span class="c1">#      gateway: IP_BR-STORAGE</span>
+</pre></div>
+</div>
+<p>The IP address on <code class="docutils literal"><span class="pre">br-storage</span></code> should explicitly define the gateway of
+the mesh CIDR, not the IP address allocated from the network itself.
+The mesh CIDR is not the <code class="docutils literal"><span class="pre">br-storage</span></code> CIDR of the local data center
+but the <code class="docutils literal"><span class="pre">br-storage</span></code> CIDR of the remote data center.</p>
+<p>Static routes are not added to interfaces that are currently running.
+You can either restart the interface or manually add the static route.</p>
+<p>To restart the interface:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible swift_proxy -m shell -a <span class="s2">&quot;ifdown eth13; ifup eth13&quot;</span>
+</pre></div>
+</div>
+<p>To manually add the static route:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ip route add DESTINATION via GATEWAY
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">DESTINATION</span></code> is the CIDR network for the remote regions, and
+<code class="docutils literal"><span class="pre">GATEWAY</span></code> is the network router on the <code class="docutils literal"><span class="pre">br-storage</span></code> bridge.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Repeat this step for each bridge.</p>
+</div>
+<p>The following steps are required only when using a dedicated replication
+network.</p>
+</li>
+<li><p class="first">When using a dedicated replication network (br-repl), you must create a
+<code class="docutils literal"><span class="pre">br-repl</span></code> bridge on each Object Storage host.</p>
+<p>The replication provider <code class="docutils literal"><span class="pre">br-repl</span></code> bridge has the following attributes:</p>
+<ul class="simple">
+<li>Optional (but required for Object Storage dedicated replication for
+multiple regions)</li>
+<li>Provides access to the inter-region dedicated replication networking mesh</li>
+<li>Manually created and is given the host-local gateway IP addresses</li>
+</ul>
+<p>The following is an example <code class="docutils literal"><span class="pre">br-repl</span></code> bridge for a simple point-to-point
+VPN:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># auto br-repl</span>
+<span class="c1">#   iface br-repl inet static</span>
+<span class="c1">#       bridge_stp off</span>
+<span class="c1">#       bridge_waitport 0</span>
+<span class="c1">#       bridge_fd 0</span>
+<span class="c1">#       bridge_ports none</span>
+<span class="c1">#       address HOST-LOCAL_GATEWAY</span>
+<span class="c1">#       netmask NETMASK</span>
+<span class="c1">#       # Create veth pair, ignore if already exists</span>
+<span class="c1">#       pre-up ip link add br-repl-veth type veth peer name eth13 || true</span>
+<span class="c1">#       # Set both ends UP</span>
+<span class="c1">#       pre-up ip link set eth13 up</span>
+<span class="c1">#       pre-up ip link set br-repl-veth up</span>
+<span class="c1">#       # Add the routes</span>
+<span class="c1">#       post-up ip route add MESH_CIDR via HOST-LOCAL_GATEWAY</span>
+<span class="c1">#       # Delete veth pair on DOWN</span>
+<span class="c1">#       post-down ip link del br-repl-veth || true</span>
+<span class="c1">#       bridge_ports br-repl-veth</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This step should be repeated for each bridge.</p>
+</div>
+</li>
+<li><p class="first">Add any additional interfaces into the bridge by using <code class="docutils literal"><span class="pre">bridge_ports</span></code>.</p>
+</li>
+<li><p class="first">After the host networking has been completed, add a
+<code class="docutils literal"><span class="pre">static_routes</span></code> section to
+the <code class="docutils literal"><span class="pre">etc/openstack_deploy/openstack_user_config.yml</span></code> file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># - network:</span>
+<span class="c1">#  container_bridge: &quot;br-repl&quot;</span>
+<span class="c1">#  container_type: &quot;veth&quot;</span>
+<span class="c1">#  container_interface: &quot;eth13&quot;</span>
+<span class="c1">#  ip_from_q: &quot;repl&quot;</span>
+<span class="c1">#  group_binds:</span>
+<span class="c1">#    - swift_proxy</span>
+<span class="c1">#  static_routes:</span>
+<span class="c1">#    - cidr: MESH_CIDR</span>
+<span class="c1">#      gateway: IP_BR-REPL</span>
+</pre></div>
+</div>
+<p>Static routes are not added to interfaces that are currently running.
+You can either restart the interface or manually add the static route.</p>
+<p>To restart the interface:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible swift_proxy -m shell -a <span class="s2">&quot;ifdown eth13; ifup eth13&quot;</span>
+</pre></div>
+</div>
+<p>To manually add the static route:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ip route add DESTINATION via GATEWAY
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">DESTINATION</span></code> is the CIDR network for the remote regions, and
+<code class="docutils literal"><span class="pre">GATEWAY</span></code> is the network router on the <code class="docutils literal"><span class="pre">br-storage</span></code> bridge.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Repeat this step for each bridge.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="object-storage-tuning-optional">
+<h2><a class="toc-backref" href="#id12">Object Storage tuning (optional)</a><a class="headerlink" href="#object-storage-tuning-optional" title="Permalink to this headline">#</a></h2>
+<p>The following variables can be set to tune Object Storage.</p>
+<p>In the <code class="docutils literal"><span class="pre">etc/object-server.conf</span></code> file, set <code class="docutils literal"><span class="pre">fallocate_reserve</span></code> to the
+number of bytes or percentage of disk space to fallocate to reserve,
+whether there is space for the given file size or not. A percentage value
+is used if the value ends with a <code class="docutils literal"><span class="pre">%</span></code>.
+This is useful for systems that behave badly when they
+completely run out of space. You can make the services pretend they are
+out of space early. The default value is <code class="docutils literal"><span class="pre">1%</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">os_swift</span></code> role has three new variables that allow you
+to change the <code class="docutils literal"><span class="pre">hard</span></code>, <code class="docutils literal"><span class="pre">soft</span></code>, and <code class="docutils literal"><span class="pre">fs.file-max</span></code> limits. The <code class="docutils literal"><span class="pre">hard</span></code>
+and <code class="docutils literal"><span class="pre">soft</span></code> limits are added to the <code class="docutils literal"><span class="pre">limits.conf</span></code> file for the
+Object Storage system user.
+The <code class="docutils literal"><span class="pre">fs.file-max</span></code> settings are added to storage hosts via kernel
+tuning. The new options are <code class="docutils literal"><span class="pre">swift_hard_open_file_limits</span></code> with a
+default of <code class="docutils literal"><span class="pre">10240</span></code>, <code class="docutils literal"><span class="pre">swift_soft_open_file_limits</span></code> with a default of
+<code class="docutils literal"><span class="pre">4096</span></code> and <code class="docutils literal"><span class="pre">swift_max_file_limits</span></code> with a default of 24 times the
+value of <code class="docutils literal"><span class="pre">swift_hard_open_file_limits</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configure-haproxy.html" class="btn btn-neutral float-right" title="Configure HAProxy (optional)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configure-block-storage.html" class="btn btn-neutral float-left" title="Configure the Block Storage service (optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

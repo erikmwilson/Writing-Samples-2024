@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure target host networking &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Configure target hosts" href="configure-target-host.html" />
+    <link rel="prev" title="Before you begin" href="configure-prereqs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-configure-required.html">Configure the deployment (required)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configure-prereqs.html">Complete the prerequisites</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configure Target host networking to define bridge interfaces and networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-target-host.html">Configure a list of target hosts on which to install the software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-service-credentials.html">Configure service credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Installation Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-configure-required.html">Configure the deployment (required)</a> &raquo;</li>
+        
+      <li>Configure target host networking</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-install-internal/configure-req/configure-target-hosts-networking.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-target-host-networking">
+<h1>Configure target host networking<a class="headerlink" href="#configure-target-host-networking" title="Permalink to this headline">#</a></h1>
+<p>Edit the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code> file to
+configure target host networking.</p>
+<ol class="arabic">
+<li><p class="first">In the <code class="docutils literal"><span class="pre">cidr_networks</span></code> section, configure the IP address ranges associated
+with each network. Replace <code class="docutils literal"><span class="pre">_CIDR</span></code> with the appropriate IP address range
+in CIDR notation. For example, 203.0.113.0/24.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use the same IP address ranges as the underlying physical
+network interfaces or bridges configured in
+<a class="reference internal" href="../ch-hosts-target.html#configuring-network-target-host"><span class="std std-ref">Configure the network on a target host</span></a>. For example, if the
+container network uses 203.0.113.0/24, the
+<code class="docutils literal"><span class="pre">CONTAINER_MGMT_CIDR</span></code> should also use 203.0.113.0/24.</p>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">cidr_networks</span><span class="p">:</span>
+  <span class="c1"># Management (same range as br-mgmt on the target hosts)</span>
+  <span class="nt">container</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CONTAINER_MGMT_CIDR</span>
+  <span class="c1"># Tunnel endpoints for VXLAN project networks</span>
+  <span class="c1"># (same range as br-vxlan on the target hosts)</span>
+  <span class="nt">tunnel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TUNNEL_CIDR</span>
+  <span class="c1"># Storage (same range as br-storage on the target hosts)</span>
+  <span class="nt">storage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">STORAGE_CIDR</span>
+</pre></div>
+</div>
+<p>For Rackspace data centers:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># Service (optional, same range as br-snet on the target hosts)</span>
+<span class="nt">snet</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SERVICE_CIDR</span>
+
+<span class="l l-Scalar l-Scalar-Plain">The default configuration includes the optional storage and</span>
+<span class="l l-Scalar l-Scalar-Plain">service networks. To remove one or both of them, comment out the</span>
+<span class="l l-Scalar l-Scalar-Plain">appropriate network name.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">used_ips</span></code> section, configure the existing IP addresses.
+Replace <code class="docutils literal"><span class="pre">EXISTING_IP_ADDRESSES</span></code> with a list of existing IP
+addresses in the ranges defined in the previous step. This list
+should include all IP addresses manually configured on target hosts
+in <a class="reference internal" href="../ch-hosts-target.html#configuring-network-target-host"><span class="std std-ref">Configure the network on a target host</span></a>, internal load balancers,
+service network bridge, and any other devices to avoid conflicts
+during the automatic IP address generation process.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">used_ips</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">EXISTING_IP_ADDRESSES</span>
+</pre></div>
+</div>
+<p>Add individual IP addresses on separate lines. For example, to
+prevent use of 203.0.113.101 and 201:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">used_ips</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">203.0.113.101</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">203.0.113.201</span>
+</pre></div>
+</div>
+<p>Add a range of IP addresses using a comma. For example, to prevent
+use of 203.0.113.101-201:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">used_ips</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">203.0.113.101, 203.0.113.201</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">global_overrides</span></code> section, configure load balancing:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">global_overrides</span><span class="p">:</span>
+  <span class="c1"># Internal load balancer VIP address</span>
+  <span class="nt">internal_lb_vip_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INTERNAL_LB_VIP_ADDRESS</span>
+  <span class="c1"># External (DMZ) load balancer VIP address</span>
+  <span class="nt">external_lb_vip_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">EXTERNAL_LB_VIP_ADDRESS</span>
+  <span class="c1"># Container network bridge device</span>
+  <span class="nt">management_bridge</span><span class="p">:</span> <span class="s">&quot;MGMT_BRIDGE&quot;</span>
+  <span class="c1"># Tunnel network bridge device</span>
+  <span class="nt">tunnel_bridge</span><span class="p">:</span> <span class="s">&quot;TUNNEL_BRIDGE&quot;</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal"><span class="pre">INTERNAL_LB_VIP_ADDRESS</span></code> with the internal IP address of
+the load balancer. Infrastructure and OpenStack services use this IP
+address for internal communication.</p>
+<p>Replace <code class="docutils literal"><span class="pre">EXTERNAL_LB_VIP_ADDRESS</span></code> with the external, public, or
+DMZ IP address of the load balancer. Users primarily use this IP
+address for external API and web interfaces access.</p>
+<p>Replace <code class="docutils literal"><span class="pre">MGMT_BRIDGE</span></code> with the container bridge device name,
+typically <code class="docutils literal"><span class="pre">br-mgmt</span></code>.</p>
+<p>Replace <code class="docutils literal"><span class="pre">TUNNEL_BRIDGE</span></code> with the tunnel/overlay bridge device
+name, typically <code class="docutils literal"><span class="pre">br-vxlan</span></code>.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">provider_networks</span></code> subsection, configure the management
+network:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">provider_networks</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">network</span><span class="p">:</span>
+      <span class="nt">group_binds</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">all_containers</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="s">&quot;raw&quot;</span>
+      <span class="nt">container_bridge</span><span class="p">:</span> <span class="s">&quot;br-mgmt&quot;</span>
+      <span class="nt">container_interface</span><span class="p">:</span> <span class="s">&quot;em1&quot;</span>
+      <span class="nt">container_type</span><span class="p">:</span> <span class="s">&quot;veth&quot;</span>
+      <span class="nt">ip_from_q</span><span class="p">:</span> <span class="s">&quot;container&quot;</span>
+      <span class="nt">is_container_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">is_ssh_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">provider_networks</span></code> subsection, configure optional networks;
+for example, a storage network:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">provider_networks</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">network</span><span class="p">:</span>
+      <span class="nt">group_binds</span><span class="p">:</span>
+         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glance_api</span>
+         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cinder_api</span>
+         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cinder_volume</span>
+         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nova_compute</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="s">&quot;raw&quot;</span>
+      <span class="nt">container_bridge</span><span class="p">:</span> <span class="s">&quot;br-storage&quot;</span>
+      <span class="nt">container_type</span><span class="p">:</span> <span class="s">&quot;veth&quot;</span>
+      <span class="nt">container_interface</span><span class="p">:</span> <span class="s">&quot;em2&quot;</span>
+      <span class="nt">ip_from_q</span><span class="p">:</span> <span class="s">&quot;storage&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default configuration includes one or more optional
+networks. To remove any of them, comment out the entire
+associated stanza beginning with the <code class="docutils literal"><span class="pre">-</span> <span class="pre">network:</span></code> line.</p>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">provider_networks</span></code> subsection, configure the service
+network:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">provider_networks</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">network</span><span class="p">:</span>
+      <span class="nt">group_binds</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glance_api</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nova_compute</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">neutron_linuxbridge_agent</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="s">&quot;raw&quot;</span>
+      <span class="nt">container_bridge</span><span class="p">:</span> <span class="s">&quot;br-snet&quot;</span>
+      <span class="nt">container_interface</span><span class="p">:</span> <span class="s">&quot;em3&quot;</span>
+      <span class="nt">ip_from_q</span><span class="p">:</span> <span class="s">&quot;snet&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">provider_networks</span></code> subsection, configure OpenStack
+Networking tunnel/overlay VXLAN networks. Replace
+<code class="docutils literal"><span class="pre">TUNNEL_ID_RANGE</span></code> with the tunnel ID range, for example, 1:1000.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">provider_networks</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">network</span><span class="p">:</span>
+      <span class="nt">group_binds</span><span class="p">:</span>
+         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">neutron_linuxbridge_agent</span>
+      <span class="nt">container_bridge</span><span class="p">:</span> <span class="s">&quot;br-vxlan&quot;</span>
+      <span class="nt">container_interface</span><span class="p">:</span> <span class="s">&quot;em10&quot;</span>
+      <span class="nt">ip_from_q</span><span class="p">:</span> <span class="s">&quot;tunnel&quot;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="s">&quot;vxlan&quot;</span>
+      <span class="nt">range</span><span class="p">:</span> <span class="s">&quot;TUNNEL_ID_RANGE&quot;</span>
+      <span class="nt">net_name</span><span class="p">:</span> <span class="s">&quot;vxlan&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">provider_networks</span></code> subsection, configure OpenStack
+Networking flat (untagged) and VLAN (tagged) networks. Replace
+<code class="docutils literal"><span class="pre">VLAN_ID_RANGE</span></code> with the VLAN ID range for each VLAN provider
+network. For example, 1:1000. Supports more than one range of VLANs
+on a particular network. For example, 1:1000,2001:3000. Create a
+similar stanza for each additional network.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">provider_networks</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">network</span><span class="p">:</span>
+      <span class="nt">group_binds</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">neutron_linuxbridge_agent</span>
+      <span class="nt">container_bridge</span><span class="p">:</span> <span class="s">&quot;br-vlan&quot;</span>
+      <span class="nt">container_type</span><span class="p">:</span> <span class="s">&quot;veth&quot;</span>
+      <span class="nt">container_interface</span><span class="p">:</span> <span class="s">&quot;em12&quot;</span>
+      <span class="nt">host_bind_override</span><span class="p">:</span> <span class="s">&quot;em12&quot;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="s">&quot;flat&quot;</span>
+      <span class="nt">net_name</span><span class="p">:</span> <span class="s">&quot;flat&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="nt">network</span><span class="p">:</span>
+      <span class="nt">group_binds</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">neutron_linuxbridge_agent</span>
+      <span class="nt">container_bridge</span><span class="p">:</span> <span class="s">&quot;br-vlan&quot;</span>
+      <span class="nt">container_type</span><span class="p">:</span> <span class="s">&quot;veth&quot;</span>
+      <span class="nt">container_interface</span><span class="p">:</span> <span class="s">&quot;em11&quot;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="s">&quot;vlan&quot;</span>
+      <span class="nt">range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VLAN_ID_RANGE</span>
+      <span class="nt">net_name</span><span class="p">:</span> <span class="s">&quot;vlan&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only one Networking (neutron) network mapping is allowed per interface
+(defined in the <code class="docutils literal"><span class="pre">container_interface</span></code> or <code class="docutils literal"><span class="pre">host_bind_override</span></code>
+variable). Interfaces cannot be reused across multiple provider network
+configurations.</p>
+</div>
+<div class="admonition note" id="configure-static-routes">
+<p class="first admonition-title">Note</p>
+<p>Optionally, you can add one or more static routes to interfaces within
+containers. Each route requires a destination network in CIDR notation
+and a gateway. For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">provider_networks</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">network</span><span class="p">:</span>
+      <span class="nt">group_binds</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">glance_api</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cinder_api</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cinder_volume</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nova_compute</span>
+        <span class="nt">container_bridge</span><span class="p">:</span> <span class="s">&quot;br-storage&quot;</span>
+        <span class="nt">container_interface</span><span class="p">:</span> <span class="s">&quot;em2&quot;</span>
+        <span class="nt">container_type</span><span class="p">:</span> <span class="s">&quot;veth&quot;</span>
+        <span class="nt">ip_from_q</span><span class="p">:</span> <span class="s">&quot;storage&quot;</span>
+        <span class="nt">static_routes</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">cidr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.176.0.0/12</span>
+            <span class="nt">gateway</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.29.248.1</span>
+</pre></div>
+</div>
+<p>This example adds the following content to the
+<code class="docutils literal"><span class="pre">/etc/network/interfaces.d/em2.cfg</span></code> file in the appropriate
+containers:</p>
+<div class="last highlight-ini"><div class="highlight"><pre><span></span><span class="na">post-up ip route add 10.176.0.0/12 via 172.29.248.1 || true</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configure-target-host.html" class="btn btn-neutral float-right" title="Configure target hosts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configure-prereqs.html" class="btn btn-neutral float-left" title="Before you begin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

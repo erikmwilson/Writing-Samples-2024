@@ -1,0 +1,34 @@
+===================================
+Block Storage service upgrade notes
+===================================
+
+When you upgrade the Block Storage (cinder) service from v12 to v13 in RPCO,
+consider the following information:
+
+-  **Orphaned backups**: During a live upgrade from Liberty, if a backup
+   service is stopped while it is processing a restore request, that backup
+   status might not be automatically cleared on the service restart. You must
+   clean up such orphaned backups manually.
+
+-  **Quota reservations**: When performing a live upgrade from Liberty, retype
+   calls might reserve additional quota. Because quota reservations are
+   invalidated after 24 hours by default (configuration option
+   ``reservation_expire=86400``), we recommend either decreasing that time or
+   watching for unused quota reservations manually during the upgrade process.
+
+-  **Nested quotas**: Nested quotas are no longer the default, but you can
+   configure that behavior by setting
+   ``quota_driver = cinder.quota.NestedDbQuotaDriver``.
+
+-  **LVMISCSIDriver removal**: Before the Mitaka release, LVM configurations of
+   cinder might have used ``LVMISCSIDriver`` as follows:
+
+   .. code-block:: ini
+
+      # All given backend(s)
+      [lvm]
+      volume_driver=cinder.volume.drivers.lvm.LVMISCSIDriver
+
+   Mitaka removed that driver name and replaced it with ``LVMVolumeDriver``.
+   You must ensure that the proper variable is set prior to upgrading.
+   Otherwise, ``cinder-volume`` does not start.

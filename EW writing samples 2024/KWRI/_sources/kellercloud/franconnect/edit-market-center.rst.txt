@@ -1,0 +1,41 @@
+
+.. _edit-market-center-franconnect:
+
+Edit a Market Center
+====================
+
+After a new Market Center has been added to FranConnect, you can edit it in FranConnect. For more information, see :ref:`add-organization-franconnect`.
+
+To edit a Market Center, complete the following steps:
+
+.. include:: franconnect-login.rst
+
+#. Click on the **Market Center Number** or **Entity Name** to edit that Market Center.
+
+#. On the **Market Center Info** page, click **Modify**.
+
+#. Edit the Market Center information at necessary. The following fields have some special considerations:
+
+   * **Region** - The parent Region for the Market Center. The Region defines whether the Market Center is WorldWide or KWRI. Any update to a Region (Region profile is updated, a new Region is opened, a Region is closed), must be communicated to the Data Team and is updated manually on a case-by-case basis.
+
+     .. note::
+
+        The following regions are not valid and should not be used:
+
+        * Arkansas
+
+        * California, Orange Co.
+
+        * Germany
+
+        * KWRI
+
+        * Southern Arizona
+
+   * **State** - Select a state from the pre-defined list. WorldWide Market Centers do not require a state value.
+
+   * **Country** - Select a country from the pre-defined list. WorldWide Market Centers do not require a country value.
+
+   * **Opening Date** - This value becomes the Start Date in the KW AMS database. Original Open Date in the KW AMS database is kept empty.
+
+#. Click **Save** at the bottom of the page,

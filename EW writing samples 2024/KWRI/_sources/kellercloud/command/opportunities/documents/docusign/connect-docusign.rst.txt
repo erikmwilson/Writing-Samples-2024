@@ -1,0 +1,44 @@
+
+.. _connect-docusign-opportunities-command:
+
+Create and Connect Your DocuSign Account in Command
+===================================================
+
+The DocuSign integration with Command makes it easy to get forms signed and loaded into an Opportunity. Your Market Center and the DocuSign team prepares  the Market Center DocuSign account, and then enables this connection for you in Command.
+
+.. note:
+
+   In order to use DocuSign with Command, you must create the DocuSign account from within Command. The email address attached to your DocuSign account is a key part of your DocuSign identity. If you already have a DocuSign account, you cannot create a new KW DocuSign account with the same email address as in your existing DocuSign account.
+
+   For more information, see :ref:`existing-docusign-opportunities-command`.
+
+To create and connect you DocuSign account to Command, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Click **Applications**.
+
+#. Find DocuSign on the **Connected Apps** list, and click **Connect Account**.
+
+#. On the DocuSign Connection pop-up, enter your preferred first and last name, as well as the email address you want to use with DocuSign moving forward.
+
+#. Click **Send Registration Email**.
+
+   .. note::
+
+      The email address you enter here is a key part of your DocuSign identity. We recommended that you use your @kw.com email address for this, but it is not required.
+
+#. A DocuSign invitation email is sent to the email address you entered. Find and open the email, then click **Accept Invite**.
+
+#. Enter the password you will use for your DocuSign account, then choose a password recovery validation question and answer. Click **Activate**.
+
+#. Click the **DocuSign Customer Agreement** link, to review the terms and conditions around your new DocuSign account. Click **Accept Agreement**, after you have reviewed the customer agreement.
+
+#. Now that the account has been created, we need to connect it to your Command account. On the Command **Applications** page, in the DocuSign section, click **Authorize**.
+
+#. On the DocuSign log in pop-up, enter the DocuSign password you created and click **Log In**.
+
+#. On the DocuSign permissions pop-up, click **Accept** to give Command permission to connect to your new DocuSign account.

@@ -1,0 +1,44 @@
+.. _service-access:
+
+========================
+Service access endpoints
+========================
+
+The |apiservice| has two environments with global endpoints.
+
+Perform all testing and development against the demo environment.
+This prevents test tickets from negatively impacting your support
+experience.
+
+Demo environment
+----------------
+
+.. code::
+
+    https://demo.ticketing.api.rackspace.com
+
+Production environment
+----------------------
+
+.. code::
+
+    https://ticketing.api.rackspace.com
+
+The ticketing event feed also has two environments available for use.
+Events triggered within the demo environment are published to the
+demo feed, while production events are published to the primary
+ticketing event feed.
+
+Demo feed
+---------
+
+.. code::
+
+    https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>
+
+Production feed
+---------------
+
+.. code::
+
+    https://ord.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>

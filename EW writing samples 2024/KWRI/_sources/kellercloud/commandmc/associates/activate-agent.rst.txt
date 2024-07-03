@@ -1,0 +1,22 @@
+
+.. _activate-associates-commandmc:
+
+Activate Agent
+==============
+
+To activate an agent, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that associate and select **Activate Agent**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Activate Agent** window, enter the **License Number**, **State/Province**, and **Expiration Date**. You can add and remove multiple licenses.
+
+#. Enter the **Company Dollar Split (Agent)**, **Company Dollar Cap**, **Next Period Company Dollar Cap**, and select the **Company Dollar Anniversary Date**.
+
+#. Click **Activate Agent**.

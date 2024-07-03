@@ -1,0 +1,53 @@
+
+.. _add-smartplan-commandmc:
+
+Add a SmartPlan from the SmartPlans Library
+===========================================
+
+The SmartPlans library contains SmartPlans created by KWRI and your associates. After a SmartPlan is added to the **MC Plans** list, you can start adding recruits and turn it on.
+
+.. note::
+
+   SmartPlan text messages and emails are sent out between 10am-6pm CST. If an agent attempts to start one at 7pm, although it appears that the text/email should send immediately, it may be held from being sent until 10am the following morning.
+
+For more information, see :ref:`publish-smartplan-commandmc` and :ref:`publish-best-practices-smartplan-commandmc`.
+
+When you add a SmartPlan, you are adding a copy of the SmartPlan to your **MC Plans** list. If the publishing agent makes any changes or deletes the SmartPlan, it does not affect the version of the SmartPlan that you are using.
+
+To add a SmartPlan from the SmartPlans Library, complete the following steps:
+
+.. include:: smartplans-mc-login.rst
+
+#. Click the **Library** tab, at the top of the page.
+
+#. :ref:`find-smartplan-commandmc` that you want to add:
+
+   * The SmartPlan card includes information to help you determine if this is the right SmartPlan to use:
+
+     * **SmartPlan Title**
+
+     * **SmartPlan Description** - The description the author added when publishing the SmartPlan. It should give you a good idea of what the purpose of the SmartPlan is.
+
+     * **Published Date** - Shows you when the SmartPlan was published. This date updates if the author publishes any content edits. Some SmartPlans are timeless, like the Quarterly Call SmartPlan, but if a SmartPlan includes texts or emails, you might check to see if the content is still relevant.
+
+     * **Number of Downloads** - Show you how many other associates have added this SmartPlan to their SmartPlans list.
+
+     * **Rating** - Shows you the rating of the SmartPlan, using a five star system. It also shows you the number of associates who have rated the SmartPlan.
+
+     * **Steps, Duration, and Touches** - Gives you a quick glance of the workflow. How many steps are included, how long will the SmartPlan run, and how many touches, or communication steps, are included.
+
+     * **Author** - Shows who published the SmartPlan.
+
+   * Click **View Steps** to open a pop-up that shows each step in more detail. It shows what type of steps are included (for example, email, delay, text). Hover over a task or automatic email/text, you can see the content of that step.
+
+   .. note::
+
+      If the SmartPlan includes SMS/MMS steps, you must have a Twilio account set up in Command for these to work. If you do not have a Twilio account set up, these SMS/MMS steps are skipped. For more information, see :ref:`connect-application-settings-command`.
+
+#. After you find the SmartPlan you want to add to your **My SmartPlans** list, click **Add SmartPlan**, at the bottom right of the SmartPlan card.
+
+#. On the **Add to My SmartPlans** pop-up, edit the name of the SmartPlan if necessary and click **Download**.
+
+   If there this SmartPlan includes multiple linked SmartPlans, you must to download each separately. Click **Download** on each SmartPlan in the list.  If you already have one of the linked SmartPlans, it will say **Success**. After you have downloaded all of the linked SmartPlans, click **Download**, at the bottom right of the pop-up.
+
+The SmartPlan (or bundle of SmartPlans) appears in your **MC Plans** list, where you can add recruits. For more information, see :ref:`add-recruits-commandmc`.

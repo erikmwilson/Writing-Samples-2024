@@ -1,0 +1,61 @@
+===========================
+Identity service (keystone)
+===========================
+
+The RCPO Identity service provides user authentication and
+authorization to all RCPO components. Identity supports multiple
+authentication mechanisms, including user name and password
+credentials, token-based systems, and AWS-style log-ins.
+
+By default, the Identity service uses a MariaDB back end for token,
+catalog, policy, and identity information. This back end is recommended
+for development environments or to authenticate smaller user sets. You
+can also use multiple identity back ends concurrently, such as LDAP and
+SQL. You can also use memcache or Redis for token persistence.
+
+Identity supports Federation with SAML. Federated Identity establishes
+trust between Identity Providers (IdP) and the services that Identity
+provides to the end user.
+
+**Federated Identity and concurrent multiple back ends require Identity
+API v3 and Apache HTTPD deployment instead of Eventlet deployment.**
+
+RCPO Identity advantages include:
+
+-  User account management, including associated information such as a
+   name and password. In addition to custom users, a user must be
+   defined for each cataloged service. For example, the glance user must
+   be defined for the Image service.
+
+-  Tenant, or project, management. Tenants can be the user group,
+   project, or organization.
+
+-  Role management. Roles determine the user permissions. For example, a
+   role might differentiate between permissions for a sales rep and
+   permissions for a manager.
+
+-  Domain management. Domains determine the administrative boundaries of
+   Identity service entities, and support multi-tenancy, where a domain
+   represents a grouping of users, groups, and tenants. A domain can
+   have more than one tenant, and if you use multiple concurrent
+   Identity providers, each provider has one domain.
+
+
+.. list-table:: **Identity service (keystone) components**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+   * - rpc-keystone
+     - Provides Identity services, together with the administrative
+       and public APIs. Both Identity API v2 and API v3 are supported.
+   * - keystone
+     - Command-line client to access the API.
+
+
+The following high level diagram shows the basic authentication flow
+that Identity uses to authenticate users with other RCPO components.
+
+.. image:: ../../../figures/keystone-identity.png
+   :alt: RCPO Identity service high-level data flow

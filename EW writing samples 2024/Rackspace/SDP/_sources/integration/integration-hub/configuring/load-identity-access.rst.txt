@@ -1,0 +1,18 @@
+.. _load-identity-access-SDP-IG:
+
+====================
+Load Identity access
+====================
+
+Use the following steps to load Identity access:
+
+1. Open ServiceNow.
+
+#. In the left-hand navigation pane, click **Identity Access**.
+
+#. On the **Identity Access** screen, click **New**.
+
+#. Complete the form and click **Submit**.
+
+   The user should be someone who currently has access to MyRack. Multiple
+   users can be created.

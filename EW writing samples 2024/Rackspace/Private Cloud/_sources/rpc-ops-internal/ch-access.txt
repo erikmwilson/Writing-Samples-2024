@@ -1,0 +1,333 @@
+======
+Access
+======
+
+Accessing RPCO is achieved through several methods. The two main
+components of RPCO are the controller node and compute node. To perform
+most actions, use the compute node, controller node, or remotely access
+with a separate machine. Alternatively, use the web-based OpenStack
+Dashboard. A number of OpenStack client utilities are also available.
+These are described below.
+
+
+Accessing the cloud from the Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the controller Dashboard to complete administration tasks.
+
+#. In a web browser, type either the hostname or IP address of the
+   controller node in the address bar. The browser displays the
+   OpenStack Dashboard login page:
+
+   .. figure:: ../figures/Access_Login.png
+      :width: 6in
+      :alt: OpenStack Dashboard login page
+
+   .. note::
+
+      If unsure of the hostname or IP address of the controller node,
+      contact Rackspace support for assistance.
+
+#. Log in with the OpenStack username **``admin``** and the OpenStack
+   admin password that was created during installation.
+
+#. Logged in as an administrator, the **Project** and **Admin** tab are
+   displayed. Administrative users can use the **Admin** tab to view
+   usage and to manage instances, volumes, flavors, images, projects,
+   users, services, and quotas.
+
+
+Viewing and setting environment variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To connect to the OpenStack installation using ``python-novaclient`` or
+other command line clients, set appropriate environment variables.
+OpenStack clients use environment variables to provide the information
+necessary to authenticate to the cloud. Variables can be viewed and
+downloaded from the Dashboard and set in the ``admin-openrc.sh`` file on
+the controller node.
+
+#. Log in to the Dashboard as the admin user.
+
+#. Select the **Compute** tab in the **Project** section of the
+   navigation pane, then click **Access & Security**.
+
+#. Select the **API Access** tab, then click the **Download OpenStack RC
+   File** button. Save the ``admin-openrc.sh`` file to the local system.
+
+#. Open the ``admin-openrc.sh`` file in a text editor. The file will
+   display:
+
+   .. important::
+
+      Be careful with the information contained in the ``openrc``
+      file. By default, this file contains administrative credentials.
+      It is automatically maintained by the system, and should not by
+      edited by hand.
+
+   .. code-block:: bash
+
+      #!/bin/bash
+
+      # To use an Openstack cloud you need to authenticate against keystone, which
+      # returns a **Token** and **Service Catalog**. The catalog contains the
+      # endpoint for all services the user/tenant has access to - including nova,
+      # glance, keystone, swift.
+      #
+      export OS_AUTH_URL=http://192.168.0.7:5000/v3
+
+      # With the addition of Keystone we have standardized on the term **tenant**
+      # as the entity that owns the resources.
+      export OS_TENANT_ID=25da08e142e24f55a9b27044bc0bdf4e
+      export OS_TENANT_NAME="admin"
+      export OS_PROJECT_NAME="admin"
+      export OS_USER_DOMAIN_NAME=Default
+      export OS_PROJECT_DOMAIN_NAME=Default
+
+      # In addition to the owning entity (tenant), OpenStack stores the entity
+      # performing the action as the **user**.
+      export OS_USERNAME="admin"
+
+      # With Keystone you pass the keystone password.
+      echo "Please enter your OpenStack Password: "
+      read -sr OS_PASSWORD_INPUT
+      export OS_PASSWORD=$OS_PASSWORD_INPUT
+
+      # If your configuration has multiple regions, we set that information here.
+      # OS_REGION_NAME is optional and only valid in certain environments.
+      export OS_REGION_NAME="RegionOne"
+      # Don't leave a blank variable, unset it if it was empty
+      if [ -z "$OS_REGION_NAME" ]; then unset OS_REGION_NAME; fi
+
+
+#. Add the following environment variables entries to the
+   ``admin-openrc.sh`` file to ensure the OpenStack clients connect to
+   the correct endpoint type from the service catalog:
+
+   .. code-block:: ini
+
+      CINDER_ENDPOINT_TYPE=internalURL
+      NOVA_ENDPOINT_TYPE=internalURL
+      OS_ENDPOINT_TYPE=internalURL
+
+#. Log in to the controller node.
+
+#. Before running commands, source the ``admin-openrc`` file to set
+   environment variables. At the command prompt, type:
+
+   .. code-block:: console
+
+      $ source admin-openrc
+
+
+
+Managing the cloud using the command line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section describes some of the more common commands to view and
+manage the cloud.
+
+ .. note::
+
+    Log in to the controller node to run the following commands:
+
+Server list
+ The **nova list** command shows details about currently available
+    images:
+
+    .. code-block:: console
+
+       $ nova list
+       +------------------+--------------+--------+---------------------------------+
+       |         ID       |    Name      | Status |          Networks               |
+       +------------------+--------------+--------+---------------------------------+
+       | [ID truncated]   | ExampleImage | ACTIVE | public=[<networkIPAddresses>]  |
+       +------------------+--------------+--------+---------------------------------+
+
+
+List services
+    The **nova service-list** command details the currently running
+    services:
+
+    .. code-block:: console
+
+       $ nova service-list
+       Binary           Host      Zone       Status     State Updated_At
+       nova-scheduler   ctrl      nova       enabled    :-)   2012-08-02 14:51:34
+       nova-consoleauth ctrl      nova       enabled    :-)   2012-08-02 14:51:41
+       nova-compute     compute1  nova       enabled    :-)   2012-08-02 14:51:35
+
+
+View logs
+    All logs are available in the ``/var/log/`` directory and its
+    subdirectories. The **tail** command shows the most recent entries
+    in a specified log file:
+
+    .. code-block:: console
+
+       $ tail /var/log/nova/nova.log
+
+
+See available flavors
+    The **nova flavor-list** command lists the *flavors* that are
+    available, which are different disk sizes that can be assigned to
+    images:
+
+    .. code-block:: console
+
+       $ nova flavor-list
+       +----+-----------+-----------+------+-----------+------+-------+-------------+
+       | ID |    Name   | Memory_MB | Disk | Ephemeral | Swap | VCPUs | RXTX_Factor |
+       +----+-----------+-----------+------+-----------+------+-------+-------------+
+       | 1  | m1.tiny   | 512       | 0    | 0         |      | 1     | 1.0         |
+       | 2  | m1.small  | 2048      | 10   | 20        |      | 1     | 1.0         |
+       | 3  | m1.medium | 4096      | 10   | 40        |      | 2     | 1.0         |
+       | 4  | m1.large  | 8192      | 10   | 80        |      | 4     | 1.0         |
+       | 5  | m1.xlarge | 16384     | 10   | 160       |      | 8     | 1.0         |
+       +----+-----------+-----------+------+-----------+------+-------+-------------+
+
+
+    .. important::
+
+       Do not remove the default flavors. Doing so will cause problems
+       with the Dashboard.
+
+List images
+    The **nova image-list** command lists the currently available
+    images:
+
+    .. code-block:: console
+
+       $ nova image-list
+       +--------------------------+----------------------------+--------+--------+
+       |                  ID      |           Name             | Status | Server |
+       +--------------------------+----------------------------+--------+--------+
+       | 033c0027-[ID truncated]  |        cirros-image        | ACTIVE |        |
+       | 0ccfc8c4-[ID truncated]  |         My Image 2         | ACTIVE |        |
+       | 85a0a926-[ID truncated]  |        precise-image       | ACTIVE |        |
+       +--------------------------+----------------------------+--------+--------+
+
+
+List floating IP addresses
+    The **neutron floatingip-list** command lists the currently
+    available floating IP addresses and the instances they are
+    associated with:
+
+    .. code-block:: console
+
+       $ neutron floatingip-list
+
+       +------------------+------------------+---------------------+------------ +
+       | id               | fixed_ip_address | floating_ip_address | port_id     |
+       +------------------+------------------+---------------------+-------------+
+       | 0a88589a-ffac... |                  | 208.113.177.100     |             |
+       +------------------+------------------+---------------------+-------------+
+
+
+OpenStack client utilities
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+OpenStack client utilities are a convenient way to interact with
+OpenStack from the command line on the workstation, without being logged
+in to the controller node.
+
+OpenStack |os-release| uses the following client utilities:
+
+ .. list-table:: **OpenStack client utilities**
+    :widths: 50 50
+    :header-rows: 1
+
+    * - Name
+      - Version
+    * - python-keystoneclient
+      - 2.3.1
+    * - python-openstackclient
+      - 2.3.0
+    * - python-glanceclient
+      - 2.0.1
+    * - python-novaclient
+      - 3.3.1
+    * - python-cinderclient
+      - 1.6.0
+    * - python-neutronclient
+      - 4.1.1
+    * - python-heatclient
+      - 1.1.0
+    * - python-swiftclient
+      - 3.0.0
+
+Python client utilities are available using the Python Package Index
+(PyPI), and can be installed on most Linux systems using these commands:
+
+ .. code-block:: console
+
+    # pip install python-PROJECTclient
+
+ .. note::
+
+    The keystone client utility is deprecated. The OpenStackClient
+    utility should be used which supports v2 and v3 Identity API.
+
+
+Upgrade or remove clients
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To upgrade a client, add the **--upgrade** option to the command:
+
+ .. code-block:: console
+
+    # pip install --upgrade python-PROJECTclient
+
+
+To remove a client, run the **pip uninstall** command:
+
+ .. code-block:: console
+
+    # pip uninstall python-PROJECTclient
+
+
+For more information about OpenStack client utilities, see these links:
+
+-  `OpenStack API Quick
+   Start <http://docs.openstack.org/api/quick-start/content/index.html#cli-intro>`_
+
+-  `OpenStackClient
+   commands <http://docs.openstack.org/developer/python-openstackclient/command-list.html>`_
+
+-  `Image Service (glance) CLI
+   commands <http://docs.openstack.org/cli-reference/content/glanceclient_commands.html>`_
+
+-  `Image Service (glance) CLI command cheat
+   sheet <http://docs.openstack.org/user-guide/content/app_cheat_sheet.html#d6e5879>`_
+
+-  `Compute (nova) CLI
+   commands <http://docs.openstack.org/cli-reference/content/novaclient_commands.html>`_
+
+-  `Compute (nova) CLI command cheat
+   sheet <http://docs.openstack.org/user-guide/content/app_cheat_sheet.html#d6e5925>`_
+
+-  `Networking (neutron) CLI
+   commands <http://docs.openstack.org/cli-reference/content/neutronclient_commands.html>`_
+
+-  `Networking (neutron) CLI command cheat
+   sheet <http://docs.openstack.org/user-guide/content/app_cheat_sheet.html#d6e6063>`_
+
+-  `python-keystoneclient <https://pypi.python.org/pypi/python-keystoneclient/>`_
+
+-  `python-glanceclient <http://pypi.python.org/pypi/python-glanceclient/>`_
+
+-  `python-novaclient <http://pypi.python.org/pypi/python-novaclient/>`_
+
+-  `python-neutronclient <http://pypi.python.org/pypi/python-neutronclient/>`_
+
+ ..  note::
+
+     The OpenStack client utilities listed here are maintained by the
+     OpenStack community and should be considered software in development.
+     When in doubt, refer to the client utility documentation for the
+     latest information.
+
+A command line client is also available for the OpenStack Block
+Storage service (cinder). For more information about Block Storage,
+see `Configuring OpenStack Block Storage
+<https://developer.rackspace.com/docs/user-guides/infrastructure/cloud-interfaces/cli/cloudblockstorage-cli/>`_.

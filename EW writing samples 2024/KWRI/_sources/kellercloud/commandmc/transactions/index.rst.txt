@@ -1,0 +1,30 @@
+
+.. _transactions-index-commandmc:
+
+Transactions
+============
+
+The following sections contain information about the
+Transactions applet.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview-transactions
+   search-transactions
+   filter-transactions
+   sort-columns
+   smartview-transactions
+   create-transaction
+   view-transaction-details
+   edit-transaction-details
+   close-transaction
+   delete-transaction
+   transfer-company-currency
+   create-deposit
+   view-deposit
+   edit-deposit
+   print-deposit
+   delete-deposit
+   listings/index
+   month-end-close/index

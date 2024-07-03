@@ -1,0 +1,37 @@
+==============
+Load balancers
+==============
+
+F5 BIG-IP 2000s
+~~~~~~~~~~~~~~~
+
+1x Pair of F5 BIG-IP 2000s (High Availability) with AFM (Advanced
+Firewall Module) with F5-UPG-SFP+-R so the F5 is connected to the 10
+Gb ToR switches.
+
+.. image:: ../../figures/F5BigIpLTM2000s_front.jpg
+
+
+HAProxy R720
+~~~~~~~~~~~~
+
+-  Operating System: OpenStack on Ubuntu 16.04
+
+-  Model: Dell R720 Chassis
+
+-  Chassis Size: 2U
+
+-  Processor: Dual Socket Hex Core Intel Xeon E5-2640 2.50 Ghz
+
+-  Memory: 64 GB
+
+-  RAID Config: RAID1
+
+-  Hard Drives: 2 x Dell 600GB 15K SAS 3.5"
+
+-  Onboard NIC: 4-Port NIC (Already included)
+
+-  Additional NIC: Intel X540-T2 Dual Port PCIe 10Gbase-T NIC (RJ-45)
+
+.. image:: ../../figures/powerEdgeR720_front.jpg
+.. image:: ../../figures/powerEdgeR720_rear.jpg

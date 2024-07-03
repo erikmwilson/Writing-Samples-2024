@@ -1,0 +1,22 @@
+=======================
+Upgrade from v12 to v13
+=======================
+
+Follow the procedures in this section to upgrade a Rackspace Private Cloud
+Powered By OpenStack (RPCO) deployment from version 12 to version 13. Playbooks
+are used to perform the majority of operations to upgrade RPCO from v12 to v13
+(Mitaka).
+
+The base directory for the upgrade is the ``/opt/rpc-openstack`` Mitaka
+deployment directory.
+
+.. toctree::
+   :maxdepth: 2
+
+   rpc-upgrade-v12-v13-nova.rst
+   rpc-upgrade-v12-v13-neutron.rst
+   rpc-upgrade-v12-v13-glance.rst
+   rpc-upgrade-v12-v13-cinder.rst
+   rpc-upgrade-v12-v13-prereq.rst
+   rpc-upgrade-v12-v13-perform.rst
+   rpc-upgrade-v13-verify.rst

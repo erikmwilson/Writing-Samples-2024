@@ -1,0 +1,25 @@
+=============
+MaaS concepts
+=============
+
+How it works
+~~~~~~~~~~~~
+
+Each physical host is an `entity` in the Cloud Monitoring system,
+which can have multiple `checks`. Those checks in turn can have
+multiple `alarms`. Checks define which script to run or which
+information to poll. Alarms define the threshold to alert on.
+
+For more information, see `concepts
+<https://developer.rackspace.com/docs/rackspace-monitoring/v1/getting-started/concepts/>`_.
+
+
+.. toctree::
+   :maxdepth: 2
+
+   entities.rst
+   checks.rst
+   alarms.rst
+   monitoring-scope.rst
+   monitoring-api.rst
+   example-maas-check.rst

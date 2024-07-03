@@ -1,0 +1,35 @@
+
+.. _edit-team-settings-commandmc:
+
+Edit a Team
+===========
+
+Market Center Administrators (MCAs), Assistant Market Center Administrators (AMCAs), System Admins, and Legal users can manage the teams, team members, and guests in your Market Center. Teams are used in Command apps and affect KWRI Awards.
+
+.. note::
+
+   You can only edit teams in **Active** status. To edit a team in **Inactive** status, you must first change the status to **Active**.
+
+To edit a team, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **MC Team Management**.
+
+   .. note::
+
+      If you are a member of more than one Market Center, select your Market Center from the drop-down list.
+
+#. On the **MC Team Management** page, find the team you want to edit using the search box and the **Show** drop-down menu and click on the team name.
+
+#. On the **Team Details** page, click the edit icon |edit-icon|.
+
+   .. |edit-icon| image:: ../../../../images/edit-icon.png
+      :height: 25
+
+#. On the **Edit Team** page, edit the team details. Changing the **Status** to **Inactive** makes the team inactive and all team members are dropped from the team. Their end date is the current date. If the MCA/AMCA wants to make the team Active again, they must add all previous team members back to the team.
+
+#. Click **Save Changes**.

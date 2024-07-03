@@ -1,0 +1,18 @@
+.. _ceph-monitor-ug:
+
+============
+Ceph monitor
+============
+
+|service appformix| provides the following capabilities for Ceph:
+
+* Resource monitoring on the monitor nodes and the storage nodes that host
+  object storage daemons (OSDs). The agent is deployed to these nodes.
+* Overview of storage cluster metrics: capacity,
+  pools, OSDs, and objects.
+* Navigation to hosts and OSDs.
+* Charts for each host in the storage cluster.
+* Alarms for cluster metrics, pool metrics, and storage hosts.
+
+For more information about Ceph monitoring, see
+`Ceph Monitoring <https://www.juniper.net/documentation/en_US/appformix/topics/topic-map/appformix-service-monitoring.html#jd0e10>`_ in the AppFormix User Guide.

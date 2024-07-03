@@ -1,0 +1,26 @@
+==============================
+RPCO monitoring implementation
+==============================
+
+ .. toctree::
+    :maxdepth: 2
+
+    monitoring-external.rst
+    monitoring-internal.rst
+
+The Rackspace Cloud Monitoring Service allows Rackspace Private Cloud
+customers to monitor system performance and safeguard critical data.
+
+
+Installation
+~~~~~~~~~~~~
+
+The monitoring agent and scripts are downloaded by a Rackspace Cloud
+Engineer during an installation or upgrade of RPC. It is then
+installed via the `setup-maas` Ansible playbook
+(https://github.com/rcbops/rpc-openstack/blob/master/rpcd/playbooks/setup-maas.yml).
+After installation, use the `verify-maas` playbook
+(https://github.com/rcbops/rpc-openstack/blob/master/rpcd/playbooks/verify-maas.yml)
+to ensure that all the monitoring is configured and working as
+expected. The `setup-maas` playbook is also responsible for defining
+relevant checks and alarms in the Cloud Monitoring system.

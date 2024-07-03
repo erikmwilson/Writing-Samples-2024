@@ -1,0 +1,80 @@
+
+.. _add-documents-opportunities-command:
+
+Add Compliance Documents to an Opportunity
+==========================================
+
+All document compliance is handled within Opportunities. Whether you are using DocuSign, Dotloop, or another process to manage your forms and get signatures, you use Command to add and submit compliance documents to your Market Center for approval.
+
+For more information, see :ref:`submit-documents-opportunities-command`.
+
+To add compliance documents to an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. On the left side of the page, choose the type of checklist you are submitting from the Checklist Type drop-down.
+
+#. Choose the compliance event where the document will be added:
+
+   * For **Listings** - Listed, Under Contract, Closed
+
+   * For **Buyers** - Consultation, Under Contract, Closed
+
+   * For **Leases**:
+
+     * **Tenant**: Under Contract, Closed
+
+     * **Landlord** - Listed, Under Contract, Closed
+
+Add Multiple Documents
+^^^^^^^^^^^^^^^^^^^^^^
+
+1. Click **Attach Multiple Files**, at the top of the checklist.
+
+#. On the **Attach Files** pop-up, choose the source of the documents you want to add and attach the files to the checklist items:
+
+   * **Manual** - click to browse your computer for the file, or drag the file into the space provided.
+
+   * **DocuSign** or **Dotloop** - you will see a list of documents you have in the corresponding DocuSign Room or Dotloop Loop. Select the corresponding file.
+
+   * **Custom Folder** - you will see a list of custom folders and documents. Select the corresponding file.
+
+   .. note::
+
+      If you are going to pull documents from Dotloop or DocuSign, you must have that system connected in Command and connected to this Opportunity. After you create a Loop or a Room from this Opportunity, you are locked in to that platform and you cannot switch where you are pulling documents from. For more information, see :ref:`documents-opportunities-command`.
+
+#. Click **Attach**.
+
+Add a Single Document
+^^^^^^^^^^^^^^^^^^^^^
+
+1. Find the document on the checklist and click **Add a file**.
+
+#. On the **Assign Document** pop-up, choose the source of the documents you want to add and attach the files to the checklist items:
+
+   * **Manual** - click to browse your computer for the file, or drag the file into the space provided.
+
+   * **DocuSign** or **Dotloop** - you will see a list of documents you have in the corresponding DocuSign Room or Dotloop Loop. Select the corresponding file.
+
+   * **Custom Folder** - you will see a list of custom folders and documents. Select the corresponding file.
+
+   .. note::
+
+      If you are going to pull documents from Dotloop or DocuSign, you must have that system connected in Command and connected to this Opportunity. After you create a Loop or a Room from this Opportunity, you are locked in to that platform and you cannot switch where you are pulling documents from. For more information, see :ref:`documents-opportunities-command`.
+
+#. Click **Assign**.
+
+After you have added documents, you can click the three dots to the right of a file name to either **Remove** the file or **Print** the document you added.
+
+After you have submitted the checklist, you can no longer remove the document, you can only replace it, which is then logged in the compliance history for this Opportunity.

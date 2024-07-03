@@ -1,0 +1,15 @@
+==================
+Environment sizing
+==================
+
+The number of infrastructure nodes being included into any design is
+determined by sizing. Sizing takes into consideration the amount of
+resources needed for the application, requirements, and use cases. Since
+this is a generic IaaS RPCO solution we include sample sizing for
+example purposes only.
+
+.. toctree::
+   :maxdepth: 2
+
+   example-virtual-machine-sizing.rst
+   example-hardware-sizing.rst

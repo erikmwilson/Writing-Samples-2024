@@ -1,0 +1,18 @@
+================
+Low-level design
+================
+
+The following diagram provides an overview of the logical units the
+private cloud is divided into. This would be duplicated in any
+additional regions.
+
+.. note:: Any networks or names are for example purposes only.
+
+.. image:: ../figures/rpc-o-compute-ceph-swift-hp-dl380.png
+   :alt: Low-level design
+
+Within the OpenStack cloud platform logical segregation can be
+accomplished through a few avenues, such as creating Tenants,
+Availability Zones, Host Aggregates and Regions. In the case of this
+design, Tenants and Regions are used. Host Aggregates and
+Availability zones can be added at anytime.

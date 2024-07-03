@@ -1,0 +1,23 @@
+
+.. _access-tasks-associates-commandmc:
+
+.. note::
+
+   CommandMC is available only to certain KW roles.
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-left corner, click **CommandMC**.
+
+#. On the left toolbar, click **Associates** |associates-icon|.
+
+   .. |associates-icon| image:: ../../../../images/associates-icon.png
+      :height: 30
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the associate name to view the associate details.
+
+#. On the **Associate Details** window, click the **Tasks** tab.

@@ -1,0 +1,17 @@
+
+.. _view-contact-task-details-command:
+
+View Contact Task Details
+=========================
+
+To view contact task details, complete the following steps:
+
+.. include:: tasks-login.rst
+
+#. Click the **Contact Tasks** tab, at the top of the page.
+
+#. From the **Show my task for** drop-down, select the time range.
+
+#. Click the status of tasks to display, **To Do**, **Completed**, **Archived** or **Expired**.
+
+#. Click the task name to view the task details.

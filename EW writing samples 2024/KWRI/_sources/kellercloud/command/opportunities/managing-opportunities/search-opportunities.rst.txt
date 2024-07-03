@@ -1,0 +1,34 @@
+
+.. _search-opportunities-command:
+
+Search Opportunities
+====================
+
+While you are managing your Opportunities in Command, you may need to find a specific Opportunity. Instead of combining through your Phases and Stages to find the Opportunity you are looking for, you can search for the Opportunity.
+
+.. note::
+
+   Search is also the only way to view Opportunities that were closed more than 30 days previously and archived/lost Opportunities.
+
+To search Opportunities, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click **All Opportunities**, at the top of the page. A list displays of all the Opportunities that you own or to which you are assigned.
+
+#. Select how you want to search for the Opportunity using the drop-down beside the search bar. You can search Opportunities based on the following information:
+
+   * Address
+
+   * Opportunity name
+
+   * Assignee
+
+   * Contact
+
+#. Enter the search information for the desired Opportunity. After you locate the Opportunity, click the Opportunity name to view the Opportunity details.

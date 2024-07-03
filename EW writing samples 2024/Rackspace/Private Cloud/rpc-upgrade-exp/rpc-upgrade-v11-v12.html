@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Upgrading from v11 (Kilo) to v12 (Liberty) &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Upgrading from v10 (Juno) to v11 (Kilo)" href="rpc-upgrade-v10-v11.html" />
+    <link rel="prev" title="Upgrade Expectations" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Upgrade Expectations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrading from v11 (Kilo) to v12 (Liberty)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#release-highlights">Release highlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-to-expect-during-the-upgrade-process">What to expect during the upgrade process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-upgrade-v10-v11.html">Upgrading from v10 (Juno) to v11 (Kilo)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Upgrade Expectations</a> &raquo;</li>
+        
+      <li>Upgrading from v11 (Kilo) to v12 (Liberty)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-upgrade-exp/rpc-upgrade-v11-v12.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="upgrading-from-v11-kilo-to-v12-liberty">
+<h1>Upgrading from v11 (Kilo) to v12 (Liberty)<a class="headerlink" href="#upgrading-from-v11-kilo-to-v12-liberty" title="Permalink to this headline">#</a></h1>
+<div class="section" id="release-highlights">
+<h2>Release highlights<a class="headerlink" href="#release-highlights" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li>Over 3500 bugs resolved in this latest release as well as additional
+enhancements to the existing supported feature set of OpenStack
+projects deployed as part of the Rackspace Private Cloud Powered By
+OpenStack (RPCO) solution.</li>
+<li><strong>Enhanced Manageability</strong> – The new version adds role-based access
+control (RBAC) for the Heat orchestration and Neutron networking
+projects. These controls allow customers to fine tune security
+settings at all levels of network and orchestration functions and
+APIs.</li>
+<li><strong>Simplified Scalability</strong> – Users will see improvements in the
+scalability and performance of the Dashboard (horizon), Networking (neutron),
+Block Storage (cinder) services and improvements to the Compute (nova)
+service upgrade.</li>
+<li><strong>Orchestration</strong> – Enhancements to the Heat orchestration project
+adds dozens of new resources for management, automation and
+orchestration of the expanded capabilities in Liberty.</li>
+</ul>
+</div>
+<div class="section" id="what-to-expect-during-the-upgrade-process">
+<h2>What to expect during the upgrade process<a class="headerlink" href="#what-to-expect-during-the-upgrade-process" title="Permalink to this headline">#</a></h2>
+<p>Rackspace recommends a six (6) hour maintenance window. Six hours
+was the average maintenance window time needed to upgrade from Kilo to
+Liberty.</p>
+<p>It is important to understand that maintenance window time is <strong>not</strong>
+the same as down time.</p>
+<p>Internally, Rackspace uses the following <strong>estimates</strong>:</p>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text">Upgrade estimates with OS/Host patching</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Upgrade time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Pre-deployment checks</td>
+<td>0.5 hour</td>
+</tr>
+<tr class="row-odd"><td>OpenStack upgrade</td>
+<td>2.5 hours</td>
+</tr>
+<tr class="row-even"><td>Infra nodes reboot</td>
+<td>1 - 1.5 hours (Reboot one node at a time. Neutron L3 impact expected.)</td>
+</tr>
+<tr class="row-odd"><td>Post-deployment checks</td>
+<td>0.5 - 1 hour</td>
+</tr>
+<tr class="row-even"><td>Nova host reboot</td>
+<td>0.5 hour (Reboot all hosts at the same time. At least 20 minutes per
+batch of hosts is needed.)</td>
+</tr>
+</tbody>
+</table>
+<p>Overall maintenance is expected to complete within a 5.5 - 6.5 hour window with
+no impact to customer instances except Neutron L3 service restarts.</p>
+<table border="1" class="colwidths-given docutils" id="id2">
+<caption><span class="caption-text">Upgrade estimates without OS/Host patching</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Upgrade time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Pre-deployment checks</td>
+<td>0.5 hour</td>
+</tr>
+<tr class="row-odd"><td>OpenStack upgrade</td>
+<td>2.5 hours</td>
+</tr>
+<tr class="row-even"><td>Post-deployment checks</td>
+<td>0.5 - 1 hour</td>
+</tr>
+</tbody>
+</table>
+<p>Overall maintenance is expected to complete within 4 - 4.5 hour window with
+no impact to customer instances except Neutron L3 service restarts.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Upgrading multi-region Object Storage (swift) increases the average
+upgrade time.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When using Networking (neutron) L3 features (Router and Floating IP
+addresses), intermittent instance networking communication to
+external networks or router-attached networks will be impacted due
+to service restarts.</p>
+</div>
+<p>To learn about upgrade support for your cloud, or to take advantage of
+our training offerings, contact us at: <a class="reference external" href="mailto:opencloudinfo&#37;&#52;&#48;rackspace&#46;com">opencloudinfo<span>&#64;</span>rackspace<span>&#46;</span>com</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc-upgrade-v10-v11.html" class="btn btn-neutral float-right" title="Upgrading from v10 (Juno) to v11 (Kilo)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Upgrade Expectations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

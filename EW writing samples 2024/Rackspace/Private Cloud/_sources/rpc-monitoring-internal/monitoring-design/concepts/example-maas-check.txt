@@ -1,0 +1,48 @@
+==================
+Example MaaS check
+==================
+
+Example *check* sent to MaaS agent (``nova\_service\_check.py``):
+
+::
+
+     ...
+     "details": {
+         "args": [
+             "--host",
+             "642143-compute003",
+             "172.29.236.10"
+         ],
+         "file": "nova\_service\_check.py"
+     },
+     "timeout": 30,
+     …
+
+Example *alarm* defined in Rackspace Cloud Monitoring system to
+determine whether to generate alert (``nova\_service\_check.py``):
+
+::
+
+     ...
+     "updated\_at": 1434994439496,
+     "active\_suppressions": [],
+     "label": "nova\_compute\_status--642143-compute003",
+     "disabled": false,
+     "confd\_hash": null,
+     "criteria": ":set consecutiveCount=3 if \
+       (metric[\\"nova-compute\_status\\"] != 1) \
+       { return new AlarmStatus(CRITICAL, \\"nova-compute down\\"); }",
+     ...
+
+Example *output* sent to Rackspace monitoring endpoints
+(``nova\_service\_check.py``):
+
+::
+
+ metric nova-scheduler\_on\_host\_aio1\_nova\_scheduler\_container-e7b92e0f uint32 1
+ metric nova-conductor\_on\_host\_aio1\_nova\_conductor\_container-dcddd54a  uint32 1
+ metric nova-compute\_on\_host\_aio1\_nova\_compute\_container-19824c74  uint32 1
+ ...
+
+The monitoring scripts are open source. You can find more examples
+at https://github.com/rcbops/rpc-maas.

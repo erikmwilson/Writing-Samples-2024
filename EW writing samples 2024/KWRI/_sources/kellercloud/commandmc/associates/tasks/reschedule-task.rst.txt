@@ -1,0 +1,20 @@
+
+.. _reschedule-task-associates-commandmc:
+
+Reschedule Task
+===============
+
+To reschedule a task, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Select either **Checklist Tasks** or **Other Tasks** from the drop-down.
+
+#. Select **To Do** from the drop-down. Only tasks in **To Do** status can be rescheduled.
+
+#. Locate the appropriate task, click the More Options menu (ellipses |menu-options-icon| icon) and select **Reschedule**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Reschedule Task** window, enter a date interval or select a specific date and click **Reschedule**.

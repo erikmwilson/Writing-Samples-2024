@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Prerequisites &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Perform the upgrade" href="rpc-upgrade-v11-v12-perform.html" />
+    <link rel="prev" title="Description" href="rpc-upgrade-v11-v12-description.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Upgrade Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-upgrade.html">Upgrade overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v12-v13.html">Upgrade from v12 to v13</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="upgrade-v11-v12.html">Upgrade from v11 to v12</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v11-v12-swift-multi.html">Object Storage multi-region deployments upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v11-v12-description.html">Description</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Prerequisites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verify-infrastructure-health-before-starting-the-upgrade-process">Verify infrastructure health before starting the upgrade process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-up-the-environment">Back up the environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-maas-setup-playbook-during-the-upgrade">Run the MaaS setup playbook during the upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-the-maas-token">Set the MaaS token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-ssl-certificates-for-dashboard">Configure SSL certificates for Dashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-the-trusty-backports-repository">Enable the trusty-backports repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#truncate-tables">Truncate tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v11-v12-perform.html">Perform the upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-verify.html">Verify the upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v10-v11.html">Upgrade from v10 to v11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-upgrade-v9-v10.html">Upgrade from v9.0.2+ to v10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Upgrade Guide</a> &raquo;</li>
+        
+          <li><a href="upgrade-v11-v12.html">Upgrade from v11 to v12</a> &raquo;</li>
+        
+      <li>Prerequisites</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-upgrade-internal/rpc-upgrade-v11-v12-prereq.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h1>
+<p>This section documents the manual tasks that must be performed before
+beginning an upgrade.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Before upgrading to the current major release, you must first upgrade to
+the latest minor release of the previous major release. For example, to
+upgrade from version 11 to 12, upgrade to the latest 11.x release and
+then upgrade to version 12.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Read the RPCO Release Notes before beginning the upgrade. The
+Release Notes provide late-breaking information about known issues
+and required steps to correct them.</p>
+</div>
+<div class="section" id="verify-infrastructure-health-before-starting-the-upgrade-process">
+<h2>Verify infrastructure health before starting the upgrade process<a class="headerlink" href="#verify-infrastructure-health-before-starting-the-upgrade-process" title="Permalink to this headline">#</a></h2>
+<p>Before attempting an upgrade, verify that all cluster nodes are
+operating normally. Pay particular attention to the Galera cluster.
+The following commands help you check basic Galera operation.</p>
+<ol class="arabic">
+<li><p class="first">Check disk usage:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">#</span> ansible galera_all -m shell -a <span class="s1">&#39;df -h&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Check inode usage:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible galera_all -m shell -a <span class="s1">&#39;df -i&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Check MySQL status:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">mysql&gt; SHOW STATUS LIKE &#39;%wsrep%&#39;;</span>
+</pre></div>
+</div>
+<p>The output shows the detailed the status of the cluster. Run this
+command on all of the Galera nodes. To automate status
+checking on all of the Galera nodes, run the following Ansible
+commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible galera_all -m shell -a <span class="s2">&quot;mysql -e \&quot;show status like \</span>
+<span class="s2">  &#39;wsrep_incoming_addresses&#39;\&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">wsrep_incoming_addresses</span></code> line should show the IP addresses
+of each member of the cluster.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible galera_all -m shell -a <span class="s2">&quot;mysql -e \&quot;show status like \</span>
+<span class="s2"> &#39;wsrep_local_state_comment&#39;\&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">wsrep_local_state_comment</span></code> should show <strong>Synced</strong> status.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible galera_all -m shell -a <span class="s2">&quot;mysql -e \&quot;show status like \</span>
+<span class="s2">  &#39;wsrep_cluster_status&#39;\&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">wsrep_cluster_status</span></code> should show <strong>Primary</strong> for all Galera
+nodes.</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Correct any faults in the cluster nodes before proceeding with an
+upgrade.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="back-up-the-environment">
+<h2>Back up the environment<a class="headerlink" href="#back-up-the-environment" title="Permalink to this headline">#</a></h2>
+<p>The upgrade script backs up the <code class="docutils literal"><span class="pre">/etc/openstack_deploy</span></code> directory.
+However, it is recommended to perform a separate, full backup of the
+environment, including the source repository.</p>
+</div>
+<div class="section" id="run-the-maas-setup-playbook-during-the-upgrade">
+<h2>Run the MaaS setup playbook during the upgrade<a class="headerlink" href="#run-the-maas-setup-playbook-during-the-upgrade" title="Permalink to this headline">#</a></h2>
+<p>To run the MaaS setup playbook during the install, set the <code class="docutils literal"><span class="pre">DEPLOY_MAAS</span></code>
+variable to <code class="docutils literal"><span class="pre">yes</span></code>.</p>
+</div>
+<div class="section" id="set-the-maas-token">
+<h2>Set the MaaS token<a class="headerlink" href="#set-the-maas-token" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Generate a MaaS token using
+<a class="reference external" href="https://pitchfork.eco.rackspace.com/monitoring/">Pitchfork</a> or the
+following example script:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">AUTH_USER=$(read -p &#39;Enter Username: &#39; username; echo $username) \</span>
+<span class="go">AUTH_PASS=$(read -s -p &#39;Enter Password: &#39; password; echo $password) \</span>
+<span class="go">MAAS_TOKEN=$(curl -s -X GET http://si.rackspace.com/auth/Token/AuthDetails \</span>
+<span class="go">-H &quot;x-auth-user: $AUTH_USER&quot; -H &quot;x-auth-password: $AUTH_PASS&quot; \</span>
+<span class="go">| sed &#39;s/&lt;[^&gt;]*&gt;//g&#39;) echo echo $MAAS_TOKEN</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use this value for the <code class="docutils literal"><span class="pre">maas_auth_token</span></code> option in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_variables.yml</span></code> file.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-ssl-certificates-for-dashboard">
+<h2>Configure SSL certificates for Dashboard<a class="headerlink" href="#configure-ssl-certificates-for-dashboard" title="Permalink to this headline">#</a></h2>
+<p>For information about configuring Dashboard SSL, refer to the
+<em>Securing Horizon communication with SSL certificates</em> section
+in the <a class="reference external" href="http://docs.openstack.org/developer/openstack-ansible-os_horizon/configure-horizon.html/">OpenStack-Ansible horizon role documentation</a>.</p>
+<div class="section" id="understand-upgrade-scenarios">
+<h3>Understand upgrade scenarios<a class="headerlink" href="#understand-upgrade-scenarios" title="Permalink to this headline">#</a></h3>
+<p>There are four primary scenarios that affect OpenSSL certificates and
+the actions required:</p>
+<ol class="arabic simple">
+<li>You are using the defaults from v10 with a self-signed certificate
+and want to continue using that certificate.</li>
+<li>You are using your own certificate, key, and so on, but the
+configuration was done manually.</li>
+<li>You are using the defaults but now want to change something about
+them.</li>
+<li>After upgrading RPCO, new security settings might cause older
+browsers to fail to connect to Dashboard.</li>
+</ol>
+</div>
+<div class="section" id="use-the-default-certificates">
+<h3>Use the default certificates<a class="headerlink" href="#use-the-default-certificates" title="Permalink to this headline">#</a></h3>
+<p>You can choose to either rename the old files or update the user
+variables file, but not both.</p>
+<p>To rename the old files:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+<span class="gp">#</span> ansible horizon_all -m shell -a <span class="s1">&#39;mv /etc/ssl/certs/apache.cert \</span>
+<span class="s1">/etc/ssl/private/horizon.pem&#39;</span>
+<span class="gp">#</span> ansible horizon_all -m shell -a <span class="s1">&#39;mv /etc/ssl/private/apache.key \</span>
+<span class="s1">/etc/ssl/private/horizon.key&#39;</span>
+</pre></div>
+</div>
+<p>Alternatively, ensure that <code class="docutils literal"><span class="pre">/etc/rpc_deploy/user_variables.yml</span></code>
+contains:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_cert: /etc/ssl/certs/apache.cert</span>
+<span class="na">horizon_ssl_key: /etc/ssl/private/apache.key</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-your-own-key-and-certificate">
+<h3>Use your own key and certificate<a class="headerlink" href="#use-your-own-key-and-certificate" title="Permalink to this headline">#</a></h3>
+<p>Set the <code class="docutils literal"><span class="pre">horizon_user_ssl_cert</span></code>, <code class="docutils literal"><span class="pre">horizon_user_ssl_key</span></code>, and
+<code class="docutils literal"><span class="pre">horizon_user_ca_cert</span></code> variables in the
+<code class="docutils literal"><span class="pre">/etc/rpc_deploy/user_variables.yml</span></code> file. This overrides any
+self-signed certificates in v11.</p>
+<p>If <code class="docutils literal"><span class="pre">horizon_user_ssl_cert</span></code> or <code class="docutils literal"><span class="pre">horizon_user_ssl_key</span></code> are not
+defined, the missing certificate and key are self generated on the first
+Dashboard container and distributed to other Dashboard containers.</p>
+</div>
+<div class="section" id="regenerate-self-signed-certificates">
+<h3>Regenerate self-signed certificates<a class="headerlink" href="#regenerate-self-signed-certificates" title="Permalink to this headline">#</a></h3>
+<p>There are two scenarios for regenerating self-signed certificates.</p>
+<p>To use the old paths but regenerate the certificates, set the variables
+as above and add the following line to the
+<code class="docutils literal"><span class="pre">/etc/rpc_deploy/user_variables.yml</span></code> file:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_self_signed_regen: true</span>
+</pre></div>
+</div>
+<p>Optionally, change the subject of the certificate as appropriate for
+your environment:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_self_signed_subject: &quot;...&quot;</span>
+</pre></div>
+</div>
+<p>No action is required to use the new default certificate location. The
+old <code class="docutils literal"><span class="pre">apache.cert</span></code> and <code class="docutils literal"><span class="pre">apache.key</span></code> files are left and new keys,
+certificates, and so on are placed in the new default location. These
+are regenerated since the files don&#8217;t yet exist in the new location.</p>
+</div>
+<div class="section" id="fix-connection-issues-with-old-browsers">
+<h3>Fix connection issues with old browsers<a class="headerlink" href="#fix-connection-issues-with-old-browsers" title="Permalink to this headline">#</a></h3>
+<p>Two of the <a class="reference external" href="https://github.com/openstack/openstack-ansible/blob/c110786e1f13c1f1758d280f6e69d4bcec5d7cc6/playbooks/roles/os_horizon/defaults/main.yml#L66..L75">new variables</a>
+affect customers using old browsers such as Internet Explorer 6:
+<code class="docutils literal"><span class="pre">horizon_ssl_protocol</span></code> and <code class="docutils literal"><span class="pre">horizon_ssl_cipher_suite</span></code>.</p>
+<p>By default, both RPCO v10 and v11 disable unsafe SSLv2 and SSLv3
+protocols for Dashboard. Therefore, no modification is necessary.
+However, cipher suites differ. The cipher suite <a class="reference external" href="https://github.com/openstack/openstack-ansible/blob/ff9209b47c6d93dad717b99b399d3b201bfdd07c/rpc_deployment/roles/horizon_apache/templates/openstack-dashboard.conf#L23">currently is set for Dashboard</a>
+in v10 is:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256</span>
+<span class="na">EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL</span>
+<span class="na">!eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4</span>
+</pre></div>
+</div>
+<p>For v11 the settings are:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:</span>
+<span class="na">DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS</span>
+</pre></div>
+</div>
+<p>Since the v11 cipher list provides better transport security, it is not
+advisable to change the list to the old default. If users are unable to
+connect, check to see if changing the cipher list temporarily to a less
+secure setting enables connecting. To permanently change the cipher
+list, edit <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_variables.yml</span></code> after upgrade
+and run the <code class="docutils literal"><span class="pre">os-horizon.yml</span></code> playbook from the
+<code class="docutils literal"><span class="pre">/opt/rpc-openstack/openstack-ansible/playbooks</span></code> directory.</p>
+</div>
+</div>
+<div class="section" id="enable-the-trusty-backports-repository">
+<h2>Enable the trusty-backports repository<a class="headerlink" href="#enable-the-trusty-backports-repository" title="Permalink to this headline">#</a></h2>
+<p>The trusty-backports repository is required to install or upgrade Object
+Storage. Add repository details in <code class="docutils literal"><span class="pre">/etc/apt/sources.list</span></code>, and update
+the package list:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">#</span> ansible hosts -m lineinfile -a <span class="s1">&#39;dest=/etc/apt/sources.list regexp=&quot;^deb \</span>
+<span class="s1">  http.*trusty-backports.*&quot; line=&quot;deb http://mirror.rackspace.com/ubuntu \</span>
+<span class="s1">  trusty-backports main restricted universe multiverse&quot; state=present&#39;</span>
+<span class="gp">#</span> ansible hosts -m <span class="nb">command</span> -a <span class="s2">&quot;apt-get update&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The above assumes the <code class="docutils literal"><span class="pre">/etc/apt/sources.list</span></code> is using
+<a class="reference external" href="http://mirror.rackspace.com/ubuntu">http://mirror.rackspace.com/ubuntu</a> for <code class="docutils literal"><span class="pre">trusty</span></code>, <code class="docutils literal"><span class="pre">trusty-updates</span></code>
+distributions. Check to see which mirror is being used, and if
+necessary, update the above command by placing
+<a class="reference external" href="http://mirror.rackspace.com/ubuntu">http://mirror.rackspace.com/ubuntu</a> with the appropriate mirror.</p>
+</div>
+</div>
+<div class="section" id="truncate-tables">
+<h2>Truncate tables<a class="headerlink" href="#truncate-tables" title="Permalink to this headline">#</a></h2>
+<p>If the <code class="docutils literal"><span class="pre">dash.django_sessions</span></code> and <code class="docutils literal"><span class="pre">keystone.token</span></code> tables
+are very large, the database will lock and API calls will fail for up to
+30 minutes. Run the following commands to truncate these tables.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Before truncating the tables, connect to a Galera container.</p>
+</div>
+</div></blockquote>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> mysql -e <span class="s1">&#39;TRUNCATE TABLE dash.django_session;&#39;</span>
+<span class="gp">#</span> mysql -e <span class="s1">&#39;TRUNCATE TABLE keystone.token;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc-upgrade-v11-v12-perform.html" class="btn btn-neutral float-right" title="Perform the upgrade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rpc-upgrade-v11-v12-description.html" class="btn btn-neutral float-left" title="Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

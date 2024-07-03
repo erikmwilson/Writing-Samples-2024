@@ -1,0 +1,61 @@
+
+.. _overview-details-contacts-command:
+
+Contacts Details Overview
+=========================
+
+To view a contact's details, click on a name from the Contact list. The contact details contains the contact information and the following tabs:
+
+* **Timeline**
+
+ This tab displays all the activity of the contact. These activities are also tracked through the Goals Report, in the Command Reports application. You can sort the Timeline by a date range or by the type of activity.
+
+ From this tab, you click **View Calendar** to view your Google calendar or click **Add activity** to add an activity. For more information, see :ref:`add-activity-contacts-command`.
+
+* **Opportunities**
+
+ This tab displays all the Opportunities for this contacts. You can sort Opportunities by most/least recent and the type of opportunity.
+
+ From this tab, you can :ref:`opportunity-contacts-command`.
+
+* **SmartPlans**
+
+ This tab displays all of the SmartPlans to which this contact has been added. You can sort SmartPlans by Date Added or Date Executed.
+
+ From this tab, you can :ref:`add-smartplans-contacts-command`.
+
+* **Tasks**
+
+ This tab displays tasks related to this contact. You can sort tasks by Current Tasks, Completed Tasks, or Archived Tasks.
+
+ From this tab, you can :ref:`add-task-contacts-command`.
+
+* **Notes**
+
+ This tab displays note related to this contact. You can sort tasks by Most Recent or Least Recent.
+
+ From this tab, you can :ref:`add-note-contacts-command`.
+
+* **Saved Searches**
+
+ This tab displays the Saved Search created for this contact.
+
+ From this tab, you can :ref:`saved-search-contacts-command`.
+
+You can also complete the following tasks from the contact details:
+
+* :ref:`add-smartplans-contacts-command`
+
+* :ref:`edit-contacts-command`
+
+* :ref:`archive-contacts-command`
+
+* :ref:`mark-unmark-lead-contacts-command`
+
+* :ref:`neighborhood-contacts-command`
+
+* :ref:`add-activity-contacts-command`
+
+* :ref:`add-note-contacts-command`
+
+* :ref:`add-calendar-event-contacts-command`

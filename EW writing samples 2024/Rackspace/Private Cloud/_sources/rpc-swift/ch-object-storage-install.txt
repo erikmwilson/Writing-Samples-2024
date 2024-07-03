@@ -1,0 +1,23 @@
+
+=========================================
+Install Object Storage
+=========================================
+
+The following diagram shows the general workflow for a Object
+Storage for RPCO installation.
+
+.. figure:: ../figures/swift-install-workflow-standalone.png
+   :alt: **Installation workflow**
+
+See the following topics for detailed installation steps as well as example
+architecture and prerequisite information:
+
+.. toctree::
+   :maxdepth: 2
+
+   ch_object-storage-example-install-arch.rst
+   ch-object-storage-storage-devices.rst
+   ch-object-storage-network-planning.rst
+   ch-object-storage-configure.rst
+   ch-object-storage-playbook.rst
+   ch-object-storage-verifying-install.rst

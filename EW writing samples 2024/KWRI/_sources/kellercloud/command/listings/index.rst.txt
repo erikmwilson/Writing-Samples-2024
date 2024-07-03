@@ -1,0 +1,11 @@
+
+.. _listings-command-index:
+
+Listings
+========
+
+The following sections contain information about the
+Listings application.
+
+.. toctree::
+   :maxdepth: 1

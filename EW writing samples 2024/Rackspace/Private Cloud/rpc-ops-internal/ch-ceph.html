@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RPC Ceph operations &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Managing Object Storage for multiple regions" href="ch-swift.html" />
+    <link rel="prev" title="Galera cluster recovery" href="galera/sec-ops-galera-recovery.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operations Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-verify.html">Verifying cloud deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-access.html">Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-instances.html">Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-compute.html">Compute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-galera.html">Managing Galera clusters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RPC Ceph operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#increase-a-pool-s-pg-num-value">Increase a pool&#8217;s <cite>pg_num</cite> value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-storage-servers-to-a-ceph-cluster">Adding new storage servers to a Ceph cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#replace-a-failed-drive-in-a-ceph-cluster">Replace a failed drive in a Ceph cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raw-linux-images">RAW Linux images</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-swift.html">Managing Object Storage for multiple regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-containers.html">Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load-Balancer-as-a-Service (LBaaS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-backups.html">Backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Operations Guide</a> &raquo;</li>
+        
+      <li>RPC Ceph operations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ops-internal/ch-ceph.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rpc-ceph-operations">
+<h1>RPC Ceph operations<a class="headerlink" href="#rpc-ceph-operations" title="Permalink to this headline">#</a></h1>
+<div class="section" id="increase-a-pool-s-pg-num-value">
+<h2>Increase a pool&#8217;s <cite>pg_num</cite> value<a class="headerlink" href="#increase-a-pool-s-pg-num-value" title="Permalink to this headline">#</a></h2>
+<p>After a successful deployment, Ceph clusters usually require the increase of
+a pool&#8217;s <code class="docutils literal"><span class="pre">pg_num</span></code> value.</p>
+<p>The deployment sets a value of 128 for <code class="docutils literal"><span class="pre">pg_num</span></code>, which is the recommended value
+for a cluster with fewer than 5 OSDs. Because the number of OSDs varies from
+cluster to cluster, no default is suitable for
+all deployments. We recommend that you review the official <a class="reference external" href="http://docs.ceph.com/docs/master/rados/operations/placement-groups/">Ceph Placement
+Groups</a>
+documentation to for the following information:</p>
+<ol class="loweralpha simple">
+<li>How to calculate an optimal <code class="docutils literal"><span class="pre">pg_num</span></code> for a given pool and</li>
+<li>How to update each pool with its recommended <code class="docutils literal"><span class="pre">pg_num</span></code> value.</li>
+</ol>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Setting an incorrect <code class="docutils literal"><span class="pre">pg_num</span></code> value (either too low or too high) has a
+significant effect on how the cluster operates. Because the <code class="docutils literal"><span class="pre">pg_num</span></code>
+value for a given pool can never be decreased, we recommend that you
+increase this value conservatively.</p>
+</div>
+</div>
+<div class="section" id="adding-new-storage-servers-to-a-ceph-cluster">
+<h2>Adding new storage servers to a Ceph cluster<a class="headerlink" href="#adding-new-storage-servers-to-a-ceph-cluster" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Use unformatted drives with no file system. Otherwise, run the
+<code class="docutils literal"><span class="pre">ceph-disk</span> <span class="pre">zap</span> <span class="pre">/dev/sdb</span></code> command on the host, replacing <code class="docutils literal"><span class="pre">sdb</span></code> the
+correct device name. This command wipes the disk.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Drives should not be mounted, formatted, or prepared (the plays do this).</p>
+</div>
+</li>
+<li><p class="first">To bootstrap a new Ceph storage server, edit the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/ceph.yml</span></code> file to include the new
+devices. Define <code class="docutils literal"><span class="pre">container_vars</span></code> with the correct devices, and</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">$</span> openstack-ansible setup-hosts.yml --limit NEWHOST
+<span class="gp">$</span> <span class="nb">cd</span> ../../rpcd/playbooks
+<span class="gp">$</span> openstack-ansible ceph-osd.yml
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Do not pass <code class="docutils literal"><span class="pre">--limit</span></code> to openstack-ansible <code class="docutils literal"><span class="pre">ceph-osd.yml</span></code> because
+the <code class="docutils literal"><span class="pre">ceph-osd</span></code> role requires access to all MON containers to properly
+build the <code class="docutils literal"><span class="pre">ceph.conf</span></code> configuration.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="replace-a-failed-drive-in-a-ceph-cluster">
+<h2>Replace a failed drive in a Ceph cluster<a class="headerlink" href="#replace-a-failed-drive-in-a-ceph-cluster" title="Permalink to this headline">#</a></h2>
+<p>As drives fail, Ceph balances data onto other drives in the
+cluster. Isolated drive failures should not cause problems, because a
+failed drive by default removes itself from the cluster. However, we recommend
+that you replace failed drives promptly to maintain
+capacity across the cluster. Follow these steps to manually replace a
+disk. In this example, the failed drive to replace is <code class="docutils literal"><span class="pre">osd.0</span></code>.</p>
+<ol class="arabic">
+<li><p class="first">To determine the host that contains the <code class="docutils literal"><span class="pre">osd.0</span></code> drive, run the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ceph osd tree
+<span class="go">ID WEIGHT  TYPE NAME                         UP/DOWN REWEIGHT PRIMARY-AFFINITY</span>
+<span class="go">-1 8.24982 root default</span>
+<span class="go">-2 2.74994     host storage02</span>
+<span class="go"> 1 0.54999         osd.1                          up  1.00000          1.00000</span>
+<span class="go"> 3 0.54999         osd.3                          up  1.00000          1.00000</span>
+<span class="go"> 7 0.54999         osd.7                          up  1.00000          1.00000</span>
+<span class="go"> 9 0.54999         osd.9                          up  1.00000          1.00000</span>
+<span class="go">13 0.54999         osd.13                         up  1.00000          1.00000</span>
+<span class="go">-3 2.74994     host storage01</span>
+<span class="go"> 4 0.54999         osd.4                          up  1.00000          1.00000</span>
+<span class="go"> 6 0.54999         osd.6                          up  1.00000          1.00000</span>
+<span class="go">10 0.54999         osd.10                         up  1.00000          1.00000</span>
+<span class="go">12 0.54999         osd.12                         up  1.00000          1.00000</span>
+<span class="go"> 0 0.54999         osd.0                          up  1.00000          1.00000</span>
+<span class="go">-4 2.74994     host storage03</span>
+<span class="go"> 2 0.54999         osd.2                          up  1.00000          1.00000</span>
+<span class="go"> 5 0.54999         osd.5                          up  1.00000          1.00000</span>
+<span class="go"> 8 0.54999         osd.8                          up  1.00000          1.00000</span>
+<span class="go">11 0.54999         osd.11                         up  1.00000          1.00000</span>
+<span class="go">14 0.54999         osd.14                         up  1.00000          1.00000</span>
+</pre></div>
+</div>
+<p>Because <code class="docutils literal"><span class="pre">osd.0</span></code> is on <code class="docutils literal"><span class="pre">storage01</span></code>, log in to that host to complete the
+following steps.</p>
+</li>
+<li><p class="first">In a MON container, mark the OSD as out:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ceph osd out <span class="m">0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On the storage node that hosts <code class="docutils literal"><span class="pre">osd.0</span></code>, perform the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Note the journal associated with the OSD. The journal device for an OSD
+exists as a symlink with the OSD&#8217;s directory in /var/lib/ceph/osd/.
+To find the journal partition for an OSD, use the readlink command
+on the journal device.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> readlink -e /var/lib/ceph/osd/ceph-0/journal
+<span class="go">/dev/sdd1</span>
+<span class="gp">#</span> stop ceph-osd <span class="nv">id</span><span class="o">=</span><span class="m">0</span>
+<span class="go">ceph-osd stop/waiting</span>
+<span class="gp">#</span> umount /var/lib/ceph/osd/ceph-0
+</pre></div>
+</div>
+<p>The journal in this example is <code class="docutils literal"><span class="pre">/dev/sdd1</span></code>.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Log back in to the MON container and remove the OSD from the CRUSH map,
+remove the OSD&#8217;s key, and then remove the OSD from the cluster:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ceph osd crush remove osd.0
+<span class="gp">#</span> ceph auth del osd.0
+<span class="gp">#</span> ceph osd rm <span class="m">0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">To remove the drives and servers permanently, remove them from
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/ceph.yml</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To remove a full server from your Ansible inventory, run
+<code class="docutils literal"><span class="pre">/opt/rpc-openstack/openstack-ansible/scripts/inventory-manage.py</span>
+<span class="pre">-r</span></code>.</p>
+</div>
+</li>
+<li><p class="first">After the disk is physically replaced, log in to the storage node
+for the disk and prepare the disk for redeployment:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ceph-disk zap /dev/sdg
+<span class="go">Caution: invalid backup GPT header, but valid main header; regenerating</span>
+<span class="go">backup header from main header.</span>
+
+<span class="go">Warning! Main and backup partition tables differ! Use the &#39;c&#39; and &#39;e&#39;</span>
+<span class="go">options on the recovery and transformation menu to examine the two</span>
+<span class="go">tables.</span>
+
+<span class="go">Warning! One or more CRCs don&#39;t match. You should repair the disk!</span>
+
+<span class="go">*************************************************************************</span>
+<span class="go">Caution: Found protective or hybrid MBR and corrupt GPT. Using GPT, but</span>
+<span class="go">disk verification and recovery are STRONGLY recommended.</span>
+<span class="go">*************************************************************************</span>
+<span class="go">GPT data structures destroyed! You may now partition the disk using fdisk</span>
+<span class="go">or other utilities.</span>
+<span class="go">Creating new GPT entries.</span>
+<span class="go">The operation has completed successfully.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">While still logged in to the disk&#8217;s storage node, remove the journal
+partition from the disk. In this example, <code class="docutils literal"><span class="pre">osd.0</span></code> is using
+<code class="docutils literal"><span class="pre">/dev/sdd1</span></code>. Replace the arguments <code class="docutils literal"><span class="pre">&quot;/dev/sdd&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;-d</span> <span class="pre">1&quot;</span></code>
+with the correct drive and partition for the environment.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> sgdisk -d <span class="m">1</span> /dev/sdd
+<span class="go">Warning: The kernel is still using the old partition table.</span>
+<span class="go">The new table will be used at the next reboot.</span>
+<span class="go">The operation has completed successfully.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">On the deployment node, re-deploy the new OSD:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks
+<span class="gp">#</span> openstack-ansible ceph-osd.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">Verify that all OSDs are in and up and that the cluster is in a
+<code class="docutils literal"><span class="pre">HEALTH_OK</span></code> status:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ceph osd stat
+<span class="go">osdmap e536: 9 osds: 9 up, 9 in</span>
+<span class="gp">#</span> ceph health
+<span class="go">HEALTH_OK</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="raw-linux-images">
+<h2>RAW Linux images<a class="headerlink" href="#raw-linux-images" title="Permalink to this headline">#</a></h2>
+<p>The <a class="reference external" href="http://ceph.com/docs/master/rbd/rbd-openstack/">Ceph RBD OpenStack documentation</a> states that Ceph does not
+support QCOW2 for hosting a virtual machine disk. However, QCOW2 image must be
+converted to the RAW format. .</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">With QCOW2 images, Ceph cannot clone copy on write images when
+booting instances with RBD-backed disks. The benefits of using copy on write
+cloning are outlined in <a class="reference external" href="http://specs.openstack.org/openstack/nova-specs/specs/juno/implemented/rbd-clone-image-handler.html">Storage: Copy-on-write cloning for RBD-backed disks</a>.</p>
+</div>
+<p>To convert an Ubuntu Trusty QCOW2 image to the RAW format, follow this
+procedure in a utility or similar container.</p>
+<ol class="arabic">
+<li><p class="first">Run the following commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> apt-get -y install qemu-utils
+<span class="gp">#</span> wget https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img
+<span class="gp">#</span> file xenial-server-cloudimg-amd64-disk1.img
+<span class="go">xenial-server-cloudimg-amd64-disk1.img: QEMU QCOW Image (v2), 2361393152 bytes</span>
+<span class="gp">#</span> qemu-img convert -f qcow2 -O raw xenial-server-cloudimg-amd64-disk1.img xenial-server-cloudimg-amd64-disk1.raw
+<span class="gp">#</span> file xenial-server-cloudimg-amd64-disk1.raw
+<span class="go">xenial-server-cloudimg-amd64-disk1.raw: x86 boot sector</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Upload the RAW image to the Image service (glance):</p>
+</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">source</span> /root/openrc
+<span class="gp">#</span> glance image-create --name trusty --container-format bare --disk-format raw
+<span class="go">--file xenial-server-cloudimg-amd64-disk1.raw</span>
+</pre></div>
+</div>
+<p>When you boot an instance from the Ubuntu image, Ceph snapshots and
+clones the image for use by the VM. The Ceph documentation recommends
+setting a number of image properties on the glance image to make
+optimal use of Ceph as a back end.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-swift.html" class="btn btn-neutral float-right" title="Managing Object Storage for multiple regions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="galera/sec-ops-galera-recovery.html" class="btn btn-neutral float-left" title="Galera cluster recovery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

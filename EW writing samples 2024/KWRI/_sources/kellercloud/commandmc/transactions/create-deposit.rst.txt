@@ -1,0 +1,21 @@
+
+.. _create-deposit-transactions-commandmc:
+
+Create a Deposit
+================
+
+After closing a transaction, the Market Center must then distribute the funds to the recipients (check or ACH) and deposit the commissions checks from the closing entity.
+
+To create a deposit, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Deposit** tab at the top of the page.
+
+#. On the **Create Deposit** tab, select one or more transactions in **Outstanding Transactions** section.
+
+#. Click **Create Deposit**.
+
+   .. note::
+
+      To preview the deposit in PDF format, click **Preview Deposit**.

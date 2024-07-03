@@ -1,0 +1,28 @@
+
+.. _manage-luxury-min-units-commandmc:
+
+Adjust Minimum Units Required for Luxury Eligibility (Market Center Leadership)
+===============================================================================
+
+Using CommandMC, Market Center Leadership (this includes the MCA, AMCA, Operating Principal, Team Leader, and Assistant Team Leader roles) have the ability to adjust the minimum amount of units sold (in the last 24 months) required for an agent to become a Luxury agent. This number sets the limit for the entire Market Center. It is recommended to make this adjustment only once a year, to keep consistency throughout the twelve months.
+
+To adjust the minimum transactions required for luxury eligibility in your Market Center, complete the following steps:
+
+.. include:: directory-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click the **Offices** tab.
+
+#. From the **Office** column, click your office name.
+
+#. On the **Luxury** tab, click the **Edit** icon |edit-icon| next to the **Luxury Information** section of your Market Center.
+
+   .. |edit-icon| image:: ../../../images/edit-icon.png
+      :height: 30
+
+#. On the **Edit Required Units** window, enter the new **Required Units** amount and click **Save**.
+
+   The changes take effect immediately.

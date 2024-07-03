@@ -1,0 +1,22 @@
+.. _ticketing-event-feed:
+
+====================
+Ticketing event feed
+====================
+
+.. image:: ../../figures/ticketing-feed.png
+
+All events, whether sourced from Rackspace APIs, portals, monitoring or
+Support Rackers, are published to the Ticketing feed. This ensures that
+you and your team are kept up-to-date with your support requests and
+infrastructure.
+
+The Ticketing event feed is provided by Rackspace's Cloud Feeds service.
+Cloud Feeds is a service that accepts event notifications from Rackspace
+products and services, validates them, and makes them available to internal
+and external users in a reliable, secure, and standardized way.
+
+.. toctree::
+    :maxdepth: 2
+
+    integrating.rst

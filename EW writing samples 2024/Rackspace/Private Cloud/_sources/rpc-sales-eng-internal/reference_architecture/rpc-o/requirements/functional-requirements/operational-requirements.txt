@@ -1,0 +1,19 @@
+========================
+Operational requirements
+========================
+
+Operational Requirements define the parameters to keep the product or
+process functioning over a period of time.
+
+.. list-table:: **Operational requirements**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - OR9.0
+     - The system shall provide operational readiness including:
+   * - OR9.0.1
+     - The system shall require dedicated resource to operate the
+       cloud design, as well as subsequent dependent network
+       infrastructure.

@@ -1,0 +1,30 @@
+
+.. _archive-recruits-cmc:
+
+Archive a Recruit
+=================
+
+Archiving a recruit removes the recruit from your recruiting pipeline and the MC database.
+
+To archive an recruit, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab, at the top of the page. A list displays of all your Market Center recruits.
+
+#. Search for the correct recruit. For more information, see :ref:`search-recruits-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that recruit and select **Remove from Pipeline**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Remove from Pipeline** window, select the option that best describes why you are removing this recruit:
+
+   * **Fall out**: This recruit is returned to the recruiting database for further engagement.
+
+   * **Archive**: This recruit is removed from your recruiting pipeline and the MC database.
+
+#. Enter a removal comment in **Why are you removing this recruit?**
+
+#. Click **Save**.

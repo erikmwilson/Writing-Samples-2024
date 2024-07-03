@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Galera cluster maintenance &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Galera cluster recovery" href="sec-ops-galera-recovery.html" />
+    <link rel="prev" title="Managing Galera clusters" href="../ch-galera.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Operations Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-verify.html">Verifying cloud deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-access.html">Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-instances.html">Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-compute.html">Compute</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-galera.html">Managing Galera clusters</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Galera cluster maintenance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#removing-nodes">Removing nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starting-a-cluster">Starting a cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sec-ops-galera-recovery.html">Galera cluster recovery</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ceph.html">RPC Ceph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-swift.html">Managing Object Storage for multiple regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-containers.html">Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load-Balancer-as-a-Service (LBaaS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-backups.html">Backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Operations Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-galera.html">Managing Galera clusters</a> &raquo;</li>
+        
+      <li>Galera cluster maintenance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-ops-internal/galera/sec-ops-galera-maintenance.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="galera-cluster-maintenance">
+<h1>Galera cluster maintenance<a class="headerlink" href="#galera-cluster-maintenance" title="Permalink to this headline">#</a></h1>
+<p>Routine maintenance includes gracefully adding or removing nodes from
+the cluster without impacting operation and also starting a cluster
+after gracefully shutting down all nodes.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">MySQL instances are restarted when creating a cluster, adding a node,
+the service isn&#8217;t running, or when changes are made to the
+<code class="docutils literal"><span class="pre">etc/mysql/my.cnf</span></code> configuration file.</p>
+</div>
+</div></blockquote>
+<div class="section" id="removing-nodes">
+<h2>Removing nodes<a class="headerlink" href="#removing-nodes" title="Permalink to this headline">#</a></h2>
+<p>In the following example, all but one node was shut down gracefully:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/playbooks
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible galera_container -m shell -a <span class="s2">&quot;mysql -h localhost \</span>
+<span class="s2"> -e &#39;show status like \&quot;%wsrep_cluster_%\&quot;;&#39;&quot;</span>
+<span class="go">node3_galera_container-3ea2cbd3 | FAILED | rc=1 &gt;&gt;</span>
+<span class="go">ERROR 2002 (HY000): Can&#39;t connect to local MySQL server</span>
+<span class="go">through socket &#39;/var/run/mysqld/mysqld.sock&#39; (2)</span>
+
+<span class="go">node2_galera_container-49a47d25 | FAILED | rc=1 &gt;&gt;</span>
+<span class="go">ERROR 2002 (HY000): Can&#39;t connect to local MySQL server</span>
+<span class="go">through socket &#39;/var/run/mysqld/mysqld.sock&#39; (2)</span>
+
+<span class="go">node4_galera_container-76275635 | success | rc=0 &gt;&gt;</span>
+<span class="go">Variable_name             Value</span>
+<span class="go">wsrep_cluster_conf_id     7</span>
+<span class="go">wsrep_cluster_size        1</span>
+<span class="go">wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="go">wsrep_cluster_status      Primary</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Compare this example output with the output from the multi-node failure
+scenario where the remaining operational node is non-primary and stops
+processing SQL requests. Gracefully shutting down the MariaDB service on
+all but one node allows the remaining operational node to continue
+processing SQL requests. When gracefully shutting down multiple nodes,
+perform the actions sequentially to retain operation.</p>
+</div>
+<div class="section" id="starting-a-cluster">
+<h2>Starting a cluster<a class="headerlink" href="#starting-a-cluster" title="Permalink to this headline">#</a></h2>
+<p>Gracefully shutting down all nodes destroys the cluster. Starting or
+restarting a cluster from zero nodes requires creating a new cluster on
+one of the nodes.</p>
+<ol class="arabic">
+<li><p class="first">The new cluster should be started on the most advanced node. Run the
+following command to check the <code class="docutils literal"><span class="pre">seqno</span></code> value in the
+<code class="docutils literal"><span class="pre">grastate.dat</span></code> file on all of the nodes:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/playbooks
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible galera_container -m shell -a <span class="s2">&quot;cat /var/lib/mysql/grastate.dat&quot;</span>
+<span class="go">node2_galera_container-49a47d25 | success | rc=0 &gt;&gt;</span>
+<span class="gp">#</span> GALERA saved state version: <span class="m">2</span>.1
+<span class="go">uuid:    338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="go">seqno:   31</span>
+<span class="go">cert_index:</span>
+
+<span class="go">node3_galera_container-3ea2cbd3 | success | rc=0 &gt;&gt;</span>
+<span class="gp">#</span> GALERA saved state version: <span class="m">2</span>.1
+<span class="go">uuid:    338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="go">seqno:   31</span>
+<span class="go">cert_index:</span>
+
+<span class="go">node4_galera_container-76275635 | success | rc=0 &gt;&gt;</span>
+<span class="gp">#</span> GALERA saved state version: <span class="m">2</span>.1
+<span class="go">uuid:    338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="go">seqno:   31</span>
+<span class="go">cert_index:</span>
+</pre></div>
+</div>
+<p>In this example, all nodes in the cluster contain the same positive
+<code class="docutils literal"><span class="pre">seqno</span></code> values because they were synchronized just prior to
+graceful shutdown. If all <code class="docutils literal"><span class="pre">seqno</span></code> values are equal, any node can
+start the new cluster.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> /etc/init.d/mysql start --wsrep-new-cluster
+</pre></div>
+</div>
+<p>This command results in a cluster containing a single node. The
+<code class="docutils literal"><span class="pre">wsrep_cluster_size</span></code> value shows the number of nodes in the
+cluster.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">node2_galera_container-49a47d25 | FAILED | rc</span><span class="o">=</span><span class="s">1 &gt;&gt;</span>
+<span class="na">ERROR 2002 (HY000): Can&#39;t connect to local MySQL server</span>
+<span class="na">through socket &#39;/var/run/mysqld/mysqld.sock&#39; (111)</span>
+
+<span class="na">node3_galera_container-3ea2cbd3 | FAILED | rc</span><span class="o">=</span><span class="s">1 &gt;&gt;</span>
+<span class="na">ERROR 2002 (HY000): Can&#39;t connect to local MySQL server</span>
+<span class="na">through socket &#39;/var/run/mysqld/mysqld.sock&#39; (2)</span>
+
+<span class="na">node4_galera_container-76275635 | success | rc</span><span class="o">=</span><span class="s">0 &gt;&gt;</span>
+<span class="na">Variable_name             Value</span>
+<span class="na">wsrep_cluster_conf_id     1</span>
+<span class="na">wsrep_cluster_size        1</span>
+<span class="na">wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="na">wsrep_cluster_status      Primary</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart MariaDB on the other nodes and verify that they rejoin the
+cluster.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">node2_galera_container-49a47d25 | success | rc</span><span class="o">=</span><span class="s">0 &gt;&gt;</span>
+<span class="na">Variable_name             Value</span>
+<span class="na">wsrep_cluster_conf_id     3</span>
+<span class="na">wsrep_cluster_size        3</span>
+<span class="na">wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="na">wsrep_cluster_status      Primary</span>
+
+<span class="na">node3_galera_container-3ea2cbd3 | success | rc</span><span class="o">=</span><span class="s">0 &gt;&gt;</span>
+<span class="na">Variable_name             Value</span>
+<span class="na">wsrep_cluster_conf_id     3</span>
+<span class="na">wsrep_cluster_size        3</span>
+<span class="na">wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="na">wsrep_cluster_status      Primary</span>
+
+<span class="na">node4_galera_container-76275635 | success | rc</span><span class="o">=</span><span class="s">0 &gt;&gt;</span>
+<span class="na">Variable_name             Value</span>
+<span class="na">wsrep_cluster_conf_id     3</span>
+<span class="na">wsrep_cluster_size        3</span>
+<span class="na">wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1</span>
+<span class="na">wsrep_cluster_status      Primary</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sec-ops-galera-recovery.html" class="btn btn-neutral float-right" title="Galera cluster recovery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ch-galera.html" class="btn btn-neutral float-left" title="Managing Galera clusters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

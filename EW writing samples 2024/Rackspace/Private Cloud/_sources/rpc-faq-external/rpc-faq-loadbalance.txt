@@ -1,0 +1,53 @@
+==============
+Load balancing
+==============
+
+Get answers to common technical questions about failover and high
+availability for Rackspace Private Cloud Powered By OpenStack (RPCO) |release|.
+
+**Do the services need to be modified to enable load balancing in
+one-arm mode?**
+
+No.
+
+**What load balancing options can Rackspace provide in a customer
+data center?**
+
+RPCO supports two models for load balancing in a customer data center:
+
+  - Unmanaged Load Balancers (a.k.a customer managed)
+
+  - Managed Load Balancers
+
+    - Support for hardware based HAProxy
+
+    - Support for hardware based F5 BigIP
+
+**What is the load balancer configuration for the reference
+architecture?**
+
+The load balancers should be a high availability (HA) pair, so
+that at least two load balancers are available to balance the traffic
+across the infrastructure.
+
+**Can the same load balancer be used for service and VM traffic?**
+
+This depends on the devices being used. If the HAProxy option is employed,
+those devices cannot be used to balance Data Plane traffic (they are
+restricted to Control Plane only). If the F5 BigIP devies are being utilized,
+those devices can be used to balance Data Plane traffic. The only limitation is
+the capacity of the physical devices.
+
+**What services should be load balanced?**
+
+All services should be load balanced, even if the service is
+running on a single container. This ensures that the traffic is managed
+by the load balancer and that failovers are graceful.
+
+**What if customers require API access to the load balancer to
+manage floating IP addresses and VIP pools?**
+
+RPCO does not provide customer API access to any Control Plane load balancers.
+RPCO also does not support customer API access to the F5 Local Traffic Manager
+(LTM). A separate customer-managed LTM must be configured to handle VM (Data
+Plane) Load Balancing.

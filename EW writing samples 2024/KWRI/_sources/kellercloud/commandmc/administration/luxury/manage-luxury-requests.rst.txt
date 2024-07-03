@@ -1,0 +1,25 @@
+
+.. _admin-manage-luxury-exceptions-commandmc:
+
+Manage Luxury Program Exception Requests (Regional Leadership)
+==============================================================
+
+Using CommandMC, Regional leaders (this includes the Regional Operating Principal, Regional Director, Regional MCA, Regional Operations Manager, Regional Staff, Regional Director Assistant, Regional MCA Assistant, and Area Director roles) are able to approve or deny requests from Market Center leadership of eligible agents and qualifying properties to be accepted into the Luxury Program. It is recommended that you check the Luxury portal at least once a week to process incoming requests from Market Center leadership.
+
+To manage Luxury program exception requests for your region, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles, click your name, at the top-right of the page, and make sure the Regional profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Luxury**.
+
+#. Click the **Luxury Requests** button. The number of pending exception requests are displayed in a red circle.
+
+#. Click **Decline** or **Approve** for each request.
+
+   After they are approved, the agent remains in the Luxury program for the next two years.

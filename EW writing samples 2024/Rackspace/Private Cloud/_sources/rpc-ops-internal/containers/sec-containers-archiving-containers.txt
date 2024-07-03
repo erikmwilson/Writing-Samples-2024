@@ -1,0 +1,22 @@
+=======================
+ Archiving a container
+=======================
+
+If a container experiences a problem and needs to be deactivated, it is
+possible to flag the container as inactive, and archive it in the
+``/tmp`` directory.
+
+#. Change into the playbooks directory.
+
+#. Run the **openstack-ansible** with the **-e** argument, and replace
+   *``HOST_NAME``* and *``          CONTAINER_NAME``* options with the
+   applicable host and container names.
+
+   .. code-block:: console
+
+      $ openstack-ansible -e \
+      "host_group=HOST_NAME,container_name=CONTAINER_NAME" \
+      setup/archive-container.yml
+
+   By default, Ansible archives the container contents to the ``/tmp``
+   directory on the host machine.

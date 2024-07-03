@@ -1,0 +1,44 @@
+
+.. _ps-calculator-index-commandmc:
+
+Profit Share Calculator
+=======================
+
+The Profit Share Calculator calculates Profit Share distribution and generates Profit Share Statements as a part of the Month End Close process. The Profit Share Statements are then passed to the financial team for the corresponding payments.
+
+The following data is used to calculate Profit Share:
+
+* Transactions data
+
+  * Total Company Dollar for each Market Center
+
+  * Profit Share Contribution for each Market Center
+
+  * COPS (Company Dollar to Profit Share ratio, [PS Contr]/[Co$]) for each Market Center. This is used to calculate each associate’s PS contribution ([Associate Co$]*[COPS]
+
+  * Associate’s Company Currency for each person in each Market Center
+
+* Profit Share Level percentage distribution
+
+* Profit Share Tree
+
+* Negative Profit Share - The sum of associate’s escrow balance for all months for the current year. It is adjusted by a MC based on cancelled/mistakenly submitted transactions, etc.
+
+The Profit Share Calculator outputs the following values:
+
+* Total Profit Share for each Market Center (sum of all agent’s profit share)
+
+  * PS calculator compares agents total co$ to MC total
+
+* Profit Share totals received by each level
+
+* Profit Share amount for each person (Profit Share Statement) including RATS fee per each person – (20% of total PS, not to exceed $10)
+
+* Total Profit Share amount going to residual
+
+The following sections contain information about the Profit Share Calculator.
+
+.. toctree::
+   :maxdepth: 1
+
+   run-ps-calculator

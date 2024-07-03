@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Target hosts &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Configure the deployment (required)" href="ch-configure-required.html" />
+    <link rel="prev" title="Prepare the deployment host" href="ch-hosts-deployment.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Target hosts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#name-the-target-hosts">Name the target hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-operating-system">Install the operating system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-secure-shell-ssh-keys">Configure Secure Shell (SSH) keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-the-operating-system">Configure the operating system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-lvm">Configure LVM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-the-network">Configure the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-customer-network-based-on-the-reference-architecture">Configure the customer network based on the reference architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-network-on-a-target-host">Configure the network on a target host</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation Guide</a> &raquo;</li>
+        
+      <li>Target hosts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-install-internal/ch-hosts-target.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="target-hosts">
+<span id="id1"></span><h1>Target hosts<a class="headerlink" href="#target-hosts" title="Permalink to this headline">#</a></h1>
+<img alt="../_images/rpc-internal-installworkflow-targethosts.png" src="../_images/rpc-internal-installworkflow-targethosts.png" />
+<p>The Rackspace Private Cloud Powered By OpenStack (RPCO) installation
+process requires at least five target hosts to contain the OpenStack
+environment and supporting infrastructure. Perform the following tasks
+On each target host:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#name-the-target-hosts">Name the target hosts</a></li>
+<li><a class="reference internal" href="#install-the-operating-system">Install the operating system</a></li>
+<li><a class="reference internal" href="#configure-secure-shell-ssh-keys">Configure Secure Shell (SSH) keys</a></li>
+<li><a class="reference internal" href="#configure-the-operating-system">Configure the operating system</a></li>
+<li><a class="reference internal" href="#configure-lvm">Configure LVM</a> volume groups.</li>
+<li><a class="reference internal" href="#configure-the-network">Configure the network</a>.</li>
+</ul>
+<div class="section" id="name-the-target-hosts">
+<span id="naming-target-hosts"></span><h2>Name the target hosts<a class="headerlink" href="#name-the-target-hosts" title="Permalink to this headline">#</a></h2>
+<p>In a Rackspace data center, target hosts must have a correctly
+formatted name when running an Ubuntu Server 16.04 LTS (Xenial Xerus)
+64-bit operating system. The host naming convention includes the CORE
+device ID number, the host category, and host number. A host number,
+also known as a node index number, must consist of three digits for
+hosts running compute services, and two digits for all other
+categories. Note that it might be necessary to change the Ubuntu
+hostname configuration files to reflect the correct naming
+conventions.</p>
+<p>The format for the name is as follows, where <code class="docutils literal"><span class="pre">COREID</span></code> is the CORE
+device ID number, <code class="docutils literal"><span class="pre">category</span></code> is the host category, and <code class="docutils literal"><span class="pre">NNN</span></code> is
+the host number:</p>
+<blockquote>
+<div><div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">COREID-categoryNNN</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For <code class="docutils literal"><span class="pre">category</span></code>, use one of the following names:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">cinder</span></code></li>
+<li><code class="docutils literal"><span class="pre">compute</span></code></li>
+<li><code class="docutils literal"><span class="pre">infra</span></code></li>
+<li><code class="docutils literal"><span class="pre">logging</span></code></li>
+<li><code class="docutils literal"><span class="pre">swiftstorage</span></code></li>
+</ul>
+<p>The following list shows examples of several target hosts with the
+appropriate naming convention applied:</p>
+<blockquote>
+<div><div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># hostname</span>
+<span class="na">900089-compute001</span>
+<span class="na">900090-compute002</span>
+<span class="na">…</span>
+<span class="na">900200-compute112</span>
+
+<span class="na">900201-cinder01</span>
+<span class="na">900202-cinder02</span>
+<span class="na">…</span>
+<span class="na">900215-cinder15</span>
+
+<span class="na">900085-infra01</span>
+<span class="na">900086-infra02</span>
+<span class="na">900087-infra03</span>
+
+<span class="na">900088-logging01</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="install-the-operating-system">
+<span id="install-operating-system"></span><h2>Install the operating system<a class="headerlink" href="#install-the-operating-system" title="Permalink to this headline">#</a></h2>
+<p>Install the <a class="reference external" href="http://releases.ubuntu.com/16.04/">Ubuntu 16.04 LTS (Xenial Xerus) 64-bit</a> operating system on the target
+host with at least one network interface configured to access the
+Internet or suitable local repositories.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On target hosts without local (console) access, we recommend
+adding the Secure Shell (SSH) server packages to the installation.</p>
+</div>
+</div>
+<div class="section" id="configure-secure-shell-ssh-keys">
+<span id="configure-ssh-keys"></span><h2>Configure Secure Shell (SSH) keys<a class="headerlink" href="#configure-secure-shell-ssh-keys" title="Permalink to this headline">#</a></h2>
+<p>Ansible uses Secure Shell (SSH) to connect the deployment and target
+hosts.</p>
+<ol class="arabic simple">
+<li>Copy the contents of the public key file on the deployment host to
+the <code class="docutils literal"><span class="pre">/root/.ssh/authorized_keys</span></code> on each target host.</li>
+<li>Test public key authentication from the deployment host to each
+target host. SSH should provide a shell without asking for a
+password.</li>
+</ol>
+</div>
+<div class="section" id="configure-the-operating-system">
+<h2>Configure the operating system<a class="headerlink" href="#configure-the-operating-system" title="Permalink to this headline">#</a></h2>
+<p>Check the kernel version, install additional software packages, and
+configure the network time protocol (NTP).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">NTP is no longer needed since RPC-OpenStack 12.2. The ansible-hardening
+role <em>(previously called openstack-ansible-security)</em> installs and
+configures chrony to provide network time services on all deployments by
+default since 12.2.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Install additional software packages if they were not installed
+during the operating system installation:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">For all deployments:</span>
+<span class="gp">#</span> apt-get -y install bridge-utils debootstrap ifenslave ifenslave-2.6 <span class="se">\</span>
+lsof lvm2 openssh-server sudo tcpdump vlan
+
+<span class="go">For deployments before RPC-OpenStack 12.2:</span>
+<span class="gp">#</span> apt-get -y install ntp ntpdate
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">During the installation of RPCO, unattended upgrades are disabled.
+For long-running systems, periodically check for and apply security
+updates.</p>
+</div>
+</li>
+<li><p class="first">Add the appropriate kernel modules to the <code class="docutils literal"><span class="pre">/etc/modules</span></code> file to
+enable VLAN and bond interfaces:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">echo</span> <span class="s1">&#39;bonding&#39;</span> &gt;&gt; /etc/modules
+<span class="gp">#</span> <span class="nb">echo</span> <span class="s1">&#39;8021q&#39;</span> &gt;&gt; /etc/modules
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you are using the service network, also install the following
+software package to manage iptables firewall rules:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> apt-get -y install iptables-persistent
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure NTP to synchronize with a suitable time source <em>(if deploying
+an RPC-OpenStack version older than 12.2)</em>.</p>
+</li>
+<li><p class="first">Reboot the host to activate the changes.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-lvm">
+<span id="configuring-lvm"></span><h2>Configure LVM<a class="headerlink" href="#configure-lvm" title="Permalink to this headline">#</a></h2>
+<p>Logical Volume Manager (LVM) enables a single device to be split into
+multiple logical volumes that appear as a physical storage device to
+the operating system. The Block Storage (cinder) service, and the LXC
+containers that run the OpenStack infrastructure, can optionally use
+LVM for their data storage.</p>
+<ol class="arabic">
+<li><p class="first">To use the optional Block Storage (cinder) service, create an LVM
+volume group named <code class="docutils literal"><span class="pre">cinder-volumes</span></code> on the Block Storage host.
+Specify a metadata size of 2048 during physical volume creation.
+For example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> pvcreate --metadatasize <span class="m">2048</span> physical_volume_device_path
+<span class="gp">#</span> vgcreate cinder-volumes physical_volume_device_path
+</pre></div>
+</div>
+</li>
+<li><p class="first">Optionally, create an LVM volume group named <code class="docutils literal"><span class="pre">lxc</span></code> for container
+file systems. If the <code class="docutils literal"><span class="pre">lxc</span></code> volume group does not exist,
+containers are automatically installed to the file system under
+<code class="docutils literal"><span class="pre">/var/lib/lxc</span></code> by default.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-the-network">
+<h2>Configure the network<a class="headerlink" href="#configure-the-network" title="Permalink to this headline">#</a></h2>
+<p>Although Ansible automates most deployment operations, networking on
+target hosts requires manual configuration because it can vary for
+each environment. The instructions in this section use a reference
+architecture with example network interface names, networks, and IP
+addresses. Modify these values as needed for your particular
+environment.</p>
+<p>The reference architecture for target hosts contains the following
+components:</p>
+<ul>
+<li><p class="first">A <code class="docutils literal"><span class="pre">bond0</span></code> interface using two physical interfaces. Avoid using
+more than one port on network interface cards that contain multiple
+ports. The example configuration uses <code class="docutils literal"><span class="pre">eth0</span></code> and <code class="docutils literal"><span class="pre">eth2</span></code>; actual
+interface names can vary depending on hardware and drivers.
+Configure the <code class="docutils literal"><span class="pre">bond0</span></code> interface with a static IP address on the
+host management network.</p>
+</li>
+<li><p class="first">A <code class="docutils literal"><span class="pre">bond1</span></code> interface using two physical interfaces. Avoid using
+more than one port on network interface cards containing multiple
+ports. The example configuration uses <code class="docutils literal"><span class="pre">eth1</span></code> and <code class="docutils literal"><span class="pre">eth3</span></code>; actual
+interface names can vary depending on hardware and drivers.
+Configure the <code class="docutils literal"><span class="pre">bond1</span></code> interface without an IP address.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This component is recommended but not required for Block Storage
+target hosts.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">A container management network subinterface on the <code class="docutils literal"><span class="pre">bond0</span></code>
+interface and <code class="docutils literal"><span class="pre">br-mgmt</span></code> bridge with a static IP address.</p>
+</li>
+<li><p class="first">The OpenStack Networking VXLAN subinterface on the <code class="docutils literal"><span class="pre">bond1</span></code>
+interface and <code class="docutils literal"><span class="pre">br-vxlan</span></code> bridge with a static IP address.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This component is recommended but not required for Block Storage
+target hosts.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">The OpenStack Networking VLAN <code class="docutils literal"><span class="pre">br-vlan</span></code> bridge on the <code class="docutils literal"><span class="pre">bond1</span></code>
+interface without an IP address.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This component is recommended but not required for Block Storage
+target hosts.</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>The reference architecture for target hosts can also contain the
+following optional components:</p>
+<ul>
+<li><p class="first">Storage network subinterface on the <code class="docutils literal"><span class="pre">bond0</span></code> interface and
+<code class="docutils literal"><span class="pre">br-storage</span></code> bridge with a static IP address.</p>
+</li>
+<li><p class="first">Service network <code class="docutils literal"><span class="pre">br-snet</span></code> bridge with a static IP address of
+172.29.248.1/22.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This network applies to Rackspace data centers only.</p>
+</div>
+<p>Bridges on all hosts use the same static IP address and network
+mask.</p>
+</li>
+</ul>
+<p>For more information, see <a class="reference external" href="https://github.com/openstack/openstack-ansible/blob/stable/newton/etc/network/README.rst">OpenStack-Ansible Networking</a>.</p>
+<div class="section" id="configure-the-customer-network-based-on-the-reference-architecture">
+<h3>Configure the customer network based on the reference architecture<a class="headerlink" href="#configure-the-customer-network-based-on-the-reference-architecture" title="Permalink to this headline">#</a></h3>
+<p>Modify the network interfaces file (initially based on the reference
+architecture) to fit the customer environment. After establishing
+initial host management network connectivity by using the <code class="docutils literal"><span class="pre">bond0</span></code>
+interface, modify the <code class="docutils literal"><span class="pre">/etc/network/interfaces</span></code> file as described in
+the following procedure.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For simplicity, the reference architecture assumes that all target
+hosts contain the same network interfaces.</p>
+<p class="last">The <code class="docutils literal"><span class="pre">bond0</span></code> interface should not require additional
+configuration after handoff from the deployment team to the
+customer.</p>
+</div>
+</div></blockquote>
+<p><strong>Modify the network interfaces file</strong></p>
+<ol class="arabic">
+<li><p class="first">Modify the physical interfaces:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Physical interface 1</span>
+<span class="na">auto eth0</span>
+<span class="na">iface eth0 inet manual</span>
+    <span class="na">bond-master bond0</span>
+    <span class="na">bond-primary eth0</span>
+
+<span class="c1"># Physical interface 2</span>
+<span class="na">auto eth1</span>
+<span class="na">iface eth1 inet manual</span>
+    <span class="na">bond-master bond1</span>
+    <span class="na">bond-primary eth1</span>
+
+<span class="c1"># Physical interface 3</span>
+<span class="na">auto eth2</span>
+<span class="na">iface eth2 inet manual</span>
+    <span class="na">bond-master bond0</span>
+
+<span class="c1"># Physical interface 4</span>
+<span class="na">auto eth3</span>
+<span class="na">iface eth3 inet manual</span>
+    <span class="na">bond-master bond1</span>
+</pre></div>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Physical interface 5 (Service network, Rackspace datacenters only)</span>
+<span class="na">auto eth4</span>
+<span class="na">iface eth4 inet static</span>
+    <span class="na">address SNET_IP_ADDRESS</span>
+    <span class="na">netmask SNET_NETMASK</span>
+    <span class="na">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This service network interface should not require additional
+configuration after handoff from the deployment team to the
+customer.</p>
+</div>
+</li>
+<li><p class="first">Modify the bonding interfaces. Replace <code class="docutils literal"><span class="pre">HOST_IP_ADDRESS</span></code>,
+<code class="docutils literal"><span class="pre">HOST_NETMASK</span></code>, <code class="docutils literal"><span class="pre">HOST_GATEWAY</span></code>, and <code class="docutils literal"><span class="pre">HOST_DNS_SERVERS</span></code> with
+the appropriate configuration for the host management network.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Bond interface 0 (physical interfaces 1 and 3)</span>
+<span class="na">auto bond0</span>
+<span class="na">iface bond0 inet static</span>
+    <span class="na">bond-slaves eth0 eth2</span>
+    <span class="na">bond-mode active-backup</span>
+    <span class="na">bond-miimon 100</span>
+    <span class="na">bond-downdelay 200</span>
+    <span class="na">bond-updelay 200</span>
+    <span class="na">address HOST_IP_ADDRESS</span>
+    <span class="na">netmask HOST_NETMASK</span>
+    <span class="na">gateway HOST_GATEWAY</span>
+    <span class="na">dns-nameservers HOST_DNS_SERVERS</span>
+
+<span class="c1"># Bond interface 1 (physical interfaces 2 and 4)</span>
+<span class="na">auto bond1</span>
+<span class="na">iface bond1 inet manual</span>
+    <span class="na">bond-slaves eth1 eth3</span>
+    <span class="na">bond-mode active-backup</span>
+    <span class="na">bond-miimon 100</span>
+    <span class="na">bond-downdelay 250</span>
+    <span class="na">bond-updelay 250</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Modify the logical (VLAN) interfaces. Replace <code class="docutils literal"><span class="pre">*_VLAN_ID</span></code> with the
+appropriate configuration for the environment.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Container management VLAN interface</span>
+<span class="na">iface bond0.CONTAINER_MGMT_VLAN_ID inet manual</span>
+
+<span class="c1"># OpenStack Networking VXLAN (tunnel/overlay) VLAN interface</span>
+<span class="na">iface bond1.TUNNEL_VLAN_ID inet manual</span>
+
+<span class="c1"># Storage network VLAN interface (optional)</span>
+<span class="na">iface bond0.STORAGE_VLAN_ID inet manual</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Modify the bridge devices. Replace <code class="docutils literal"><span class="pre">_VLAN_ID</span></code>,
+<code class="docutils literal"><span class="pre">_BRIDGE_IP_ADDRESS</span></code>, and <code class="docutils literal"><span class="pre">_BRIDGE_NETMASK</span></code>,
+<code class="docutils literal"><span class="pre">_BRIDGE_DNS_SERVERS</span></code> with the appropriate configuration for the
+environment.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Container management bridge</span>
+<span class="na">auto br-mgmt</span>
+<span class="na">iface br-mgmt inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port references tagged interface</span>
+    <span class="na">bridge_ports bond0.CONTAINER_MGMT_VLAN_ID</span>
+    <span class="na">address CONTAINER_MGMT_BRIDGE_IP_ADDRESS</span>
+    <span class="na">netmask CONTAINER_MGMT_BRIDGE_NETMASK</span>
+    <span class="na">dns-nameservers CONTAINER_MGMT_BRIDGE_DNS_SERVERS</span>
+
+<span class="c1"># OpenStack Networking VXLAN (tunnel/overlay) bridge</span>
+<span class="na">auto br-vxlan</span>
+<span class="na">iface br-vxlan inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port references tagged interface</span>
+    <span class="na">bridge_ports bond1.TUNNEL_VLAN_ID</span>
+    <span class="na">address TUNNEL_BRIDGE_IP_ADDRESS</span>
+    <span class="na">netmask TUNNEL_BRIDGE_NETMASK</span>
+
+<span class="c1"># OpenStack Networking VLAN bridge</span>
+<span class="na">auto br-vlan</span>
+<span class="na">iface br-vlan inet manual</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port references untagged interface</span>
+    <span class="na">bridge_ports bond1</span>
+
+<span class="c1"># Storage bridge (optional)</span>
+<span class="na">auto br-storage</span>
+<span class="na">iface br-storage inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port reference tagged interface</span>
+    <span class="na">bridge_ports bond0.STORAGE_VLAN_ID</span>
+    <span class="na">address STORAGE_BRIDGE_IP_ADDRESS</span>
+    <span class="na">netmask STORAGE_BRIDGE_NETMASK</span>
+</pre></div>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Service bridge (Rackspace datacenters only)</span>
+<span class="na">auto br-snet</span>
+<span class="na">iface br-snet inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># No bridge port on this bridge</span>
+    <span class="na">address 172.29.248.1</span>
+    <span class="na">netmask 255.255.252.0</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Add service network iptables rules</strong></p>
+<ol class="arabic">
+<li><p class="first">Configure the rules:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> iptables -t nat -A POSTROUTING -o eth4 -j MASQUERADE
+</pre></div>
+</div>
+</li>
+<li><p class="first">Make the rules persistent:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> iptables-save &gt; /etc/iptables/rules.v4
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-the-network-on-a-target-host">
+<span id="configuring-network-target-host"></span><h3>Configure the network on a target host<a class="headerlink" href="#configure-the-network-on-a-target-host" title="Permalink to this headline">#</a></h3>
+<p>This example uses the following parameters to configure networking on
+a single target host. For visual representations of these parameters
+in the architecture, see <a class="reference internal" href="#container-example"><span class="std std-ref">Infrastructure services target hosts</span></a>, <a class="reference internal" href="#compute-example"><span class="std std-ref">Compute target hosts</span></a>,
+and <a class="reference internal" href="#storage-example"><span class="std std-ref">Block Storage target hosts</span></a>.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For simplicity, this example assumes that all target hosts contain
+the same network interfaces.</p>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>VLANs:<ul>
+<li>Host management: Untagged/Native</li>
+<li>Container management: 10</li>
+<li>Tunnels: 30</li>
+<li>Storage: 20</li>
+</ul>
+</li>
+<li>Networks:<ul>
+<li>Host management: 10.240.0.0/22</li>
+<li>Container management: 172.29.236.0/22</li>
+<li>Tunnel: 172.29.240.0/22</li>
+<li>Storage: 172.29.244.0/22</li>
+</ul>
+</li>
+<li>Addresses:<ul>
+<li>Host management: 10.240.0.11</li>
+<li>Host management gateway: 10.240.0.1</li>
+<li>DNS servers: 69.20.0.164 69.20.0.196</li>
+<li>Container management: 172.29.236.11</li>
+<li>Tunnel: 172.29.240.11</li>
+<li>Storage: 172.29.244.11</li>
+</ul>
+</li>
+</ul>
+<img alt="../_images/rpc-netarch-container-internal-example.png" id="container-example" src="../_images/rpc-netarch-container-internal-example.png" />
+<img alt="../_images/rpc-netarch-compute-internal-example.png" id="compute-example" src="../_images/rpc-netarch-compute-internal-example.png" />
+<img alt="../_images/rpc-netarch-storage-internal-example.png" id="storage-example" src="../_images/rpc-netarch-storage-internal-example.png" />
+<p>For reference, here are the contents of the
+<code class="docutils literal"><span class="pre">/etc/network/interfaces</span></code> file:</p>
+<blockquote>
+<div><div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Physical interface 1</span>
+<span class="na">auto em0</span>
+<span class="na">iface em0 inet manual</span>
+    <span class="na">bond-master bond0</span>
+    <span class="na">bond-primary em0</span>
+
+<span class="c1"># Physical interface 2</span>
+<span class="na">auto em1</span>
+<span class="na">iface em1 inet manual</span>
+    <span class="na">bond-master bond1</span>
+    <span class="na">bond-primary em1</span>
+
+<span class="c1"># Physical interface 3</span>
+<span class="na">auto em2</span>
+<span class="na">iface em2 inet manual</span>
+    <span class="na">bond-master bond0</span>
+
+<span class="c1"># Physical interface 4</span>
+<span class="na">auto em3</span>
+<span class="na">iface em3 inet manual</span>
+    <span class="na">bond-master bond1</span>
+</pre></div>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Physical interface 5 (Service network, Rackspace datacenters only)</span>
+<span class="na">auto em4</span>
+<span class="na">iface em4 inet static</span>
+    <span class="na">address SNET_IP_ADDRESS</span>
+    <span class="na">netmask SNET_NETMASK</span>
+    <span class="na">...</span>
+</pre></div>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Bond interface 0 (physical interfaces 1 and 3)</span>
+<span class="na">auto bond0</span>
+<span class="na">iface bond0 inet static</span>
+    <span class="na">bond-slaves em0 em2</span>
+    <span class="na">bond-mode active-backup</span>
+    <span class="na">bond-miimon 100</span>
+    <span class="na">bond-downdelay 200</span>
+    <span class="na">bond-updelay 200</span>
+    <span class="na">address 10.240.0.11</span>
+    <span class="na">netmask 255.255.252.0</span>
+    <span class="na">gateway 10.240.0.1</span>
+    <span class="na">dns-nameservers 69.20.0.164 69.20.0.196</span>
+
+<span class="c1"># Bond interface 1 (physical interfaces 2 and 4)</span>
+<span class="na">auto bond1</span>
+<span class="na">iface bond1 inet manual</span>
+    <span class="na">bond-slaves em1 em3</span>
+    <span class="na">bond-mode active-backup</span>
+    <span class="na">bond-miimon 100</span>
+    <span class="na">bond-downdelay 250</span>
+    <span class="na">bond-updelay 250</span>
+
+<span class="c1"># Container management VLAN interface</span>
+<span class="na">iface bond0.10 inet manual</span>
+
+<span class="c1"># OpenStack Networking VXLAN (tunnel/overlay) VLAN interface</span>
+<span class="na">iface bond1.30 inet manual</span>
+
+<span class="c1"># Storage network VLAN interface (optional)</span>
+<span class="na">iface bond0.20 inet manual</span>
+
+<span class="c1"># Container management bridge</span>
+<span class="na">auto br-mgmt</span>
+<span class="na">iface br-mgmt inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port references tagged interface</span>
+    <span class="na">bridge_ports bond0.10</span>
+    <span class="na">address 172.29.236.11</span>
+    <span class="na">netmask 255.255.252.0</span>
+    <span class="na">dns-nameservers 69.20.0.164 69.20.0.196</span>
+
+<span class="c1"># OpenStack Networking VXLAN (tunnel/overlay) bridge</span>
+<span class="na">auto br-vxlan</span>
+<span class="na">iface br-vxlan inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port references tagged interface</span>
+    <span class="na">bridge_ports bond1.30</span>
+    <span class="na">address 172.29.240.11</span>
+    <span class="na">netmask 255.255.252.0</span>
+
+<span class="c1"># OpenStack Networking VLAN bridge</span>
+<span class="na">auto br-vlan</span>
+<span class="na">iface br-vlan inet manual</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port references untagged interface</span>
+    <span class="na">bridge_ports bond1</span>
+
+<span class="c1"># Storage bridge (optional)</span>
+<span class="na">auto br-storage</span>
+<span class="na">iface br-storage inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># Bridge port reference tagged interface</span>
+    <span class="na">bridge_ports bond0.20</span>
+    <span class="na">address 172.29.244.11</span>
+    <span class="na">netmask 255.255.252.0</span>
+</pre></div>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Service bridge (Rackspace datacenters only)</span>
+<span class="na">auto br-snet</span>
+<span class="na">iface br-snet inet static</span>
+    <span class="na">bridge_stp off</span>
+    <span class="na">bridge_waitport 0</span>
+    <span class="na">bridge_fd 0</span>
+    <span class="c1"># No bridge port on this bridge</span>
+    <span class="na">address 172.29.248.1</span>
+    <span class="na">netmask 255.255.252.0</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In non-Rackspace data centers, comment out the service network
+configuration in <code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code>,
+as follows:</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># CIDR used in the Service network</span>
+<span class="c1"># snet: 172.29.248.0/22</span>
+
+<span class="c1">#- network:</span>
+<span class="c1">#    group_binds:</span>
+<span class="c1">#      - glance_api</span>
+<span class="c1">#      - nova_compute</span>
+<span class="c1">#      - neutron_linuxbridge_agent</span>
+<span class="c1">#    container_bridge: &quot;br-snet&quot;</span>
+<span class="c1">#    container_interface: &quot;em3&quot;</span>
+<span class="c1">#    ip_from_q: &quot;snet&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-configure-required.html" class="btn btn-neutral float-right" title="Configure the deployment (required)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-hosts-deployment.html" class="btn btn-neutral float-left" title="Prepare the deployment host" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

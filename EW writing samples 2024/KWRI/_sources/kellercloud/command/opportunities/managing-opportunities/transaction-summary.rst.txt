@@ -1,0 +1,36 @@
+
+.. _transaction-summary-opportunities-command:
+
+Generate a Transaction Summary
+==============================
+
+At any point, as your Opportunity moves through your pipeline, you can generate a Transaction Summary. This document can be downloaded or printed to share with third parties. You are able to select and organize the information that appears on the summary.
+
+.. note::
+
+   Transaction Summary sheets are available only for Listing and Buyers transactions.
+
+To generate a Transaction Summary, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity Name to view the Opportunity details.
+
+#. In the top-right corner, click **Generate Transaction Summary**.
+
+#. On the **Generate Transaction Summary** window, select the information you want to appear on the summary by checking the correct boxes. You can also change the order of the sections by dragging and dropping them.
+
+.. note::
+
+   Only the Opportunity sections that contain data will be available on the **Generate Transaction Summary** window.
+
+#. Click **Generate**.
+
+   From the Transaction Summary preview, you can print the summary or download it as a **.pdf** file.

@@ -1,0 +1,36 @@
+
+.. _bm-connect-recruits-commandmc:
+
+Connect to BrokerMetrics®
+=========================
+
+To automatically pull recruit production information from BrokerMetrics, you must connect your Market Center with BrokerMetrics.
+
+.. note::
+
+   You must first :ref:`bm-create-account-recruits-mc` through the KW Marketplace.
+
+To connect your Market Center with BrokerMetrics, complete the following steps:
+
+.. note::
+
+   CommandMC settings are available only to certain KW roles. For more information, see :ref:`command-mc-roles-command-ug`.
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-right corner of Command, click your Market Center.
+
+#. Select **Settings** from the drop-down menu.
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **Applications** and then **BrokerMetrics®**.
+
+#. On the **BrokerMetrics®** page, click **Connect Account**.
+
+#. On the **Connect BrokerMetrics®** window, enter your **Username** and click **Connect**.
+
+   You receive a **BrokerMetrics® Account Connected** confirmation message.

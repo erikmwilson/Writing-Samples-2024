@@ -1,0 +1,28 @@
+==========================================
+Load balancing for applications (optional)
+==========================================
+
+Rackspace Private Cloud Powered By OpenStack provides basic load
+balancing as a service (LBaaS) functionality to applications running
+on instances within a customer cloud, in a new or existing RPCO
+deployment.
+
+The LBaaS v2 functionality is configured and deployed using
+OpenStack-Ansible (OSA). For more information, see the
+`OpenStack-Ansible Deployment Guide
+<http://docs.openstack.org/project-deploy-guide/openstack-ansible/newton/>`_.
+
+For information about LBaaS operations, see the `OpenStack Networking
+Guide
+<http://docs.openstack.org/newton/networking-guide/config-lbaas.html>`_.
+
+For the latest information about how the RPCO LBaaS implementation
+might differ from upstream, see the RPCO Release Notes.
+
+   .. note::
+
+      [IS THIS STILL TRUE?]
+
+      RPCO provides LBaaS as a technical preview, which should not be
+      used for production workloads. For more information about LBaaS
+      limitations and restrictions, see the RPCO Release Notes.

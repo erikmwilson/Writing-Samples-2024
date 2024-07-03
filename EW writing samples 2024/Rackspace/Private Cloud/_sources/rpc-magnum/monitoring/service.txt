@@ -1,0 +1,64 @@
+==========================
+Magnum services monitoring
+==========================
+
+------
+Checks
+------
+
+Service check
+=============
+
+Label: ``magnum_service_check``
+
+This check monitors all magnum services by creating a Magnum client and
+accessing the Magnum services API endpoint (``GET /v1/mservices``). If the API
+returns a successful response, the check analyzes the response body and
+converts service statuses to metrics, as shown below with
+``magnum-conductor_status``. A metric set to ``1`` indicates a working service,
+and a metric set to ``0`` indicates a broken service.
+
+Example output::
+
+    status okay
+    metric magnum-conductor_status uint32 1
+
+------
+Alarms
+------
+
+Conductor status
+================
+
+Label: ``magnum_conductor_status``
+
+This alarm activates when the ``magnum-conductor_status`` metric from
+``magnum_service_check`` switches to ``0``, indicating a problem with the
+conductor.
+
+To resolve this issue, first :doc:`check to see if the API is working
+<api>`. If the API is operational, :doc:`check the logs
+<../../rpc-monitoring-internal/logging/index>` for magnum conductor
+emitted errors, address the root cause, and restart the conductor if
+necessary.
+
+--------------
+Configurations
+--------------
+
+In ``/etc/openstack_deploy/user_rpco_variables_overrides.yml``::
+
+    # Use the following to alter the frequency and timeout for magnum service checks.
+    maas_check_period_override:
+      - magnum_service_check: 60
+
+    maas_check_timeout_override:
+      - magnum_service_check: 120
+
+    # Add this to disable specific checks and all associated alarms by label.
+    maas_excluded_checks_regex:
+      - magnum_service_check
+
+    # Add this to disable specific alarms by label.
+    maas_excluded_alarms_regex:
+      - magnum_conductor_status

@@ -1,0 +1,28 @@
+
+.. _unsubscribe-recruits-commandmc:
+
+Unsubscribe Recruits from a SmartPlan
+=====================================
+
+Eventually, you might need to retire an outdated SmartPlan or maybe you created a new and better version and you want to remove recruits from the old SmartPlan and add to the new SmartPlan.
+
+If you want to make full edits to a SmartPlan that has recruits added (an active SmartPlan), for example, adding, removing or reordering steps, you must duplicate the SmartPlan to make those changes, then add the contacts to the new plan.
+
+For more information, see :ref:`edit-active-commandmc` or :ref:`edit-inactive-commandmc`.
+
+To unsubscribe recruits from a SmartPlan, complete the following steps:
+
+.. include:: smartplans-mc-login.rst
+
+#. Click the **MC Plans** tab, at the top of the page.
+
+#. Find the correct SmartPlan in the list, and in the **Recruits** column, click the **View** icon |view-icon|.
+
+   .. |view-icon| image:: ../../../images/view-icon.png
+      :height: 30
+
+#. On the **Recruits added to SmartPlan** fly-out window, check the boxes next to the recruits you want to remove/unsubscribe, and click **Confirm Unsubscribe**.
+
+   If you want to remove all recruits, click **Unsubscribe All**.
+
+#. On the confirmation pop-up, click **Confirm**.

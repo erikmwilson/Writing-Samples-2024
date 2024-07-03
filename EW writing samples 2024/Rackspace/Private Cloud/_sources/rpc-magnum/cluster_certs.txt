@@ -1,0 +1,73 @@
+Cluster certificates
+====================
+
+The clusters that Magnum provisions have TLS enabled. This document
+discusses how client and server TLS certificates are used in clusters.
+
+
+Generating a client certificate for an end user
+-----------------------------------------------
+
+To interact with a cluster, generate a client certificate. Magnum
+makes this process easy. Run the following command, replacing
+``<cluster-name>`` with the cluster's name or UUID:
+
+.. code-block:: console
+
+   $ eval $(magnum cluster-config <cluster-name>)
+   $ export KUBECONFIG=/opt/stack/config
+
+
+These two commands:
+
+- automatically generate a private key and a client certificate
+- get the certificate signed by the Magnum service
+- generate a Kubernetes config
+- add ``KUBECONFIG`` to your shell environment
+
+Now, you can interact with the cluster's Kubernetes API. For example:
+
+.. code-block:: console
+
+   $ kubectl get nodes
+
+
+Revoking all certificates for a cluster
+---------------------------------------
+
+To remove a user's access to a cluster, revoke their client
+certificate. There is currently no way to revoke a single certificate.
+Instead, revoke all certificates for a cluster. For example:
+
+.. code-block:: console
+
+   $ magnum ca-rotate --cluster <cluster-name>
+
+
+The cluster status changes to ``UPDATE_IN_PROGRESS``. After it returns
+to ``UPDATE_COMPLETE``, you can generate new certificates using
+``magnum cluster-config``.
+
+
+How server certificates are used within a cluster
+-------------------------------------------------
+
+TLS is enabled for communication between nodes in a cluster. Each node
+generates its own certificate and gets it signed by the Magnum
+service. The CA certificate, the server certificate, and its matching
+private key are stored in three locations:
+
+- ``/etc/kubernetes/pki/``
+- Base64 encoded in ``/etc/kubernetes/admin.conf``
+- Base64 encoded in ``/etc/kubernetes/kubelet.conf``
+
+
+The Kubernetes components that use the TLS certificates are:
+
+- kubelet
+- kube-apiserver
+- kube-controller-manager
+- kube-proxy
+
+Use the ``magnum ca-rotate`` command to rotate the server
+certificates.

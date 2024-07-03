@@ -1,0 +1,25 @@
+:deconsttitle: Technical FAQ
+
+.. _rpc-faq-external:
+
+=============
+Technical FAQ
+=============
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+This documentation is intended as a quick reference for Rackspace
+customers who have questions about Rackspace Private Cloud Powered by
+OpenStack.
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   preface.rst
+   rpc-technical-faq-content.rst
+   rpc-supported-software.rst
+   postface.rst

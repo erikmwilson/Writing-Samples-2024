@@ -1,0 +1,18 @@
+
+.. _mark-unmark-lead-contacts-command:
+
+Mark or Unmark a Contact as a Lead
+==================================
+
+To mark or unmark a contact as a lead, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. In the **Contacts** list, click the name of the contact you want to edit.
+
+#. Select or deselect the **Mark as Lead** check box.

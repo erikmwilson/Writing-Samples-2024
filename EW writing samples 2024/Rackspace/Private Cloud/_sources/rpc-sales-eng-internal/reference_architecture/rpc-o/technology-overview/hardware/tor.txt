@@ -1,0 +1,11 @@
+====================
+Top of rack switches
+====================
+
+1x Cisco 9372TX Switch 48 Port 1/10G - High Availability (Pair of
+Devices)
+
+This is a copper port switch. SFPs are not needed unless the customer
+also has dedicated aggregate layer switches.
+
+.. image:: ../../figures/Cisco9372TX_front.jpg

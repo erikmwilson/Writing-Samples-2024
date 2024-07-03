@@ -1,0 +1,26 @@
+
+.. _lost-opportunities-command:
+
+Mark an Opportunity as Lost
+===========================
+
+If the Opportunity or deal you are working falls through for any reason, you can mark it as lost. We can then build insights around these lost Opportunities that can help you identify the stages at which these are being lost and the reasons why.
+
+To mark an Opportunity as lost, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity to view the Opportunity details.
+
+#. To mark an Opportunity as lost, click the **Lost Opportunity** toggle button.
+
+#. Describe why the Opportunity was lost, then click **Save**.
+
+   This adds the lost Opportunity to your metrics which will give you insight into where you can work to improve your close rate.

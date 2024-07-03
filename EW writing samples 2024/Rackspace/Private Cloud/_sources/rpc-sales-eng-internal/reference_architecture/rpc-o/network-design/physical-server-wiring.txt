@@ -1,0 +1,6 @@
+==============================
+Physical server wiring diagram
+==============================
+
+.. image:: ../figures/server-cabling.png
+   :alt: Server wiring diagram

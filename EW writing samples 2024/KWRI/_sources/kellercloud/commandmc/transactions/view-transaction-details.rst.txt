@@ -1,0 +1,19 @@
+
+.. _view-details-transaction-commandmc:
+
+View Transaction Details
+========================
+
+To view transaction details, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page.
+
+#. Search for the correct transaction. For more information, see :ref:`search-transactions-commandmc`.
+
+#. Click the transaction number to view the transaction details.
+
+   .. note::
+
+      If the transaction is in **Open** status, you can view (and edit) the information in the sections by clicking the **Next** and **Back** buttons in the lower right corner. When complete, click **Save Progress & Close**. To abandon any changes, click **Exit From Transaction**.

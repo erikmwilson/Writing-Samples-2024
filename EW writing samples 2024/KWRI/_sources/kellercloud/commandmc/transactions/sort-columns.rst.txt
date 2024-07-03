@@ -1,0 +1,13 @@
+
+.. _sort-columns-transactions-commandmc:
+
+Sort Columns in Transactions
+============================
+
+To sort columns in Transactions, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page.
+
+#. Click on a column header to sort by that column.

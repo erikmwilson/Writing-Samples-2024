@@ -1,0 +1,20 @@
+
+.. _customize-columns-associates-commandmc:
+
+Customize Columns in Associates
+===============================
+
+To customize columns in Associates, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Click the settings icon |settings-icon| to the right of the column headings.
+
+   .. |settings-icon| image:: ../../../images/settings-icon.png
+      :height: 25
+
+#. On the **Customize Columns** pop-up, check the column headings you want to display and drag them into the correct display order.
+
+#. Click **Apply**.
+
+To save these results as a Smartview, see :ref:`smartview-associates-commandmc`.

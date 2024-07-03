@@ -1,0 +1,11 @@
+
+.. _referrals-command-index:
+
+Referrals
+=========
+
+The following sections contain information about the
+Referrals application.
+
+.. toctree::
+   :maxdepth: 1

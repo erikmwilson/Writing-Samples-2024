@@ -1,0 +1,35 @@
+===================
+Private Cloud roles
+===================
+
+Key component to a successful private cloud is defining the cloud roles
+and responsibilities. The following table outlines the required roles
+and what internal staff should fulfill these roles.
+
+.. list-table:: **Cloud roles**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Role name**
+     - **Description**
+   * - Cloud administrator
+     - Staff designated to provide high-level cloud administration and
+       support. Such activities would include, not limited to, adding
+       additional compute nodes, creating availability zones and
+       provider networks.
+   * - Cloud operator
+     - Individuals granted the admin role within a tenant, who can
+       perform day-to-day administrative type tasks related to that
+       tenant only. A cloud operator can be assigned to multiple
+       tenants, if required. Such activities would include, not
+       limited to, adjusting tenant quotas, cleaning up unused
+       resources and creating new tenant users.
+   * - Cloud consumer
+     - This would be a tenant user, with rights to consume resources
+       assigned to that particular tenant. Such activities would
+       include, not limited to, creating/resizing instances, creating
+       volumes and creating tenant networks.
+
+
+
+.

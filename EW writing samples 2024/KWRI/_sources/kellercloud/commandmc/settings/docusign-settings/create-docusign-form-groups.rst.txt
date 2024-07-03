@@ -1,0 +1,25 @@
+
+.. _create-docusign-form-groups-commandmc:
+
+Create Market Center Form Groups in DocuSign
+============================================
+
+The Form Libraries in the DocuSign Market Center Admin account consist of every form you would find in each MLS. These libraries include all of the forms from the MLS.
+
+You can create a form groups for each transaction type and association to make it easy for your agents to access the forms they need.
+
+To create your Market Center Form Groups in DocuSign, complete the following steps:
+
+1. :ref:`access-docusign-form-libraries-commandmc`.
+
+   The **Forms** tab lists the libraries that have been set up for your Market Center. Create form groups to better organize these forms based on transaction type.
+
+#. At the top-right of the page, click **Add Group**.
+
+#. On the **Add a Form Group** pop-up, enter a **Group Name**, click in the **Add Offices** field and select the Market Centers that need access to this new form group.
+
+#. Click **ADD**.
+
+   Repeat this process to create all of the form groups your Market Center needs. As agents in your Market Center use DocuSign Rooms, they can access these groups and use them to add forms to their Rooms.
+
+   For more information, see :ref:`add-forms-docusign-groups-commandmc`.

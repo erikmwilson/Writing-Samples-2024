@@ -1,0 +1,26 @@
+
+.. _add-task-contacts-command:
+
+Add a Task
+==========
+
+You can add tasks related to a contact. These tasks are managed in the Task application.
+
+To add a task, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. In the **Contacts** list, click the name of the contact for which you want to create a Saved Search.
+
+#. Click the **Tasks** tab, at the top right of the contact record.
+
+#. Click **Add Task**.
+
+#. On the **New Task** window, Enter the **Task Name**, select a **Due Date** (if you uncheck the **All Day** checkbox, you have the option to select the time of day for your due date), enter a **Task description** (optional), and add any hyperlinks you will need to complete the task (optional).
+
+#. Click **Create Task**.

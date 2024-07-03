@@ -1,0 +1,16 @@
+
+.. _recruits-index-commandmc:
+
+Recruits
+========
+
+The following sections contain information about the
+Recruits application.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview-recruits
+   manage-recruits/index
+   manage-recruit-pipeline/index
+   find-recruits/find-recruits

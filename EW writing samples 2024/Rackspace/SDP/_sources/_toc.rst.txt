@@ -1,0 +1,9 @@
+:orphan:
+
+.. toctree::
+   :includehidden:
+   :maxdepth: 99
+
+   Support Delivery Platform Guides<self>
+   api-docs/index.rst
+   integration/index.rst

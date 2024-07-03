@@ -1,0 +1,25 @@
+
+.. _tasks-associates-index-commandmc:
+
+Tasks within Associates
+=======================
+
+Tasks in CommandMC are used to track what you need to get accomplished for your business. These tasks come from SmartPlans or manually entered tasks.
+
+The following sections contain information about how to work with
+Tasks within the Associates applet.
+
+.. toctree::
+   :maxdepth: 1
+
+   view-checklist-details
+   view-other-details
+   filter-tasks
+   mark-task-complete
+   mark-task-incomplete
+   add-note
+   edit-custom-task
+   reassign-task
+   reschedule-task
+   archive-custom-task
+   delete-task

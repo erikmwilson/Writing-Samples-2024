@@ -1,0 +1,49 @@
+
+.. _resubmit-documents-opportunities-command:
+
+Resubmit Rejected Compliance Documents to Your Market Center
+============================================================
+
+When a document is rejected, you will not only see a, red, **Rejected** status next to the document name. If the document is rejected, then you have to make changes and resubmit.
+
+To resubmit a rejected compliance documents to your Market Center, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+   On the left side of the page, you will see a status next to the compliance event:
+
+   * **Submitted/Resubmitted** - the document is waiting for approval.
+
+   * **Accepted** - the submitted documents have been approved.
+
+   * **Returned** - at least one of your documents was rejected. You must make corrections, replace the document, and resubmit the documents to your MCA.
+
+#. If you see the Returned status, find the rejected document on the list, then hover over the Rejection Reason icon, |rejected-icon|, to see why it was rejected.
+
+   .. |rejected-icon| image:: ../../../../images/rejected-icon.png
+      :height: 20
+
+#. After you make the necessary changes to the document, click the three dots, to the right of the file name, and choose **Replace** from the drop-down.
+
+#. Enter a **Comment** about why you are replacing this document and select the replacement document. You can replace documents from the following sources:
+
+   * **Manual** - click to browse your computer for the file, or drag the file into the space provided.
+
+   * **DocuSign** or **Dotloop** - you will see a list of documents you have in the corresponding DocuSign Room or Dotloop Loop. Select the corresponding file.
+
+   * **Custom Folder** - you will see a list of documents you have in your Custom Folder. Select the corresponding file.
+
+#. Click **Replace**.
+
+#. After all of the rejected documents in the compliance event have the **Replaced** status, click **Resubmit to MC**. This repeats the approval/rejection process.

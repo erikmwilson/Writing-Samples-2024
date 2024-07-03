@@ -1,0 +1,25 @@
+
+.. _view-opportunity-task-details-command:
+
+View Opportunity Task Details
+=============================
+
+To view Opportunity task details, complete the following steps:
+
+.. include:: ../../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. On the Opportunity card, click on the checklist icon, |checklist-icon|. You can also click on the icon in the Opportunity details.
+
+   .. |checklist-icon| image:: ../../../../../images/checklist-icon.png
+      :height: 30
+
+#. On the **Tasks** window, you can expand or collapse the tasks in each stage. To hide completed tasks click **Hide Completed Tasks**, to show all tasks, click **Show All Tasks**.
+
+You can see all opportunity tasks in the Tasks applet. For more information, see :ref:`tasks-index-command`.

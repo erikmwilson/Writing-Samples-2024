@@ -1,0 +1,41 @@
+
+.. _manage-checklists-opportunities-commandmc:
+
+Manage Opportunity Checklists
+=============================
+
+After you customize your Opportunity pipelines and create your checklist templates, you are ready to start using the system to track your Opportunities. As you are working, you want to mark checklist items as complete, set due dates for certain checklist items, and maybe create one-off checklist items that would not apply to your other Opportunities.
+
+To manage checklists, complete the following steps:
+
+Access an Opportunity Checklist
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. include:: ../opportunities-mc-login.rst
+
+#. On the Opportunities dashboard, click on the phase you want to manage.
+
+#. Find the Opportunity you want to manage, and click on the checklist icon |checklist-icon| on the Opportunity card.
+
+   .. |checklist-icon| image:: ../../../../images/checklist-icon.png
+      :height: 30
+
+Mark an Item as Complete
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Check the box next to the checklist item to mark it as complete, or uncheck the box to reset.
+
+Add or Edit One-off Opportunity Checklist Items
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you are editing and customizing your Opportunity stages, you are setting up the checklist templates that apply to every Opportunity that you add to the system. When you follow the steps above and add to or edit the checklist, these changes only apply to the Opportunity that you are working with and do not affect the checklist template.
+
+
+#. On the **Checklist** pop-up, click **Add Item** at the bottom left to add a new one-off checklist item.
+
+#. To edit, click the three dots to the right of the checklist item, and choose **Edit**.
+
+Send Client Updates
+^^^^^^^^^^^^^^^^^^^
+
+You can send your clients an email listing any checklist items that have been completed. For more information, see :ref:`client-update-opportunities-commandmc`.

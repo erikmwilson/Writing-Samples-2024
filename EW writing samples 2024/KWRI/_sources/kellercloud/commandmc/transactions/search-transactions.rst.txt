@@ -1,0 +1,15 @@
+
+.. _search-transactions-commandmc:
+
+Search Transactions
+===================
+
+While you are managing your transactions in CommandMC, you may need to find a specific transaction.
+
+To search transactions, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab, at the top of the page. A list displays of all your Market Center transactions.
+
+#. Enter the search information for the desired transaction. After you locate the transaction in the list, click the transaction to view the transaction details.

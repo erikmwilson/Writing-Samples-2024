@@ -1,0 +1,10 @@
+
+.. _access-settings-command:
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-right corner of Command, click your name.
+
+#. Select **Settings** from the drop-down menu.

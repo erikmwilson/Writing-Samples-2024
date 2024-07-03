@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Demo environment features &mdash; Support Delivery Platform documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.5.6',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="API reference" href="../api-reference/index.html" />
+    <link rel="prev" title="Authorization" href="authorization.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Support Delivery Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rackspace Ticketing API v2.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/index.html">Getting started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">General API information</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="service-access.html">Service access endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contract-version.html">Ticketing API contract version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="request-response.html">Request and response types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="limits.html">Rate limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="response-codes.html">Response codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="date-time-format.html">Date and time format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common-headers.html">Common headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html">Authorization</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Demo environment features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-error-constants">List of error constants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ticketing-event-feed/index.html">Ticketing event feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copyright.html">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Rackspace Ticketing Integration for ServiceNow</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Support Delivery Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace Ticketing API v2.0</a> &raquo;</li>
+        
+          <li><a href="index.html">General API information</a> &raquo;</li>
+        
+      <li>Demo environment features</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api-docs/general-api-info/demo-environment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="demo-environment-features">
+<span id="id1"></span><h1>Demo environment features<a class="headerlink" href="#demo-environment-features" title="Permalink to this headline">#</a></h1>
+<p>The demo environment has the ability to return error responses upon request.
+This is useful to test unusual responses that you rarely see when your
+application is running.</p>
+<p>To trigger any error, include the <code class="docutils literal"><span class="pre">X-Mock-Error</span></code> header populated with any
+of the error constants listed below. The API responds with the error condition.</p>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">#</a></h2>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Method</span><span class="p">:</span> <span class="n">POST</span>
+<span class="n">URL</span><span class="p">:</span>    <span class="o">/</span><span class="n">tickets</span>
+<span class="n">Headers</span><span class="p">:</span>
+  <span class="n">X</span><span class="o">-</span><span class="n">Auth</span><span class="o">-</span><span class="n">Token</span><span class="p">:</span> <span class="n">xxxxxxx</span>
+  <span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+  <span class="n">X</span><span class="o">-</span><span class="n">Mock</span><span class="o">-</span><span class="n">Error</span><span class="p">:</span> <span class="n">UNSUPPORTED_ACCOUNT_TYPE</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">#</a></h2>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">422</span> <span class="n">Unprocessable</span> <span class="n">Entity</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Retry</span><span class="o">-</span><span class="n">After</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">01</span> <span class="n">Nov</span> <span class="mi">2017</span> <span class="mi">21</span><span class="p">:</span><span class="mi">46</span><span class="p">:</span><span class="mi">47</span> <span class="n">GMT</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Thu</span><span class="p">,</span> <span class="mi">01</span> <span class="n">Nov</span> <span class="mi">2017</span> <span class="mi">21</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">47</span> <span class="n">GMT</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">422</span><span class="p">,</span>
+  <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Account of this type is not supported&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;faultCode&quot;</span><span class="p">:</span> <span class="s2">&quot;unprocessableEntity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;transactionId&quot;</span><span class="p">:</span> <span class="s2">&quot;94bd993f-6416-4b3c-bf5a-2cb619975572&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;moreInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;https://developer.rackspace.com/docs/ticketing/api-docs/general-api-info/faults#unprocessableEntity&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-of-error-constants">
+<h2>List of error constants<a class="headerlink" href="#list-of-error-constants" title="Permalink to this headline">#</a></h2>
+<p>Insert one of the constants listed below in the <code class="docutils literal"><span class="pre">`X-Mock-Error</span></code> header of
+any API request to trigger the corresponding error response from the API. Many
+errors are endpoint specific, check the API call documentation to see
+which errors apply.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">ATTACHMENT_LONG_FILENAME</span>
+<span class="n">BOTH_STATUS_AND_COMMENT_PRESENT</span>
+<span class="n">CLOUD_ATTACHMENT_NOT_FOUND</span>
+<span class="n">EMPTY_UPDATE</span>
+<span class="n">FAILED_UPDATE_TICKET_NOT_REVIEWED</span>
+<span class="n">INVALID_ACCOUNT</span>
+<span class="n">INVALID_ATTACHMENT_FILE</span>
+<span class="n">INVALID_ATTACHMENT_FILENAME</span>
+<span class="n">INVALID_ATTACHMENT_FILE_EXTN</span>
+<span class="n">INVALID_CAT_SUBCAT_TICKET</span>
+<span class="n">INVALID_FIELD_TICKET</span>
+<span class="n">INVALID_RECIPIENT</span>
+<span class="n">INVALID_RESOURCE</span>
+<span class="n">INVALID_REVERSE_PARAM</span>
+<span class="n">INVALID_SERVER_ERROR</span>
+<span class="n">INVALID_SEVERITY</span>
+<span class="n">INVALID_UPDATE_RATING_COMMENT</span>
+<span class="n">INVALID_UPDATE_RATING_SCORE</span>
+<span class="n">MISSING_ACCOUNT_ID</span>
+<span class="n">MISSING_PERMISSION</span>
+<span class="n">MISSING_STATUS_AND_COMMENT</span>
+<span class="n">ONLY_SET_STATUS_TO_CLOSED</span>
+<span class="n">RACKER_TOKEN_NOT_ALLOWED</span>
+<span class="n">SERVICE_UNAVAILABLE</span>
+<span class="n">TICKET_NOT_FOUND</span>
+<span class="n">UNAPPROVED_ATTACHMENT_FILENAME_EXTN</span>
+<span class="n">UNAUTHORIZED_ACCOUNT_CREATE</span>
+<span class="n">UNAUTHORIZED_ACCOUNT_UPDATE</span>
+<span class="n">UNAUTHORIZED_RESOURCE_CREATE</span>
+<span class="n">UNAUTHORIZED_RESOURCE_UPDATE</span>
+<span class="n">UNSUPPORTED_ACCOUNT_TYPE</span>
+<span class="n">UPDATE_COMMENT_LONG_TEXT</span>
+<span class="n">UPDATE_COMMENT_NO_TEXT</span>
+<span class="n">UPDATE_INVALID_REQUEST</span>
+<span class="n">UPDATE_NOT_ALLOWED</span>
+<span class="n">UPSTREAM_UNAVAILABLE</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api-reference/index.html" class="btn btn-neutral float-right" title="API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="authorization.html" class="btn btn-neutral float-left" title="Authorization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; <a href="../../copyright.html">Copyright</a> 2018, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

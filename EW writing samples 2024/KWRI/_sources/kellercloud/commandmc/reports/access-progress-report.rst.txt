@@ -1,0 +1,11 @@
+
+.. _access-progress-report-commandmc:
+
+Access Yearly Progress to Commitment Report
+===========================================
+
+To access the Yearly Progress to Commitment Report, complete the following steps:
+
+.. include:: reports-mc-login.rst
+
+#. Click the **Goals** tab.

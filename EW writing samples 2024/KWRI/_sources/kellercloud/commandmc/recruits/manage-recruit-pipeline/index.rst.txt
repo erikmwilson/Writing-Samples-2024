@@ -1,0 +1,23 @@
+
+.. _pipeline-recruits-commandmc:
+
+Managing the Recruiting Pipeline
+================================
+
+The following pages contain information about managing the Recruiting Pipeline:
+
+.. toctree::
+   :maxdepth: 2
+
+   search-recruits
+   filter-recruits
+   smartview-recruits
+   sort-recruits
+   edit-stages-recruits
+   create-checklist-templates
+   manage-checklist-card
+   change-pipeline-phase-card
+   remove-from-pipeline-card
+   archive-recruit-card
+   assign-recruit-card
+   invite-recruit

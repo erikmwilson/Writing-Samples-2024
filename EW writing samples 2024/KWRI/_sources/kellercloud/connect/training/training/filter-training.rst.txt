@@ -1,0 +1,28 @@
+
+.. _filter-training-connect:
+
+Filter Training
+===============
+
+While searching training courses, you may want to display courses by type or status.
+
+To filter training, complete the following steps:
+
+.. include:: training-login.rst
+
+#. Click on the area of training you want to filter:
+
+   * Library
+
+   * My Bookshelf
+
+   * Channels
+
+#. Click the filter icon |filter-icon| at the top of the page.
+
+   .. |filter-icon| image:: ../../../../images/filter-icon.png
+      :height: 30
+
+#. When the filters fly-out menu appears on the left side of the page, select filters by clicking the checkbox beside them. To remove filters, you can either remove them individually or click **Clear Filters**.
+
+   You can filter by **Type** (On Demand, Learning Path, Channel Resource) or **Status** (Not Started, In Progress, Done).

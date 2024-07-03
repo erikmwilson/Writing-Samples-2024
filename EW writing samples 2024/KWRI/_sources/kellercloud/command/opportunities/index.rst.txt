@@ -1,0 +1,21 @@
+
+.. _opportunities-command-index:
+
+Opportunities
+=============
+
+The following sections contain information about the
+Opportunities application.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview-opportunities
+   start-finish-opportunities
+   managing-opportunities/index
+   designs/index
+   offers/index
+   documents/index
+   compliance/index
+   commissions/index
+   earnnest/index

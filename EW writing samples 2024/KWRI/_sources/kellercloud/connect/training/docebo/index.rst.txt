@@ -1,0 +1,23 @@
+
+.. _training-index-docebo-connect:
+
+Working in Decebo (Administrative Tasks)
+========================================
+
+The following sections contain information about using Docebo to add training content.
+
+.. toctree::
+   :maxdepth: 1
+
+   overiew-channel-learning-path
+   upload-channel-resource
+   add-asset
+   create-course
+   unpublish-course
+   add-thumbnail
+   create-learning-path
+   assign-course-learning-path
+   map-main-catalog
+   map-recommended-catalog
+   delete-learning-path
+   hide-courses

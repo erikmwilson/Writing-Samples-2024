@@ -1,0 +1,38 @@
+
+.. _routes-settings-command:
+
+Routes
+======
+
+To create a new lead route, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Lead Routing**.
+
+#. Click **Routes**.
+
+#. Click **Create New Route**.
+
+#. Enter the Strategy information and click **Next**.
+
+   For information about route strategies, see :ref:`getting-started-lead-routing-settings-command`.
+
+#. Add lead sources to the route. You can search, select from a list, or select all.
+
+#. Click **Next**.
+
+#. Add agents to the route. You can search, select from a list, or select all agents.
+
+#. Click **Save**.
+
+To manage existing routes, you can perform the following actions:
+
+* Search for routes and view them by Active or Paused status.
+
+* Set a route to **Active** or **Paused**.
+
+* Click the Edit icon to edit or duplicate a route.

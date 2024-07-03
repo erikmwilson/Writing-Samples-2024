@@ -1,0 +1,32 @@
+
+.. _brokermetrics-disconnect-recruits-commandmc:
+
+Disconnect BrokerMetrics®
+=========================
+
+To disconnect the Recruits applet from BrokerMetrics, complete the following steps:
+
+.. note::
+
+   CommandMC settings are available only to certain KW roles. For more information, see :ref:`command-mc-roles-command-ug`.
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-right corner of Command, click your name.
+
+#. Select **Settings** from the drop-down menu.
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **Applications**.
+
+#. Click **BrokerMetrics**.
+
+#. On the **BrokerMetrics** page, click **Disconnect Account**.
+
+#. On the confirmation window, click **Disconnect**.
+
+   You receive a **BrokerMetrics® Account Disconnected** confirmation message. After you disconnect from BrokerMetrics, previously uploaded production metrics continue to display but will not be updated nor can you link to new agent records.

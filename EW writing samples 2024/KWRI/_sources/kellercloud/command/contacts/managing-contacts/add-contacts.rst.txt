@@ -1,0 +1,24 @@
+
+.. _add-contacts-command:
+
+Add a Contact
+=============
+
+With Command, you can add individual contacts or import multiple contacts at one time from a database such as a CRM or contact list (for example, Google Contacts).
+
+For more information on importing contacts, see :ref:`Import Contacts <import-contacts-command>`.
+
+To add an individual contact, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click **Add Contact**, at the top right of the page.
+
+#. In the **Add to Contacts** window, enter your contact's information. To enter additional information when creating the contact, click **Add More Information** and additional sections appear. For more information, see :ref:`contacts-info-fields-command`.
+
+#. Click **Create**, to add the contact.

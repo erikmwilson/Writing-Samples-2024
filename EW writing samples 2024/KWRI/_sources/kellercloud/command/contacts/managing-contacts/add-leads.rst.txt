@@ -1,0 +1,27 @@
+
+.. _add-leads-command:
+
+Add Leads
+=========
+
+In Contacts, leads appear in your contact database with a lead |leads-icon| icon, next to their name.
+
+.. |leads-icon| image:: ../../../../images/lead-icon.png
+   :height: 20
+
+Leads populate to Command automatically from your Command agent site, mobile application, and other sources, but you can also manually add a lead.
+
+To add an individual lead, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click **Add Contact**, at the top right of the page.
+
+#. In the **Add to Contacts** window, enter your contact's information and select the **Mark as Lead** checkbox. For more information, see :ref:`contacts-info-fields-command`.
+
+#. Click **Create**, to add the lead.

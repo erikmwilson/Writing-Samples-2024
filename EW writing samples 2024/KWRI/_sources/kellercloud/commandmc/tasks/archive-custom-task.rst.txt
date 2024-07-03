@@ -1,0 +1,20 @@
+
+.. _archive-custom-task-commandmc:
+
+Archive a Custom Task
+=====================
+
+To archive a custom task, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click the **Recruits** tab, at the top of the page.
+
+#. Click **Other Tasks**.
+
+#. Locate the appropriate task, click the More Options menu (ellipses |menu-options-icon| icon) and select **Archive**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the confirmation window, click **Archive**.

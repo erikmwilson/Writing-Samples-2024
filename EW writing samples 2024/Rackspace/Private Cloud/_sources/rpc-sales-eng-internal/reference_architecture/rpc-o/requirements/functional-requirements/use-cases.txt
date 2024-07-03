@@ -1,0 +1,21 @@
+=========
+Use cases
+=========
+
+A *use case* is a description of how users of the system perform
+tasks. Each use case below outlines, the functionality from a user’s
+point of view, and the end-result of the system’s as it responds to a
+functional request. Each use case is represented as a sequence of
+basic and simple steps, beginning with a user's goal and ending when
+that goal is fulfilled.
+
+.. list-table:: **Use cases**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - UC1.0
+     - TBD
+   * - UC1.0.1
+     - TBD

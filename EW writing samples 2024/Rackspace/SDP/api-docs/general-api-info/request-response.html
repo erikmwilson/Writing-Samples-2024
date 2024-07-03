@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Request and response types &mdash; Support Delivery Platform documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.5.6',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="Rate limits" href="limits.html" />
+    <link rel="prev" title="Ticketing API contract version" href="contract-version.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Support Delivery Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rackspace Ticketing API v2.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/index.html">Getting started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">General API information</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="service-access.html">Service access endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contract-version.html">Ticketing API contract version</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Request and response types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="limits.html">Rate limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="response-codes.html">Response codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="date-time-format.html">Date and time format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common-headers.html">Common headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html">Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="demo-environment.html">Demo environment features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ticketing-event-feed/index.html">Ticketing event feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copyright.html">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Rackspace Ticketing Integration for ServiceNow</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Support Delivery Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace Ticketing API v2.0</a> &raquo;</li>
+        
+          <li><a href="index.html">General API information</a> &raquo;</li>
+        
+      <li>Request and response types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api-docs/general-api-info/request-response.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="request-and-response-types">
+<span id="req-resp-types"></span><h1>Request and response types<a class="headerlink" href="#request-and-response-types" title="Permalink to this headline">#</a></h1>
+<p>The Rackspace Ticketing API supports the JSON data serialization format.</p>
+<p>The request format and resource version are specified by using the
+<code class="docutils literal"><span class="pre">Content-Type</span></code> header and are required for operations that have a request
+body. If <code class="docutils literal"><span class="pre">application/json</span></code> is provided, the latest resource version is
+used. To avoid unintentional interruptions with your integration,
+Rackspace recommends specifying a specific version header rather than
+relying on <code class="docutils literal"><span class="pre">application/json</span></code>, as version updates
+result in your immediate adoption of the latest version.</p>
+<p>You can specify the response format and resource version in requests by
+using the <code class="docutils literal"><span class="pre">Accept</span></code> header. If no response format is specified, JSON is
+the default and the latest version is used.</p>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text"><strong>Response formats</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="40%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Accept header</th>
+<th class="head">Resource Version</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>JSON</td>
+<td>application/json</td>
+<td>Version 1</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>JSON</td>
+<td>application/vnd.ticketing.v2+json</td>
+<td>Version 2</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="limits.html" class="btn btn-neutral float-right" title="Rate limits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="contract-version.html" class="btn btn-neutral float-left" title="Ticketing API contract version" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; <a href="../../copyright.html">Copyright</a> 2018, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

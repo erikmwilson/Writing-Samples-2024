@@ -1,0 +1,32 @@
+
+.. _select-designated-associates-settings-commandmc:
+
+Select Designated Associates
+============================
+
+You can set the default designated associates for the following SmartPlan step types:
+
+* Tasks
+
+* Email
+
+* SMS/MMS
+
+To select the designated associates, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **SmartPlans**.
+
+#. On the **Designated Associates** page, select your Market Center from the drop-down list.
+
+#. From the **Tasks** drop-down, select the default assignee for the tasks. This can either be the recruit assignee or Market Center leadership.
+
+#. From the **Email** drop-down, select who the emails should come from. This can either be the recruit assignee or Market Center leadership.
+
+#. From the **SMS/MMS** drop-down, select who the messages should come from. This can either be the recruit assignee or Market Center leadership.
+
+#. Click **Save Changes**.

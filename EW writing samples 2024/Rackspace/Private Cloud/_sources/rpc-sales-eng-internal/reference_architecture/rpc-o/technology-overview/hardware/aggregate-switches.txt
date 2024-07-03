@@ -1,0 +1,12 @@
+==================================
+Dedicated aggregate layer switches
+==================================
+
+.. note:: (Only needed if using more than two cabinets)
+
+Once an environment gets to the point where it expands beyond two
+cabinets, and requires an aggregation layer, then we would add another
+pair of Cisco 9372PX; be aware those are PX and not TX. These are SFP
+based switches. The Cisco 9372TX uplinks to these using SFPs.
+
+.. image:: ../../figures/Cisco9372PX.jpg

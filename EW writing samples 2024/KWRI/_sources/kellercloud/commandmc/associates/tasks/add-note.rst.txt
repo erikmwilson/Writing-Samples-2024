@@ -1,0 +1,24 @@
+
+.. _add-note-tasks-associates-commandmc:
+
+Add a Note
+==========
+
+CommandMC tracks all notes related to the associate.
+
+To add a note to a associate, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Select either **Checklist Tasks** or **Other Tasks** from the drop-down.
+
+#. Select the status of tasks to display, **To Do**, **Completed**, **Archived**, or **Expired** from the drop-down. The task must have an attached associate.
+
+#. Locate the appropriate task, click the More Options menu (ellipses |menu-options-icon| icon) and select **Add Note**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Add New Note** window, enter a **Note Title**, **Description**, and click **Save**.
+
+  You can now access this, and other notes that you add, on both the associate's timeline, and on the associate details **Notes** tab.

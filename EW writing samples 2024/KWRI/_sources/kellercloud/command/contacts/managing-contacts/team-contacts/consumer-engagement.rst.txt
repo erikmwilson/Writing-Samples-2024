@@ -1,0 +1,29 @@
+
+.. _consumer-engagement-command:
+
+View Your Team’s Consumer Engagement in Contacts (Teams)
+========================================================
+
+Rainmakers have the ability to view each of their team members' contact databases. They can also track which of their team members' contacts are registered through KW sites or applications, and can see the contact engagement with the KW site and application.
+
+To view your team's consumer engagement in Contacts, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select your Team from the **Select Team** drop-down at the top of the page.
+
+#. Click in the **Select Member** drop-down, to the left of the filters button, and select a team member. This displays their contacts. You can also select **All** to see all of your team members' contacts.
+
+   Each of your team members' contacts that have created an account on their KW application or site have a green registered |registered-icon| icon, next to their name. You can also use the **Last Visited** Column to see which contacts are interacting with either their KW application or site, and when they are logging in.
+
+   .. |registered-icon| image:: ../../../../../images/registered-icon.png
+      :height: 20
+
+#. Click on any of their registered contacts to see the consumer activity. Here you can see when they make edits to their collections, when they mark consumer Guide steps as complete, when they log in to either your KW agent site or application, and to see the listings they are visiting.
+
+   You can also click on the listing link, when it shows that the client has viewed a listing, to see the actual listing on your KW agent site.

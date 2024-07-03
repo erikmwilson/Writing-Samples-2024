@@ -1,0 +1,78 @@
+======================================================
+Post-deployment image registration and node enrollment
+======================================================
+
+Creating and registering images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To create images for ironic, you must use the
+``diskimage-builder``.
+
+#. Follow `the upstream documentation
+   <https://docs.openstack.org/diskimage-builder/latest/>`_ to install
+   ``diskimage-builder``.
+
+#. After you have successfully installed the ``diskimage-builder``,
+   clone `osic-elements <https://github.com/osic/osic-elements>`_ from
+   Github to ``/opt/osic-elements``.
+
+#. Create the deploy and final deploy images:
+
+   .. note::
+
+      The steps below create images for Ubuntu Xenial, Trusty and
+      CentOS 7. They are to be run from the deployment host as a
+      script.
+
+      This deployment requires raid tools for HP gear. The
+      ``IRONIC_AGENT_VERSION`` variable can be set to any stable
+      branch, Ocata or later.
+
+      You need to clone `openstack-ansible-ops
+      <https://github.com/openstack/openstack-ansible-ops>`_ repo to
+      ``/opt/openstack-ansible-ops/`` as it contains resources that
+      are needed.
+
+Navigate to ``/opt/openstack-ansible-ops/scripts`` and run the script
+``ironic_generate-images.sh`` to create a Ubuntu Xenial image for the
+deploy image and Ubuntu Trusty/Xenial and CentOS 7 base images which
+will be used for deployment on the Ironic node.
+
+
+Registering the nodes
+~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+   This section relies on hardware configuration that makes it highly
+   dependent on the specific hardware you deploy. Keep in mind the
+   code examples below may not work for your configuration unless you
+   are working with the correct values. Ensure all variables match the
+   host.
+
+   If the following commands do not work for your configuration,
+   reconfirm the node attributes.
+
+You must inform ironic of the network interface cards which are part
+of the node by creating a port with each NIC’s MAC address. These MAC
+addresses are passed to the Networking service during instance
+provisioning and used to configure the network appropriately.
+
+From the ``/opt/openstack-ansible-ops/scripts/`` directory, you need
+to modify ``ironic_register-nodes.sh`` to match the specifications of
+your baremetal machine and then run it.
+
+.. note
+
+   You can modify the capabilities of the flavor and node, but make
+   sure that they match, otherwise you will run into errors.
+
+.. note::
+
+   For more information, see the `OSIC Ansible documentation
+   <https://github.com/osic/osic-clouds/blob/master/nextgen/admin-node-enrollment.md>`_
+   on how to perform this action on multiple nodes.
+
+   For more information on altering the raid configuration with
+   Ironic, see the `upstream Ironic raid documentation
+   <https://docs.openstack.org/ironic/latest/admin/raid.html>`_.

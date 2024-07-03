@@ -1,0 +1,35 @@
+
+.. _add-thumbnail-docebo-connect:
+
+Add a Custom Channel Thumbnail
+==============================
+
+Using the right image as channel thumbnail may help your learners to understand the subject of your training and to identify the channel.
+
+To add a custom channel thumbnail, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Select the channel you want to add a thumbnail to from the **All Channels** page.
+
+#. Copy the channel URL from the browser address bar.
+
+#. Add the thumbnail graphic as an asset:
+
+   a. From the **User Menu** (three bar icon next to the Keller Williams logo), select **Share Content**.
+
+   #. On the **Share Content** page, click **Share a File**.
+
+   #. On the **Open** window, select your thumbnail file and click **Open**.
+
+   #. On the **Share a File** fly-out, paste the copied URL in the **Title** field.
+
+   #. Enter a **Description**.
+
+   #. Click **Next**.
+
+   #. Select the **Channel Thumbnails** channel. This is a special channel that is a repository for all thumbnails.
+
+   #. Click **Share**.
+
+   The thumbnail is added to the **Channel Thumbnails** channel and displays in the Library for the chosen channel.

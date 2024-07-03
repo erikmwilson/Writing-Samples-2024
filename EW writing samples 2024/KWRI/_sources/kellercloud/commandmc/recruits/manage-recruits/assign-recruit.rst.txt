@@ -1,0 +1,22 @@
+
+.. _assign-recruits-cmc:
+
+Add or Edit an Assignee for a Recruit
+=====================================
+
+To add or edit an assignee to a recruit, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab, at the top of the page. A list displays of all your Market Center recruits.
+
+#. Search for the correct recruit. For more information, see :ref:`search-recruits-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that recruit and select **Assign** or **Edit Assignee**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Add Assignee** window, select the assignees. You can select more than one. To remove an assignee, click the X next to the assignee name.
+
+#. Click **Assign**.

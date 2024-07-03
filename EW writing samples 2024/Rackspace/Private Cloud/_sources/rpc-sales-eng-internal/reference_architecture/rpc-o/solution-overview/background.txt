@@ -1,0 +1,9 @@
+==========
+Background
+==========
+
+OpenStack began in 2010 as a joint project of Rackspace Hosting and
+NASA. As of 2016, it is managed by the OpenStack Foundation, a
+non-profit corporate entity established in September 2012 to promote
+OpenStack software and its community. More than 500 companies have
+joined the project.

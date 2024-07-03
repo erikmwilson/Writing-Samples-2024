@@ -1,0 +1,587 @@
+===================
+Perform the upgrade
+===================
+
+Perform the upgrade as a series of steps:
+
+#. :ref:`Run a migration script <migrate-variables>` to move the variable
+   files to a new location.
+#. :ref:`Update Ansible <update-ansible>`.
+#. :ref:`Update the rpc-openstack galaxy modules <update-galaxy>`.
+#. :ref:`Rebuild the repo containers <rebuild-containers>`.
+#. :ref:`Rebuild the nova_console containers <console-rebuild>`.
+#. If running Ceph, :ref:`rebuild the monitor containers <ceph-rebuild>` in a
+   rolling fashion.
+#. :ref:`Upgrade the ELK stack <upgrade-elk>`.
+#. :ref:`Run the OSA upgrade script <run-OSA-script>`.
+#. :ref:`Set upgrade variables for RPCO playbooks <upgrade-variables>`.
+#. :ref:`Run the RPCO playbooks <run-playbooks>`.
+#. :ref:`Run the rpc-post-upgrade playbook <run-post-upgrade-playbook>`.
+
+.. _migrate-variables:
+
+Migrate variables
+~~~~~~~~~~~~~~~~~
+
+The file structure for variable files has changed in Mitaka. Variable files
+must be migrated from the ``user_variables.yml``,
+``user_extras_variables.yml``, and ``user_extras_secrets.yml`` files to the
+following new files:
+
+-  ``user_osa_variables_defaults.yml``
+-  ``user_osa_variables_overrides.yml``
+-  ``user_rpco_variables_defaults.yml``
+-  ``user_rpco_variables_overrides.yml``
+
+Migrate override variable files
+-------------------------------
+
+RPCO provides a migration tool, ``migrate-yaml.py``, to help you migrate
+variables to the new files. To migrate the variables, follow these steps:
+
+#.  Back up the ``user_extras_variables.yml`` file:
+
+    .. code-block:: console
+
+       # cp /etc/openstack_deploy/user_extras_variables.yml \
+         /root/user_extras_variables.yml.bak
+
+#. Change to the ``scripts`` directory:
+
+    .. code-block:: console
+
+       # cd /opt/rpc-openstack/scripts
+
+#.  Populate the ``user_rpco_variables_overrides.yml`` file:
+
+    .. code-block:: console
+
+       # ./migrate-yaml.py \
+         --defaults /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_rpco_variables_defaults.yml \
+         --overrides /etc/openstack_deploy/user_extras_variables.yml \
+         --output-file /etc/openstack_deploy/user_rpco_variables_overrides.yml
+
+#.  After the preceding commands have been invoked, open the
+    ``/etc/openstack_deploy/user_rpco_variables_overrides.yml`` file
+    and inspect the contents.
+
+    The file should look similar to the following example, with different
+    variables listed:
+
+    .. code-block:: yaml
+
+       ---
+       NEW_DEFAULTS:
+        maas_notification_plan: npManaged
+       OLD_OVERRIDES:
+        maas_notification_plan: npTechnicalContactsEmail
+       maas_excluded_checks:
+       - cinder_volume_check
+       net_max_speed: 1000
+
+    The ``NEW_DEFAULTS`` block lists any variables whose default value is
+    different than than the value that was defined. In this example,
+    ``maas_notification_plan`` has a different default value in the Mitaka code
+    base than what is in the existing Liberty variables in this environment.
+    The ``OLD_OVERRIDES`` block shows the value that was set on the environment
+    before the upgrade--in other words, the previously existing value.
+
+
+#. Choose the values that you want to keep. For example, if you want to keep
+   ``maas_notification_plan: npTechnicalContactsEmail``, edit the file as
+   follows:
+
+   .. code-block:: yaml
+
+      ---
+      maas_notification_plan: npTechnicalContactsEmail
+      maas_excluded_checks:
+      - cinder_volume_check
+      net_max_speed: 1000
+
+   Notice that the ``NEW_DEFAULTS`` and ``OLD_OVERRIDES`` blocks have been
+   deleted, and the variables have been properly indented.
+
+   Next, perform the same actions for the
+   ``/etc/openstack_deploy/user_osa_variables_defaults`` file.
+
+
+#. Back up the ``user_variables.yml`` file:
+
+   .. code-block:: console
+
+      # cp /etc/openstack_deploy/user_variables.yml \
+        /root/user_variables.yml.bak
+
+#. Change to the ``scripts`` directory:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack/scripts
+
+#. Populate the ``user_osa_variables_overrides.yml`` file:
+
+   .. code-block:: console
+
+      ./migrate-yaml.py \
+       --defaults /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_osa_variables_defaults.yml \
+       --overrides /etc/openstack_deploy/user_variables.yml \
+       --output-file /etc/openstack_deploy/user_osa_variables_overrides.yml
+
+#. Open the ``user_osa_variables_overrides.yml`` file, choose the values that
+   you want to keep, and save the file.
+
+
+#. Delete the old variables files:
+
+  .. code-block:: console
+
+     # rm -f /etc/openstack_deploy/user_extras_variables.yml \
+       /etc/openstack_deploy/user_variables.yml
+
+Generate or rename the secrets files
+------------------------------------
+
+In Mitaka, new secrets are introduced and we need to update the RPCO secrets
+files to include the new secret variables.
+
+Before you begin, back up the existing ``secrets`` files:
+
+    .. code-block:: console
+
+       # cp /etc/openstack_deploy/*_secrets.yml /root/
+
+To generate the new RPCO secrets files, use the following steps:
+
+#.  Update the ``user_rpco_secrets`` file:
+
+    .. code-block:: console
+
+       # python2.7 /opt/rpc-openstack/scripts/update-yaml.py --output-file \
+         /etc/openstack_deploy/user_rpco_secrets.yml \
+         /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_rpco_secrets.yml \
+         /etc/openstack_deploy/user_extras_secrets.yml
+       # rm -rf /etc/openstack_deploy/user_extras_secrets.yml
+
+#.  Populate the values of the new variables:
+
+    .. code-block:: console
+
+       # python2.7 /opt/rpc-openstack/openstack-ansible/scripts/pw-token-gen.py \
+         --file /etc/openstack_deploy/user_rpco_secrets.yml
+
+To rename the OSA ``secrets`` variables files, use the following steps:
+
+    .. code-block:: console
+
+       # mv /etc/openstack_deploy/user_secrets.yml \
+         /etc/openstack_deploy/user_osa_secrets.yml
+       # rm -f /etc/openstack_deploy/user_extras_secrets.yml \
+         /etc/openstack_deploy/user_secrets.yml
+
+Pull in the new default variables files from the code base
+----------------------------------------------------------
+
+To pull in the new default variables files, use the following command:
+
+.. code-block:: console
+
+   # cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/*defaults* \
+     /etc/openstack_deploy
+
+.. _update-ansible:
+
+Update Ansible
+~~~~~~~~~~~~~~
+
+To update Ansible, use the following steps:
+
+#.  Delete the pip configuration from the deployment node:
+
+    .. code-block:: console
+
+       # rm /root/.pip/pip.conf
+
+#.  Run ``bootstrap-ansible.sh``:
+
+    .. code-block:: console
+
+       # cd /opt/rpc-openstack/openstack-ansible
+       # bash scripts/bootstrap-ansible.sh
+
+.. _update-galaxy:
+
+Update the rpc-openstack galaxy modules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To update the rpc-openstack galaxy modules, use the following command:
+
+  .. code-block:: console
+
+    # ansible-galaxy install \
+      --role-file=/opt/rpc-openstack/ansible-role-requirements.yml \
+      --force --roles-path=/opt/rpc-openstack/rpcd/playbooks/roles
+
+.. _rebuild-containers:
+
+Rebuild the repo containers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The repo server containers must be rebuilt. To rebuild the containers,
+run the following commands:
+
+.. code-block:: console
+
+   # cd /opt/rpc-openstack/openstack-ansible/playbooks
+   # openstack-ansible lxc-containers-destroy.yml --limit repo_all
+   # openstack-ansible setup-hosts.yml --limit repo_all
+
+.. _console-rebuild:
+
+Rebuild the ``nova_console`` containers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``nova_console`` containers must be rebuilt. To rebuild the
+``nova_console`` containers, run the following commands:
+
+.. code-block:: console
+
+   # cd /opt/rpc-openstack/openstack-ansible/playbooks
+   # openstack-ansible lxc-containers-destroy.yml --limit nova_console
+   # openstack-ansible setup-hosts.yml --limit nova_console
+
+.. _ceph-rebuild:
+
+If running Ceph, rebuild the monitor containers in a rolling fashion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the following steps to update the entire Ceph cluster and rebuild the Ceph
+monitors. Example code for the entire process is provided at the end of the
+steps.
+
+#. Verify that all the variables for Ceph (example: ``osd_directory``,
+   ``raw_multi_journal``, or ``journal_size``) were properly migrated in the
+   previous steps.
+
+#. Ensure that all the monitors are in a correct state by issuing a
+   ``ceph -s`` on them.
+
+#. For *one monitor at a time*, perform the following actions:
+    A. Stop the monitor process and remove the monitor from the cluster.
+    B. Delete the container, re-create it, and rejoin it to the cluster with
+       the playbook limited to that monitor. This process makes the cluster
+       have the correct hostnames and bind mounts.
+    C. Before performing these steps with the next monitor, verify the health
+       of the cluster by issuing a ``ceph -s`` command on all the monitor
+       hosts again.
+
+      .. note::
+         Stop the upgrade procedure if the cluster is in an unhealthy state.
+
+         The process is now impactful.
+
+#. Re-run the ``ceph-all`` playbook. Re-running the included playbooks
+   restarts the monitors in ``osds/monitors`` because their configuration file
+   changed. Consider how to do this, depending on the topology and amount of
+   nodes, by limiting which host is targeted.
+
+Following is example code for the entire process:
+
+.. warning::
+
+    If the code below is being run in a script or copy and pasted on the
+    command line, ensure that you first ``set -e`` so that any failure that
+    occurs within the loop terminates the loop. It is essential to ensure that
+    all steps complete successfully and that the Ceph cluster is always in a
+    good state before MONs are removed from the cluster.  Failing to do this
+    could result in data loss.
+
+.. code-block:: bash
+
+    set -e
+
+    mons=$(ansible mons --list-hosts)
+    if [ $(echo ${mons} | wc -w) -gt 0 ]; then
+      #Gather facts about all the monitors first, even with bad names
+      #This shouldn't change a thing, it's a regular playbook run.
+      openstack-ansible /opt/rpc-openstack/rpcd/playbooks/gen-facts.yml
+      for mon in ${mons}; do
+        ansible $mon -m shell -a "ceph --format json-pretty status | grep -q '\"overall_status\": \"HEALTH_OK\"'"
+        ansible $mon -m command -a "stop ceph-mon id=$mon"
+        ansible $mon -m command -a "ceph mon remove $mon"
+        openstack-ansible lxc-containers-destroy.yml --skip-tags=container-directories --limit $mon
+        openstack-ansible lxc-containers-create.yml --limit $mon
+        # Destroy facts for the current mon, this way it's gonna be properly generated
+        rm -f /etc/openstack_deploy/ansible_facts/$mon
+        openstack-ansible /opt/rpc-openstack/rpcd/playbooks/ceph-mon.yml --limit $mon
+      done
+      #all the facts are good, they are all part of the cluster. just reconfigure them all
+      #caution, it will restart all your osds/mons, be careful!
+      openstack-ansible /opt/rpc-openstack/rpcd/playbooks/ceph-all.yml
+    fi
+
+.. _upgrade-elk:
+
+Upgrade the ELK stack
+~~~~~~~~~~~~~~~~~~~~~
+
+The ELK (Elasticsearch, Logstash, and Kibana) stack upgrade from v12 to v13
+consists of several steps. Because of stricter checking of data types in the
+newest versions of Elasticsearch, all of the existing Logstash indices must be
+reindexed before you can upgrade Elasticsearch. The bulk of the upgrade work is
+performed in the ``upgrade_elasticsearch_pre.yml`` task. This task reindexes
+the existing indices to a new mapping with the correct types. After the
+reindexing is complete, you can upgrade the Elasticsearch apt packages, and
+they will start successfully.
+
+Reindexing can be a time-consuming process. The playbooks
+enable you to install what is necessary to perform *preupgrade reindexing* to
+reduce the time needed when the actual upgrade is running.
+
+For information about preupgrade reindexing, see
+:ref:`Elasticsearch preupgrade reindexing <elk-prereqs>`.
+
+Methodology
+-----------
+
+The legacy version of Elasticsearch that was shipped with versions 10, 11, and
+12 of RPCO included an index template with two host fields,
+one of type ``ip`` and the other of type ``string``. This
+situation causes an error in the latest version of Elasticsearch, which is
+shipped with the v13 and later versions of RPCO. To maintain existing
+indices, the legacy indices must be reindexed with a new template in which both
+host fields are of type ``string``.
+
+Run the upgrade_pre_flight.yml task
+-----------------------------------
+
+The ``upgrade_pre_flight.yml`` task performs some version checks of the
+Elasticsearch apt package to help determine the state of the Elasticsearch
+cluster.
+
+-  By default, an RPCO environment earlier than v13 with the ELK stack has an
+   Elastcisearch version in the 1.4.x branch.
+-  To reindex the indices, you use the reindexing plug-in that requires an
+   Elasticsearch version in the 1.7.x branch.
+-  The version of Elasticsearch needed by RPCO v13 is on the 2.x branch.
+
+The ``upgrade_pre_flight.yml`` task determines the version of
+Elasticsearch that is installed and performs the following actions:
+
+-  If the version is between 1.4.x and 1.6.x, proceed with the reindexing and
+   upgrade.
+-  If the version is later than 2.x, skip the reindexing and proceed with the
+   upgrade.
+-  If the version is in the 1.7.x branch, stop the reindex and upgrade unless
+   the ``force_upgrade=true`` variable is set from the command line.
+
+Because a preupgrade reindex might occur when the
+1.7.x branch is detected, it is safest to stop the upgrade to allow you
+to ensure that any preupgrade reindexing is completed and the cluster
+is prepared for the update.
+
+Run the upgrade_elasticsearch_pre.yml task
+------------------------------------------
+
+The ``upgrade_elasticsearch_pre.yml`` task performs the following steps to
+automate the reindexing and upgrading of existing Elasticsearch clusters:
+
+#. The Elasticsearch cluster is upgraded to the latest stable 1.7.x version.
+#. Elasticsearch is restarted.
+#. The ``log_test1`` template is dropped from Elasticsearch.
+#. A new ``log_test1`` template with updated ``host`` fields is added.
+#. The reindexing plug-in is installed.
+#. Elasticsearch is restarted.
+#. The ``reindex-liberty.py`` script is installed.
+#. Legacy indices are reindexed with the new ``log_test1`` template into new
+   indices (``logstash-YYYY.MM.DD-logstash``).
+#. Legacy indices (``logstash-YYYY.MM.DD``) are deleted after they have been
+   reindexed.
+#. Legacy plug-ins and apt repositories are removed.
+
+You can also call the ``upgrade_elasticsearch_pre.yml`` playbook with the
+``reindex-wrapper`` tag to upgrade the Elasticsearch packages to only the 1.7.x
+branch and install the ``reindex-liberty.py`` script.
+
+Run the reindex-liberty.py script
+---------------------------------
+
+The ``reindex-liberty.py`` script is a wrapper script around the
+reindexing Elasticsearch plug-in and a helper tool to monitor the
+reindexing process and obtain information about the Elasticsearch cluster. The
+help output of ``reindex-liberty.py`` follows:
+
+.. code-block:: console
+
+   ./reindex-liberty.py --help
+   usage: reindex-liberty.py [-h] [--host HOST] [--port PORT] [--suffix SUFFIX]
+                             [--clean] [--list] [--reindex] [--index INDEX]
+                             [--batch] [--start START] [--end END] [--monitor]
+                             [--continuous] [--delay DELAY] [--verbose] [--drop]
+                             [--dry-run]
+
+   optional arguments:
+     -h, --help       show this help message and exit
+     --host HOST      Elasticsearch host to connect to (default: localhost)
+     --port PORT      Elasticsearch port to connect to (default: 9200)
+     --suffix SUFFIX  Suffix for reindexed indices. (default: liberty)
+     --clean          Clean previous reindexed indices
+     --list           List all Elasticsearch indices
+     --reindex        Reindex all legacy indexes
+     --index INDEX    Used with --reindex to reindex a specific index.
+     --batch          Batch processing of old indices. Defaults to oldest index
+                      through previous day's index.
+     --start START    Start index for batch processing (YYYY.MM.DD) (default:
+                      beginning of indices)
+     --end END        End index for batch processing (YYYY.MM.DD) (default: the
+                      Nth-1 index)
+     --monitor        Progress of reindexing
+     --continuous     Continuous monitoring
+     --delay DELAY    Refresh delay for continuous monitoring. (default: 10)
+     --verbose        Verbose output from monitoring functions
+     --drop           Drop legacy indices
+     --dry-run        Prints what will happen for drop, clean and batch
+                      operations
+
+Following is additional information about the arguments that is helpful for the
+ELK upgrade:
+
+``--host and --port``
+   The host IP address and port of an Elasticsearch endpoint defaults to
+   ``localhost:9200``.
+
+``--suffix``
+   By default, the destination indices have ``-liberty`` appended to the
+   original name. For example, an index named ``logstash-2016.01.01`` is
+   reindexed into ``logstash-2016.01.01-liberty``. Use this option with care
+   because additional manual changes to the new ``log_test1`` template must be
+   made.
+
+``--clean``
+   Use this argument primarily for testing preupgrade steps and development.
+   ``--clean`` removes any indices with the suffix specified,  which defaults
+   to ``-liberty``.
+
+``--list``
+   Lists all of the Elasticsearch indices including document counts, which are
+   the primary method to determine reindexing progress.
+
+``--reindex``
+   By default, ``--reindex`` reindexes all indices that match the pattern
+   ``logstash-*``. The script initiates the reindexing process inside of
+   Elasticsearch.
+
+``--index INDEX``
+   Use the ``--index`` option in conjunction with ``--reindex`` to reindex
+   only a specific index. For example:
+
+   .. code-block:: console
+
+      # ./reindex-liberty.py --reindex --index logstash-2016.01.01
+
+``--batch``
+   Use the ``--batch`` option for performing reindexing on a series of indices
+   based on the date of the index. By default, the ``--batch`` option reindexes
+   all indices starting at the earliest index date through, and including, the
+   previous day.
+
+``--start START`` and ``--end END``
+   Use the ``--start`` and ``--end`` options with the ``--batch`` option to
+   control the beginning and end dates for a reindexing batch. The following
+   example reindexes all of the indices with dates between January 1st and
+   January 31st (inclusive):
+
+   .. code-block:: console
+
+      # ./reindex-liberty.py --batch --start 2016.01.01 --end 2016.01.31
+
+``--monitor``, ``--continuous``, ``--delay DELAY`` and ``--verbose``
+   Use these arguments to monitor the progress of the reindexing. By itself,
+   ``--monitor`` prints a percentage complete of the entire document count of
+   all indices. Adding the ``--continuous`` option continuously prints the
+   percentage with a pause time specified with the ``--delay`` option. Adding
+   ``--verbose`` prints the percentage complete of each index and the overall
+   percentage complete.
+
+``--drop``
+   This argument drops the legacy indices from the Elasticsearch cluster and is
+   the last step of the reindexing process. Use this argument with extreme care
+   because the dropped indices are essentially deleted.
+
+``--dry-run``
+   You can add the ``--dry-run`` argument to any of the ``--reindex`` or
+   ``--batch`` commands to print what would happen if that command was run.
+
+
+.. _run-OSA-script:
+
+Run the OSA upgrade script
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run the OSA upgrade script, use the following commands:
+
+.. code-block:: console
+
+   # cd /opt/rpc-openstack/openstack-ansible
+   # export I_REALLY_KNOW_WHAT_I_AM_DOING=true
+   # echo "YES" | ./scripts/run-upgrade.sh
+
+The script takes about an hour to complete.
+
+.. _upgrade-variables:
+
+Set upgrade variables for RPCO playbooks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To correctly upgrade the RPCO services, place the following variables in a
+temporary variables file.
+
+.. code-block:: console
+
+   # echo "logging_upgrade: true" >> /etc/openstack_deploy/user_upgrade_variables.yml
+   # echo "backup_dir: \"{{ local_home }}/rpc13-upgrade-$(date '+%Y-%m-%d')\"" >> /etc/openstack_deploy/user_upgrade_variables.yml
+
+After the upgrade is completed, you can delete the file.
+
+.. _run-playbooks:
+
+Run the RPCO playbooks
+~~~~~~~~~~~~~~~~~~~~~~
+
+To run the RPCO playbooks, use the following steps:
+
+#.  Change to the ``opt/rpc‐openstack/rpcd/playbooks`` directory:
+
+    .. code-block:: console
+
+       # cd /opt/rpc-openstack/rpcd/playbooks
+
+#.  Run the ``rpc-support`` playbook:
+
+    .. code-block:: console
+
+       # openstack-ansible rpc-support.yml
+
+#.  Run the ``horizon_extensions`` playbook:
+
+    .. code-block:: console
+
+       # openstack-ansible horizon_extensions.yml
+
+#.  If you are running MaaS, run the ``setup-maas`` playbook:
+
+    .. code-block:: console
+
+       # openstack-ansible setup-maas.yml
+
+#.  If you are running the ELK stack, run the ``setup-logging`` playbook:
+
+    .. code-block:: console
+
+       # openstack-ansible setup-logging.yml
+
+#.  If you are running MaaS, verify that all checks and alarms are backed up:
+
+    .. code-block:: console
+
+       # openstack-ansible verify-maas.yml

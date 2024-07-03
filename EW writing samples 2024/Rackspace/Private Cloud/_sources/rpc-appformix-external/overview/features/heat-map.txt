@@ -1,0 +1,7 @@
+.. _haet-map-ug:
+
+========
+Heat map
+========
+
+For information about heat map, see `Heat Map <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-heat-map.html>`_ in the AppFormix User Guide.

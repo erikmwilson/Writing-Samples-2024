@@ -1,0 +1,17 @@
+========================
+A comprehensive offering
+========================
+
+.. image:: ../figures/comprehensive-offering.png
+   :alt: Rackspace comprehensive offerings
+
+In addition to delivering OpenStack as a service, we offer a
+comprehensive set of enablement services and training to help you
+optimize your environment and get the most from your cloud. Our
+enablement services team can help you modernize your applications for a
+cloud environment, sync your cloud with your existing authentication
+system (for example, Active Directory) and help your team move to a CI/CD
+(continuous integration/continuous deployment) model. We also deliver
+private OpenStack training courses at your campus (or the location of
+your choice) to help ramp your users on OpenStack and get the most out
+of their environment.

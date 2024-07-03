@@ -1,0 +1,40 @@
+
+.. _custom-tags-settings-command:
+
+Custom Tags
+===========
+
+Everyone organizes their database and Sales Pipeline in a unique way. Because of this, Command gives you the ability to create custom tags and custom fields. While custom fields give you the ability to create a standardized field that can allow you to add open ended responses, if there is a label that is standard to your business, add it as a custom tag and apply it to any number of contacts or opportunities. This allows you to organize your database and Sales Pipeline in any way you choose.
+
+To create and edit your custom tags, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Contacts** to display the Contacts settings.
+
+#. Click **Custom Tags**.
+
+#. Choose whether you want to edit the custom tags for Contacts or Opportunities (Contacts is chosen by default).
+
+#. To create a new tag, click **Create New Tag**.
+
+#. Complete the **Add New Tag** popup window fields, and then click **Create**.
+
+   Your new custom tag is now ready to add to your Contacts or Opportunities.
+
+#. To edit an existing custom tag, click the Edit |edit-icon| icon to edit the name and color of the tag and click **Save**.
+
+   .. |edit-icon| image:: ../../../../../images/edit-icon.png
+      :height: 20
+
+#. To delete a custom tag, click the Delete |delete-icon| icon and click **OK** in the confirmation box.
+
+   .. |delete-icon| image:: ../../../../../images/delete-icon.png
+      :height: 20
+
+.. note::
+
+   The number of contacts or opportunities assigned to each tag displays in the **Linked Contacts** or **Linked Opportunities** column. You cannot delete a tag if there are any contacts or opportunities assigned to it. You can click on the number of linked contacts, to see those contacts in your database.

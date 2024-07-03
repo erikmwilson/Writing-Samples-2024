@@ -1,0 +1,132 @@
+================
+Design decisions
+================
+
+.. list-table:: **RPC-000 Solution Component**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Item**
+     - **Decision**
+   * - Problem statement
+     - Open Source software will be utilized as a priority.
+   * - Assumptions
+     - Our collaboration will be based on providing upstream commits
+       to the OpenStack community.
+   * - Alternatives
+     - Package, or proprietary versions of OpenStack are available in
+       the marketplace.
+   * - Decision
+     - We use OpenStack source code direct from the git.openstack.org.
+   * - Justification
+     - Our approach is well in-line with the community, and provides a
+       simplified release process.
+   * - Implications
+     -
+   * - Related standard
+     -
+   * - Related decisions
+     -
+
+.. list-table:: **RPC-001 Solution Component**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Item**
+     - **Decision**
+   * - Problem statement
+     - Neutron L2 networks are preferred to guarantee throughput.
+   * - Assumptions
+     - L2 networks will be prioritized 80/20 over L3 networks.
+   * - Alternatives
+     - L3 overlay networks are available but will introduce latency,
+       and additional points of failure.
+   * - Decision
+     - VLANs will be trunked down to Neutron and the Compute nodes.
+   * - Justification
+     - In our experience.
+   * - Implications
+     -
+   * - Related standard
+     -
+   * - Related decisions
+     -
+
+.. list-table:: **RPC-002 Solution Component**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Item**
+     - **Decision**
+   * - Problem statement
+     - All deployments will be delivered via the OpenStack-Ansible
+       deployment project.
+   * - Assumptions
+     - Reproducible deployments will be required to work through
+       use-cases, and experiments with the environment.
+   * - Alternatives
+     - Hand rolled, or other deployment methods are available, but,
+       cannot produce re-usable artifacts.
+   * - Decision
+     - The OpenStack-Ansible Deployment project allows us to keep a
+       copy of the deployment yaml.
+   * - Justification
+     - The deployment artifacts are complimentary to the experiment
+       results allowing for reproducibility.
+   * - Implications
+     -
+   * - Related standard
+     -
+   * - Related decisions
+     -
+
+.. list-table:: **RPC-003 Solution Component**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Item**
+     - **Decision**
+   * - Problem statement
+     - Swift will be used as the back end for Image service (glance).
+   * - Assumptions
+     - Swift provides a scale-out distributed object store, and will
+       be required to provide snapshots, image storage, and block
+       storage backups.
+   * - Alternatives
+     - Enterprise storage appliances provide similar capabilities but
+       have proprietary code bases.
+   * - Decision
+     - Swift will be deployed on a flexible, and reusable server design.
+   * - Justification
+     - Swift is currently a stable production-ready object store.
+   * - Implications
+     -
+   * - Related standard
+     -
+   * - Related decisions
+     -
+
+.. list-table:: **RPC-004 Solution Component**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Item**
+     - **Decision**
+   * - Problem statement
+     - Ceph will be used as the backend for Block Storage (cinder).
+   * - Assumptions
+     - Ceph provides a scale-out distributed storage backend.
+   * - Alternatives
+     - Enterprise storage appliances provide similar capabilities but
+       have proprietary code bases.
+   * - Decision
+     - Ceph will be deployed on a flexible, and reusable server design.
+   * - Justification
+     - Ceph is currently a stable production-ready scale-out
+       distributed storage back end.
+   * - Implications
+     -
+   * - Related standard
+     -
+   * - Related decisions
+     -

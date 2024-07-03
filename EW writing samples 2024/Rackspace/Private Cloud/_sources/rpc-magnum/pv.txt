@@ -1,0 +1,52 @@
+Persistent Volumes
+==================
+
+HostPath
+--------
+
+At present, the only option for using Persistent Volumes in Magnum is to
+use the HostPath option within Kubernetes. There is a fixed volume
+attached to each Kubernetes Master and Minion that can be used for this
+purpose. The volume is mounted at '/k8s\_cbs'. Subdirectories can be
+used in order to split this up for use with multiple different pods.
+Additionally, multiple pods on the same node can share this storage. The
+following caveats apply:
+
+-  Each master and minion has a separate Cinder volume. The contents of
+   these volumes are NOT synchronized between nodes.
+
+-  The size of this volume is specified during Cluster Template
+   creation, and cannot be resized after the cluster has been created.
+
+-  Any subdirectories must be MANUALLY created prior to attempting to
+   use them. They are NOT created automatically.
+
+-  Cinder Volumes are deleted upon Cluster deletion, and are not
+   re-attached.
+
+The size of the Cinder volume used for this storage defaults to 5GB.
+This can be changed in the Cluster Template definition, by specifying
+the 'cinder\_volume\_size' parameter, which represents the size, in GB,
+of the Cinder volume.
+
+Example:
+
+::
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: test-pd
+    spec:
+      containers:
+      - image: gcr.io/google_containers/test-webserver
+        name: test-container
+        volumeMounts:
+        - mountPath: /test-pd
+          name: test-volume
+      volumes:
+      - name: test-volume
+        hostPath:
+          # directory location on host
+          path: /k8s_cbs
+

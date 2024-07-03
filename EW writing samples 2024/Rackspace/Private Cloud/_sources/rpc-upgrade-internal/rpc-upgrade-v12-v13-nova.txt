@@ -1,0 +1,24 @@
+=============================
+Compute service upgrade notes
+=============================
+
+When you upgrade the Compute (nova) service from v12 to v13 in
+RPCO, consider the following information:
+
+-  **Aggregates and the scheduler service**: When the scheduler service first
+   starts in v13, UUIDs are generated for all defined aggregates and are saved
+   back to the database. If you have a significant number of aggregates,
+   the scheduler start might be delayed while the work is completed. The delay
+   should be minor for most deployments.
+
+-  **force_config_drive value**: The ``force_config_drive`` configuration
+   option provided an ``always`` value that was deprecated in the previous
+   release. The ``always`` value is no longer accepted. Deployments that use
+   that value must change the value to ``True`` before upgrading.
+
+-  **Change-id and backups**: The commit with the
+   ``Idd4bbbe8eea68b9e538fa1567efd304e9115a02a`` change-id requires that the
+   ``nova_api`` database is set up and that nova is configured to use it. The
+   ``os_nova`` role handles this. However, if the deployment uses a nonstandard
+   backup mechanism, you might want to update the backup to include this
+   database.

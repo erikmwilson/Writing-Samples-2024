@@ -1,0 +1,65 @@
+
+.. _overview-contacts-command:
+
+Contacts Overview
+=================
+
+Use the Command Contacts application to organize track all of your contacts and leads. Contacts and leads are sync'd across all Keller Cloud applications.
+
+Your database is your business. It is important to build daily habits and to be very purposeful with how you communicate to both leads and contacts. Leads are people for whom you have minimal contact information. Communication is one-way, offer-based and focused on identifying their motivation. Contacts are people who you have have implied or explicit permission to have an ongoing connection. This connection is focused on getting a response and beginning a relationship.
+
+To open the Contacts application, complete the following steps:
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../images/contacts-icon.png
+      :height: 20
+
+The Contacts application displays all or your imported and manually entered contacts. You can manage your contacts as follows:
+
+* Add a New Contact or Lead to your Command contact list.
+
+ For more information, see :ref:`add-contacts-command`.
+
+ Leads appear in your contacts database with the lead |leads-icon| icon, next to their name.
+
+ .. |leads-icon| image:: ../../../images/lead-icon.png
+    :height: 20
+
+ For more information, see :ref:`add-leads-command`.
+
+* Import your contacts, using the Command Contact Import Template.
+
+ For more information, see :ref:`import-contacts-command`.
+
+* Edit a Contact by selecting their name in your **Contacts** list.
+
+ For more information, see :ref:`edit-contacts-command`.
+
+* Click the check box next to one or more contacts to use the Bulk Action ​feature. If at least one box is checked, the **Select Bulk Action** drop-down appears above the **Name** field. Any action chosen from the drop-down list, is applied to all selected contacts.
+
+ For more information, see :ref:`bulk-actions-contacts-command`.
+
+* To customize the columns that appear in your contact list, click **Customize Columns**, at the top right of your contact list.
+
+ For more information, see :ref:`customize-columns-contacts-command`.
+
+* Use filters to organize your contact list to fit your business. For example, you can use filters to switch between viewing All Contacts or Leads Only in your database. By segmenting leads and contacts, you can better organize and nurture your database from lead to close. Leads can be owned and assigned to help structure team databases, and once engagement occurs, leads can be switched to be contacts and worked in a more purposeful way.
+
+ For more information, see :ref:`filter-contacts-command`.
+
+* When you selected a set of filters, you can save the filter grouping as a SmartView. You can create an unlimited amount of SmartViews as you manage your database and build daily habits.
+
+ For more information, see :ref:`smartviews-contacts-command`.
+
+* You can switch between the, mobile friendly, Card View |card-view-icon| and the, versatile, List View |list-view-icon| to find the best way to visualize your contact list.
+
+   .. |card-view-icon| image:: ../../../images/card-view-icon.png
+      :height: 20
+
+   .. |list-view-icon| image:: ../../../images/list-view-icon.png
+      :height: 20
+
+* To change the amount of contacts displayed on a page, click **Show** and choose the amount of contacts that you want to display from the drop-down (10, 25, or 50).

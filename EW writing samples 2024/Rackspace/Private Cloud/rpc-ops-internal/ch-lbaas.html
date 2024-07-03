@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Load-Balancer-as-a-Service (LBaaS) &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Backups" href="ch-backups.html" />
+    <link rel="prev" title="Deployment groups" href="containers/sec-containers-deployment-groups.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operations Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-verify.html">Verifying cloud deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-access.html">Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-instances.html">Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-compute.html">Compute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-galera.html">Managing Galera clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ceph.html">RPC Ceph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-swift.html">Managing Object Storage for multiple regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-containers.html">Containers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Load-Balancer-as-a-Service (LBaaS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-backups.html">Backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Operations Guide</a> &raquo;</li>
+        
+      <li>Load-Balancer-as-a-Service (LBaaS)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ops-internal/ch-lbaas.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="load-balancer-as-a-service-lbaas">
+<h1>Load-Balancer-as-a-Service (LBaaS)<a class="headerlink" href="#load-balancer-as-a-service-lbaas" title="Permalink to this headline">#</a></h1>
+<p>The LBaaS functionality is configured and deployed using
+OpenStack-Ansible. For more information about LBaaS operations,
+see <a class="reference external" href="https://docs.openstack.org/newton/networking-guide/config-lbaas.html">LBaaS</a> in the OpenStack Networking guide.</p>
+<p>The following list details characteristics of the RPCO LBaaS offering:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The preview release is not intended to provide highly scalable or
+highly available load balancing services.</li>
+<li>Testing and recommended usage is limited to 10 members in a pool
+and no more than 20 pools.</li>
+<li>Virtual load balancers deployed as part of the LBaaS service are
+not monitored for availability or performance.</li>
+<li>RPCO enables LBaaS v2 with the default HAProxy-based agent.</li>
+<li>The Octavia agent is not supported.</li>
+<li>Integration with physical load balancer devices is not supported.</li>
+<li>Customers can use API or CLI LBaaS interfaces.</li>
+<li>The Dashboard offers a panel for creating and managing LBaaS load balancers,
+listeners, pools, members, and health checks.</li>
+<li>SDN integration is not supported.</li>
+</ul>
+</div></blockquote>
+<p>In Openstack Newton, you can <a class="reference external" href="https://docs.openstack.org/developer/openstack-ansible-os_neutron/newton/configure-network-services.html">enable Dashboard (horizon) panels</a> for
+LBaaS. Additionally, a customer can specify a list of servers behind a
+listener and reuse that list for another listener. This feature,
+called <em>shared pools</em>, only applies to customers that have a large
+number of listeners (ports) behind a load balancer.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-backups.html" class="btn btn-neutral float-right" title="Backups" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="containers/sec-containers-deployment-groups.html" class="btn btn-neutral float-left" title="Deployment groups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

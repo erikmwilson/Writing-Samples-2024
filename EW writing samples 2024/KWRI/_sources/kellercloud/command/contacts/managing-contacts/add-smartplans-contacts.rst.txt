@@ -1,0 +1,27 @@
+
+.. _add-smartplans-contacts-command:
+
+Add a Contact to a SmartPlan
+============================
+
+To add a contact to a SmartPlans, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#.  In the **Contacts** list, click the name of the contact to archive.
+
+#. Click the Add to SmartPlan |smartplans-icon| icon.
+
+   .. |smartplans-icon| image:: ../../../../images/smartplans-icon.png
+      :height: 20
+
+#. On the **Add Contacts to SmartPlan** window, find the correct SmartPlan and click **Select**. You can enter the name of the SmartPlan to find it in the list.
+
+#. On the resulting **Add Contacts to SmartPlan** window, determine when the SmartPlan starts for the contacts and click **Confirm**.
+
+#. On the confirmation window, click **Confirm**.

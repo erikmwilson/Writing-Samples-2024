@@ -1,0 +1,13 @@
+
+.. _import-logs-settings-index-command:
+
+Import Logs
+===========
+
+The following sections contain information about how to configure
+import logs settings.
+
+.. toctree::
+   :maxdepth: 1
+
+   my-logs

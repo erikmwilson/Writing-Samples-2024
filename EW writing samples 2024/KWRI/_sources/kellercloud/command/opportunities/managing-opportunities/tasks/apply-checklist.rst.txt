@@ -1,0 +1,41 @@
+
+.. _apply-checklist-task-opportunities-command:
+
+Apply Checklist to an Opportunity
+=================================
+
+Opportunities can methodically track and manage your current and future transactions. An important part of this is tracking all of the tasks you have to complete, at every stage of the process. Because of this, Command includes checklists that you can create for every stage in the Sales Pipeline.
+
+To apply a checklist to an Opportunity, complete the following steps:
+
+.. include:: ../../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity Name to view the Opportunity details.
+
+#. Click on the checklist icon, |checklist-icon|.
+
+   .. |checklist-icon| image:: ../../../../../images/checklist-icon.png
+      :height: 30
+
+#. On the **Tasks** window, click **Apply Checklist** in the header to apply a checklist for any stage or click **Apply Checklist** within a stage to apply a checklist to that stage.
+
+   .. note::
+
+      * If there there is no checklist created for a stage, the **Apply Checklist** option in unavailable.
+
+      * If a checklist is activated for a future stage, all the stages before that stage are displayed, but do not have checklists applied to them automatically and show 0/0 tasks in the counter.
+
+#. On the **Apply Checklist** window, select the phase and correct stage checklist. Click **Client Update** to turn on client updates if needed. Client updates may already be turned on, depending on the checklist you selected. You can also drag the tasks into a different order before adding them to the opportunity.
+
+#. Click **Add Tasks** to add the checklist tasks.
+
+For more information about checklists, see :ref:`manage-checklists-opportunities-command`.
+
+You can see all opportunity tasks in the Tasks applet. For more information, see :ref:`tasks-index-command`.

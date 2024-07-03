@@ -1,0 +1,19 @@
+
+.. _smartview-transactions-commandmc:
+
+Create Smartviews for Transactions
+==================================
+
+When you use a set of filters often, save that set of filters as a SmartView. You can then access that set of filters without having to reset them each time.
+
+To create Smartviews for transactions, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page.
+
+#. After the desired filters have been selected, click the **Smartview** drop-down and select **Create Smartview**.
+
+   For more information on filtering recruits, see :ref:`filter-transactions-commandmc`.
+
+#. Name your SmartView, then click **Save Smartview**. To access this Smartview in the future, click the **Transactions** drop-down at the top of your transactions list, and choose it from the list.

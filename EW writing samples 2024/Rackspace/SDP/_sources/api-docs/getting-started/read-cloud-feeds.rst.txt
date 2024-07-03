@@ -1,0 +1,125 @@
+.. read-cloud-feeds:
+
+
+========================
+Reading from Cloud Feeds
+========================
+
+.. _Cloud Feeds: https://support.rackspace.com/how-to/cloud-feeds-overview
+
+The Ticketing API is designed to integrate with your internal
+ticketing system.  In addition to creating tickets in Rackspace systems you
+also want to record changes as the ticket is updated by Rackers. These
+changes are made available by our `Cloud Feeds`_ ticketing feed.
+
+Cloud Feeds is a pub/sub syndication system that Rackspace provides, and as
+tickets are modified these updates are pushed to a Cloud Feeds feed. For
+more information see, `Cloud Feeds`_.
+
+You receive ticket update events by periodically polling our feed and receiving
+events that have occurred since the last time you polled. To poll the feed
+for the first time:
+
+.. code::
+
+    $ curl https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/faws:576508529999 \
+       -X GET \
+       -H 'X-Auth-Token: xxxxxxx'
+       -H 'Accept: application/vnd.rackspace.atom+json' \
+       | python -m json.tool
+
+.. code::
+
+    {
+        "feed": {
+            "@type": "http://www.w3.org/2005/Atom",
+            "link": [ ... ],
+            "entry": [
+                {
+                    "category": [
+                        {
+                            "term": "tid:123456789"
+                        },
+                        {
+                            "term": "rid:180717-iad-0000000"
+                        },
+                        {
+                            "term": "type:consolidatedticketing.update.ticket.update.cloud"
+                        }
+                    ],
+                    "link": [
+                        {
+                            "href": "https://atom.staging.ord1.us.ci.rackspace.net/consolidated_ticketing/events/entries/123456789/entries/urn:uuid:08e647dc-6f68-47ad-ae7f-81c2f827b9ef",
+                            "rel": "self"
+                        }
+                    ],
+                    "title": {
+                        "type": "text",
+                        "@text": "ConsolidatedTicketing"
+                    },
+                    "content": {
+                        "event": {
+                            "@type": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                            "dataCenter": "iad",
+                            "eventTime": "2018-07-27T03:47:06.446363Z",
+                            "id": "bb3a9766-914f-11e8-961c-0050561a0171",
+                            "region": "iad",
+                            "resourceId": "180717-iad-0000000",
+                            "tenantId": "123456789",
+                            "type": "UPDATE",
+                            "version": "1",
+                            "AtType": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                            "product": {
+                                "@type": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                                "accountId": "123456789",
+                                "lastUpdated": "2018-07-27T03:47:06.297537Z",
+                                "resourceType": "TICKET",
+                                "resources": "",
+                                "serviceCode": "ConsolidatedTicketing",
+                                "subject": "Request for Information",
+                                "ticketId": "180717-iad-0000000",
+                                "version": "1",
+                                "AtType": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                                "comment": {
+                                    "author": "Racker",
+                                    "authorType": "Rackspace",
+                                    "created": "2018-07-27T03:47:06.297537Z",
+                                    "id": "180727-iad-0000000",
+                                    "text": "We are researching a solution now."
+                                }
+                            }
+                        }
+                    },
+                    "id": "urn:uuid:08e647dc-6f68-47ad-ae7f-81c2f827b9ef",
+                    "updated": "2018-07-27T03:47:07.622Z",
+                    "published": "2018-07-27T03:47:07.622Z"
+                }
+            ],
+            "id": "urn:uuid:ad01455d-0ec1-4f32-a74c-7682ad24359b",
+            "title": {
+                "type": "text",
+                "@text": "consolidated_ticketing/events"
+            },
+            "updated": "2018-07-27T03:47:23.104Z"
+        }
+    }
+
+The response is a list of events, with the newest event at the top and the
+oldest event at the bottom. To set up the polling loop, add the marker
+parameter to the URL and use the ``id`` of the newest event as the value.
+
+.. code::
+
+    $ curl https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/faws:576508529999?marker=urn:uuid:08e647dc-6f68-47ad-ae7f-81c2f827b9ef \
+       -X GET \
+       -H 'X-Auth-Token: xxxxxxx'
+       -H 'Accept: application/vnd.rackspace.atom+json' \
+       | python -m json.tool
+
+By polling with the newest event marker you have received, you can syndicate
+ticket updates into your own system.
+
+This concludes the Getting Started section. To simplify the process, some
+advanced topics have been omitted. For information about ticketing
+updates and ticket classifications, see the
+:ref:API reference <api-reference>.

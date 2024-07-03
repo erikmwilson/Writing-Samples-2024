@@ -1,0 +1,20 @@
+
+.. _assign-recruits-pipeline-cmc:
+
+Add or Edit an Assignee for a Recruit
+=====================================
+
+To add an assignee for a recruit, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab, at the top of the page. Your recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Search for the correct recruit. For more information, see :ref:`search-pl-recruits-mc`.
+
+#. Click **Assign** |assign-icon| to assign an new assignee, or the picture of the current assignee.
+
+   .. |assign-icon| image:: ../../../../images/assign-icon.png
+      :height: 20
+
+#. Check or uncheck the required assignees and click off the window to close.

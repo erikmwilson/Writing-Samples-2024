@@ -1,0 +1,18 @@
+
+.. _bulk-actions-recruits-command:
+
+Bulk Actions
+============
+
+You can perform actions on multiple recruits by using the Bulk Action feature. The **Select Bulk Action** menu appears when you select one or more recruits on the **Recruit Management** tab. You can select recruits from multiple pages manually or select all recruits by checking the box in the **Recruit Name** header. Unchecking this box, deselects all recruits on all pages. The following pages contain information about bulk actions.
+
+.. toctree::
+   :maxdepth: 2
+
+   add-smartplan-bulk
+   add-tag-bulk
+   add-note-bulk
+   add-task-bulk
+   add-to-pipeline
+   archive-bulk
+   assign-bulk

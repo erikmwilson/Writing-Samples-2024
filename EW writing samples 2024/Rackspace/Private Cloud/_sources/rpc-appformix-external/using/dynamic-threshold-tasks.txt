@@ -1,0 +1,16 @@
+.. _dynamic-threshold-task-ug:
+
+=============================
+Configure a dynamic threshold
+=============================
+
+For information about alarms operation (sliding window analysis,
+static alarms, and dynamic alarms), see
+`AppFormix Alarms Operation <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-alarms.html#jd0e44>`_ in the AppFormix User Guide.
+
+When using a dynamic threshold, you begin by defining an alarm.
+To configure an alarm, see
+`Alarm Definition <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-alarms.html#jd0e195>`_ in the AppFormix User Guide.
+
+To configure an alarm with a dynamic threshold, you must complete
+additional fields as described `here <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-alarms.html#alarm-dynamic-parameters-req>`_ in the Alarm Definition procedure.

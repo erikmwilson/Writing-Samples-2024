@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RPC Ceph installation process &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Deployment playbooks" href="ch-playbooks-rpc.html" />
+    <link rel="prev" title="Load balancing for applications (optional)" href="ch-lbaas.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RPC Ceph installation process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rpco-ceph-variables">RPCO Ceph variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation Guide</a> &raquo;</li>
+        
+      <li>RPC Ceph installation process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-install-internal/ch-external-ceph.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rpc-ceph-installation-process">
+<h1>RPC Ceph installation process<a class="headerlink" href="#rpc-ceph-installation-process" title="Permalink to this headline">#</a></h1>
+<p>Beginning with the RPC r14 Newton release, Ceph is installed and
+configured separately by the Operations team. With Newton, the RPCO
+Ceph deployment process is the same as that for RPCR.</p>
+<p>This document shows you how to configure an RPCO environment to
+connect to a Ceph cluster.</p>
+<div class="section" id="rpco-ceph-variables">
+<h2>RPCO Ceph variables<a class="headerlink" href="#rpco-ceph-variables" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Add the Ceph back end to the <code class="docutils literal"><span class="pre">storage_hosts</span></code> section under
+<code class="docutils literal"><span class="pre">container_vars</span></code>&gt;``cinder_backends``.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If LVM back ends are not used in conjunction with Ceph (for
+<code class="docutils literal"><span class="pre">storage_hosts</span></code>), disable Block Storage on-metal deployment
+by creating the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/env.d/cinder.yml</span></code> file
+with the following contents:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">container_skel</span><span class="p">:</span>
+  <span class="nt">cinder_volumes_container</span><span class="p">:</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">is_metal</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p class="last">This setting causes <code class="docutils literal"><span class="pre">cinder_volumes</span></code> to run in a container
+rather than on metal. For an example, see
+<code class="docutils literal"><span class="pre">/opt/rpc-openstack/openstack-ansible/etc/openstack_deploy/openstack_user_config.yml.example</span></code>.</p>
+</div>
+<p>The following is an example Ceph back-end configuration:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">storage_hosts</span><span class="p">:</span>
+  <span class="nt">infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.24.240.11</span>
+    <span class="nt">container_vars</span><span class="p">:</span>
+      <span class="nt">cinder_backends</span><span class="p">:</span>
+        <span class="nt">limit_container_types</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder_volume</span>
+        <span class="nt">ceph</span><span class="p">:</span>
+          <span class="nt">volume_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder.volume.drivers.rbd.RBDDriver</span>
+          <span class="nt">rbd_pool</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volumes</span>
+          <span class="nt">rbd_ceph_conf</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/ceph/ceph.conf</span>
+          <span class="nt">rbd_flatten_volume_from_snapshot</span><span class="p">:</span> <span class="s">&#39;false&#39;</span>
+          <span class="nt">rbd_max_clone_depth</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+          <span class="nt">rbd_store_chunk_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+          <span class="nt">rados_connect_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1</span>
+          <span class="nt">glance_api_version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+          <span class="nt">volume_backend_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ceph</span>
+          <span class="nt">rbd_user</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">cinder_ceph_client</span><span class="nv"> </span><span class="s">}}&quot;</span>
+          <span class="nt">rbd_secret_uuid</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">cinder_ceph_client_uuid</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><dl class="first docutils">
+<dt>In the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code></dt>
+<dd><p class="first">file, set the following variables related to OpenStack:</p>
+<div class="last highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_default_store</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rbd</span>
+<span class="nt">nova_libvirt_images_rbd_pool</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vms</span>
+<span class="nt">ceph_mons</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;&lt;ceph-mon-ip1&gt;&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;&lt;ceph-mon-ip2&gt;&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;&lt;ceph-mon-ip3&gt;&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_secrets.yml</span></code> file, set
+the following variables:</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">cinder_ceph_client_uuid</span><span class="p">:</span>
+<span class="nt">fsid_uuid</span><span class="p">:</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>Run the installation of OpenStack-Ansible as normal.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Ensure that the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/env.d/ceph.yml</span></code> file
+does not exist before continuing. Otherwise, Ansible builds the
+Ceph groups into the inventory, which could change the behavior
+of some of the playbooks.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">On large Ceph environments that are heavily utilized, you are advised
+to increase the PID limit on the compute hosts due to the amount
+of threads that Ceph creates. To increase the PID max on the openstack
+hosts, add the following override to
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code>:</p>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">openstack_user_kernel_options</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> key</span><span class="p">:</span> <span class="s">&#39;kernel.pid_max&#39;</span><span class="p p-Indicator">,</span><span class="nt"> value</span><span class="p">:</span> <span class="s">&quot;&lt;new-value&gt;&quot;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-playbooks-rpc.html" class="btn btn-neutral float-right" title="Deployment playbooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-lbaas.html" class="btn btn-neutral float-left" title="Load balancing for applications (optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Searching logs using the es2unix command line &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Searching logs using the Head plugin" href="sec-logs-head.html" />
+    <link rel="prev" title="Searching logs using the Elasticsearch API" href="sec-logs-esapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Monitoring and Logging Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-design/index.html">Rackspace monitoring design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-impl/index.html">RPCO monitoring implementation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RPCO logging</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sec-logging-elasticsearchintro.html">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-esapi.html">Searching logs using the Elasticsearch API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Searching logs using the es2unix command line</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-general-information">Viewing general information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simple-searches">Simple searches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#complex-queries">Complex queries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-head.html">Searching logs using the Head plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-kibana.html">Searching logs using Kibana plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#es2unix-commands">ES2Unix Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#http-requests">HTTP requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Monitoring and Logging Guide</a> &raquo;</li>
+        
+          <li><a href="index.html">RPCO logging</a> &raquo;</li>
+        
+      <li>Searching logs using the es2unix command line</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-monitoring-internal/logging/sec-logs-es2unix.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="searching-logs-using-the-es2unix-command-line">
+<h1>Searching logs using the es2unix command line<a class="headerlink" href="#searching-logs-using-the-es2unix-command-line" title="Permalink to this headline">#</a></h1>
+<p>The <strong>es2unix</strong> command line tool provides an alternate way of
+interacting with the Elasticsearch API. Outputs for <strong>es2unix</strong> result
+in tabular format for compatibility with tools such as <strong>grep</strong>,
+<strong>sort</strong>, and <strong>awk</strong>. The tool is accessible via the utility container.</p>
+<div class="section" id="viewing-general-information">
+<h2>Viewing general information<a class="headerlink" href="#viewing-general-information" title="Permalink to this headline">#</a></h2>
+<p>The following examples show how to interact with the <strong>es2unix</strong> CLI in
+the utility container. Before beginning, use the <strong>lxc-attach</strong> command
+to attach to a utility container.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> lxc-attach -n infra#_utility_container_ <span class="c1">########</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="view-current-elasticsearch-version">
+<h3>View current Elasticsearch version<a class="headerlink" href="#view-current-elasticsearch-version" title="Permalink to this headline">#</a></h3>
+<p>Provides the current version of Elasticsearch.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es version
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="get-elasticsearch-health-status">
+<h3>Get Elasticsearch health status<a class="headerlink" href="#get-elasticsearch-health-status" title="Permalink to this headline">#</a></h3>
+<p>Shows current health of the Elasticsearch cluster. The RPCO
+configuration of Elasticsearch is configured for 1 shard and no
+replicas per index.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es health
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="list-all-indices">
+<h3>List all indices<a class="headerlink" href="#list-all-indices" title="Permalink to this headline">#</a></h3>
+<p>Shows current list of indices.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es indices
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="view-current-number-of-logs">
+<h3>View current number of logs<a class="headerlink" href="#view-current-number-of-logs" title="Permalink to this headline">#</a></h3>
+<p>Shows current number of log documents in Elasticsearch. The number
+should increment each time the command is run to show Elasticsearch is
+indexing properly.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es count
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="view-current-number-of-logs-that-match-a-query-in-elasticsearch">
+<h3>View current number of logs that match a query in Elasticsearch<a class="headerlink" href="#view-current-number-of-logs-that-match-a-query-in-elasticsearch" title="Permalink to this headline">#</a></h3>
+<p>Shows current number of log documents in Elasticsearch that match a
+specific query across all indices.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es count query
+
+<span class="go">**Example:**</span>
+
+<span class="go">.. code-block:: console</span>
+
+<span class="go">   root@infra#_utility_container-########: \</span>
+<span class="go">   es count 90d01bf2-b360-4d5e-9cc4-cd7a0d2e9ed1</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="simple-searches">
+<h2>Simple searches<a class="headerlink" href="#simple-searches" title="Permalink to this headline">#</a></h2>
+<p>Searches are performed with the <strong>es search</strong> command.</p>
+<div class="section" id="view-logs-across-all-indices">
+<h3>View logs across all indices<a class="headerlink" href="#view-logs-across-all-indices" title="Permalink to this headline">#</a></h3>
+<p>When performing a simple search, es2unix returns the index, type, and
+id of 10 log documents.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="view-specific-field-content-from-results">
+<h3>View specific field content from results<a class="headerlink" href="#view-specific-field-content-from-results" title="Permalink to this headline">#</a></h3>
+<p>View the output from a specific field.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search *:* field
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search *:* @message
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search *:* @timestamp @message
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="search-a-query-across-all-fields-and-indices">
+<h3>Search a query across all fields and indices<a class="headerlink" href="#search-a-query-across-all-fields-and-indices" title="Permalink to this headline">#</a></h3>
+<p>Search for a specific query across all fields and indices.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search query
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: <span class="se">\</span>
+es search 70454b5d9d6c4ad0a262633506fe72de
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: <span class="se">\</span>
+es search 90d01bf2-b360-4d5e-9cc4-cd7a0d2e9ed1 @message
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sorting-results">
+<h3>Sorting results<a class="headerlink" href="#sorting-results" title="Permalink to this headline">#</a></h3>
+<p>Sort results with the <strong>sort</strong> command. This can be used to sort by
+date and time in ascending order.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search query field <span class="p">|</span> sort
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search <span class="se">\</span>
+e90502db-d5bf-4c2e-8ec7-73cbc8cc8169 @timestamp @message <span class="p">|</span> sort -k5
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="complex-queries">
+<h2>Complex queries<a class="headerlink" href="#complex-queries" title="Permalink to this headline">#</a></h2>
+<p>To perform complex queries with es2unix, use the same format and
+structure provided in <a class="reference external" href="logs-esapi-search-complex.html">the section called “Complex
+queries”</a>.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search <span class="se">\</span>
+<span class="s2">&quot;+field:query AND query +field:query&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search <span class="se">\</span>
+<span class="s2">&quot;+program:nova AND api NOT compute \</span>
+<span class="s2">+@message:90d01bf2-b360-4d5e-9cc4-cd7a0d2e9ed1</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">root@infra#_utility_container-########</span>: es search <span class="se">\</span>
+<span class="s2">&quot;+program:nova AND api NOT \</span>
+<span class="s2">compute+@message:1874fdd4758b498482c53f1fc098b2a1&#39; \</span>
+<span class="s2">+@timestamp:&quot;</span><span class="m">2015</span>-02-19T20:00:00.000Z<span class="s2">&quot; TO &quot;</span><span class="m">2015</span>-02-19T21:00:00.000Z<span class="s2">&quot;&quot;</span> <span class="se">\</span>
+<span class="p">|</span> sort -k5
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sec-logs-head.html" class="btn btn-neutral float-right" title="Searching logs using the Head plugin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sec-logs-esapi.html" class="btn btn-neutral float-left" title="Searching logs using the Elasticsearch API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

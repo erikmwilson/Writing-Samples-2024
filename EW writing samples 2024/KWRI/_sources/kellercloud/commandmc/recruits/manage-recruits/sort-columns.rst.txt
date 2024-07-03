@@ -1,0 +1,13 @@
+
+.. _sort-columns-recruits-commandmc:
+
+Sort Columns in Recruits
+========================
+
+To sort columns in Recruits, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab at the top of the page.
+
+#. Click on a column header to sort by that column.

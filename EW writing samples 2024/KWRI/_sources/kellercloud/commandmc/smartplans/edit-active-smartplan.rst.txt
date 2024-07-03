@@ -1,0 +1,32 @@
+
+.. _edit-active-commandmc:
+
+Edit an Active SmartPlan
+========================
+
+If a SmartPlan is active (you have added recruits to the SmartPlan), you cannot fully edit the content. You can change the name of the SmartPlan, email and text content, and task descriptions. You cannot add, remove, or reorder steps.
+
+Some SmartPlans do not contain any editable content (for example, The Monthly/Bi-weekly Neighborhood Nurture and Quarterly Call SmartPlans).
+
+You can also edit an inactive SmartPlan. For more information, see :ref:`edit-inactive-commandmc`.
+
+.. note::
+
+   If you edit a SmartPlan that contains an email template that is no longer in the Designs library, you must chose a new template.
+
+To edit an active SmartPlan, complete the following steps:
+
+.. include:: smartplans-mc-login.rst
+
+#. Click the **MC Plans** tab, at the top of the page.
+
+#. Find the correct Smartplan in the list and click the **Edit** icon |edit-icon|.
+
+   .. |edit-icon| image:: ../../../images/edit-icon.png
+      :height: 30
+
+#. On the **Edit SmartPlan** page, you can edit the content, within each step, that is sent out.
+
+   You cannot edit or add to the steps that are in the SmartPlan (since there are recruits added), just the content. If you need to change the steps or order of the steps, see :ref:`copy-smartplan-commandmc`.
+
+#. After you have made edits, click the **Save** in the top-right corner of the page.

@@ -1,0 +1,17 @@
+
+.. _view-details-other-tasks-recruits-commandmc:
+
+View Custom Task Details
+========================
+
+To view custom task details, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click **Other Tasks** from the drop-down. A list displays of all the custom tasks.
+
+#. Click the status of custom tasks to display, **To Do**, **Completed**, **Archived**, or **Expired**, from the drop-down.
+
+#. Click the task name to view the task details.
+
+#. To mark the task as complete, click **Complete Task**, otherwise click **Cancel** to close the details window.

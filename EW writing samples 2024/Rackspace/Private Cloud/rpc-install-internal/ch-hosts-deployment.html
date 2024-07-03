@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Prepare the deployment host &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Target hosts" href="ch-hosts-target.html" />
+    <link rel="prev" title="Overview" href="ch-overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-overview.html">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Prepare the deployment host</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-operating-system">Install the operating system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-the-operating-system">Configure the operating system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-source-and-dependencies">Install the source and dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-secure-shell-ssh-keys">Configure Secure Shell (SSH) keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation Guide</a> &raquo;</li>
+        
+      <li>Prepare the deployment host</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-install-internal/ch-hosts-deployment.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="prepare-the-deployment-host">
+<h1>Prepare the deployment host<a class="headerlink" href="#prepare-the-deployment-host" title="Permalink to this headline">#</a></h1>
+<img alt="../_images/rpc-internal-installworkflow-deployhost.png" src="../_images/rpc-internal-installworkflow-deployhost.png" />
+<p>The Rackspace Private Cloud Powered By OpenStack (RPCO) installation
+process requires one deployment host. The deployment host contains
+Ansible and orchestrates the RPCO installation on the target hosts.
+One of the target hosts, preferably one of the infrastructure hosts,
+can be used as the deployment host. To use a target host as a
+deployment host, follow the steps in <a class="reference internal" href="ch-hosts-target.html#target-hosts"><span class="std std-ref">Target hosts</span></a> on the
+deployment host. This section assumes separate deployment and target
+hosts.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The rpc-openstack repository includes additional features for Rackspace
+Private Cloud. It integrates with the <code class="docutils literal"><span class="pre">openstack-ansible</span></code> set of
+Ansible playbooks and roles. These additional features extend the
+OpenStack environment, but they are not core to deploying an OpenStack
+cloud.</p>
+</div>
+<div class="section" id="install-the-operating-system">
+<h2>Install the operating system<a class="headerlink" href="#install-the-operating-system" title="Permalink to this headline">#</a></h2>
+<p>Install the <a class="reference external" href="http://releases.ubuntu.com/16.04/">Ubuntu 16.04 LTS (Xenial Xerus) 64-bit</a> operating system on the
+deployment host with at least one network interface configured to
+access the Internet or suitable local repositories.</p>
+</div>
+<div class="section" id="configure-the-operating-system">
+<h2>Configure the operating system<a class="headerlink" href="#configure-the-operating-system" title="Permalink to this headline">#</a></h2>
+<p>Install additional software packages and configure the network time
+protocol (NTP).</p>
+<ol class="arabic">
+<li><p class="first">Update the source packages:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> apt-get update
+</pre></div>
+</div>
+</li>
+<li><p class="first">Upgrade the system packages and kernel:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> apt-get -y dist-upgrade
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install additional software packages if they were not installed during the
+operating system installation:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> apt-get -y install aptitude build-essential git ntp ntpdate <span class="se">\</span>
+  openssh-server python-dev sudo
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure NTP to synchronize with a suitable time source.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="install-the-source-and-dependencies">
+<h2>Install the source and dependencies<a class="headerlink" href="#install-the-source-and-dependencies" title="Permalink to this headline">#</a></h2>
+<p>Install the source and dependencies for the deployment host by cloning
+the <a class="reference external" href="http://github.com/rcbops/rpc-openstack/">rpc-openstack</a>
+repository into the <code class="docutils literal"><span class="pre">/opt/rpc-openstack</span></code> directory. Replace <code class="docutils literal"><span class="pre">TAG</span></code>
+with the current stable release tag.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> git clone -b TAG --recursive https://github.com/rcbops/rpc-openstack <span class="se">\</span>
+  /opt/rpc-openstack
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Pip and Ansible are installed when the <code class="docutils literal"><span class="pre">deploy.sh</span></code> deployment
+script is run, and they do not need to be deployed manually at this
+time. See <a class="reference internal" href="ch-playbooks-rpc.html#deployment-playbooks"><span class="std std-ref">Deployment playbooks</span></a>.</p>
+</div>
+</div>
+<div class="section" id="configure-secure-shell-ssh-keys">
+<h2>Configure Secure Shell (SSH) keys<a class="headerlink" href="#configure-secure-shell-ssh-keys" title="Permalink to this headline">#</a></h2>
+<p>Ansible uses Secure Shell (SSH) with public key authentication to
+connect the deployment and target hosts. To reduce user interaction
+during Ansible operations, key pairs should not include passphrases.
+However, if a passphrase is required, consider using the <strong>ssh-agent</strong>
+and <strong>ssh-add</strong> commands to temporarily store the passphrase before
+performing Ansible operations.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-hosts-target.html" class="btn btn-neutral float-right" title="Target hosts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

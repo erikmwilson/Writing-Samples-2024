@@ -1,0 +1,14 @@
+
+.. _compliance-settings-index-commandmc:
+
+Compliance
+==========
+
+The following sections contain information about how to configure
+Compliance Checklists.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-compliance-checklists
+   edit-compliance-checklists

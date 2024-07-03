@@ -1,0 +1,13 @@
+
+.. _sales-pipeline-settings-index-command:
+
+Sales Pipeline
+==============
+
+The following sections contain information about how to configure
+sales pipeline settings.
+
+.. toctree::
+   :maxdepth: 1
+
+   team-permissions

@@ -1,0 +1,36 @@
+
+.. _email-upgrade-applications-settings-command:
+
+Upgrade Your Command Email Subscription
+=======================================
+
+Command Email is the default service used by Keller Williams to send emails on your behalf from your KW Technology applications. Each user receives 5000 email sends per month at no charge. If your email usage exceeds 5000 emails per month, you can upgrade your Command Email subscription. Command Email is connected to SmartPlans, including custom SmartPlans, and Monthly Neighborhood Nurture.
+
+As you start getting close to reaching your 5000 email limit for the month, you will begin receive notifications. You will receive both a Command and email notification when you reach 80%, 85%, 90%, and 95% of your monthly email usage.
+If you hit your limit, you have the ability to upgrade your email subscription for the month in the KW Marketplace.
+
+Command Email monthly limits (5000 or your upgraded amount) do not roll over to the next month. Your Command Email subscription (the email limit) will reset on the first of every month.
+
+To upgrade your Command Email subscription, complete the
+following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Click **Applications**.
+
+#. On the **Applications** page, navigate to the Command Email application and click **Manage**.
+
+#. On the **Manage Command Email** pop-up, click **Manage Subscription**.
+
+#. On the product page for Command Email, click the **Editions & Pricing** tab.
+
+#. Identify which subscription plan is right for your business and click **Buy Now**, either on the top-right hand corner or underneath the plan you want.
+
+#. On the next screen, confirm the plan you have chosen and click **Continue**.
+
+#. On the next screen, complete the billing details, review the terms of service, privacy, and refund policies, and click **Continue**.
+
+#. Click **Place Order**.

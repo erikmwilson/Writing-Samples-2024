@@ -1,0 +1,39 @@
+
+.. _access-opportunity-opportunities-command:
+
+Access an Opportunity
+=====================
+
+After you have creating Opportunities, you can access through Contacts or Opportunities.
+
+Access Opportunities Through Opportunities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on a phase to see your Opportunities or :ref:`search-opportunities-command`.
+
+   .. note::
+
+      When accessing or searching for a Lease Opportunity, make sure you choose the correct selection in the **Tenant** drop-down (either Tenant or Landlord).
+
+Access Opportunities Through Contacts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. In the **Contacts** list, click the name of the contact.
+
+#. Click the **Opportunities** tab, at the top-right of the contact record.
+
+#. Select an Opportunity.

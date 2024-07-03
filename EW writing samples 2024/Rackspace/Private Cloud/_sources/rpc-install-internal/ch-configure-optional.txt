@@ -1,0 +1,26 @@
+===================================
+Configure the deployment (optional)
+===================================
+
+.. image:: ../figures/rpc-internal-installworkflow-configure.png
+
+Ansible references some files that contain mandatory and optional
+configuration directives. Before you can run the Ansible playbooks to
+install Rackspace Private Cloud Powered By OpenStack (RPCO), you must
+modify these files to define the target environment. Perform the
+following optional tasks as necessary:
+
+.. toctree::
+   :maxdepth: 2
+
+   Configure proxy environment variables <configure-opt/configure-proxy-environment.rst>
+   Configure the hypervisor <configure-opt/configure-hypervisor.rst>
+   Configure the Image service <configure-opt/configure-image-service.rst>
+   Configure the Block Storage service <configure-opt/configure-block-storage.rst>
+   Configure the Object Storage service <configure-opt/configure-object-storage.rst>
+   Configure HAProxy <configure-opt/configure-haproxy.rst>
+   Configure MaaS variables <configure-opt/configure-maas.rst>
+   Generate F5 load balancer configuration <configure-opt/configure-f5-load-balancer.rst>
+   Configure Active Directory or LDAP <configure-opt/configure-ldap.rst>
+   Configure Dashboard SSL settings <configure-opt/configure-dashboard-ssl.rst>
+   Configure security hardening <configure-opt/configure-security-hardening.rst>

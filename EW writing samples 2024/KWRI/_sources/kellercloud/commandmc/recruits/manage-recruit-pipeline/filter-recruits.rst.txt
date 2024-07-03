@@ -1,0 +1,50 @@
+
+.. _filter-pl-recruits-mc:
+
+Filter Recruits
+===============
+
+While you are managing your recruits in the Recruiting Pipeline, you may need to find specific recruits. Instead of searching through your Phases and Stages to find the recruits, you can use filters.
+
+To filter recruits, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab, at the top of the page. Your recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Click the filter icon |filter-icon| at the top of the page.
+
+   .. |filter-icon| image:: ../../../../images/filter-icon.png
+      :height: 30
+
+#. When the filters fly-out menu appears on the right side of the page, select filters by clicking the checkbox beside them or selecting them from the drop-down lists. To remove filters, you can either remove them individually or click **Clear All** at the bottom of the fly-out menu to remove all of the filters.
+
+   You can filter on the following criteria:
+
+   * Production Status
+
+   * Pipeline Status
+
+   * Tags
+
+   * Brokerage
+
+   * Lead Sources
+
+   * Assignee(s)
+
+   * Team Status
+
+   * Next Task Scheduled
+
+   * Projected Join Date
+
+   * Last Contacted
+
+   * Date Created
+
+   The total number of selected filters appears in each filter section.
+
+#. Click **Apply**.
+
+   The recruit cards are filtered and the total number of applied filters appears next to the filter icon. You can save this set of filters as a Smart View. For more information, see :ref:`smartview-pl-recruits-mc`.

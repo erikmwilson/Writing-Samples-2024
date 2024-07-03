@@ -1,0 +1,60 @@
+
+.. _compliance-folder-messaging-opportunities-commandmc:
+
+Compliance Folder Messaging
+===========================
+
+Leadership can use compliance folder messaging to contact agents about compliance for a specific Opportunity. For example, you can use messaging to give an agent more detail about missing or rejected compliance documents.
+
+Agents can also tag leadership in these messages if they have compliance questions. Messages show up in Command notifications.
+
+To find a submitted compliance request, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. At the top of the page, click the **Compliance Requests** tab to see a list of all submitted compliance requests.
+
+#. Find the correct compliance request.
+
+   For more information, see :ref:`search-compliance-requests-opportunities-commandmc`.
+
+#. Click **Review**, on the compliance request card.
+
+To Send a Message
+^^^^^^^^^^^^^^^^^
+
+1. For the first message, click **Add Comment**, at the top of the compliance checklist.
+
+#. On the **Checklist Comment** pop-up, enter your message and click **Add Reply**.
+
+   .. note::
+
+      Use the **@** sign to notify a specific agent. Choose the person you want to sent the message to from the resulting drop-down list.
+
+      When you type the **@** sign the drop-down contains any team member that is assigned to the Opportunity.
+
+      If you do not use an **@** mention, the recipient of the message does not get a notification about your message.
+
+
+To Reply to a Message
+^^^^^^^^^^^^^^^^^^^^^
+
+When you are mentioned in a compliance folder message, you receive a Kelle notification and a notification in Command.
+
+Click the notifications |notification-icon| icon next to your profile picture. The red dot indicates that there is a new notification.
+
+.. |notification-icon| image:: ../../../../images/system-notifications-icon.png
+   :height: 20
+
+1. From any page in Command, click the |notification-icon| icon.
+
+#. Click the link in the notification. This takes you to the Opportunity where the message is located.
+
+#. Click the **Documents** tab, at the top of the Opportunity.
+
+#. Click the message |message-icon| icon, next to the compliance event folder
+
+   .. |message-icon| image:: ../../../../images/message-icon.png
+      :height: 20
+
+#. On the **Checklist Comment** pop-up, enter your message and click **Add Reply**.

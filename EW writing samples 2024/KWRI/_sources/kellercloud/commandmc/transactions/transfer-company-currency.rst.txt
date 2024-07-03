@@ -1,0 +1,39 @@
+
+.. _transfer-co-currency-transactions-commandmc:
+
+Transfer Company Currency
+=========================
+
+Sometimes it is necessary for a Market Center to enter transaction that are not submitted through Opportunities. Because all transactions also require documents, this manual entry method also triggers a compliance event to provide the path for uploading documents.
+
+Transactions, regardless of source, display on the Market Center's transactions dashboard.
+
+To transfer company currency, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page:
+
+#. Click **New Transaction**.
+
+#. On the **New Transaction** window, select **Company Currency Transfer** and click **Start Transaction**.
+
+#. In the **Transfer Details** section, select either **Sending** or **Receiving**. The **Transfer Date** defaults to the current date and the **Written Period** is auto-calculated.
+
+#. Search for and select the **Market Center**.
+
+#. Enter the **Transfer Amount**.
+
+#. Click **Next to Agent Details**.
+
+#. In the **Agent Details** section, enter the agent information for the transaction. This includes:
+
+   * Agent and team name - To add additional agents to the transaction, click **Add Agent**.
+
+   * Commission income
+
+   * Brokerage Fees - Enter the **Royalty** and **Company Dollar** amounts. Click **Auto Calculation** to calculate these amounts based on the associate's anniversary date. To add Market Center fees to the transaction, click **Add MC Fee**.
+
+   * Deductions - To add additional deductions to the transaction, click **Add Deductions**.
+
+   When complete and the transaction is balanced, click **Save Transaction**.

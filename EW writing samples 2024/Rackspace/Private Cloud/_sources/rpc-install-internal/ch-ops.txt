@@ -1,0 +1,239 @@
+============================
+Post-installation operations
+============================
+
+The following operations apply to environments after the initial
+Rackspace Private Cloud Powered By OpenStack (RPCO) installation.
+
+
+.. _monitoring2:
+
+Monitoring
+~~~~~~~~~~
+
+The Rackspace Cloud Monitoring service enables Rackspace Private Cloud
+customers to monitor system performance, and safeguard critical data.
+For more information, see the `Monitoring
+<https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-ops-internal/ch-monitoring.html>`_
+section of the *Operations Guide*.
+
+
+Hardware monitoring
+-------------------
+
+Hardware monitoring is available for customers whose clouds are hosted
+within a Rackspace data center. Customers whose clouds are hosted in
+their own data centers are responsible for monitoring their own
+hardware.
+
+For clouds hosted within a Rackspace data center, Rackspace provisions
+monitoring support for the customer. Rackspace Support assists in
+handling functionality failure, running system health checks, and
+managing system capacity. The Cloud Monitoring service notifies
+Support when a host is down or when hardware fails.
+
+
+Software monitoring
+-------------------
+
+For software monitoring, polling time is determined by the
+``maas_check_period``, which defaults to 60 seconds.
+
+The RPCO Monitoring service has the following checks:
+
+-  **Local**: These ``agent.plugin`` checks are performed against
+   containers. The checks poll the API and gathers metrics.
+
+   These checks generate a critical alert after three consecutive
+   failures.
+
+   Local checks are performed on the following services:
+
+   - Compute (nova)
+
+   - Block Storage (cinder)
+
+   - Identity (keystone)
+
+   - Networking (neutron)
+
+   - Orchestration (heat)
+
+   - Image service (glance): The check connects to the glance registry
+     and tests status by calling an arbitrary URL.
+
+   - Dashboard (horizon): The check verifies that the login page is
+     available and uses the credentials from ``openrc-maas`` to log
+     in.
+
+   - Galera: The check connects to each member of a Galera cluster and
+     verifies that the members are fully synchronized and active.
+
+   - RabbitMQ: The check connects to each member of a RabbitMQ cluster
+     and gathers statistics from the API.
+
+   - Memcached: The check connects to a Memcached server.
+
+- **Global**: These ``remote.http`` checks poll the load-balanced
+  public endpoints, such as a public nova API. If a service is marked
+  as administratively down, the check skips it.
+
+  These checks generate a critical alert after one failure.
+
+  Global checks are performed on the following services:
+
+  - Compute (nova)
+
+  - Block Storage (cinder)
+
+  - Identity (keystone)
+
+  - Networking (neutron)
+
+  - Image service (glance)
+
+  - Orchestration (heat)
+
+
+CDM monitoring
+--------------
+
+The ``setup_maas`` playbook also configures CDM monitoring for the
+following services and generates alerts at the specified thresholds.
+
+-  CPU Idle: < 10%
+
+-  Memory used: > 95%
+
+-  Disk space used: > 95%
+
+The ``setup_maas`` playbook also configures Object Storage mount point
+checks. These checks monitor disk space on the mount points and
+generate alerts if the mount points are unmounted or unavailable. For
+clouds using OpenStack Object Storage (swift), you must re-run the
+setup playbook whenever the number of Object Storage nodes changes.
+
+
+Network monitoring
+------------------
+
+The ``network_checks_list`` variable consists of the interfaces em0,
+em1, em2, and em3 by default. If the physical host does not have those
+specific interfaces, the variable must be set in
+``/etc/openstack_deploy/user_rpco_variables_overrides.yml``.
+
+For example, if the interfaces were em0, em1, em2, and em3, set the
+following variable in
+``/etc/openstack_deploy/user_rpco_variables_overrides.yml``:
+
+.. code-block:: yaml
+
+   { name: "em0", group: "hosts", max_speed: "{{ net_max_speed }}", rx_pct_warn: "{{ net_rx_pct_warn }}", rx_pct_crit: "{{ net_rx_pct_crit }}", tx_pct_warn: "{{ net_tx_pct_warn }}", tx_pct_crit: "{{ net_tx_pct_crit }}"}
+   { name: "em1", group: "hosts", max_speed: "{{ net_max_speed }}", rx_pct_warn: "{{ net_rx_pct_warn }}", rx_pct_crit: "{{ net_rx_pct_crit }}", tx_pct_warn: "{{ net_tx_pct_warn }}", tx_pct_crit: "{{ net_tx_pct_crit }}"}
+   { name: "em2", group: "hosts", max_speed: "{{ net_max_speed }}", rx_pct_warn: "{{ net_rx_pct_warn }}", rx_pct_crit: "{{ net_rx_pct_crit }}", tx_pct_warn: "{{ net_tx_pct_warn }}", tx_pct_crit: "{{ net_tx_pct_crit }}"}
+   { name: "em3", group: "hosts", max_speed: "{{ net_max_speed }}", rx_pct_warn: "{{ net_rx_pct_warn }}", rx_pct_crit: "{{ net_rx_pct_crit }}", tx_pct_warn: "{{ net_tx_pct_warn }}", tx_pct_crit: "{{ net_tx_pct_crit }}"}
+
+
+Connections monitoring
+----------------------
+
+The ``rpc_maas`` playbook automatically configures a monitoring
+plugin for the ``/proc/sys/net/netfiletr/nf_conntrack_count`` and
+the ``/proc/sys/net/netfilter/nf_conntrack_max`` files. The monitor
+collects the maximum number of connections and total number of
+connections accumulated by Linux servers, and sends the results as
+metrics.
+
+Connection metrics trigger an alert if the total number of connections
+approach 90 percent of the maximum allowed connections (specified in
+``/proc/sys/net/netfilter/nf_conntrack_max``).
+
+.. note::
+
+   To enable this plugin to work, load the ``nf_conntrack_ipv4``, or
+   the ``nf_conntrack_ipv6`` kernel module.
+
+The following is an example of output metrics:
+
+.. code-block:: console
+
+   # get_metrics
+   status okay
+   metrics nf_conntrack_max uint32 262144
+   metrics nf_conntrack_count uint32 345
+
+
+Backups
+~~~~~~~
+
+Rackspace manages backups for Core Support customers when their clouds
+are hosted in Rackspace data centers. This section documents the
+contents and configuration for Rackspace backups. For more
+information, see the `Backups
+<https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-ops-internal/ch-backups.html>`_
+section of the *Operations Guide*.
+
+.. note::
+
+   Customers are responsible for backing up their own data when their
+   clouds are hosted in their data centers. Customers should back up
+   the files in the following section, according to their preferred
+   method.
+
+
+Contents of backups
+-------------------
+
+The following information is backed up:
+
+- ``/openstack/backup``: The data inside the containers, including the
+   Galera database
+
+-  ``/opt``: The Ansible source code
+
+-  ``/etc``: The Ansible and host configurations
+
+Since Image service (glance) images are no longer included on
+infrastructure nodes, they are not included in these backups. Instead,
+glance images may be hosted in Cloud Files, a local OpenStack Object
+Storage cloud, or in NetApp. Regardless of the glance back end, ensure
+that customer expectations are clear regarding the lifespan and backup
+of images.
+
+.. note::
+
+   Elasticsearch is not currently backed up. For more information, see
+   `openstack-ansible bug 1400440
+   <https://bugs.launchpad.net/openstack-ansible/+bug/1400440>`_.
+
+.. Configure Image signing and verification
+.. ----------------------------------------
+
+.. For added security, users can verify that an image uploaded and managed
+.. by Glance has not been modified prior to booting the image. This
+.. option provides protection from malware added to images.
+
+.. Glance stores metadata inside a property segment. This metadata includes
+.. public key certificate references and signatures. The Compute service
+.. validates these signatures immediately before an instance is launched
+.. from an image.
+
+.. Glance supports checksums when images are uploaded, and images
+.. retain this information through the process of building and uploading
+.. an image.
+
+.. .. note::
+
+..   While image signing can be configured, the Compute service does
+..   not have the capacity to receive and validate images in
+..   OpenStack |os-release|. Users can enable signed images in
+..   their OpenStack environments. However, signed images do not
+..   have an effect on security without the corresponding Compute
+..   service component. In OpenStack |os-release|, this feature
+..   is supported and secure.
+
+.. To enable image signing and verification, set
+.. ``verify_glance_signature`` flag to ``TRUE`` in the
+.. ``etc/openstack_deploy/openstack_user_config.yml`` configuration
+.. file. The compute service automatically validates
+.. the signed image prior to launch.

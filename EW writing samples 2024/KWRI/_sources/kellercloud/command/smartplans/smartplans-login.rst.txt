@@ -1,0 +1,13 @@
+
+.. _access-smartplans-command:
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-left corner, click **Command**.
+
+#. On the left toolbar, click **SmartPlans** |smartplans-icon|.
+
+   .. |smartplans-icon| image:: ../../../images/smartplans-icon.png
+      :height: 30

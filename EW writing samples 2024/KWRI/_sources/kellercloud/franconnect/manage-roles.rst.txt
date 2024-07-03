@@ -1,0 +1,27 @@
+
+.. _manage-leadership-roles-franconnect:
+
+Manage Leadership Roles
+=======================
+
+Leadership roles added in White Pages are synchronized with FranConnect. FranConnect maintains the Market Center, Business Center, and roles database for KW.
+
+To add leadership roles, complete the following steps:
+
+#. Log in to https://mykw.kw.com with your KW credentials.
+
+#. Navigate to the **Quick Links** section at the bottom of the page, and click **White Pages**.
+
+#. Click **Associate Information**, search for the associate, and select them from the search results.
+
+#. On the associate's White Pages profile, click **Add Associate Role**.
+
+#. On the **Add Associate Role** page, select the **Organization** and the leadership **Role** for the associate (Operating Principal, Team Leader, or Market Center Administrator).
+
+#. Click **Save**.
+
+   This information is synchronized with FranConnect. The synchronization process can take up to thirty minutes.
+
+.. note::
+
+   While you have the ability to add and edit leadership roles in FranConnect, any updates are NOT synchronized back to White Pages. The information in White Pages is the source of truth.

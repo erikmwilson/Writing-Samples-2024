@@ -1,0 +1,29 @@
+
+.. _create-recruiting-tags-settings-commandmc:
+
+Create Recruiting Tags
+======================
+
+Market Center Administrators (MCAs) can create tags for Recruits. This allows you to filter and search for recruits, or to clearly label recruits for your Market Center to reference later. On the **Recruiting Tags** page, you can search for specific tags, sort tags, and create or edit tags.
+
+While only the MCA can create and edit the tags, your entire team can add and remove tags in Recruits.
+
+To create and edit recruiting tags, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **Recruits** and then **Tags**.
+
+#. On the **Recruiting Tags** page, select your Market Center from the drop-down list.
+
+#. Click **Create New Tag**.
+
+#. On the **Add New Tag** pop-up, enter the **Tag Name**, select the **Tag Color**, and click **Create Tag**.
+
+#. To edit or delete an existing Custom Tag, click the menu icon |menu-options-icon| to the right of the Recruiting Tag and select **Edit** or **Delete**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 25

@@ -1,0 +1,24 @@
+
+.. _team-mgmt-settings-index-commandmc:
+
+MC Team Management
+==================
+
+Market Center Administrators (MCAs) can manage the teams, team members, and guests in your Market Center. You can also generate a member report for each team.
+
+The following sections contain information about how to manage teams and agents in your Market Center.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview
+   add-team
+   edit-team
+   deactivate-team
+   transfer-team
+   transfer-request
+   add-team-member
+   edit-team-member
+   view-change-log
+   remove-team-member
+   generate-report

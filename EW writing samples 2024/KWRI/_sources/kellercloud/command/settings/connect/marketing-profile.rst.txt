@@ -1,0 +1,26 @@
+
+.. _marketing-profile-settings-command:
+
+Marketing Profile
+=================
+
+To create a marketing profile, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Connect Settings**.
+
+#. Click **Marketing Profile**.
+
+#. Fill out the sections of the marketing profile with your information. You can upload your photo and logos.
+
+#. To use this information to brand your agent site, select **Use my information to brand my agent site**.
+
+#. When complete, click **Save**.
+
+.. note::
+
+   For a step-by-step marketing profile walkthrough, click **Marketing Profile  Kelle Guide**.

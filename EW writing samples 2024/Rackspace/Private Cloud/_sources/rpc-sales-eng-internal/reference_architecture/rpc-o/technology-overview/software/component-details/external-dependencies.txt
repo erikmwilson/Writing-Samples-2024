@@ -1,0 +1,32 @@
+=====================
+External dependencies
+=====================
+
+External dependencies address other systems or technologies that
+depend on or could be affected by the Private Cloud infrastructure.
+
+.. list-table:: **Infrastructure external dependencies**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Item**
+     - **Requirement**
+   * - DNS
+     - DNS must be configured for connectivity between Infrastructure
+       controller containers and KVM compute hosts.
+   * - Network
+     - Network congestion or failure could cause API instability and
+       unpredictable behavior.
+   * - Time synchronization
+     - Accurate time keeping and time synchronization is critical for
+       a healthy infrastructure. All components including KVM hosts,
+       Server, physical network infrastructure and virtual machine
+       guest operating systems must have accurate time keeping.
+   * - Staff
+     - Properly trained IT staff is critical for the proper
+       implementation, operation, and the consumption the RPC
+       OpenStack infrastructure.
+   * - Policies and procedures
+     - The policies and procedures governing the use of information
+       technology must be revised to properly incorporate the unique
+       properties and capabilities of RPC OpenStack.

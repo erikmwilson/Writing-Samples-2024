@@ -1,0 +1,12 @@
+
+.. _connect-index-command-ug:
+
+Connect User Guide
+==================
+
+The following sections contain information about using Connect.
+
+.. toctree::
+   :maxdepth: 1
+
+   training/index

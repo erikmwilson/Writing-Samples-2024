@@ -1,0 +1,48 @@
+
+
+.. _publish-best-practices-smartplan-commandmc:
+
+Publishing Best Practices
+=========================
+
+When creating a SmartPlan that is going to be used by multiple people, there are some best practices you should follow:
+
+#. When adding tasks to a SmartPlan, use merge fields to make the task relevant for anyone to use. Do not add a hyperlink to the task that is specific to your business, make sure it is a link that anyone can use for SmartPlan tasks.
+
+#. When adding an email step, make sure that the subject line in the email is something any agent would be able to use. Also, any branding or contact information you add to the email is published along with the SmartPlan, so use merge fields to make the task relevant for anyone to use.
+
+#. When adding a text step, use merge fields to make the text content relevant for anyone to use. Also, when editing an SMS/MMS, there are two message types, which you can use in your SmartPlan:
+
+   * Static - you can set one text message that will be sent in this step, which will repeat if the SmartPlan repeats.
+
+   * Dynamic - you can add multiple text messages for the same step. Each time the SmartPlan repeats, when this step is triggered, it sends a different text message to your contact. If you are going to add a **Restart Flow** step to your SmartPlan, it is recommended to set up Dynamic Texts.
+
+   .. note::
+
+      You must have a Twilio account set up to send automatic texts from CommandMC. If you do not have Twilio setup in Settings, SmartPlans skips this step. For more information, see :ref:`connect-application-settings-command`.
+
+#. If your SmartPlan includes any **Add to SmartPlan** steps, this causes the Recruit to be automatically added to the secondary SmartPlan(s) as part of the workflow. Make sure that the secondary SmartPlan(s) follows the same best practices as the original. When you publish, you are prompted to publish the secondary SmartPlan(s) as well.
+
+#. If you need to edit a SmartPlan that has been published, you must go to the **Published tab**, in the **MC Plans** section of the applet, and publish the changes. If you go to the **Market Center** tab, in the **MC Plans** section of the applet, and make edits, they are not reflected in the published version.
+
+#. When editing a published SmartPlan, there are limits to what you are able to edit:
+
+   * In published SmartPlans you can edit the following:
+
+      * Name of the SmartPlan
+
+      * Text messages
+
+      * Email messages
+
+      * Task descriptions
+
+   * In published SmartPlans you cannot:
+
+     * Add steps
+
+     * Delete steps
+
+     * Change the order of steps
+
+If you need to make edits beyond this, see :ref:`copy-smartplan-commandmc`.

@@ -1,0 +1,26 @@
+==========
+User roles
+==========
+
+The OpenStack ecosystem contains a number of user roles created with the
+purpose of delegating administrative responsibilities. Additional roles
+can be created to align with existing support organizations. The roles
+in the following table are created with the initial RPC build:
+
+.. list-table:: **User roles**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Role name**
+     - **Description**
+   * - ``admin``
+     - Complete read and write access to the entire system, if not
+       assigned to a particular tenant. The default admin account is
+       assigned this role by default and it cannot be changed. Cloud
+       administrators only should use this admin account. Tenant defined admin
+       accounts would be created for cloud operators.
+   * - ``_member_``
+     - Grants the user (cloud consumer) access to an assigned tenant.
+       The user can then consume resources, which would include
+       creating instances, volumes, tenant networks and execute stacks
+       predefined by the cloud operator.

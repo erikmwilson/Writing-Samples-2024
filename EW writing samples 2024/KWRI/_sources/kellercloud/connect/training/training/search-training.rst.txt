@@ -1,0 +1,25 @@
+
+.. _search-training-connect:
+
+Search Training
+===============
+
+To find the correct On Demand Course, Learning Path, or Channel Resource to complete your training, you can search the training Library, your Bookshelf, and the training channels.
+
+To search training, complete the following steps:
+
+.. include:: training-login.rst
+
+#. In the **Search Library** field, enter your search term.
+
+#. The **Search Results** page lists all matches for your search term. The number of results are shown for each of the following areas:
+
+   * **All Results**
+
+   * **My Bookshelf**
+
+   * **Course Content**
+
+   * **Channel Resources**
+
+   Click one of the above tabs to list the search results for that that area.

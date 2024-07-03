@@ -1,0 +1,103 @@
+
+.. _load-connect-live-docebo-connect:
+
+Load Content from the Connect Live Calendar into Docebo
+=======================================================
+
+The previous week's content from the Connect Live Calendar should be added every Monday. To complete this process, you must have administration permissions in Decebo and UStudio. You must also have access to the following spreadsheets:
+
+*  Connect Live 2021 - https://docs.google.com/spreadsheets/d/19Z7xq7Xx3scWWGL3BK4triyb18UwMi4U1V7Z_qUK5BI/edit?ts=6018365a#gid=0
+
+* LMS Content for Launch - https://docs.google.com/spreadsheets/d/1Tt2Vn7e3AWmGXSfhiuEoqS1wGG-ydcKozNhKQsAcfyQ/edit#gid=307035703
+
+To load content from the Connect Live Calendar into Docebo, complete the following steps:
+
+1. Open the Connect Live 2021 and LMS Content for Launch spreadsheets.
+
+#. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+#. From a another browser or tab, log in to UStudio using your Keller Williams user name and password.
+
+#. Access the **LMS** menu in the top-left corner of the page.
+
+#. On the Connect Live 2021 spreadsheet, determine which content rows fall within the previous week. This content must be added every Monday. (time?)
+
+#. Locate the date you are working on and scroll to column P **LMS Channel/Playlist** for the channel/playlist name.
+
+   The LMS Content for Launch spreadsheet contains pages with the corresponding channel/playlist name.
+
+#. On the LMS Content for Launch spreadsheet, scroll to bottom of the page to see the name of the new content in yellow with the embed code.
+
+#. In UStudio, use the name to search in the corresponding channel.
+
+#. After you locate the video, click on the video to access the title and description.
+
+#. In the Docebo (from the Admin side) you will need to click on the ‘cloud icon’ located in the upper right hand corner
+
+Copy the embed code from the LMS Content for Launch sheet
+
+
+Paste the embed code into the Docebo box and click share
+
+
+Screen should look like this when it’s loaded
+
+
+At the very end of this will be three dots click on the dots and select ‘finalize’; screen will look like this
+
+
+
+Return to UStudio
+Add the title and description in the correct fields from the UStudio information
+Use the sniping tool to capture a thumbnail of the image available in UStudio
+Save the thumbnail to your desktop
+Click the plus sign on the Finalize page and add the thumbnail
+Add the new content to the proper channel—refer back to the Connect Live sheet for the Channel or channels the content should go into
+Click save
+Once the content is saved go to “published” view in the Docebo
+
+When you access the published view the most recently added content will appear at the top of the list on the far right side; click “view”
+
+On the far-right side you will see a hamburger; click the hamburger with the plus sign to add the new content to a playlist if one is indicated on the Connect Live sheet
+
+To add the content to a playlist (if one is specified) enter the name of the playlist in the search box and select the correct radio dial. When this is complete press add to playlist.  Content will be saved to the selected playlist.
+
+
+Return to the LMS Content for Launch sheet.  All items ordinally indicated in yellow (new content) should be merged under the correct sub content line in the sheet. Remove the yellow make sure the embed code is in the correct column.
+
+###
+
+
+To add an asset to Docebo, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. On the **All Channels** page click the **Contribute!** icon (blue cloud).
+
+#. Complete on of the following actions:
+
+   * Drag and drop (or browse) for an existing file.
+
+   * Start recording your screen to create a demo.
+
+   * Paste a link for video hosted in uStudio into the **Create a knowledge asset by sharing a link!** field and click **Share**.
+
+#. On the resulting **Finalize Publishing** pop-up complete the mandatory fields:
+
+   * **Details** - Enter the title and description.
+
+   * **Asset Visibility**
+
+     * Private - The asset is only visible to the creator and to people they decide to invite. In that case, selecting a **Channel** is not needed.
+
+     * Public - All users can see the asset.
+
+   * Select **Channels** for your asset (if the asset is public).
+
+#. Click **Publish Now**.
+
+#. After the asset is published, click **Invite To Watch** (if the asset is private), to share it with users.
+
+#. To view the asset, click on the **Published** tab. Click **View all of my contributions** to see all assets created by you, or click **View** for a specific asset.

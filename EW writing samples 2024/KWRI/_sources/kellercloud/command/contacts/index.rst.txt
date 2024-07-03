@@ -1,0 +1,16 @@
+
+.. _contacts-command-index:
+
+Contacts
+========
+
+The following sections contain information about the
+Contacts application.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview-contacts
+   viewing-contacts/index
+   managing-contacts/index
+   importing-contacts/index

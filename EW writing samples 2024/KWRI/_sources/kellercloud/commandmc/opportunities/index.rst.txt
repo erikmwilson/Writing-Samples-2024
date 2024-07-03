@@ -1,0 +1,16 @@
+
+.. _opportunities-commandmc-index:
+
+Opportunities
+=============
+
+The following sections contain information about the
+CommandMC Opportunities application. The Opportunities application is used to review and approve Compliance and Commission requests.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview
+   assign-compliance-coordinator
+   checklists/index
+   reviews/index

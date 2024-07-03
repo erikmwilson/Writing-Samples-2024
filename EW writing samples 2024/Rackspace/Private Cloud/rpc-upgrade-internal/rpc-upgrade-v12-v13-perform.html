@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Perform the upgrade &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Verify the upgrade" href="rpc-upgrade-v13-verify.html" />
+    <link rel="prev" title="Prerequisites" href="rpc-upgrade-v12-v13-prereq.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Upgrade Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-upgrade.html">Upgrade overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="upgrade-v12-v13.html">Upgrade from v12 to v13</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-nova.html">Compute service upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-neutron.html">Networking service upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-glance.html">Image service upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-cinder.html">Block Storage service upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-prereq.html">Prerequisites</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Perform the upgrade</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#migrate-variables">Migrate variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-ansible">Update Ansible</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-the-rpc-openstack-galaxy-modules">Update the rpc-openstack galaxy modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebuild-the-repo-containers">Rebuild the repo containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebuild-the-nova-console-containers">Rebuild the <code class="docutils literal"><span class="pre">nova_console</span></code> containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-running-ceph-rebuild-the-monitor-containers-in-a-rolling-fashion">If running Ceph, rebuild the monitor containers in a rolling fashion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upgrade-the-elk-stack">Upgrade the ELK stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-osa-upgrade-script">Run the OSA upgrade script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-upgrade-variables-for-rpco-playbooks">Set upgrade variables for RPCO playbooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-rpco-playbooks">Run the RPCO playbooks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v13-verify.html">Verify the upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v11-v12.html">Upgrade from v11 to v12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v10-v11.html">Upgrade from v10 to v11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-upgrade-v9-v10.html">Upgrade from v9.0.2+ to v10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Upgrade Guide</a> &raquo;</li>
+        
+          <li><a href="upgrade-v12-v13.html">Upgrade from v12 to v13</a> &raquo;</li>
+        
+      <li>Perform the upgrade</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-upgrade-internal/rpc-upgrade-v12-v13-perform.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="perform-the-upgrade">
+<h1>Perform the upgrade<a class="headerlink" href="#perform-the-upgrade" title="Permalink to this headline">#</a></h1>
+<p>Perform the upgrade as a series of steps:</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#migrate-variables"><span class="std std-ref">Run a migration script</span></a> to move the variable
+files to a new location.</li>
+<li><a class="reference internal" href="#update-ansible"><span class="std std-ref">Update Ansible</span></a>.</li>
+<li><a class="reference internal" href="#update-galaxy"><span class="std std-ref">Update the rpc-openstack galaxy modules</span></a>.</li>
+<li><a class="reference internal" href="#rebuild-containers"><span class="std std-ref">Rebuild the repo containers</span></a>.</li>
+<li><a class="reference internal" href="#console-rebuild"><span class="std std-ref">Rebuild the nova_console containers</span></a>.</li>
+<li>If running Ceph, <a class="reference internal" href="#ceph-rebuild"><span class="std std-ref">rebuild the monitor containers</span></a> in a
+rolling fashion.</li>
+<li><a class="reference internal" href="#upgrade-elk"><span class="std std-ref">Upgrade the ELK stack</span></a>.</li>
+<li><a class="reference internal" href="#run-osa-script"><span class="std std-ref">Run the OSA upgrade script</span></a>.</li>
+<li><a class="reference internal" href="#upgrade-variables"><span class="std std-ref">Set upgrade variables for RPCO playbooks</span></a>.</li>
+<li><a class="reference internal" href="#run-playbooks"><span class="std std-ref">Run the RPCO playbooks</span></a>.</li>
+<li><a class="reference internal" href="rpc-upgrade-v13-verify.html#run-post-upgrade-playbook"><span class="std std-ref">Run the rpc-post-upgrade playbook</span></a>.</li>
+</ol>
+<div class="section" id="migrate-variables">
+<span id="id1"></span><h2>Migrate variables<a class="headerlink" href="#migrate-variables" title="Permalink to this headline">#</a></h2>
+<p>The file structure for variable files has changed in Mitaka. Variable files
+must be migrated from the <code class="docutils literal"><span class="pre">user_variables.yml</span></code>,
+<code class="docutils literal"><span class="pre">user_extras_variables.yml</span></code>, and <code class="docutils literal"><span class="pre">user_extras_secrets.yml</span></code> files to the
+following new files:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">user_osa_variables_defaults.yml</span></code></li>
+<li><code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code></li>
+<li><code class="docutils literal"><span class="pre">user_rpco_variables_defaults.yml</span></code></li>
+<li><code class="docutils literal"><span class="pre">user_rpco_variables_overrides.yml</span></code></li>
+</ul>
+<div class="section" id="migrate-override-variable-files">
+<h3>Migrate override variable files<a class="headerlink" href="#migrate-override-variable-files" title="Permalink to this headline">#</a></h3>
+<p>RPCO provides a migration tool, <code class="docutils literal"><span class="pre">migrate-yaml.py</span></code>, to help you migrate
+variables to the new files. To migrate the variables, follow these steps:</p>
+<ol class="arabic">
+<li><p class="first">Back up the <code class="docutils literal"><span class="pre">user_extras_variables.yml</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> cp /etc/openstack_deploy/user_extras_variables.yml <span class="se">\</span>
+  /root/user_extras_variables.yml.bak
+</pre></div>
+</div>
+</li>
+<li><p class="first">Change to the <code class="docutils literal"><span class="pre">scripts</span></code> directory:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/scripts
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Populate the <code class="docutils literal"><span class="pre">user_rpco_variables_overrides.yml</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ./migrate-yaml.py <span class="se">\</span>
+  --defaults /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_rpco_variables_defaults.yml <span class="se">\</span>
+  --overrides /etc/openstack_deploy/user_extras_variables.yml <span class="se">\</span>
+  --output-file /etc/openstack_deploy/user_rpco_variables_overrides.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">After the preceding commands have been invoked, open the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_variables_overrides.yml</span></code> file
+and inspect the contents.</p>
+<p>The file should look similar to the following example, with different
+variables listed:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">NEW_DEFAULTS</span><span class="p">:</span>
+ <span class="nt">maas_notification_plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npManaged</span>
+<span class="nt">OLD_OVERRIDES</span><span class="p">:</span>
+ <span class="nt">maas_notification_plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npTechnicalContactsEmail</span>
+<span class="nt">maas_excluded_checks</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cinder_volume_check</span>
+<span class="nt">net_max_speed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">NEW_DEFAULTS</span></code> block lists any variables whose default value is
+different than than the value that was defined. In this example,
+<code class="docutils literal"><span class="pre">maas_notification_plan</span></code> has a different default value in the Mitaka code
+base than what is in the existing Liberty variables in this environment.
+The <code class="docutils literal"><span class="pre">OLD_OVERRIDES</span></code> block shows the value that was set on the environment
+before the upgrade&#8211;in other words, the previously existing value.</p>
+</li>
+<li><p class="first">Choose the values that you want to keep. For example, if you want to keep
+<code class="docutils literal"><span class="pre">maas_notification_plan:</span> <span class="pre">npTechnicalContactsEmail</span></code>, edit the file as
+follows:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">maas_notification_plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npTechnicalContactsEmail</span>
+<span class="nt">maas_excluded_checks</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cinder_volume_check</span>
+<span class="nt">net_max_speed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1000</span>
+</pre></div>
+</div>
+<p>Notice that the <code class="docutils literal"><span class="pre">NEW_DEFAULTS</span></code> and <code class="docutils literal"><span class="pre">OLD_OVERRIDES</span></code> blocks have been
+deleted, and the variables have been properly indented.</p>
+<p>Next, perform the same actions for the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_defaults</span></code> file.</p>
+</li>
+<li><p class="first">Back up the <code class="docutils literal"><span class="pre">user_variables.yml</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> cp /etc/openstack_deploy/user_variables.yml <span class="se">\</span>
+  /root/user_variables.yml.bak
+</pre></div>
+</div>
+</li>
+<li><p class="first">Change to the <code class="docutils literal"><span class="pre">scripts</span></code> directory:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/scripts
+</pre></div>
+</div>
+</li>
+<li><p class="first">Populate the <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">./migrate-yaml.py \</span>
+<span class="go"> --defaults /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_osa_variables_defaults.yml \</span>
+<span class="go"> --overrides /etc/openstack_deploy/user_variables.yml \</span>
+<span class="go"> --output-file /etc/openstack_deploy/user_osa_variables_overrides.yml</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Open the <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code> file, choose the values that
+you want to keep, and save the file.</p>
+</li>
+<li><p class="first">Delete the old variables files:</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> rm -f /etc/openstack_deploy/user_extras_variables.yml <span class="se">\</span>
+  /etc/openstack_deploy/user_variables.yml
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="generate-or-rename-the-secrets-files">
+<h3>Generate or rename the secrets files<a class="headerlink" href="#generate-or-rename-the-secrets-files" title="Permalink to this headline">#</a></h3>
+<p>In Mitaka, new secrets are introduced and we need to update the RPCO secrets
+files to include the new secret variables.</p>
+<p>Before you begin, back up the existing <code class="docutils literal"><span class="pre">secrets</span></code> files:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> cp /etc/openstack_deploy/*_secrets.yml /root/
+</pre></div>
+</div>
+</div></blockquote>
+<p>To generate the new RPCO secrets files, use the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Update the <code class="docutils literal"><span class="pre">user_rpco_secrets</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> python2.7 /opt/rpc-openstack/scripts/update-yaml.py --output-file <span class="se">\</span>
+  /etc/openstack_deploy/user_rpco_secrets.yml <span class="se">\</span>
+  /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_rpco_secrets.yml <span class="se">\</span>
+  /etc/openstack_deploy/user_extras_secrets.yml
+<span class="gp">#</span> rm -rf /etc/openstack_deploy/user_extras_secrets.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">Populate the values of the new variables:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> python2.7 /opt/rpc-openstack/openstack-ansible/scripts/pw-token-gen.py <span class="se">\</span>
+  --file /etc/openstack_deploy/user_rpco_secrets.yml
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To rename the OSA <code class="docutils literal"><span class="pre">secrets</span></code> variables files, use the following steps:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> mv /etc/openstack_deploy/user_secrets.yml <span class="se">\</span>
+  /etc/openstack_deploy/user_osa_secrets.yml
+<span class="gp">#</span> rm -f /etc/openstack_deploy/user_extras_secrets.yml <span class="se">\</span>
+  /etc/openstack_deploy/user_secrets.yml
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pull-in-the-new-default-variables-files-from-the-code-base">
+<h3>Pull in the new default variables files from the code base<a class="headerlink" href="#pull-in-the-new-default-variables-files-from-the-code-base" title="Permalink to this headline">#</a></h3>
+<p>To pull in the new default variables files, use the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/*defaults* <span class="se">\</span>
+  /etc/openstack_deploy
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="update-ansible">
+<span id="id2"></span><h2>Update Ansible<a class="headerlink" href="#update-ansible" title="Permalink to this headline">#</a></h2>
+<p>To update Ansible, use the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Delete the pip configuration from the deployment node:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> rm /root/.pip/pip.conf
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run <code class="docutils literal"><span class="pre">bootstrap-ansible.sh</span></code>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible
+<span class="gp">#</span> bash scripts/bootstrap-ansible.sh
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="update-the-rpc-openstack-galaxy-modules">
+<span id="update-galaxy"></span><h2>Update the rpc-openstack galaxy modules<a class="headerlink" href="#update-the-rpc-openstack-galaxy-modules" title="Permalink to this headline">#</a></h2>
+<p>To update the rpc-openstack galaxy modules, use the following command:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible-galaxy install <span class="se">\</span>
+  --role-file<span class="o">=</span>/opt/rpc-openstack/ansible-role-requirements.yml <span class="se">\</span>
+  --force --roles-path<span class="o">=</span>/opt/rpc-openstack/rpcd/playbooks/roles
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rebuild-the-repo-containers">
+<span id="rebuild-containers"></span><h2>Rebuild the repo containers<a class="headerlink" href="#rebuild-the-repo-containers" title="Permalink to this headline">#</a></h2>
+<p>The repo server containers must be rebuilt. To rebuild the containers,
+run the following commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">#</span> openstack-ansible lxc-containers-destroy.yml --limit repo_all
+<span class="gp">#</span> openstack-ansible setup-hosts.yml --limit repo_all
+</pre></div>
+</div>
+</div>
+<div class="section" id="rebuild-the-nova-console-containers">
+<span id="console-rebuild"></span><h2>Rebuild the <code class="docutils literal"><span class="pre">nova_console</span></code> containers<a class="headerlink" href="#rebuild-the-nova-console-containers" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal"><span class="pre">nova_console</span></code> containers must be rebuilt. To rebuild the
+<code class="docutils literal"><span class="pre">nova_console</span></code> containers, run the following commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">#</span> openstack-ansible lxc-containers-destroy.yml --limit nova_console
+<span class="gp">#</span> openstack-ansible setup-hosts.yml --limit nova_console
+</pre></div>
+</div>
+</div>
+<div class="section" id="if-running-ceph-rebuild-the-monitor-containers-in-a-rolling-fashion">
+<span id="ceph-rebuild"></span><h2>If running Ceph, rebuild the monitor containers in a rolling fashion<a class="headerlink" href="#if-running-ceph-rebuild-the-monitor-containers-in-a-rolling-fashion" title="Permalink to this headline">#</a></h2>
+<p>Use the following steps to update the entire Ceph cluster and rebuild the Ceph
+monitors. Example code for the entire process is provided at the end of the
+steps.</p>
+<ol class="arabic">
+<li><p class="first">Verify that all the variables for Ceph (example: <code class="docutils literal"><span class="pre">osd_directory</span></code>,
+<code class="docutils literal"><span class="pre">raw_multi_journal</span></code>, or <code class="docutils literal"><span class="pre">journal_size</span></code>) were properly migrated in the
+previous steps.</p>
+</li>
+<li><p class="first">Ensure that all the monitors are in a correct state by issuing a
+<code class="docutils literal"><span class="pre">ceph</span> <span class="pre">-s</span></code> on them.</p>
+</li>
+<li><dl class="first docutils">
+<dt>For <em>one monitor at a time</em>, perform the following actions:</dt>
+<dd><ol class="first upperalpha simple">
+<li>Stop the monitor process and remove the monitor from the cluster.</li>
+<li>Delete the container, re-create it, and rejoin it to the cluster with
+the playbook limited to that monitor. This process makes the cluster
+have the correct hostnames and bind mounts.</li>
+<li>Before performing these steps with the next monitor, verify the health
+of the cluster by issuing a <code class="docutils literal"><span class="pre">ceph</span> <span class="pre">-s</span></code> command on all the monitor
+hosts again.</li>
+</ol>
+<blockquote class="last">
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Stop the upgrade procedure if the cluster is in an unhealthy state.</p>
+<p class="last">The process is now impactful.</p>
+</div>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><p class="first">Re-run the <code class="docutils literal"><span class="pre">ceph-all</span></code> playbook. Re-running the included playbooks
+restarts the monitors in <code class="docutils literal"><span class="pre">osds/monitors</span></code> because their configuration file
+changed. Consider how to do this, depending on the topology and amount of
+nodes, by limiting which host is targeted.</p>
+</li>
+</ol>
+<p>Following is example code for the entire process:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If the code below is being run in a script or copy and pasted on the
+command line, ensure that you first <code class="docutils literal"><span class="pre">set</span> <span class="pre">-e</span></code> so that any failure that
+occurs within the loop terminates the loop. It is essential to ensure that
+all steps complete successfully and that the Ceph cluster is always in a
+good state before MONs are removed from the cluster.  Failing to do this
+could result in data loss.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">set</span> -e
+
+<span class="nv">mons</span><span class="o">=</span><span class="k">$(</span>ansible mons --list-hosts<span class="k">)</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">mons</span><span class="si">}</span> <span class="p">|</span> wc -w<span class="k">)</span> -gt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="c1">#Gather facts about all the monitors first, even with bad names</span>
+  <span class="c1">#This shouldn&#39;t change a thing, it&#39;s a regular playbook run.</span>
+  openstack-ansible /opt/rpc-openstack/rpcd/playbooks/gen-facts.yml
+  <span class="k">for</span> mon in <span class="si">${</span><span class="nv">mons</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    ansible <span class="nv">$mon</span> -m shell -a <span class="s2">&quot;ceph --format json-pretty status | grep -q &#39;\&quot;overall_status\&quot;: \&quot;HEALTH_OK\&quot;&#39;&quot;</span>
+    ansible <span class="nv">$mon</span> -m <span class="nb">command</span> -a <span class="s2">&quot;stop ceph-mon id=</span><span class="nv">$mon</span><span class="s2">&quot;</span>
+    ansible <span class="nv">$mon</span> -m <span class="nb">command</span> -a <span class="s2">&quot;ceph mon remove </span><span class="nv">$mon</span><span class="s2">&quot;</span>
+    openstack-ansible lxc-containers-destroy.yml --skip-tags<span class="o">=</span>container-directories --limit <span class="nv">$mon</span>
+    openstack-ansible lxc-containers-create.yml --limit <span class="nv">$mon</span>
+    <span class="c1"># Destroy facts for the current mon, this way it&#39;s gonna be properly generated</span>
+    rm -f /etc/openstack_deploy/ansible_facts/<span class="nv">$mon</span>
+    openstack-ansible /opt/rpc-openstack/rpcd/playbooks/ceph-mon.yml --limit <span class="nv">$mon</span>
+  <span class="k">done</span>
+  <span class="c1">#all the facts are good, they are all part of the cluster. just reconfigure them all</span>
+  <span class="c1">#caution, it will restart all your osds/mons, be careful!</span>
+  openstack-ansible /opt/rpc-openstack/rpcd/playbooks/ceph-all.yml
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="upgrade-the-elk-stack">
+<span id="upgrade-elk"></span><h2>Upgrade the ELK stack<a class="headerlink" href="#upgrade-the-elk-stack" title="Permalink to this headline">#</a></h2>
+<p>The ELK (Elasticsearch, Logstash, and Kibana) stack upgrade from v12 to v13
+consists of several steps. Because of stricter checking of data types in the
+newest versions of Elasticsearch, all of the existing Logstash indices must be
+reindexed before you can upgrade Elasticsearch. The bulk of the upgrade work is
+performed in the <code class="docutils literal"><span class="pre">upgrade_elasticsearch_pre.yml</span></code> task. This task reindexes
+the existing indices to a new mapping with the correct types. After the
+reindexing is complete, you can upgrade the Elasticsearch apt packages, and
+they will start successfully.</p>
+<p>Reindexing can be a time-consuming process. The playbooks
+enable you to install what is necessary to perform <em>preupgrade reindexing</em> to
+reduce the time needed when the actual upgrade is running.</p>
+<p>For information about preupgrade reindexing, see
+<a class="reference internal" href="rpc-upgrade-v12-v13-prereq.html#elk-prereqs"><span class="std std-ref">Elasticsearch preupgrade reindexing</span></a>.</p>
+<div class="section" id="methodology">
+<h3>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h3>
+<p>The legacy version of Elasticsearch that was shipped with versions 10, 11, and
+12 of RPCO included an index template with two host fields,
+one of type <code class="docutils literal"><span class="pre">ip</span></code> and the other of type <code class="docutils literal"><span class="pre">string</span></code>. This
+situation causes an error in the latest version of Elasticsearch, which is
+shipped with the v13 and later versions of RPCO. To maintain existing
+indices, the legacy indices must be reindexed with a new template in which both
+host fields are of type <code class="docutils literal"><span class="pre">string</span></code>.</p>
+</div>
+<div class="section" id="run-the-upgrade-pre-flight-yml-task">
+<h3>Run the upgrade_pre_flight.yml task<a class="headerlink" href="#run-the-upgrade-pre-flight-yml-task" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal"><span class="pre">upgrade_pre_flight.yml</span></code> task performs some version checks of the
+Elasticsearch apt package to help determine the state of the Elasticsearch
+cluster.</p>
+<ul class="simple">
+<li>By default, an RPCO environment earlier than v13 with the ELK stack has an
+Elastcisearch version in the 1.4.x branch.</li>
+<li>To reindex the indices, you use the reindexing plug-in that requires an
+Elasticsearch version in the 1.7.x branch.</li>
+<li>The version of Elasticsearch needed by RPCO v13 is on the 2.x branch.</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">upgrade_pre_flight.yml</span></code> task determines the version of
+Elasticsearch that is installed and performs the following actions:</p>
+<ul class="simple">
+<li>If the version is between 1.4.x and 1.6.x, proceed with the reindexing and
+upgrade.</li>
+<li>If the version is later than 2.x, skip the reindexing and proceed with the
+upgrade.</li>
+<li>If the version is in the 1.7.x branch, stop the reindex and upgrade unless
+the <code class="docutils literal"><span class="pre">force_upgrade=true</span></code> variable is set from the command line.</li>
+</ul>
+<p>Because a preupgrade reindex might occur when the
+1.7.x branch is detected, it is safest to stop the upgrade to allow you
+to ensure that any preupgrade reindexing is completed and the cluster
+is prepared for the update.</p>
+</div>
+<div class="section" id="run-the-upgrade-elasticsearch-pre-yml-task">
+<h3>Run the upgrade_elasticsearch_pre.yml task<a class="headerlink" href="#run-the-upgrade-elasticsearch-pre-yml-task" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal"><span class="pre">upgrade_elasticsearch_pre.yml</span></code> task performs the following steps to
+automate the reindexing and upgrading of existing Elasticsearch clusters:</p>
+<ol class="arabic simple">
+<li>The Elasticsearch cluster is upgraded to the latest stable 1.7.x version.</li>
+<li>Elasticsearch is restarted.</li>
+<li>The <code class="docutils literal"><span class="pre">log_test1</span></code> template is dropped from Elasticsearch.</li>
+<li>A new <code class="docutils literal"><span class="pre">log_test1</span></code> template with updated <code class="docutils literal"><span class="pre">host</span></code> fields is added.</li>
+<li>The reindexing plug-in is installed.</li>
+<li>Elasticsearch is restarted.</li>
+<li>The <code class="docutils literal"><span class="pre">reindex-liberty.py</span></code> script is installed.</li>
+<li>Legacy indices are reindexed with the new <code class="docutils literal"><span class="pre">log_test1</span></code> template into new
+indices (<code class="docutils literal"><span class="pre">logstash-YYYY.MM.DD-logstash</span></code>).</li>
+<li>Legacy indices (<code class="docutils literal"><span class="pre">logstash-YYYY.MM.DD</span></code>) are deleted after they have been
+reindexed.</li>
+<li>Legacy plug-ins and apt repositories are removed.</li>
+</ol>
+<p>You can also call the <code class="docutils literal"><span class="pre">upgrade_elasticsearch_pre.yml</span></code> playbook with the
+<code class="docutils literal"><span class="pre">reindex-wrapper</span></code> tag to upgrade the Elasticsearch packages to only the 1.7.x
+branch and install the <code class="docutils literal"><span class="pre">reindex-liberty.py</span></code> script.</p>
+</div>
+<div class="section" id="run-the-reindex-liberty-py-script">
+<h3>Run the reindex-liberty.py script<a class="headerlink" href="#run-the-reindex-liberty-py-script" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal"><span class="pre">reindex-liberty.py</span></code> script is a wrapper script around the
+reindexing Elasticsearch plug-in and a helper tool to monitor the
+reindexing process and obtain information about the Elasticsearch cluster. The
+help output of <code class="docutils literal"><span class="pre">reindex-liberty.py</span></code> follows:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">./reindex-liberty.py --help</span>
+<span class="go">usage: reindex-liberty.py [-h] [--host HOST] [--port PORT] [--suffix SUFFIX]</span>
+<span class="go">                          [--clean] [--list] [--reindex] [--index INDEX]</span>
+<span class="go">                          [--batch] [--start START] [--end END] [--monitor]</span>
+<span class="go">                          [--continuous] [--delay DELAY] [--verbose] [--drop]</span>
+<span class="go">                          [--dry-run]</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help       show this help message and exit</span>
+<span class="go">  --host HOST      Elasticsearch host to connect to (default: localhost)</span>
+<span class="go">  --port PORT      Elasticsearch port to connect to (default: 9200)</span>
+<span class="go">  --suffix SUFFIX  Suffix for reindexed indices. (default: liberty)</span>
+<span class="go">  --clean          Clean previous reindexed indices</span>
+<span class="go">  --list           List all Elasticsearch indices</span>
+<span class="go">  --reindex        Reindex all legacy indexes</span>
+<span class="go">  --index INDEX    Used with --reindex to reindex a specific index.</span>
+<span class="go">  --batch          Batch processing of old indices. Defaults to oldest index</span>
+<span class="go">                   through previous day&#39;s index.</span>
+<span class="go">  --start START    Start index for batch processing (YYYY.MM.DD) (default:</span>
+<span class="go">                   beginning of indices)</span>
+<span class="go">  --end END        End index for batch processing (YYYY.MM.DD) (default: the</span>
+<span class="go">                   Nth-1 index)</span>
+<span class="go">  --monitor        Progress of reindexing</span>
+<span class="go">  --continuous     Continuous monitoring</span>
+<span class="go">  --delay DELAY    Refresh delay for continuous monitoring. (default: 10)</span>
+<span class="go">  --verbose        Verbose output from monitoring functions</span>
+<span class="go">  --drop           Drop legacy indices</span>
+<span class="go">  --dry-run        Prints what will happen for drop, clean and batch</span>
+<span class="go">                   operations</span>
+</pre></div>
+</div>
+<p>Following is additional information about the arguments that is helpful for the
+ELK upgrade:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--host</span> <span class="pre">and</span> <span class="pre">--port</span></code></dt>
+<dd>The host IP address and port of an Elasticsearch endpoint defaults to
+<code class="docutils literal"><span class="pre">localhost:9200</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">--suffix</span></code></dt>
+<dd>By default, the destination indices have <code class="docutils literal"><span class="pre">-liberty</span></code> appended to the
+original name. For example, an index named <code class="docutils literal"><span class="pre">logstash-2016.01.01</span></code> is
+reindexed into <code class="docutils literal"><span class="pre">logstash-2016.01.01-liberty</span></code>. Use this option with care
+because additional manual changes to the new <code class="docutils literal"><span class="pre">log_test1</span></code> template must be
+made.</dd>
+<dt><code class="docutils literal"><span class="pre">--clean</span></code></dt>
+<dd>Use this argument primarily for testing preupgrade steps and development.
+<code class="docutils literal"><span class="pre">--clean</span></code> removes any indices with the suffix specified,  which defaults
+to <code class="docutils literal"><span class="pre">-liberty</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">--list</span></code></dt>
+<dd>Lists all of the Elasticsearch indices including document counts, which are
+the primary method to determine reindexing progress.</dd>
+<dt><code class="docutils literal"><span class="pre">--reindex</span></code></dt>
+<dd>By default, <code class="docutils literal"><span class="pre">--reindex</span></code> reindexes all indices that match the pattern
+<code class="docutils literal"><span class="pre">logstash-*</span></code>. The script initiates the reindexing process inside of
+Elasticsearch.</dd>
+<dt><code class="docutils literal"><span class="pre">--index</span> <span class="pre">INDEX</span></code></dt>
+<dd><p class="first">Use the <code class="docutils literal"><span class="pre">--index</span></code> option in conjunction with <code class="docutils literal"><span class="pre">--reindex</span></code> to reindex
+only a specific index. For example:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ./reindex-liberty.py --reindex --index logstash-2016.01.01
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">--batch</span></code></dt>
+<dd>Use the <code class="docutils literal"><span class="pre">--batch</span></code> option for performing reindexing on a series of indices
+based on the date of the index. By default, the <code class="docutils literal"><span class="pre">--batch</span></code> option reindexes
+all indices starting at the earliest index date through, and including, the
+previous day.</dd>
+<dt><code class="docutils literal"><span class="pre">--start</span> <span class="pre">START</span></code> and <code class="docutils literal"><span class="pre">--end</span> <span class="pre">END</span></code></dt>
+<dd><p class="first">Use the <code class="docutils literal"><span class="pre">--start</span></code> and <code class="docutils literal"><span class="pre">--end</span></code> options with the <code class="docutils literal"><span class="pre">--batch</span></code> option to
+control the beginning and end dates for a reindexing batch. The following
+example reindexes all of the indices with dates between January 1st and
+January 31st (inclusive):</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ./reindex-liberty.py --batch --start <span class="m">2016</span>.01.01 --end <span class="m">2016</span>.01.31
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">--monitor</span></code>, <code class="docutils literal"><span class="pre">--continuous</span></code>, <code class="docutils literal"><span class="pre">--delay</span> <span class="pre">DELAY</span></code> and <code class="docutils literal"><span class="pre">--verbose</span></code></dt>
+<dd>Use these arguments to monitor the progress of the reindexing. By itself,
+<code class="docutils literal"><span class="pre">--monitor</span></code> prints a percentage complete of the entire document count of
+all indices. Adding the <code class="docutils literal"><span class="pre">--continuous</span></code> option continuously prints the
+percentage with a pause time specified with the <code class="docutils literal"><span class="pre">--delay</span></code> option. Adding
+<code class="docutils literal"><span class="pre">--verbose</span></code> prints the percentage complete of each index and the overall
+percentage complete.</dd>
+<dt><code class="docutils literal"><span class="pre">--drop</span></code></dt>
+<dd>This argument drops the legacy indices from the Elasticsearch cluster and is
+the last step of the reindexing process. Use this argument with extreme care
+because the dropped indices are essentially deleted.</dd>
+<dt><code class="docutils literal"><span class="pre">--dry-run</span></code></dt>
+<dd>You can add the <code class="docutils literal"><span class="pre">--dry-run</span></code> argument to any of the <code class="docutils literal"><span class="pre">--reindex</span></code> or
+<code class="docutils literal"><span class="pre">--batch</span></code> commands to print what would happen if that command was run.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="run-the-osa-upgrade-script">
+<span id="run-osa-script"></span><h2>Run the OSA upgrade script<a class="headerlink" href="#run-the-osa-upgrade-script" title="Permalink to this headline">#</a></h2>
+<p>To run the OSA upgrade script, use the following commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible
+<span class="gp">#</span> <span class="nb">export</span> <span class="nv">I_REALLY_KNOW_WHAT_I_AM_DOING</span><span class="o">=</span><span class="nb">true</span>
+<span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;YES&quot;</span> <span class="p">|</span> ./scripts/run-upgrade.sh
+</pre></div>
+</div>
+<p>The script takes about an hour to complete.</p>
+</div>
+<div class="section" id="set-upgrade-variables-for-rpco-playbooks">
+<span id="upgrade-variables"></span><h2>Set upgrade variables for RPCO playbooks<a class="headerlink" href="#set-upgrade-variables-for-rpco-playbooks" title="Permalink to this headline">#</a></h2>
+<p>To correctly upgrade the RPCO services, place the following variables in a
+temporary variables file.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;logging_upgrade: true&quot;</span> &gt;&gt; /etc/openstack_deploy/user_upgrade_variables.yml
+<span class="gp">#</span> <span class="nb">echo</span> <span class="s2">&quot;backup_dir: \&quot;{{ local_home }}/rpc13-upgrade-</span><span class="k">$(</span>date <span class="s1">&#39;+%Y-%m-%d&#39;</span><span class="k">)</span><span class="s2">\&quot;&quot;</span> &gt;&gt; /etc/openstack_deploy/user_upgrade_variables.yml
+</pre></div>
+</div>
+<p>After the upgrade is completed, you can delete the file.</p>
+</div>
+<div class="section" id="run-the-rpco-playbooks">
+<span id="run-playbooks"></span><h2>Run the RPCO playbooks<a class="headerlink" href="#run-the-rpco-playbooks" title="Permalink to this headline">#</a></h2>
+<p>To run the RPCO playbooks, use the following steps:</p>
+<ol class="arabic">
+<li><p class="first">Change to the <code class="docutils literal"><span class="pre">opt/rpc‐openstack/rpcd/playbooks</span></code> directory:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">rpc-support</span></code> playbook:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible rpc-support.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">horizon_extensions</span></code> playbook:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible horizon_extensions.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you are running MaaS, run the <code class="docutils literal"><span class="pre">setup-maas</span></code> playbook:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible setup-maas.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you are running the ELK stack, run the <code class="docutils literal"><span class="pre">setup-logging</span></code> playbook:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible setup-logging.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you are running MaaS, verify that all checks and alarms are backed up:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible verify-maas.yml
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc-upgrade-v13-verify.html" class="btn btn-neutral float-right" title="Verify the upgrade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rpc-upgrade-v12-v13-prereq.html" class="btn btn-neutral float-left" title="Prerequisites" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+.. _share-contacts-command:
+
+Share a Contact (Teams)
+=======================
+
+To share a contact with a team member, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#.  Locate the appropriate contact, click the More Options menu (ellipses |menu-options-icon| icon) and select **Share Contacts**.
+
+   .. |menu-options-icon| image:: ../../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Share Contacts** window, select the team you would like to share with, the specific agents you would like to share with, and if those agents can edit the contact's information.
+
+#. Click **Share**.
+
+   The contact is sent to the agents that were selected and is visible under their Shared Contacts.

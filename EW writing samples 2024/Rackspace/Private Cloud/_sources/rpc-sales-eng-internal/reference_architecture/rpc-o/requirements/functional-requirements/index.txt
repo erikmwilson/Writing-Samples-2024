@@ -1,0 +1,22 @@
+=======================
+Functional requirements
+=======================
+
+*Functional requirements* define how a product, service, or solution
+should function from the end user's perspective. They describe the
+features and functions with which the end-user interacts directly.
+
+.. toctree::
+   :maxdepth: 2
+
+   service-quality-management.rst
+   capacity-management.rst
+   standard-operating-environment.rst
+   availability-management.rst
+   data-management.rst
+   system-management.rst
+   continuity-management.rst
+   information-security-management.rst
+   operational-requirements.rst
+   transitional-requirements.rst
+   use-cases.rst

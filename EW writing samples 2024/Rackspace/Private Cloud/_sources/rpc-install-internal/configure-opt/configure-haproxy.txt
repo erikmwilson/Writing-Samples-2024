@@ -1,0 +1,158 @@
+============================
+Configure HAProxy (optional)
+============================
+
+This section provides information about configuring HAProxy.
+
+HAProxy can be either the primary load balancer for RPCO or a temporary load
+balancer that provides load balancing services before an F5 is configured by
+NetSec.
+
+.. warning::
+
+   If you use HAProxy, note the following issues and caveats:
+
+   - Do not permanently configure the ``internal_lb_vip_address``
+     option in the ``openstack_user_config.yml`` file to reference the
+     ``br-mgmt`` bridge IP address on the infrastructure target host.
+
+   - If you are using HAProxy prior to an F5 configuration, you must disable
+     the HAProxy service from starting automatically when the target host
+     boots.
+
+   - This configuration of HAProxy does not provide high availability (HA) of
+     load balancing services. See `how to correctly configure HAProxy
+     <https://github.com/rsoprivatecloud/rpc-architecture-docs/blob/master/load-balancers/Correctly-configure-HAProxy-Keepalive.md/>`_
+     for a highly available HAProxy configuration.
+
+   - If you are using HAProxy prior to an F5 configuration, you must disable
+     automatic deployment of monitoring as a service (MaaS).
+
+Where to run HAProxy/Keepalived?
+--------------------------------
+
+Both processes are ideally run on dedicated machines that are running no
+other services in parallel. Do not run HAProxy inside containers. Currently
+used ``sysctl`` settings are not available inside the container like
+``bind_on_non_local`` options.
+
+Designate HAProxy hosts
+-----------------------
+
+To configure HAProxy in RPCO, use the following steps:
+
+1. Add hosts to your /etc/openstack_deploy/openstack_user_config.yml.
+
+.. code-block:: yaml
+
+    haproxy_hosts:
+      123456-infra01:
+        ip: 172.29.236.51
+      123457-infra02:
+        ip: 172.29.236.52
+      123458-infra03:
+        ip: 172.29.236.53
+
+2. Ensure that the ``internal_lb_vip_address`` and ``external_lb_vip_address``
+   use different IP addresses or DNS names because SSL is now directly
+   offloaded on the HAProxy. Using the same endpoints causes HTTP/HTTPS
+   protocol mismatch issues.
+
+Important configuration options
+-------------------------------
+
+You can set the following options inside the
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file:
+
+*  ``haproxy_use_keepalived``
+
+   Enabled to deploy Keepalived onto the HAProxy hosts.
+
+*  ``haproxy_bind_on_non_local``
+
+   Disabled to allow Keepalived to bind the IP address to the host interface.
+
+*  ``haproxy_keepalived_external_vip_cidr``
+
+   This is preset to ``external_lb_vip_address``
+   but you can alter it to reflect your local cloud - for example,
+   when ``external_lb_vip_address`` is configured to a DNS name or
+   endpoint addresses are translated in firewalls.
+
+*  ``haproxy_keepalived_internal_vip_cidr``
+
+   Same as the external address but limited to the internal
+   VIPs.
+
+*  ``haproxy_keepalived_external_interface`` and
+   ``haproxy_keepalived_internal_interface``
+
+   This setting defines the interfaces where
+   ``haproxy_keepalived_external_vip_cidr`` and
+   ``haproxy_keepalived_internal_vip_cidr`` are bound.
+
+*  ``keepalived_bind_on_non_local``
+
+   Enabled to let Keepalived roam the VIPs inside the HAProxy cluster.
+
+*  ``keepalived_ping_address``
+
+   Defines the gateway address used to determine health of the current network
+   connectivity.
+
+*  ``keepalived_scripts``
+
+   This configuration rarely needs to be updated. Most common use cases
+   should be covered with the default setup.
+   The configuration ``fall`` defines the number of failed attempts before the
+   node is considered unhealthy. Conversely, the ``rise`` parameter defines
+   after how many successful check attempts the node is considered healthly.
+   This is mainly necessary to counteract flapping connectivity issues.
+
+For additional information, refer to [1]_.
+
+
+Example configuration
+---------------------
+
+The following configuration was used to test and verify
+HAProxy/Keepalived configuration:
+
+.. code-block:: yaml
+
+    haproxy_use_keepalived: True
+    haproxy_keepalived_external_vip_cidr: 1.2.3.4/32
+    haproxy_keepalived_internal_vip_cidr: 172.29.236.10/32
+    haproxy_keepalived_external_interface: br-extern
+    haproxy_keepalived_internal_interface: br-mgmt
+    haproxy_bind_on_non_local: False
+
+    keepalived_use_latest_stable: True
+
+    keepalived_ping_address: "172.29.236.1"
+    keepalived_ping_count: 2
+    keepalived_bind_on_non_local: True
+
+    keepalived_scripts:
+      haproxy_check_script:
+        check_script: "kill -0 `cat /var/run/haproxy.pid`"
+        timeout: 2
+      pingable_check_script:
+        check_script: "/bin/ping -c {{ keepalived_ping_count }} {{ keepalived_ping_address }} 1>&2"
+        interval: "{{ keepalived_ping_interval }}"
+        fall: 2
+        rise: 4
+        timeout: 5
+
+Installation
+------------
+
+The installation of HAProxy and Keepalived is straight forward, requiring only
+that the ``haproxy-install.yml`` playbook be executed. Keepalived is enabled as
+described earlier and is automatically installed along side HAProxy.
+
+
+References
+----------
+
+.. [1] https://github.com/openstack/openstack-ansible-haproxy_server/blob/master/doc/source/configure-haproxy.rst

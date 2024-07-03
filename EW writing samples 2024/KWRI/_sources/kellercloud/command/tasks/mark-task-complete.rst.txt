@@ -1,0 +1,17 @@
+
+.. _mark-task-complete-command:
+
+Mark Task as Complete
+=====================
+
+Once you have completed a task, click the empty checkbox to the left of the task to mark it as complete.
+
+To mark a task as complete, complete the following steps:
+
+.. include:: tasks-login.rst
+
+#. Click either the **Contact Tasks** tab or the **Opportunity Tasks** tab, at the top of the page.
+
+#. For Contact tasks, click **To Do**. Only tasks in this status can be marked as complete. Click the empty checkbox next to the correct task. On the pop-up window, indicate if you were able to reach the client and add any **Notes**. Click **Complete Task**.
+
+#. For Opportunity tasks, click the empty checkbox next to the correct task. On the pop-up window, click **Complete Task**.

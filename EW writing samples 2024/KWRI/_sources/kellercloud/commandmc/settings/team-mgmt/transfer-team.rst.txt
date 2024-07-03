@@ -1,0 +1,38 @@
+
+.. _transfer-team-settings-commandmc:
+
+Transfer a Team to a Different Market Center
+============================================
+
+Market Center Administrators (MCAs), Assistant Market Center Administrators (AMCAs), System Admins, and Legal users can transfer teams from one KW Market Center to another.
+
+When a team transfers from one market center to another, the team should be transferred to the new market center instead of the new market center creating a new team. This ensures that transactions in both market centers have the same team ID for awards purposes If a new team is created, the production from each market center will be counted separately.
+
+.. note::
+
+   A team in **Pending Transfer** status cannot be edited. The only option available for the team is to cancel the transfer request.
+
+To transfer a team, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **MC Team Management**.
+
+   .. note::
+
+      If you are a member of more than one Market Center, select (from the drop-down list) the Market Center with the team you want to transfer.
+
+#. On the **MC Team Management** page, find the team you want to transfer using the search box and the **Show** drop-down menu and click on the team name.
+
+#. On the **Team Details** page, click the **Transfer Team**.
+
+#. On the **Transfer Team** window, select the **Market Center** to transfer the team to.
+
+#. Click **Transfer Team**. A transfer request is sent to that Market Center.
+
+   .. note:
+
+      To cancel a transfer request, on the **Team Details** page, click **Cancel Transfer Request** and then **Yes, Cancel Request** on the confirmation page.

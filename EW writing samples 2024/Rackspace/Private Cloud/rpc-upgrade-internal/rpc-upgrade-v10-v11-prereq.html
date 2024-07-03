@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Prerequisites &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Perform the upgrade" href="rpc-upgrade-v10-v11-perform.html" />
+    <link rel="prev" title="Description" href="rpc-upgrade-v10-v11-description.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Upgrade Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-upgrade.html">Upgrade overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v12-v13.html">Upgrade from v12 to v13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v11-v12.html">Upgrade from v11 to v12</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="upgrade-v10-v11.html">Upgrade from v10 to v11</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v10-v11-rabbitmq.html">RabbitMQ upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v10-v11-description.html">Description</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Prerequisites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#back-up-the-environment">Back up the environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-keystone-scripts">Update Keystone scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-specific-maas-checks">Remove specific MaaS checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-the-maas-token">Set the MaaS token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fix-log-file-location-for-bare-metal-services">Fix log file location for bare metal services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate-cinder-volumes-from-a-container-to-bare-metal">Migrate cinder volumes from a container to bare metal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-ssl-certificates-for-dashboard">Configure SSL certificates for Dashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-the-trusty-backports-repository">Enable the trusty-backports repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#truncate-tables">Truncate tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-minimal-load-balancer-checks-for-galera-cluster">Configure minimal load balancer checks for Galera cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v10-v11-perform.html">Perform the upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v10-v11-post.html">Post-upgrade operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v11-verify.html">Verify the upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-upgrade-v9-v10.html">Upgrade from v9.0.2+ to v10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Upgrade Guide</a> &raquo;</li>
+        
+          <li><a href="upgrade-v10-v11.html">Upgrade from v10 to v11</a> &raquo;</li>
+        
+      <li>Prerequisites</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-upgrade-internal/rpc-upgrade-v10-v11-prereq.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h1>
+<p>This section documents the manual tasks that must be performed before
+beginning an upgrade.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Before upgrading to the current major release, you must first upgrade to
+the latest minor release of the previous major release. For example, to
+upgrade from version 10 to 11, upgrade to the latest 10.x release and
+then upgrade to 11.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Read the RPCO Release Notes before beginning the upgrade. The Release
+Notes provide late-breaking information about known issues and any
+required steps to correct them.</p>
+</div>
+<div class="section" id="back-up-the-environment">
+<h2>Back up the environment<a class="headerlink" href="#back-up-the-environment" title="Permalink to this headline">#</a></h2>
+<p>The upgrade script performs a backup of the <code class="docutils literal"><span class="pre">/etc/rpc_deploy</span></code>
+directory. However, it is recommended to perform a separate, full backup
+of the environment, including the source repository.</p>
+</div>
+<div class="section" id="update-keystone-scripts">
+<h2>Update Keystone scripts<a class="headerlink" href="#update-keystone-scripts" title="Permalink to this headline">#</a></h2>
+<p>As of v11, XML support for Keystone is no longer available. For planned
+upgrades, application scripts that interact with the Keystone service
+should be rewritten to parse JSON output rather than XML. The v11
+deployment scripts install a working <code class="docutils literal"><span class="pre">keystone-paste.ini</span></code>
+configuration file.</p>
+</div>
+<div class="section" id="remove-specific-maas-checks">
+<h2>Remove specific MaaS checks<a class="headerlink" href="#remove-specific-maas-checks" title="Permalink to this headline">#</a></h2>
+<p>The MaaS checks listed in this section must be removed before beginning
+the upgrade process.</p>
+<p>The version 11 upgrade renames <code class="docutils literal"><span class="pre">nova_spice</span></code> containers to <code class="docutils literal"><span class="pre">nova_console</span></code>.
+Use the Rackspace Intelligence user interface or an alternate method to remove
+the following MaaS checks:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">nova_consoleauth_check--HOSTNAME_nova_spice_console_container-</span>
+<span class="pre">CONTAINER_ID</span></code></li>
+<li><code class="docutils literal"><span class="pre">nova_spice_console_check--HOSTNAME_nova_spice_console_container-</span>
+<span class="pre">CONTAINER_ID</span></code></li>
+</ul>
+<p>Replace <code class="docutils literal"><span class="pre">HOSTNAME</span></code> and <code class="docutils literal"><span class="pre">CONTAINER_ID</span></code> as appropriate for your environment.</p>
+<p>The following <code class="docutils literal"><span class="pre">lb</span></code> MaaS checks are not updated correctly by the
+MaaS playbooks post-upgrade. They will only be created if they do not
+previously exist. Use the Rackspace Intelligence user interface or an
+alternate method to remove the following MaaS checks:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">lb_api_check_horizon</span></code></li>
+<li><code class="docutils literal"><span class="pre">lb_ssl_cert_expiry_check</span></code></li>
+</ul>
+<p>Verify that all remaining MaaS checks report <code class="docutils literal"><span class="pre">OK</span></code> state before
+beginning the upgrade.</p>
+</div>
+<div class="section" id="set-the-maas-token">
+<h2>Set the MaaS token<a class="headerlink" href="#set-the-maas-token" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Generate a MaaS token using
+<a class="reference external" href="https://pitchfork.eco.rackspace.com/monitoring/">Pitchfork</a> or the
+following example script:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">AUTH_USER</span><span class="o">=</span><span class="s">$(read -p &#39;Enter Username: &#39; username; echo $username) \</span>
+<span class="na">AUTH_PASS</span><span class="o">=</span><span class="s">$(read -s -p &#39;Enter Password: &#39; password; echo $password) \</span>
+<span class="na">MAAS_TOKEN</span><span class="o">=</span><span class="s">$(curl -s -X GET http://si.rackspace.com/auth/Token/AuthDetails \</span>
+<span class="na">-H &quot;x-auth-user: $AUTH_USER&quot; -H &quot;x-auth-password: $AUTH_PASS&quot; \</span>
+<span class="na">| sed &#39;s/&lt;[^&gt;]*&gt;//g&#39;) echo echo $MAAS_TOKEN</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use this value for the <code class="docutils literal"><span class="pre">maas_auth_token</span></code> option in the
+<code class="docutils literal"><span class="pre">/etc/rpc_deploy/user_variables.yml</span></code> file.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="fix-log-file-location-for-bare-metal-services">
+<h2>Fix log file location for bare metal services<a class="headerlink" href="#fix-log-file-location-for-bare-metal-services" title="Permalink to this headline">#</a></h2>
+<p>During the upgrade process, services running on bare metal can cause
+problems with log files. For example, issues can occur when upgrading an
+RPCO v10 deployment with Cinder on bare metal to RPCO v11.</p>
+<p>For deployments with services on bare metal, execute the following steps
+to check for services that typically run in containers and symlink their
+log files into the correct directories.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> ansible hosts -m shell -a <span class="se">\</span>
+<span class="s1">&#39;for item in cinder glance heat horizon keystone nova neutron; \</span>
+<span class="s1">do if [ ! -h &quot;/var/log/$item&quot; ] &amp;&amp; [ -d &quot;/var/log/$item&quot; ]; \</span>
+<span class="s1">then mv /var/log/$item /openstack/log/$(hostname -s)-$item; \</span>
+<span class="s1">ln -s /openstack/log/$(hostname -s)-$item /var/log/$item; fi; \</span>
+<span class="s1">done&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migrate-cinder-volumes-from-a-container-to-bare-metal">
+<span id="cinder-migrate"></span><h2>Migrate cinder volumes from a container to bare metal<a class="headerlink" href="#migrate-cinder-volumes-from-a-container-to-bare-metal" title="Permalink to this headline">#</a></h2>
+<p>RPCO v11 deploys cinder on bare metal by default. Before upgrading,
+follow these steps to deploy cinder volumes on a host that contains the
+<code class="docutils literal"><span class="pre">cinder-volume</span></code> container, migrate volumes to bare metal, and remove
+the original container.</p>
+<div class="section" id="id1">
+<h3>Prerequisites<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li>Back up the cinder volumes.</li>
+<li>On environments such as labs where Cinder and some other service
+(such as Nova or Neutron) are deployed on the same node, ensure that
+at RPCO version 10.1.14 or later is installed, which includes the
+following fix: <a class="reference external" href="https://review.openstack.org/221242/">https://review.openstack.org/221242/</a>.</li>
+</ol>
+</div>
+<div class="section" id="procedure">
+<h3>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">#</a></h3>
+<ol class="arabic">
+<li><p class="first">Make the following changes in the <code class="docutils literal"><span class="pre">rpc_environment.yml</span></code> file:</p>
+<ul>
+<li><p class="first">Add <code class="docutils literal"><span class="pre">is_metal:</span> <span class="pre">true</span></code> below <code class="docutils literal"><span class="pre">cinder_volumes_container</span></code> in the
+<code class="docutils literal"><span class="pre">container_skel</span></code> section.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">cinder_volumes_container:</span>
+   <span class="na">is_metal: true</span>
+   <span class="na">belongs_to:</span>
+   <span class="na">- storage_containers</span>
+   <span class="na">contains:</span>
+   <span class="na">- cinder_scheduler</span>
+   <span class="na">- cinder_volume</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">Make the following changes in the <code class="docutils literal"><span class="pre">rpc_user_config.yml</span></code> file:</p>
+<ul>
+<li><p class="first">Change <code class="docutils literal"><span class="pre">environment_version</span></code> to match the new md5sum of the
+environment file.</p>
+<p>To determine the md5sum, run the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> md5sum /etc/rpc_deploy/rpc_environment.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set the following variables for storage hosts:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">storage_hosts:</span>
+<span class="na">12345-sample_storagehost:</span>
+<span class="na">ip: 172.16.0.2</span>
+<span class="na">container_vars:</span>
+<span class="na">storage_address: 10.142.0.2</span>
+<span class="na">storage_netmask: 255.255.255.0</span>
+<span class="na">cinder_backends:</span>
+<span class="na">lvm:</span>
+<span class="na">volume_group: cinder-volumes</span>
+<span class="na">volume_driver: cinder.volume.drivers.lvm.LVMISCSIDriver</span>
+<span class="na">volume_backend_name: LVM_iSCSI</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">storage_address</span></code> is the address on the <code class="docutils literal"><span class="pre">br-storage</span></code>
+bridge for the physical host and <code class="docutils literal"><span class="pre">storage_netmask</span></code> is the
+netmask for the physical address on <code class="docutils literal"><span class="pre">br-storage</span></code>. Obtain these
+values from the physical hosts checking the address that is on the
+storage bridge.</p>
+</li>
+<li><p class="first">Ensure that the <code class="docutils literal"><span class="pre">limit_container_types</span></code> variable is removed for
+the LVM <code class="docutils literal"><span class="pre">cinder_backends</span></code> for the <code class="docutils literal"><span class="pre">storage_host</span></code>.</p>
+<p>The following command removes this variable:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> sed -ie <span class="s1">&#39;/.*limit_container_types:.*$/d&#39;</span> <span class="se">\</span>
+/etc/rpc_deploy/rpc_user_config.yml
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">Remove the <code class="docutils literal"><span class="pre">cinder_volume</span></code> containers from inventory, but do NOT
+destroy them. This ensures that the inventory generator will
+recognize the hosts as the new targets.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="k">for</span> h in <span class="k">$(</span>/opt/openstack-ansible/scripts/inventory-manage.py <span class="se">\</span>
+-f /etc/rpc_deploy/rpc_inventory.json -l <span class="p">|</span> <span class="se">\</span>
+awk <span class="s1">&#39;/cinder_volumes_container/ {print $2}&#39;</span> <span class="k">)</span><span class="p">;</span> <span class="se">\</span>
+<span class="k">do</span> /opt/openstack-ansible/scripts/inventory-manage.py <span class="se">\</span>
+-f /etc/rpc_deploy/rpc_inventory.json -r <span class="nv">$h</span><span class="p">;</span> <span class="k">done</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Record the IPs for later use.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Create the cinder user:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible storage_hosts -m group -a <span class="s1">&#39;name=cinder state=present&#39;</span>
+<span class="gp">$</span> ansible storage_hosts -m user -a <span class="s1">&#39;name=cinder group=cinder \</span>
+<span class="s1">  shell=/bin/false home=/var/lib/cinder state=present&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create the cinder log directory in
+<code class="docutils literal"><span class="pre">/openstack/log/[nodename]-cinder</span></code>. This is symlinked from
+<code class="docutils literal"><span class="pre">/var/log/cinder</span></code> on the physical host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+</pre></div>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible storage_hosts -m shell -a <span class="se">\</span>
+<span class="s1">&#39;mkdir -p /openstack/log/$(hostname)-cinder; \</span>
+<span class="s1">chown -R cinder:cinder /openstack/log/$(hostname)-cinder; \</span>
+<span class="s1">ln -sf /openstack/log/$(hostname)-cinder /var/log/cinder&#39;</span>
+</pre></div>
+</div>
+<p>As a best practice, perform this step before any tools create a
+log (for example, before an Ansible run of the <code class="docutils literal"><span class="pre">cinder-all.yml</span></code>
+playbook). Logs are created on the respective storage hosts.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">cinder_all.yml</span></code> playbook to re-deploy a new cinder volume
+instance on the storage host.</p>
+</li>
+<li><p class="first">Stop instances that are using cinder volumes (not using nova).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Using <code class="docutils literal"><span class="pre">nova</span> <span class="pre">stop</span></code> gives instances only 30 seconds before forcibly
+powering them off, which could cause applications and services within
+the instance to not properly sync to their storage.</p>
+</div>
+</li>
+<li><p class="first">Dump the table that maps volumes to hosts:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> mysqldump cinder &gt; cinder_db.sql
+</pre></div>
+</div>
+<p>When the dump is complete, create backups.</p>
+</li>
+<li><p class="first">Clean up iSCSI sessions.</p>
+<ul>
+<li><p class="first">Run the following command on the cinder hosts:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> tgtadm --lld iscsi --mode target --op show
+</pre></div>
+</div>
+</li>
+</ul>
+<p>If sessions still exist, run the following command for each target:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> iscsiadm -m node -u -T <span class="o">[</span>target<span class="o">]</span> --portal <span class="o">[</span>portal<span class="o">]</span>
+</pre></div>
+</div>
+<p>For example, given the following output:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> iscsiadm --mode session
+<span class="go">tcp: [1] 192.168.1.10:3260,1 iqn.2010-10.org.openstack:</span>
+<span class="go">volume-aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa</span>
+</pre></div>
+</div>
+<p>run the following command to remove the session:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> iscsiadm -m node -u -T iqn.2010-10.org.openstack:<span class="se">\</span>
+volume-aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa --portal <span class="m">192</span>.168.1.10:3260
+</pre></div>
+</div>
+</li>
+<li><p class="first">Remove <code class="docutils literal"><span class="pre">autoboot</span></code> from the LXC configuration file. This prevents
+the cinder volume container from accidentally restarting. For
+example:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">/var/lib/lxc/[cinder-volumes_container]/config \</span>
+<span class="na">--&gt; lxc.start.auto</span> <span class="o">=</span> <span class="s">0</span>
+</pre></div>
+</div>
+<p>To disable autoboot, run the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+<span class="gp">$</span> ansible storage_hosts -m shell -a <span class="s1">&#39;sed -i \</span>
+<span class="s1">&quot;s/lxc.start.auto.*/lxc.start.auto = 0/g&quot; /var/lib/lxc/$(lxc-ls \</span>
+<span class="s1">|grep cinder_volumes_container)/config&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Stop the cinder volume containers:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+<span class="gp">$</span> ansible storage_hosts -m shell -a <span class="s1">&#39;lxc-stop -n \</span>
+<span class="s1">(lxc-ls | grep cinder_volume)&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add the old container IP to the <code class="docutils literal"><span class="pre">br-storage</span></code> bridge.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Rackspace names these bridges <code class="docutils literal"><span class="pre">br-storage</span></code>. Use the name that is
+correct for your environment.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Create additional <code class="docutils literal"><span class="pre">br-storage</span></code> stanzas for the old and new IPs
+in the <code class="docutils literal"><span class="pre">/etc/network/interfaces.d/br-storage.cfg</span></code> file, or the
+appropriate network configuration file. This assigns a secondary
+IP to the <code class="docutils literal"><span class="pre">br-storage</span></code> bridge.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">$ iface br-storage inet static</span>
+<span class="na">address [container IP]</span>
+<span class="na">netmask [container netmask]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart <code class="docutils literal"><span class="pre">br-storage</span></code>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ifdown br-storage <span class="o">&amp;&amp;</span> ifup br-storage
+</pre></div>
+</div>
+</li>
+<li><p class="first">Ensure that the new IPs are on all of the storage hosts:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ip -o a s br-storage
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">cinder-manage</span> <span class="pre">volume</span> <span class="pre">update_host</span></code> command
+across the storage hosts. This updates the host name in the cinder
+database without manual DB intervention.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible storage_hosts -m shell -a <span class="se">\</span>
+  <span class="s1">&#39;c=$(lxc-ls | grep cinder_volumes); cinder-manage volume update_host \</span>
+<span class="s1">  --currenthost ${c}@lvm#LVM_iSCSI --newhost $(hostname)@lvm#LVM_iSCSI&#39;</span>
+</pre></div>
+</div>
+<p>Verify success by running the following command on the utility
+container or on any node with MySQL access:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql cinder -e <span class="se">\</span>
+  <span class="s1">&#39;select host from volumes where deleted = 0;&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart the <code class="docutils literal"><span class="pre">tgt</span></code> service on the storage hosts:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+<span class="gp">$</span> ansible storage_hosts -m service -a <span class="s1">&#39;name=tgt state=restarted&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart the <code class="docutils literal"><span class="pre">cinder-volume</span></code> service on the storage hosts so that it
+listens on all IPs on the bridge:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+<span class="gp">$</span> ansible storage_hosts -m service -a <span class="s1">&#39;name=cinder-volume state=restarted&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start instances and test the environment to verify that you can
+create volumes, attach volumes, and boot from a volume.</p>
+</li>
+<li><p class="first">Delete the cinder volume containers:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+<span class="gp">$</span> ansible storage_hosts -m shell -a <span class="se">\</span>
+<span class="s1">&#39;lxc-destroy -n $(lxc-ls | grep cinder_volume)&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set <code class="docutils literal"><span class="pre">deleted=1</span></code> status on services that were in containers:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> mysql -e <span class="s2">&quot;update cinder.services set deleted=1 \</span>
+<span class="s2">  where host like&#39;%container%&#39;;&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="configure-ssl-certificates-for-dashboard">
+<h2>Configure SSL certificates for Dashboard<a class="headerlink" href="#configure-ssl-certificates-for-dashboard" title="Permalink to this headline">#</a></h2>
+<p>For more information about configuring Dashboard SSL, refer to the
+<em>Securing Horizon communication with SSL certificates</em> section
+in the <a class="reference external" href="http://docs.openstack.org/developer/openstack-ansible/install-guide/">OpenStack-Ansible Installation Guide</a>.</p>
+<p>In RPCO v10, the Dashboard playbooks generated an OpenSSL key and
+certificate for Apache to use when serving Dashboard. The variables in
+v10 were named and set as follows:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_cert: /etc/ssl/certs/apache.cert</span>
+<span class="na">horizon_ssl_key: /etc/ssl/private/apache.key</span>
+<span class="na">horizon_ssl_cert_path: /etc/ssl/certs</span>
+</pre></div>
+</div>
+<p>An exiting RPCO installation that was not manually changed uses those
+values.</p>
+<p>In RPCO v11, the defaults for <code class="docutils literal"><span class="pre">horizon_ssl_cert</span></code> and
+<code class="docutils literal"><span class="pre">horizon_ssl_key</span></code> changed, <code class="docutils literal"><span class="pre">horizon_ssl_cert_path</span></code> is removed, and
+these <a class="reference external" href="https://github.com/openstack/openstack-ansible/blob/c110786e1f13c1f1758d280f6e69d4bcec5d7cc6/playbooks/roles/os_horizon/defaults/main.yml#L66..L75">new variables</a>
+are added.</p>
+<p>For more information, see
+<a class="reference external" href="https://bugs.launchpad.net/openstack-ansible/+bug/1477273">Bug 1477273</a> and
+<a class="reference external" href="https://bugs.launchpad.net/openstack-ansible/+bug/1488578">Bug 1488578</a>.</p>
+<div class="section" id="understand-upgrade-scenarios">
+<h3>Understand upgrade scenarios<a class="headerlink" href="#understand-upgrade-scenarios" title="Permalink to this headline">#</a></h3>
+<p>There are four primary scenarios that affect OpenSSL certificates and
+the actions required:</p>
+<ol class="arabic simple">
+<li>You are using the defaults from v10 with a self-signed certificate
+and want to continue using that certificate.</li>
+<li>You are using your own certificate, key, and so on, but the
+configuration was done manually.</li>
+<li>You are using the defaults but now want to change something about
+them.</li>
+<li>After upgrading RPCO, new security settings might cause older
+browsers to fail to connect to Dashboard.</li>
+</ol>
+</div>
+<div class="section" id="use-the-default-certificates">
+<h3>Use the default certificates<a class="headerlink" href="#use-the-default-certificates" title="Permalink to this headline">#</a></h3>
+<p>You can choose to either rename the old files or update the user
+variables file, but not both.</p>
+<p>To rename the old files:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/openstack-ansible/rpc_deployment
+<span class="gp">#</span> ansible horizon_all -m shell -a <span class="s1">&#39;mv /etc/ssl/certs/apache.cert \</span>
+<span class="s1">  /etc/ssl/private/horizon.pem&#39;</span>
+<span class="gp">#</span> ansible horizon_all -m shell -a <span class="s1">&#39;mv /etc/ssl/private/apache.key \</span>
+<span class="s1">  /etc/ssl/private/horizon.key&#39;</span>
+</pre></div>
+</div>
+<p>Alternatively, ensure that <code class="docutils literal"><span class="pre">/etc/rpc_deploy/user_variables.yml</span></code>
+contains:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_cert: /etc/ssl/certs/apache.cert</span>
+<span class="na">horizon_ssl_key: /etc/ssl/private/apache.key</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-your-own-key-and-certificate">
+<h3>Use your own key and certificate<a class="headerlink" href="#use-your-own-key-and-certificate" title="Permalink to this headline">#</a></h3>
+<p>Set the <code class="docutils literal"><span class="pre">horizon_user_ssl_cert</span></code>, <code class="docutils literal"><span class="pre">horizon_user_ssl_key</span></code>, and
+<code class="docutils literal"><span class="pre">horizon_user_ca_cert</span></code> variables in the
+<code class="docutils literal"><span class="pre">/etc/rpc_deploy/user_variables.yml</span></code> file. This overrides any
+self-signed certificates in v11.</p>
+<p>If <code class="docutils literal"><span class="pre">horizon_user_ssl_cert</span></code> or <code class="docutils literal"><span class="pre">horizon_user_ssl_key</span></code> are not
+defined, the missing certificate and key are self generated on the first
+Dashboard container and distributed to other Dashboard containers.</p>
+</div>
+<div class="section" id="regenerate-self-signed-certificates">
+<h3>Regenerate self-signed certificates<a class="headerlink" href="#regenerate-self-signed-certificates" title="Permalink to this headline">#</a></h3>
+<p>There are two scenarios for regenerating self-signed certificates.</p>
+<p>To use the old paths but regenerate the certificates, set the variables
+as above and add the following line to the
+<code class="docutils literal"><span class="pre">/etc/rpc_deploy/user_variables.yml</span></code> file:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_self_signed_regen: true</span>
+</pre></div>
+</div>
+<p>Optionally, change the subject of the certificate as appropriate for
+your environment:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_self_signed_subject: &quot;...&quot;</span>
+</pre></div>
+</div>
+<p>No action is required to use the new default certificate location. The
+old <code class="docutils literal"><span class="pre">apache.cert</span></code> and <code class="docutils literal"><span class="pre">apache.key</span></code> files are left and new keys,
+certificates, and so on are placed in the new default location. These
+are regenerated since the files don&#8217;t yet exist in the new location.</p>
+</div>
+<div class="section" id="fix-connection-issues-with-old-browsers">
+<h3>Fix connection issues with old browsers<a class="headerlink" href="#fix-connection-issues-with-old-browsers" title="Permalink to this headline">#</a></h3>
+<p>Two of the <a class="reference external" href="https://github.com/openstack/openstack-ansible/blob/c110786e1f13c1f1758d280f6e69d4bcec5d7cc6/playbooks/roles/os_horizon/defaults/main.yml#L66..L75">new variables</a>
+affect customers using old browsers such as Internet Explorer 6:
+<code class="docutils literal"><span class="pre">horizon_ssl_protocol</span></code> and <code class="docutils literal"><span class="pre">horizon_ssl_cipher_suite</span></code>.</p>
+<p>By default, both RPCO v10 and v11 disable unsafe SSLv2 and SSLv3
+protocols for Dashboard. Therefore, no modification is necessary.
+However, cipher suites differ. The cipher suite <a class="reference external" href="https://github.com/openstack/openstack-ansible/blob/ff9209b47c6d93dad717b99b399d3b201bfdd07c/rpc_deployment/roles/horizon_apache/templates/openstack-dashboard.conf#L23">currently is set for Dashboard</a>
+in v10 is:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256</span>
+<span class="na">EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL</span>
+<span class="na">!eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4</span>
+</pre></div>
+</div>
+<p>For v11 the settings are:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:</span>
+<span class="na">DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS</span>
+</pre></div>
+</div>
+<p>Since the v11 cipher list provides better transport security, it is not
+advisable to change the list to the old default. If users are unable to
+connect, check to see if changing the cipher list temporarily to a less
+secure setting enables connecting. To permanently change the cipher
+list, edit <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_variables.yml</span></code> after upgrade
+and run the <code class="docutils literal"><span class="pre">os-horizon.yml</span></code> playbook from the
+<code class="docutils literal"><span class="pre">/opt/rpc-openstack/openstack-ansible/playbooks</span></code> directory.</p>
+</div>
+</div>
+<div class="section" id="enable-the-trusty-backports-repository">
+<h2>Enable the trusty-backports repository<a class="headerlink" href="#enable-the-trusty-backports-repository" title="Permalink to this headline">#</a></h2>
+<p>The trusty-backports repository is required to install or upgrade Object
+Storage. Add repository details in <code class="docutils literal"><span class="pre">/etc/apt/sources.list</span></code>, and update
+the package list:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">#</span> ansible hosts -m lineinfile -a <span class="s1">&#39;dest=/etc/apt/sources.list regexp=&quot;^deb \</span>
+<span class="s1">  http.*trusty-backports.*&quot; line=&quot;deb http://mirror.rackspace.com/ubuntu \</span>
+<span class="s1">  trusty-backports main restricted universe multiverse&quot; state=present&#39;</span>
+<span class="gp">#</span> ansible hosts -m <span class="nb">command</span> -a <span class="s2">&quot;apt-get update&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The above assumes the <code class="docutils literal"><span class="pre">/etc/apt/sources.list</span></code> is using
+<a class="reference external" href="http://mirror.rackspace.com/ubuntu">http://mirror.rackspace.com/ubuntu</a> for <code class="docutils literal"><span class="pre">trusty</span></code>, <code class="docutils literal"><span class="pre">trusty-updates</span></code>
+distributions. Check to see which mirror is being used, and if
+necessary, update the above command by placing
+<a class="reference external" href="http://mirror.rackspace.com/ubuntu">http://mirror.rackspace.com/ubuntu</a> with the appropriate mirror.</p>
+</div>
+</div>
+<div class="section" id="truncate-tables">
+<h2>Truncate tables<a class="headerlink" href="#truncate-tables" title="Permalink to this headline">#</a></h2>
+<p>If the <code class="docutils literal"><span class="pre">dash.django_sessions</span></code> and <code class="docutils literal"><span class="pre">keystone.token</span></code> tables
+are very large, the database will lock and API calls will fail for up to
+30 minutes. Run the following commands to truncate these tables.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> mysql -e <span class="s1">&#39;TRUNCATE TABLE dash.django_session;&#39;</span>
+<span class="gp">#</span> mysql -e <span class="s1">&#39;TRUNCATE TABLE keystone.token;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-minimal-load-balancer-checks-for-galera-cluster">
+<h2>Configure minimal load balancer checks for Galera cluster<a class="headerlink" href="#configure-minimal-load-balancer-checks-for-galera-cluster" title="Permalink to this headline">#</a></h2>
+<p>Temporarily configure the load balancer to perform only TCP half-open
+checks on the Galera cluster.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc-upgrade-v10-v11-perform.html" class="btn btn-neutral float-right" title="Perform the upgrade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rpc-upgrade-v10-v11-description.html" class="btn btn-neutral float-left" title="Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

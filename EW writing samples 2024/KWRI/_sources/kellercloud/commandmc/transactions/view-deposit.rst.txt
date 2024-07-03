@@ -1,0 +1,17 @@
+
+.. _view-deposit-transactions-commandmc:
+
+View a Deposit
+==============
+
+You can view the details of deposits for the current period.
+
+To view a deposit, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Deposit** tab at the top of the page.
+
+#. Click the **Deposit History**.
+
+#. Find the correct deposit and click the deposit number to view the deposit details in the **Deposit Journal Entry** section.

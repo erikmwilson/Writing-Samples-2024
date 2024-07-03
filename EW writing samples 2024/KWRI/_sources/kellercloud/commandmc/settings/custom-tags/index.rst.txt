@@ -1,0 +1,13 @@
+
+.. _custom-tags-settings-index-commandmc:
+
+Custom Tags
+===========
+
+The following sections contain information about how to configure
+custom tags for CommandMC.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-tags

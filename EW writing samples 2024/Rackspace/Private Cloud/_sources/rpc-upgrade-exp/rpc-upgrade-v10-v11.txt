@@ -1,0 +1,172 @@
+:deconsttitle: Upgrading from v10 (Juno) to v11 (Kilo)
+
+=======================================
+Upgrading from v10 (Juno) to v11 (Kilo)
+=======================================
+
+Release highlights
+~~~~~~~~~~~~~~~~~~
+
+- **Multi-Region Swift Support** – Ability to deploy a geographically
+  dispersed Swift cluster using standard playbooks across multiple
+  locations and enable automatic replication of objects to a
+  secondary site. If a catastrophic event occurs at the primary site,
+  data is safely stored at the secondary site.
+
+- **EMC VNX2 Support** – Extension of our EMC support to include EMC
+  VNX2 further enabling customers who prefer to store their most
+  important asset - their data - on a storage device from a vendor
+  they trust.
+
+- This offers:
+
+   - **High Availability** – Fully redundant Enterprise Class storage
+     system from the respected market leader EMC.
+
+   - **Flexibility** – Automated Storage Tiering across
+     Flash/SAS/NL-SAS disks, balancing cost with performance.
+
+   - **Capability to attach cinder volumes to instances** – Using iSCSI
+     and 10GbE quickly expands the storage available to instances.
+
+   - **Live migration of instances** – Increase application
+     availability with non-disruptive instance migrations between
+     compute nodes, as part of regular compute node maintenance or
+     upgrade work.
+
+   - **Storage of glance images** – Use the same storage system to
+     store Glance images, utilizing NFS over 10GbE.
+
+   - **Online backups of cinder volumes** - Protect critical data and
+     recover from logical corruption or data loss quickly by utilizing
+     snapshots to create crash-consistent instance backups.
+
+
+Notes
+~~~~~
+
+- All EMC VNX2 solutions must be designed in conjunction with a dSAN
+  Engineer to ensure correct customer fit.
+
+- Fibre Channel (FC) is not supported.
+
+- **Ceph Support** –Leverage standardized Ansible playbooks to quickly
+  and easily deploy a ceph cluster – a fully redundant storage system
+  with no single point of failure. In addition to providing customers
+  with the assurance that their critical data is safely stored, other
+  benefits are:
+
+  -  **Flexible Standard Configurations** -  High performance SSD and
+     high capacity NL-SAS based reference architectures provide
+     solutions that cater to different customer workloads.
+
+   - **Attach cinder volumes to instances** – Quickly increase the
+     block storage available to an instance with RBD volumes.
+
+   - **Boot instances with ephemeral disks** – Respond to changing
+     workloads more quickly with lower instance boot times, as images
+     do not need to be copied to compute nodes. Reduce the amount of
+     local storage within compute nodes.
+
+   - **Live migration of instances** – Increase application
+     availability with non-disruptive instance migrations between
+     compute nodes, as part of regular compute node maintenance or
+     upgrade work.
+
+   - **Store glance images** – Ceph is multi-purpose, uses the same
+     storage system for nova-boot, cinder volumes, and glance image
+     storage.
+
+   - **Online backups of Ceph volumes** – Protect critical data and
+     recover from logical corruption or data loss quickly by utilizing
+     snapshots to create crash-consistent instance backups.
+
+   - **Ceph cluster monitoring using MaaS** – Provides greater insight
+     into cluster performance plus status metrics.
+
+     .. note:: CephFS and RADOS Gateway are not supported at this time.
+
+
+What to expect during the upgrade process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rackspace recommends a six-hour maintenance window. Six hours was the
+average maintenance window time needed to upgrade from Juno to Kilo.
+
+It is important to understand that maintenance window time is **not**
+the same as down time.
+
+If the environment is using cinder, additional maintenance time is
+required as outlined below. Internally we use the following
+**estimates**:
+
++-------------------------------+---------------------------------------------+
+| **With patching**             | Estimate                                    |
++-------------------------------+---------------------------------------------+
+| Pre-deployment checks         | 0.5 hour                                    |
++-------------------------------+---------------------------------------------+
+| Cinder bare metal migration   | 0.5 hour                                    |
++-------------------------------+---------------------------------------------+
+| Openstack upgrade             | 2.5 hours                                   |
++-------------------------------+---------------------------------------------+
+| Nova host reboot              | 0.5 hour (all hosts reboot at the same time)|
++-------------------------------+---------------------------------------------+
+| Infra nodes reboot            | 1 - 1.5 hours (we reboot one node at a time,|
+|                               | Neutron L3 impact expected)                 |
++-------------------------------+---------------------------------------------+
+| Post-deployment checks        | 0.5 - 1 hour                                |
++-------------------------------+---------------------------------------------+
+
+- 5.5 - 6.5 hour window with impact to customer instances, especially
+  during reboot of nova and cinder nodes. These reboots can be
+  combined into one window.
+
+- Neutron L3 components (floating IPs, neutron routing) are
+  unavailable for usually less than 5 minutes if the neutron L3/DHCP
+  agent boots successfully.
+
+- The cinder bare metal migration requires moving the tgtd and IP
+  information out of the container. This coincides with the cinder
+  node reboots during the patching section.
+
+- Currently, we expect to meet the required maximum down time of 60
+  minutes to do the cinder and nova nodes reboot.
+
+
++-------------------------------+----------------+
+| **Without patching**          | Estimate       |
++-------------------------------+----------------+
+| Pre-deployment checks         | 0.5 hour       |
++-------------------------------+----------------+
+| Cinder bare metal migration   | 0.5 hour       |
++-------------------------------+----------------+
+| Openstack upgrade             | 2.5 hours      |
++-------------------------------+----------------+
+| Post-deployment checks        | 0.5 - 1 hour   |
++-------------------------------+----------------+
+
+- 4 - 4.5 hour window with minimized impact to customer instances.
+
+- Neutron L3 components (floating IPs, neutron routing) are briefly
+  unavailable for usually less than 1 minute if the neutron L3/DHCP
+  agent boots successfully.
+
+- The cinder bare metal migration requires moving the tgtd and IP
+  information out of the container. This is estimated to take up to 15
+  minutes, excluding instance shutdown and restart times.
+
+The host reboots in this case are optional, and are done to activate
+the patches for the kernel keyring and libc vulnerability.
+
+These time estimates are based on all playbooks running successfully
+the first time and to a lesser extent to the number of nodes in the
+cluster. If the playbooks must be rerun or if there are a large number
+of nodes, the upgrade can take longer.
+
+The instance down time is dependent on the cinder and nova host reboot
+or cinder tgtd/IP migration and the reboot of neutron L3 components
+(as described above) and the time needed to shutdown and restart the
+actual instances.
+
+The neutron L3 down time is additive to the nova and cinder down time
+since we plan to reboot the cinder and nova nodes concurrently.

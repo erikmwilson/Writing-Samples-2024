@@ -1,0 +1,14 @@
+============
+Cloud design
+============
+
+.. toctree::
+   :maxdepth: 2
+
+   private-cloud-components.rst
+   low-level-design.rst
+   compute-considerations.rst
+   private-cloud-roles.rst
+   user-roles.rst
+   instance-design.rst
+   instance-flavors/index.rst

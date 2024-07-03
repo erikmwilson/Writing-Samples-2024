@@ -1,0 +1,28 @@
+
+.. _transfer-contact-lead-command:
+
+Transfer Contact or Lead Ownership (Teams)
+==========================================
+
+Whether you are a Rainmaker or team member, you can transfer the ownership of a lead or contact to your team. You can build a team database where leads and contacts are not owned by any one individual, but are owned and managed by the entire team. This gives your team better visibility and allows you to assign or reassign these leads and contacts. Rainmakers also have the ability to transfer the ownership of leads and contacts from the team to themselves.
+
+To transfer the ownership of a lead or contact, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select your Team from the **Select Team** drop-down at the top of the page.
+
+#. Click the name of the contact or lead.
+
+#. On the left side of the contact record, click **Owner**.
+
+#. To transfer a lead or contact to a team, on the **Edit Contact** window, select your team from the **Select Owner** Owner drop-down.
+
+   If you are transferring a team contact or lead to yourself, choose **Me** from the drop-down list.
+
+#. Click **Save**.

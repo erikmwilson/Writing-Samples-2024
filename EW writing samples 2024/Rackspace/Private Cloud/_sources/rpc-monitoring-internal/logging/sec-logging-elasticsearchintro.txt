@@ -1,0 +1,32 @@
+===============
+Getting Started
+===============
+
+Elasticsearch is a scalable datastore with a real-time search/analytics
+engine and RESTful API.
+
+Checking current Elasticsearch version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To verify Elasticsearch is working properly, curl the API to receive
+the current version:
+
+ .. code-block:: console
+
+    $ curl http://external_lb_vip_address:9200
+
+
+Viewing all indices
+~~~~~~~~~~~~~~~~~~~
+
+Elasticsearch stores data in an index. An index is similar to a database
+in a traditional relational database. In a RPCO deployment, a single
+index contains one day of indexed logs from all services in the
+environment.
+
+Retrieve a list of current indices by sending a GET request to the
+Elasticsearch API:
+
+ .. code-block:: console
+
+    $ curl http://external_lb_vip_address:9200/_cat/indices

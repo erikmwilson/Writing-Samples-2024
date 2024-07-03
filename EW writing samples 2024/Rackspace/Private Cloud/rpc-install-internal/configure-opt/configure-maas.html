@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure MaaS variables (optional) &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Generate an F5 load balancer configuration (optional)" href="configure-f5-load-balancer.html" />
+    <link rel="prev" title="Configure HAProxy (optional)" href="configure-haproxy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-configure-optional.html">Configure the deployment (optional)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configure-proxy-environment.html">Configure proxy environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-hypervisor.html">Configure the hypervisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-image-service.html">Configure the Image service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-block-storage.html">Configure the Block Storage service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-object-storage.html">Configure the Object Storage service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-haproxy.html">Configure HAProxy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configure MaaS variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#maas-api-authentication">MaaS API authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-checks">Customizing checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-alarms">Customizing alarms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-thresholds-for-alarms">Configure thresholds for alarms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configure-f5-load-balancer.html">Generate F5 load balancer configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-ldap.html">Configure Active Directory or LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-dashboard-ssl.html">Configure Dashboard SSL settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-security-hardening.html">Configure security hardening</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Installation Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-configure-optional.html">Configure the deployment (optional)</a> &raquo;</li>
+        
+      <li>Configure MaaS variables (optional)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-install-internal/configure-opt/configure-maas.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-maas-variables-optional">
+<h1>Configure MaaS variables (optional)<a class="headerlink" href="#configure-maas-variables-optional" title="Permalink to this headline">#</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">A monitoring as a service (MaaS) entity must exist for each target host.
+Verify entities before deploying RPCO with MaaS.</p>
+</div>
+<p>All of the following variables are configured in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_variables_overrides.yml</span></code> file.</p>
+<div class="section" id="maas-api-authentication">
+<h2>MaaS API authentication<a class="headerlink" href="#maas-api-authentication" title="Permalink to this headline">#</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">maas_agent_token</span></code></dt>
+<dd>The token used by the agents to connect to MaaS. The token is automatically
+generated by the <code class="docutils literal"><span class="pre">setup-maas.yml</span></code> playbook.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_api_key</span></code></dt>
+<dd>The Cloud API key. The key is needed when the <code class="docutils literal"><span class="pre">maas_auth_method</span></code>
+variable is set to <code class="docutils literal"><span class="pre">password</span></code>. Edit this value only if the API key
+and user are different from the <code class="docutils literal"><span class="pre">rackspace_cloud_api_key</span></code> variable.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_api_url</span></code></dt>
+<dd>The URL that MaaS requests are made against. Edit this value only
+if the <code class="docutils literal"><span class="pre">cloud_project_id</span></code> is wrong.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_auth_method</span></code></dt>
+<dd><p class="first">Can be set to the following options:</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">password</span></code>: authorization uses the variables set in <code class="docutils literal"><span class="pre">maas_api_key</span></code>
+and <code class="docutils literal"><span class="pre">maas_username</span></code></li>
+<li><code class="docutils literal"><span class="pre">token</span></code>: authorization uses the <code class="docutils literal"><span class="pre">maas_auth_token</span></code> key</li>
+</ul>
+</dd>
+<dt><code class="docutils literal"><span class="pre">maas_auth_token</span></code></dt>
+<dd>The token that used for authorizing for the purposes of creating and
+deleting monitors. To generate a <code class="docutils literal"><span class="pre">maas_auth_token</span></code>, use
+<a class="reference external" href="https://pitchfork.eco.rackspace.com/monitoring/">Pitchfork</a>.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_auth_url</span></code></dt>
+<dd>The Rackspace Cloud authorization URL.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_username</span></code></dt>
+<dd>Username for MaaS to authorize against. The username is needed when
+the <code class="docutils literal"><span class="pre">maas_auth_method</span></code> variable is set to <code class="docutils literal"><span class="pre">password</span></code>.</dd>
+</dl>
+</div>
+<div class="section" id="customizing-checks">
+<h2>Customizing checks<a class="headerlink" href="#customizing-checks" title="Permalink to this headline">#</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">maas_check_period</span></code></dt>
+<dd>The polling interval, defined in seconds.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_check_period_override</span></code></dt>
+<dd>This variable allows deployers to override the check period for a
+specific check. (See <code class="docutils literal"><span class="pre">maas_check_period</span></code> to change the default check
+period time for all tests.)</dd>
+</dl>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># Example: Customize the check period setting for two checks.</span>
+<span class="nt">maas_check_period_override</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">disk_utilisation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
+  <span class="p p-Indicator">-</span> <span class="nt">conntrack_count</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">45</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">maas_check_timeout</span></code></dt>
+<dd>The time that will elapse before timeout, defined in seconds. This
+period must be less than the <code class="docutils literal"><span class="pre">maas_check_period</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_check_timeout_override</span></code></dt>
+<dd>This variable allows deployers to override the check timeout for a
+specific check. (See <code class="docutils literal"><span class="pre">maas_check_timeout</span></code> to change the default check
+timeout for all tests.)</dd>
+</dl>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># Example: Set a 120 second timeout for the ``cinder_backup_check`` check.</span>
+<span class="nt">maas_check_timeout_override</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">cinder_backup_check</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">120</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">maas_excluded_devices</span></code></dt>
+<dd>Specifies devices that are skipped when creating alarms.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_excluded_checks</span></code></dt>
+<dd>This is a list of regular expressions that specify which checks are
+disabled. The check name includes the hostname (example:
+<code class="docutils literal"><span class="pre">disk_utilisation--infra1</span></code>) and the regular expression is applied to
+the entire string.</dd>
+</dl>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># Example: Disable all disk utilization checks and do not monitor network</span>
+<span class="c1"># throughput on bond0 on infra hosts only.</span>
+<span class="nt">maas_excluded_checks</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;^disk_utilisation.*&#39;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;^network_throughput_bond0--infra.*&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Disabling a check will automatically disable any associated alarms.</p>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">maas_fqdn_extension</span></code></dt>
+<dd><p class="first">Sets the fully-qualified domain name (FQDN) extension that will be
+appended to the short names for hosts that are specified in the
+<code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code> file. This avoids the need to specify
+extremely long container names.</p>
+<p class="last">For example, if this variable was not set, a device called
+<code class="docutils literal"><span class="pre">12345-node1.mytestcluster.com</span></code>  would have to be named
+<code class="docutils literal"><span class="pre">12345-node1.mytestcluster.com</span></code> in the <code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code>
+file for MaaS checks to be created correctly. However, if
+<code class="docutils literal"><span class="pre">maas_fqdn_extension</span></code> is set as <code class="docutils literal"><span class="pre">.mytestcluster.com</span></code>, the device
+can be named <code class="docutils literal"><span class="pre">12345-node1</span></code> in the file.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">maas_keystone_user</span></code> and <code class="docutils literal"><span class="pre">maas_keystone_password</span></code></dt>
+<dd>Intrasolution keystone user and password. These credentials enable
+a specific MaaS user to query the services.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_monitoring_zones</span></code></dt>
+<dd>Specifies the list of data centers to poll from for remote
+(non-agent) checks. The default is to poll all data centers. The
+default is usually sufficient. For example, if three out of five
+zones return without failure, the check completes successfully. If
+for some reason one data center consistently could not perform the
+checks, or if you want to explicitly exclude a data center, set
+this variable to a list of zones that does not include the blocked
+data center.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_notification_plan</span></code></dt>
+<dd>The notification plan, which defines who will be notified and for
+what.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_scheme</span></code></dt>
+<dd>The scheme that tests are set up for. When you use HTTP endpoints for
+remote checks, change the value to <code class="docutils literal"><span class="pre">http</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_*_scheme</span></code></dt>
+<dd>If all endpoints in a cloud are <code class="docutils literal"><span class="pre">http</span></code> except horizon, which
+uses <code class="docutils literal"><span class="pre">https</span></code>, set <code class="docutils literal"><span class="pre">maas_horizon_scheme:</span> <span class="pre">https</span></code> and leave
+<code class="docutils literal"><span class="pre">maas_scheme:</span> <span class="pre">http</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_target_alias</span></code></dt>
+<dd><p class="first">An alias used for remote checks when a device has
+multiple public IP addresses or other issues with the default
+primary IP address.</p>
+<p class="last">For remote checks, the entity specified by <code class="docutils literal"><span class="pre">lb_name</span></code> in
+<code class="docutils literal"><span class="pre">openstack_user_config</span></code> has a variable that denotes the IP
+addresses to check against. By default, this is the
+<code class="docutils literal"><span class="pre">public0_v4</span></code> address. Setting this variable enables checks to
+be performed against <code class="docutils literal"><span class="pre">public1_v4</span></code> or any other variable that
+is in the entity for the correct IP address.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">lb_check_on_single_host</span></code></dt>
+<dd>If this variable is set to <code class="docutils literal"><span class="pre">false</span></code>, the load balancer checks will run
+against all service infra hosts. To check only the primary infra host
+(<code class="docutils literal"><span class="pre">host[0]</span></code>), set the value to <code class="docutils literal"><span class="pre">true</span></code>.</dd>
+</dl>
+</div>
+<div class="section" id="customizing-alarms">
+<h2>Customizing alarms<a class="headerlink" href="#customizing-alarms" title="Permalink to this headline">#</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">maas_alarm_local_consecutive_count</span></code></dt>
+<dd>The number of consecutive failures before an alert is generated for
+local checks.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_alarm_remote_consecutive_count</span></code></dt>
+<dd>The number of consecutive failures before an alert is generated for
+remote checks.</dd>
+<dt><code class="docutils literal"><span class="pre">maas_excluded_alarms</span></code></dt>
+<dd>This is a list of regular expressions that specify which alarms are
+disabled.</dd>
+</dl>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># Example: Disable alarms for network throughput (receiving or</span>
+<span class="c1"># transmitting)</span>
+<span class="nt">maas_excluded_alarms</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;^Network</span><span class="nv"> </span><span class="s">(receive|transmit)</span><span class="nv"> </span><span class="s">rate.*&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Disabling an alarm has no effect on the check itself.</p>
+</div>
+</div>
+<div class="section" id="configure-thresholds-for-alarms">
+<h2>Configure thresholds for alarms<a class="headerlink" href="#configure-thresholds-for-alarms" title="Permalink to this headline">#</a></h2>
+<p>Any alarm that has a threshold has a variable for that threshold that
+can be changed.</p>
+<p>A list of these thresholds is located in the <code class="docutils literal"><span class="pre">defaults/main.yml</span></code>
+file for the <code class="docutils literal"><span class="pre">rpc_maas</span></code> role:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># MaaS CPU idle threshold</span>
+<span class="nt">cpu_idle_percent_avg_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+
+<span class="c1"># MaaS Memory in use threshold</span>
+<span class="nt">memory_used_percentage_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">95.0</span>
+
+<span class="c1"># Set the threshold for the &quot;Max Channels per Connection&quot; Rabbitmq alarm</span>
+<span class="nt">rabbitmq_max_channels_per_con_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="nt">rabbitmq_fd_used_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
+<span class="nt">rabbitmq_proc_used_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
+<span class="nt">rabbitmq_socket_used_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
+
+<span class="c1"># Set the threshold for the &quot;Disk utilisation&quot; MaaS alarms</span>
+<span class="nt">disk_utilisation_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
+
+<span class="c1"># nf_conntrack threshold</span>
+<span class="nt">nf_conntrack_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">90</span>
+
+<span class="c1"># Swift MaaS thresholds</span>
+<span class="nt">swift_object_quarantine_failed_percentage_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="nt">swift_object_quarantine_average_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">25.0</span>
+<span class="nt">swift_object_replication_failure_percentage_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="nt">swift_account_quarantine_failed_percentage_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="nt">swift_account_quarantine_average_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">25.0</span>
+<span class="nt">swift_account_replication_failure_percentage_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="nt">swift_container_quarantine_failed_percentage_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="nt">swift_container_quarantine_average_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">25.0</span>
+</pre></div>
+</div>
+<p>To change a threshold on an existing monitor, perform the following steps:</p>
+<ol class="arabic simple">
+<li>Add the variable to the <code class="docutils literal"><span class="pre">user_rpco_variables_overrides.yml</span></code> file.</li>
+<li>Rerun the MaaS play.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The thresholds can be set up on a host by host basis by setting the
+threshold variable in the <code class="docutils literal"><span class="pre">container_vars:</span></code> section in the
+<code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code> file or <code class="docutils literal"><span class="pre">conf.d/swift.yml</span></code> file
+for the specific host.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configure-f5-load-balancer.html" class="btn btn-neutral float-right" title="Generate an F5 load balancer configuration (optional)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configure-haproxy.html" class="btn btn-neutral float-left" title="Configure HAProxy (optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

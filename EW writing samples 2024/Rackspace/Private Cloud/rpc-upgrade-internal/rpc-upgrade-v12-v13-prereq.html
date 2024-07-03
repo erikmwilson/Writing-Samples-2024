@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Prerequisites &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Perform the upgrade" href="rpc-upgrade-v12-v13-perform.html" />
+    <link rel="prev" title="Block Storage service upgrade notes" href="rpc-upgrade-v12-v13-cinder.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Upgrade Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-upgrade.html">Upgrade overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="upgrade-v12-v13.html">Upgrade from v12 to v13</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-nova.html">Compute service upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-neutron.html">Networking service upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-glance.html">Image service upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-cinder.html">Block Storage service upgrade notes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Prerequisites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verify-infrastructure-health">Verify infrastructure health</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-up-the-environment">Back up the environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-to-run-the-maas-setup-playbook">Prepare to run the MaaS setup playbook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-the-maas-token">Set the MaaS token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-ssl-certificates-for-the-dashboard">Configure SSL certificates for the Dashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-the-trusty-backports-repository">Enable the trusty-backports repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#truncate-tables">Truncate tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elasticsearch-preupgrade-reindexing">Elasticsearch preupgrade reindexing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v12-v13-perform.html">Perform the upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v13-verify.html">Verify the upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v11-v12.html">Upgrade from v11 to v12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v10-v11.html">Upgrade from v10 to v11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-upgrade-v9-v10.html">Upgrade from v9.0.2+ to v10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Upgrade Guide</a> &raquo;</li>
+        
+          <li><a href="upgrade-v12-v13.html">Upgrade from v12 to v13</a> &raquo;</li>
+        
+      <li>Prerequisites</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-upgrade-internal/rpc-upgrade-v12-v13-prereq.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h1>
+<p>This section documents the manual tasks that you must perform before
+beginning an upgrade.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Before you can upgrade to the current major release, you must upgrade to
+the latest minor release of the previous major release. For example, to
+upgrade from v12 to v13, upgrade to the latest 12.x release, and
+then upgrade to v13.</li>
+<li>Read the <a class="reference external" href="https://developer.rackspace.com/docs/private-cloud/rpc/v13/rpc-releasenotes/">RPCO Release Notes</a>
+before beginning the upgrade. The release notes provide late-breaking
+information about known issues and the steps to correct them.</li>
+</ul>
+</div>
+<div class="section" id="verify-infrastructure-health">
+<h2>Verify infrastructure health<a class="headerlink" href="#verify-infrastructure-health" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal"><span class="pre">rpc-pre-upgrades.yml</span></code> playbook performs tasks that list the
+information that you can use to analyze the state of an environment.
+Currently, the playbook performs the following tasks:</p>
+<ul class="simple">
+<li>Lists RabbitMQ cluster status</li>
+<li>Lists MySQL cluster status</li>
+<li>Gathers nova service status</li>
+<li>Gathers cinder service status</li>
+<li>Gathers neutron service status</li>
+<li>Gathers OpenStack endpoints</li>
+<li>Gathers running instances from MySQL</li>
+<li>Gathers instance-volume mappings from MySQL</li>
+<li>Gathers swift recon status</li>
+<li>Rotates OpenStack aggregate logs</li>
+<li>Cleans up rsyslog forward and state files</li>
+</ul>
+<p>To run the <code class="docutils literal"><span class="pre">rpc-pre-upgrades.yml</span></code> playbook, enter the following commands:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks
+<span class="gp">#</span> openstack-ansible rpc-pre-upgrades.yml
+</pre></div>
+</div>
+</div></blockquote>
+<p>By default, the playbook outputs the status of the environment in
+<code class="docutils literal"><span class="pre">$HOME/rpc13-upgrade-&lt;date_stamp&gt;</span></code>.</p>
+<p>Inspect the output and verify that the OpenStack cluster is in a
+healthy state.</p>
+</div>
+<div class="section" id="back-up-the-environment">
+<h2>Back up the environment<a class="headerlink" href="#back-up-the-environment" title="Permalink to this headline">#</a></h2>
+<p>The upgrade playbook backs up the <code class="docutils literal"><span class="pre">/etc/openstack_deploy</span></code> directory.
+However, we recommend that you perform a separate, full backup of the
+environment, including the source repository.</p>
+</div>
+<div class="section" id="prepare-to-run-the-maas-setup-playbook">
+<h2>Prepare to run the MaaS setup playbook<a class="headerlink" href="#prepare-to-run-the-maas-setup-playbook" title="Permalink to this headline">#</a></h2>
+<p>To run the MaaS setup playbook during the upgrade, set the <code class="docutils literal"><span class="pre">DEPLOY_MAAS</span></code>
+variable to <code class="docutils literal"><span class="pre">yes</span></code>.</p>
+</div>
+<div class="section" id="set-the-maas-token">
+<h2>Set the MaaS token<a class="headerlink" href="#set-the-maas-token" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Generate a MaaS token by using
+<a class="reference external" href="https://pitchfork.eco.rackspace.com/monitoring/">Pitchfork</a> or the
+following example script:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">AUTH_USER=$(read -p &#39;Enter Username: &#39; username; echo $username) \</span>
+<span class="go">AUTH_PASS=$(read -s -p &#39;Enter Password: &#39; password; echo $password) \</span>
+<span class="go">MAAS_TOKEN=$(curl -s -X GET http://si.rackspace.com/auth/Token/AuthDetails \</span>
+<span class="go">-H &quot;x-auth-user: $AUTH_USER&quot; -H &quot;x-auth-password: $AUTH_PASS&quot; \</span>
+<span class="go">| sed &#39;s/&lt;[^&gt;]*&gt;//g&#39;) echo echo $MAAS_TOKEN</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use the token value for the <code class="docutils literal"><span class="pre">maas_auth_token</span></code> option in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_variables.yml</span></code> file.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-ssl-certificates-for-the-dashboard">
+<h2>Configure SSL certificates for the Dashboard<a class="headerlink" href="#configure-ssl-certificates-for-the-dashboard" title="Permalink to this headline">#</a></h2>
+<p>For information about configuring Dashboard SSL, see the
+&#8220;Securing horizon communication with SSL certificates&#8221; section
+in <a class="reference external" href="http://docs.openstack.org/developer/openstack-ansible/mitaka/install-guide/configure-horizon.html">Configuring the Dashboard (horizon)</a>.</p>
+<p>Following are the primary upgrade scenarios that affect OpenSSL certificates
+and the actions required for an upgrade:</p>
+<ul class="simple">
+<li>You are using the defaults from v12 with a self-signed certificate
+and want to continue using that certificate.</li>
+<li>You are using your own certificate, key, and so on, but the
+configuration was done manually.</li>
+<li>You are using the defaults but now want to change something about
+them.</li>
+<li>After upgrading RPCO, new security settings cause older browsers to fail to
+connect to the Dashboard.</li>
+</ul>
+<div class="section" id="use-the-default-certificates">
+<h3>Use the default certificates<a class="headerlink" href="#use-the-default-certificates" title="Permalink to this headline">#</a></h3>
+<p>No action is necessary to continue using the existing <code class="docutils literal"><span class="pre">horizon.pem</span></code> and
+<code class="docutils literal"><span class="pre">horizon.key</span></code> certificate and key.</p>
+</div>
+<div class="section" id="use-your-own-key-and-certificate">
+<h3>Use your own key and certificate<a class="headerlink" href="#use-your-own-key-and-certificate" title="Permalink to this headline">#</a></h3>
+<p>Set the <code class="docutils literal"><span class="pre">horizon_user_ssl_cert</span></code>, <code class="docutils literal"><span class="pre">horizon_user_ssl_key</span></code>, and
+<code class="docutils literal"><span class="pre">horizon_user_ca_cert</span></code> variables in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file. This overrides
+any self-signed certificates in v12.</p>
+<p>If the <code class="docutils literal"><span class="pre">horizon_user_ssl_cert</span></code> or <code class="docutils literal"><span class="pre">horizon_user_ssl_key</span></code> variable is not
+defined, the missing certificate and key are generated on the first
+Dashboard container and distributed to other Dashboard containers.</p>
+</div>
+<div class="section" id="regenerate-self-signed-certificates">
+<h3>Regenerate self-signed certificates<a class="headerlink" href="#regenerate-self-signed-certificates" title="Permalink to this headline">#</a></h3>
+<p>Use one of the following scenarios to regenerate self-signed certificates.</p>
+<ul class="simple">
+<li>Set the variables as instructed in the preceding section and add the
+following line to the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file:</li>
+</ul>
+<blockquote>
+<div><div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_self_signed_regen: true</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul>
+<li><p class="first">Change the subject of the certificate as appropriate for your environment:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">horizon_ssl_self_signed_subject: &quot;...&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="enable-the-trusty-backports-repository">
+<h2>Enable the trusty-backports repository<a class="headerlink" href="#enable-the-trusty-backports-repository" title="Permalink to this headline">#</a></h2>
+<p>The trusty-backports repository is required to install or upgrade OpenStack
+Object Storage (swift). Add repository details in the <code class="docutils literal"><span class="pre">/etc/apt/sources.list</span></code>
+file and update the package list, as follows:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">#</span> ansible hosts -m lineinfile -a <span class="s1">&#39;dest=/etc/apt/sources.list regexp=&quot;^deb \</span>
+<span class="s1">  http.*trusty-backports.*&quot; line=&quot;deb http://mirror.rackspace.com/ubuntu \</span>
+<span class="s1">  trusty-backports main restricted universe multiverse&quot; state=present&#39;</span>
+<span class="gp">#</span> ansible hosts -m <span class="nb">command</span> -a <span class="s2">&quot;apt-get update&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The preceding commands assume that the <code class="docutils literal"><span class="pre">/etc/apt/sources.list</span></code> file is
+using <code class="docutils literal"><span class="pre">http://mirror.rackspace.com/ubuntu</span></code> for <code class="docutils literal"><span class="pre">trusty</span></code> and
+<code class="docutils literal"><span class="pre">trusty-updates</span></code> distributions. Verify which mirror is being used and, if
+necessary, update the preceding command by replacing
+<code class="docutils literal"><span class="pre">http://mirror.rackspace.com/ubuntu</span></code> with the appropriate mirror.</p>
+</div>
+</div>
+<div class="section" id="truncate-tables">
+<h2>Truncate tables<a class="headerlink" href="#truncate-tables" title="Permalink to this headline">#</a></h2>
+<p>If the <code class="docutils literal"><span class="pre">dash.django_sessions</span></code> and <code class="docutils literal"><span class="pre">keystone.token</span></code> tables
+are very large, the database locks and API calls fail for up to
+30 minutes. Run the following commands to truncate these tables.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You only need to truncate these tables when you are using the UUID
+keystone token provider.</p>
+<p class="last">Before truncating the tables, connect to a Galera container.</p>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> mysql -e <span class="s1">&#39;TRUNCATE TABLE dash.django_session;&#39;</span>
+<span class="gp">#</span> mysql -e <span class="s1">&#39;TRUNCATE TABLE keystone.token;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elasticsearch-preupgrade-reindexing">
+<span id="elk-prereqs"></span><h2>Elasticsearch preupgrade reindexing<a class="headerlink" href="#elasticsearch-preupgrade-reindexing" title="Permalink to this headline">#</a></h2>
+<p>Because of some inconsistencies in the legacy Elasticsearch
+mappings, all Elasticsearch data must be reindexed into indices
+with the updated 2.x compatible mappings. For additional information, see
+<a class="reference internal" href="rpc-upgrade-v12-v13-perform.html#upgrade-elk"><span class="std std-ref">Upgrade the ELK stack</span></a>.</p>
+<p>The reindexing process can take a very long time&#8211;several days for very large
+clusters. We recommend that you perform the majority of the reindexing before
+starting the actual upgrade. If the legacy indices are not dropped until
+the actual upgrade, the legacy data remains undisturbed while the reindexing
+is in progress.</p>
+<p>Whether you perform preupgrade reindexing is determined
+primarily by the size of the data stored within the Elasticsearch cluster.
+You can determined this with the <code class="docutils literal"><span class="pre">reindex-liberty.py</span> <span class="pre">--list</span></code> command or with
+the following curl command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> curl -sk http://localhost:9200/_cat/indices?v
+</pre></div>
+</div>
+<p>If the indices in aggregate are larger than 5 gigabytes (GiB), you should
+perform reindexing before proceeding with the upgrade.</p>
+<p>Use the following steps to perform a preupgrade reindex:</p>
+<ol class="arabic">
+<li><p class="first">Run the top level <code class="docutils literal"><span class="pre">/opt/rpc-openstack/rpcd/playbooks/elasticsearch.yml</span></code>
+playbook by using the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible -e <span class="s1">&#39;logging_upgrade=true&#39;</span> --tags <span class="se">\</span>
+  <span class="s1">&#39;reindex-wrapper,elasticsearch-upgrade&#39;</span> elasticsearch.yml
+</pre></div>
+</div>
+<p>This step deploys the <code class="docutils literal"><span class="pre">reindex-liberty.py</span></code> script to the <code class="docutils literal"><span class="pre">/opt/</span></code>
+directory in the first Elasticsearch container.</p>
+</li>
+<li><p class="first">Get a list of indices from the Elasticsearch container.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> /opt/reindex-liberty.py --list
+</pre></div>
+</div>
+</li>
+<li><p class="first">Determine start and end dates. Based on the size of the indices, testing
+determined that the total size of each batch of indices should not exceed
+50 GiB. The reindexing slows considerably and can stop completely on batches
+larger than 50 GiB.</p>
+</li>
+<li><p class="first">Start the reindexing process:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> /opt/reindex-liberty.py --batch --start &lt;start_date&gt; --end <span class="se">\</span>
+  &lt;end_date&gt;
+</pre></div>
+</div>
+</li>
+<li><p class="first">You can monitor the reindexing process with either the <code class="docutils literal"><span class="pre">--continuous</span></code>
+argument or with the <code class="docutils literal"><span class="pre">watch</span></code> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> watch -n <span class="m">30</span> /opt/reindex-liberty.py --monitor --verbose
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not use time values smaller than 30 seconds due to
+Elasticsearch connection timeouts.</p>
+</div>
+</li>
+<li><p class="first">Repeat the batches until all indices through the previous day have been
+reindexed. Do not reindex the current day because that index is in use and
+new entries will not be reindexed.</p>
+</li>
+<li><p class="first">After the batches are complete, continue with the upgrade from the
+deployment host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible -e <span class="s1">&#39;logging_upgrade=true&#39;</span> -e <span class="se">\</span>
+  <span class="s1">&#39;force_upgrade=yes&#39;</span> --tags <span class="s1">&#39;elasticsearch-upgrade&#39;</span> <span class="se">\</span>
+  elasticsearch.yml
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>A bug exists when the <code class="docutils literal"><span class="pre">reindex-wrapper</span></code> tag is used to deploy the
+<code class="docutils literal"><span class="pre">reindex-liberty.py</span></code> script where the plug-in is removed from
+Elasticsearch. You can remedy the problem by running the following
+command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> /usr/share/elasticsearch/bin/plugin -install <span class="se">\</span>
+  org.codelibs/elasticsearch-reindexing/1.7.0
+</pre></div>
+</div>
+<p class="last">Then restart the Elasticsearch service.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc-upgrade-v12-v13-perform.html" class="btn btn-neutral float-right" title="Perform the upgrade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rpc-upgrade-v12-v13-cinder.html" class="btn btn-neutral float-left" title="Block Storage service upgrade notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

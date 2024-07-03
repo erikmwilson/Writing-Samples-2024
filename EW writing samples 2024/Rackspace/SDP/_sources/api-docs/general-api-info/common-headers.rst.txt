@@ -1,0 +1,22 @@
+.. _common-headers:
+
+==============
+Common headers
+==============
+
+The following table describes the common headers used by the API.
+
+.. list-table:: **Common headers**
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Header
+     - Description
+   * - X-Auth-Token
+     - Authentication token. Required.
+   * - Accept
+     - Media type and resource version ``application/vnd.ticketing.v2+json``
+   * - Content-Type
+     - Media type and resource version ``application/vnd.ticketing.v2+json``
+   * - Content-Length
+     - For POST or PUT requests, the length in bytes of the message document being submitted.

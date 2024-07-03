@@ -1,0 +1,34 @@
+============
+Known issues
+============
+
+Refer to this page to understand known issues in RPCO release
+|release| (\ |version|\ ).
+
+- When running a deployment without swift, ``DEPLOY_SWIFT='no'``,
+  the ``repo_server`` playbook fails. To fix this, set
+  ``repo_build_git_selective`` to ``no`` in
+  ``etc/openstack_deploy/user_osa_variables_overrides.yml``.
+
+  .. note::
+
+     This issue is only present for the r14.0.0 release. A fix
+     is due to coincide with the r14.0.1 release.
+
+- After a greenfield deployment of r14.0.0, no Holland backup exists,
+  because the environment is new. Therefore, the MaaS Holland backup
+  check flags a failure status. Create a Holland backup so that the
+  backup check succeeds.
+
+- Because ``nova_cross_az_attach`` is set to false in
+  ``etc/openstack_deploy/user_osa_variables_defaults.yml``, care must
+  be taken when creating an instance from a volume. Per the nova
+  documentation: "If False, volumes attached to an instance must be
+  in the same availability zone in Cinder as the instance availability
+  zone in Nova. This also means care should be taken when booting an
+  instance from a volume where source is not “volume” because Nova will
+  attempt to create a volume using the same availability zone as what is
+  assigned to the instance. If that AZ is not in Cinder
+  (or allow_availability_zone_fallback=False in cinder.conf), the volume
+  create request will fail and the instance will fail the build request.
+  By default there is no availability zone restriction on volume attach."

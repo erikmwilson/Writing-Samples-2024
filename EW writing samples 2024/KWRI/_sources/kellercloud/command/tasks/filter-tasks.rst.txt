@@ -1,0 +1,17 @@
+
+.. _filter-tasks-command:
+
+Filter Tasks
+============
+
+While you are managing your tasks in Command, you may need to find specific tasks. Instead of scrolling through your list or tasks to find the tasks you are looking for, you can use the date filters.
+
+To filter tasks, complete the following steps:
+
+.. include:: tasks-login.rst
+
+#. Click either the **Contact Tasks** tab or the **Opportunity Tasks** tab, at the top of the page.
+
+#. For Contact tasks, click the status of tasks to display, **To Do**, **Completed**, **Archived**, or **Expired**.
+
+#. From the **Show my task for** drop-down, select the time range. Select **Custom Range** to create your own time range,

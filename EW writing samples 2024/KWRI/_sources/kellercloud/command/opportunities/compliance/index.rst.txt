@@ -1,0 +1,18 @@
+
+.. _compliance-opportunities-command:
+
+Compliance
+==========
+
+The following pages contain information about compliance.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview
+   add-documents
+   create-custom-folders
+   add-one-off-document
+   version-checklist
+   submit-documents
+   resubmit-documents

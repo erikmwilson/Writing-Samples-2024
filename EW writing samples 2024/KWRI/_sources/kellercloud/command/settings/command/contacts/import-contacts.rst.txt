@@ -1,0 +1,38 @@
+
+.. _import-contacts-settings-command:
+
+Import Contacts
+===============
+
+To import contacts from an existing ``.csv`` file, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Contacts** to display the Contacts settings.
+
+#. Click **Import Contacts**.
+
+#. Drag and drop an existing ``.csv`` file into the **Drag and Drop** box or click **browse** and select a file from your computer.
+
+   .. note::
+
+      Your spreadsheet must be saved as a ``.csv`` file type for the system to accept the file. Each contact must have the `First Name` field populated for the contact to import.
+
+      If you are entering a `Postal Code` that begins with zero, you must format the cells to display as text fields - otherwise Excel and Numbers takes out the first zero.
+
+#. Click **Next**.
+
+#. Match your column headers to the corresponding fields in Command. In the **CSV Headers** section, select the header title from your ``.csv`` file. In the **Command Field** section, select the corresponding
+
+   #. To add additional fields, click **Match Additional Field**.
+
+   #. To remove an extra field, click the more (vertical ellipsis) icon, and select **Remove field**.
+
+#. Click **Next**.
+
+   The ``.csv`` file is validated and the contacts are imported. To view any failed contacts, click **Import Logs**.
+
+#. When the import is complete, click **Done**.

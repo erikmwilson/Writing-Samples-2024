@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Post-installation operations &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="OpenStack-Ansible configuration files" href="app-osa-configfiles.html" />
+    <link rel="prev" title="Deployment playbooks" href="ch-playbooks-rpc.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Post-installation operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#monitoring">Monitoring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hardware-monitoring">Hardware monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#software-monitoring">Software monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cdm-monitoring">CDM monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#network-monitoring">Network monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connections-monitoring">Connections monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#backups">Backups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contents-of-backups">Contents of backups</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation Guide</a> &raquo;</li>
+        
+      <li>Post-installation operations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-install-internal/ch-ops.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="post-installation-operations">
+<h1>Post-installation operations<a class="headerlink" href="#post-installation-operations" title="Permalink to this headline">#</a></h1>
+<p>The following operations apply to environments after the initial
+Rackspace Private Cloud Powered By OpenStack (RPCO) installation.</p>
+<div class="section" id="monitoring">
+<span id="monitoring2"></span><h2>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">#</a></h2>
+<p>The Rackspace Cloud Monitoring service enables Rackspace Private Cloud
+customers to monitor system performance, and safeguard critical data.
+For more information, see the <a class="reference external" href="https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-ops-internal/ch-monitoring.html">Monitoring</a>
+section of the <em>Operations Guide</em>.</p>
+<div class="section" id="hardware-monitoring">
+<h3>Hardware monitoring<a class="headerlink" href="#hardware-monitoring" title="Permalink to this headline">#</a></h3>
+<p>Hardware monitoring is available for customers whose clouds are hosted
+within a Rackspace data center. Customers whose clouds are hosted in
+their own data centers are responsible for monitoring their own
+hardware.</p>
+<p>For clouds hosted within a Rackspace data center, Rackspace provisions
+monitoring support for the customer. Rackspace Support assists in
+handling functionality failure, running system health checks, and
+managing system capacity. The Cloud Monitoring service notifies
+Support when a host is down or when hardware fails.</p>
+</div>
+<div class="section" id="software-monitoring">
+<h3>Software monitoring<a class="headerlink" href="#software-monitoring" title="Permalink to this headline">#</a></h3>
+<p>For software monitoring, polling time is determined by the
+<code class="docutils literal"><span class="pre">maas_check_period</span></code>, which defaults to 60 seconds.</p>
+<p>The RPCO Monitoring service has the following checks:</p>
+<ul>
+<li><p class="first"><strong>Local</strong>: These <code class="docutils literal"><span class="pre">agent.plugin</span></code> checks are performed against
+containers. The checks poll the API and gathers metrics.</p>
+<p>These checks generate a critical alert after three consecutive
+failures.</p>
+<p>Local checks are performed on the following services:</p>
+<ul class="simple">
+<li>Compute (nova)</li>
+<li>Block Storage (cinder)</li>
+<li>Identity (keystone)</li>
+<li>Networking (neutron)</li>
+<li>Orchestration (heat)</li>
+<li>Image service (glance): The check connects to the glance registry
+and tests status by calling an arbitrary URL.</li>
+<li>Dashboard (horizon): The check verifies that the login page is
+available and uses the credentials from <code class="docutils literal"><span class="pre">openrc-maas</span></code> to log
+in.</li>
+<li>Galera: The check connects to each member of a Galera cluster and
+verifies that the members are fully synchronized and active.</li>
+<li>RabbitMQ: The check connects to each member of a RabbitMQ cluster
+and gathers statistics from the API.</li>
+<li>Memcached: The check connects to a Memcached server.</li>
+</ul>
+</li>
+<li><p class="first"><strong>Global</strong>: These <code class="docutils literal"><span class="pre">remote.http</span></code> checks poll the load-balanced
+public endpoints, such as a public nova API. If a service is marked
+as administratively down, the check skips it.</p>
+<p>These checks generate a critical alert after one failure.</p>
+<p>Global checks are performed on the following services:</p>
+<ul class="simple">
+<li>Compute (nova)</li>
+<li>Block Storage (cinder)</li>
+<li>Identity (keystone)</li>
+<li>Networking (neutron)</li>
+<li>Image service (glance)</li>
+<li>Orchestration (heat)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cdm-monitoring">
+<h3>CDM monitoring<a class="headerlink" href="#cdm-monitoring" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal"><span class="pre">setup_maas</span></code> playbook also configures CDM monitoring for the
+following services and generates alerts at the specified thresholds.</p>
+<ul class="simple">
+<li>CPU Idle: &lt; 10%</li>
+<li>Memory used: &gt; 95%</li>
+<li>Disk space used: &gt; 95%</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">setup_maas</span></code> playbook also configures Object Storage mount point
+checks. These checks monitor disk space on the mount points and
+generate alerts if the mount points are unmounted or unavailable. For
+clouds using OpenStack Object Storage (swift), you must re-run the
+setup playbook whenever the number of Object Storage nodes changes.</p>
+</div>
+<div class="section" id="network-monitoring">
+<h3>Network monitoring<a class="headerlink" href="#network-monitoring" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal"><span class="pre">network_checks_list</span></code> variable consists of the interfaces em0,
+em1, em2, and em3 by default. If the physical host does not have those
+specific interfaces, the variable must be set in
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_variables_overrides.yml</span></code>.</p>
+<p>For example, if the interfaces were em0, em1, em2, and em3, set the
+following variable in
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_variables_overrides.yml</span></code>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&quot;em0&quot;</span><span class="p p-Indicator">,</span><span class="nt"> group</span><span class="p">:</span> <span class="s">&quot;hosts&quot;</span><span class="p p-Indicator">,</span><span class="nt"> max_speed</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_max_speed</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&quot;em1&quot;</span><span class="p p-Indicator">,</span><span class="nt"> group</span><span class="p">:</span> <span class="s">&quot;hosts&quot;</span><span class="p p-Indicator">,</span><span class="nt"> max_speed</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_max_speed</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&quot;em2&quot;</span><span class="p p-Indicator">,</span><span class="nt"> group</span><span class="p">:</span> <span class="s">&quot;hosts&quot;</span><span class="p p-Indicator">,</span><span class="nt"> max_speed</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_max_speed</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="s">&quot;em3&quot;</span><span class="p p-Indicator">,</span><span class="nt"> group</span><span class="p">:</span> <span class="s">&quot;hosts&quot;</span><span class="p p-Indicator">,</span><span class="nt"> max_speed</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_max_speed</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> rx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_rx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_warn</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_warn</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">,</span><span class="nt"> tx_pct_crit</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">net_tx_pct_crit</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="connections-monitoring">
+<h3>Connections monitoring<a class="headerlink" href="#connections-monitoring" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal"><span class="pre">rpc_maas</span></code> playbook automatically configures a monitoring
+plugin for the <code class="docutils literal"><span class="pre">/proc/sys/net/netfiletr/nf_conntrack_count</span></code> and
+the <code class="docutils literal"><span class="pre">/proc/sys/net/netfilter/nf_conntrack_max</span></code> files. The monitor
+collects the maximum number of connections and total number of
+connections accumulated by Linux servers, and sends the results as
+metrics.</p>
+<p>Connection metrics trigger an alert if the total number of connections
+approach 90 percent of the maximum allowed connections (specified in
+<code class="docutils literal"><span class="pre">/proc/sys/net/netfilter/nf_conntrack_max</span></code>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To enable this plugin to work, load the <code class="docutils literal"><span class="pre">nf_conntrack_ipv4</span></code>, or
+the <code class="docutils literal"><span class="pre">nf_conntrack_ipv6</span></code> kernel module.</p>
+</div>
+<p>The following is an example of output metrics:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> get_metrics
+<span class="go">status okay</span>
+<span class="go">metrics nf_conntrack_max uint32 262144</span>
+<span class="go">metrics nf_conntrack_count uint32 345</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="backups">
+<h2>Backups<a class="headerlink" href="#backups" title="Permalink to this headline">#</a></h2>
+<p>Rackspace manages backups for Core Support customers when their clouds
+are hosted in Rackspace data centers. This section documents the
+contents and configuration for Rackspace backups. For more
+information, see the <a class="reference external" href="https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-ops-internal/ch-backups.html">Backups</a>
+section of the <em>Operations Guide</em>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Customers are responsible for backing up their own data when their
+clouds are hosted in their data centers. Customers should back up
+the files in the following section, according to their preferred
+method.</p>
+</div>
+<div class="section" id="contents-of-backups">
+<h3>Contents of backups<a class="headerlink" href="#contents-of-backups" title="Permalink to this headline">#</a></h3>
+<p>The following information is backed up:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">/openstack/backup</span></code>: The data inside the containers, including the</dt>
+<dd>Galera database</dd>
+</dl>
+</li>
+<li><code class="docutils literal"><span class="pre">/opt</span></code>: The Ansible source code</li>
+<li><code class="docutils literal"><span class="pre">/etc</span></code>: The Ansible and host configurations</li>
+</ul>
+<p>Since Image service (glance) images are no longer included on
+infrastructure nodes, they are not included in these backups. Instead,
+glance images may be hosted in Cloud Files, a local OpenStack Object
+Storage cloud, or in NetApp. Regardless of the glance back end, ensure
+that customer expectations are clear regarding the lifespan and backup
+of images.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Elasticsearch is not currently backed up. For more information, see
+<a class="reference external" href="https://bugs.launchpad.net/openstack-ansible/+bug/1400440">openstack-ansible bug 1400440</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="app-osa-configfiles.html" class="btn btn-neutral float-right" title="OpenStack-Ansible configuration files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-playbooks-rpc.html" class="btn btn-neutral float-left" title="Deployment playbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

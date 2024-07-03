@@ -1,0 +1,186 @@
+==========================================
+Searching logs using the Elasticsearch API
+==========================================
+
+There are two primary ways to search logs using the Elasticsearch API:
+Query-string and Query DSL. Query-string search is a lightweight
+search method that is easy to use from the command line. This section
+provides examples of using the query-string method to interact with
+the Elasticsearch API using the command line.
+
+ .. note::
+
+   A useful tool for searching logs is HTTPie, a command line HTTP
+   client. HTTPie will format and color the search response, making it
+   much easier to read. Install HTTPie using the command **apt-get -y
+   install httpie**.
+
+
+Simple searches
+~~~~~~~~~~~~~~~
+
+The following examples show how to view and search logs with the
+**http** command that is enabled with HTTPie.
+
+View logs across all indices
+    When performing a simple search, Elasticsearch returns the first 10
+    log documents.
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/_search
+
+
+Limit the number of logs
+    Specify the number of logs shown with ``size=``.
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/_search?size=2&from=10
+
+
+View a selected number of logs
+    Specify the number of logs with ``size=`` and the point from which
+    the search starts with ``from=``.
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/_search?size=10&from=10
+
+
+View logs across a specific index
+    Specify an index by including the index name.
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/logstash-XXXX.XX.XX/_search
+
+
+View logs across multiple indices
+    Specify multiple indices by including a comma-separated list.
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/logstash-XXXX.XX.XX,logstash-XXXX.XX.XX/_search
+
+
+Create a specific query by including a value for the ``q=``
+    parameter. Common queries in RPCO environments include the UUID of
+    the instance, tenant, user, or request. Elasticsearch will respond
+    with 10 of the most relevant log documents based on the specified
+    query.
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/_search?q=query
+
+
+    **Example:**
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/_search?q=1874fdd4758b498482c53f1fc098b2a1
+
+
+Create a query within a field name across all indices
+    Create a query within a specific field name by including a value for
+    the field name and the query term for the ``q=`` parameter.
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/_search?q=field:query
+
+
+    **Example:**
+
+    .. code-block:: console
+
+       $ http http://external_lb_vip_address:9200/_search?q=@timestamp:2015-02-18T00:35:35.516Z
+
+
+Complex queries
+~~~~~~~~~~~~~~~
+
+The following section shows examples of more complex queries.
+
+
+Specify multiple fields and specific queries
+--------------------------------------------
+
+
+To specify multiple fields in a query, use ``+``\ before each
+fieldname. To eliminate a specific field query from the results use
+``-``. HTTPie will automatically percent encode the query.
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search \
+      q=='+field:query +field:query'
+
+**Example:**
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search \
+      q=='+program:neutron+@messsage:1874fdd4758b498482c53f1fc098b2a1'
+
+
+Specify multiple fields and specific queries with AND NOT OR
+operators When searching for all terms in a field, separate them with
+AND. Use OR if searching for any of the terms. Use NOT to exclude a
+specific query. HTTPie will automatically percent encode the query.
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search \
+      q=='+field:query AND query +field:query'
+
+**Example 1:**
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search \
+      q=='+program:neutron \
+      AND server+@message:1874fdd4758b498482c53f1fc098b2a1'
+
+**Example 2:**
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search \
+      q=='+program:nova AND api OR scheduler \
+      NOT compute+@message:1874fdd4758b498482c53f1fc098b2a1'
+
+
+Searching logs from a specific time range across all indices
+------------------------------------------------------------
+
+Use the ``@timestamp`` field and ``[min to max]`` to specify a date
+range.
+
+.. leaving these as ..code:: because the quote characters cause
+   rendering errors with ..code-block:: console
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search \
+      q=='+field:query AND query NOT query +field:query \
+      +@timestamp:"date" TO "date"
+
+**Example 1:**
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search
+      q=='+program:nova AND api NOT compute+@message: \
+      1874fdd4758b498482c53f1fc098b2a1' \
+      +@timestamp:"2015-02-19T20:00:00.000Z" TO "2015-02-19T21:00:00.000Z"'
+
+**Example 2:**
+
+ .. code-block:: console
+
+    $ http http://external_lb_vip_address:9200/_search \
+      q=='+program:nova AND api NOT compute+@message: \
+      1874fdd4758b498482c53f1fc098b2a1' \
+      +@timestamp:"2015-02-19T20:00:00.000Z" TO *'

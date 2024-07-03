@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure the Block Storage service (optional) &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Configure the Object Storage service (optional)" href="configure-object-storage.html" />
+    <link rel="prev" title="Configure the Image service (optional)" href="configure-image-service.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-configure-optional.html">Configure the deployment (optional)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configure-proxy-environment.html">Configure proxy environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-hypervisor.html">Configure the hypervisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-image-service.html">Configure the Image service</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configure the Block Storage service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-block-storage-service-to-use-lvm">Configure the Block Storage service to use LVM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-block-storage-service-to-use-netapp">Configure the Block Storage service to use NetApp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-block-storage-service-with-nfs-protocols">Configure the Block Storage service with NFS protocols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-block-storage-backups-to-object-storage">Configure Block Storage backups to Object Storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-block-storage-backups-to-external-cloud-files">Configure Block Storage backups to external Cloud Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-block-storage-availability-zones">Create Block Storage availability zones</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configure-object-storage.html">Configure the Object Storage service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-haproxy.html">Configure HAProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-maas.html">Configure MaaS variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-f5-load-balancer.html">Generate F5 load balancer configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-ldap.html">Configure Active Directory or LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-dashboard-ssl.html">Configure Dashboard SSL settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-security-hardening.html">Configure security hardening</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Installation Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-configure-optional.html">Configure the deployment (optional)</a> &raquo;</li>
+        
+      <li>Configure the Block Storage service (optional)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-install-internal/configure-opt/configure-block-storage.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-the-block-storage-service-optional">
+<h1>Configure the Block Storage service (optional)<a class="headerlink" href="#configure-the-block-storage-service-optional" title="Permalink to this headline">#</a></h1>
+<p>Block Storage (cinder) provides persistent storage to guest instances.
+The service manages volumes and snapshots.</p>
+<div class="section" id="configure-the-block-storage-service-to-use-lvm">
+<h2>Configure the Block Storage service to use LVM<a class="headerlink" href="#configure-the-block-storage-service-to-use-lvm" title="Permalink to this headline">#</a></h2>
+<p>Logical Volume Management (LVM) is the default back end for Block
+Storage. To configure an LVM back end, edit the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code> file and configure
+each storage node that uses LVM.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">When you use LVM, the <code class="docutils literal"><span class="pre">cinder-volume</span></code> service is closely tied to
+the underlying disks of the physical host, and does not benefit
+greatly from containerization. By default, Block Storage is
+deployed on metal, not in a container (<code class="docutils literal"><span class="pre">is_metal</span></code> is set to
+<code class="docutils literal"><span class="pre">true</span></code>).</p>
+</div>
+<ol class="arabic">
+<li><p class="first">For each storage node, add the <code class="docutils literal"><span class="pre">lvm</span></code> stanza under the
+<code class="docutils literal"><span class="pre">cinder_backends</span></code> stanza:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">cinder_backends</span><span class="p">:</span>
+  <span class="nt">lvm</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>The options in subsequent steps fit under the <code class="docutils literal"><span class="pre">lvm</span></code> stanza.</p>
+</li>
+<li><p class="first">Provide a <code class="docutils literal"><span class="pre">volume_backend_name</span></code>. This name is arbitrary and
+becomes a volume type within the Block Storage service.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">volume_backend_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LVM_iSCSI</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the volume_driver:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">volume_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder.volume.drivers.lvm.LVMVolumeDriver</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the volume_group:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">volume_group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder-volumes</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Confirm that the <code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code> configuration is
+accurate:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">storage_hosts</span><span class="p">:</span>
+  <span class="nt">xxxxxx-Infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.29.236.16</span>
+    <span class="nt">container_vars</span><span class="p">:</span>
+      <span class="nt">cinder_storage_availability_zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinderAZ_1</span>
+      <span class="nt">cinder_default_availability_zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinderAZ_1</span>
+      <span class="nt">cinder_backends</span><span class="p">:</span>
+        <span class="nt">lvm</span><span class="p">:</span>
+          <span class="nt">volume_backend_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LVM_iSCSI</span>
+          <span class="nt">volume_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder.volume.drivers.lvm.LVMVolumeDriver</span>
+          <span class="nt">volume_group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder-volumes</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-the-block-storage-service-to-use-netapp">
+<h2>Configure the Block Storage service to use NetApp<a class="headerlink" href="#configure-the-block-storage-service-to-use-netapp" title="Permalink to this headline">#</a></h2>
+<p>By default, the Block Storage service uses the LVM back end. To use a
+NetApp storage appliance back end instead, edit the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code> file and configure
+each storage node that uses it:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure that the NAS Team enables <code class="docutils literal"><span class="pre">httpd.admin.access</span></code>.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">For each storage node, add the <code class="docutils literal"><span class="pre">netapp</span></code> stanza under the
+<code class="docutils literal"><span class="pre">cinder_backends</span></code> stanza:</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">cinder_backends</span><span class="p">:</span>
+  <span class="nt">netapp</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>The options in subsequent steps fit under the <code class="docutils literal"><span class="pre">netapp</span></code> stanza.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Configure the storage family. Replace <code class="docutils literal"><span class="pre">STORAGE_FAMILY</span></code> with
+<code class="docutils literal"><span class="pre">ontap_7mode</span></code> for Data ONTAP operating in 7-mode or
+<code class="docutils literal"><span class="pre">ontap_cluster</span></code> for Data ONTAP operating as a cluster.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">netapp_storage_family</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">STORAGE_FAMILY</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the storage protocol. Replace <code class="docutils literal"><span class="pre">STORAGE_PROTOCOL</span></code> with
+<code class="docutils literal"><span class="pre">iscsi</span></code> for iSCSI or <code class="docutils literal"><span class="pre">nfs</span></code> for NFS.</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">netapp_storage_protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">STORAGE_PROTOCOL</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>If you specified NFS, you must also specify the location of the
+configuration file that lists the shares available to the Block
+Storage service. Replace <code class="docutils literal"><span class="pre">FILENAME_NFS_SHARES</span></code> with the location
+of the share configuration file. For example,
+<code class="docutils literal"><span class="pre">/etc/cinder/nfs_shares</span></code>.</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">nfs_shares_config</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FILENAME_NFS_SHARES</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Configure the server. Replace <code class="docutils literal"><span class="pre">SERVER_HOSTNAME</span></code> with the
+hostnames for both netapp controllers.</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">netapp_server_hostname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SERVER_HOSTNAME</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Configure the server API port. Replace <code class="docutils literal"><span class="pre">PORT_NUMBER</span></code> with 80 for
+HTTP or 443 for HTTPS.</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">netapp_server_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PORT_NUMBER</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Configure the server credentials. Replace <code class="docutils literal"><span class="pre">USER_NAME</span></code> and
+<code class="docutils literal"><span class="pre">PASSWORD</span></code> with the appropriate values.</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">netapp_login</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">USER_NAME</span>
+<span class="nt">netapp_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PASSWORD</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Select the NetApp driver:</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">volume_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder.volume.drivers.netapp.common.NetAppDriver</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Configure the volume back end name. Replace <code class="docutils literal"><span class="pre">BACKEND_NAME</span></code> with a
+suitable value that provides a hint for the Block Storage
+scheduler. For example, <code class="docutils literal"><span class="pre">NETAPP_iSCSI</span></code>.</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">volume_backend_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">BACKEND_NAME</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The back end name is arbitrary and becomes a volume type within the
+Block Storage service.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Disable Block Storage on-metal deployment by creating the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/env.d/cinder.yml</span></code> file with the following
+contents:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">container_skel</span><span class="p">:</span>
+  <span class="nt">cinder_volumes_container</span><span class="p">:</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">is_metal</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Check that the <code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code> configuration is
+accurate:</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">storage_hosts</span><span class="p">:</span>
+  <span class="nt">xxxxxx-Infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.29.236.16</span>
+    <span class="nt">container_vars</span><span class="p">:</span>
+      <span class="nt">cinder_backends</span><span class="p">:</span>
+        <span class="nt">limit_container_types</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder_volume</span>
+        <span class="nt">netapp</span><span class="p">:</span>
+          <span class="nt">netapp_storage_family</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ontap_7mode</span>
+          <span class="nt">netapp_storage_protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nfs</span>
+          <span class="nt">netapp_server_hostname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">111.222.333.444</span>
+          <span class="nt">netapp_server_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+          <span class="nt">netapp_login</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openstack_cinder</span>
+          <span class="nt">netapp_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
+          <span class="nt">volume_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder.volume.drivers.netapp.common.NetAppDriver</span>
+          <span class="nt">volume_backend_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NETAPP_NFS</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>For <code class="docutils literal"><span class="pre">netapp_server_hostname</span></code>, specify the IP address of the Data
+ONTAP server.</li>
+<li>For <code class="docutils literal"><span class="pre">netapp_storage_family</span></code>, specify iSCSI depending on the
+configuration.</li>
+<li>For <code class="docutils literal"><span class="pre">netapp_server_port</span></code>, specify 80 if using HTTP or 443 if using
+HTTPS.</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">cinder-volume.yml</span></code> playbook will automatically install the
+<code class="docutils literal"><span class="pre">nfs-common</span></code> file across the hosts, transitioning from an LVM to
+a NetApp back end.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-the-block-storage-service-with-nfs-protocols">
+<h2>Configure the Block Storage service with NFS protocols<a class="headerlink" href="#configure-the-block-storage-service-with-nfs-protocols" title="Permalink to this headline">#</a></h2>
+<p>If the NetApp backend is configured to use an NFS storage protocol,
+edit the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code> file and
+configure the NFS client on each storage node that uses it.</p>
+<ol class="arabic">
+<li><p class="first">For each storage node, add the <code class="docutils literal"><span class="pre">cinder_backends</span></code> stanza under the
+<code class="docutils literal"><span class="pre">container_vars</span></code> stanza. Each Block Storage backend is defined
+with a unique key (such as <code class="docutils literal"><span class="pre">nfs-volume1</span></code>) that represents a
+unique Block Storage backend and volume type.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">container_vars</span><span class="p">:</span>
+  <span class="nt">cinder_backends</span><span class="p">:</span>
+    <span class="nt">nfs-volume1</span><span class="p">:</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the appropriate Block Storage volume backend name.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">volume_backend_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nfs_volume1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the appropriate Block Storage NFS driver.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">volume_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder.volume.drivers.nfs.NfsDriver</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the location of the file that lists the shares available
+to the Block Storage service. This configuration file must include
+<code class="docutils literal"><span class="pre">nfs_shares_config</span></code>, as follows. Replace <code class="docutils literal"><span class="pre">FILENAME_NFS_SHARES</span></code>
+with the location of the share configuration file. For example,
+<code class="docutils literal"><span class="pre">/etc/cinder/nfs_shares</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">nfs_shares_config</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FILENAME_NFS_SHARES</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If necessary, define NFS mount options.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">nfs_mount_options</span><span class="p">:</span> <span class="s">&quot;rsize=65535,wsize=65535,timeo=1200,actimeo=120&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure one or more NFS shares. Replace <code class="docutils literal"><span class="pre">HOSTNAME</span></code> with the IP
+address or hostname of the NFS server. Replace
+<code class="docutils literal"><span class="pre">PATH_TO_NFS_VOLUME</span></code> with the absolute path to an accessible NFS
+share (excluding the IP address or hostname).</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">shares</span><span class="p">:</span>
+   <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> ip</span><span class="p">:</span> <span class="s">&quot;HOSTNAME&quot;</span><span class="p p-Indicator">,</span><span class="nt"> share</span><span class="p">:</span> <span class="s">&quot;PATH_TO_NFS_VOLUME&quot;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Disable Block Storage on-metal deployment by creating the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/env.d/cinder.yml</span></code> file with the following
+contents:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">container_skel</span><span class="p">:</span>
+  <span class="nt">cinder_volumes_container</span><span class="p">:</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">is_metal</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">cinder-volume</span></code> service runs in an LXC container.</p>
+</li>
+<li><p class="first">The following section shows a full configuration example of a Block
+Storage NFS backend named <code class="docutils literal"><span class="pre">nfs_volume1</span></code>. The cinder playbooks
+automatically add a custom <code class="docutils literal"><span class="pre">volume-type</span></code> <code class="docutils literal"><span class="pre">nfs-volume1</span></code> in this
+example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">container_vars</span><span class="p">:</span>
+  <span class="nt">cinder_backends</span><span class="p">:</span>
+    <span class="nt">nfs-volume1</span><span class="p">:</span>
+      <span class="nt">volume_backend_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nfs_volume1</span>
+      <span class="nt">volume_driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cinder.volume.drivers.nfs.NfsDriver</span>
+      <span class="nt">nfs_shares_config</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/cinder/nfs_shares_volume1</span>
+      <span class="nt">nfs_mount_options</span><span class="p">:</span> <span class="s">&quot;rsize=65535,wsize=65535,timeo=1200,actimeo=120&quot;</span>
+      <span class="nt">shares</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> ip</span><span class="p">:</span> <span class="s">&quot;1.2.3.4&quot;</span><span class="p p-Indicator">,</span><span class="nt"> share</span><span class="p">:</span> <span class="s">&quot;/vol&quot;</span> <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When varying backup or other service policies apply, we recommend
+breaking out multiple NFS volumes into separate Block Storage
+backends.</p>
+</div>
+</div>
+<div class="section" id="configure-block-storage-backups-to-object-storage">
+<h2>Configure Block Storage backups to Object Storage<a class="headerlink" href="#configure-block-storage-backups-to-object-storage" title="Permalink to this headline">#</a></h2>
+<p>During installation of Block Storage, the backup service is configured.</p>
+<p>Environments that deploy Object Storage turn on Block Storage
+backups to Object Storage by automatically setting the
+<code class="docutils literal"><span class="pre">cinder_service_backup_program_enabled</span></code> variable to <code class="docutils literal"><span class="pre">True</span></code> in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file.
+The default configuration backs up volumes to an Object Storage
+installation accessible within your environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can disable the automatic backups to Object Storage by setting
+the <code class="docutils literal"><span class="pre">cinder_service_backup_program_enabled</span></code> variable to <code class="docutils literal"><span class="pre">False</span></code>
+in the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file.</p>
+</div>
+<p>When automatic backups are enabled, as they are by default, you can set
+<code class="docutils literal"><span class="pre">cinder_service_backup_swift_url</span></code> and other variables to back up to an
+external Object Storage installation.</p>
+<p>By default, Block Storage uses the access credentials of the user
+initiating the backup. Default values are set in the
+<code class="docutils literal"><span class="pre">/etc/ansible/roles/os_cinder/defaults/main.yml</span></code> file. You can
+override those defaults by setting variables in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file to
+change how Block Storage performs backups. As needed, add and edit any
+of the following variables in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file:</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<span class="c1"># cinder_service_backup_swift_auth: Options include &#39;per_user&#39; or</span>
+<span class="c1">#                                   &#39;single_user&#39;, we default to</span>
+<span class="c1">#                                   &#39;per_user&#39; so that backups are saved</span>
+<span class="c1">#                                   to a user&#39;s swift account.</span>
+<span class="nt">cinder_service_backup_swift_auth</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">per_user</span>
+<span class="c1"># cinder_service_backup_swift_url: This is your swift storage url when</span>
+<span class="c1">#                                  using &#39;per_user&#39;, or keystone</span>
+<span class="c1">#                                  endpoint when using &#39;single_user&#39;.</span>
+<span class="c1">#                                  When using &#39;per_user&#39;, you can leave</span>
+<span class="c1">#                                  this as empty or as None to allow</span>
+<span class="c1">#                                  cinder-backup to</span>
+<span class="c1">#                                  obtain storage url from environment.</span>
+<span class="nt">cinder_service_backup_swift_url</span><span class="p">:</span>
+<span class="nt">cinder_service_backup_swift_auth_version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">cinder_service_backup_swift_user</span><span class="p">:</span>
+<span class="nt">cinder_service_backup_swift_project</span><span class="p">:</span>
+<span class="nt">cinder_service_backup_swift_key</span><span class="p">:</span>
+<span class="nt">cinder_service_backup_swift_container</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volumebackups</span>
+<span class="nt">cinder_service_backup_swift_object_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">52428800</span>
+<span class="nt">cinder_service_backup_swift_retry_attempts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="nt">cinder_service_backup_swift_retry_backoff</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">cinder_service_backup_compression_algorithm</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zlib</span>
+<span class="nt">cinder_service_backup_metadata_version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For more information about Object Storage, see the <a class="reference external" href="https://developer.rackspace.com/docs/private-cloud/rpc/master/rpc-swift/">Standalone Object
+Storage for RPCO guide</a>.</p>
+</div>
+<div class="section" id="configure-block-storage-backups-to-external-cloud-files">
+<h2>Configure Block Storage backups to external Cloud Files<a class="headerlink" href="#configure-block-storage-backups-to-external-cloud-files" title="Permalink to this headline">#</a></h2>
+<p>You can configure Block Storage (cinder) to back up volumes to
+external Cloud Files by setting variables.</p>
+<ol class="arabic">
+<li><p class="first">In the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code>
+file, add or edit the following line and set the value to <code class="docutils literal"><span class="pre">True</span></code>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">cinder_service_backup_program_enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">By default, Block Storage uses the access credentials of the user
+initiating the backup. Default values are set in the
+<code class="docutils literal"><span class="pre">/etc/ansible/roles/os_cinder/defaults/main.yml</span></code> file. You can
+override those defaults by setting variables in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrrides.yml</span></code> file to
+change how Block Storage performs backups. As needed, add and edit
+any of the following variables in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span>  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">cinder_service_backup_swift_auth</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">single_user</span>
+  <span class="nt">cinder_service_backup_swift_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://identity.api.rackspacecloud.com/v2.0</span>
+  <span class="nt">cinder_service_backup_swift_auth_version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">cinder_service_backup_swift_user</span><span class="p">:</span>
+  <span class="nt">cinder_service_backup_swift_project</span><span class="p">:</span>
+  <span class="nt">cinder_service_backup_swift_key</span><span class="p">:</span>
+  <span class="nt">cinder_service_backup_swift_container</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volumebackups</span>
+  <span class="nt">cinder_service_backup_swift_object_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">52428800</span>
+  <span class="nt">cinder_service_backup_swift_retry_attempts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+  <span class="nt">cinder_service_backup_swift_retry_backoff</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">cinder_service_backup_compression_algorithm</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zlib</span>
+  <span class="nt">cinder_service_backup_metadata_version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">For ``cinder_service_backup_swift_user``, specify the Rackspace</span>
+  <span class="l l-Scalar l-Scalar-Plain">Public account name of the Cloud Files user.</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">For ``cinder_service_backup_swift_project``, specify the Public</span>
+  <span class="l l-Scalar l-Scalar-Plain">Cloud account number.</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">For ``cinder_service_backup_swift_key``, specify the Cloud Files</span>
+  <span class="l l-Scalar l-Scalar-Plain">password. The Cloud Files password is &quot;*not*&quot;&quot; the API key.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The backup service is configured during installation of Block Storage.</p>
+</div>
+<div class="section" id="create-block-storage-availability-zones">
+<h2>Create Block Storage availability zones<a class="headerlink" href="#create-block-storage-availability-zones" title="Permalink to this headline">#</a></h2>
+<p>You can create multiple availability zones to manage Block Storage
+storage hosts. To set up availability zones, edit the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code> and
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> files .</p>
+<ol class="arabic">
+<li><p class="first">For each Block Storage storage host, configure the availability
+zone under the <code class="docutils literal"><span class="pre">container_vars</span></code> stanza in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code> file. Replace
+<code class="docutils literal"><span class="pre">CINDERAZ</span></code> with a suitable name. For example <code class="docutils literal"><span class="pre">cinderAZ_2</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">cinder_storage_availability_zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CINDERAZ</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">When creating more than one availability zone, configure the default
+availability zone for all hosts by adding a default availability zone
+value to the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code>
+file. Replace <code class="docutils literal"><span class="pre">CINDERAZ_DEFAULT</span></code> with a suitable name. For example,
+<code class="docutils literal"><span class="pre">cinderAZ_1</span></code>. The default availability zone should be the same
+for all cinder storage hosts.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">cinder_default_availability_zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CINDERAZ_DEFAULT</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If you do not define <code class="docutils literal"><span class="pre">cinder_default_availability_zone</span></code>, the
+default variable is used (nova), which might cause the Dashboard
+(horizon) volume creation to fail.</p>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">nova_cross_az_attach</span></code> variable should be configured according
+to the Block Storage variable. Ideally, the Block Storage and Compute
+availability zones use the same name, so Compute can pass through the
+availability zone to Block Storage.
+If the availability zones have different names, set <code class="docutils literal"><span class="pre">nova_cross_az_attach</span></code>
+to <code class="docutils literal"><span class="pre">TRUE</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configure-object-storage.html" class="btn btn-neutral float-right" title="Configure the Object Storage service (optional)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configure-image-service.html" class="btn btn-neutral float-left" title="Configure the Image service (optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

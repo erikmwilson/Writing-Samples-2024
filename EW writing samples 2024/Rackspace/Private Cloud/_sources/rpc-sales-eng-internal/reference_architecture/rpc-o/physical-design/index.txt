@@ -1,0 +1,10 @@
+===============
+Physical design
+===============
+
+.. toctree::
+   :maxdepth: 2
+
+   rack-evaluation.rst
+   disk-configuration.rst
+   base-os-configuration.rst

@@ -1,0 +1,28 @@
+
+.. _filter-opportunities-command:
+
+Filter Opportunities
+====================
+
+While you are managing your Opportunities in Command, you may need to find a specific Opportunity. Instead of searching through your Phases and Stages to find the Opportunity you are looking for, you can use filters.
+
+.. note::
+
+   Search is also the only way to view Opportunities that were closed more than 30 days previously and archived/lost Opportunities.
+
+To filter Opportunities, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click **All Opportunities**, at the top of the page. A list displays of all the Opportunities that you own or to which you are assigned.
+
+#. Click **Filters** at the top of the page.
+
+#. When the filters fly-out menu appears on the right side of the page, select the filters by clicking the checkbox beside them or selecting them from the drop-down list. To remove filters, click on each to remove them individually or click **Clear All** at the bottom of the fly-out menu to remove all of the filters.
+
+#. Click **Apply**.

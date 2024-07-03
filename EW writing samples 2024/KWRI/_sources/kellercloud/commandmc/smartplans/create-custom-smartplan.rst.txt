@@ -1,0 +1,142 @@
+
+.. _create-custom-smartplan-commandmc:
+
+Create a Custom SmartPlan
+=========================
+
+You can create customized SmartPlans to fit the unique needs of your business.
+You can add and remove steps, insert emails, insert text messages, add tasks, set delays, and set your SmartPlan to repeat.
+
+.. note::
+
+   * SmartPlan text messages and emails are sent out between 10am-6pm CST. If an agent attempts to start one at 7pm, although it appears that the text/email should send immediately, it may be held from being sent until 10am the following morning.
+
+   * KW recommends using the KW Birthday plan from the SmartPlans library instead of creating a custom birthday plan. The KW Birthday plan automatically uses information from a recruit's details and repeats yearly.
+
+To create a custom SmartPlan, complete the following steps:
+
+.. include:: smartplans-mc-login.rst
+
+#. Click the **MC Plans** tab, at the top of the page.
+
+#. Click **Create**, at the top-right of the page.
+
+#. Enter your **Plan Name** and click **Apply**. SmartPlan names must be unique.
+
+#. Click on an action from the right side of the page to add it to the SmartPlan workflow. After it is added, scroll to that added action step and edit the details.
+
+   * **Create Task** - You can create a touch or non-touch task. A touch task contacts the customer in some way (call, email, text).
+
+     a. If the task has a **Designated Associate**, check the check box and select the assignee.
+
+     #. Set a due date in number of days - **Due in (days)**. This is required.
+
+     #. Select the **Task Type** (Touch or Non Touch).
+
+     #. Enter the **Task Name**. This is required.
+
+     #. Enter a **Task Description**.
+
+     #. Add any hyperlinks that are applicable  to the task.
+
+     #. Click the Save icon |smartplans-save-icon|.
+
+        .. |smartplans-save-icon| image:: ../../../images/smartplans-save-icon.png
+           :height: 20
+
+   * **Make a Call** - You can create a phone call task.
+
+     a. If the task has a **Designated Associate**, check the check box and select the assignee.
+
+     #. Set a due date in number of days - **Due in (days)**. This is required.
+
+     #. Enter the **Task Name**. This is required.
+
+     #. Enter a **Task Description**.
+
+     #. Add any hyperlinks that are applicable  to the task.
+
+     #. Click the Save icon |smartplans-save-icon|.
+
+   * **Send Email** - You can send an Email.
+
+     a. If the task has a **Designated Associate**, check the check box and select the assignee.
+
+     #. Enter the **Reply-to** address. This is required.
+
+     #. Enter the email **Subject**. This is required.
+
+        .. note::
+
+           To update your Command email address, see **Link to settings**.
+
+     #. Enter the **Email Content**. This is required.
+
+     #. Click the Save icon |smartplans-save-icon|.
+
+   * **Send SMS/MMS** - You can send a text message from your SmartPlan.
+
+     .. note::
+
+        You must have a Twilio account set up to send automatic texts from Command. If you do not have Twilio set up in Settings, these SMS/MMS steps will be skipped. For more information, see :ref:`connect-application-settings-command`.
+
+     a. If the task has a **Designated Associate**, check the check box and select the assignee.
+
+     #. Select the **Message Type** (Static or Dynamic).
+
+        Static - you set one text message that is sent in this step. This message repeats if the SmartPlan repeats.
+
+        Dynamic - you add multiple text messages for the same step. Each time the SmartPlan repeats, this step sends a different text message to your contact. Up to six text messages can be added.
+
+     #. Enter the SMS **Text**. This is required.
+
+     #. Click the Save icon |smartplans-save-icon|.
+
+   *  **Set Delay** - You can use a delay when you want to add time between your SmartPlan steps. If a delay is not added in between the steps, they will launch immediately right after each other.
+
+     a. Add a delay after or before any step in the SmartPlan.
+
+     #. Set the delay in number of days - **Due in (days)**. This is required.
+
+     #. Click the Save icon |smartplans-save-icon|.
+
+   * **Add to SmartPlan** - If you want the contacts of your SmartPlan to be added to another SmartPlan automatically, select this step and choose which SmartPlan you want your recruits to be added to. Click the Save icon |smartplans-save-icon|.
+
+   * **Repeat SmartPlan** - You can restart the SmartPlan from the beginning. A SmartPlan can be repeated up to six times. If you want to restart the SmartPlan more than six times, set it to **Unlimited**. If you set the SmartPlan to repeat itself an unlimited amount of times, the SmartPlan repeats until the recruit is removed or you deactivate the plan.
+
+     .. note::
+
+        * Set a delay before the plan restarts by using the **Set Delay** action.
+
+        * A Smartplan must be at least 15 days long to set the **Repeat Smartplan** action.
+
+   After you complete your SmartPlan, click **Save** the top-right corner of the page. The number of days, steps, and touches for the SmartPlan displays at the top of the window.
+
+The SmartPlan appears in your MC Plans list, where you can add recruits. For more information, see :ref:`add-recruits-commandmc`.
+
+Merge Fields
+^^^^^^^^^^^^
+The following actions have merge fields:
+
+* Create Task
+
+* Make a Call
+
+* Send Email
+
+* Send SMS/MMS
+
+Merge fields auto-populate with information from the recruits record, and make a more personalized message.
+
+To add your own Merge Fields, click the Merge Fields icon, **{f.}** to the right of certain fields. Select the fields you want to merge from the drop-down list (for example, {recipient.first.name}, {recipient.last.name}, {recipient.email}).
+
+.. note::
+
+   If a recruit does not have the specified merge fields, the message or email is not sent and you receive an error notification on their timeline.
+
+Remove a Step
+^^^^^^^^^^^^^
+
+1. If you want to remove a step, click the **X**, at the bottom right of the step.
+
+2. In the **Remove Step** confirmation box, click **Remove**.

@@ -1,0 +1,13 @@
+
+.. _access-training-connect:
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-left corner, click **Connect**.
+
+#. On the left toolbar, click **Training** |education-icon|.
+
+   .. |education-icon| image:: ../../../../images/education-icon.png
+      :height: 30

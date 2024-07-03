@@ -1,0 +1,15 @@
+============
+Requirements
+============
+
+Every design is based on requirements. For this exercise we took some
+high level general requirements that are applicable to most users.
+
+The purpose of a functional specification is to define the essential
+technical requirements to be implemented by the overall solution.
+
+.. toctree::
+   :maxdepth: 2
+
+   business-requirements.rst
+   functional-requirements/index.rst

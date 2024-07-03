@@ -1,0 +1,40 @@
+
+.. _import-contacts-command:
+
+Import Contacts
+===============
+
+With Command, you can add individual contacts or import multiple contacts at one time from a database such as a CRM or contact list (for example, Google Contacts).
+
+For more information on manually adding contacts, see :ref:`add-contacts-command`.
+
+To import contacts using the Command Contact Import Template, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click **Import**, at the top right of the page.
+
+#. In the **Import Contacts** window, download the Command import template by clicking the word **DOWNLOAD** in blue.
+
+   The system will only reliably accept files that conform to the contact list template that has come from Command (identical header names and order). If you export from an outside CRM and try to import into Command, you may see some fields pull in correctly, but you might see others pull in incorrectly or you might get an error message.
+
+   Your spreadsheet must be saved as a .CSV file type for the system to accept the file. Each contact must have the **First Name** and **Last Name** field populated for the contact to import.
+
+   .. note::
+
+      If you are entering a Postal Code that begins with a zero, you must format the cells to display as text fields (Excel and Numbers removes the first zero otherwise).
+
+#. Using the Command import template, copy/paste or enter any information you have for each contact, into the corresponding fields. For more information, see :ref:`transfer-contacts-spreadsheet-command`.
+
+#. On the **Import Contacts** window, drop the file into the space provided or **browse** for the file that you saved.
+
+#. Click **Import Contacts**.
+
+  You receive a submitted message.
+
+#. Click **Finish to close the window or **Import More Contacts** to import another file.

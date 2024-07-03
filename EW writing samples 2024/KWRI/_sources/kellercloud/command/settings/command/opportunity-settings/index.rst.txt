@@ -1,0 +1,14 @@
+
+.. _opportunity-settings-index-command:
+
+Opportunity Settings
+====================
+
+The following sections contain information about how to configure
+Opportunity settings.
+
+.. toctree::
+   :maxdepth: 1
+
+   client-update
+   design-template

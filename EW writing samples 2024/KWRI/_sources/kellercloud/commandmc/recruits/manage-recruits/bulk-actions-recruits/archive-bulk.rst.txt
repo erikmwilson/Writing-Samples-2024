@@ -1,0 +1,29 @@
+
+.. _archive-bulk-commandmc:
+
+Archive Multiple Recruits
+=========================
+
+You can archive multiple recruits using the Bulk Action feature. You can also archive individual recruits. For more information, see :ref:`archive-recruits-commandmc`.
+
+To archive multiple recruits, complete the following steps:
+
+.. include:: recruits-mc-login.rst
+
+#. Select the check boxes next to the recruits you want to archive. To select all recruits, select the check box in the header row.
+
+.. note::
+
+   You can filter your recruits list using Filters to target certain criteria (for example, **Pipeline Status**).
+
+#. Click **More Options** under the recruits list and select **Archive**.
+
+#. On the **Bulk Archive** window, select the option that best describes why you are removing these recruits:
+
+   * **Fall out**: This recruits are returned to the recruiting database for further engagement.
+
+   * **Archive**: This recruits are removed from your recruiting pipeline and the MC database.
+
+#. Enter a removal comment in **Why are you removing these recruits?**.
+
+#. Click **Save**.

@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Deployment playbooks &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Post-installation operations" href="ch-ops.html" />
+    <link rel="prev" title="RPC Ceph installation process" href="ch-external-ceph.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deployment playbooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#predeployment-tasks">Predeployment tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-rpco-deployment-script">Run the RPCO deployment script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#postdeployment-tasks">Postdeployment tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remove-haproxy">Remove HAProxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-glance-with-nfs">Configure glance with NFS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#perform-quality-control-tests">Perform quality control tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verify-openstack-operation">Verify OpenStack operation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation Guide</a> &raquo;</li>
+        
+      <li>Deployment playbooks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-install-internal/ch-playbooks-rpc.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="deployment-playbooks">
+<span id="id1"></span><h1>Deployment playbooks<a class="headerlink" href="#deployment-playbooks" title="Permalink to this headline">#</a></h1>
+<img alt="../_images/rpc-internal-installworkflow-rpc-playbooks.png" src="../_images/rpc-internal-installworkflow-rpc-playbooks.png" />
+<p>The rpc-openstack repository contains Rackspace additions for the
+upstream OpenStack-Ansible (OSA) project. The deployment
+process uses a shell script called <code class="docutils literal"><span class="pre">deploy.sh</span></code> to run all of the
+playbooks necessary to deploy a typical Rackspace Private Cloud
+Powered By OpenStack (RPCO) environment that includes
+the following items:</p>
+<ul class="simple">
+<li>Ansible, pip, and other tools</li>
+<li>Upstream OSA</li>
+<li>RPCO support tools, which include Holland backup service, SSH key
+distribution, custom security group rules, and <code class="docutils literal"><span class="pre">bashrc</span></code> settings.</li>
+<li>Monitoring as a Service (MaaS) which include agents, triggers, and
+alarms</li>
+<li>Filebeat, Logstash, and Elasticsearch with Kibana</li>
+</ul>
+<div class="section" id="predeployment-tasks">
+<h2>Predeployment tasks<a class="headerlink" href="#predeployment-tasks" title="Permalink to this headline">#</a></h2>
+<p>Before you run the deployment script, perform the following tasks
+as needed.</p>
+<ul class="simple">
+<li>If you are temporarily using HAProxy, use environment variables to
+enable the HAProxy playbook and disable the automatic deployment of
+MaaS:</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">export</span> <span class="nv">DEPLOY_HAPROXY</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">DEPLOY_MAAS</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If you do not need an ELK Stack use environment variables to disable
+its automatic deployment:</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">export</span> <span class="nv">DEPLOY_ELK</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-rpco-deployment-script">
+<h2>Run the RPCO deployment script<a class="headerlink" href="#run-the-rpco-deployment-script" title="Permalink to this headline">#</a></h2>
+<p>Change to the <code class="docutils literal"><span class="pre">/opt/rpc-openstack</span></code> directory and run the deployment script:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack
+<span class="gp">$</span> scripts/deploy.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="postdeployment-tasks">
+<h2>Postdeployment tasks<a class="headerlink" href="#postdeployment-tasks" title="Permalink to this headline">#</a></h2>
+<p>After the deployment script runs, perform the tasks in this section.</p>
+<div class="section" id="remove-haproxy">
+<h3>Remove HAProxy<a class="headerlink" href="#remove-haproxy" title="Permalink to this headline">#</a></h3>
+<p>If you were temporarily using HAProxy, perform the following actions
+to remove it and deploy MaaS:</p>
+<ol class="arabic">
+<li><p class="first">Verify the deployment of F5 load balancers.</p>
+</li>
+<li><p class="first">Remove the HAProxy packages and configuration from the target nodes:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">$</span> ansible infra_hosts -m <span class="nb">command</span> -a <span class="s1">&#39;service stop haproxy&#39;</span>
+<span class="gp">$</span> ansible infra_hosts -m <span class="nb">command</span> -a <span class="s1">&#39;apt-get -y remove --purge haproxy&#39;</span>
+<span class="gp">$</span> ansible infra_hosts -m <span class="nb">command</span> -a <span class="s1">&#39;apt-get -y autoremove&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Edit the <code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code> file and perform the
+following actions:</p>
+<ol class="arabic simple">
+<li>Change the <code class="docutils literal"><span class="pre">external_lb_vip_address</span></code> and
+<code class="docutils literal"><span class="pre">internal_lb_vip_address</span></code> options to use the production IP
+addresses.</li>
+<li>Remove the <code class="docutils literal"><span class="pre">haproxy_hosts</span></code> section.</li>
+</ol>
+</li>
+<li><p class="first">Verify that none of the infrastructure nodes contain the load
+balancer internal virtual IP address:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s2">&quot;ip a s br-mgmt&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Verify that none of the network interfaces configuration files on
+the infrastructure nodes contain the load balancer internal VIP:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="se">\</span>
+  <span class="s2">&quot;grep -A12 br-mgmt /etc/network/interfaces&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Verify shutdown of the HAProxy service on the infrastructure nodes:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s2">&quot;service haproxy status&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Verify purge of the HAProxy packages on the infrastructure nodes:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s2">&quot;dpkg -l | grep haproxy&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Unset the <code class="docutils literal"><span class="pre">DEPLOY_HAPROXY</span></code> and <code class="docutils literal"><span class="pre">DEPLOY_MAAS</span></code> environment
+variables.</p>
+</li>
+<li><p class="first">Run the MaaS playbooks:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks
+<span class="gp">$</span> openstack-ansible setup-maas.yml
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-glance-with-nfs">
+<h3>Configure glance with NFS<a class="headerlink" href="#configure-glance-with-nfs" title="Permalink to this headline">#</a></h3>
+<p>The following procedure describes how to configure an NFS back end to
+store Image service (glance) images. All steps in this procedure take
+place on the infrastructure nodes.</p>
+<ol class="arabic">
+<li><p class="first">Install the <code class="docutils literal"><span class="pre">nfs-common</span></code> package:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">$</span> ansible infra_hosts -m <span class="nb">command</span> -a <span class="s1">&#39;apt-get -y install nfs-common&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a mount point:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s1">&#39;mkdir /mnt/glance_container_nfs&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add the NFS mount to the <code class="docutils literal"><span class="pre">/etc/fstab</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s1">&#39;echo X.X.X.X:/MNT \</span>
+<span class="s1">  /mnt/glance_container_nfs nfs \</span>
+<span class="s1">  nfsvers=3,rsize=32768,wsize=32768,actimeo=0,retry=120,hard 0 0 &gt;&gt; \</span>
+<span class="s1">  /etc/fstab&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Mount the file system:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s1">&#39;mount -a&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Verify the mount:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s1">&#39;mount | grep nfs&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the glance containers to mount the file system:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s1">&#39;echo lxc.mount.entry = \</span>
+<span class="s1">  /mnt/glance_container_nfs/ var/lib/glance/images \</span>
+<span class="s1">  none defaults,bind,rw 0 0 &gt;&gt; /var/lib/lxc/$(lxc-ls | \</span>
+<span class="s1">  grep glance_container)/config&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Edit the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file and
+configure glance to use the <code class="docutils literal"><span class="pre">file</span></code> storage back end.</p>
+</li>
+<li><p class="first">Run the glance playbook:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">$</span> openstack-ansible os-glance-install.yml
+</pre></div>
+</div>
+</li>
+<li><p class="first">Stop and restart the glance containers:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s1">&#39;lxc-stop -n $(lxc-ls | \</span>
+<span class="s1">grep glance_container)&#39;</span>
+<span class="gp">$</span> ansible infra_hosts -m shell -a <span class="s1">&#39;lxc-start -d -n $(lxc-ls | \</span>
+<span class="s1">grep glance_container)&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="perform-quality-control-tests">
+<h3>Perform quality control tests<a class="headerlink" href="#perform-quality-control-tests" title="Permalink to this headline">#</a></h3>
+<p>After deployment, perform the postdeployment tests documented in the <a class="reference external" href="https://one.rackspace.com/pages/viewpage.action?pageId=110992052">Manual
+Tests</a>
+section on the RPCO Support wiki:</p>
+<p>These tests verify the following items:</p>
+<ul class="simple">
+<li>HAProxy has been removed</li>
+<li>Configuration persists after reboots</li>
+<li>The appropriate version of RPCO is installed</li>
+<li>The OpenStack environment contains the correct components and works
+correctly</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The MaaS QC tests are performed after the monitoring playbooks are
+deployed. For more information, see <a class="reference internal" href="ch-ops.html#monitoring2"><span class="std std-ref">Monitoring</span></a>.</p>
+</div>
+</div>
+<div class="section" id="verify-openstack-operation">
+<h3>Verify OpenStack operation<a class="headerlink" href="#verify-openstack-operation" title="Permalink to this headline">#</a></h3>
+<p>Perform the following tasks to verify basic operation of the
+OpenStack API and the Dashboard.</p>
+<p><strong>Verify the API</strong></p>
+<p>The utility container provides a CLI environment for additional
+configuration and testing.</p>
+<ol class="arabic">
+<li><p class="first">Determine the utility container name:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> lxc-ls <span class="p">|</span> grep utility
+<span class="go">infra1_utility_container-161a4084</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Access the utility container:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> lxc-attach -n infra1_utility_container-161a4084
+</pre></div>
+</div>
+</li>
+<li><p class="first">Source the <code class="docutils literal"><span class="pre">admin</span></code> project credentials:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">source</span> openrc
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run an OpenStack command that uses one or more APIs. For example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack user list
+<span class="go">+----------------------------------+--------------------+</span>
+<span class="go">| ID                               | Name               |</span>
+<span class="go">+----------------------------------+--------------------+</span>
+<span class="go">| 04007b990d9442b59009b98a828aa981 | glance             |</span>
+<span class="go">| 0ccf5f2020ca4820847e109edd46e324 | keystone           |</span>
+<span class="go">| 1dc5f638d4d840c690c23d5ea83c3429 | neutron            |</span>
+<span class="go">| 3073d0fa5ced46f098215d3edb235d00 | cinder             |</span>
+<span class="go">| 5f3839ee1f044eba921a7e8a23bb212d | admin              |</span>
+<span class="go">| 61bc8ee7cc9b4530bb18acb740ee752a | stack_domain_admin |</span>
+<span class="go">| 77b604b67b79447eac95969aafc81339 | alt_demo           |</span>
+<span class="go">| 85c5bf07393744dbb034fab788d7973f | nova               |</span>
+<span class="go">| a86fc12ade404a838e3b08e1c9db376f | swift              |</span>
+<span class="go">| bbac48963eff4ac79314c42fc3d7f1df | ceilometer         |</span>
+<span class="go">| c3c9858cbaac4db9914e3695b1825e41 | dispersion         |</span>
+<span class="go">| cd85ca889c9e480d8ac458f188f16034 | demo               |</span>
+<span class="go">| efab6dc30c96480b971b3bd5768107ab | heat               |</span>
+<span class="go">+----------------------------------+--------------------+</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Verify the dashboard</strong></p>
+<ol class="arabic simple">
+<li>With a web browser, access the Dashboard by using the external load
+balancer IP address defined by the <code class="docutils literal"><span class="pre">external_lb_vip_address</span></code>
+option in the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code>
+file. The Dashboard uses HTTPS on port 443.</li>
+<li>Authenticate by using the username <code class="docutils literal"><span class="pre">admin</span></code> user name and the
+password defined by the <code class="docutils literal"><span class="pre">keystone_auth_admin_password</span></code> option in
+the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_secrets.yml</span></code> file.</li>
+</ol>
+<p><strong>Verify the MaaS</strong></p>
+<ul>
+<li><dl class="first docutils">
+<dt>Run the <code class="docutils literal"><span class="pre">verify-maas.yml</span></code> playbook inside the playbooks directory</dt>
+<dd><p class="first">in <code class="docutils literal"><span class="pre">rpc-openstack</span></code>.</p>
+<div class="last admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This is not included in a MaaS install run by default because
+there is a brief period between the agent restarting with new
+checks and when the checks are reflected in MaaS.</p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-ops.html" class="btn btn-neutral float-right" title="Post-installation operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-external-ceph.html" class="btn btn-neutral float-left" title="RPC Ceph installation process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

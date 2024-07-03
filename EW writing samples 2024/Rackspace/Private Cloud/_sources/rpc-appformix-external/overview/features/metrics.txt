@@ -1,0 +1,8 @@
+.. _metrics-ug:
+
+=======
+Metrics
+=======
+
+For information about metrics and the metrics available for hosts,
+instances, and OpenStack® Projects in Chart View, see `Metrics <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-metric.html>`_ in the AppFormix User Guide.

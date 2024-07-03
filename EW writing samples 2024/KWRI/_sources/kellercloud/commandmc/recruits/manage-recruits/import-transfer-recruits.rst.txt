@@ -1,0 +1,31 @@
+
+.. _import-transfer-spreadsheet-recruits-cmc:
+
+Transfer Existing Recruits Records into the Import Recruits Template
+====================================================================
+
+To import recruits from an outside source, you need to manually move recruits from an existing recruits spreadsheet to the CommandMC import recruits template.
+
+You can transfer recruits from any system that exports recruits into a spreadsheet with the .CVS format.
+
+To transfer the recruits from an exported spreadsheet to the recruit template spreadsheet, complete the following steps:
+
+1. Open the two spreadsheets side-by-side. For more information on how to download the import recruits template, see :ref:`import-recruits-cmc`.
+
+#. On your export file, select the cell of the first contact (not the column title).
+
+#. Scroll to the cell of the last contact in the same column.
+
+#. While holding the Shift key, on your keyboard, select the last cell in that same column. This will select every cell in that column.
+
+#. Copy the selected cells.
+
+#. On the Command Contact Import Template, select the first empty cell, in the corresponding column, and paste the cells.
+
+   This transfers the information from that column, into the Command Contact Import Template. Follow these steps to transfer each column of information into the the blank template.
+
+   .. note::
+
+      If you are entering a Postal Code that begins with a zero, you must format the cells to display as text fields (Excel and Numbers removes the first zero otherwise).
+
+#. Fill in any additional information, then save the import recruit template as a .CSV file to a designated location.

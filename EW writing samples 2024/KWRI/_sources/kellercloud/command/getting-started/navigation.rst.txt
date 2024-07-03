@@ -1,0 +1,93 @@
+
+.. _navigation-command-ug:
+
+Navigate the Command dashboard
+==============================
+
+The Command dashboard consists of the following menus and modules:
+
+Top menu
+^^^^^^^^
+
+The top menu has the following options:
+
+* **kw** icon - click this icon to display the names of the Command
+  applications.
+
+* **command** link - click this link to display the Command dashboard.
+
+* **connect** link - Click this link to display the Connect dashboard.
+
+* **MarketPlace** icon - Click this icon to access the KW MarketPlace.
+
+* *Your Profile* - Click on your profile to:
+
+   * Edit your profile
+
+   * Go to the KW MarketPlace
+
+   * Configure Command settings
+
+   * Go to Command Training
+
+   * Log out of Command
+
+* **?** icon - Click this icon to go to KW University.
+
+Left-hand menu
+^^^^^^^^^^^^^^
+
+The left-hand menu provides access to the applications within Command:
+
+* **Home** - Display the Command dashboard.
+
+* **Contacts** - Organize and track your contacts and leads.
+
+* **Tasks** - Organize and track your tasks. These tasks can come from
+  SmartPlans, Opportunity checklists, or tasks that you manually enter in
+  the system.
+
+* **SmartPlans** - Automate reminders for when to call or email your
+  prospects and clients.
+
+* **Referrals** - Send or receive a referral from someone outside
+  of your marketing area.
+
+* **Opportunities** - Organize and track your current and potential deals.
+  Each opportunity starts at the Cultivate phase and is tracked through to
+  the Closed phase.
+
+* **Lead Accelerator** - Create multi-channel marketing campaigns across both
+  digital and physical media.
+
+* **Campaigns** - Create ads across multiple channels,
+  both print and digital.
+
+* **Reports** - View Command reports.
+
+* **Designs** - Create social graphics, print materials, and emails
+  from scratch or from professionally designed templates.
+
+* **Listings** - Organize and track your listings.
+
+* **Insights** - Share your local insights and see what others are saying
+  an area you farm or your neighborhood.
+
+* **Sites** - Create agents sites or standalone pages using predefined
+  page elements.
+
+* **Listing Consult** - Share your unique value proposition with a dynamic
+  listing presentation designed for today’s client
+
+Dashboard modules
+^^^^^^^^^^^^^^^^^
+
+* **Tasks** - Create and manage Contact or Opportunity tasks.
+
+* **Goals vs. Actuals** - Displays monthly and yearly goals.
+
+* **Database Health** - Displays the health of your Contacts database.
+
+* **Product Updates** - Displays what's new and what next for Command features.
+
+* **Notepad** - Create notes for yourself.

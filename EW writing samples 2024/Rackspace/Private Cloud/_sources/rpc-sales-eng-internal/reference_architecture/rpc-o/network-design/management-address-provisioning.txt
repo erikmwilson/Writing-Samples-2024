@@ -1,0 +1,27 @@
+===============================
+Management address provisioning
+===============================
+
+Outside of the out-of-band connectivity, each server must be configured
+with a management (host) address. The host network must be a routable
+network and requires external Internet access. Each node must be
+configured to traverse thru any network proxies before private cloud
+build can begin. Make sure not to put any other servers or
+devices that do not pertain to RPC on this network.
+
+.. list-table:: **RPC management IP requirements**
+   :widths: 40 60
+   :header-rows: 1
+
+   * - **Element**
+     - **IP addresses required**
+   * - Infrastructure nodes
+     - 4
+   * - Compute nodes
+     - 3
+   * - Swift nodes
+     - 5
+   * - Ceph nodes
+     - 5
+   * - **Total IP addresses for RPC**
+     - **17**

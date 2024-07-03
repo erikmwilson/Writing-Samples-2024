@@ -1,0 +1,25 @@
+High availability clusters
+==========================
+
+Rackspace RPC magnum supports HA clusters, which provide seamless
+failover in the event of a resource failure.  It also improves
+performance by distributing the workload across multiple servers.
+
+On a Rackspace RPC Kubernetes cluster, HA resources include:
+Kubernetes API, Kubernetes controller manager, Kubernetes scheduler,
+and Etcd.  Behind the scenes, magnum uses Corosync, Pacemaker, and
+HAProxy to provide HA capabilities.
+
+HA is automatically enabled on a Rackspace RPC Kubernetes cluster.
+The only requirement is that your cluster contain 2 or more master
+nodes.  Specify the number of master nodes using the 'master_count'
+parameter.  For example:
+
+ .. code-block:: console
+
+    $ magnum cluster-create ha_test --cluster-template default /
+      --master-count 2
+
+Please note that HA for an application deployed on a Rackspace RPC
+Kubernetes cluster is not configured by default and will have to be
+set up according to the needs of the specific application.

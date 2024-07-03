@@ -1,0 +1,38 @@
+=====================
+Base OS configuration
+=====================
+
+The following table outlines the required partition tables for the
+base OS of Ubuntu 16.04.
+
+The partition table for on /dev/sda for each **Infrastructure** node
+needs to look like the following:
+
+.. list-table:: **Base OS partition table**
+   :widths: 30 30 40
+   :header-rows: 1
+
+   * - **Partition**
+     - **Size**
+     - **VG**
+   * - ``/boot`` (ext4)
+     - 250 MB
+     -
+   * - ``/`` (ext4)
+     - 40 GB
+     - ``(vol group: lxc, logical vol: root00)``
+   * - ``/openstack`` (ext4)
+     - 250 GB
+     - ``(vol group: lxc, logical vol: openstack00)``
+   * - Swap (swap)
+     - 8 GB
+     - ``(vol group: lxc, logical vol: swap00)``
+   * - Unformatted
+     - Remainder
+     - ``(vol group: lxc, logical vol: none)``
+
+
+The **Logging** node needs partition ``/openstack`` resized to ~2
+TB. The **Compute** node does not need the ``/openstack`` partition
+but does need ``/var/lib/nova`` (ext4) ~2TB (``vg: lxc, lv:
+openstack00``).

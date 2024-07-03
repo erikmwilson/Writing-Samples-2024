@@ -1,0 +1,35 @@
+
+
+.. _overview-compliance-opportunities-command:
+
+Compliance Overview
+===================
+
+Transition to Command Compliance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Previously, Market Centers have managed compliance approvals from within the Dotloop system. We have now transitioned to doing this in Command. You must manage document compliance in Command, regardless of whether you continue to use Dotloop or if you are going to use DocuSign to manage your documents and get signatures.
+
+You can import your active Dotloop Loops into Command as Opportunities. After they are in Command, you can use any document management system you want to get signatures, but you will submit the completed forms to your Market Center using Command. For more information, see :ref:`import-dotloop-opportunities-command`.
+
+Document Management
+^^^^^^^^^^^^^^^^^^^
+
+Keller Williams has created a connection between Opportunities and Dotloop/DocuSign. These connections allow you to work in either Dotloop or DocuSign to get forms signed, then you will have the ability to import completed forms into Command. For more information, see :ref:`documents-opportunities-command`.
+
+Compliance Management
+^^^^^^^^^^^^^^^^^^^^^
+
+Once your documents are signed and completed, you import them into Command and submit them to your Market Center. See the following procedures to manage and submit compliance documents for an Opportunity:
+
+1. :ref:`add-documents-opportunities-command`.
+
+#. :ref:`create-custom-folders-opportunities-command`.
+
+#. :ref:`add-one-off-document-opportunities-command`.
+
+#. :ref:`version-checklist-opportunities-command`.
+
+#. :ref:`submit-documents-opportunities-command`.
+
+#. :ref:`resubmit-documents-opportunities-command`.

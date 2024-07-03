@@ -1,0 +1,11 @@
+
+.. _consumer-command-index:
+
+Consumer
+========
+
+The following sections contain information about the
+Consumer application.
+
+.. toctree::
+   :maxdepth: 1

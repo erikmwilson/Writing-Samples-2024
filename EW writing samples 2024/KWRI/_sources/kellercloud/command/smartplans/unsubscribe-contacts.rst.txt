@@ -1,0 +1,28 @@
+
+.. _unsubscribe-contacts-command:
+
+Unsubscribe Recruits from a SmartPlan
+=====================================
+
+Eventually, you might need to retire an outdated SmartPlan or maybe you created a new and better version and you want to remove contacts from the old SmartPlan and add to the new SmartPlan.
+
+If you want to make full edits to a SmartPlan that has contacts added (an active SmartPlan), for example, adding, removing or reordering steps, you must duplicate the SmartPlan to make those changes, then add the contacts to the new plan.
+
+For more information, see :ref:`edit-active-command` or :ref:`edit-inactive-command`.
+
+To unsubscribe recruits from a SmartPlan, complete the following steps:
+
+.. include:: smartplans-login.rst
+
+#. Click the **My SmartPlans** tab, at the top of the page.
+
+#. #. Find the correct SmartPlan in the list, and in the **Contacts** column, click the **View** icon |view-icon|.
+
+   .. |view-icon| image:: ../../../images/view-icon.png
+      :height: 30
+
+#. On the **Contacts added to SmartPlan** fly-out window, check the boxes next to the contacts you want to remove/unsubscribe, and click **Confirm Unsubscribe**.
+
+   If you want to remove all contacts, click **Unsubscribe All**.
+
+#. On the confirmation pop-up, click **Confirm**.

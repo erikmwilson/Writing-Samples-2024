@@ -1,0 +1,28 @@
+
+.. _add-note-commandmc:
+
+Add a Note
+==========
+
+CommandMC tracks all notes related to the recruit.
+
+To add a note to a recruit, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click the **Recruits** tab, at the top of the page.
+
+#. From the **View Tasks** drop-down, select either **My Tasks** or **All MC Tasks** to display only your tasks or all Market Center tasks.
+
+#. Click either **Checklist Tasks** or **Other Tasks**.
+
+#. Click the status of tasks to display, **To Do**, **Completed**, **Archived**, or **Expired**. The task must have an attached recruit.
+
+#. Locate the appropriate task, click the More Options menu (ellipses |menu-options-icon| icon) and select **Add Note**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Add New Note** window, enter a **Note Title**, **Description**, and click **Save**.
+
+  You can now access this, and other notes that you add, on both the recruit's timeline, and on the recruit details **Notes** tab.

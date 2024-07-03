@@ -1,0 +1,33 @@
+
+.. _manage-luxury-exceptions-commandmc:
+
+Manage Luxury Program Exception Requests (Regional Leadership)
+==============================================================
+
+Using CommandMC, Regional leaders (this includes the Regional Operating Principal, Regional Director, Regional MCA, Regional Operations Manager, Regional Staff, Regional Director Assistant, Regional MCA Assistant, and Area Director roles) are able to approve or deny requests from Market Center leadership of eligible agents and qualifying properties to be accepted into the Luxury Program. It is recommended that you check the Luxury portal at least once a week to process incoming requests from Market Center leadership.
+
+To manage Luxury program submissions for your region, complete the following steps:
+
+.. include:: directory-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles, click your name, at the top-right of the page, and make sure the Regional profile is selected.
+
+5. From the **Region** column, click your region (it is labeled **My Region**).
+
+#. On the **Luxury** tab, click **Luxury Requests**.
+
+   .. note::
+
+      * It is recommended that you check the portal at least once a week to process incoming requests from Team Leaders.
+
+      * County names on the **Luxury** tab are not displayed if they are spelled incorrectly in WinMORE.
+
+#. To approve a request, locate the exception request and click **Approve**.
+
+   After the luxury request is approved the agent is moved to the Luxury roster for the office and they are labeled with a **Luxury Agent**.
+
+#. To reject a request, locate the luxury request and click **Reject**.
+
+   After the luxury request has been rejected the agent is labeled with a **Luxury Denied** tag that includes the date the submission was rejected.

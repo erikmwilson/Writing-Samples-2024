@@ -1,0 +1,43 @@
+
+.. _create-learning-path-docebo-connect:
+
+Create a Learning Path
+======================
+
+Learning Paths consist of a list of courses that the user must follow in a specific order. For more information, see `Creating and Managing Learning Paths <https://www.docebo.com/knowledge-base/elearning-how-to-manage-curricula/>`_.
+
+To create a Learning Path, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+#. Click **Learning Paths** from the **E-Learning section**.
+
+#. Click **New Learning Plan** to start creating a new learning plan.
+
+#. On the **New Learning Path** window, click the **Details** tab.
+
+#. Enter the learning plan **Name**, **Description**, and **Code** (optional).
+
+#. Select or upload a thumbnail.
+
+#. Click the **Settings** tab. On this tab you can:
+
+   * Flag whether you want to show the learning plan in catalogs. If you flag this option, then a fourth tab, E-Commerce, populates to configure the price of the learning plan, as well as its selling options.
+
+   * Set the **Days of Validity** of the learning plan, allowing users to access it for only a specific number of days after they enrolled in it, or after they accessed it for the first time. Select one of the available options:
+
+     * **After first course access**. The number of days is calculated from the first time a user accesses any course in the learning plan.
+
+     * **After being enrolled in the learning plan**. The number of days is calculated from the user’s enrollment date.
+
+#. Enter the **Channels** where this learning plan should be published.
+
+#. Assign certificates, certifications, and credits to your learning plan, if desired. Users will be able to download their certificates either from the My Activity page, Learning Plan tab, or from the learning plan page. Certifications are only available in the My Activity page, Certification tab.
+
+   Certificates for learning plans are issued only when a user has completed ALL of the courses within a learning plan. This also applies if a learner is only enrolled in a few, but not all, of the courses within a learning plan.
+
+#. Click the **Share** tab to select the **Enable enrollment links for the learning plan** option. This creates a link from within the platform to share with your users outside of the platform. When users click on this link from an external website, they will automatically be enrolled in the learning plan. Learn more about enrollment links.
+
+#. Click **Confirm**.

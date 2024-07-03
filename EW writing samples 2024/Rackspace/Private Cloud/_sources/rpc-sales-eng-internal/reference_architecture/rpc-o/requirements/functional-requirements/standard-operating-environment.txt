@@ -1,0 +1,24 @@
+==============================
+Standard operating environment
+==============================
+
+.. list-table:: **Standard operating environment**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - SOE3.0
+     - The system shall provide a standard operating environment
+       including:
+   * - SOE3.0.1
+     - The system is based on Ubuntu 16.04 LTS.
+
+       **Solution:** Running KVM based hypervisors, we implement
+       Ubuntu as the host OS.
+   * - SOE3.0.2
+     - The system shall provide effective documentation about
+       operational procedures.
+   * - SOE3.0.3
+     - The system shall have effective change management procedures in
+       place with teams assigned to define this.

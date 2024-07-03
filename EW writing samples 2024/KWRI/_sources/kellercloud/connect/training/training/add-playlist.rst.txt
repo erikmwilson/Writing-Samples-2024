@@ -1,0 +1,17 @@
+
+.. _add-playlist-training-connect:
+
+Add Training to Playlist*
+=========================
+
+Playlists are used to organize content within a channel. You can create your own playlists and keep them private or share them with others. Playlist also show up as a custom filters depending on what channel you are viewing.
+
+To add training to a playlist, complete the following steps:
+
+.. include:: training-login.rst
+
+#. Search for the On Demand Course, Learning Path, or Channel Resource. For more information, see :ref:`search-training-connect`.
+
+#. Click the training name.
+
+#. On the course page, click the **Add to Playlist** button (circle with a plus sign).

@@ -1,0 +1,36 @@
+.. _req-resp-types:
+
+==========================
+Request and response types
+==========================
+
+The |apiservice| supports the JSON data serialization format.
+
+The request format and resource version are specified by using the
+``Content-Type`` header and are required for operations that have a request
+body. If ``application/json`` is provided, the latest resource version is
+used. To avoid unintentional interruptions with your integration,
+Rackspace recommends specifying a specific version header rather than
+relying on ``application/json``, as version updates
+result in your immediate adoption of the latest version.
+
+You can specify the response format and resource version in requests by
+using the ``Accept`` header. If no response format is specified, JSON is
+the default and the latest version is used.
+
+.. list-table:: **Response formats**
+   :widths: 10 20 10 10
+   :header-rows: 1
+
+   * - Format
+     - Accept header
+     - Resource Version
+     - Default
+   * - JSON
+     - application/json
+     - Version 1
+     - Yes
+   * - JSON
+     - application/vnd.ticketing.v2+json
+     - Version 2
+     - No

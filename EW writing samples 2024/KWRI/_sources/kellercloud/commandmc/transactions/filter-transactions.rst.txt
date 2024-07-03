@@ -1,0 +1,36 @@
+
+.. _filter-transactions-commandmc:
+
+Filter Transactions
+===================
+
+While you are managing your transactions in CommandMC, you may need to find specific transactions. Instead of scrolling through your list of transactions to find the transactions you are looking for, you can use filters.
+
+To filter transactions, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transactions** tab, at the top of the page. A list displays of all your Market Center transactions.
+
+#. Click the filter icon |filter-icon| at the top of the page.
+
+   .. |filter-icon| image:: ../../../images/filter-icon.png
+      :height: 30
+
+#. When the filters fly-out menu appears on the right side of the page, select filters by clicking the checkbox beside them or entering specific dates. To remove filters, you can either remove them individually or click **Clear All** at the bottom of the fly-out menu to remove all of the filters.
+
+   You can filter on the following criteria:
+
+   * Status
+
+   * Representation Side
+
+   * Property Type
+
+   * Transaction Type
+
+   * Date
+
+#. Click **Apply**.
+
+   The transactions are filtered and the total number of applied filters appears next to the filter icon. Click **Clear Filters** to remove all filters. You can save this set of filters as a Smart View. For more information, see :ref:`smartview-transactions-commandmc`.

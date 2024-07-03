@@ -1,0 +1,85 @@
+
+.. _managing-discussions-opportunities-command:
+
+Managing Opportunity Discussions (Teams)
+========================================
+
+When you are on a team and collaborating on an Opportunity, you can communicate with other agents using Discussions. You can also communicate about the Opportunity with someone on your team who is not assigned to the Opportunity. With Opportunity Discussions, you have the ability to leave messages, reply, tag specific team members (even if they are not assigned to the Opportunity), and pin or favorite important messages. You then have the ability to access all of your Opportunity Discussions, on the **All Discussions page**, even if the Opportunity has been closed, lost, or archived.
+
+**Notifications**
+
+If you are mentioned in a Discussion, you receive an email, Kelle, and Command notification. Go to the Command notification to access the link to the specific Discussion. You can also go access a Discussion through an Opportunity or from the **All Discussions** page.
+
+For more information, see :ref:`access-discussions-opportunities-command`.
+
+To manage Opportunity Discussions, complete the following steps:
+
+.. include:: ../../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top-right of the Opportunity page, click **Discussion**.
+
+#. To post a message, enter your message in the text box. Click **Send** to post your message.
+
+   * Use an **@** mention to send a notification to a specific person in the discussion. When you type the @ sign, a drop-down appears with a list of team members, start typing a team member's name to narrow the list.
+
+   * Select the desired team member from the drop-down, and continue typing to complete the message.
+
+   * You can also use **@all** to send a notification to all of the collaborators in the Discussion.
+
+#. To add an image to the Discussion, click the Add Image icon, |add-image-icon| below the text box.
+
+   .. |add-image-icon| image:: ../../../../../images/add-image-icon.png
+      :height: 20
+
+#. To reply to a post, click in the text box, under a specific post. In this way, you can hold detailed discussions around a specific topic, while using a new post to discuss a new topic. Use the @ mention when replying to ensure the person you are replying to gets a notification.
+
+#. To edit or delete a post, hover over a message or reply that you added and click on the three dots to the right of the message or reply. Choose to either **Edit Post** or **Delete Post**. The other people in the Discussion can see if a post or reply has been edited.
+
+#. To filter existing posts and replies, use the drop-down at the top of the page to sort by latest post, most liked, most comments, unread, favorited, and pinned.
+
+#. To add or remove team members from the Discussion, click the Collaborator icon |collaborator-icon|.
+
+   .. |collaborator-icon| image:: ../../../../../images/collaborator-icon.png
+      :height: 20
+
+   * From the **Discussion Collaborators** pop-up, you can add or remove team members, even if they are not assigned to the Opportunity.
+
+   * A team member in the Discussion, who is not assigned to the Opportunity shows a **Limited** status. They can only see a very basic view of the Opportunity details and cannot make any edits or additions to the Opportunity.
+
+   When you are invited to the Discussion for an Opportunity, you will have one of two views:
+
+     * If you are the owner of or are assigned to the Opportunity, you have full access to the Opportunity. You can access the Discussion and make edits or additions to the Opportunity.
+
+     * If you are not assigned to the Opportunity, but have been added to the Opportunity's Discussion, you have a very limited view of the Opportunity. You cannot make edits or additions to the Opportunity.
+
+
+#. To react to a post or reply, use the following icons:
+
+   * |like-icon|  Click to like the post or reply.
+
+   * |hide-icon|  Click to show or hide the replies to a post.
+
+   * |favorite-icon| Click to favorite a post. You can the filters, at the top of the page, to see your favorites.
+
+   * |pin-icon| Click to pin a post. You can use the filters, at the top of the page, to see your pinned posts.
+
+   .. |like-icon| image:: ../../../../../images/like-icon.png
+      :height: 20
+
+   .. |hide-icon| image:: ../../../../../images/hide-icon.png
+      :height: 20
+
+   .. |favorite-icon| image:: ../../../../../images/favorite-icon.png
+      :height: 20
+
+   .. |pin-icon| image:: ../../../../../images/pin-icon.png
+      :height: 20

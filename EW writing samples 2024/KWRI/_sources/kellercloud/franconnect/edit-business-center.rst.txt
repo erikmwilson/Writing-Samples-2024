@@ -1,0 +1,31 @@
+
+.. _edit-business-center-franconnect:
+
+Edit a Business Center
+======================
+
+After a new Business Center has been added to FranConnect, you can edit it in FranConnect. For more information, see :ref:`add-organization-franconnect`.
+
+To edit a Business Center, complete the following steps:
+
+.. include:: franconnect-login.rst
+
+#. Click on the **Market Center Number** or **Entity Name** to edit that Market Center.
+
+#. On the **Market Center Info** page, click **Business Center** from the **Market Center Info** column menu.
+
+#. On the **Business Center Information** page, click **Modify** for the correct Business Center.
+
+#. Edit the Business Center information at necessary. The following fields have some special considerations:
+
+   * **Business Center** - The Business Center name.
+
+   * **State** - Select a state from the pre-defined list. WorldWide Business Centers so not have a state value.
+
+   * **Country** - Select a country from the pre-defined list. WorldWide Business Centers so not have a country value.
+
+   * **Legal Close Date** - This value becomes the End Date and Legal Close Date in the KW AMS database. Original Open Date in the KW AMS database is kept empty.
+
+   * **Address 2** - This field does not sync with the KW AMS database. Anything entered here is available only in FranConnect.
+
+#. Click **Save** at the bottom of the page,

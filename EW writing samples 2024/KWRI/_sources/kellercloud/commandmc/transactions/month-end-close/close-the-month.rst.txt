@@ -1,0 +1,19 @@
+
+.. _close-the-month-month-end-close-commandmc:
+
+Close the Month
+===============
+
+Month end close is the process of finalizing finance numbers and letting KW know that everything for a given month is final. The month end close is must be completed by the end of the 3rd business day of the month. It is recommended that MCAs review their numbers each Friday to make sure everything is in balance weekly so errors are caught before the end of the month. The month end close **Overview** tab is continually updated so that MCAs can check their numbers at any point in time.
+
+To close the month, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Month End Close** tab at the top of the page.
+
+#. On the **Overview** tab, you can review your key metrics. Your key metrics must balance to close the month.
+
+#. Click **Close the Month**.
+
+#. On the **CLose the Month?** window, check **I acknowledge** and click **Close the Month**. This action permanently closes the month. No data for the month can be changed and the month cannot be reopened.

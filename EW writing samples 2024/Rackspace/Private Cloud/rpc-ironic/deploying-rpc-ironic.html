@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ironic configuration &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Post-deployment image registration and node enrollment" href="post-deploy-rpc-ironic.html" />
+    <link rel="prev" title="Tested Hardware" href="hardware-prereqs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bare Metal Service</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#deploying-ironic">Deploying Ironic</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hardware-prereqs.html">Tested Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware-prereqs.html#firmware-configuration-requirements">Firmware configuration requirements</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Ironic configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-network">Configure the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#defining-host-groups">Defining host groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-ironic-endpoints-for-health-checks">Setting up ironic endpoints for health checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-neutron-dhcp">Configuring neutron DHCP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#swift-setup">Swift Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-and-configure-the-neutron-network">Set up and configure the neutron network</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="post-deploy-rpc-ironic.html">Post-deployment image registration and node enrollment</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html#openstack-ansible-deployment">OSA Ironic deployment documentation</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html">OSA Ironic configuration documentation</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic/latest/install/configure-compute.html">Configure the Compute service to use the Bare Metal service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#using-ironic">Using Ironic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#troubleshooting-ironic">Troubleshooting Ironic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference-materials">Reference materials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bare Metal Service</a> &raquo;</li>
+        
+      <li>Ironic configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ironic/deploying-rpc-ironic.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ironic-configuration">
+<h1>Ironic configuration<a class="headerlink" href="#ironic-configuration" title="Permalink to this headline">#</a></h1>
+<p>This document will guide you through the necessary steps to
+configure and setup the Bare metal (Ironic) service for
+Rackspace Private Cloud Powered by OpenStack (RPCO).</p>
+<div class="section" id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">#</a></h2>
+<p>By default, the ironic CLI will default to a very old version of the
+API. If you use the same shell throughout the enrollment process,
+you can set the API version to the latest compatible version via
+environment variable:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">export</span> <span class="nv">IRONIC_API_VERSION</span><span class="o">=</span>latest
+<span class="gp">$</span> ironic ...
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-the-network">
+<h2>Configure the network<a class="headerlink" href="#configure-the-network" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Before you begin, define the following new networks in
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml/</span></code>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">cidr_networks:</span>
+   <span class="na">tftp: &lt;IP network&gt;/&lt;netmask&gt;</span>
+   <span class="na">ironic-ipmi: &lt;IP network&gt;/&lt;netmask&gt;</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">tftp</span></code></dt>
+<dd><p class="first last">The base network for ironic hosts. This network contains the
+interfaces used to provision the host via <code class="docutils literal"><span class="pre">tftp</span></code>. It is also
+the hosts default route.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">ironic-ipmi</span></code></dt>
+<dd><p class="first last">This network touches the <code class="docutils literal"><span class="pre">ipmi</span></code> devices (drac, ilo or other)
+of the ironic hosts. It allows <code class="docutils literal"><span class="pre">ironic-conductor</span></code> to control
+the power status of the ironic hosts.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ensure you add used IPs from these networks to the <code class="docutils literal"><span class="pre">used_ips</span></code>
+list.</p>
+</div>
+</li>
+<li><p class="first">Add the following two networks to <code class="docutils literal"><span class="pre">provider_networks</span></code> and connect
+the <code class="docutils literal"><span class="pre">ironic-ipmi</span></code> network to the <code class="docutils literal"><span class="pre">ironic-conductor</span></code> containers:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">- network:</span>
+     <span class="na">container_bridge: &quot;br-ironic-ipmi&quot;</span>
+     <span class="na">container_type: &quot;veth&quot;</span>
+     <span class="na">container_interface: &quot;eth_ipmi&quot;</span>
+     <span class="na">ip_from_q: &quot;ironic-ipmi&quot;</span>
+     <span class="na">type: &quot;raw&quot;</span>
+     <span class="na">group_binds:</span>
+       <span class="na">- ironic-infra_hosts</span>
+</pre></div>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">- network:</span>
+     <span class="na">container_bridge: &quot;br-tftp&quot;</span>
+     <span class="na">container_type: &quot;veth&quot;</span>
+     <span class="na">container_interface: &quot;eth_tftp&quot;</span>
+     <span class="na">ip_from_q: &quot;ironic-ipmi&quot;</span>
+     <span class="na">type: &quot;flat&quot;</span>
+     <span class="na">net_name: &quot;tftp&quot;</span>
+     <span class="na">ip_from_q: &quot;tftp&quot;</span>
+     <span class="na">group_binds:</span>
+       <span class="na">- neutron_linuxbridge_agent</span>
+       <span class="na">- ironic_all</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This network connects neutron and all ironic containers to the base
+network of the ironic nodes. Neutron needs to be connected as it
+controls the IP assignment of ironic, along with providing
+gateway access. Ironic needs access to provision the nodes.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="defining-host-groups">
+<h2>Defining host groups<a class="headerlink" href="#defining-host-groups" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Create a new file <code class="docutils literal"><span class="pre">ironic.yml</span></code> in
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/</span></code>.</p>
+</li>
+<li><p class="first">By default, if <code class="docutils literal"><span class="pre">ironic-compute_hosts</span></code> and <code class="docutils literal"><span class="pre">ironic-infra_hosts</span></code>
+are not defined, they will not be deployed. We recommend to put
+these containers on the infrastructure hosts.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">ironic-compute_hosts:</span>
+   <span class="na">infra01:</span>
+     <span class="na">ip: &lt;infra01_management_ip&gt;</span>
+   <span class="na">infra02:</span>
+     <span class="na">ip: &lt;infra02_management_ip&gt;</span>
+   <span class="na">infra03:</span>
+     <span class="na">ip: &lt;infra03_management_ip&gt;</span>
+<span class="na">ironic-infra_hosts:</span>
+   <span class="na">infra01:</span>
+     <span class="na">ip: &lt;infra01_management_ip&gt;</span>
+   <span class="na">infra02:</span>
+     <span class="na">ip: &lt;infra02_management_ip&gt;</span>
+   <span class="na">infra03:</span>
+     <span class="na">ip: &lt;infra02_management_ip&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="setting-up-ironic-endpoints-for-health-checks">
+<h2>Setting up ironic endpoints for health checks<a class="headerlink" href="#setting-up-ironic-endpoints-for-health-checks" title="Permalink to this headline">#</a></h2>
+<p>The ironic agent needs to be on the <code class="docutils literal"><span class="pre">ironic-tftp</span></code> network in order to
+access <code class="docutils literal"><span class="pre">ironic-api</span></code> and swift.</p>
+<ol class="arabic">
+<li><p class="first">The following variables need to be inserted and upated with the correct
+values inside of <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">extra_lb_vip_addresses:</span>
+   <span class="na">- &lt;Ironic Provsioning Network IP Address&gt;</span>
+<span class="na">ironic_openstack_api_url: &quot;http(s)://&lt;Ironic Provisioning Network IP Address&gt;:{{ ironic_service_port }}&quot;</span>
+<span class="na">ironic_swift_endpoint: &quot;http(s)://&lt;Ironic Provisioning Network IP Address&gt;:8080&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The IP addresses referenced should be the same one referenced in
+<code class="docutils literal"><span class="pre">extra_lb_vip_addresses</span></code> that were setup during installation.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="configuring-neutron-dhcp">
+<h2>Configuring neutron DHCP<a class="headerlink" href="#configuring-neutron-dhcp" title="Permalink to this headline">#</a></h2>
+<p>To prevent conflicts occuring with an existing authoritative DHCP
+server, neutron needs to be set to ignore unknown requests.</p>
+<p>Set the following variables in <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">neutron_dhcp_config:</span>
+   <span class="na">dhcp-option-force: &quot;26,1500&quot;</span>
+   <span class="na">dhcp-ignore: &quot;tag:!known&quot;</span>
+   <span class="na">log-facility: &quot;/var/log/neutron/dnsmasq.log&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>For multi-hypervisor deployments that support both ironic and virtual
+instances, the following needs to be added to
+<code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code> as a workaround for an issue where
+the virtual instances always go to an ERROR status.</p>
+<div class="last highlight-ini"><div class="highlight"><pre><span></span><span class="na">nova_scheduler_use_baremetal_filters: False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="swift-setup">
+<h2>Swift Setup<a class="headerlink" href="#swift-setup" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li>Follow the <a class="reference external" href="https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-install-internal/configure-opt/configure-object-storage.html">Swift Docs</a>
+to setup and configure Swift.</li>
+<li>The following variable needs to be set in
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> for
+Swift to work with Ironic:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">ironic_swift_image_container: &quot;{{ glance_swift_store_container }}&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="set-up-and-configure-the-neutron-network">
+<h2>Set up and configure the neutron network<a class="headerlink" href="#set-up-and-configure-the-neutron-network" title="Permalink to this headline">#</a></h2>
+<p>Ensure you have fully deployed OpenStack before continuing.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As of the Ocata release, the neutron CLI is deprecated. Refer to
+the <a class="reference external" href="https://docs.openstack.org/python-openstackclient/latest/">openstack-pythonclient</a>
+documentation for more up-to-date commands.</p>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> neutron net-create --shared --provider:physical_network tftp --provider:network_type flat tftp
+<span class="gp">$</span> neutron subnet-create --name ironic-tftp <span class="se">\</span>
+  --allocation-pool <span class="nv">start</span><span class="o">=</span>&lt;NON_ALLOCATED_TFTP_RANGE_START&gt;,end<span class="o">=</span>&lt;NON_ALLOCATED_TFTP_RANGE_END&gt; <span class="se">\</span>
+  --dns-nameserver<span class="o">=</span><span class="m">8</span>.8.4.4 tftp &lt;TFTP_NETWORK&gt;/&lt;TFTP_NETMASK&gt;
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p class="first">Execute the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> neutron net-list <span class="p">|</span> grep tftp <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Take the return UUID from the above command, and add the content to
+the <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">ironic_ironic_conf_overrides:</span>
+  <span class="na">neutron:</span>
+    <span class="na">cleaning_network_uuid: &quot;&lt;NEUTRON_TFTP_NETWORK_UUID&gt;&quot;</span>
+  <span class="na">conductor:</span>
+    <span class="na">automated_clean: true</span>
+</pre></div>
+</div>
+<p>This automatically cleans the nodes on check-in.</p>
+</li>
+<li><p class="first">Re-run <code class="docutils literal"><span class="pre">os-ironic-install.yml</span></code> playbook to ensure the new
+settings are active.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="post-deploy-rpc-ironic.html" class="btn btn-neutral float-right" title="Post-deployment image registration and node enrollment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hardware-prereqs.html" class="btn btn-neutral float-left" title="Tested Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

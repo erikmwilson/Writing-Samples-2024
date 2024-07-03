@@ -1,0 +1,41 @@
+
+.. _edit-opportunities-command:
+
+Edit an Opportunity
+===================
+
+As your Opportunity moves through your pipeline, you may have to update the information.
+
+To edit an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity Name to view the Opportunity details.
+
+#. Click the Edit |edit-icon| icon for the section you want to update.
+
+   .. |edit-icon| image:: ../../../../images/edit-icon.png
+      :height: 20
+
+   **General Information**
+
+   This is the main details section of any Opportunity and includes fields that are relevant to the type of Opportunity you are working with.
+
+   **Property**
+
+   This section displays information about the attached listing.
+
+   For listing Opportunities, you attach a listing from MLS. For buyer Opportunities, you attach a listing to each offer you create. After you attach a listing or accept an offer with a listing attached, you can edit the Property section to edit any of those listing details that pulled in from the IDX feed.
+
+   **Seller Worksheet (Listing Opportunities Only)**
+
+   This section is used to give your seller more financial information to access when comparing offers.
+
+#. When complete, click **Save**.

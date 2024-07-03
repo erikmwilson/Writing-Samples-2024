@@ -1,0 +1,18 @@
+.. _install-prereqs:
+
+-------------
+Prerequisites
+-------------
+
+When upgrading, the trusty-backports repository is required
+to install Object Storage. To enable the repository, add the
+repository's details in ``/etc/apt/sources.list`` and then update
+the package list, as follows:
+
+  $ /opt/rpc-openstack/openstack-ansible/playbooks
+
+  # ansible hosts -m shell -a "sed -r -i 's/^# \
+  (deb.*trusty-backports.*)$/\1/' /etc/apt/sources.list; apt-get update"
+
+  For additional prerequisites, see
+  :ref:`system requirements<system-requirements>`.

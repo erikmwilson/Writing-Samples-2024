@@ -1,0 +1,36 @@
+
+.. _saved-search-contacts-command:
+
+Create a Saved Search for a Contact
+===================================
+
+You can create a Saved Search for any of your contacts. With Saved Searches, you can set a range of search criteria, for an area your client is interested in, and the system will automatically send an email to your client whenever there is a new or updated listing in the area that meets that criteria.
+
+.. note::
+
+   For the initial roll-out of the Command Agent Sites, you can only create one Saved Search per contact. Your clients can log into your site and create multiple Saved Searches.
+
+   The first time the system sends your contacts an email with a new or updated listings, they are prompted to create an account. From this account, they can view, create, or edit their Saved Searches.
+
+To create a Saved Search, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. In the **Contacts** list, click the name of the contact for which you want to create a Saved Search.
+
+#. Click the **Saved Searches** tab, at the top right of the contact record.
+
+#. Click **Create Saved Search**. Your client can create multiple Saved Searches through the site, but you can only create one Saved Search per contact.
+
+#. Complete the **Create Saved Search** window to set the criteria for this Saved Search.
+
+   .. note::
+
+      If you need to change the email address attached to this Saved Search, you must leave the window, edit the contact's primary email address, then create the Saved Search.
+
+#. Click **Create**.

@@ -1,0 +1,28 @@
+
+.. _add-admin-settings-command:
+
+Add Admin
+=========
+
+To create or manage an administrative assistant, complete the following steps.
+
+.. note::
+
+   You must be part of a team to create an Administrator.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Click **Add Admin**.
+
+#. On the **Kelle Guides: Add Admin** page, click **Get Started!**
+
+#. If no team is displayed, select a team from the **Select Team** drop-down list.
+
+#. Click **Create Admin**.
+
+#. On the **New User Credential** pane, enter the profile information for the new administrator.
+
+#. Click **Next**.

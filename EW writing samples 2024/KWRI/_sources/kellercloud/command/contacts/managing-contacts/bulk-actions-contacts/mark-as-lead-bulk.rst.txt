@@ -1,0 +1,35 @@
+
+.. _mark-as-lead-bulk-command:
+
+Mark Multiple Contacts as Leads
+===============================
+
+To mark multiple contacts as leads, complete the following steps:
+
+.. note::
+
+   You can mark an individual contact as a lead. For more information, see :ref:`mark-unmark-lead-contacts-command`.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts that you want to mark as leads. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Mark a Leads**.
+
+#. The **Bulk Mark as Leads** window, displays the selected contacts. If a contact is already a lead, they display with an asterisk (*).
+
+#. Click **Mark**.
+
+   Leads appear in your contacts database with the lead |leads-icon| icon, next to their name.
+
+   .. |leads-icon| image:: ../../../../../images/lead-icon.png
+      :height: 20

@@ -1,0 +1,27 @@
+
+.. _documents-opportunities-command:
+
+Managing Documents
+==================
+
+If you are transitioning from from Dotloop to DocuSign, use the following table to find what the the Dotloop tasks are called in the DocuSign system.
+
+.. csv-table::
+   :header: "Dotloop", "DocuSign"
+   :widths: 20, 20
+
+   :ref:`create-loop-opportunities-command`,	:ref:`create-room-opportunities-command`
+   Add and Manage Documents in a Loop, :ref:`add-document-opportunities-command`
+   Add People to a Loop, `Add People to a Room <https://support.docusign.com/en/videos/DocuSign-Transaction-Rooms-People-in-a-Transaction-Room>`_
+   Prepare Documents (Custom Labeling),	:ref:`templates-opportunities-command`
+   Share Documents to get signatures, :ref:`create-send-envelope-opportunities-command`
+   Archive Documents, `Archive Documents <https://support.docusign.com/en/videos/DocuSign-Rooms-Archive-Documents>`_
+   :ref:`split-pdf-dotloop-opportunities-command`, :ref:`split-pdf-opportunities-command`
+
+The following pages contain information about managing documents in Command.
+
+.. toctree::
+   :maxdepth: 1
+
+   docusign/index
+   dotloop/index

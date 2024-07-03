@@ -1,0 +1,72 @@
+==============================
+Block Storage service (cinder)
+==============================
+
+RPCO Block Storage provides persistent block storage management for
+virtual hard drives. Block Storage enables the user to create and delete
+block devices, and to manage attachment of block devices to servers.
+
+The actual attachment and detachment of devices is handled through
+integration with the Compute service. You can use regions and zones to
+handle distributed block storage hosts.
+
+You can use Block Storage in performance-sensitive scenarios, such as
+database storage or expandable file systems. You can also use it as a
+server with access to raw block-level storage.
+
+Additionally, you can take volume snapshots to restore data or to create
+new block storage volumes. Snapshots are dependent on driver support.
+
+RPCO Block Storage advantages include:
+
+-  Creating, listing and deleting volumes and snapshots.
+
+-  Attaching and detaching volumes to running virtual machines.
+
+Although the main Block Storage services, such as volume, scheduler,
+API, can be co-located in a production environment, it is more common to
+deploy multiple instances of the volume service along one or more
+instances of the API and scheduler services to manage them.
+
+.. list-table:: **Block Storage service (cinder) components**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+   * - cinder-api
+     - Responds to requests and places them in the message queue. When
+       a request is received, the API service verifies that identity
+       requirements are met and translates the request into a message
+       that includes the required block storage action. The message is
+       then sent to the message broker for processing by the other
+       Block Storage services.
+   * - cinder-backup
+     - Backs up a Block Storage volume to an external storage
+       repository. By default, OpenStack uses the Object Storage
+       service to store the backup. You can also use Ceph, NFS, or
+       GlusterFS back ends as storage repositories for backups.
+   * - cinder-scheduler
+     - Assigns tasks to the queue and determines the provisioning
+       volume server. The scheduler service reads requests from the
+       message queue and determines on which block storage host to
+       perform the requested action. The scheduler then communicates
+       with the cinder-volume service on the selected host to process
+       the request.
+   * - cinder-volume
+     - Designates storage for virtual machines. The volume service
+       manages the interaction with the block-storage devices. When
+       requests arrive from the scheduler, the volume service can
+       create, modify, or remove volumes. The volume service includes
+       several drivers to interact with the block-storage devices,
+       such as NFS, etc.
+   * - cinder
+     - Command-line client to access the API.
+
+
+The following high level diagram shows the relationship between the
+Block Storage API, the scheduler, the volume services, and other PRC-O
+components.
+
+.. image:: ../../../figures/cinder-block-storage.png
+   :alt: RPCO Block Storage service high level data flow

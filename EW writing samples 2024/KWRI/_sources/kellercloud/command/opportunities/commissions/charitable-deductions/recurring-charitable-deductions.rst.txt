@@ -1,0 +1,24 @@
+
+.. _recurring-charitable-deductions-opportunities-command:
+
+Recurring Charitable Deductions
+===============================
+
+You can share a portion of your commission as a recurring tax-deductible donation. The deductions entered are automatically pre-filled in the **Payment** section of the **Commissions** page. You can edit or remove these deductions on a per-commission basis. The deductions apply only to you and not other members of your team. Deductions submitted in Command override any deductions set up in other applications (for example, WinMORE).
+
+To set up recurring charitable deductions, complete the following steps:
+
+.. include:: cd-settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Opportunity Settings** to display the Opportunity settings.
+
+#. Click **Recurring Deductions**.
+
+#. For each deduction, select either **Dollar Amount** or **Percentage** and enter the value.
+
+#. Click **Save Changes**.
+
+   You receive a **Your recurring deduction were updated** confirmation message.

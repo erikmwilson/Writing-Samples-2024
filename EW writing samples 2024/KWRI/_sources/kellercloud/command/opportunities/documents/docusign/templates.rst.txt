@@ -1,0 +1,38 @@
+
+.. _templates-opportunities-command:
+
+Working with Templates in DocuSign
+==================================
+
+If you are missing a form or you need to add a custom form, you can create a template that you can send for signatures and completion. With the Keller Williams DocuSign integration, we usually use the Rooms side of DocuSign, but to create templates, we need to switch to the eSignature side.
+
+Access Templates
+^^^^^^^^^^^^^^^^
+
+#. If you are in DocuSign Rooms (white background), click on your profile picture, at the top-right of the page, and choose **Switch to eSignature** from the drop-down list. If you see a blue banner at the top of the page, go to the next step.
+
+#. At the top of the DocuSign eSignature Dashboard, click **Templates**.
+
+Create Templates
+^^^^^^^^^^^^^^^^
+
+For more information, see `Create Templates <https://support.docusign.com/en/guides/ndse-user-guide-create-templates>`_.
+
+Edit Templates
+^^^^^^^^^^^^^^
+
+For more information, see `Edit Templates <https://support.docusign.com/en/guides/ndse-user-guide-edit-templates>`_.
+
+
+Use Templates
+^^^^^^^^^^^^^
+
+To use templates in the KW version of DocuSign, you first need to go to a specific Room that is tied to an Opportunity and create an Envelope to send signatures.
+
+#. :ref:`access-room-opportunities-command`.
+
+#. :ref:`create-send-envelope-opportunities-command`.
+
+#. On the **Envelope Details** page, in the **Add Documents to the Envelope section**, click **Use A Template**.
+
+#. In the **Select Templates** pop-up, select either **My Templates** (if you created the template) or **Shared with Me** (if you want to use a template that your Market Center created), check the box next to the template you want to use, then click **Add Selected**.

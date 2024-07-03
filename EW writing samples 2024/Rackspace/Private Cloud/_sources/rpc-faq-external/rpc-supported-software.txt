@@ -1,0 +1,105 @@
+==================
+Supported Software
+==================
+
+The information in this guide is intended for Rackspace Customers, Rackspace
+Support Engineers, and any other individual inquiring into the current
+Rackspace Private Cloud Software that are eligible for Operations Support
+from Rackspace's Service Delivery Teams.
+
+.. contents::
+   :local:
+
+
+Rackspace Private Cloud v14
+---------------------------
+
+This is the current supported major release.
+
+.. list-table::
+   :widths: 60 40
+   :header-rows: 1
+
+   * - Software
+     - Version
+   * - Ansible
+     - 2.1.6.0
+   * - Canonical Ubuntu
+     - 16.04
+   * - Elasticsearch
+     - 1.7
+   * - Kibana
+     - 4.5
+   * - OpenStack Cinder
+     - 9.0
+   * - OpenStack Glance
+     - 13.0
+   * - OpenStack Heat
+     - 7.0
+   * - OpenStack Horizon
+     - 10.0
+   * - OpenStack Keystone
+     - 10.0
+   * - OpenStack Neutron
+     - 9.0
+   * - OpenStack Nova
+     - 14.0
+   * - OpenStack Swift
+     - 2.8
+   * - Logstash
+     - 2.3
+   * - RabbitMQ
+     - 3.6.9.1
+
+Rackspace Private Cloud v13
+---------------------------
+
+This is the current supported prior release.
+
+.. list-table::
+   :widths: 60 40
+   :header-rows: 1
+
+   * - Software
+     - Version
+   * - Ansible
+     - 1.9
+   * - Canonical Ubuntu
+     - 14.04
+   * - Elasticsearch
+     - 2.3.0
+   * - Kibana
+     - 4.5
+   * - OpenStack Cinder
+     - 8.0
+   * - OpenStack Glance
+     - 12.0
+   * - OpenStack Heat
+     - 6.0
+   * - OpenStack Horizon
+     - 9.0
+   * - OpenStack Keystone
+     - 9.0
+   * - OpenStack Neutron
+     - 8.0
+   * - OpenStack Nova
+     - 13.0
+   * - OpenStack Swift
+     - 2.6
+   * - Logstash
+     - 2.3
+   * - RabbitMQ
+     - 3.6.6.0
+
+Special Notes
+-------------
+
+All previous release versions of Rackspace Private Cloud Powered by OpenStack
+are considered "End of Support" and no longer receive security or operational
+patches or updates. Customers who are currently on a previous version are
+encouraged to contact their Account Development Manager to schedule an
+upgrade to a "Supported Version".
+
+Any "current" OpenStack project not listed in the tables above should also be
+considered "Not a Standard Supported Software" with no SLA associated with it
+unless contracted otherwise.

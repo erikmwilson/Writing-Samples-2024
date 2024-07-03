@@ -1,0 +1,24 @@
+
+.. _landing-page-settings-command:
+
+Landing Page
+============
+
+To change the look of your landing page, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Agent Sites**.
+
+#. Click **Landing Page**.
+
+#. Select the look of your landing page from the drop-down box.
+
+#. Click **Save**.
+
+#. To preview your landing page, click **Preview LP**.
+
+#. To preview an email using this new look, click **Preview Email**.

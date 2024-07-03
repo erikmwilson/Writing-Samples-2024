@@ -1,0 +1,15 @@
+===============
+Guest OS images
+===============
+
+The OpenStack image service (glance) requires that all images to be used
+by cloud consumers be registered. Most images are open source and can be
+downloaded from the OS distributor directly. Upon request, Rackspace assists in
+adding those images to the private cloud. Image metadata
+should be included when creating the image within glance. The metadata
+can assist in enabling additional functionality within other OpenStack
+services.
+
+.. note:: If you need Redhat Enterprise Linux images (RHEL), you
+          would need to have a Rackspace private cloud powered by
+          Redhat (RPC-R).

@@ -1,0 +1,21 @@
+
+.. _unpublish-course-docebo-connect:
+
+Unpublish a Course
+==================
+
+To remove a course from Training, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+#. Click **Courses Management** from the **E-Learning section**.
+
+#. Click the **Name** of the course you want to unpublish.
+
+#. Om the course page, click on the **Properties** tab.
+
+#. At the bottom of the page, click the **Status: Published** menu and select **Under Maintenance**. Click **Save Changes**.
+
+   The Course is available for users in Training.

@@ -1,0 +1,105 @@
+===========================
+Load balancing requirements
+===========================
+
+To provide a highly available OpenStack private cloud, the OpenStack
+services must be load balanced across the three Infrastructure nodes.
+Per the RPC reference architecture, it is preferred to configure this
+on a physical load-balancing device. Each OpenStack API requires a
+separate VIP back end defined on the load balancer. Details for
+configuring these VIP back ends are listed in the following table.
+
+.. list-table:: **Load balancing requirements**
+   :widths: 20 10 10 20 40
+   :header-rows: 1
+
+   * - VIP name
+     - Bind port
+     - Mode
+     - Balance type
+     - Options
+   * - mysql-cluster
+     - 3306
+     - tcp
+     - roundrobin
+     - tcpka, mysql-check
+   * - keystone\_admin\_cluster
+     - 35357
+     - http
+     - source
+     - forwardfor, httpchk, httplog
+   * - keystone\_public\_cluster
+     - 5000
+     - http
+     - source
+     - forwardfor, httpchk, httplog
+   * - glance\_api\_cluster
+     - 9292
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - glance\_registry\_cluster
+     - 9191
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - heat\_cfn\_cluster
+     - 8000
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - heat\_api\_cluster
+     - 8004
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - nova\_metadata\_api\_cluster
+     - 8775
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - nova\_compute\_api\_cluster
+     - 8774
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - neutron\_cluster
+     - 9696
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - horizon\_cluster
+     - 80
+     - http
+     - roundrobin
+     - forwardfor, httpchk, httplog
+   * - horizon\_cluster\_ssl
+     - 443
+     - tcp
+     - source
+     - ssl-hello-chk
+   * - cinder_api_cluster
+     - 8776
+     - tcp
+     - source
+     - forwardfor, httpchk, httplog
+   * - memcached
+     - 11211
+     - tcp
+     - source
+     -
+   * - elasticsearch
+     - 9200
+     - tcp
+     - source
+     -
+   * - kibana
+     - 8080
+     - http
+     - source
+     - forwardfor, httpchk, httplog
+   * - kibana\_ssl
+     - 8443
+     - tcp
+     - source
+     - ssl-hello-chk

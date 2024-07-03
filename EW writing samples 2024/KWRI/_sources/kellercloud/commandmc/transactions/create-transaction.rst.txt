@@ -1,0 +1,47 @@
+
+.. _create-transactions-commandmc:
+
+Add a New Transaction
+=====================
+
+Sometimes it is necessary for a Market Center to enter transaction that are not submitted through Opportunities. Because all transactions also require documents, this manual entry method also triggers a compliance event to provide the path for uploading documents.
+
+Transactions, regardless of source, display on the Market Center's transactions dashboard.
+
+While adding a new transaction, you can save the you progress and return to complete the transaction later as long as you complete the minimum fields required for each section and the information is valid.
+
+After all required fields are completed for the entire transaction and all the validation rules are passed the status is changed from **Open** to **Approved** (for a manual transaction) or submitted for a commission from Opportunities.
+
+After the status is no longer **Open**, the transaction from that point forward must always be complete and in balance. The transaction cannot be placed back in open status
+
+When the transaction is set to **Submitted** or **Approved** the written period is entered.
+
+To add a new transaction, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page:
+
+#. Click **New Transaction**.
+
+#. On the **New Transaction** window, select the transaction type and click **Start Transaction**.
+
+#. In the **General Information** section, enter general information for the transaction. When complete, click **Next to Commission Details**.
+
+   .. note::
+
+      At any point after entering the complete address information, you can save you progress and close the transaction. Click **Save Progress & Close** to save your progress. Click **Exit From Transaction** to discard any changes.
+
+#. In the **Commission Details** section, enter the commission information for the transaction. You can also add outside referrals and co-brokers (for listing opportunities). When complete, click **Next to Agent Details**.
+
+#. In the **Agent Details** section, enter the agent information for the transaction. This includes:
+
+   * Agent and team name - To add additional agents to the transaction, click **Add Agent**.
+
+   * Commission income
+
+   * Brokerage Fees - Enter the **Royalty** and **Company Dollar** amounts. Click **Auto Calculation** to calculate these amounts based on the associate's anniversary date. To add Market Center fees to the transaction, click **Add MC Fee**.
+
+   * Deductions - To add additional deductions to the transaction, click **Add Deductions**.
+
+   When complete and the transaction is balanced, click **Save Transaction**.

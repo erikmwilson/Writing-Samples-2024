@@ -1,0 +1,18 @@
+================================
+Accessing data and configuration
+================================
+
+The Rackspace Monitoring Service data is available for viewing through
+the MyRackspace® portal. You also have the flexibility to work with
+our support team and customize your settings in the following ways:
+
+-  Set the frequency for how often your monitoring tests are run (e.g.
+   every minute, every 5 minutes, etc.)
+
+-  Define which ports are used for each test
+
+-  Set the thresholds for your compute, disk and memory-related alerts
+   (e.g. disk space, memory capacity, etc.)
+
+-  Determine which members of your organization are to receive an auto-
+   generated notification for each alert

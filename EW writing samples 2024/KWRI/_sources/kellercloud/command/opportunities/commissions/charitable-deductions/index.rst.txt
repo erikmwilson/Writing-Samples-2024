@@ -1,0 +1,13 @@
+
+.. _index-charitable-deductions-opportunities-command:
+
+Charitable Deductions
+=====================
+
+The following pages contain information about charitable deductions.
+
+.. toctree::
+   :maxdepth: 1
+
+   one-time-charitable-deductions
+   recurring-charitable-deductions

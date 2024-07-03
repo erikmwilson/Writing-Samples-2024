@@ -1,0 +1,22 @@
+
+
+.. _search-tasks-commandmc:
+
+Search Tasks
+============
+
+While you are managing your tasks in CommandMC, you may need to find a specific task. You can search tasks by the task name.
+
+To search tasks, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click the **Recruits** tab, at the top of the page.
+
+#. From the **View Tasks** drop-down, select either **My Tasks** or **All MC Tasks** to display only your tasks or all Market Center tasks.
+
+#. Click **Checklist Tasks** or **Other Tasks**.
+
+#. Click the status of tasks to display, **To Do** or **Completed**.
+
+#. In the search bar, enter the search information for the desired task.

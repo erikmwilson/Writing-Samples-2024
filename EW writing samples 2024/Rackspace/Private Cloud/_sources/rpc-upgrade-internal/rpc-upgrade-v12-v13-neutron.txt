@@ -1,0 +1,37 @@
+================================
+Networking service upgrade notes
+================================
+
+When you upgrade the Networking (neutron) service from v12 to v13
+in RPCO, consider the following information:
+
+-  **MTU value setting**: Changes made in neutron in Mitaka that set a
+   network's MTU value in the database when the network is created. That MTU
+   value is used for advertisement. With existing networks, no migration was
+   created to update the MTU values. The MTU values, therefore, remain at the
+   default Liberty value of 0, which means that no advertisement happens
+   despite ``advertise_mtu`` being enabled.
+
+   New instances on a VXLAN network come up with an MTU value of 1500, which
+   prevents access to them with SSH.
+
+   The upgrade should have already updated each network's MTU in the
+   ``neutron.networks`` table. However, we recommend that you verify that
+   this has been completed before you start to use v13.
+
+   .. code-block:: ini
+
+      MTU_CHECK="SELECT id, mtu FROM networks;"
+
+      cd /opt/rpc-openstack/openstack-ansible/playbooks
+      ansible galera_all[0] -m shell -a "mysql --verbose -e \"${MTU_CHECK}\" neutron"
+
+   If any returned network has an MTU of 0 then it is likely that an
+   upgrade step was missed or did not complete successfully.
+
+-  **path_mtu setting**: Setting ``path_mtu`` to a value greater than 1500 can
+   cause packet loss even if the physical network supports it. Also, the
+   calculation does not consider additional overhead from IPv6 endpoints.
+
+   If you need to override ``path_mtu``, you can do that with
+   ``neutron_ml2.plugin_conf_ini_overrides``.

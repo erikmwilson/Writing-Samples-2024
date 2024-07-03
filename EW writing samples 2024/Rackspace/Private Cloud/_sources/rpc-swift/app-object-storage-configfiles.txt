@@ -1,0 +1,15 @@
+.. _object-storage-configuration-files:
+
+==================================
+Object Storage configuration files
+==================================
+
+Object Storage is configured using the following files:
+
+-  `/etc/openstack_deploy/conf.d/swift.yml <https://raw.githubusercontent.com/openstack/openstack-ansible/stable/newton/etc/openstack_deploy/conf.d/swift.yml.example>`_
+
+-  `/etc/openstack_deploy/user_osa_variables_overrides.yml <https://raw.githubusercontent.com/openstack/openstack-ansible/stable/newton/etc/openstack_deploy/user_variables.yml>`_
+
+-  `/etc/openstack_deploy/openstack_user_config.yml <https://raw.githubusercontent.com/openstack/openstack-ansible/stable/newton/etc/openstack_deploy/openstack_user_config.yml.example>`_
+
+The files indicate which variables are required and which are optional.

@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Compute &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Managing Galera clusters" href="ch-galera.html" />
+    <link rel="prev" title="Images" href="ch-images.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operations Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-verify.html">Verifying cloud deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-access.html">Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-instances.html">Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-images.html">Images</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compute</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-compute-node">Adding a Compute node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-infrastructure-node">Adding a new infrastructure node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-new-nodes">Testing new nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovering-a-compute-node-failure">Recovering a Compute node failure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decommissioning-a-compute-node">Decommissioning a Compute node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-the-novnc-console">Accessing the NoVNC console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-for-recent-back-ups">Checking for recent back ups</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-galera.html">Managing Galera clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ceph.html">RPC Ceph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-swift.html">Managing Object Storage for multiple regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-containers.html">Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load-Balancer-as-a-Service (LBaaS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-backups.html">Backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Operations Guide</a> &raquo;</li>
+        
+      <li>Compute</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ops-internal/ch-compute.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="compute">
+<h1>Compute<a class="headerlink" href="#compute" title="Permalink to this headline">#</a></h1>
+<p>This chapter discusses how to manage Compute (nova) for RPCO.</p>
+<div class="section" id="adding-a-compute-node">
+<h2>Adding a Compute node<a class="headerlink" href="#adding-a-compute-node" title="Permalink to this headline">#</a></h2>
+<p>After installation, depending on the OpenStack environment, additional
+compute hosts can provide more resources for the cluster. The following
+procedure details how to add a compute host to an operational cluster.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure you back up your current OpenStack environment
+before adding any new nodes. See <a class="reference internal" href="#backing-up-internal"><span class="std std-ref">Checking for recent back ups</span></a> for more
+information.</p>
+</div>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">Configure the host as a target host. See the <a class="reference external" href="https://pages.github.rackspace.com/rpc-internal/docs-rpc/index.html">Rackspace Private
+Cloud Installation Guide</a>
+chapter on Target Hosts for more information.</p>
+</li>
+<li><p class="first">Edit the <code class="docutils literal"><span class="pre">/rpcd/playbooks/openstack_user_config.yml</span></code> file and
+add the host to the <code class="docutils literal"><span class="pre">compute_hosts</span></code> stanza.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">compute_hosts:</span>
+<span class="k">[...]</span>
+<span class="na">NEW_compute&lt;node-ID&gt;:</span>
+  <span class="na">ip: 10.17.136.32</span>
+<span class="na">NEW_compute&lt;node-ID&gt;:</span>
+  <span class="na">ip: 10.17.136.33</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Modify the <code class="docutils literal"><span class="pre">used_ips</span></code> stanza if needed.</p>
+</div>
+</li>
+<li><p class="first">Run the add host playbook while logged in to the deployment
+host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+</pre></div>
+</div>
+</li>
+<li><p class="first">Update the inventory to add new hosts. Make sure new rsyslog
+container names are updated. Send the updated results to <code class="docutils literal"><span class="pre">dev/null</span></code>.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> /opt/rpc-openstack/openstack-ansible/playbooks/inventory/dynamic_inventory.py &gt; /dev/null
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create the <code class="docutils literal"><span class="pre">/root/add_host.limit</span></code> file, which contains all new node
+host names.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> /opt/rpc-openstack/openstack-ansible/scripts/inventory-manage.py <span class="se">\</span>
+  -f /opt/rpc-openstack/openstack-ansible/playbooks/inventory/dynamic_inventory.py <span class="se">\</span>
+  -l <span class="p">|</span>awk -F<span class="se">\|</span> <span class="s1">&#39;/&lt;NEW COMPUTE NODE&gt;/ {print $2}&#39;</span> <span class="p">|</span>sort -u <span class="p">|</span> tee /root/add_host.limit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the appropriate playbooks.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+<span class="gp">#</span> openstack-ansible setup-hosts.yml --limit @/root/add_host.limit
+<span class="gp">#</span> ansible nova_all -m setup -a <span class="s1">&#39;filter=ansible_local gather_subset=&quot;!all&quot;&#39;</span>
+<span class="gp">#</span> openstack-ansible setup-openstack.yml --skip-tags nova-key-distribute --limit @/root/add_host.limit
+<span class="gp">#</span> openstack-ansible setup-openstack.yml --tags nova-key --limit compute_hosts
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the rpc-support playbooks.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="o">(</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks <span class="p">;</span> openstack-ansible rpc-support.yml <span class="o">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Generate a new impersonation token, and add that token after the
+<cite>maas_auth_token</cite> variable in the <code class="docutils literal"><span class="pre">user_rpco_variables_overrides.yml</span></code>
+file.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">- /etc/openstack_deploy/user_rpco_variables_overrides.yml</span>
+<span class="na">- maas_auth_token: &lt;*new_auth_token*&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the MaaS playbook on the deployment host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="o">(</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks <span class="p">;</span> openstack-ansible <span class="se">\</span>
+    setup-maas.yml --limit @/root/add_host.limit <span class="o">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="adding-a-new-infrastructure-node">
+<h2>Adding a new infrastructure node<a class="headerlink" href="#adding-a-new-infrastructure-node" title="Permalink to this headline">#</a></h2>
+<p>While three infrastructure hosts are recommended, if further hosts are
+needed in an environment, it is possible to create additional nodes.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure you back up your current OpenStack environment
+before adding any new nodes. See <a class="reference internal" href="#backing-up-internal"><span class="std std-ref">Checking for recent back ups</span></a> for more
+information.</p>
+</div>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">Add the node to the <code class="docutils literal"><span class="pre">infra_hosts</span></code> stanza of the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code></p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">infra_hosts:</span>
+<span class="k">[...]</span>
+<span class="na">NEW_infra&lt;node-ID&gt;:</span>
+  <span class="na">ip: 10.17.136.32</span>
+<span class="na">NEW_infra&lt;node-ID&gt;:</span>
+  <span class="na">ip: 10.17.136.33</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">add_host</span></code> playbook on the deployment host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/playbooks
+</pre></div>
+</div>
+</li>
+<li><p class="first">Update the inventory to add new hosts. Make sure new rsyslog
+container names are updated. Send the updated results to <code class="docutils literal"><span class="pre">dev/null</span></code>.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> /opt/rpc-openstack/openstack-ansible/playbooks/inventory/dynamic_inventory.py &gt; /dev/null
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create the <code class="docutils literal"><span class="pre">/root/add_host.limit</span></code> file, which contains all new node
+host names.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> /opt/rpc-openstack/openstack-ansible/scripts/inventory-manage.py <span class="se">\</span>
+  -f /opt/rpc-openstack/openstack-ansible/playbooks/inventory/dynamic_inventory.py <span class="se">\</span>
+  -l <span class="p">|</span>awk -F<span class="se">\|</span> <span class="s1">&#39;/&lt;NEW COMPUTE NODE&gt;/ {print $2}&#39;</span> <span class="p">|</span>sort -u <span class="p">|</span> tee /root/add_host.limit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">setup-everything.yml</span></code> playbook with the
+<code class="docutils literal"><span class="pre">--limit</span></code> argument.</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not run the <code class="docutils literal"><span class="pre">setup-everything.yml</span></code> playbook
+without the :option:<code class="docutils literal"><span class="pre">--limit</span></code> argument. Without
+:option:<code class="docutils literal"><span class="pre">--limit</span></code>, the playbook will restart all containers
+inside your RPCO environment.</p>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible setup-everything.yml --limit @/root/add_host.limit
+<span class="gp">#</span> openstack-ansible --tags<span class="o">=</span>openstack-host-hostfile setup-hosts.yml
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">Run the compute playbook on the deployment host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible os-nova-install.yml --skip-tags nova-key-distribute <span class="se">\</span>
+  --limit @/root/add_host.limit
+<span class="gp">#</span> openstack-ansible os-nova-install.yml <span class="se">\</span>
+  --tags nova-key-create,nova-key-distribute
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the Neutron agent playbook on the deployment host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack-ansible os-neutron-install.yml <span class="se">\</span>
+  --limit @/root/add_host.limit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the rpc-support playbooks.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="o">(</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks <span class="p">;</span> openstack-ansible rpc-support.yml <span class="o">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Generate a new impersonation token, and add that token after the
+<cite>maas_auth_token</cite> variable in the <code class="docutils literal"><span class="pre">user_rpco_variables_overrides.yml</span></code>
+file.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">- Update maas_auth_token /etc/openstack_deploy/user_rpco_variables_overrides.yml</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the MaaS playbook on the deployment host.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="o">(</span> <span class="nb">cd</span> /opt/rpc-openstack/rpcd/playbooks <span class="p">;</span> openstack-ansible <span class="se">\</span>
+    setup-maas.yml --limit @/root/add_host.limit <span class="o">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="testing-new-nodes">
+<h2>Testing new nodes<a class="headerlink" href="#testing-new-nodes" title="Permalink to this headline">#</a></h2>
+<p>After creating a new node, test that the node runs correctly by
+launching a new instance. Ensure that the new node can respond to
+a networking connection test through the <strong class="command">ping</strong> command.
+Log in to Monitoring.rackspace.net, and verify that the monitors
+return a green signal for the new node.</p>
+</div>
+<div class="section" id="recovering-a-compute-node-failure">
+<h2>Recovering a Compute node failure<a class="headerlink" href="#recovering-a-compute-node-failure" title="Permalink to this headline">#</a></h2>
+<p>The following procedure addresses Compute node failure if shared storage
+is used.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If shared storage is not used, data can be copied from the
+<code class="docutils literal"><span class="pre">/var/lib/nova/instances</span></code> directory on the failed Compute node
+<code class="docutils literal"><span class="pre">${FAILED_NODE}</span></code> to another node <code class="docutils literal"><span class="pre">${RECEIVING_NODE}</span></code>before
+performing the following procedure. Please note this method is
+not supported.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Re-launch all instances on the failed node.</p>
+</li>
+<li><p class="first">Invoke the MySQL command line tool</p>
+</li>
+<li><p class="first">Generate a list of instance UUIDs hosted on the failed node:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">mysql&gt; select uuid from instances where host = &#39;${FAILED_NODE}&#39; and deleted = 0;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set instances on the failed node to be hosted on a different node:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">mysql&gt; update instances set host =&#39;${RECEIVING_NODE}&#39; where host = &#39;${FAILED_NODE}&#39; \</span>
+<span class="go">and deleted = 0;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Reboot each instance on the failed node listed in the previous query
+to regenerate the XML files:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> nova reboot —hard <span class="nv">$INSTANCE_UUID</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Find the volumes to check the instance has successfully booted and is
+at the login  :</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">mysql&gt; select nova.instances.uuid as instance_uuid, cinder.volumes.id \</span>
+<span class="go">       as voume_uuid, cinder.volumes.status, cinder.volumes.attach_status, \</span>
+<span class="go">       cinder.volumes.mountpoint, cinder.volumes,display_name from \</span>
+<span class="go">       cinder.volumes inner join nova.instances on cinder.volumes.instance_uuid=nova.instances.uuid \</span>
+<span class="go">       where nova.instances.host = &#39;${FAILED_NODE}&#39;;</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>If rows are found, detach and re-attach the volumes using the values
+listed in the previous query:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> nova volume-detach <span class="nv">$INSTANCE_UUID</span> <span class="nv">$VOLUME_UUID</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  nova volume-attach <span class="nv">$INSTANCE_UUID</span> <span class="nv">$VOLUME_UUID</span> <span class="nv">$VOLUME_MOUNTPOINT</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Rebuild or replace the failed node as described in <a class="reference external" href="compute-add-node.html">Adding a Compute
+node</a></li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="decommissioning-a-compute-node">
+<h2>Decommissioning a Compute node<a class="headerlink" href="#decommissioning-a-compute-node" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Investigate the node status, and ensure that all instances stored on
+the node are removed and backed up elsewhere in the OpenStack
+environment.</p>
+</li>
+<li><p class="first">Check the shell environment, ensuring that the OS_* variables are
+defined by sourcing the <code class="docutils literal"><span class="pre">openrc</span></code> file.</p>
+</li>
+<li><p class="first">Secure a list of instances that need to change location.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova list --host <span class="o">{</span>HOSTNAME<span class="o">}</span> --all-tenants
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">HOSTNAME</span></code> is the value returned by the <strong>nova list &#8211;host</strong>
+command.</p>
+</li>
+<li><p class="first">Move the instances one at a time either through <strong>block-migrate</strong> or
+with <strong>nova live-migration</strong> if using shared storage.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova live-migration <span class="o">{</span>UUID<span class="o">}</span> <span class="o">{</span>HOSTNAME<span class="o">}</span>
+</pre></div>
+</div>
+<p>Use the following procedure for <strong>block-migrate</strong> in all other cases.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The :command:<code class="docutils literal"><span class="pre">--block-migrate</span></code> flag disperses the nova
+instance disks from a thin to a fat file.</p>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova live-migration --block-migrate <span class="o">{</span>UUID<span class="o">}</span> <span class="o">{</span>HOSTNAME<span class="o">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">UUID</span></code> value is the instance ID value identified by the
+<strong>nova host-list</strong> in step one.</p>
+</li>
+<li><p class="first">Stop the compute node after moving the instances.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> stop nova-compute
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">After stopping the compute node, the <a class="reference external" href="http://docs.openstack.org/openstack-ops/content/maintenance.html">OpenStack Operations
+Guide, maintenance chapter</a>
+has specific commands for environments running Puppet, or other
+configuration management system.</p>
+</div>
+</li>
+<li><p class="first">Shut down the compute node, perform any required maintenance, and
+restart the compute node.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> start nova-compute
+</pre></div>
+</div>
+</li>
+<li><p class="first">If necessary, migrate any instances moved as a result of this process
+back to the compute node.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="accessing-the-novnc-console">
+<h2>Accessing the NoVNC console<a class="headerlink" href="#accessing-the-novnc-console" title="Permalink to this headline">#</a></h2>
+<p>The default configuration for RPCO is the NoVNC console. All new instances use
+the NoVNC console.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Access for the NoVNC console is intended only for new installations.</p>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">/etc/openstack_deploy/user_rpco_variables_overrides.yml</span>
+<span class="na">nova_console_type: novnc</span>
+</pre></div>
+</div>
+<p>Convert running instances to use the <code class="docutils literal"><span class="pre">novnc</span></code> console type by performing a
+hard reboot, which automatically applies this configuration.</p>
+</div>
+<div class="section" id="checking-for-recent-back-ups">
+<span id="backing-up-internal"></span><h2>Checking for recent back ups<a class="headerlink" href="#checking-for-recent-back-ups" title="Permalink to this headline">#</a></h2>
+<p>Before adding new nodes to your RPCO environment, it is possible to
+confirm that a recent back up resides inside the <code class="docutils literal"><span class="pre">holland_backups</span></code>
+repository.</p>
+<ol class="arabic">
+<li><p class="first">Log in to the Infra host where the Galera service creates backups.</p>
+</li>
+<li><p class="first">Run the <strong class="command">ls -ls</strong> command to view the contents of the
+back up files:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">&lt;node-ID&gt;-Infra01~#: ls -ls /openstack/backup/XXXX_galera_container-XXXXXXX/holland_backups/rpc_support/</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-galera.html" class="btn btn-neutral float-right" title="Managing Galera clusters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-images.html" class="btn btn-neutral float-left" title="Images" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

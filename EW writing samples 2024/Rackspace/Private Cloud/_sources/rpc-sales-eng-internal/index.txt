@@ -1,0 +1,25 @@
+:deconsttitle: Rackspace Private Cloud Sales Engineering
+
+.. _rpc-sales-eng-internal:
+
+=======================================================
+Rackspace Private Cloud Sales Engineering Documentation
+=======================================================
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+.. note:: This is a work in process. Things are being added and moved
+          around. Open an issue or PR for suggestions or new content.
+
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   preface.rst
+   reference_architecture/index.rst
+   blade_servers/blade-servers-unsuitable-openstack.rst
+   postface.rst

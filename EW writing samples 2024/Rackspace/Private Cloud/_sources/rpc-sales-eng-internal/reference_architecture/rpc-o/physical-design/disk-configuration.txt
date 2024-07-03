@@ -1,0 +1,25 @@
+==================
+Disk configuration
+==================
+
+The following table shows the disk configuration to support the
+RPC reference architecture.
+
+.. list-table:: **Disk configurations**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Type**
+     - **Disk Configuration**
+   * - Controller
+     - 12 x 600 GB 15K SAS, RAID 10, vol group: lxc
+   * - Logging
+     - 12 x 600 GB 15K SAS, RAID 10, vol group: lxc
+   * - Compute
+     - 12 x 600 GB 15K SAS, RAID 10, vol group: lxc
+   * - Swift
+     - 8 x 6TB SAS 7.2K
+   * - Ceph
+     - * 2x 600GB 15k SAS, RAID 1
+       * 4x 400GB SSD SATA (Journal)
+       * 20x 400GB 12G SSD (OSD)

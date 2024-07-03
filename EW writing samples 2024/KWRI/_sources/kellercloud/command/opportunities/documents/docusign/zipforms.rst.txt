@@ -1,0 +1,13 @@
+
+.. _zipforms-opportunities-command:
+
+Working with Zipforms in DocuSign
+=================================
+
+With DocuSign in Command, you can add ZipForm documents to your DocuSign Rooms, and use DocuSign to get your ZipForm documents signed and completed.
+
+To learn more about the ZipForms integration with DocuSign, see the following links:
+
+* `Link your ZipForm account and add ZipForm documents to DocuSign Rooms <https://support.docusign.com/en/videos/DocuSign-Transaction-Rooms-zipForm-link-add-edit>`_.
+
+* `Send an Envelope (used to email forms to signatories for completion, in DocuSign) using a ZipForm Plus document <https://support.docusign.com/en/videos/DocuSign-Transaction-Rooms-Sending-an-Envelope-using-a-zipForm-Plus-Document>`_.

@@ -1,0 +1,54 @@
+
+.. _co-broker-opportunities-command:
+
+Add a Co-Broker Payment
+=======================
+
+You use the **Offers & Commissions** tab to detail the commission disbursement for an Opportunity and then submit this to your Market Center.
+
+.. note::
+
+   You must have accepted an offer for the Opportunity before you can access the Commissions page for that offer.
+
+   * For more information, see :ref:`create-offer-opportunities-command`.
+
+   * For more information, see :ref:`manage-offers-opportunities-command`.
+
+To add a co-broker payment, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name to view the Opportunity details.
+
+#. At the top of the Opportunity page, click the **Offers & Commissions** tab. The **Offers & Commissions** tab lists all offers for the Opportunity.
+
+#. Click **Manage Commission** next to the accepted offer.
+
+   The **Offers & Commissions** tab auto-fills with the data you entered into the accepted offer.
+
+#. Click **Add Co-Broker**.
+
+#. On the **Add Co-Broker Payment** window, enter the **Commission Percentage**, **Commission Amount**.
+
+   The co-broker payment does not come out of the Total Commission for the agent, but instead is an additional payment separate from it.
+
+   When entering the commission, add your percentage of the deal, then add the co-broker payment with whatever percentage is being paid to the co-broker.
+
+   For example, if the agent commission is 3% and the co-broker commission is 1%, then the agent would put 3% for their total commission, and then add a co-broker payment for 1%.
+
+#. Enter the **Agent Representative Name** and select them from the drop-down list. The agent and brokerage details auto-fill from the Market Center database.
+
+   If the agent does not have record in your Market Center database, click **Add New Agent** and add the agent details. An agent record will be created in vendor database for your Market Center.
+
+   If the **Company Name/DBA** does not have record in your Market Center database, click **Add New Company**.
+
+#. Click **Save**.
+
+   The agent record you created will be available to you for any future transactions. The Market Center Administrator can also add this record to the Market Center database, making it available to all agents for future transactions.

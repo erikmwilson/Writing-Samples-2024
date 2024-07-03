@@ -1,0 +1,19 @@
+======================
+Compute considerations
+======================
+
+Some additional considerations around compute are listed below. These
+actions are not items that can be configured upon build of your private
+cloud and must be included in the automation steps used to
+create instances.
+
+-  It is strongly suggested to utilize Nova server groups when creating
+   farms of instances that perform the same function. The creation of
+   server groups allows for the use of Nova Scheduler filters.
+
+-  In order to proper distribute the farm of instances across Compute
+   nodes, the ServerGroupAntiAffinityFilter filter should be used when
+   creating instances and/or define in image metadata.
+
+-  Explore the other Nova Scheduler filters that can be found at
+   http://docs.openstack.org/trunk/config-reference/content/section\_compute-scheduler.html.

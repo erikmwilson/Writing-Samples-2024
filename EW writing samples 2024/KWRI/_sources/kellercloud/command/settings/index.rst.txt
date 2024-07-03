@@ -1,0 +1,14 @@
+
+.. _settings-index-command:
+
+Command settings
+==================
+
+The following sections contain information about how to configure
+settings.
+
+.. toctree::
+   :maxdepth: 1
+
+   command/index
+   connect/index

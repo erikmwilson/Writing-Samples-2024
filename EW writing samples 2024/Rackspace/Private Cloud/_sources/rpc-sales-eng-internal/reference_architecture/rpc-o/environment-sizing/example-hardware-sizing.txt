@@ -1,0 +1,9 @@
+=======================
+Example hardware sizing
+=======================
+
+This is an example of sizing for a general HP DL380 Gen9 compute node
+that gives a representation of the overall hypervisor requirement.
+
+.. image:: ../figures/example-hardware-sizing.png
+   :alt: general compute sizing

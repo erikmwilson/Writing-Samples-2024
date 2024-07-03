@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Prepare the deployment host" href="ch-hosts-deployment.html" />
+    <link rel="prev" title="Preface" href="preface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ansible">Ansible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-containers-lxc">Linux Containers (LXC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference-architecture">Reference architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-layout">Host layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-networking">Host networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openstack-networking">OpenStack Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-requirements">Installation requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#deployment-host">Deployment host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#target-hosts">Target hosts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-configurations">Supported configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-workflow">Installation workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation Guide</a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-install-internal/ch-overview.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
+<p>Rackspace Private Cloud Powered By OpenStack (RPCO) uses a combination
+of Ansible and Linux Containers (LXC) to install and manage OpenStack
+Newton. This overview discusses the following topics:</p>
+<ul class="simple">
+<li>The technology used by RPCO</li>
+<li>The environment and network architecture</li>
+<li>Requirements to install RPCO</li>
+<li>The installation process workflow</li>
+</ul>
+<div class="section" id="ansible">
+<h2>Ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">#</a></h2>
+<p>RPCO is based on <a class="reference external" href="https://github.com/openstack/openstack-ansible">OpenStack-Ansible</a>, which uses a
+combination of Ansible and Linux Containers (LXC) to install and
+manage OpenStack Newton. Ansible provides an automation platform
+to simplify system and application deployment. Ansible manages systems
+by using Secure Shell (SSH) instead of unique protocols that require
+remote daemons or agents.</p>
+<p>Ansible uses <em>playbooks</em> written in the YAML language for orchestration.
+For more information, see <a class="reference external" href="http://docs.ansible.com/playbooks_intro.html">Ansible - Intro to Playbooks</a>.</p>
+<p>In this guide, Rackspace refers to the host running Ansible playbooks as
+the <em>deployment host</em> and the hosts on which Ansible installs RPCO as
+the <em>target hosts</em>.</p>
+<p>For more information about physical, logical, and virtual network
+interfaces within hosts, see <a class="reference internal" href="#host-networking"><span class="std std-ref">Host networking</span></a>.</p>
+</div>
+<div class="section" id="linux-containers-lxc">
+<h2>Linux Containers (LXC)<a class="headerlink" href="#linux-containers-lxc" title="Permalink to this headline">#</a></h2>
+<p>Containers provide operating-system level virtualization by enhancing
+the concept of chroot environments, which isolate resources and file
+systems for a particular group of processes without the overhead and
+complexity of virtual machines. Containers access the same kernel, devices,
+and file systems on the underlying host and provide a thin operational
+layer built around a set of rules.</p>
+<p>The Linux Containers (LXC) project implements operating-system-level
+virtualization on Linux by using kernel namespaces and includes the
+following features:</p>
+<ul class="simple">
+<li>Resource isolation, including CPU, memory, block I/O, and network,
+by using cgroups</li>
+<li>Selective connectivity to physical and virtual network devices on the
+underlying physical host</li>
+<li>Support for a variety of backing stores, including Logical Volume Manager
+(LVM)</li>
+<li>Built on a foundation of stable Linux technologies with an active
+development and support community</li>
+</ul>
+<p>For a list of useful Linux container commands, see <a class="reference internal" href="app-lxc-commands.html#appendix-c"><span class="std std-ref">Linux container commands</span></a>.</p>
+</div>
+<div class="section" id="reference-architecture">
+<h2>Reference architecture<a class="headerlink" href="#reference-architecture" title="Permalink to this headline">#</a></h2>
+<p>The RPCO reference architecture enables the delivery of a stable and
+scalable production-ready private cloud powered by OpenStack. RPCO is
+designed and built by the experts who cofounded OpenStack and who run
+one of the world’s largest OpenStack-powered clouds. RPCO 14.0 is built
+on the Newton release of OpenStack. For more information, see the
+<a class="reference external" href="https://pages.github.rackspace.com/rpc-internal/docs-rpc/master/rpc-sales-eng-internal/reference_architecture/index.html">Rackspace Private Cloud Reference Architecture guide</a>.</p>
+<p>The RPCO reference architecture is a recommended set of software and
+infrastructure components designed to provide the scalability,
+stability, and high availability that you need to support enterprise
+production workloads.</p>
+<p>RPCO 14.0 (r14-dev) is composed of OpenStack services,
+automation, and tooling. Services are grouped into logical layers,
+each providing key aspects of the overall solution. Following are the
+layers and their contents:</p>
+<ul class="simple">
+<li>Rackspace <em>Fanatical Support</em> ® and training</li>
+<li>Operations tooling layer:<ul>
+<li>Ansible</li>
+<li>Capacity planning</li>
+<li>Cloud monitoring (MaaS)</li>
+</ul>
+</li>
+<li>Presentation layer: Dashboard (horizon)</li>
+<li>Orchestration layer (heat):<ul>
+<li>Heat-API</li>
+<li>Heat-API-CFN</li>
+<li>Heat-Engine</li>
+<li>Heat templates</li>
+<li>CloudFormation (CFN) template</li>
+</ul>
+</li>
+<li>Infrastructure as a service layer:<ul>
+<li>Block Storage (cinder)</li>
+<li>Compute (nova)</li>
+<li>Identity (keystone)</li>
+<li>Image service (glance)</li>
+<li>Networking (neutron)</li>
+<li>Object Storage (swift)</li>
+</ul>
+</li>
+<li>Deployment automation layer:<ul>
+<li>Ansible</li>
+<li>LXC</li>
+<li>OpenStack source</li>
+<li>Infrastructure database:<ul>
+<li>MariaDB</li>
+<li>Galera</li>
+</ul>
+</li>
+<li>Infrastructure message queue:<ul>
+<li>RabbitMQ</li>
+<li>RabbitMQ clustering</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="host-layout">
+<span id="id1"></span><h2>Host layout<a class="headerlink" href="#host-layout" title="Permalink to this headline">#</a></h2>
+<p>The recommended layout for installing RPCO contains a minimum of five <em>target</em>
+hosts (or servers):</p>
+<ul class="simple">
+<li>Three control plane infrastructure hosts</li>
+<li>One logging infrastructure host</li>
+<li>One Compute host</li>
+</ul>
+<p>All hosts require at least four 10 Gbps network interfaces. In Rackspace
+data centers, hosts can use an additional 1 Gbps network interface for
+service network access.</p>
+<p>To use the optional Block Storage (cinder) service, a sixth host is
+required. Block Storage hosts require an LVM volume group named
+<strong>cinder-volumes</strong>. For more information, see
+<a class="reference internal" href="#installation-requirements"><span class="std std-ref">Installation requirements</span></a> and <a class="reference internal" href="ch-hosts-target.html#configuring-lvm"><span class="std std-ref">Configure LVM</span></a>.</p>
+<p>The hosts are called <em>target hosts</em> because Ansible deploys the RPCO
+environment within these hosts. The RPCO environment also requires a
+<em>deployment host</em> from which Ansible orchestrates the deployment
+process. One of the target hosts can function as the deployment host.</p>
+<p>At least one hardware load balancer must be included to manage the
+traffic among the target hosts.</p>
+<p>The infrastructure control plane target hosts contain the following
+services:</p>
+<ul class="simple">
+<li>Infrastructure:<ul>
+<li>Maria DB with Galera</li>
+<li>RabbitMQ</li>
+<li>Memcached</li>
+<li>Logging agent</li>
+</ul>
+</li>
+<li>OpenStack:<ul>
+<li>Identity (keystone)</li>
+<li>Image service (glance)</li>
+<li>Compute management (nova)</li>
+<li>Networking (neutron)</li>
+<li>Orchestration (heat)</li>
+<li>Dashboard (horizon)</li>
+</ul>
+</li>
+</ul>
+<p>The infrastructure logging target host contains the following services:</p>
+<ul class="simple">
+<li>Rsyslog</li>
+<li>Logstash</li>
+<li>Elasticsearch with Kibana</li>
+</ul>
+<p>The Compute target host contains the following services:</p>
+<ul class="simple">
+<li>Compute virtualization</li>
+<li>Networking agents</li>
+<li>Logging agents</li>
+</ul>
+<p>The optional storage target host contains the following services:</p>
+<ul class="simple">
+<li>Block Storage volumes</li>
+<li>Logging agent</li>
+</ul>
+<img alt="../_images/rpc-layout1.png" src="../_images/rpc-layout1.png" />
+</div>
+<div class="section" id="host-networking">
+<span id="id2"></span><h2>Host networking<a class="headerlink" href="#host-networking" title="Permalink to this headline">#</a></h2>
+<p>The combination of containers and flexible deployment options requires
+implementation of advanced Linux networking features such as <em>bridges</em> and
+<em>namespaces</em>.</p>
+<p><em>Bridges</em> provide layer 2 connectivity (similar to switches) among
+physical, logical, and virtual network interfaces within a host. After
+creating a bridge, the network interfaces are virtually &#8220;plugged in&#8221; to
+it.</p>
+<p>RPCO uses bridges to connect physical and logical network interfaces on
+the host to virtual network interfaces within containers on the host.</p>
+<p><em>Namespaces</em> provide logically separate layer 3 environments (similar to
+routers) within a host. Namespaces use virtual interfaces to connect
+with other namespaces including the host namespace. These interfaces,
+often called virtual Ethernet (veth) pairs, are virtually &#8220;plugged in&#8221; between
+namespaces similar to patch cables connecting physical devices such as
+switches and routers.</p>
+<p>Each container has a namespace that connects to the host namespace with
+one or more veth pairs. Unless specified, the system generates
+random names for veth pairs.</p>
+<p>The following figure shows the relationship among physical interfaces, logical
+interfaces, bridges, and virtual interfaces.</p>
+<img alt="../_images/rpc-network-components.png" src="../_images/rpc-network-components.png" />
+<p>Target hosts can contain the following network bridges:</p>
+<ul class="simple">
+<li>LXC internal <code class="docutils literal"><span class="pre">lxcbr0</span></code>:<ul>
+<li>Mandatory (automatic).</li>
+<li>Provides external (typically internet) connectivity to containers.</li>
+<li>Automatically created and managed by LXC. Does not directly attach
+to any physical or logical interfaces on the host because iptables
+handle connectivity. Attaches to <code class="docutils literal"><span class="pre">eth0</span></code> in each container.</li>
+</ul>
+</li>
+<li>Container management <code class="docutils literal"><span class="pre">br-mgmt</span></code>:<ul>
+<li>Mandatory.</li>
+<li>Provides management of and communication among infrastructure and
+OpenStack services.</li>
+<li>Manually created and attaches to a physical or logical interface,
+typically a <code class="docutils literal"><span class="pre">bond0</span></code> VLAN subinterface. Also attaches to <code class="docutils literal"><span class="pre">eth1</span></code>
+in each container.</li>
+</ul>
+</li>
+<li>Storage <code class="docutils literal"><span class="pre">br-storage</span></code>:<ul>
+<li>Optional.</li>
+<li>Provides segregated access to Block Storage devices between
+Compute and Block Storage hosts.</li>
+<li>Manually created and attaches to a physical or logical interface,
+typically a <code class="docutils literal"><span class="pre">bond0</span></code> VLAN subinterface. Also attaches to <code class="docutils literal"><span class="pre">eth2</span></code>
+in each associated container.</li>
+</ul>
+</li>
+<li>Service <code class="docutils literal"><span class="pre">br-snet</span></code>:<ul>
+<li>Optional.</li>
+<li>Provides segregated access to Cloud Files image stores from Image
+service hosts. Applies only to environments in Rackspace
+data centers.</li>
+<li>Manually created and uses a physical interface, but iptables
+handles connectivity rather than direct attachment. Attaches to
+<code class="docutils literal"><span class="pre">eth3</span></code> in each associated container.</li>
+</ul>
+</li>
+<li>OpenStack (Project) Networking tunnel/overlay <code class="docutils literal"><span class="pre">br-vxlan</span></code>:<ul>
+<li>Mandatory.</li>
+<li>Provides infrastructure for VXLAN tunnel/overlay networks.</li>
+<li>Manually created and attaches to a physical or logical interface,
+typically a <code class="docutils literal"><span class="pre">bond1</span></code> VLAN subinterface. Also attaches to
+<code class="docutils literal"><span class="pre">eth10</span></code> in each associated container.</li>
+</ul>
+</li>
+<li>OpenStack (Project) Networking provider <code class="docutils literal"><span class="pre">br-vlan</span></code>:<ul>
+<li>Mandatory.</li>
+<li>Provides infrastructure for VLAN and flat networks.</li>
+<li>Manually created and attaches to a physical or logical interface,
+typically <code class="docutils literal"><span class="pre">bond1</span></code>. Also attaches to <code class="docutils literal"><span class="pre">eth11</span></code> in each associated
+container. Does not contain an IP address because it handles only
+layer 2 connectivity.</li>
+</ul>
+</li>
+</ul>
+<p>The following figure provides a visual representation of network components for
+services in containers on the infrastructure hosts.</p>
+<img alt="../_images/rpc-netarch-container-internal.png" src="../_images/rpc-netarch-container-internal.png" />
+<p>The RPCO architecture uses bare metal rather than a container for
+Compute hosts. The following figure provides a visual representation of the
+network architecture on a Compute host.</p>
+<img alt="../_images/rpc-netarch-compute-internal.png" src="../_images/rpc-netarch-compute-internal.png" />
+<p>Since v11, the RPCO architecture uses bare metal rather than a
+container for Block Storage hosts. The Block Storage service lacks
+interaction with the OpenStack Networking service and therefore
+requires only one pair of network interfaces in a bond for the
+management and storage networks. However, implementing the same
+network interfaces on all hosts provides greater flexibility for
+future growth of the deployment. The following figure provides a
+visual representation of the network architecture on Block Storage
+hosts. For more information about how this change impacts upgrades
+from earlier releases, see the <a class="reference external" href="https://developer.rackspace.com/docs/private-cloud/rpc/master/rpc-upgrade/">Upgrade Guide</a>.</p>
+<img alt="../_images/rpc-netarch-storage-internal.png" src="../_images/rpc-netarch-storage-internal.png" />
+</div>
+<div class="section" id="openstack-networking">
+<h2>OpenStack Networking<a class="headerlink" href="#openstack-networking" title="Permalink to this headline">#</a></h2>
+<p>OpenStack Networking (neutron) is configured to use a DHCP agent, L3
+Agent, and Linux Bridge agent within a networking agents container.
+The following figure shows the interaction of these agents and network
+components, and the connection to a physical network.</p>
+<img alt="../_images/rpc-neutron-infra.png" src="../_images/rpc-neutron-infra.png" />
+<p>The Compute service uses the KVM hypervisor. The following figure shows the
+interaction of instances, Linux Bridge agent, and network components, and the
+connection to a physical network.</p>
+<img alt="../_images/rpc-neutron-compute.png" src="../_images/rpc-neutron-compute.png" />
+</div>
+<div class="section" id="installation-requirements">
+<span id="id3"></span><h2>Installation requirements<a class="headerlink" href="#installation-requirements" title="Permalink to this headline">#</a></h2>
+<p>This section provides the installation requirements for the deployment and
+target hosts.</p>
+<div class="section" id="deployment-host">
+<h3>Deployment host<a class="headerlink" href="#deployment-host" title="Permalink to this headline">#</a></h3>
+<p>The following items are required on the deployment host:</p>
+<ul class="simple">
+<li>Ubuntu 16.04 LTS (Xenial Xerus) or a compatible operating system that
+meets all other requirements</li>
+<li>Secure Shell (SSH) client supporting public key authentication</li>
+<li>Synchronized network time protocol (NTP) client</li>
+<li>Python 2.7 or later</li>
+</ul>
+</div>
+<div class="section" id="target-hosts">
+<h3>Target hosts<a class="headerlink" href="#target-hosts" title="Permalink to this headline">#</a></h3>
+<p>The following items are required on the target host:</p>
+<ul class="simple">
+<li>Ubuntu Server 16.04 LTS (Xenial Xerus) 64-bit operating system.</li>
+<li>SSH server supporting public key authentication</li>
+<li>Synchronized NTP client</li>
+</ul>
+<p>The following items are optional on the deployment host:</p>
+<ul>
+<li><p class="first">For hosts providing Block Storage (cinder) service volumes, a
+Logical Volume Manager (LVM) volume group named <strong>cinder-volumes</strong></p>
+</li>
+<li><p class="first">An LVM volume group named <strong>lxc</strong> to store container file systems.
+If the LXC volume group does not exist, containers are automatically
+installed in the root file system of the host.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">By default, openstack-ansible creates a 5 GB logical volume for
+each container and 12 GB for each glance container. Plan
+storage accordingly to support the quantity of containers on
+each target host.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">For Customer Data Center (CDC) deployments, where the customer is
+behind a proxy, the following domains need to be granted access for
+deployments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>archive.ubuntu.com</li>
+<li>bootstrap.pypa.io</li>
+<li>dl.bintray.com</li>
+<li>git.openstack.org</li>
+<li>github.com</li>
+<li>keyserver.ubuntu.com</li>
+<li>mirror.jmu.edu</li>
+<li>mirror.rackspace.com</li>
+<li>mirrors.syringanetworks.net</li>
+<li>packages.elasticsearch.org</li>
+<li>percona.com</li>
+<li>pypi.python.org</li>
+<li>rabbitmq.com</li>
+<li>raw.githubusercontent.com</li>
+<li>rax.mirror.rackspace.com</li>
+<li>repo.percona.com</li>
+<li>rpc-repo.rackspace.com</li>
+<li>security.ubuntu.com</li>
+<li>stable.packages.cloudmonitoring.rackspace.com</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="supported-configurations">
+<h2>Supported configurations<a class="headerlink" href="#supported-configurations" title="Permalink to this headline">#</a></h2>
+<p>RPCO supports the following configurations:</p>
+<ul class="simple">
+<li>Glance<ul>
+<li>Ceph: 10 GbE</li>
+<li>EMC VNX NFS: 10 GbE</li>
+<li>NetApp NFS: 1 GbE / 10 GbE</li>
+<li>SolidFire iSCSI (CDC only): 10 GbE</li>
+<li>Swift (Dedicated or Rackspace Cloud Files): 1 GbE / 10 GbE</li>
+</ul>
+</li>
+<li>Cinder<ul>
+<li>Ceph: 10 GbE</li>
+<li>EMC VNX iSCSI: 10 GbE</li>
+<li>NetApp NFS Direct: 1 GbE / 10 GbE</li>
+<li>SolidFire iSCSI (CDC only): 10 GbE</li>
+</ul>
+</li>
+<li>Nova Ephemeral<ul>
+<li>Ceph: 10 GbE</li>
+<li>EMC VNX iSCSI: 10 GbE</li>
+<li>NetApp NFS Direct: 1 GbE / 10 GbE</li>
+<li>SolidFire iSCSI(CDC only): 10 GbE</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="installation-workflow">
+<h2>Installation workflow<a class="headerlink" href="#installation-workflow" title="Permalink to this headline">#</a></h2>
+<p>The following diagram shows the general workflow associated with RPCO
+installation:.</p>
+<img alt="../_images/rpc-internal-installworkflow.png" src="../_images/rpc-internal-installworkflow.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-hosts-deployment.html" class="btn btn-neutral float-right" title="Prepare the deployment host" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preface.html" class="btn btn-neutral float-left" title="Preface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

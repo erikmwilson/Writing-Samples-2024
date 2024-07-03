@@ -1,0 +1,38 @@
+===========================
+Dashboard service (horizon)
+===========================
+
+RCPO Dashboard provides a graphical user interface for users and
+administrators to perform operations such as creating and launching
+instances, managing networking, and setting access control.
+
+The Dashboard service provides the Project, Admin, and Settings default
+dashboards. The modular design enables the dashboard to interface with
+other products such as billing, monitoring, and additional management
+tools.
+
+The following image shows an example of Admin dashboard.
+
+.. image:: ../../../figures/rpc-o-dashboard.png
+
+The role of the user that logs in to the dashboard determines which
+dashboards and panels are available.
+
+.. list-table:: **Dashboard service (horizon) components**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+   * - dashboard
+     - Django Web application that provides access to the dashboard
+       from any Web browser.
+   * - Apache HTTP server (httpd service)
+     - Hosts the dashboard Django application.
+
+
+The following high level diagram shows an overview of the dashboard
+architecture.
+
+.. image:: ../../../figures/horizon-dashboard.png
+   :alt: RCPO Dashboard service high-level data flow

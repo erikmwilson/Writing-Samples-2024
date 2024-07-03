@@ -1,0 +1,25 @@
+
+.. _assign-bulk-commandmc:
+
+Assign Multiple Recruits to a Market Center
+===========================================
+
+You can assign multiple recruits to a Market Center using the Bulk Action feature.
+
+To assign multiple recruits to a Market Center, complete the following steps:
+
+.. include:: recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab.
+
+#. Select the check boxes next to the recruits you want to assign to a specific Market Center. To select all recruits, select the check box in the header row.
+
+   .. note::
+
+      You can filter your recruits list using Filters to target certain criteria (for example, **Pipeline Status**).
+
+#. Click **More Options** under the recruits list and select **Assign**.
+
+#. On the **Add Assignee** window, select the assignees. You can select more than one. To remove an assignee, click the X next to the assignee name.
+
+#. Click **Assign**.

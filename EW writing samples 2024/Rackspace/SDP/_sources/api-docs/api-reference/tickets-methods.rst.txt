@@ -1,0 +1,13 @@
+.. _tickets-methods:
+
+=======
+Tickets
+=======
+
+Use the tickets API operations to create a ticket, add a comment, or update
+the status of a ticket. Rackspace Ticketing is currently limited to Dedicated
+Hosting or Managed Hosting products at Rackspace.
+
+.. include:: methods/post-tickets.rst
+.. include:: methods/patch-ticket.rst
+.. include:: methods/post-ticket-comment.rst

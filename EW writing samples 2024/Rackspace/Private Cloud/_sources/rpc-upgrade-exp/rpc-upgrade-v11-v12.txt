@@ -1,0 +1,95 @@
+:deconsttitle: Upgrading from v11 (Kilo) to v12 (Liberty)
+
+==========================================
+Upgrading from v11 (Kilo) to v12 (Liberty)
+==========================================
+
+
+Release highlights
+~~~~~~~~~~~~~~~~~~
+
+- Over 3500 bugs resolved in this latest release as well as additional
+  enhancements to the existing supported feature set of OpenStack
+  projects deployed as part of the Rackspace Private Cloud Powered By
+  OpenStack (RPCO) solution.
+
+- **Enhanced Manageability** – The new version adds role-based access
+  control (RBAC) for the Heat orchestration and Neutron networking
+  projects. These controls allow customers to fine tune security
+  settings at all levels of network and orchestration functions and
+  APIs.
+
+- **Simplified Scalability** – Users will see improvements in the
+  scalability and performance of the Dashboard (horizon), Networking (neutron),
+  Block Storage (cinder) services and improvements to the Compute (nova)
+  service upgrade.
+
+- **Orchestration** – Enhancements to the Heat orchestration project
+  adds dozens of new resources for management, automation and
+  orchestration of the expanded capabilities in Liberty.
+
+
+What to expect during the upgrade process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rackspace recommends a six (6) hour maintenance window. Six hours
+was the average maintenance window time needed to upgrade from Kilo to
+Liberty.
+
+It is important to understand that maintenance window time is **not**
+the same as down time.
+
+Internally, Rackspace uses the following **estimates**:
+
+.. list-table:: Upgrade estimates with OS/Host patching
+   :widths: 30 30
+   :header-rows: 1
+
+   * - Component
+     - Upgrade time
+   * - Pre-deployment checks
+     - 0.5 hour
+   * - OpenStack upgrade
+     - 2.5 hours
+   * - Infra nodes reboot
+     - 1 - 1.5 hours (Reboot one node at a time. Neutron L3 impact expected.)
+   * - Post-deployment checks
+     - 0.5 - 1 hour
+   * - Nova host reboot
+     - 0.5 hour (Reboot all hosts at the same time. At least 20 minutes per
+       batch of hosts is needed.)
+
+Overall maintenance is expected to complete within a 5.5 - 6.5 hour window with
+no impact to customer instances except Neutron L3 service restarts.
+
+.. list-table:: Upgrade estimates without OS/Host patching
+   :widths: 30 30
+   :header-rows: 1
+
+   * - Component
+     - Upgrade time
+   * - Pre-deployment checks
+     - 0.5 hour
+   * - OpenStack upgrade
+     - 2.5 hours
+   * - Post-deployment checks
+     - 0.5 - 1 hour
+
+Overall maintenance is expected to complete within 4 - 4.5 hour window with
+no impact to customer instances except Neutron L3 service restarts.
+
+.. note::
+
+   Upgrading multi-region Object Storage (swift) increases the average
+   upgrade time.
+
+.. note::
+
+   When using Networking (neutron) L3 features (Router and Floating IP
+   addresses), intermittent instance networking communication to
+   external networks or router-attached networks will be impacted due
+   to service restarts.
+
+To learn about upgrade support for your cloud, or to take advantage of
+our training offerings, contact us at: `opencloudinfo@rackspace.com
+<mailto:opencloudinfo@rackspace.com>`_.

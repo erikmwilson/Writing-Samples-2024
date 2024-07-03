@@ -1,0 +1,37 @@
+
+.. _add-trigger-smartplan-command:
+
+Add Trigger to a SmartPlan
+==========================
+
+You can add a tag as a SmartPlan trigger, then any lead/contact that you add that tag to is automatically added to the SmartPlan.
+
+* This trigger only works in the future, meaning that if a lead/contact already has the tag, they will not be automatically added to the SmartPlan.
+
+* You can add up to 10 contact tag triggers to a SmartPlan.
+
+* This is only to add people to a SmartPlan. If you remove a tag from a lead/contact, it will not remove them from the SmartPlan.
+
+* If you edit a tag in your Command Settings, that tag trigger updates automatically in SmartPlans.
+
+* Deleting a tag in Settings also removes the trigger from the SmartPlan automatically.
+
+* Publishing a SmartPlan to the Shared Library removes all contact tag triggers from the SmartPlan.
+
+To add triggers to a SmartPlan, complete the following steps:
+
+.. include:: smartplans-login.rst
+
+#. Click the **My SmartPlans** tab, at the top of the page.
+
+#. Click **Create**, at the top-right of the page or open an existing SmartPlan.
+
+   .. note:
+
+      A SmartPlan must have at least one step to add a trigger.
+
+#. Click **Add Trigger Event** at the top of the SamrtPlan.
+
+#. On the **Choose Trigger** pop-up, select the tags that will trigger this SmartPlan.
+
+   To remove a tag, click the **X** next to the name.

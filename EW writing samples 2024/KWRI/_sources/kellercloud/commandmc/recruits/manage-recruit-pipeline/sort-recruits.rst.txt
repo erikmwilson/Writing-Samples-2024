@@ -1,0 +1,19 @@
+
+.. _sort-recruits-commandmc:
+
+Sort Recruiting Pipeline Cards
+==============================
+
+While you are managing your Opportunities, you may want your recruit cards to display in a certain order within your Phases and Stages.
+
+To sort recruit cards, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab, at the top of the page. Your recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. From the **Sort By** field, select one of the sort options. All cards, in all Phases and Stages are sorted by that option.
+
+#. To return to the default sort, select **- -**.
+
+To move between Recruit details in the same stage, click **Previous Recruit** or **Next Recruit** at the top of the recruit details page.

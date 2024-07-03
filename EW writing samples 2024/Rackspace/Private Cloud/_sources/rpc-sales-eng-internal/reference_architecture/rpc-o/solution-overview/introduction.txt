@@ -1,0 +1,24 @@
+============
+Introduction
+============
+
+Virtualization, cost, ease of deployment, and automation are the key
+criteria to meet the growing IT challenges. Virtualization is a key and
+critical strategic deployment model for reducing the Total Cost of
+Ownership (TCO) and achieving better utilization of the platform
+components like hardware, software, network and storage. The platform
+should be flexible, reliable and cost effective.
+
+OpenStack is a free and open-source software platform (or framework) for
+cloud computing, mostly deployed as an infrastructure-as-a-service
+(IaaS). The software platform consists of interrelated components that
+control hardware pools of processing, storage, and networking resources
+throughout a data center. Users either manage it through a web-based
+dashboard, through command-line tools, or through a RESTful Application
+Programming Interface (API.) OpenStack.org released it under the terms
+of the Apache License.
+
+The OpenStack framework also provides for the separation of hosted
+services by Region (a collection of one or more data centers
+interconnected by a low-latency, high-bandwidth network) and
+Availability Zones (Fault Domain) within Region.

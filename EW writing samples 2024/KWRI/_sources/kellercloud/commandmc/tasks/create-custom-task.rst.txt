@@ -1,0 +1,31 @@
+
+.. _create-custom-task-commandmc:
+
+Create a Custom Task
+====================
+
+To create a custom task, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click the **Recruits** tab, at the top of the page.
+
+#. Click **Other Tasks**.
+
+#. Click **Create Task**, at the top-right of the page.
+
+#. On the **Create Custom Task** window, enter the following information:
+
+   * **Task Name**
+
+   * **Due Date**
+
+   * **Assignee** - The assignee for this task. You can only select one assignee.
+
+   * **Task Description** (optional)
+
+   * **Recruit(s)** - The recruits attached to this task (optional).
+
+   * **Hyperlink** - Any hyperlink that you need to complete the task (optional).
+
+#. Click **Create Task**.

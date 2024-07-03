@@ -1,0 +1,36 @@
+
+.. _create-loop-opportunities-command:
+
+Create a Dotloop Loop for an Opportunity
+========================================
+
+After you have connected your DotLoop account in Command, you can create loops through your Opportunities and import your completed forms from Dotloop into the corresponding Opportunity to submit for compliance approval.
+
+For more informations, see :ref:`connect-dotloop-opportunities-command`.
+
+.. note:
+
+   You must create your loops from within the Opportunity in Command. If you create the loop directly in DotLoop, it will not be available in Command.
+
+To create a loop, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. Click the MarketPlace icon |marketplace-icon|, at the top of the screen.
+
+   .. |marketplace-icon| image:: ../../../../../images/marketplace-icon.png
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. At the top-left of the Documents page, click **Start a Transaction**.
+
+#. Click **Go to Transaction**.
+
+#. On the Dotloop sign in window, enter your Dotloop email and password and then click **SIGN IN**.
+
+   The loop window for that Opportunity appears where you can manage your documents.

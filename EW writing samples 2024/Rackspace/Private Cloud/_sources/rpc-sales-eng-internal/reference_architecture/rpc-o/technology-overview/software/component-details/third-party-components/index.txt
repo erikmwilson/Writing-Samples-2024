@@ -1,0 +1,41 @@
+======================
+Third-party components
+======================
+
+Some of the RCPO platform components use third-party databases,
+services, and tools.
+
+
+Databases
+~~~~~~~~~
+
+Each RCPO component requires a running MariaDB service. Therefore, you
+must deploy MariaDB before you deploy a full RCPO cloud service or
+before you install any standalone RCPO component. In RCPO platform,
+MariaDB is the default and recommended SQL database.
+
+
+Messaging
+~~~~~~~~~
+
+RabbitMQ is a robust open-source messaging system based on the AMQP
+standard. RabbitMQ is a high-performance message broker used in many
+enterprise systems with widespread commercial support. In RCPO
+platform, RabbitMQ is the default and recommended message broker.
+
+
+External caching
+~~~~~~~~~~~~~~~~
+
+External applications for caching, such as memcached offer persistence
+and shared storage and speed up dynamic web applications by reducing the
+database load. External caching is used by various RCPO components, for
+example:
+
+-  The Object Storage service uses memcached to cache authenticated
+   clients, instead of requiring each client to re-authorize each
+   interaction.
+
+-  By default, the dashboard uses memcached for session storage.
+
+-  The Identity service uses memcached for token persistence.

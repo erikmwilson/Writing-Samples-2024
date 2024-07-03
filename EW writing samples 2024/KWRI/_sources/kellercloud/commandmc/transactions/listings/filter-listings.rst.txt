@@ -1,0 +1,42 @@
+
+.. _filter-listings-commandmc:
+
+Filter Listings
+===============
+
+While you are managing your listings in CommandMC, you may need to find specific listings. Instead of scrolling through your list of listings to find the listings you are looking for, you can use filters.
+
+To filter listings, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Listings** tab, at the top of the page. A list displays of all your Market Center listings.
+
+#. Click the filter icon |filter-icon| at the top of the page.
+
+   .. |filter-icon| image:: ../../../../images/filter-icon.png
+      :height: 30
+
+#. When the filters fly-out menu appears on the right side of the page, select filters by clicking the checkbox beside them or entering specific dates. To remove filters, you can either remove them individually or click **Clear All** at the bottom of the fly-out menu to remove all of the filters.
+
+   You can filter on the following criteria:
+
+   * Agents
+
+   * Status
+
+   * Unassigned
+
+   * Period Listings Taken
+
+   * Transaction Type
+
+   * Listings Type
+
+   * Property Type
+
+   * Expiration Date
+
+#. Click **Apply**.
+
+   The listings are filtered and the total number of applied filters appears next to the filter icon. Click **Clear Filters** to remove all filters. You can save this set of filters as a Smart View.

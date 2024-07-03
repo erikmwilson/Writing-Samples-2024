@@ -1,0 +1,26 @@
+
+.. _reassign-task-associates-commandmc:
+
+Reassign Task
+=============
+
+For a task to be reassigned, it must first be assigned to someone.
+
+To reassign a task, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Select either **Checklist Tasks** or **Other Tasks** from the drop-down.
+
+#. Select **To Do** from the drop-down. Only tasks in **To Do** status can be reassigned.
+
+#. Locate the appropriate task, click the More Options menu (ellipses |menu-options-icon| icon) and select **Reassign**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Reassign Task** window, select a new assignee and click **Save**.
+
+   .. note::
+
+      Each task can only have one assignee.

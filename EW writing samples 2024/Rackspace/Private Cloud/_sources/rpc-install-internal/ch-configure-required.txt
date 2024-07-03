@@ -1,0 +1,19 @@
+===================================
+Configure the deployment (required)
+===================================
+
+.. image:: ../figures/rpc-internal-installworkflow-configure.png
+
+Ansible references some files that contain mandatory and optional
+configuration directives. Before you can run the Ansible playbooks to
+install Rackspace Private Cloud Powered By OpenStack (RPCO), you must
+modify these files to define the target environment. Perform the
+following required tasks:
+
+.. toctree::
+   :maxdepth: 2
+
+   Complete the prerequisites <configure-req/configure-prereqs.rst>
+   Configure Target host networking to define bridge interfaces and networks <configure-req/configure-target-hosts-networking.rst>
+   Configure a list of target hosts on which to install the software <configure-req/configure-target-host.rst>
+   Configure service credentials <configure-req/configure-service-credentials.rst>

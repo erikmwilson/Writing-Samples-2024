@@ -1,0 +1,8 @@
+.. _reports-ug:
+
+=======
+Reports
+=======
+
+For information about |service appformix| reports, see
+`Reports <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-report.html>`_ in the AppFormix User Guide.

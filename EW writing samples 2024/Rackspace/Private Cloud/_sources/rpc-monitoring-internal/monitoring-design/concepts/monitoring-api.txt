@@ -1,0 +1,6 @@
+==============
+Monitoring API
+==============
+
+For detailed information about the Rackspace Monitoring API, see
+https://developer.rackspace.com/docs/rackspace-monitoring/v1/.

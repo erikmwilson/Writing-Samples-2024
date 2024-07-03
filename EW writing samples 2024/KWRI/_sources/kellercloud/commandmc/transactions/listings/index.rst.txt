@@ -1,0 +1,18 @@
+
+.. _transactions-listings-index-commandmc:
+
+Listings
+========
+
+The following sections contain information about listings within Transactions.
+
+.. toctree::
+   :maxdepth: 1
+
+   search-listings
+   filter-listings
+   sort-columns
+   create-internal-listing
+   edit-listing
+   relist-listing
+   delete-listing

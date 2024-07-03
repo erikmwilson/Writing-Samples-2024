@@ -1,0 +1,25 @@
+
+.. _add-tags-compliance-opportunities-commandmc:
+
+Add Tags to Submitted Compliance Requests
+=========================================
+
+Market Center Administrators (MCAs) can create up to 50 tags for their compliance team to use when reviewing submitted compliance requests.
+
+For more information, see :ref:`create-tags-settings-commandmc`.
+
+While only the MCA can create and edit the tags, your entire compliance team can add and remove tags from compliance requests. This allows you to filter and search for requests, or to clearly label requests for your compliance team to reference later.
+
+To add tags to submitted compliance request, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. At the top of the page, click the **Compliance Requests** tab to see a list of all submitted compliance requests.
+
+#. Find the correct compliance request.
+
+   For more information, see :ref:`search-compliance-requests-opportunities-commandmc`.
+
+#. In the **Custom Tags** section, click *Add** (For a request that does not have any tags applied to it), or click **Edit**.
+
+#. Start typing the name of the tag, and select the tag from the results list or scroll to the correct tags. You can also click the **X** next to any existing tags, to remove them from the compliance request.

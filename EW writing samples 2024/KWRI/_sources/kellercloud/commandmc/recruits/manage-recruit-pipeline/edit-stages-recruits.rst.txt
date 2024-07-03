@@ -1,0 +1,33 @@
+
+.. _edit-stages-recruits-cmc:
+
+Edit Stages
+===========
+
+Each phase in Recruits is divided into stages, which you can customize to fit your transaction process. By default, stages have been added to your pipeline to get you started. From the Recruiting Pipeline, click on each phase to see the stages that have been set up.
+
+The first step to getting your Recruiting Pipeline set up is to look at your business and define the stages needed within each phase of a transaction.
+
+.. note::
+
+   A stage is not a task. Each stage is a period of time in the transaction process that might have multiple tasks or outcomes that need to be happen before you can move to the next stage.
+
+To edit your Pipeline stages, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click on a phase to see what has been added by default.
+
+#. Click **Edit Stages** at the top-right.
+
+   The *Edit Stages** window, lists your stages and a probability for each.
+
+#. To add a new stage, click **Add New Stage**. To edit or delete an existing stage, click the respective icons. To reorganize the stages, click and drag the rows.
+
+   .. note::
+
+      You cannot delete a stage that contains a recruit.
+
+#. When editing a new or existing stage, enter a **Stage Name** and add any **Checklist** items, and then click **Save**.
+
+#. Each stage also has a checklist associated with it. Click the checklist in each stage to add or edit items in that checklist. This checklist appears for every recruit, which allows you to check off tasks that have been completed.

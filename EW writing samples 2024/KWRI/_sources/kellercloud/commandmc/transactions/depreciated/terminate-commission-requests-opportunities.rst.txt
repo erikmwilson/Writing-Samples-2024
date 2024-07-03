@@ -1,0 +1,25 @@
+
+.. _terminate-commission-opportunities-commandmc:
+
+Terminate a Commission Request
+==============================
+
+When an offer falls through after the agent has already submitted a commission, they can request a termination of that commission. Terminating the commission allows the agent to accept another offer and request a new commission.
+
+.. note::
+
+   You cannot approve a commission if there is a termination request for another commission on the same opportunity.
+
+To terminate a commission request, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. At the top of the page, click the **Commission Requests** tab to see a list of all submitted commission requests.
+
+#. Select **Termination Requested** in the **Filters** section to view all termination requests.
+
+#. Find the correct termination request and click **Confirm Termination**.
+
+   * If the commission has not been imported to WinMORE, you can click **Terminate Commission** to terminate the commission or click **View Commission** to review the commission details. In the **Summary** section of the commission details, click **Terminate Commission**. The commission status changes to **Terminated**.
+
+   * If the commission has already been imported into WinMORE, it must be terminated in WinMORE. Terminating a commission in WinMORE automatically changes the commission status to **Terminated**.

@@ -1,0 +1,40 @@
+
+.. _access-activity-reports-commandmc:
+
+Access Activity Reports
+=======================
+
+Transform your month-end close process with CommandMC's Activity reports. Customize, filter, and enhance the data to suit your needs and maximize your insights.
+The new reports include the following upgrades:
+
+* Cap Management report: There is now just one report to view Anniversary DAs and cap statuses for Agents.
+
+* Associate Roster: Access all essential Associate information, including important dates and details all in one report.
+
+* Pending Sales: A cleaned up version of the Projected Closings report. I now provides a clearer understanding of your upcoming deals.
+
+* Three of the previous Written Sales reports have been combined into one report.
+
+* Three of the previous Closed Sales reports have been combined into one report.
+
+To access the Yearly Progress to Commitment Report, complete the following steps:
+
+.. include:: reports-mc-login.rst
+
+#. Click the **Activity** tab.
+
+#. On the **Introducing Activity Reports** window, click **View Reports**. Select the **Don't show me this again** checkbox to bypass this window in the future.
+
+#. Select one of the following reports:
+
+   * Associate Recap
+
+   * Closed Sales Production
+
+   * Written Sales Production
+
+   * Cancelled Sales
+
+   * Pending Sales
+
+   * Listing Taken

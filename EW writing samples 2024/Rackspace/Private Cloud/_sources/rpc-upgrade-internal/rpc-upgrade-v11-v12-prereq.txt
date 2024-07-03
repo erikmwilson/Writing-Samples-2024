@@ -1,0 +1,271 @@
+=============
+Prerequisites
+=============
+
+This section documents the manual tasks that must be performed before
+beginning an upgrade.
+
+.. caution::
+
+   Before upgrading to the current major release, you must first upgrade to
+   the latest minor release of the previous major release. For example, to
+   upgrade from version 11 to 12, upgrade to the latest 11.x release and
+   then upgrade to version 12.
+
+.. warning::
+
+   Read the RPCO Release Notes before beginning the upgrade. The
+   Release Notes provide late-breaking information about known issues
+   and required steps to correct them.
+
+Verify infrastructure health before starting the upgrade process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before attempting an upgrade, verify that all cluster nodes are
+operating normally. Pay particular attention to the Galera cluster.
+The following commands help you check basic Galera operation.
+
+#. Check disk usage:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack/openstack-ansible/playbooks
+      # ansible galera_all -m shell -a 'df -h'
+
+#. Check inode usage:
+
+   .. code-block:: console
+
+      # ansible galera_all -m shell -a 'df -i'
+
+#. Check MySQL status:
+
+   .. code-block:: console
+
+      mysql> SHOW STATUS LIKE '%wsrep%';
+
+   The output shows the detailed the status of the cluster. Run this
+   command on all of the Galera nodes. To automate status
+   checking on all of the Galera nodes, run the following Ansible
+   commands:
+
+   .. code-block:: console
+
+      # ansible galera_all -m shell -a "mysql -e \"show status like \
+        'wsrep_incoming_addresses'\""
+
+   The ``wsrep_incoming_addresses`` line should show the IP addresses
+   of each member of the cluster.
+
+   .. code-block:: console
+
+      # ansible galera_all -m shell -a "mysql -e \"show status like \
+       'wsrep_local_state_comment'\""
+
+   The ``wsrep_local_state_comment`` should show **Synced** status.
+
+   .. code-block:: console
+
+      # ansible galera_all -m shell -a "mysql -e \"show status like \
+        'wsrep_cluster_status'\""
+
+   The ``wsrep_cluster_status`` should show **Primary** for all Galera
+   nodes.
+
+ .. warning::
+
+    Correct any faults in the cluster nodes before proceeding with an
+    upgrade.
+
+
+Back up the environment
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The upgrade script backs up the ``/etc/openstack_deploy`` directory.
+However, it is recommended to perform a separate, full backup of the
+environment, including the source repository.
+
+Run the MaaS setup playbook during the upgrade
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run the MaaS setup playbook during the install, set the ``DEPLOY_MAAS``
+variable to ``yes``.
+
+Set the MaaS token
+~~~~~~~~~~~~~~~~~~
+
+#. Generate a MaaS token using
+   `Pitchfork <https://pitchfork.eco.rackspace.com/monitoring/>`_ or the
+   following example script:
+
+   .. code-block:: console
+
+      AUTH_USER=$(read -p 'Enter Username: ' username; echo $username) \
+      AUTH_PASS=$(read -s -p 'Enter Password: ' password; echo $password) \
+      MAAS_TOKEN=$(curl -s -X GET http://si.rackspace.com/auth/Token/AuthDetails \
+      -H "x-auth-user: $AUTH_USER" -H "x-auth-password: $AUTH_PASS" \
+      | sed 's/<[^>]*>//g') echo echo $MAAS_TOKEN
+
+#. Use this value for the ``maas_auth_token`` option in the
+   ``/etc/openstack_deploy/user_variables.yml`` file.
+
+Configure SSL certificates for Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For information about configuring Dashboard SSL, refer to the
+*Securing Horizon communication with SSL certificates* section
+in the `OpenStack-Ansible horizon role documentation
+<http://docs.openstack.org/developer/openstack-ansible-os_horizon/configure-horizon.html/>`_.
+
+Understand upgrade scenarios
+----------------------------
+
+There are four primary scenarios that affect OpenSSL certificates and
+the actions required:
+
+#. You are using the defaults from v10 with a self-signed certificate
+   and want to continue using that certificate.
+
+#. You are using your own certificate, key, and so on, but the
+   configuration was done manually.
+
+#. You are using the defaults but now want to change something about
+   them.
+
+#. After upgrading RPCO, new security settings might cause older
+   browsers to fail to connect to Dashboard.
+
+Use the default certificates
+----------------------------
+
+You can choose to either rename the old files or update the user
+variables file, but not both.
+
+To rename the old files:
+
+.. code-block:: console
+
+   $ cd /opt/openstack-ansible/rpc_deployment
+   # ansible horizon_all -m shell -a 'mv /etc/ssl/certs/apache.cert \
+   /etc/ssl/private/horizon.pem'
+   # ansible horizon_all -m shell -a 'mv /etc/ssl/private/apache.key \
+   /etc/ssl/private/horizon.key'
+
+Alternatively, ensure that ``/etc/rpc_deploy/user_variables.yml``
+contains:
+
+.. code-block:: ini
+
+   horizon_ssl_cert: /etc/ssl/certs/apache.cert
+   horizon_ssl_key: /etc/ssl/private/apache.key
+
+Use your own key and certificate
+--------------------------------
+
+Set the ``horizon_user_ssl_cert``, ``horizon_user_ssl_key``, and
+``horizon_user_ca_cert`` variables in the
+``/etc/rpc_deploy/user_variables.yml`` file. This overrides any
+self-signed certificates in v11.
+
+If ``horizon_user_ssl_cert`` or ``horizon_user_ssl_key`` are not
+defined, the missing certificate and key are self generated on the first
+Dashboard container and distributed to other Dashboard containers.
+
+Regenerate self-signed certificates
+-----------------------------------
+
+There are two scenarios for regenerating self-signed certificates.
+
+To use the old paths but regenerate the certificates, set the variables
+as above and add the following line to the
+``/etc/rpc_deploy/user_variables.yml`` file:
+
+.. code-block:: ini
+
+   horizon_ssl_self_signed_regen: true
+
+Optionally, change the subject of the certificate as appropriate for
+your environment:
+
+.. code-block:: ini
+
+   horizon_ssl_self_signed_subject: "..."
+
+No action is required to use the new default certificate location. The
+old ``apache.cert`` and ``apache.key`` files are left and new keys,
+certificates, and so on are placed in the new default location. These
+are regenerated since the files don't yet exist in the new location.
+
+Fix connection issues with old browsers
+---------------------------------------
+
+Two of the `new variables
+<https://github.com/openstack/openstack-ansible/blob/c110786e1f13c1f1758d280f6e69d4bcec5d7cc6/playbooks/roles/os_horizon/defaults/main.yml#L66..L75>`_
+affect customers using old browsers such as Internet Explorer 6:
+``horizon_ssl_protocol`` and ``horizon_ssl_cipher_suite``.
+
+By default, both RPCO v10 and v11 disable unsafe SSLv2 and SSLv3
+protocols for Dashboard. Therefore, no modification is necessary.
+However, cipher suites differ. The cipher suite `currently is set for Dashboard
+<https://github.com/openstack/openstack-ansible/blob/ff9209b47c6d93dad717b99b399d3b201bfdd07c/rpc_deployment/roles/horizon_apache/templates/openstack-dashboard.conf#L23>`_
+in v10 is:
+
+.. code-block:: ini
+
+   EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256
+   EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL
+   !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4
+
+For v11 the settings are:
+
+.. code-block:: ini
+
+   ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:
+   DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+
+Since the v11 cipher list provides better transport security, it is not
+advisable to change the list to the old default. If users are unable to
+connect, check to see if changing the cipher list temporarily to a less
+secure setting enables connecting. To permanently change the cipher
+list, edit ``/etc/openstack_deploy/user_variables.yml`` after upgrade
+and run the ``os-horizon.yml`` playbook from the
+``/opt/rpc-openstack/openstack-ansible/playbooks`` directory.
+
+Enable the trusty-backports repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The trusty-backports repository is required to install or upgrade Object
+Storage. Add repository details in ``/etc/apt/sources.list``, and update
+the package list:
+
+.. code-block:: console
+
+   # cd /opt/rpc-openstack/openstack-ansible/playbooks
+   # ansible hosts -m lineinfile -a 'dest=/etc/apt/sources.list regexp="^deb \
+     http.*trusty-backports.*" line="deb http://mirror.rackspace.com/ubuntu \
+     trusty-backports main restricted universe multiverse" state=present'
+   # ansible hosts -m command -a "apt-get update"
+
+..  note::
+
+    The above assumes the ``/etc/apt/sources.list`` is using
+    http://mirror.rackspace.com/ubuntu for ``trusty``, ``trusty-updates``
+    distributions. Check to see which mirror is being used, and if
+    necessary, update the above command by placing
+    http://mirror.rackspace.com/ubuntu with the appropriate mirror.
+
+Truncate tables
+~~~~~~~~~~~~~~~
+
+If the ``dash.django_sessions`` and ``keystone.token`` tables
+are very large, the database will lock and API calls will fail for up to
+30 minutes. Run the following commands to truncate these tables.
+
+   .. note::
+
+      Before truncating the tables, connect to a Galera container.
+
+.. code-block:: console
+
+   # mysql -e 'TRUNCATE TABLE dash.django_session;'
+   # mysql -e 'TRUNCATE TABLE keystone.token;'

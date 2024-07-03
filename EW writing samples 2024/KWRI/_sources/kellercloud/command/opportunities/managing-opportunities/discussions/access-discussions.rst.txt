@@ -1,0 +1,26 @@
+
+.. _access-discussions-opportunities-command:
+
+Access the All Discussions Page (Teams)
+=======================================
+
+To access the All Discussions page, complete the following steps:
+
+.. include:: ../../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. At the top of the Opportunity Dashboard, click **All Discussions**.
+
+#. On the **All Opportunity** page, you will see all Discussions that you have created or been added to. To view a specific Discussion:
+
+   * Search for a Discussion using a search parameter (**Opportunity**, **Property**, or **Contact**).
+
+   * Click the column titles to sort the list by that category.
+
+   * Click the Opportunity name to access that Discussion.
+
+For more information, see :ref:`managing-discussions-opportunities-command`.

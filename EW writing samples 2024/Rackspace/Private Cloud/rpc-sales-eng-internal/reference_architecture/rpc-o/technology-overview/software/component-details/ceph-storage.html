@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ceph storage &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Third-party components" href="third-party-components/index.html" />
+    <link rel="prev" title="Dashboard service (horizon)" href="dashbaord-service.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../../../../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../index.html">Rackspace Private Cloud Sales Engineering Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../preface.html">Preface</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../index.html">Rackspace Private Cloud Reference Architecture</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../index.html">Rackspace Private Cloud Powered by OpenStack (RPCO)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../copyright/index.html">Copyright</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../executive-summary/index.html">Executive summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rackspace/index.html">Rackspace advantages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../solution-overview/index.html">Solution overview</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html">Technology overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../requirements/index.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../environment-sizing/index.html">Environment sizing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../architectural-decisions/index.html">Architectural decisions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../cloud-design/index.html">Cloud design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../physical-design/index.html">Physical design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../network-design/index.html">Network design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../../rpc-monitoring-internal/monitoring-design/index.html">Rackspace monitoring design</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../blade_servers/blade-servers-unsuitable-openstack.html">Why Blade Servers are Unsuitable for OpenStack Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../../../index.html">Rackspace Private Cloud Sales Engineering Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Rackspace Private Cloud Reference Architecture</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Rackspace Private Cloud Powered by OpenStack (RPCO)</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Technology overview</a> &raquo;</li>
+        
+          <li><a href="../index.html">Software</a> &raquo;</li>
+        
+          <li><a href="index.html">RCPO component details</a> &raquo;</li>
+        
+      <li>Ceph storage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/rpc-sales-eng-internal/reference_architecture/rpc-o/technology-overview/software/component-details/ceph-storage.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ceph-storage">
+<h1>Ceph storage<a class="headerlink" href="#ceph-storage" title="Permalink to this headline">#</a></h1>
+<p>Ceph is a distributed data object store designed to provide excellent
+performance, reliability, and scalability. Distributed object stores are the
+future of storage, because they accommodate unstructured data, and because
+clients can use modern object interfaces and legacy interfaces, such as those
+listed below, simultaneously.</p>
+<ul class="simple">
+<li>Native language binding interfaces (C/C++, Java, Python)</li>
+<li>RESTful interfaces (S3/Swift)</li>
+<li>Block device interfaces</li>
+<li>File system interfaces</li>
+</ul>
+<p>The power of Ceph can transform your organization’s IT infrastructure and your
+ability to manage vast amounts of data, especially for cloud computing
+platforms like RPCO.  Ceph delivers industry-leading scalability – thousands of
+clients accessing petabytes to exabytes of data and beyond.</p>
+<p>At the heart of every Ceph deployment is the Ceph Storage Cluster. The cluster
+consists of two types of daemons:</p>
+<ul class="simple">
+<li>Ceph OSD daemon: Ceph OSDs store data on behalf of Ceph clients.
+Additionally, Ceph OSDs utilize the CPU and memory of Ceph nodes to perform
+data replication, rebalancing, recovery, monitoring, and reporting
+functions.</li>
+<li>Ceph monitor: A Ceph monitor maintains a master copy of the Ceph Storage
+Cluster map with the current state of the storage cluster.</li>
+</ul>
+<p>Ceph client interfaces read data from and write data to the Ceph Storage
+Cluster. Clients need the following data to communicate with the Ceph Storage
+Cluster:</p>
+<ul class="simple">
+<li>The Ceph configuration file, or the cluster name (usually ceph) and monitor
+address</li>
+<li>The pool name</li>
+<li>The user name and the path to the secret key</li>
+</ul>
+<p>Ceph clients maintain object IDs and the pool name(s) where they store the
+objects, but they do not need to maintain an object-to-OSD index or communicate
+with a centralized object index to look up data object locations. To store and
+retrieve data, Ceph clients access a Ceph monitor and retrieve the latest copy
+of the storage cluster map. Then, Ceph clients can provide an object name and
+pool name, and Ceph uses the cluster map and the Controlled Replication under
+Scalable Hashing (CRUSH) algorithm
+(<a class="reference external" href="http://docs.ceph.com/docs/master/rados/operations/crush-map/">http://docs.ceph.com/docs/master/rados/operations/crush-map/</a>) to compute the
+object placement group and the primary Ceph OSD for storing or retrieving data.
+The Ceph client connects to the primary OSD where it may perform read and write
+operations. There is no intermediary server, broker, or bus between the client
+and the OSD.</p>
+<p>When an OSD stores data, it receives data from a Ceph client — whether the
+client is a Ceph Block Device, a Ceph Object Gateway, or another interface —
+and it stores the data as an object. Each object corresponds to a file in a
+file system, which is stored on a storage device such as a hard disk. Ceph OSDs
+handle the read and write operations on the storage device.</p>
+<p>Ceph OSDs store all data as objects in a flat namespace (that is, no hierarchy
+of directories). An object has a cluster-wide unique identifier, binary data,
+and metadata consisting of a set of name and value pairs. The semantics are
+determined by the Ceph clients. For example, the Ceph block device maps a block
+device image to a series of objects stored across the cluster.</p>
+<div class="section" id="storage-cluster-architecture">
+<h2>Storage cluster architecture<a class="headerlink" href="#storage-cluster-architecture" title="Permalink to this headline">#</a></h2>
+<p>A Ceph Storage Cluster accommodates large numbers of Ceph nodes for massive
+scalability, high availability, and performance. Each node uses
+commodity hardware and intelligent Ceph daemons that communicate with each
+other to perform the following tasks:</p>
+<ul class="simple">
+<li>Store and retrieve data</li>
+<li>Replicate data</li>
+<li>Monitor and report on cluster health (heartbeating)</li>
+<li>Redistribute data dynamically (backfilling)</li>
+<li>Ensure data integrity (scrubbing)</li>
+<li>Recover from failures</li>
+</ul>
+<p>To the Ceph client interface that reads and writes data, a Ceph Storage Cluster
+looks like a simple pool where it stores data. However, the storage cluster
+performs many complex operations in a manner that is completely transparent to
+the client interface. Ceph clients and Ceph OSDs both use the CRUSH algorithm.</p>
+</div>
+<div class="section" id="ceph-client-architecture">
+<h2>Ceph client architecture<a class="headerlink" href="#ceph-client-architecture" title="Permalink to this headline">#</a></h2>
+<p>Ceph clients differ in how they present data storage interfaces. A Ceph block
+device presents block storage that mounts just like a physical storage drive.
+A Ceph gateway presents an object storage service with S3-compliant and
+Swift-compliant RESTful interfaces with its own user management. However, all
+Ceph clients use the Reliable Autonomic Distributed Object Store (RADOS)
+protocol to interact with the Ceph storage cluster. They all have the following
+basic needs:</p>
+<ul class="simple">
+<li>The Ceph configuration file, or the cluster name (usually ceph) and monitor
+address</li>
+<li>The pool name</li>
+<li>The user name and the path to the secret key.</li>
+</ul>
+<p>Ceph clients tend to follow some similar patterns, such as object-watch-notify
+and striping.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="third-party-components/index.html" class="btn btn-neutral float-right" title="Third-party components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dashbaord-service.html" class="btn btn-neutral float-left" title="Dashboard service (horizon)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

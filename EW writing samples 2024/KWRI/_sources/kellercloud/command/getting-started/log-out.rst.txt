@@ -1,0 +1,9 @@
+
+.. _log-out-command-ug:
+
+Log out of Command
+==================
+
+1. On the top-right corner of Command, click your name.
+
+#. Select **Log out** from the drop-down menu.

@@ -1,0 +1,13 @@
+
+.. _smartplans-settings-index-commandmc:
+
+SmartPlans
+==========
+
+The following sections contain information about configuring
+SmartPlans.
+
+.. toctree::
+   :maxdepth: 1
+
+   designated-associates-smartplans

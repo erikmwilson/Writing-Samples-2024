@@ -1,0 +1,14 @@
+.. lead-routing-settings-index-command:
+
+Lead Routing
+============
+
+The following sections contain information about how to configure
+lead routing settings.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview
+   routes
+   team-stats

@@ -1,0 +1,19 @@
+
+.. _edit-profile-command:
+
+Edit profile
+============
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-right corner of Command, click your name.
+
+#. Select **Profile** from the drop-down menu.
+
+#. Click **Edit profile**.
+
+#. Update your profile information.
+
+#. Click **Save changes**.

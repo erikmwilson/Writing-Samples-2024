@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Searching logs using Kibana plugin &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Document history and additional information" href="../postface.html" />
+    <link rel="prev" title="Searching logs using the Head plugin" href="sec-logs-head.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Monitoring and Logging Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-design/index.html">Rackspace monitoring design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-impl/index.html">RPCO monitoring implementation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RPCO logging</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sec-logging-elasticsearchintro.html">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-esapi.html">Searching logs using the Elasticsearch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-es2unix.html">Searching logs using the es2unix command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-head.html">Searching logs using the Head plugin</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Searching logs using Kibana plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-kibana">Accessing Kibana</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#es2unix-commands">ES2Unix Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#http-requests">HTTP requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Monitoring and Logging Guide</a> &raquo;</li>
+        
+          <li><a href="index.html">RPCO logging</a> &raquo;</li>
+        
+      <li>Searching logs using Kibana plugin</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-monitoring-internal/logging/sec-logs-kibana.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="searching-logs-using-kibana-plugin">
+<h1>Searching logs using Kibana plugin<a class="headerlink" href="#searching-logs-using-kibana-plugin" title="Permalink to this headline">#</a></h1>
+<p>Kibana is a web interface tool used to view and search logs.</p>
+<div class="section" id="accessing-kibana">
+<h2>Accessing Kibana<a class="headerlink" href="#accessing-kibana" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">In a web browser, enter the enter the external load balancer IP
+address on port 8443: <code class="docutils literal"><span class="pre">https://external_lb_vip_address</span></code>:8443.</p>
+</li>
+<li><p class="first">Log in with the username <em>``kibana``</em> and the password set in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_secrets.yml</span></code> file.</p>
+<p>Logs will be displayed in the main Dashboard panel.</p>
+</li>
+</ol>
+<p>When auto-refresh is enabled, the main Dashboard panel will display the
+following message: <strong>*``Minutes/Seconds``* ago refreshed every 5s</strong>. To
+disable auto-refresh, select the triangle to the right of the message
+and set auto-refresh to <code class="docutils literal"><span class="pre">Off</span></code>.</p>
+<p>For more information on viewing logs and filtering events, refer to the
+<a class="reference external" href="http://www.elasticsearch.org/guide/en/kibana/current/index.html">Kibana
+documentation</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../postface.html" class="btn btn-neutral float-right" title="Document history and additional information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sec-logs-head.html" class="btn btn-neutral float-left" title="Searching logs using the Head plugin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+.. _import-dotloop-opportunities-command:
+
+Import Loops from Dotloop
+=========================
+
+Whether you are going to use DocuSign, Dotloop, or another method to manage your documents and get forms signed, you can use Command to add completed documents to the compliance checklist and submit these forms for approval. The first step in this process is to get your Dotloop loops into Command. You need to complete this step even if you are going to continue to use Dotloop for e-signature purposes.
+
+The import process imports your active loops to Command, connects them to your existing Command contact records or automatically creates new contact records, adds missing information, and reviews your data for accuracy. After your loops have been imported, you can move your Opportunities from phase to phase and complete your compliance checklists in Command.
+
+.. note::
+
+   The Dotloop import process is intended to help you transition your loops to Command so you can start managing and submitting documents to your Market Center through Command. After you import your completed and active loops into Command, you can then create your new loops from within Command (if you are going to continue using Dotloop with Command).
+
+   * For more information, see :ref:`connect-dotloop-opportunities-command`.
+
+   * For more information, see :ref:`create-loop-opportunities-command`.
+
+   Before you start the Dotloop import process, we recommendations the following to save you time during the process and prevent errors:
+
+   * Make sure that your various Dotloop profiles are properly named so that you can tell the difference between them during the import process. For more information, see `Dotloop profile settings <https://support.dotloop.com/hc/en-us/articles/205589488-My-Account-Admin-Profile-Settings>`_.
+
+   * Make sure that each loop that you are going to import has a proper loop status. For more information, see `Manage Loop Status <https://support.dotloop.com/hc/en-us/articles/204035093-Managing-Your-Loops#2>`_.
+
+   * Make sure that the primary contact in each loop that you are going to import has a name and email address that matches a contact in Command. For more information, see `Managing people in a Loop <https://support.dotloop.com/hc/en-us/articles/202789893-Managing-People-In-A-Loop>`_.
+
+To import loops from Dotloop, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click **Import From Dotloop**.
+
+#. On the Dotloop login pop-up, enter your Dotloop login credentials and click **Sign In**.
+
+#. On the verification window, click **Accept**.
+
+#. At the top-right of the Opportunities Dashboard, click **Import**.
+
+#. On the Import Loops window, select the Command pipeline you want to create the new Opportunities in and the Dotloop profile you want to import loops from. Click **Continue**.
+
+   .. note::
+
+      Make sure you choose the correct Command Opportunity pipeline. Whichever pipeline you select is where the new Opportunities are created. You cannot move these Opportunities to another pipeline, once created, and Rainmakers do not have visibility in to their member agent's personal Opportunity pipelines.
+
+      Rainmakers, for more information, see :ref:`enable-disable-personal-pipelines-opportunities-command`.
+
+#. Select the loops that you want to import into Command. Using the checkbox to the left of the loop name, select up to 25 Loops, then click **Import Selected**.
+
+   .. note::
+
+      If you have more than 25 active loops to import, you can repeat this import process. The system remembers the Loops you have already imported.
+
+      Also, if you know that you have multiple loops for the same transaction, sort this list by address, which will help you identify the duplicates.
+
+#. After you receive an "Import Complete" message, click **Review now** to review which loops fully or partially imported. The time it takes to import your loops depends on the system and how many loops you are importing.
+
+   You also have the option to **Skip review**, but this is not recommended. Every new Opportunity at a minimum needs the following: a contact name, a property address, and an Opportunity Type (Listing, Buyer, Landlord, Tenant). Many of your loops may be missing one of these pieces of information, and may not be imported if you skip the review process.
+
+#. On the Review loops window, the imported loops are listed on the left side of the page. The system goes through each loop to have you complete all of the required information the system needs to create the new Opportunity. After you complete entering information, click **Save & Continue**.
+
+   .. note::
+
+      Command takes the contact email from DotLoop and tries to match a contact in Command with the same email address. If the email addresses match, the contacts will merge together. If the email addresses do not match, the import might attach the wrong contact to this new Opportunity
+
+      Incorrect email addresses can result in duplicate contacts.
+
+   The system opens the details for the next loop, where you can make any updates. Keep going through each loop until details have been added for all of the selected loops.
+
+   If you have more than 25 active loops to import into Command, repeat these steps to import 25 Loops at a time, until all Loops have been imported.
+
+
+#. After you have imported your loops, you will find them in either the **Active** or **Closed** phases, under a new **Legacy** stage. When you go into each of these new Opportunities, click the **Documents** tab.
+
+#. The documents from each loop you imported are pulled into a custom **Imported from Dotloop** folder.
+
+   You can start adding files to the compliance checklists, using the documents from this new custom folder.
+
+   * For more information, see :ref:`add-documents-opportunities-command`.
+
+   * For more information, see :ref:`submit-documents-opportunities-command`.

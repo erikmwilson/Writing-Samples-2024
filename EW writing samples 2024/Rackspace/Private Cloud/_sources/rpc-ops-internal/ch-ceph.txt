@@ -1,0 +1,241 @@
+===================
+RPC Ceph operations
+===================
+
+Increase a pool's `pg_num` value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After a successful deployment, Ceph clusters usually require the increase of
+a pool's ``pg_num`` value.
+
+The deployment sets a value of 128 for ``pg_num``, which is the recommended value
+for a cluster with fewer than 5 OSDs. Because the number of OSDs varies from
+cluster to cluster, no default is suitable for
+all deployments. We recommend that you review the official `Ceph Placement
+Groups
+<http://docs.ceph.com/docs/master/rados/operations/placement-groups/>`_
+documentation to for the following information:
+
+a. How to calculate an optimal ``pg_num`` for a given pool and
+b. How to update each pool with its recommended ``pg_num`` value.
+
+.. important::
+
+   Setting an incorrect ``pg_num`` value (either too low or too high) has a
+   significant effect on how the cluster operates. Because the ``pg_num``
+   value for a given pool can never be decreased, we recommend that you
+   increase this value conservatively.
+
+
+Adding new storage servers to a Ceph cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. TODO Add intro paragraph that provides some context. When might
+   users need to add more storage servers? Are they likely to need to
+   do it immediately, or long after installation?
+
+#. Use unformatted drives with no file system. Otherwise, run the
+   ``ceph-disk zap /dev/sdb`` command on the host, replacing ``sdb`` the
+   correct device name. This command wipes the disk.
+
+   .. note::
+
+      Drives should not be mounted, formatted, or prepared (the plays do this).
+
+#. To bootstrap a new Ceph storage server, edit the
+   ``/etc/openstack_deploy/conf.d/ceph.yml`` file to include the new
+   devices. Define ``container_vars`` with the correct devices, and
+
+   .. code-block:: console
+
+      $ cd /opt/rpc-openstack/openstack-ansible/playbooks
+      $ openstack-ansible setup-hosts.yml --limit NEWHOST
+      $ cd ../../rpcd/playbooks
+      $ openstack-ansible ceph-osd.yml
+
+   .. important::
+
+      Do not pass ``--limit`` to openstack-ansible ``ceph-osd.yml`` because
+      the ``ceph-osd`` role requires access to all MON containers to properly
+      build the ``ceph.conf`` configuration.
+
+.. TODO Complete the above step
+
+
+Replace a failed drive in a Ceph cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As drives fail, Ceph balances data onto other drives in the
+cluster. Isolated drive failures should not cause problems, because a
+failed drive by default removes itself from the cluster. However, we recommend
+that you replace failed drives promptly to maintain
+capacity across the cluster. Follow these steps to manually replace a
+disk. In this example, the failed drive to replace is ``osd.0``.
+
+#. To determine the host that contains the ``osd.0`` drive, run the following command:
+
+   .. code-block:: console
+
+      # ceph osd tree
+      ID WEIGHT  TYPE NAME                         UP/DOWN REWEIGHT PRIMARY-AFFINITY
+      -1 8.24982 root default
+      -2 2.74994     host storage02
+       1 0.54999         osd.1                          up  1.00000          1.00000
+       3 0.54999         osd.3                          up  1.00000          1.00000
+       7 0.54999         osd.7                          up  1.00000          1.00000
+       9 0.54999         osd.9                          up  1.00000          1.00000
+      13 0.54999         osd.13                         up  1.00000          1.00000
+      -3 2.74994     host storage01
+       4 0.54999         osd.4                          up  1.00000          1.00000
+       6 0.54999         osd.6                          up  1.00000          1.00000
+      10 0.54999         osd.10                         up  1.00000          1.00000
+      12 0.54999         osd.12                         up  1.00000          1.00000
+       0 0.54999         osd.0                          up  1.00000          1.00000
+      -4 2.74994     host storage03
+       2 0.54999         osd.2                          up  1.00000          1.00000
+       5 0.54999         osd.5                          up  1.00000          1.00000
+       8 0.54999         osd.8                          up  1.00000          1.00000
+      11 0.54999         osd.11                         up  1.00000          1.00000
+      14 0.54999         osd.14                         up  1.00000          1.00000
+
+   Because ``osd.0`` is on ``storage01``, log in to that host to complete the
+   following steps.
+
+#. In a MON container, mark the OSD as out:
+
+   .. code-block:: console
+
+      # ceph osd out 0
+
+#. On the storage node that hosts ``osd.0``, perform the following steps:
+
+   #. Note the journal associated with the OSD. The journal device for an OSD
+      exists as a symlink with the OSD's directory in /var/lib/ceph/osd/.
+      To find the journal partition for an OSD, use the readlink command
+      on the journal device.
+
+      .. code-block:: console
+
+         # readlink -e /var/lib/ceph/osd/ceph-0/journal
+         /dev/sdd1
+         # stop ceph-osd id=0
+         ceph-osd stop/waiting
+         # umount /var/lib/ceph/osd/ceph-0
+
+      The journal in this example is ``/dev/sdd1``.
+
+#. Log back in to the MON container and remove the OSD from the CRUSH map,
+   remove the OSD's key, and then remove the OSD from the cluster:
+
+   .. code-block:: console
+
+      # ceph osd crush remove osd.0
+      # ceph auth del osd.0
+      # ceph osd rm 0
+
+#. To remove the drives and servers permanently, remove them from
+   ``/etc/openstack_deploy/conf.d/ceph.yml``.
+
+   .. note::
+
+      To remove a full server from your Ansible inventory, run
+      ``/opt/rpc-openstack/openstack-ansible/scripts/inventory-manage.py
+      -r``.
+
+#. After the disk is physically replaced, log in to the storage node
+   for the disk and prepare the disk for redeployment:
+
+   .. code-block:: console
+
+      # ceph-disk zap /dev/sdg
+      Caution: invalid backup GPT header, but valid main header; regenerating
+      backup header from main header.
+
+      Warning! Main and backup partition tables differ! Use the 'c' and 'e'
+      options on the recovery and transformation menu to examine the two
+      tables.
+
+      Warning! One or more CRCs don't match. You should repair the disk!
+
+      *************************************************************************
+      Caution: Found protective or hybrid MBR and corrupt GPT. Using GPT, but
+      disk verification and recovery are STRONGLY recommended.
+      *************************************************************************
+      GPT data structures destroyed! You may now partition the disk using fdisk
+      or other utilities.
+      Creating new GPT entries.
+      The operation has completed successfully.
+
+#. While still logged in to the disk's storage node, remove the journal
+   partition from the disk. In this example, ``osd.0`` is using
+   ``/dev/sdd1``. Replace the arguments ``"/dev/sdd"`` and ``"-d 1"``
+   with the correct drive and partition for the environment.
+
+   .. code-block:: console
+
+      # sgdisk -d 1 /dev/sdd
+      Warning: The kernel is still using the old partition table.
+      The new table will be used at the next reboot.
+      The operation has completed successfully.
+
+#. On the deployment node, re-deploy the new OSD:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack/rpcd/playbooks
+      # openstack-ansible ceph-osd.yml
+
+#. Verify that all OSDs are in and up and that the cluster is in a
+   ``HEALTH_OK`` status:
+
+   .. code-block:: console
+
+      # ceph osd stat
+      osdmap e536: 9 osds: 9 up, 9 in
+      # ceph health
+      HEALTH_OK
+
+
+RAW Linux images
+~~~~~~~~~~~~~~~~
+
+The `Ceph RBD OpenStack documentation
+<http://ceph.com/docs/master/rbd/rbd-openstack/>`_ states that Ceph does not
+support QCOW2 for hosting a virtual machine disk. However, QCOW2 image must be
+converted to the RAW format. .
+
+.. note::
+
+   With QCOW2 images, Ceph cannot clone copy on write images when
+   booting instances with RBD-backed disks. The benefits of using copy on write
+   cloning are outlined in `Storage: Copy-on-write cloning for RBD-backed disks
+   <http://specs.openstack.org/openstack/nova-specs/specs/juno/implemented/rbd-clone-image-handler.html>`_.
+
+
+To convert an Ubuntu Trusty QCOW2 image to the RAW format, follow this
+procedure in a utility or similar container.
+
+#. Run the following commands:
+
+   .. code-block:: console
+
+      # apt-get -y install qemu-utils
+      # wget https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img
+      # file xenial-server-cloudimg-amd64-disk1.img
+      xenial-server-cloudimg-amd64-disk1.img: QEMU QCOW Image (v2), 2361393152 bytes
+      # qemu-img convert -f qcow2 -O raw xenial-server-cloudimg-amd64-disk1.img xenial-server-cloudimg-amd64-disk1.raw
+      # file xenial-server-cloudimg-amd64-disk1.raw
+      xenial-server-cloudimg-amd64-disk1.raw: x86 boot sector
+
+#. Upload the RAW image to the Image service (glance):
+
+.. code-block:: console
+
+   # source /root/openrc
+   # glance image-create --name trusty --container-format bare --disk-format raw
+   --file xenial-server-cloudimg-amd64-disk1.raw
+
+When you boot an instance from the Ubuntu image, Ceph snapshots and
+clones the image for use by the VM. The Ceph documentation recommends
+setting a number of image properties on the glance image to make
+optimal use of Ceph as a back end.

@@ -1,0 +1,28 @@
+
+.. _add-training-my-bookshelf-connect:
+
+Add Training to My Bookshelf
+============================
+
+You can add a bookmark to a On Demand Course or Learning Plan so that it displays on your **My Bookcase** tab.
+
+To bookmark training, complete the following steps:
+
+.. include:: training-login.rst
+
+#. Search for the On Demand Course or Learning Path you want to bookmark. For more information, see :ref:`search-training-connect`.
+
+#. Click the training name.
+
+#. On the On Demand Course or Learning Plan page, click **Add to My Bookshelf** or click the bookmark icon |bookmark-off-icon|. The bookmark icon turns blue |bookmark-on-icon| and the training is added to the **My Bookcase** tab.
+
+   .. |bookmark-off-icon| image:: ../../../../images/bookmark-off-icon.png
+      :height: 25
+
+   .. |bookmark-on-icon| image:: ../../../../images/bookmark-on-icon.png
+      :height: 25
+
+Remove Training from My Bookshelf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To remove training that has been bookmarked, click **Remove from My Bookshelf** or click the bookmark icon |bookmark-on-icon|.

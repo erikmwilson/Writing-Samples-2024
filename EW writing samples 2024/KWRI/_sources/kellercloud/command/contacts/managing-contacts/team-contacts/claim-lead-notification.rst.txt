@@ -1,0 +1,22 @@
+
+.. _claim-lead-notification-command:
+
+Claim a Lead from a Notification (Teams)
+========================================
+
+In Command, Rainmakers can automatically distribute leads to their team members through lead routing. Your Rainmaker can set up one big route, set up multiple routes for different days of the week/times of day, and you can even set up special routes for holidays or specific lead sources.
+
+You are notified through Command and Kelle, when you have a lead routed to you, and you have a set time frame to either claim the lead through Contacts or the Command notification or to pass on the lead.
+
+When the lead is routed to you, you get a Kelle notification, but you cannot claim the lead through Kelle. To claim the lead, you must use Command.
+
+To claim a lead from a notification, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. Click the notifications |notification-icon| icon next to your profile picture. The lead notification message shows you the amount of time you have left to take action for that lead.
+
+   .. |notification-icon| image:: ../../../../../images/system-notifications-icon.png
+      :height: 20
+
+#. Click **Claim** or **Pass** in the notification.

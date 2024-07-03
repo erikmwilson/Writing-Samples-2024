@@ -1,0 +1,78 @@
+=========================
+Object Storage monitoring
+=========================
+
+The Rackspace Monitoring service enables Rackspace Private Cloud
+customers to monitor system performance and safeguard critical data.
+
+Service and response
+~~~~~~~~~~~~~~~~~~~~
+
+When a threshold is reached or functionality fails, the Rackspace
+Monitoring service generates an alert, which creates a ticket in the
+Rackspace ticketing system. This ticket moves into the Rackspace Private Cloud
+Powered By OpenStack (RPCO) support queue. Tickets flagged as monitoring alerts
+are given highest priority, and response is delivered according to the service
+level agreement (SLA). Refer to the SLA for information about the response time
+and uptime guarantees.
+
+Specific monitoring alert guidelines can be set. These details should be
+arranged by a Rackspace account manager.
+
+Object Storage monitors
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Object Storage has its own set of monitors and alerts. The following checks are
+performed on services:
+
+-  Health checks on the services on each server
+
+   Object Storage makes a request to ``/healthcheck`` for each service
+   to ensure that it is responding appropriately. If this check fails,
+   determine why the service is failing and fix accordingly.
+
+-  Health check against the proxy service on the virtual IP (VIP)
+
+   Object Storage checks the load balancer address for the
+   ``swift-proxy-server`` service, and monitors the proxy servers as a
+   service health check. If this check fails, there is no access to the VIP
+   or all of the services are failing.
+
+The following checks are performed against the output of the swift-recon
+middleware:
+
+-  md5sum checks on the ring files across all Object Storage nodes
+
+   This check ensures that the ring files are the same on each node. If
+   this check fails, determine why the md5sum for the ring is different
+   and determine which of the ring files is correct. Copy the correct
+   ring file onto the node that is causing the md5sum to fail.
+
+-  md5sum checks on the ``swift.conf`` file across all swift nodes
+
+   If this check fails, determine why the ``swift.conf`` file is different
+   and determine which of the ``swift.conf`` file is correct. Copy the
+   correct ``swift.conf`` file onto the node that is causing the md5sum to
+   fail.
+
+-  Asyncs pending requests
+
+   This check monitors the average number of async pending requests and
+   the percentage of requests that are put in async pending status. This
+   happens when a PUT or DELETE operation fails (because of timeouts, heavy
+   usage, failed disk, and so on). If this check fails, determine why requests
+   are failing and being put in async pending status and fix accordingly.
+
+-  Quarantine
+
+   This check monitors the percentage of objects that are quarantined
+   (objects that are found to have errors and are moved to quarantine). An
+   alert is set up against account, container, and object servers. If
+   this check fails, determine the cause of the corrupted objects and fix
+   accordingly.
+
+-  Replication
+
+   This check monitors the percentage of replication success. An alert is set
+   up against account, container, and object servers. If this check fails,
+   determine why objects are not replicating and fix accordingly.

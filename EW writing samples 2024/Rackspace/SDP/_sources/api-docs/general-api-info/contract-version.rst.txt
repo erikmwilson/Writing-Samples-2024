@@ -1,0 +1,44 @@
+.. _contract-version:
+
+==============================
+Ticketing API contract version
+==============================
+
+The |apiservice| version defines the contract and build information for the
+API.
+
+The contract version denotes the data model and behavior that the API supports.
+The requested contract version should be provided via Content-Type and Accept
+headers. Different contract versions of the API might be available at any given
+time and are not guaranteed to be compatible with one another.
+
+**Example request URL and Headers**
+
+.. code::
+
+        https://ticketing.api.rackspace.com
+
+        Headers:
+            Content-Type: application/vnd.ticketing.v2+json
+            Accept: application/vnd.ticketing.v2+json
+
+..  note::
+
+    This document pertains to contract version 2.0.
+
+.. list-table:: **Response formats**
+   :widths: 10 20 10 10
+   :header-rows: 1
+
+   * - Format
+     - Accept header
+     - Resource version
+     - Default
+   * - JSON
+     - application/json
+     - Version 1
+     - Yes
+   * - JSON
+     - application/vnd.ticketing.v2+json
+     - Version 2
+     - No

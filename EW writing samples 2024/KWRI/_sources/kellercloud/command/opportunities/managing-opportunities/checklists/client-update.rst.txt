@@ -1,0 +1,70 @@
+
+
+.. _client-update-opportunities-command:
+
+Configure Client Updates for an Individual Opportunity
+======================================================
+
+For an Opportunity, you can automatically send your clients daily updates on any checklist activities that have been performed.
+
+This includes any activities that have been completed since the previous email. In the first email, all completed activities that have been flagged for communication are included.
+
+You are able to choose which activities are included in the email. By default, no activities are included in the email. For more information see :ref:`create-checklists-opportunities-command`.
+
+.. note::
+
+   Email updates are sent only if an activity has been completed.
+
+This setting can be set globally for all of your contacts or you can set this for each individual opportunity. Individual settings supersede global settings.
+
+For more information about global client update settings, see :ref:`client-update-settings-command`.
+
+Emails are formatted using a default email template. For more information about Command emails, see the following topics:
+
+* :ref:`emails-track-applications-settings-command`
+
+* :ref:`email-upgrade-applications-settings-command`
+
+* :ref:`email-address-applications-settings-command`
+
+To set up client updates for and individual contact, complete the following steps:
+
+.. include:: ../../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. From the pipeline screen, click on the stage that contains your opportunity. The opportunity can be in **Listings**, **Buyers**, or **Leases**.
+
+#. Click on the blue Opportunity Name to open that Opportunity.
+
+#. Click on the settings |settings-icon| icon in the top-right corner of the screen.
+
+   .. |settings-icon| image:: ../../../../../images/settings-icon.png
+      :height: 20
+
+#. On the **Client Update** window, toggle the **Send daily progress emails for this opportunity** to on.
+
+#. Set the time to send out the daily email. This time is based on your browser time zone.
+
+#. Select the recipients of the daily email. The **Send to** section lists all Contacts, Assignees, and Owners of this Opportunity, in the following order:
+
+   * Primary Contacts
+
+   * Co-contact (if applicable)
+
+   * Assignees - sorted alphabetically by last name
+
+   * Owner
+
+   .. note::
+
+      Each recipient is initially selected or not selected, based on the team's default Opportunity settings.
+
+#. If necessary, select a different email address for a recipient. By default, the system uses the primary email address.
+
+#. Click **Save Changes**.
+
+   You receive a confirmation message that the settings have been updated.

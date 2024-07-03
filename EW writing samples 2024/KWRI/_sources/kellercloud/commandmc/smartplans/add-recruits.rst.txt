@@ -1,0 +1,52 @@
+
+.. _add-recruits-commandmc:
+
+Subscribe Recruits to a SmartPlan
+=================================
+
+Before you can turn on your SmartPlan you must add recruits.
+
+To subscribe/add Recruits to a SmartPlan, complete the following steps:
+
+.. include:: smartplans-mc-login.rst
+
+#. Click the **MC Plans** tab, at the top of the page.
+
+#. Find the correct Smartplan in the list and click the **Add Recruits** icon |add-recruits-icon|.
+
+   .. |add-recruits-icon| image:: ../../../images/add-recruits-icon.png
+      :height: 30
+
+   .. note::
+
+      If you do not see the SmartPlan you want to add recruits to, access the SmartPlans Library and add it to your list. For more information, see :ref:`add-smartplan-commandmc`.
+
+#. A list of recruits appears in the **Add Recruits to SmartPlan** pop-up. Check the boxes next to the names of the Recruits you want to add to the SmartPlan.
+
+   .. note::
+
+      You can only add 50 recruits at a time to a SmartPlan. The list of Recruits in the pop-up box only displays 20 recruits at a time. At the bottom of the list, use the left and right arrows to navigate through the rest of your recruit list.
+
+   * Filter by Tag - click the **Tags** button, then check or uncheck the box next to your tags, to filter the list by tags.
+
+   * Sort by Name - click the Sort drop-down to choose the order in which the recruits appear.
+
+#. After you select the recruits you want to add, click **Add to SmartPlan**.
+
+#. Select when you want the SmartPlan to start:
+
+   * **Start all now** - The first step of the SmartPlan begins immediately, as soon as you confirm.
+
+     For example, if you add 20 recruits to the Quarterly Call Plan, you will get 20 phone call reminders immediately.
+
+   * **Start all on the following date** - Use the calendar widget to choose a date on which to start the SmartPlan.
+
+     For example, if you add 20 recruits to the Monthly Neighborhood Nurture SmartPlan, all of the initial emails are sent on the date you choose.
+
+   * **Stagger over the next few days** - Choose the maximum number of recruits, to distribute into the SmartPlan, per day.
+
+     For example, if you add 20 recruits to the Quarterly Call Plan and choose a maximum of 5 contacts per day, you will get 5 call reminders today, 5 call reminders tomorrow, 5 call reminders on the third day, and 5 call reminders on the fourth day.
+
+#. Click **Confirm** when you are ready to start the SmartPlan.
+
+#. On the **Add to SmartPlan** pop-up, review the details, then click **Confirm**.

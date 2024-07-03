@@ -1,0 +1,89 @@
+
+.. _create-account-command-ug:
+
+Create a KW Account
+===================
+
+We’re thrilled you’re joining our team! You are on your way to unlocking the best training, support, and resources in real estate.
+
+To begin, you will be guided through a simple account setup process where you will create your profile, learn about KW culture, and begin laying the foundation for a big business and an even bigger life. Get started, and get excited!
+
+.. note::
+
+   You can leave this process before completion. To return, click the **Accept Invitation** link in the Welcome email.
+
+To create your KW account, complete the following steps:
+
+1. From your invitation email, click **Accept Invitation**. The link opens in a browser where you will enter your KW profile information.
+
+   .. note::
+
+      As you complete this process, note that all required fields are marked with a red asterisk. Also, some fields will pre-populate with previously entered information. You can edit this information.
+
+#. On the **Create Account** window, enter the following information:
+
+   * Country
+
+   * Legal First Name
+
+   * Legal Last Name
+
+   * Date of Birth
+
+   * Social Security Number or National ID (depending on the country)
+
+#. Accept the `Terms of Service <https://www.kw.com/termsofuse>`_ and `Privacy Policy <https://headquarters.kw.com/privacy-policy/>`_. Click the links to review these documents.
+
+#. Click **Create Account**.
+
+   .. note::
+
+      If you are returning to Keller Williams, click **Reactivate Account** and enter your information.
+
+#. On the welcome page, click on the graphic to start the video and when finished click **Continue**.
+
+#. On the **Let's build your profile** page, click **Continue**.
+
+   .. note::
+
+     Completing the onboarding process takes about 30 minutes. Having your direct deposit information on hand will make it even faster.
+
+#. On the **Add a profile picture** pop-up, upload your profile picture and enter your **Preferred First Name** and your **Preferred Last Name**. Click **Continue**.
+
+#. On the **Personal Information** page, enter your personal information. For more information, click the help icon in the top-right corner.
+
+#. On the **Professional Information** page, enter you professional information. For more information, click the help icon in the top-right corner.
+
+#. On the **Profit Share** page, click the graphic to start the video. When the video is complete, a pop-up asks if you are ready to select your sponsor. Click **Yes, Select Sponsor** to continue. If you are not ready to select your sponsor, click **No, Go Back**.
+
+#. On the **Sponsorship** page, read the **Binding Sponsorship Agreement** and select whether your sponsor is currently a Keller Williams associate or intends to join in the next 90 days.
+
+   * If your sponsor is a current Keller Williams associate, find their name using the search field.
+
+   * If you sponsor intends to join Keller Williams in the next 90 days, enter their information and also select a current associate in the search field to act as a temporary sponsor.
+
+   .. note::
+
+      Your sponsor selection is permanent and cannot be changed later.
+
+#. Check the **I accept the terms described above** check box, enter your signature, and click **Submit Signature**. After your signature is submitted, click **Download** to download a PDF of the Sponsorship Agreement. Click **Continue**.
+
+#. On the **Direct Deposit** page, enter your banking information for profit share distribution and click **Continue**.
+
+#. A pop-up asks if you are ready to designate a beneficiary. Click **Designate a Beneficiary** to continue. If you are not ready to designate a beneficiary, click **Skip for Now**.
+
+   A beneficiary is either a natural person or legal entity that you designate to receive payments of amounts in your Keller Williams Realty Profit Sharing Program account in the event of your death. This is not required and can be changed at any time.
+
+#. On the **Beneficiary** page, enter your beneficiary's information.
+
+   .. note::
+
+      If you are married, and DO NOT designate your spouse as the beneficiary of your Profit Share and Growth Share distributions, your state may require that your spouse consent in writing to said designation in order for the designation to be upheld if challenged. If this applies to you, click **Download** in the **Consent of Spouse** section to download a Consent of Spouse form. KWRI is aware that some states do not require a Consent of Spouse, and due to the reality that such laws change and KWRI is unable to determine which state’s laws may apply to an associate’s estate, KWRI encourages any married associate designating someone other than their spouse as their Profit Share beneficiary to have the attached consent form signed by their spouse before a Notary Public.
+
+#. Enter your signature, and click **Submit Signature**. After your signature is submitted, click **Download** to download a PDF of the Beneficiary Agreement. Click **Continue**.
+
+#. On the **Create Login Credentials** page, enter the **Username** you will use to log into the KW Cloud, enter and confirm your **Password** and click **Continue**.
+
+#. On the **Review Profile** page, make sure that all of your profile information is correct. To edit a section, click on the **Edit** icon in the top-right corner of the section. After you have verified your information is correct, click **Submit**. You have completed the joining process.
+
+#. Click **Continue to Keller Cloud** to begin using Command.

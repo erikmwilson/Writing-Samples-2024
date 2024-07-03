@@ -1,0 +1,22 @@
+
+.. _filter-associates-commandmc:
+
+Filter Associates
+=================
+
+While you are managing your associates in Command, you may need to find specific associates. Instead of scrolling through your list or associates to find the associates you are looking for, you can use filters.
+
+To filter associates, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Click the filter icon |filter-icon| at the top of the page.
+
+   .. |filter-icon| image:: ../../../images/filter-icon.png
+      :height: 30
+
+#. When the filters fly-out menu appears on the right side of the page, select filters by clicking the checkbox beside them or selecting them from the drop-down lists. To remove filters, you can either remove them individually or click **Clear All** at the bottom of the fly-out menu to remove all of the filters.
+
+#. Click **Apply**.
+
+   The associate records are filtered and the total number of applied filters appears next to the filter icon. You can save this set of filters as a Smart View. For more information, see :ref:`smartview-associates-commandmc`.

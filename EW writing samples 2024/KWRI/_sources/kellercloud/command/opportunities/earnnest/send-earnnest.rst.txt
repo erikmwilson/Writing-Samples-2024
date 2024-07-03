@@ -1,0 +1,84 @@
+
+.. _send-earnnest-opportunities-command:
+
+Use Earnnest to Send a Digital Earnest Money Request
+====================================================
+
+`Earnnest <https://earnnest.com>`_ is a secure, convenient, digital payments platform that allows for fully digital transfers of funds in real estate transactions. With Earnnest you can complete earnest money transfers digitally in minutes, saving you and your clients time and effort, while allowing you to avoid failed payments, delays, and fraud.
+
+Keller Williams has partnered with Earnnest to bring you secure and convenient digital earnest money deposits, allowing you to request and receive payments at any time, from anywhere. After you set up an account with Earnnest, you can use the Earnnest + Command integration to send earnest money requests through buyer and listing Opportunities in Command.
+
+For more information, see :ref:`create-earnnest-opportunities-command`.
+
+.. note::
+
+   As with all software dealing with sensitive information, it is not recommended that you use public computers or shared system accounts when sending Earnnest money requests. In the case of an emergency where you need to use a shared or public computer, please be sure to either use `Incognito mode <https://www.businessinsider.com/guides/tech/incognito-mode>`_, on your browser, or clear the cache and cookies on your browser before closing the window.
+
+   Below we have provided a few links that explain how to clear cookies and cache on various browsers:
+
+   * `Google Chrome <https://support.google.com/chrome/answer/2392709?visit_id=637986791001399165-2521226737&rd=1>`_
+
+   * `Microsoft Edge <https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09>`_
+
+   * `Mozilla Firefox <https://support.mozilla.org/en-US/kb/how-clear-firefox-cache>`_
+
+   * `Apple Safari <https://support.apple.com/en-us/HT204098>`_
+
+   * `Opera <https://help.opera.com/en/latest/>`_
+
+   Earnnest integration in Command is currently set up for buyer Opportunities only. As a listing agent, if you want to request earnest money using Earnnest, you can do so directly with the `Earnnest Phone App <https://earnnest.com/products/earnnest-app>`_ or `Desktop App <https://signin.earnnest.com/login?state=hKFo2SBHdmM0eURINlVGT25zUlM1THl2b2NTT0phemgwZWF5VaFupWxvZ2luo3RpZNkgNkVXQjE3U0Zub1FaQm9RNTlIQWEwMUViaGJUMnRPVzSjY2lk2SBZaVliNjFzYzZKdGlrQ3gxaENCUklaNEJXVVE0QjlDRA&client=YiYb61sc6JtikCx1hCBRIZ4BWUQ4B9CD&protocol=oauth2&audience=https%3A%2F%2Fapi-gateway.earnnest.com%2Fapi&scope=openid%20profile%20email&redirect_uri=https%3A%2F%2Fapp.earnnest.com%2Fcallback&%C2%9E%C3%A9e=&earnnest_initiated_url=https%3A%2F%2Fapp.earnnest.com%2F&response_type=code&response_mode=query&nonce=ZFhOZlJPZWpES20wbnZ2Z0VIODlpTEViNm5GUHlZZUsxUDFLeWs3Qkt2QQ%3D%3D&code_challenge=mE006SUj63pTuS-YjUaGRyxlnkeDBbhciYQzSWNCrZo&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtc3BhLWpzIiwidmVyc2lvbiI6IjEuMTEuMCJ9>`_.
+
+To send an Earnnest money request, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Find the buyer or listing Opportunity. For more information, see :ref:`search-opportunities-command`.
+
+#. Click on the Opportunity name.
+
+   .. note::
+
+      If you are on a team, make sure you select the correct account to find the correct Opportunity.
+
+#. On the opportunity **Details** tab, in the **Integrations** section, find Earnnest and click **Send Earnnest Request**.
+
+#. A pop-up may appear with a breakdown of the Earnnest money request process, click **Continue**.
+
+   .. note::
+
+      If you have a good understanding of the Earnnest process, you have the option of checking the **Don't show this message again checkbox**, which removes this step for future requests.
+
+#. Enter the email address you have associated with Earnnest and click **Continue**.
+
+   If you have not created an Earnnest account, you are prompted to do so. Enter the email address you want to associate with your new Earnnest account and follow the prompts to create your account.
+
+   For more information, see :ref:`create-earnnest-opportunities-command`.
+
+#. As the buyer's agent, you should have your client's contact information. Select **Yes, I have their email and phone** and click **Continue**.
+
+   * If you just finished creating your Earnnest account, you will see a welcome screen before this step, click **Start a Payment Request**.
+
+   * If you do not have the buyer's email and phone number, you can use the other option, which will send an invite to the designated primary agent for them to enter the required information.
+
+#. The **Request Payment** window appears with the property address auto-filled (if you have submitted a Commission Request for the Opportunity). Enter the following information:
+
+   * Buyer's name
+
+   * Buyer's email address
+
+   * Phone number where they can receive SMS text messages. The buyer's phone number must be able to receive SMS text messages in order to verify that they have set up an account to submit the payment.
+
+   * Earnest money deposit amount
+
+#. In the **Who's receiving the payment?** section, select the approved escrow holder from the list. Below this drop-down, select the option to confirm that the above listed escrow holder is the one on the purchase contract.
+
+#. The email addresses showing in the **Notification Receipts** section receive receipt notifications and represent you (as the agent), the buyer, and the escrow holder. Select the option confirming that there is a **Fully executed contract**, then click **Request $(amount)**.
+
+The buyer receives an email from support@earnnest.com with a link for them to create an account and pay the earnest money.
+
+After the earnest money is paid, payment receipt notifications are sent to you, the buyer, and the escrow holder.

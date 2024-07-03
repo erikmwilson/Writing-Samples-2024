@@ -1,0 +1,43 @@
+================
+Before you begin
+================
+
+Before you modify files, perform the following steps:
+
+#. Create the ``openstack_deploy`` directory:
+
+   .. code-block:: console
+
+      # mkdir -p /etc/openstack_deploy
+
+#. Create the ``env.d`` directory within ``openstack_deploy``:
+
+   .. code-block:: console
+
+      # mkdir /etc/openstack_deploy/env.d/
+
+#. Copy the OSA ``user_secrets.yml`` file:
+
+   .. code-block:: console
+
+      # cp /opt/rpc-openstack/openstack-ansible/etc/openstack_deploy/user_secrets.yml \
+        /etc/openstack_deploy/user_osa_secrets.yml
+
+#. Copy the OSA ``openstack_user_config.yml.example`` file as
+   ``openstack_user_config.yml``:
+
+    .. code-block:: console
+
+       # cp /opt/rpc-openstack/openstack-ansible/etc/openstack_deploy/openstack_user_config.yml.example \
+         /etc/openstack_deploy/openstack_user_config.yml
+
+#. Copy the RPCO configuration files:
+
+   .. code-block:: console
+
+      # cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_*_defaults.yml \
+        /etc/openstack_deploy/
+      # cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/env.d/* \
+        /etc/openstack_deploy/env.d
+      # cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_rpco_secrets.yml \
+        /etc/openstack_deploy

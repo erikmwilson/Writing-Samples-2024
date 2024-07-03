@@ -1,0 +1,33 @@
+
+.. _access-docusign-form-libraries-commandmc:
+
+Access Market Center Form Libraries in DocuSign
+===============================================
+
+The Form Libraries in the DocuSign Market Center Admin account consist of every form you would find in each MLS. These libraries include all of the forms from the MLS.
+
+You can create a form groups for each transaction type and association to make it easy for your agents to access the forms they need.
+
+For more information, see :ref:`create-docusign-form-groups-commandmc`.
+
+To access your Market Center Form Libraries in DocuSign, complete the
+following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **DocuSign Settings**.
+
+#. Select your **Market Center** from the drop-down and click **Go to Docusign**.
+
+#. A DocuSign pop-up appears with your Market Center's **klrwxxx@kw.com** email address populated, click **Continue**.
+
+#. Enter your password on the next page and click **Log In**.
+
+#. On the KW DocuSign Dashboard, click the **Profile** icon on the top-left corner and select **Admin** from the drop-down.
+
+#. On the next page, click the **Forms** tab.
+
+#. You can access your Market Center Form Groups from the **Forms** tab.

@@ -1,0 +1,171 @@
+======================================
+Configure the Image service (optional)
+======================================
+
+In an all-in-one deployment with a single infrastructure node, the Image
+service uses the local file system on the target host to store images.
+In a Rackspace deployment with multiple infrastructure nodes, the Image
+service must use a non-local storage system such as Swift, NetApp, or
+Ceph.
+
+.. note::
+
+   For deployments that use the Image service with NFS, use the default
+   ``file`` store and configure NFS after deployment of RPCO.
+
+The following procedure describes how to configure the Image service to
+use Rackspace Cloud Files as an image store. In
+``/etc/openstack_deploy/user_rpco_variables_overrides.yml``:
+
+#. Set the appropriate authentication URL:
+
+   For US Rackspace cloud accounts:
+
+   .. code-block:: yaml
+
+      rackspace_cloud_auth_url: https://identity.api.rackspacecloud.com/v2.0
+
+   For UK Rackspace cloud accounts:
+
+   .. code-block:: yaml
+
+      rackspace_cloud_auth_url: https://lon.identity.api.rackspacecloud.com/v2.0
+
+
+   .. note::
+
+      Deployments that use the service network should use the internal API
+      endpoint instead of the public API endpoint.
+
+#. Set the Rackspace cloud account credentials:
+
+   .. code-block:: yaml
+
+      rackspace_cloud_tenant_id: RAX_CLOUD_TENANT_ID
+      rackspace_cloud_username: RAX_CLOUD_USER_NAME
+      rackspace_cloud_password: RAX_CLOUD_PASSWORD
+
+   The ``RAX_CLOUD_TENANT_ID`` is your Rackspace Public Cloud account number.
+   You can find it by logging in to mycloud.rackspace.com and clicking your
+   username in the upper-right corner of the panel.
+
+   Replace ``RAX_CLOUD_USER_NAME`` and ``RAX_CLOUD_PASSWORD`` with
+   the account credentials that you used to log in to the Cloud Control Panel.
+
+Because the file ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` is
+not copied in the configuration prerequisites, make sure that you copy over
+that file. ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` contains
+no variable definitions. You need to add the following variable definitions to
+the file:
+
+#. Set the default store to use Object Storage (swift), the
+   underlying architecture of Cloud Files:
+
+   .. code-block:: yaml
+
+      glance_default_store: swift
+
+   .. note::
+
+      If Object Storage hosts exist in the environment,
+      the ``glance_default_store`` variable is automatically
+      set to ``swift``.
+
+
+#. Set ``glance_swift_store_auth_address``, ``glance_swift_store_user``,
+   and ``glance_swift_store_key`` to point at the previously defined
+   ``rackspace_cloud_`` variables:
+
+   .. code-block:: yaml
+
+      glance_swift_store_auth_address: "{{ rackspace_cloud_auth_url }}"
+      glance_swift_store_user: "{{ rackspace_cloud_tenant_id }}:{{ rackspace_cloud_username }}"
+      glance_swift_store_key: "{{ rackspace_cloud_password }}"
+
+#. Set ``glance_swift_store_auth_version`` to version 2.
+   ``glance_swift_store_auth_version`` now defaults to version 3, which
+   is not compatible with Rackspace's auth system:
+
+   .. code-block:: yaml
+
+      glance_swift_store_auth_version: 2
+
+#. Set the ``glance_swift_store_endpoint_type`` from the default
+   ``internalURL`` settings to ``publicURL`` if needed. Glance
+   services are typically backed by Rackspace Cloud Files in the
+   Rackspace data center. If the OpenStack environment must run outside
+   the data center, adjust the key value:
+
+   .. code-block:: yaml
+
+      glance_swift_store_endpoint_type: publicURL
+
+#. Specify the name of the container. Replace ``STORE_NAME`` with the
+   container name in Cloud Files to be used for storing images. If the
+   container doesn't exist, it will be automatically created.
+
+   .. code-block:: yaml
+
+      glance_swift_store_container: STORE_NAME
+
+#. Define the region. Replace ``STORE_REGION`` with one of the following
+   region codes: DFW, HKG, IAD, LON, ORD, SYD. UK Rackspace cloud accounts
+   must use the ``LON`` region. US Rackspace cloud accounts can use any region
+   except ``LON``.
+
+   .. code-block:: yaml
+
+      glance_swift_store_region: STORE_REGION
+
+#. (Optional) Set the paste deploy flavor:
+
+   .. code-block:: yaml
+
+      glance_flavor: GLANCE_FLAVOR
+
+
+   By default, the Image service uses caching and authenticates with the
+   Identity service. The default maximum size of the image cache is 10
+   GB. The default Image service container size is 12 GB. In some
+   configurations, the Image service might attempt to cache an image
+   that exceeds the available disk space. If necessary, you can disable
+   caching. For example, to use Identity without caching, replace
+   ``GLANCE_FLAVOR`` with ``keystone``:
+
+   .. code-block:: yaml
+
+      glance_flavor: keystone
+
+   Or, to disable both authentication and caching, set ``GLANCE_FLAVOR`` to
+   no value:
+
+   .. code-block:: yaml
+
+      glance_flavor:
+
+   .. note::
+
+      This option is set by default to use authentication and cache
+      management in the
+      ``/etc/ansible/roles/os_glance/defaults/main.yml`` file. To
+      override the default behavior, set ``glance_flavor`` to a
+      different value in the
+      ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file.
+
+   The possible values for ``GLANCE_FLAVOR`` are as follows:
+
+   -  No value
+
+   -  ``caching``
+
+   -  ``cachemanagement``
+
+   -  ``keystone``
+
+   -  ``keystone+caching``
+
+   -  ``keystone+cachemanagement`` (default)
+
+   -  ``trusted-auth``
+
+   -  ``trusted-auth+cachemanagement``

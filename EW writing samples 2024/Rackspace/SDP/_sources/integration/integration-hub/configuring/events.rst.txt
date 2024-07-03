@@ -1,0 +1,13 @@
+.. _events-SDP-IG:
+
+=============
+Set up events
+=============
+
+Use the following steps to set up events:
+
+1. Open ServiceNow.
+
+#. In the left-hand navigation pane, click **Target**.
+
+#. Add a valid **User** and update the record.

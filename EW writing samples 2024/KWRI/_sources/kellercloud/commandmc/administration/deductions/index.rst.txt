@@ -1,0 +1,18 @@
+
+.. _deductions-index-commandmc:
+
+Deductions
+==========
+
+The following pages contain information about managing your deductions.
+
+.. toctree::
+   :maxdepth: 1
+
+   search-deductions
+   filter-deductions
+   add-deduction
+   edit-deduction
+   recurring-deductions
+   deduction-requests
+   archive-deduction

@@ -1,0 +1,13 @@
+
+.. _recruiting-tags-settings-index-commandmc:
+
+Recruits
+========
+
+The following sections contain information about configuring
+recruits.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-recruiting-tags

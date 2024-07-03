@@ -1,0 +1,63 @@
+
+.. _progress-to-commitment-report-set-goals-commandmc:
+
+Set Goals for Yearly Progress to Commitment Report
+==================================================
+
+Market Center leaders who have access to the Reports applet are able to set Market Center goals for the year. The goals for each quarter in the new year are meant to be entered at the end of the current year, but before the start of each quarter so that they can be reevaluated and changed if necessary. These goals are locked at the start of each quarter. The specific due dates are displayed on the **Goal Setting** page. The goals set for each quarter are calculated based on the percentage entered in the tool.
+
+To access the Yearly Progress to Commitment Report, see :ref:`access-progress-report-commandmc`.
+
+There are two types of goals that can be entered for a Market Center:
+
+* Commitment Goal - The number that the Market Center is confident they can deliver for the year. This is tied to the Market Center budget.
+
+* Stretch Goal - The number that the Market Center aspires to achieve. This is tied to the Market Center's GPS.
+
+You can set commitment and stretch goals for the following variables:
+
+* The number of appointments held with R1 and R2 recruits
+
+* The number of R1 and R2 recruits expected to join the Market Center
+
+* The net number of associates that are expected to be added to the Market Center
+
+* The amount of company dollar expected to be collected by the Market Center
+
+* The amount of KW owner profit the market center expects to receive
+
+* The amount of Profit Share expected to be paid by the Market Center
+
+To set goals for the Yearly Progress to Commitment Report, complete the following steps:
+
+.. include:: reports-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and ensure the correct Market Center profile is selected.
+
+   In the top right page you will see the goal setting due date for the quarter. The set goal fields are locked after this date has passed.
+
+   * Commitment, Stretch Goals, and Q1 % are due December 31.
+
+   * Q2 % due March 31.
+
+   * Q3 % due June 30.
+
+   * Q4 % due September 30.
+
+5. Click the **Goals** tab.
+
+#. Enter the **Commitment** and **Stretch Goals** for the variable.
+
+#. Set the quarterly goals by entering the percentage of the yearly goal that you would like to meet that quarter.
+
+   The commitment and stretch goals for each quarter will be calculated based on those percentage entries.
+
+   The percentage entries for each quarter total into a complete percentage for the year which is displayed in the **Total % Q1-Q4** field. The total percentage can be greater or less than 100%. If the total year percentage is below 100% it will be displayed in red but CommandMC does not prevent you from saving the goals.
+
+#. Enter the goals and percentages for each variable.
+
+#. Click **Save Goals**.
+
+Goals and percentages can be partially saved and edited later, but they must be completed before the corresponding deadline.

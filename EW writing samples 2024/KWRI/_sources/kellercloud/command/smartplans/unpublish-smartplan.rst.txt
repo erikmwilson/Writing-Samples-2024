@@ -1,0 +1,24 @@
+
+.. _unpublish-smartplan-command:
+
+Unpublish a SmartPlan
+=====================
+
+After you publish a SmartPlan, you can easily unpublish and remove it from the library. Keep in mind, when agents download your SmartPlan, they are downloading a copy. Their version is not affected by you removing it from the Library. When you unpublish a SmartPlan, it does not remove it from your SmartPlans list, only the library.
+
+You cannot unpublish/delete a SmartPlan that is linked to another SmartPlan.
+
+To unpublish/delete a SmartPlan, complete the following steps:
+
+.. include:: smartplans-login.rst
+
+#. Click the **My SmartPlans** tab, at the top of the page.
+
+#. Click **Published**, above your SmartPlans list.
+
+#. Find the correct Smartplan in the list and click the **Delete SmartPlan** icon |delete-icon|.
+
+   .. |delete-icon| image:: ../../../images/delete-icon.png
+      :height: 30
+
+#. On the confirmation pop-up, click **Yes, delete**.

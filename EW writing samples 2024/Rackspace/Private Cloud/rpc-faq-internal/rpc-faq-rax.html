@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rackspace internal support questions &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Document history and additional information" href="postface.html" />
+    <link rel="prev" title="Preface" href="preface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Technical FAQ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Rackspace internal support questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-balancing">Load Balancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repositories">Repositories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supporting-services">Supporting services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#versions-and-upgrades">Versions and upgrades</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Technical FAQ</a> &raquo;</li>
+        
+      <li>Rackspace internal support questions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-faq-internal/rpc-faq-rax.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rackspace-internal-support-questions">
+<h1>Rackspace internal support questions<a class="headerlink" href="#rackspace-internal-support-questions" title="Permalink to this headline">#</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This chapter contains Rackspace internal information, and should not be
+distributed to customers.</p>
+</div>
+<div class="section" id="load-balancing">
+<h2>Load Balancing<a class="headerlink" href="#load-balancing" title="Permalink to this headline">#</a></h2>
+<p><strong>Q:</strong> How does Rackspace Support access the load balancers?</p>
+<p><strong>A:</strong>  For a physical load balancer within the Rackspace data center, Support
+should call NetSec.</p>
+</div>
+<div class="section" id="repositories">
+<h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this headline">#</a></h2>
+<p><strong>Q:</strong> Can we treat a customer install as a feature branch in the
+<code class="docutils literal"><span class="pre">rpc-openstack</span></code> Git repository?</p>
+<p><strong>A:</strong> No. We want to keep customers from having access to each other&#8217;s
+branches, and Git security is at repository level, not branch level.</p>
+<p><strong>Q:</strong> When working with a customer, do we commit playbook changes to a
+local repository?</p>
+<p><strong>A:</strong> Yes. All changes should be committed to a local branch. The
+playbook repository should be checked out, and a branch created for the
+customer. Any local changes should be committed to that local branch.
+For example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> git clone https://github.com/rcbops/ansible-lxc-rpc
+<span class="gp">#</span> git checkout -b customerName
+</pre></div>
+</div>
+<p><strong>Q:</strong> Will the customer branch then be committed to an upstream
+repository?</p>
+<p><strong>A:</strong> Yes. Each customer will need a Git server with one bare
+repository. The customer local branch should be pushed to the customer
+remote repository when changes are made. Remote push should be automated
+with a post-commit hook.</p>
+<p><strong>Q:</strong> What about per-customer Git repositories on GitHub?</p>
+<p><strong>A:</strong> You can create a Git repository per customer on GitHub, and then
+<a class="reference external" href="http://git-scm.com/book/en/Git-on-the-Server-Setting-Up-the-Server">create Git-only SSH keys for each
+customer</a>.
+These keys should also be limited with <code class="docutils literal"><span class="pre">from=</span></code> in authorized keys.
+Refer to <a class="reference external" href="http://man.he.net/man5/authorized_keys">sshd documentation</a>
+for more information.</p>
+<p>Per-customer GitHub repositories have some advantages over keeping
+customer configurations only on their installations. The repository
+provides a backup of their configuration and allows Rackspace to compare
+customer configurations without logging into customer servers. This can
+be done by cloning the public repository, adding both customer private
+repositories as remotes, fetching (not pull) from both, and then running
+<code class="docutils literal"><span class="pre">diff</span></code> on the branches.</p>
+<p><strong>Q:</strong> Can we run gating on a customer branch?</p>
+<p><strong>A:</strong> No, because it will be specific to their installation and gating
+requires its own configuration.</p>
+</div>
+<div class="section" id="supporting-services">
+<h2>Supporting services<a class="headerlink" href="#supporting-services" title="Permalink to this headline">#</a></h2>
+<p><strong>Q:</strong> How does the initial supporting services deployment work?</p>
+<p><strong>A:</strong> The initial supporting services deployment is part of the
+standard RPCO Ansible deployment. These supporting services will be
+deployed onto the initial three controller hosts, with one RabbitMQ and
+MariaDB instance running in a container on the hosts.</p>
+<p><strong>Q:</strong> Can RabbitMQ or MariaDB be deployed in isolation?</p>
+<p><strong>A:</strong> No. RabbitMQ and MariaDB are deployed along with all the other
+containerized services in RPC.</p>
+<p><strong>Q:</strong> How are the supporting services upgraded?</p>
+<p><strong>A:</strong> Each service has conditions which need to be factored into
+upgrade plans, so specific upgrade documentation will need to be crafted
+and thoroughly tested prior to launch. Refer the Upgrade Guide for more
+information.</p>
+<p>..TODO Add link when the 14.0 Upgrade Guide is published.</p>
+<p><strong>Q:</strong> How are the supporting services scaled when additional RabbitMQ /
+MariaDB capacity is required?</p>
+<p><strong>A:</strong> In the case of a three-node controller cluster that has an
+instance of RabbitMQ and MariaDB installed in each node, there are two
+primary ways of scaling out the supporting services.</p>
+<ul class="simple">
+<li>Add two additional hardware nodes and replicate all the containers
+and services from each of the initial three nodes. Two additional
+hardware nodes are required because the MariaDB Galera cluster needs
+to be deployed in an odd number of instances to achieve quorum.</li>
+<li>Move the supporting services to a separate cluster which can be
+scaled out horizontally and / or vertically, independently of the
+OpenStack installation. This cluster could use nodes from the same
+pool as the initial controller cluster, but the end goal is to have a
+set of nodes dedicated to the supporting services. This would be the
+preferred deployment strategy for the support services on a large
+installation or one expected to experience significant growth.</li>
+</ul>
+<p>Note that RabbitMQ and MariaDB should be accessible via a load balanced
+virtual IP (VIP), which means that the supporting services can be scaled
+with no changes required to the OpenStack installation. This is true
+with both scaling methods. As additional RabbitMQ / MariaDB nodes are
+added to the load balancer, the additional capacity would be immediately
+visible to the OpenStack services using them.</p>
+</div>
+<div class="section" id="versions-and-upgrades">
+<h2>Versions and upgrades<a class="headerlink" href="#versions-and-upgrades" title="Permalink to this headline">#</a></h2>
+<p><strong>Q:</strong> How do you determine version creation and releases?</p>
+<p><strong>A:</strong> There are two aspects to version creation:</p>
+<ul class="simple">
+<li>Ansible playbooks and deployment scripts and tools that will be
+changed by the RPCO engineering team to improve the deployments and
+fix bugs.</li>
+<li>Upgrades to packages and source builds.</li>
+</ul>
+<p>RPCO will upgrade on a schedule. There will be a regular test of new
+packages and scripts, and once testing is complete, we will release the
+packages and scripts at the new tested versions.</p>
+<p>Critical patches will be addressed on an ad-hoc basis.</p>
+<p><strong>Q:</strong> What is the process end-to-end for building, testing and
+rolling-out a minor or trivial version?</p>
+<p><strong>A:</strong> RPCO plans to automate the process, which will proceed as
+follows:</p>
+<ol class="arabic simple">
+<li>A CI/CD process retrieves the latest versions of all packages in the
+frozen repo and the latest source builds.</li>
+<li>The process then initiates a gate and test job with QE.</li>
+<li>When the tests are successful (the newest packages and scripts are
+functional) deployments of the new version can begin.</li>
+</ol>
+<p>The upgrade path for stateless containers should be relatively
+straightforward in our three-node controller cluster model. The upgrade
+path for containers with state is still being researched.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="postface.html" class="btn btn-neutral float-right" title="Document history and additional information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preface.html" class="btn btn-neutral float-left" title="Preface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

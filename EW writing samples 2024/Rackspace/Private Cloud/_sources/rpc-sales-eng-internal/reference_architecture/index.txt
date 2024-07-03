@@ -1,0 +1,19 @@
+:deconsttitle: Rackspace Private Cloud Reference Architecture
+
+==============================================
+Rackspace Private Cloud Reference Architecture
+==============================================
+
+.. image:: ../../figures/powered-by-openstack-modified.png
+   :target: http://www.openstack.org
+
+.. note:: This is a work in process. Things are being added and moved
+          around. Open an issue or PR for suggestions or new content.
+
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 6
+
+   rpc-o/index.rst

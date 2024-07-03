@@ -1,0 +1,33 @@
+
+.. _contact-archive-settings-command:
+
+Contacts Archive
+================
+
+To restore of permanently delete Contact archives, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Contacts** to display the Contacts settings.
+
+#. Click **Contact Archive**.
+
+#. To restore an individual Contact archive, click  **Restore** in the correct row.
+
+#. To permanently delete an individual Contact archive click the Delete |delete-icon| icon in the correct row and click **OK** in the confirmation box.
+
+   .. |delete-icon| image:: ../../../../../images/delete-icon.png
+      :height: 20
+
+#. To restore or delete multiple Contact archives select one or more archive check boxes:
+
+   .. note::
+
+      To select all Contact archives, use the check box in the header row.
+
+   a. To restore multiple selected Contact archives, click  **Restore Selected**.
+
+   #. To permanently delete selected Contact archives, click **Delete Selected Permanently** and click **OK** in the confirmation box.

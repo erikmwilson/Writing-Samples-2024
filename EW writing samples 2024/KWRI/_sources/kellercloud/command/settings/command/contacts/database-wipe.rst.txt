@@ -1,0 +1,20 @@
+
+.. _database-wipe-settings-command:
+
+Database Wipe
+=============
+
+To archive all Contacts or delete all Contact archives, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Contacts** to display the Contacts settings.
+
+#. Click **Database Wipe**.
+
+#. To archive all contacts, click **Archive All Contacts** and click **OK** in the confirmation box.
+
+#. To permanently delete all archived Contacts, click **Delete All Archived Contacts** and click **OK** in the confirmation box.

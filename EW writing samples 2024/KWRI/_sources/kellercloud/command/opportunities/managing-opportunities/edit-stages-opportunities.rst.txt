@@ -1,0 +1,38 @@
+
+.. _edit-stages-opportunities-command:
+
+Edit Stages
+===========
+
+Each phase in Opportunities is broken up into stages, which you can customize to fit your transaction process. By default, stages have been added to your pipeline to get you started. From the Opportunities dashboard, click on each phase to see the stages that have been set up.
+
+The first step to getting your Opportunities pipeline set up, is to look at your business and define each stage of each phase of a transaction.
+
+.. note::
+
+   A stage is not a task. Each stage is a period of time in the transaction process that might have multiple tasks or outcomes that need to be happen before you can move to the next stage.
+
+To edit your pipeline stages, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on a phase to see what has been added by default.
+
+#. Click **Edit Stages** at the top-right of the phase window.
+
+   The **Edit Stages** window, lists your stages and a probability for each.
+
+#. To add a new stage, click **Add New Stage**. To edit or delete an existing stage, click the respective icons. To reorganize the stages, click and drag the rows.
+
+   The probabilities for each stage represent the probability that an Opportunity will go all the way through to close, from this stage. For example, if you are in the **Scheduled** stage of the **Appointment** phase, and you know that only one out of ten of the appointments that you schedule will go through to close and get you a commission, then add 10% to this stage.
+
+   Within Opportunities, you will see a commission total for each individual pipeline and stage. We take the volume of the listing you attach to each individual Opportunity, look at which stage the Opportunity is in (and the probability associated with that stage), and calculate the volume against the probability percentage set up in that stage. This is an estimate of your future income, based on the probabilities you set up in each stage.
+
+#. When editing a new or existing stage, enter a **Stage Name**, **Probability**, **Position** in list, add any **Checklist** items, and then click **Save**.
+
+#. Each stage also has a checklist associated with it. Click the checklist in each stage to add or edit items in that checklist. This checklist appears on every Opportunity, which allows you to check off tasks that have been completed.

@@ -1,0 +1,169 @@
+=========
+ Backups
+=========
+
+Backups for running volumes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A non-intrusive backup option allows backups for running volumes that
+are currently in use by an instance. Users no longer need to wait for
+volumes to move into an available state before completing
+a backup. This option represents an alternative to the method of
+creating a backup based on a clone of a volume.
+
+   .. note::
+
+      Set the ``--force`` flag to ``TRUE`` in the ``cinder.conf`` file
+      to enable backups of in-use volumes. Cinder will reject the
+      request if this variable remains blank or set to ``FALSE``.
+
+#. Ensure that the ``backup_use_temp_snapshot`` option is set to ``TRUE``
+   in the ``cinder.conf`` file on any Cinder Drivers that implement
+   snapshot attachment.
+
+#. Execute the ``cinder backup-create`` command with ``--incremental``
+   and ``--force`` arguments. Ensure the volume name is included in
+   this command:
+
+   .. code-block:: console
+
+      $ cinder backup-create --incremental --force <volume name>
+
+
+Backups in Customer data centers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Customers are responsible for backing up data when hosted in their data
+centers. Back up the following directories:
+
+-  ``/openstack/backup``: The data inside the containers, including the
+   Galera database.
+
+-  ``/opt``: The Ansible source code.
+
+-  ``/etc``: The Ansible and host configurations.
+
+    .. warning::
+
+       Failure to periodically back up these directories can result in
+       irrecoverable data loss and inability to manage the environment.
+
+To enable the recovery of instance data, back up the Glance backend. It
+is recommended to set an automatic snapshot schedule for instances and
+set the scheduler to delete old snapshots. If you use Cinder volumes,
+also back up that data.
+
+Comprehensive backups are an important part of disaster planning.
+Include planning for Netapp, NFS shares, or Cloud Files if used. For
+example, Netapp uses ``/var/lib/glance/`` for the image store.
+
+Backups in Rackspace data centers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. note::
+
+    This section is for Rackspace only, and does not appear in the
+    customer-facing version of the document.
+
+Rackspace manages backups for Core Support customers when their clouds
+are hosted in Rackspace data centers. Backups must be configured after
+the cloud setup is complete. This section documents the contents and
+configuration for Rackspace backups.
+
+Contents of backups
+-------------------
+
+The following information is backed up:
+
+-  ``/openstack/backup``: The data inside the containers, including the
+   Galera database.
+
+-  ``/opt``: The Ansible source code.
+
+-  ``/etc``: The Ansible and host configurations.
+
+Glance images are not included in these backups, since they are no
+longer included on infrastructure nodes. Instead, glance images may be
+hosted in Cloud Files, a local OpenStack Object Storage cloud, or in
+NetApp. Regardless of glance back-end, ensure that customer expectations
+are clear regarding the lifespan and backup of images.
+
+ .. note::
+
+    Elasticsearch is not currently backed up. Refer to
+    `openstack-ansible bug 1400440
+    <https://bugs.launchpad.net/openstack-ansible/+bug/1400440>`__
+    for more information.
+
+
+Backup configuration
+--------------------
+
+Host backup configuration is executed by the Ansible playbooks. The
+playbooks configure a cron job, which generates a file dump onto the
+host devices that contains the data that needs to be backed up.
+
+Each container includes a backup directory called ``/var/backup``. This
+directory is bind-mounted to the ``/openstack/backup/container_name``
+directory on the host. Backing up the complete ``/openstack/backup``
+directory ensures that all relevant container data is included.
+
+You must configure the ServiceNet IP address route from CORE as a static
+route.
+
+
+Creating an MBU ticket
+----------------------
+
+When the environment is ready, send a ticket to Rackspace MBU with the
+name of the primary infrastructure node. Use the following template:
+
+ .. code-block:: ini
+
+    MBU,
+
+    This is to configure the backup for a RPCO vV.n.n deployment.
+
+    Please install the MBU software on device device_name. This device is
+    running Ubuntu 16.04 LTS.
+
+    Please set the Save Set to the following:
+
+    /openstack/backup/*
+
+    /etc/*
+
+    /opt/*
+
+    Please install the commvault packages on this device.
+
+    Thanks!
+
+
+Requesting a restore from MBU
+-----------------------------
+
+When data needs to be restored on a host, send a ticket to MBU. The
+ticket must include the following information:
+
+-  Server name
+
+-  Date of data
+
+-  Exact path of the data that needs to be restored
+
+-  Location where the data should be restored to
+
+   If a location is not provided, one of the following defaults will be
+   used:
+
+   ``drive_letter:\rs-pkgs\restore_ticket_number``
+
+   or
+
+   ``/home/rack/restore_ticket-number``
+
+-  Any special instructions
+
+   For example: "Replay transaction logs; wait until 6pm CST to start
+   the restore process; call upon completion".

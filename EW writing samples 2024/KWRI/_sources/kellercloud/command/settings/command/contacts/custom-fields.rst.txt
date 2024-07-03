@@ -1,0 +1,40 @@
+
+.. _custom-fields-settings-command:
+
+Custom Fields
+=============
+
+While Command has many fields to add to a contact, every agent's business is different, and we recognize that you might need to add information that we have not considered. To allow you to customize how you set up Contacts, you can create custom fields for your contacts. If you need to add information to your contacts for organizational purposes, instead of creating custom tags, or labels, for each of the possible pieces of information, create a custom field and sort your database based on the information that is entered.
+
+To create, edit, or delete a custom field, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Contacts** to display the Contacts settings.
+
+#. Click **Custom Fields**.
+
+#. To create a new custom field, click **Create New Custom Field**.
+
+#. Complete the **Add New Custom Field** popup window fields, The **Custom Field Name** is the title of the field and the **Custom Field Type** is how you enter your the data, for example, Text Field or Dropdown.
+
+#. If you want this custom field to be listed on the **Select Custom Field** dropdown in Contacts when you add or edit a contact, select the **Make Default Field** check box.
+
+#. Click **Create**.
+
+#. To edit an existing custom field, click the Edit |edit-icon| icon, enter the changes on the **Edit Custom Field** form, and click **Save**.
+
+   .. |edit-icon| image:: ../../../../../images/edit-icon.png
+      :height: 20
+
+#. To delete a custom field, click the Delete |delete-icon| icon, and click **Delete** on the confirmation box.
+
+   .. |delete-icon| image:: ../../../../../images/delete-icon.png
+      :height: 20
+
+.. note::
+
+   The number of contacts assigned to each field displays in the **Linked Contacts** column. You cannot delete a field if there are any contacts assigned to it. You can click on the number of linked contacts, to see those contacts in your database.

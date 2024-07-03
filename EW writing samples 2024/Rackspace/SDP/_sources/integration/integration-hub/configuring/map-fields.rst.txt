@@ -1,0 +1,135 @@
+.. _map-fields-SDP-IG:
+
+==========
+Map fields
+==========
+
+You must map your fields to the corresponding Rackspace Ticketing fields.
+
+Map outbound events
+-------------------
+
+Outbound Field Mapping allows you to take the data from your incident and
+build the payload that is required to create the corresponding ticket in
+Rackspace. The following outbound fields are required:
+
+* **accountId** – Customer account number
+
+* **category** – Valid values are: Account, Billing and Payments,
+  Technical Change, Technical Incident, Request for Information
+
+* **comments** - Text string
+
+* **severity** – Valid values are: Normal, Urgent
+
+* **status** – Valid values are: Open, Closed
+
+* **subcategory**
+
+* **subject** - Text string
+
+Use the following steps to map your outbound events:
+
+1. Open ServiceNow.
+
+#. In the left-hand navigation pane, click **Outbound Field Mappings**.
+
+#. The **Outbound Field Mappings** screen displays a list of the
+   required mapping fields.
+
+#. From the **Target field name** list, click on the **Target field name**
+   to be mapped.
+
+#. Enter your mapping data in the following fields, then click **Update**.
+
+   * **Outbound event** - Pre-filled
+
+   * **Process** – ITIL process associated with the selected Target (read only)
+
+   * **Operation type** - Default value based upon Outbound Event (read only)
+
+   * **Match target field name** - Not used
+
+   * **Active** - Checked
+
+   * **Target field name** - Pre-filled with required Rackspace ticket
+     field listed above
+
+   * **Value mapping type** - Determines how the data is mapped
+
+     * **Copy value** – Copies the field value from the **Source field name**
+       to the **Target field name**
+
+     * **Default value** – Use the same value for each ticket created
+
+     * **Translated value** - Converts the value from **Source field name**
+       to the **Target field name**
+
+     * **Run script** – Data mapped according to user supplied script
+
+   * **Source field name** – Name of field in your instance
+
+   * **Comments**
+
+Map inbound events
+------------------
+
+Inbound Field Mapping allows you to take the data from the Rackspace Ticketing
+system and transform the payload to create or update incidents in your
+ServiceNow instance.
+
+You can map the following inbound fields to your incidents:
+
+*  **Status**
+
+* **Comment**
+
+* **Category**
+
+* **Subcategory**
+
+* **Subject**
+
+Use the following steps to map your inbound events:
+
+1. Open ServiceNow.
+
+#. In the left-hand navigation pane, click **Inbound Field Mappings**.
+
+#. Select the event for which to map data.
+
+   The **Inbound Field Mappings** list displays.
+
+#. Click the **New** button.
+
+#. Enter your mapping data in the following fields, then click **Update**.
+
+* **Inbound event** - Pre-filled
+
+* **Import table** - Pre-filled
+
+* **Operation type** - Pre-filled
+
+* **Process** – ITIL process associated with the selected target (read only)
+
+* **Local only** - Not used
+
+* **Mandatory**
+
+* **Inbound Field Name** – Rackspace ticket field
+
+* **Active** - Checked
+
+* **Process field name** - Your field name
+
+* **Value mapping type** - Determines how data is mapped
+
+  * **Copy Value** – Copies the field value from the Rackspace
+    Ticketing system to your field name
+
+  * **Default Value** – Use the same value for each event
+
+  * **Translated value** - Converts the value from **Source field name**
+    to the **Target field name**
+
+  * **Run script** – Data mapped according to user supplied script

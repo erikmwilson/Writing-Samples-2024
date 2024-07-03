@@ -1,0 +1,11 @@
+
+.. _global-settings-index-command:
+
+Global Settings
+===============
+
+The following sections contain information about how to configure
+settings globally for the Command application.
+
+.. toctree::
+   :maxdepth: 1

@@ -1,0 +1,13 @@
+
+.. _discussions-opportunities-command:
+
+Opportunity Discussions (Teams)
+===============================
+
+The following pages contain information about Opportunity Discussions. Discussions are available only if you are part of a Team.
+
+.. toctree::
+   :maxdepth: 1
+
+   access-discussions
+   managing-discussions

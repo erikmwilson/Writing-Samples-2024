@@ -1,0 +1,10 @@
+========
+Software
+========
+
+.. toctree::
+   :maxdepth: 2
+
+   service-stacks.rst
+   core-components.rst
+   component-details/index.rst

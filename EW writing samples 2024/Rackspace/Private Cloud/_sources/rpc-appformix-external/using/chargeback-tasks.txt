@@ -1,0 +1,21 @@
+.. _chargeback-tasks-ug:
+
+==========================
+Configure chargeback costs
+==========================
+
+To configure chargeback costs, see the
+`Chargeback <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html>`_ section of the AppFormix User Guide to complete the
+following tasks.
+
+* `Configure Departmental Shared Costs <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html#jd0e44>`_
+
+* `Configure Rates Charged by Using the Rate Card <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html#jd0e134>`_
+
+* `Configure Compute Costs <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html#jd0e189>`_
+
+* `Configure Network Resource Costs <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html#jd0e257>`_
+
+* `Configure Storage Costs <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html#jd0e326>`_
+
+* `Configure OS License Rates <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html#jd0e391>`_

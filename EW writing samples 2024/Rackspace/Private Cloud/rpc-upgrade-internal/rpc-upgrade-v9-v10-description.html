@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Description &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Prerequisites" href="rpc-upgrade-v9-v10-prereq.html" />
+    <link rel="prev" title="Downgrade oslo.messaging upgrade notes" href="rpc-upgrade-v9-v10-oslo-messaging.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Upgrade Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-upgrade.html">Upgrade overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v12-v13.html">Upgrade from v12 to v13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v11-v12.html">Upgrade from v11 to v12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-v10-v11.html">Upgrade from v10 to v11</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="rpc-upgrade-v9-v10.html">Upgrade from v9.0.2+ to v10</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v9-v10-rabbitmq.html">Downgrade and pin RabbitMQ upgrade notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v9-v10-oslo-messaging.html">Downgrade oslo.messaging upgrade notes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-options">Configuration Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#issues">Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v9-v10-prereq.html">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v9-v10-perform.html">Perform the upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-upgrade-v10-verify.html">Verify the upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Upgrade Guide</a> &raquo;</li>
+        
+          <li><a href="rpc-upgrade-v9-v10.html">Upgrade from v9.0.2+ to v10</a> &raquo;</li>
+        
+      <li>Description</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-upgrade-internal/rpc-upgrade-v9-v10-description.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="description">
+<h1>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h1>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">#</a></h2>
+<p>The following features can be enabled. In some cases, these features
+could already exist on deployments using later releases of version 9.</p>
+<ul>
+<li><p class="first">Add: Block storage availability zones</p>
+<p>To enable this feature, see the <a class="reference external" href="http://docs.openstack.org/developer/openstack-ansible-os_cinder/configure-cinder.html#availability-zones">OpenStack-Ansible cinder role documentation</a>.</p>
+</li>
+<li><p class="first">Add: Object Storage (swift)</p>
+<p>To enable this feature, see the <a class="reference external" href="https://developer.rackspace.com/docs/private-cloud/rpc/v11rpc-swift/">Object Storage Deployment Guide</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="configuration-options">
+<h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">#</a></h2>
+<p>The following configuration options require attention. In some cases,
+these options could already exist on deployments using later releases of
+RPCO version 9.</p>
+<ul>
+<li><p class="first">Add: Dashboard secret key (required)</p>
+<p>In the <code class="docutils literal"><span class="pre">user_variables.yml</span></code> file, add the <code class="docutils literal"><span class="pre">horizon_secret_key</span></code>
+option with a suitable value. The <a class="reference external" href="http://docs.openstack.org/developer/openstack-ansible/install-guide/configure-creds.html">password generation script</a>
+can add a random value.</p>
+</li>
+<li><p class="first">Add: Galera wait timeout (optional)</p>
+<p>In the <code class="docutils literal"><span class="pre">user_variables.yml</span></code>, file optionally add the
+<code class="docutils literal"><span class="pre">galera_wait_timeout</span></code> with a suitable value in seconds.</p>
+</li>
+<li><p class="first">Remove: MaaS repository version</p>
+<p>In the <code class="docutils literal"><span class="pre">user_variables.yml</span></code> file, remove the <code class="docutils literal"><span class="pre">maas_repo_version</span></code>
+option.</p>
+</li>
+<li><p class="first">Remove: the following MaaS checks. These should be removed before
+running the MaaS playbooks; when the playbooks are run, the checks
+and alarms will be recreated.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">swift_account_replication_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_async_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_md5_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_object_replication_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_quarantine_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_object_server_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_container_server_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_account_server_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">swift_proxy_server_check</span></code></li>
+<li><code class="docutils literal"><span class="pre">rabbitmq_status</span></code></li>
+<li><code class="docutils literal"><span class="pre">galera_check</span></code></li>
+</ul>
+</li>
+<li><p class="first">Change: RabbitMQ and Galera alarm names</p>
+<p>Using the Cloud Control Panel or API, delete all alarms (not checks)
+on each node associated with the RabbitMQ and Galera plugins. For
+example:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">rabbitmq_disk_free_alarm_status--nodename</span></code></li>
+<li><code class="docutils literal"><span class="pre">rabbitmq_mem_alarm_status--nodename</span></code></li>
+<li><code class="docutils literal"><span class="pre">wsrep_local_state--nodename</span></code></li>
+<li><code class="docutils literal"><span class="pre">wsrep_cluster_size--nodename</span></code></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The upgrade process generates new alarms.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="issues">
+<h2>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">#</a></h2>
+<p>For the latest information about RPCO known issues, refer to <a class="reference external" href="https://developer.rackspace.com/docs/private-cloud/rpc/v10rpc-v10-releasenotes-external/known-issues/">Known issues</a>
+in the RPCO Release Notes.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rpc-upgrade-v9-v10-prereq.html" class="btn btn-neutral float-right" title="Prerequisites" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rpc-upgrade-v9-v10-oslo-messaging.html" class="btn btn-neutral float-left" title="Downgrade oslo.messaging upgrade notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

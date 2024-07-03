@@ -1,0 +1,18 @@
+
+.. _filter-contacts-command:
+
+Filter Contacts
+===============
+
+In Contacts, you can use filters so you can find the contacts you need. To filter contacts, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click **Filters** above the contact list.
+
+#. In the  **Filters** window, select the filters you want to use from available options and the drop-down lists. To remove a filter, click on each filter to remove it individually or click **Clear All** to remove all of the selected filters.

@@ -1,0 +1,16 @@
+
+.. _applications-settings-index-command:
+
+Applications
+============
+
+The following sections contain information about how to configure
+applications for Command.
+
+.. toctree::
+   :maxdepth: 1
+
+   applications
+   email-track-applications
+   email-upgrade-applications
+   email-address-applications

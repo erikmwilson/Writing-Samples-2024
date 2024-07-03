@@ -1,0 +1,14 @@
+
+.. _config-command-settings-index-command:
+
+Configure Command Settings
+==========================
+
+The following sections contain information about how to configure
+settings for the Command application.
+
+.. toctree::
+   :maxdepth: 1
+
+   ../settings/command/index
+   ../settings/connect/index

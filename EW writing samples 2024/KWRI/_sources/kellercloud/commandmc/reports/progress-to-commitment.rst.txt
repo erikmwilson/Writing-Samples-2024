@@ -1,0 +1,29 @@
+
+.. _progress-to-commitment-report-commandmc:
+
+Yearly Progress to Commitment Report
+====================================
+
+Market Center leaders who have access to the Reports applet are able to set Market Center goals for the year. The goals for each quarter in the new year are meant to be entered at the end of the current year, but before the start of each quarter so that they can be reevaluated and changed if necessary. These goals are locked at the start of each quarter. The specific due dates are displayed on the **Goal Setting** page. The goals set for each quarter are calculated based on the percentage entered in the tool.
+
+To access the Yearly Progress to Commitment Report, see :ref:`access-progress-report-commandmc`.
+
+There are two types of goals that can be entered for a Market Center:
+
+* Commitment Goal - The number that the Market Center is confident they can deliver for the year. This is tied to the Market Center budget.
+
+* Stretch Goal - The number that the Market Center aspires to achieve. This is tied to the Market Center's GPS.
+
+You can set commitment and stretch goals for the following variables:
+
+* The number of appointments held with R1 and R2 recruits
+
+* The number of R1 and R2 recruits expected to join the Market Center
+
+* The net number of associates that are expected to be added to the Market Center
+
+* The amount of company dollar expected to be collected by the Market Center
+
+* The amount of KW owner profit the market center expects to receive
+
+* The amount of Profit Share expected to be paid by the Market Center

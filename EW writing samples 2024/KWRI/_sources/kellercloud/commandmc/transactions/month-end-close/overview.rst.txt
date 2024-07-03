@@ -1,0 +1,92 @@
+
+.. _overview-month-end-close-commandmc:
+
+Month End Close Overview
+========================
+
+Month end close is the process of finalizing finance numbers and letting KW know that everything for a given month is final. The month end close is must be completed by the end of the 3rd business day of the month. It is recommended that MCAs review their numbers each Friday to make sure everything is in balance weekly so errors are caught before the end of the month. The month end close **Overview** tab is continually updated so that MCAs can check their numbers at any point in time.
+
+To successfully complete the month end close process, the Market Center must confirm the following:
+
+* All transactions closed for the month are properly accounted for
+
+* All accounting entries are properly entered
+
+* New Listings are properly accounted for
+
+* The market center roster is current and accurate
+
+After the period is closed, the transactions, roster and accounting data for that period cannot be changed. This is due to the monthly calculation of profit share. If an error is found, an adjustment must be made in the current period to offset the error.
+
+The Transmittal Process
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Month End Reports are printed and reviewed (for transactions completeness)
+
+   * Projected Closings Report
+
+   * Anniversary DA List
+
+   * End of Month Reports. For more information, see :ref:`EOM-reports-month-end-close-commandmc`.
+
+#. Month End Associate reports are printed and reviewed (for roster accuracy)
+
+   * Associate List
+
+   * YTD Closed Production Report
+
+#. Month End Reconciliation Reports are printed and reviewed
+
+   * Associate Tech Fees
+
+   * New Associates
+
+   * KW Cares Donations
+
+   * KW Kids Can Donations
+
+   * Bold Scholarship Donations
+
+#. Verify all transaction Entries between Transactions and Accountedge
+
+   * Deposit Summary Report
+
+   * Transmittal Proof Report
+
+#. Monthly MC fees are reviewed:
+
+   * Royalty (this is based off the royalty base of all the transactions, this is not the same as agent royalty)
+
+   * New Associates
+
+   * Associate Tech Fees
+
+   * MC fees
+
+#. Record KWRI Invoice (Accountedge)
+
+#. Account for E&O Expense (U.S. Only)
+
+#. Upload Finaancial data to the Online KWFinancialStatement (Accountedge)
+
+#. Calculate Preliminary Profit Share- including accounting for any Loss Carry Forward for a Market Center
+
+#. Make any necessary accounting adjustments and update KWFS
+
+#. Calculate Final Profit Share - including accounting for any Loss Carry Forward for a Market Center
+
+#. Update KWRI Invoice (Accountedge) and update KWFS
+
+#. Check Key Numbers
+
+#. Close the Month
+
+#. Month End Close is recorded
+
+   * Current accounting period advanced
+
+   * Listings current month is advanced
+
+   * KWFS current month is advanced
+
+When you click **Close the Month**, the Month End Process compares key metrics (Company Dollar, Approved Expenses, KW Owner Profit, YTD KW Owner Profit, Profit Share) that are calculated by Transactions with those from the KWFinancialStatement. All key metrics must match in order to close the month.

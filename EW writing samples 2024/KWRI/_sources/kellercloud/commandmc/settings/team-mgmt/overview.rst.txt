@@ -1,0 +1,89 @@
+
+.. _team-mgmt-overview-settings-index-commandmc:
+
+MC Team Management Overview
+===========================
+
+Market Center Administrators (MCAs), Assistant MCAs, KWRI System Admins, and KWRI Legal can manage the teams, team members, and guests in your Market Center. The purpose of the team application is to track the members of a particular team and the dates that they are a part of the team.
+
+.. note::
+
+   Production is only attributed to a team for the dates the agent in on a team, based on the contract date in WinMORE. The contract date must be within the time frame that the agent is on the team for the team to get credit. The closing date is used only to determine which awards year is credited, not to control who gets credit.
+
+Teams Tab
+^^^^^^^^^
+
+From this tab you can add a new team or edit an existing team. Use the **Show** drop-down menu to display **All Teams**, **Active Teams**, or **Inactive Teams**. Use the search box to locate a specific team.
+
+.. note::
+
+   If you are a member of more that one Market Center, select the correct Market Center in the top-right corner.
+
+* To add a team click **Add Team**. For more information, see :ref:`add-team-settings-commandmc`.
+
+* To edit an existing team, click on the team name. For more information, see :ref:`edit-team-settings-commandmc`.
+
+Team Details
+++++++++++++
+
+This screen displays basic team information, including tabs for current members, inactive members, and team history. From this screen you can edit the team. Team information includes the Team Name, Rainmaker, number of Members, Date Created, Start Date, Region, Market Center, Team Status,  Non KW Transfer Units, Non KW Transfer Gross Commission Income (GCI).
+
+The creation date is system generated when the team is created. If the team started on a date different than the day they are being entered, adjust the start date to the proper date.
+
+For teams that transferred to Keller Williams as a team, you can enter their transfer units, and gross commission income (GCI). Refer to the award policy for information on what production is allowed to be counted in the transfer amounts.
+
+The transfer units and GCI are not for KW teams transferring between market centers. For those teams you transfer the entire team to the new market center. For more information, see Transferring a Team.
+
+Current Members Tab
+~~~~~~~~~~~~~~~~~~~
+
+This tab displays the current team members. On this tab you can:
+
+* View the members currently assigned to the team
+
+* Generate a report for the current members. For more information, see :ref:`generate-reports-settings-commandmc`.
+
+* Add members to the team. For more information, see :ref:`add-team-member-settings-commandmc`.
+
+* Edit the member's team role. For more information, see :ref:`edit-team-member-settings-commandmc`.
+
+* Edit the date the member began that role. For more information, see :ref:`edit-team-member-settings-commandmc`.
+
+* Remove a member from the team. For more information, see :ref:`remove-team-member-settings-commandmc`.
+
+* View a member's change log. For more information, see :ref:`view-change-log-settings-commandmc`.
+
+.. note::
+
+   KWRI uses the date added to determine if the production should be applied to the team. If the contract date of a DA is prior to the associates start date on the team, the production will NOT be added to the team production.
+
+Inactive Members Tab
+~~~~~~~~~~~~~~~~~~~~
+
+This tab displays any inactive team members. From this tab, you can edit a member's **End Date** or view a member's Change Log.
+
+Team History
+~~~~~~~~~~~~
+
+This tab displays the history of the team (team creation and any updates made to the team profile), members start and removal dates, and any transfer information for the team.
+
+If an associate is removed from a team and you enter a DA that was written prior to the removal date, the team still gets credit for the production.
+
+Guest Tab
+^^^^^^^^^
+
+This tab displays all the active Guests (Team Admins) added for all Teams inside a selected MC. From this tab, you can remove a Guest from the Market Center.
+
+Pending Team Requests
+^^^^^^^^^^^^^^^^^^^^^
+
+This tab displays all Pending requests for a selected MC. From this tab, you can accept or deny team transfer requests. For more information, see Transfer a Team.
+
+Team Member Start and End Dates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The team member start and end dates recorded in Command are crucial to correct reporting. A team is credited with the production of a transaction when the contract date on the DA in WinMORE is within the time frame that an associate is affiliated with a team. If a team member changes teams, the dates on the team cannot overlap, therefore the end date on the prior team must be correct in order to add them to a new team.
+
+Verify your team and group information monthly, and ensure you have a process in place to track changes to teams and groups in your Market Center.
+
+Have the rainmaker of each team verify this data monthly to avoid issues with start dates and end dates for teams and team members.

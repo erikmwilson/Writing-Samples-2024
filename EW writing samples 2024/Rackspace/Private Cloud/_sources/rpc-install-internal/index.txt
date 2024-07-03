@@ -1,0 +1,34 @@
+.. _rpc-install-internal:
+
+==================
+Installation Guide
+==================
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+The information in this guide is intended for Rackspace Support and any other
+Rackers who are installing an OpenStack private cloud for a customer in a
+Rackspace data center or a customer data center.
+
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   preface.rst
+   ch-overview.rst
+   ch-hosts-deployment.rst
+   ch-hosts-target.rst
+   ch-configure-required.rst
+   ch-configure-optional.rst
+   ch-lbaas.rst
+   ch-external-ceph.rst
+   ch-playbooks-rpc.rst
+   ch-ops.rst
+   app-osa-configfiles.rst
+   app-rpco-configfiles.rst
+   app-lxc-commands.rst
+   postface.rst

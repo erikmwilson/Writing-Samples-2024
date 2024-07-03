@@ -1,0 +1,14 @@
+===================================
+Configure the hypervisor (optional)
+===================================
+
+By default, the KVM hypervisor is used. If you are deploying to a host
+that does not support KVM hardware acceleration extensions, select a
+suitable hypervisor type such as ``qemu`` or ``lxc``. To change the
+hypervisor type, add the following line in the
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file,
+replacing ``kvm`` as appropriate:
+
+.. code-block:: console
+
+   # nova_virt_type: kvm

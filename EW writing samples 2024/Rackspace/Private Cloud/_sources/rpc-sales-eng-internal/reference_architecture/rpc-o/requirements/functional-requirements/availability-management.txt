@@ -1,0 +1,31 @@
+=======================
+Availability management
+=======================
+
+.. list-table:: **Availability management**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - AM4.0
+     - The system shall provide availability management including:
+   * - AM4.0.1
+     - The system is N+1 modeled for resiliency, and availability
+       within the application.
+
+       **Solution:** We have built tolerance throughout the design of
+       the OpenStack control plane, by providing an HA quorum between
+       nodes, and allowing flexibility through a container based
+       service model.
+   * - AM4.0.2
+     - The Core hardware such power supplies, hard drive systems,
+       network interface cards, etc. must be redundant and fault
+       tolerant to avoid single points of failure.
+
+       **Solution:** We have built tolerance throughout the design of
+       the cabs by designing for dual power, NIC, and RAID throughout.
+       Hypervisors remain independent so applications will require
+       cloud awareness for scaling across nodes.
+   * - AM4.0.3
+     - The system shall allow for compute isolation.

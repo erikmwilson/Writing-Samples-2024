@@ -1,0 +1,59 @@
+
+.. _invite-recruit-commandmc:
+
+Invite a Recruit to Join KW
+===========================
+
+After a recruit has signed all the necessary paperwork to join your Market Center, send them an invite that contains a link to create their KW profile. After their profile is complete, they become a Market Center associate and can begin using Command to complete their everyday tasks.
+
+At any time during the joining process, you can click **View Progress** from the **Recruit Details** page to view a timeline of the recruit's **Joining Progress**. From the **Joining Progress** window, you can also withdraw an invitation if the recruit is in one of the following statuses:
+
+* Invitation Sent
+
+* Invitation Accepted
+
+.. note::
+
+   You can filter recruits by any of the join statuses from both the **Recruiting Pipeline** and the **Recruit Management** screens.
+
+   * Invitation Accepted
+
+   * Invitation Expired
+
+   * Invitation Sent
+
+   * Invitation Withdrawn
+
+   * Joined
+
+   For more information, see :ref:`filter-pl-recruits-mc`.
+
+To invite a recruit to join KW, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab, at the top of the page. Your recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Search for the correct recruit. For more information, see :ref:`search-pl-recruits-mc`.
+
+#. Drag the recruit's card to the **Committed** phase.
+
+#. On the **Move Recruit to Committed Phase** window, enter the **Projected Join Date**, the **Potential Company Dollar** and click **Save**.
+
+#. Click on the **Committed** tab and find your recruit.
+
+#. On the recruit card, click **Invite to MC** to send an email to the recruit with a link to begin the KW onboarding process.
+
+#. On the **Invite to MC** window, verify the recruits's information, indicate if they have an active real estate license, indicate if they will be part of the Marker Center staff, and click **Send Invite**. The recruit card displays the date the invitation was sent.
+
+   .. note::
+
+      After the recruit completes the onboarding process:
+
+      * The recruit will have full access to Command
+
+      * The Market Center will be prompted to pay a one-time fee
+
+      * The recruit's profile appears in the Associates' applet. For more information, see :ref:`associates-index-commandmc`.
+
+The invite link is active for seven days. After that, the recruit card shows the date the invite expired. You can resend the invite by clicking **Invite to MC**.

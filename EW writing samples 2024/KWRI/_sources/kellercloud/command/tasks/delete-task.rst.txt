@@ -1,0 +1,22 @@
+
+.. _delete-task-command:
+
+Delete a Task
+=============
+
+Only Recruit pipeline tasks can be deleted.
+
+To delete a task, complete the following steps:
+
+.. include:: tasks-login.rst
+
+#. Click either the **Contact Tasks** tab or the **Opportunity Tasks** tab, at the top of the page.
+
+#. For Contact tasks, click **To Do**. Only tasks in this status can be deleted.
+
+#. Click the delete icon |delete-icon|.
+
+   .. |delete-icon| image:: ../../../images/delete-icon.png
+      :height: 20
+
+#. On the confirmation window, click **Yes, delete**.

@@ -1,0 +1,29 @@
+
+.. _managing-contacts-command:
+
+Managing contacts
+=================
+
+The following pages contain information about managing contacts.
+
+.. toctree::
+   :maxdepth: 2
+
+   add-contacts
+   add-leads
+   edit-contacts
+   add-activity-contacts
+   add-calendar-event
+   add-note-contacts
+   archive-contacts
+   view-smartplans-contacts
+   add-smartplans-contacts
+   mark-unmark-lead-contacts
+   call-sms-contacts
+   add-neighborhood
+   add-task
+   create-opportunity-contacts
+   saved-search-contacts
+   more-options-menu
+   bulk-actions-contacts/index
+   team-contacts/index

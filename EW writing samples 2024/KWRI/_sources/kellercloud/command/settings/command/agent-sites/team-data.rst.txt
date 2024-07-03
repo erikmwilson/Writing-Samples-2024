@@ -1,0 +1,22 @@
+
+.. _team-data-settings-command:
+
+Team Data
+=========
+
+To determine which team members to show on your neighborhood landing page, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Agent Sites**.
+
+#. Click **Team Data**.
+
+#. Enter the name of your team and a team summary.
+
+#. Select the team members to show on your landing page.
+
+#. Click **Save**.

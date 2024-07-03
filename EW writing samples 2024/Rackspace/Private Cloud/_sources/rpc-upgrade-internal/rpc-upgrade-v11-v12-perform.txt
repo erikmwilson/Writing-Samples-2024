@@ -1,0 +1,40 @@
+===================
+Perform the upgrade
+===================
+
+Run the upgrade script from the original deployment host.
+
+- The upgrade process takes at least 30 minutes depending on the number of
+  nodes.
+
+- During the upgrade process, instances may experience a brief
+  interruption in network connectivity. This is expected behavior, and the
+  environment will operate normally afterwards.
+
+  After the script runs the playbook that creates LXC containers, these
+  containers should be successfully created.
+
+#. Update the RPCO repository:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack
+      # git fetch --tags
+      # git checkout TAG
+      # git submodule update
+
+   Replace ``TAG`` with the current stable release tag.
+
+#. Change to the ``/opt/rpc-openstack`` directory and run the upgrade script:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack
+      # FORKS=10 scripts/upgrade.sh
+
+#. Confirm the completion of the upgrade process with no tasks
+   unreachable or failed.
+
+   If failures occur during the upgrade process, an error message will
+   indicate where it occurred, and the playbooks to be rerun to complete
+   the upgrade process.

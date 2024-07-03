@@ -1,0 +1,25 @@
+
+.. _void-envelope-opportunities-command:
+
+Void an Envelope in DocuSign
+============================
+
+With Docusign, you are able to void or cancel envelopes. This voids any remaining signing activities. You can also void any of your sent envelopes that have not been completed. You are only able to void envelopes that you sent, are shared with you, or that are still in progress. For example, envelopes with a status of Waiting For Others, Needs to Sign, or Needs to View.
+
+To void an envelope, complete the following steps:
+
+#. :ref:`access-room-opportunities-command`.
+
+#. Click **Envelopes**.
+
+#. On the **Envelopes** page, right-click on the desired envelope, and select **Void**.
+
+#. Enter the reason for voiding the envelope. This is included in the envelope history and also the email sent to the recipient. Click **Void** to confirm.
+
+   .. note::
+
+      After the envelope is voided, if the recipient has not signed the envelope, it is no longer accessible. If a recipient has signed the envelope, they can access it but there will be a "Void" watermark on all of the pages.
+
+   The status of the envelope changes to **Voided**.
+
+   Recipients who have signed or who are next to sign the envelope receive an email stating the envelope has been voided. Any other recipients who are in the routing order do not receive an email about the voided envelope.

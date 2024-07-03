@@ -1,0 +1,43 @@
+
+.. _command-mc-roles-directory-command-ug:
+
+CommandMC Directory Access by Role
+==================================
+
+The following tables show the CommandMC Roles and their permissions for the Directory and Luxury agents.
+
+Regional Access
+^^^^^^^^^^^^^^^
+
+.. csv-table::
+   :header: "Role", "Access to View Directory", "Approve/Reject Exception Requests", "Update Luxury Floor Price for Each County"
+   :widths: 20, 20, 20, 20
+
+   Regional Operating Principal, Yes, Yes, Yes
+   Regional Director, Yes, Yes, Yes
+   Regional MCA, Yes, Yes, Yes
+   Regional Operations Manager, Yes, Yes, Yes
+   Regional Staff, Yes, No, Yes
+   Regional Director Assistant, Yes, No, Yes
+   Regional MCA Assistant, Yes, No, Yes
+   Area Director, Yes, No, Yes
+   MAPS Regional Leadership Coach, Yes, No, No
+   Regional Tech Trainer, Yes, No, No
+
+Market Center Access
+^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+   :header: Role, Access to View Directory, "Approve/ Reject Luxury Agents", Submit Exception Requests, Update Minimum Units Required
+   :widths: 20, 20, 20, 20, 20
+
+   MCA, Yes, Yes, Yes, Yes
+   AMCA, Yes, Yes, Yes, Yes
+   Market Center Leader, Yes, No, No, No
+   Operating Principal, Yes, Yes, Yes, Yes
+   Team Leader, Yes, Yes, Yes, Yes
+   Assistant Team Leader, Yes, Yes, Yes, Yes
+   General Manager, Yes, Yes, Yes, No
+   MC Tech Coordinator, Yes, No, No, No
+   Productivity Coach, Yes, No, No, No
+   MC Broker, Yes, No, No, No

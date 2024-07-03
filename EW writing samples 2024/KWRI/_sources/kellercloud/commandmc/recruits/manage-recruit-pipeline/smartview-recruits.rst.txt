@@ -1,0 +1,19 @@
+
+.. _smartview-pl-recruits-mc:
+
+Create Smartviews for Recruiting Pipeline
+=========================================
+
+When you use a set of filters often, save that set of filters as a SmartView. You can then access that set of filters without having to reset them each time.
+
+To create Smartviews for recruits, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab, at the top of the page. Your recruit cards are organized by Phase, Stage, and the currently selected sort pattern.
+
+#. After the desired filters have been selected, click the **Smartview** drop-down and select **Create Smartview**.
+
+   For more information on filtering recruits, see :ref:`filter-pl-recruits-mc`.
+
+#. Name your SmartView, then click **Save Smartview**. To access this Smartview in the future, click the **Smart View** drop-down at the top of the Recruits Pipeline and choose it from the list.

@@ -1,0 +1,36 @@
+
+.. _temp-stop-routing-command:
+
+Temporarily Stop Receiving Routed Leads (Teams)
+===============================================
+
+In Command, Rainmakers can automatically distribute leads to their team members through lead routing. Your Rainmaker can set up one big route, set up multiple routes for different days of the week/times of day, and you can even set up special routes for holidays or specific lead sources.
+
+You are notified through Command and Kelle, when you have a lead routed to you, and you have a set time frame to claim the lead through Contacts or the Command notification or to pass on the lead. If you pass on the lead or miss the deadline, the lead goes to the next agent in line.
+
+For more information, see :ref:`claim-lead-notification-command` or :ref:`claim-lead-pool-contacts-command`.
+
+You also have the ability to temporarily take yourself out of lead routing. This can be used if you are sick, going on vacation, have an appointment, or for any other reason.
+
+To temporarily stop receiving routed leads, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select your Team from the **Select Team** drop-down at the top of the page.
+
+#. Above the contact list, click **Pause lead assignment**.
+
+#. On the **Pause lead assignment** window, select for how long you want to stop receiving leads:
+
+   * 1 hour
+
+   * 3 hours
+
+   * Custom - Enter the **Day** and **Time**) for when you want to resume receiving routed leads.
+
+#. Click **Apply**.

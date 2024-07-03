@@ -1,0 +1,15 @@
+.. _integration-hub-SDP-IG:
+
+========================================
+Rackspace Integration Hub for ServiceNow
+========================================
+
+Use the following information to learn how to use the Rackspace Integration
+Hub.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview.rst
+   installing.rst
+   configuring/index.rst

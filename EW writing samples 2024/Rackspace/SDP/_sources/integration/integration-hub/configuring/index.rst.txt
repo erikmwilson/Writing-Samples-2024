@@ -1,0 +1,34 @@
+.. _configuring-hub-SDP-IG:
+
+===========
+Configuring
+===========
+
+After installing Integration Hub, complete the following procedures
+to configure Integration Hub:
+
+1. :ref:`import-data-xml-SDP-IG`.
+
+#. :ref:`load-identity-access-SDP-IG`.
+
+#. :ref:`create-event-feed-SDP-IG`.
+
+#. :ref:`events-SDP-IG`.
+
+#. :ref:`system-properties-SDP-IG`.
+
+#. :ref:`map-fields-SDP-IG`.
+
+#. :ref:`filtering-incidents-SDP-IG`.
+
+.. toctree::
+    :maxdepth: 2
+    :hidden:
+
+    import-data.rst
+    load-identity-access.rst
+    create-event-feed.rst
+    events.rst
+    system-properties.rst
+    map-fields.rst
+    filtering.rst

@@ -1,0 +1,35 @@
+
+.. _create-custom-folders-opportunities-command:
+
+Create and Manage Custom Folders for Opportunities
+==================================================
+
+In Opportunities, you can create custom folders within a specific Opportunity for any of your business needs.
+
+To create and manage custom folders for Opportunities, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. On the right side of the **Documents** tab, click **Add New Custom Folder**.
+
+#. On the **Create New Folder** pop-up, enter the **Folder Name** and click **Create Folder**.
+
+   You can now add documents to the custom folder.
+
+.. note::
+
+   You can manage your custom folders by clicking the settings icon |settings-icon|. Rename a folder by clicking the edit icon or remove it by clicking the delete icon.
+
+   .. |settings-icon| image:: ../../../../images/settings-icon.png
+      :height: 20

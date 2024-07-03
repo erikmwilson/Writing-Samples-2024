@@ -1,0 +1,41 @@
+================================================
+Configure proxy environment variables (optional)
+================================================
+
+To run the deployment framework from behind a proxy, set environment
+variables so that ``pip`` and other services work as expected.
+
+In the ``/etc/openstack_deploy/user_osa_variables_defaults.yml`` file, the
+following commented examples are provided in the file:
+
+.. code-block:: yaml
+
+   ## Example environment variable setup:
+   # proxy_env_url: http://username:pa$$w0rd@10.10.10.9:9000/
+   # no_proxy_env: "localhost,127.0.0.1,{% for host in groups['all_containers']
+   #                %}{{ hostvars[host]['container_address'] }}
+   #                {% if not loop.last %},{% endif %}{% endfor %}"
+   # global_environment_variables:
+   #   HTTP_PROXY: "{{ proxy_env_url }}"
+   #   HTTPS_PROXY: "{{ proxy_env_url }}"
+   #   NO_PROXY: "{{ no_proxy_env }}"
+
+To use a proxy, uncomment this section and define variables as
+appropriate for your environment in the
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file.
+
+-  Set the ``proxy_env_url`` environment variable to define the proxy so
+   that ``pip`` and other programs can reach hosts beyond the proxy. Because
+   Python HTTPS proxy support is limited, the preferred format for this
+   variable is ``http://``. To use ``https://``, verify that
+   Python programs connect as expected before continuing the
+   installation.
+
+-  The ``no_proxy_env`` variable defines addresses that should skip the
+   proxy. For example ``localhost``, container IP addresses, and so on do not
+   attempt to use the proxy setting. If necessary, prepend items to this
+   list.
+
+-  Items appended to ``global_environment_variables`` set environment
+   variables on every host and container during the container creation
+   process. Generally, it is not necessary to modify this variable.

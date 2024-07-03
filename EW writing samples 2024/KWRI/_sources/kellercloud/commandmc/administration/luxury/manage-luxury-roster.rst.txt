@@ -1,0 +1,37 @@
+
+.. _admin-manange-luxury-roster-commandmc:
+
+Manage Market Center Luxury Requests (Market Center Leadership)
+===============================================================
+
+Using CommandMC, Market Center Leadership (this includes the MCA, AMCA, Operating Principal, Team Leader, and Assistant Team Leader roles) have the ability to approve or reject eligible agents from joining the Luxury program. If an agent is approved, they have two years (24 months) to meet the requirements to remain in the Luxury program. After the two years passes, going forward, the evaluation period becomes one year.
+
+If an agent has not met the Luxury program requirements six months before the end of their evaluation period (two years for agents new to the Luxury program, one year for agents currently in the Luxury program), their status is changed to **Earn Out Soon**. The agent is then evaluated monthly, if they meet the requirements, their status is returned to Luxury. If an agent leaves the Luxury Program and then returns, their evaluation period is one year.
+
+An agent can become eligible to be a part of the Luxury program by meeting the following requirements:
+
+* Have the required amount of luxury transactions within the last 24 months (Buyer or Seller).
+
+* Have an average listing sold price that meets or is above the Luxury Floor minimum price point for that county.
+
+.. note::
+
+  If your Market Center has turned on the **Automatically Approve Agents** option on the **Edit Luxury Settings** window, agents that meet your Luxury requirements are automatically added to the Luxury roster.
+
+To manage the Market Center Luxury requests, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Luxury**.
+
+#. Click the **Luxury Requests** button. The number of pending requests are displayed in a red circle.
+
+#. Click **Decline** or **Approve** for each request.
+
+   After they are approved, the agent remains in the Luxury program for the next two years.

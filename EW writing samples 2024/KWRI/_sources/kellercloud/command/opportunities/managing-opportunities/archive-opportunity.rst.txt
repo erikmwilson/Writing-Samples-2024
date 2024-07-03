@@ -1,0 +1,28 @@
+
+.. _archive-opportunities-command:
+
+Archive an Opportunity
+======================
+
+As you use Opportunities in Command, you may have to remove an incorrect Opportunity in order to recreate it or if you are testing the system and want to remove these tests without affecting with your insights, you can archive the Opportunity.
+
+.. note::
+
+   The system will not let you archive an Opportunity that is in the Under Contact, or Closed phases. You must move the Opportunity to the Cultivate, Appointment, or Active phase to see this option.
+
+To archive an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click the three dots on the Opportunity card, and choose **Archive Opportunity** from the drop-down.
+
+#. On the Confirmation pop-up, click **Archive**.
+
+To restore an archived Opportunity, see :ref:`opportunity-archive-command`.

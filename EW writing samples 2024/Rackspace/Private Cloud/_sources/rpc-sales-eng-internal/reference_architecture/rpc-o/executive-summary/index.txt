@@ -1,0 +1,25 @@
+=================
+Executive summary
+=================
+
+This document represents the general design and specifications for
+Infrastructure as a Service (IaaS) using Rackspace Private Cloud powered
+by OpenStack (RPCO). The design recommendations contained within this
+document are based of years of experience with all different sizes and
+configurations of RPCO and running OpenStack as a public cloud. These
+infrastructure design, options presented, and recommendations for future
+design considerations should be used as a starting point and may need to
+be modified depending on specific uses cases.
+
+The following key items are addressed in this document:
+
+* Rackspace advantages
+* Solution overview
+* Technology overview
+* Requirements
+* Environment sizing
+* Architectural decisions
+* Cloud design
+* Physical design
+* Network design
+* Monitoring design

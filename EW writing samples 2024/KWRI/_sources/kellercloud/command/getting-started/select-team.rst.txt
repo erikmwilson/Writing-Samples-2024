@@ -1,0 +1,17 @@
+
+.. _teams-command-ug:
+
+Select your KW team
+===================
+
+.. note::
+
+   You must be part of a team to access this feature.
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-right of the Command interface, click **Select Team**.
+
+#. Select your team from the drop-down menu.

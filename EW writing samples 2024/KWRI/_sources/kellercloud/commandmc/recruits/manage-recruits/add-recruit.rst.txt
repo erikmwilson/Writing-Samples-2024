@@ -1,0 +1,49 @@
+
+.. _add-recruit-recruits-cmc:
+
+Add a Recruit
+=============
+
+Recruits is the system within CommandMC that we use to track our current and potential recruits. Each Recruit starts at the Appointment Phase and is tracked through to the Committed Phase. Recruits can track everything involved with the recruit, including in-depth recruit details, activity checklists and monetary potential.
+
+To add a Recruit, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click **Add Recruit**, at the top-right of the page.
+
+#. On the **Add New Recruit** window, enter the recruits's personal information.
+
+   .. note::
+
+      Fields with an asterisks (*) are required.
+
+#. To add the recruit to the Recruiting Pipeline, check the **Add recruit to pipeline** box. If you do not check this box, the recruit is added to the recruits list but not the Pipeline.
+
+   a. Select the Pipeline **Phase**.
+
+   #. Select the Pipeline **Stage**.
+
+      .. note::
+
+         The new recruit is positioned in the Phase and Stage according to the sort method selected.
+
+   #. Select the recruit's **Production Status**, Red One or Red two. The respective badge appears before the recruits name: |red-one-icon| or |red-two-icon|.
+
+   .. |red-one-icon| image:: ../../../../images/red-one-icon.png
+      :height: 30
+
+   .. |red-two-icon| image:: ../../../../images/red-two-icon.png
+      :height: 30
+
+#. Click on the arrow next to **Additional Information** to add the following attributes:
+
+   * Assignee(s)
+
+   * Lead Source
+
+   * Brokerage Name
+
+   * Tags - You can add multiple tags to a recruit. To remove a tag, click the X in the added tag.
+
+#. Click **Add Recruit**.

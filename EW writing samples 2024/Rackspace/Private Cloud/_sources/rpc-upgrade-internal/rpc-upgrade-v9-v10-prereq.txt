@@ -1,0 +1,39 @@
+=============
+Prerequisites
+=============
+
+.. warning::
+
+   Read the `RPCO Release Notes
+   <https://developer.rackspace.com/docs/private-cloud/rpc/v10rpc-v10-releasenotes-external/>`_
+   before beginning the upgrade. The *Release
+   Notes* provide the latest information about known issues and workarounds.
+
+#. Perform a full backup of the environment including the source
+   repository.
+
+#. Clone the version 10 source repository into the ``/opt`` directory:
+
+   .. code-block:: console
+
+      # cd /opt
+      # git clone -b TAG
+      https://github.com/openstack/openstack-ansible.git
+
+   Replace *TAG* with the current stable release tag.
+
+#. Review the new configuration files in the
+   ``/opt/openstack-ansible/etc/rpc_deploy`` directory. Compare them
+   with the existing configuration files in the ``/etc/rpc_deploy``
+   directory and with the *Release Notes* to determine new features,
+   improvements, and changes.
+
+#. For typical deployments, update the existing ``rpc_user_config.yml``
+   and ``user_variables.yml`` files in the ``/etc/rpc_deploy`` directory
+   and copy the new ``rpc_environment.yml`` file into the
+   ``/etc/rpc_deploy`` directory.
+
+   ..  note::
+
+       New features might require defining additional passwords in the
+       ``user_variables.yml`` file.

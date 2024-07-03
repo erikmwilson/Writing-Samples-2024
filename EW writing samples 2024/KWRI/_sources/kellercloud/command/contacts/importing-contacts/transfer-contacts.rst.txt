@@ -1,0 +1,49 @@
+
+.. _transfer-contacts-spreadsheet-command:
+
+Transfer Contacts from an Exported Spreadsheet into the Command Contact Import Template
+========================================================================================
+
+When using the Command Contact Import Template, you need to take the contacts from an exported spreadsheet and manually move them to the blank Command template.
+
+You can transfer contacts from any customer relationship management (CRM) system that exports contacts into a spreadsheet with the .CVS format.
+
+You can also synchronize your contacts using PieSync, see :ref:`piesync-contacts-command`.
+
+The following CRM systems have export capabilities:
+
+* CINC (Commissions Inc.) - Follow the `Export Contacts from CINC <https://info.brivity.com/knowledge/export-contacts-from-cinc>`_  procedure to export your contacts from CINC.
+
+* BoomTown - Log in to `BoomTown Support <https://leads.boomtownroi.com/login/?ReturnUrl=%2fsaml.aspx%3fsp%3dSalesforceCommunity&sp=SalesforceCommunity>`_ to see the support article about how to export your contacts (you need to be logged in to access the article) to a .csv file.
+
+* Brivity - Follow the `Export Contacts <https://info.brivity.com/knowledge/export-contacts>`_  procedure to export your contacts from Brivity.
+
+* eEdge - For more information, see :ref:`eedge-contacts-command`.
+
+* Follow Up Boss - Follow the `Exporting Contacts <https://help.followupboss.com/hc/en-us/articles/360015269133-Exporting-Contacts>`_  procedure to export your contacts from Follow Up Boss.
+
+* Real Geeks - Follow the `Exporting Leads <https://docs.realgeeks.com/export_leads>`_  procedure to export your contacts from Real Geeks.
+
+* Top Producer - Follow the `How to Export Contacts from Top Producer <https://www.topproducer.com/campus/top-producer/setup/import-export/export-data/>`_  procedure to export your contacts from Top Producer.
+
+To transfer the contacts from an exported spreadsheet to the Command Contact Import Template spreadsheet, complete the following steps:
+
+1. Open the two spreadsheets side-by-side. For more information on how to download the Command Contact Import Template, see :ref:`import-contacts-command`.
+
+#. On your export file, select the cell of the first contact (not the column title).
+
+#. Scroll to the cell of the last contact in the same column.
+
+#. While holding the Shift key, on your keyboard, select the last cell in that same column. This will select every cell in that column.
+
+#. Copy the selected cells.
+
+#. On the Command Contact Import Template, select the first empty cell, in the corresponding column, and paste the cells.
+
+   This transfers the information from that column, into the Command Contact Import Template. Follow these steps to transfer each column of information into the the blank template.
+
+   .. note::
+
+      If you are entering a Postal Code that begins with a zero, you must format the cells to display as text fields (Excel and Numbers removes the first zero otherwise).
+
+#. Fill in any additional information, then save the Command Contact Import Template as a .CSV file to a designated location.

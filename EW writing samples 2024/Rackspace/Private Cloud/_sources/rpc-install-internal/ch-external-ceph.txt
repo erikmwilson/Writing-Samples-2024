@@ -1,0 +1,104 @@
+=============================
+RPC Ceph installation process
+=============================
+
+Beginning with the RPC r14 Newton release, Ceph is installed and
+configured separately by the Operations team. With Newton, the RPCO
+Ceph deployment process is the same as that for RPCR.
+
+This document shows you how to configure an RPCO environment to
+connect to a Ceph cluster.
+
+
+RPCO Ceph variables
+~~~~~~~~~~~~~~~~~~~
+
+#.  Add the Ceph back end to the ``storage_hosts`` section under
+    ``container_vars``>``cinder_backends``.
+
+    .. note::
+
+       If LVM back ends are not used in conjunction with Ceph (for
+       ``storage_hosts``), disable Block Storage on-metal deployment
+       by creating the ``/etc/openstack_deploy/env.d/cinder.yml`` file
+       with the following contents:
+
+       .. code-block:: yaml
+
+          container_skel:
+            cinder_volumes_container:
+              properties:
+                is_metal: false
+
+       This setting causes ``cinder_volumes`` to run in a container
+       rather than on metal. For an example, see
+       ``/opt/rpc-openstack/openstack-ansible/etc/openstack_deploy/openstack_user_config.yml.example``.
+
+
+    The following is an example Ceph back-end configuration:
+
+    .. code-block:: yaml
+
+       storage_hosts:
+         infra01:
+           ip: 172.24.240.11
+           container_vars:
+             cinder_backends:
+               limit_container_types: cinder_volume
+               ceph:
+                 volume_driver: cinder.volume.drivers.rbd.RBDDriver
+                 rbd_pool: volumes
+                 rbd_ceph_conf: /etc/ceph/ceph.conf
+                 rbd_flatten_volume_from_snapshot: 'false'
+                 rbd_max_clone_depth: 5
+                 rbd_store_chunk_size: 4
+                 rados_connect_timeout: -1
+                 glance_api_version: 2
+                 volume_backend_name: ceph
+                 rbd_user: "{{ cinder_ceph_client }}"
+                 rbd_secret_uuid: "{{ cinder_ceph_client_uuid }}"
+
+#. In the ``/etc/openstack_deploy/user_osa_variables_overrides.yml``
+    file, set the following variables related to OpenStack:
+
+    .. code-block:: yaml
+
+       glance_default_store: rbd
+       nova_libvirt_images_rbd_pool: vms
+       ceph_mons:
+         - "<ceph-mon-ip1>"
+         - "<ceph-mon-ip2>"
+         - "<ceph-mon-ip3>"
+
+#. In the ``/etc/openstack_deploy/user_rpco_secrets.yml`` file, set
+   the following variables:
+
+    .. code-block:: yaml
+
+       cinder_ceph_client_uuid:
+       fsid_uuid:
+
+
+Installation
+~~~~~~~~~~~~
+
+Run the installation of OpenStack-Ansible as normal.
+
+    .. warning::
+
+       Ensure that the ``/etc/openstack_deploy/env.d/ceph.yml`` file
+       does not exist before continuing. Otherwise, Ansible builds the
+       Ceph groups into the inventory, which could change the behavior
+       of some of the playbooks.
+
+    .. warning::
+
+       On large Ceph environments that are heavily utilized, you are advised
+       to increase the PID limit on the compute hosts due to the amount
+       of threads that Ceph creates. To increase the PID max on the openstack
+       hosts, add the following override to
+       ``/etc/openstack_deploy/user_osa_variables_overrides.yml``:
+    .. code-block:: yaml
+
+       openstack_user_kernel_options:
+         - { key: 'kernel.pid_max', value: "<new-value>" }

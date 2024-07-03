@@ -1,0 +1,26 @@
+
+.. _customize-columns-contacts-command:
+
+Customize Columns in Contacts
+=============================
+
+In Contacts, you can customize columns and change the order in which they display contact information. To customize columns in contacts, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click **Customize Columns** at the top of the page.
+
+#. In the  **Customize Columns** window, select the columns that you want to display and the order in which they display.
+
+#. Click **Apply**.
+
+   The customized column selections are saved for the current Smartview you are viewing.
+
+.. note::
+
+   You can also drag the boundary of the columns (in the header row) to adjust their width.

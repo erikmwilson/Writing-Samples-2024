@@ -1,0 +1,23 @@
+
+.. _correct-envelope-opportunities-command:
+
+Correct an Envelope in DocuSign
+===============================
+
+With DocuSign envelopes, you are able to correct or change the details of envelopes that you have sent. This includes the recipients information, signing fields, and document information.
+
+To correct an envelope, complete the following steps:
+
+#. :ref:`access-room-opportunities-command`.
+
+#. Click **Envelopes**.
+
+#. On the **Envelopes** page, right-click on the desired envelope, and select **Correct**.
+
+#. Make your corrections. You can change the documents that have been uploaded into the envelope, edit the recipient's information, and also edit the signing fields.
+
+   .. note::
+
+      If you change the recipient information, the recipient receives a new email that contains the new link to the envelope. The recipient must use the link in the new email, the links in previous emails will not be functional.
+
+#. After you have made your corrections, click **Send**. The DocuSign Room appears with a message confirming the envelope correction.

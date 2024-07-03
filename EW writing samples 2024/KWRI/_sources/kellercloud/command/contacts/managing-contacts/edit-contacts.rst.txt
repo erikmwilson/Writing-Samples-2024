@@ -1,0 +1,27 @@
+
+.. _edit-contacts-command:
+
+Edit a Contact
+==============
+
+As you are developing and maintaining your contact database, you may need to update or edit some existing information in a contact record.
+
+To edit a contact, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#.  In the **Contacts** list, click the name of the contact you want to edit.
+
+#. Click the Edit |edit-icon| icon next to the contact's name to access the **Edit Contact** window. If you wish to enter in additional information when creating the contact, click **Add More Information** and additional sections will appear with fields within each of those sections.
+
+   .. |edit-icon| image:: ../../../../images/edit-icon.png
+      :height: 20
+
+#. Edit or add any necessary contact information. For more information about the contact fields, see :ref:`contacts-info-fields-command`.
+
+   You can also add custom fields to meet the needs of your business and how you prefer to grow relationships with your clients. For more information about custom fields, see :ref:`custom-fields-settings-command`.

@@ -1,0 +1,28 @@
+:deconsttitle: Rackspace Private Cloud
+
+.. image:: figures/rackspace-fanatical-support.png
+
+===================================================
+Rackspace Private Cloud Powered by OpenStack (RPCO)
+===================================================
+
+.. note:: This is a work in process. Things are being added and moved
+          around. Open an issue or PR for suggestions or new content.
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   copyright/index.rst
+   executive-summary/index.rst
+   rackspace/index.rst
+   solution-overview/index.rst
+   technology-overview/index.rst
+   requirements/index.rst
+   environment-sizing/index.rst
+   architectural-decisions/index.rst
+   cloud-design/index.rst
+   physical-design/index.rst
+   network-design/index.rst
+   ../../../rpc-monitoring-internal/monitoring-design/index.rst

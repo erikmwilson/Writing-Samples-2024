@@ -1,0 +1,40 @@
+
+.. _my-neighborhoods-settings-command:
+
+My Neighborhoods
+================
+
+To add the neighborhoods you are most familiar with (up to 10), complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Agent Sites**.
+
+#. Click **My Neighborhoods**.
+
+#. To add a neighborhood, click **Add Neighborhood**.
+
+#. Search for the specific neighborhood and select it.
+
+#. Click **Next**.
+
+#. Select the landing page to be used for that neighborhood and click **Complete**.
+
+   After you have added a neighborhood, you can manage it by:
+
+   * Click **Configure** to go to your Home dashboard.
+
+   * Click **Preview** to view the neighborhood using the specified landing     page.
+
+   * Click the Edit |edit-icon-2| icon to select a new landing page.
+
+     .. |edit-icon-2| image:: ../../../../../images/edit-icon-2.png
+        :height: 20
+
+   * Click the Delete |delete-icon-2| icon to delete the neighborhood.
+
+     .. |delete-icon-2| image:: ../../../../../images/delete-icon-2.png
+        :height: 20

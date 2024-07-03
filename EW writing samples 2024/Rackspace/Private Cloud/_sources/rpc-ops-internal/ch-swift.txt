@@ -1,0 +1,8 @@
+============================================
+Managing Object Storage for multiple regions
+============================================
+
+ .. toctree::
+    :maxdepth: 2
+
+    swift/sec-swift-failover.rst

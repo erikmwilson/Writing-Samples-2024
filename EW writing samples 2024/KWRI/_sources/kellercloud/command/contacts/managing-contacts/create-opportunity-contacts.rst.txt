@@ -1,0 +1,27 @@
+
+
+.. _opportunity-contacts-command:
+
+Create an Opportunity for a Contact
+===================================
+
+Opportunities is the system we use to track our current and potential transactions within Command. Each Opportunity (current or potential transaction) starts at the Cultivate Phase, where you can track an Opportunity before you have even set an appointment, and it continues to be tracked through to the Closed Phase, after being approved for compliance and Commissions.
+
+To create an Opportunity, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. In the **Contacts** list, click the name of the contact.
+
+#. Click the **Opportunities** tab, at the top-right of the contact record.
+
+#. Click **Create Opportunity**.
+
+#. Complete the **Create Opportunity** window. For more information about the fields on the **Create Opportunity** window, see :ref:`opportunity-fields-command`.
+
+#. Click **Create Opportunity**.

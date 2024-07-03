@@ -1,0 +1,32 @@
+
+.. _create-contact-task-command:
+
+Create a Contact Task
+=====================
+
+To create a Contact task, complete the following steps:
+
+.. include:: tasks-login.rst
+
+#. Click the **Contact Tasks** tab, at the top of the page.
+
+#. Click **Create New Task**, at the top-right of the page.
+
+#. On the **Create Custom Task** window, enter the following information:
+
+   * **Task Name**
+
+   * **Due Date** Uncheck the **All Day** checkbox, to select the time of day for your due date.
+
+   * **Task Description** (optional)
+
+   * **Recruit(s)** attached to this task (optional)
+
+   * **Hyperlink** that you need to complete the task (optional)
+
+#. Click **Associate Contacts**, to add specific contacts to the task (optional). On the **Associate Contacts** window, Use the search to find the contacts. Click the Add Contact icon |add-contact-icon| for each contact you want to add. After you have chosen all of the contacts to add to the task, click **Assign Contacts**.
+
+   .. |add-contact-icon| image:: ../../../images/add-contact-icon.png
+      :height: 30
+
+#. Click **Create Task**.

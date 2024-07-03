@@ -1,0 +1,19 @@
+
+.. _close-market-center-franconnect:
+
+Close a Market Center
+=====================
+
+Users of Market Centers and Business Centers and managed in WinMore. When closing a Market Center or Business Center, make sure that the commitment team has either removed or transferred all associates to another organization. If an associate is part of an organization closed in FranConnect, they will not receive the correct end date.
+
+To close a Market Center, complete the following steps:
+
+.. include:: franconnect-login.rst
+
+#. Click on the **Market Center Number** or **Entity Name** to edit that Market Center.
+
+#. On the **Market Center Info** page, click **Default and Termination** from the **Market Center Info** column menu.
+
+#. On the **Default and Termination Details** page, enter the **Date Terminated**.
+
+#. Click **Add** at the bottom of the page. The Market Center is closed in FranConnect. Closure requests are processed daily at 10 PM by the KW AMS database.

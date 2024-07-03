@@ -1,0 +1,66 @@
+Creating a Devstack Magnum Environment
+======================================
+
+Prerequisites
+-------------
+
+-  Access to Passwordsafe project
+   https://passwordsafe.corp.rackspace.com/projects/11853
+-  Access to RPC-Magnum Jenkins http://jenkins.rs-magnum.com/
+
+Installation
+------------
+
+1. Run the ``Build_Devstack`` job
+
+-  You can leave the default values of most parameters as-is
+-  You must enter the ``magnum_dev_password`` from Passwordsafe. This is
+   located in the above project under the ``cloud_account`` tab,
+   username ``magnum_dev``.
+-  You must enter the ``pub_key`` parameter using the public key you
+   want to use for ssh access
+-  You must enter the ``admin_password`` parameter using the password
+   for the ``admin`` user on the dev cloud from Passwordsafe. This is
+   located in the above project under the ``openstack`` tab, username
+   ``admin``.
+-  Other parameters are described in Jenkins, so you will know if or
+   when you will need to change them.
+
+2. Follow the console output. This job takes 30-45 minutes to run and
+   sets up an OnMetal server configured with Devstack, a version of
+   Magnum used in RPC-O and the custom RPC-O magnum driver.
+3. The job will display the output for the created stack when finished.
+   You will use this information to access the running instance in order
+   to debug, test, and develop features for Magnum as well as the RPC-O
+   driver
+
+Access
+------
+
+Using the ip information from the Jenkins job described above, you can
+access the Devstack instance to debug and test both Magnum as well as
+the custom RPC-O driver.
+
+You can ssh into the instance as ``root`` to change system level things
+and to hack on the RPC-O driver. In order to affect the running
+Devstack, you will need to ssh in as ``stack`` so that you can access
+the Screen sessions that run the various OpenStack services. You'll
+mostly use this to restart Magnum if needed.
+
+The custom RPC-O driver code is located at
+``/opt/stack/rpc-magnum-driver-k8s``. You can make changes to this code
+and then run ``pip install /opt/stack/rpc-magnum-driver-k8s`` to update
+the running code. You will likely need to restart the Magnum service for
+these changes to take effect since Magnum loads then caches drivers as
+soon as the first cluster operation is requested.
+
+Utilities
+---------
+
+A few utilities have been included to make development a little easier:
+\* ``/root/create_magnum_devstack_cluster.sh`` will create a Magnum
+cluster with default values. Edit ``/root/devstack-cluster-vals`` to
+change behavior. \* ``/root/create_magnum_devstack_cluster.sh`` will
+create a Magnum cluster with default values. Edit
+``/root/devstack-cluster-vals`` to be sure you're deleting the desired
+cluster and template.

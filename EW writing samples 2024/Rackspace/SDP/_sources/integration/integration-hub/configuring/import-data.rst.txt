@@ -1,0 +1,21 @@
+.. _import-data-xml-SDP-IG:
+
+====================
+Import data XML file
+====================
+
+Use the following steps to import the data XML file:
+
+1. Contact your Rackspace Account Manager to get the ``Ticketing Integration
+   Setup File.xml`` file.
+
+#. Import the data XML file ``Ticketing Integration Setup File.xml`` into
+   ServiceNow.
+
+   The following data sources are loaded with data:
+
+   * Targets
+   * Outbound Events
+   * Inbound Events
+   * REST Messages
+   * HTTP Methods

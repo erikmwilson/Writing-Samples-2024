@@ -1,0 +1,18 @@
+
+.. _kwri-index-command-ug:
+
+KWRI Internal Documentation
+===========================
+
+
+*Last updated:* |today|
+
+.. toctree::
+   :maxdepth: 1
+
+   kellercloud/onboarding/index
+   kellercloud/command/index
+   kellercloud/commandmc/index
+   kellercloud/connect/index
+   kellercloud/franconnect/index
+   kellercloud/api-internal/index

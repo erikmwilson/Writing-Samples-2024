@@ -1,0 +1,43 @@
+
+.. _manage-checklist-card-recruits-cmc:
+
+Manage a Recruit's Checklist
+============================
+
+To manage a recruit's checklist from the Pipeline, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab, at the top of the page. Your recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Search for the correct recruit. For more information, see :ref:`search-pl-recruits-mc`.
+
+#. Click the ellipses icon |menu-options-icon| for that recruit and select **Manage Checklist**. Alternately, you can click the checklist icon |checklist-icon|.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+   .. |checklist-icon| image:: ../../../../images/checklist.png
+      :height: 20
+
+#. The **Checklist** window displays the current checklist for the recruit (based on Phase and Stage).
+
+   You can complete the following tasks on this window:
+
+   * Use the right and left arrows to see checklists for future and previous stages.
+
+   * Drag and drop to rearrange items in the list.
+
+   * Mark an item as complete.
+
+   * Hover over an item and click **Assign** to add or change the assignee.
+
+   * Hover over an item and click **Set Due Date**. Select and date from the calendar and click **Save**.
+
+   * Hover over an item and click the ellipses icon |menu-options-icon| to **Edit** or **Delete** the item.
+
+   * To add an item to the list, click **Add Item**, enter the item, and click **Add**.
+
+   * Show or hide completed items with the **Show Completed** toggle switch.
+
+#. When complete, click **Close**.

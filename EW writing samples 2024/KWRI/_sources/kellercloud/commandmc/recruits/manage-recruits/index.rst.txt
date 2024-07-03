@@ -1,0 +1,35 @@
+
+.. _manage-recruits-index-commandmc:
+
+Managing Recruits
+=================
+
+The following pages contain information about managing Recruits:
+
+.. toctree::
+   :maxdepth: 2
+
+   import-recruits
+   import-transfer-recruits
+   export-recruits
+   search-recruits
+   filter-recruits
+   smartview-recruits
+   sort-columns
+   customize-columns
+   add-recruit
+   view-details
+   add-activity
+   add-note
+   add-appointment
+   add-recruit-smartplan
+   unsubscribe-recruit-smartplan
+   tasks/index
+   add-to-pipeline
+   change-pipeline-phase
+   manage-checklist-list
+   assign-recruit
+   remove-from-pipeline
+   archive-recruit
+   bulk-actions-recruits/index
+   brokermetrics/index

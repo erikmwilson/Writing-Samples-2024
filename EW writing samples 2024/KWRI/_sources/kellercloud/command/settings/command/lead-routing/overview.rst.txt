@@ -1,0 +1,96 @@
+
+.. _getting-started-lead-routing-settings-command:
+
+Lead Routing Overview
+=====================
+
+Lead Routing was created to allow Rainmakers to control how new leads are distributed to their team. Whether you want leads from a specific lead source to go to a specific agent, or to designate how leads are distributed on weekends, you can use the Lead Routing tool to do this.
+
+ .. note::
+
+    Only the team Rainmaker will be able to create lead routes. The Rainmaker role and team roster is controlled by your Market Center Administrator (MCA) using the Teams Administration Tool. If you should be the Rainmaker or if your team roster is incorrect, contact your MCA.
+
+You need the following information to set up a lead route:
+
+* A lead source
+* A strategy
+* Settings for each agent on your team
+* Lead capture rules
+
+Use the following information below to learn more:
+
+Lead Sources
+^^^^^^^^^^^^
+
+You have the ability to choose any or all lead sources when setting up a lead route. The following categories of lead sources that can be sent through Lead Routing:
+
+1. Command Sourced - These leads automatically come into your lead pool from any Command Landing Pages you have created and shared, or through KW Sign Snaps.
+
+#. Manually Entered - For example, leads labeled Call-in, Open House, Lawn Sign, Sphere. These leads will not pull in automatically, but have to be manually entered and source labeled in the system, before they are sent through a lead route.
+
+#. Third Party Sourced - These leads come from third-party websites, like Zillow, Realtor.com, and Facebook. To pull in leads from these sources, Keller Williams has partnered with Zapier. Agents will create a Zapier account, create a Zap (connection) between the third party app and Command, then let the leads flow in.
+
+Strategies
+^^^^^^^^^^
+
+Strategies tell the lead route how to distribute the lead and when:
+
+1. Logic - choose between the following options:
+
+   * Round Robin - this sends one lead to each team member, before starting again with the first agent.
+
+   * First Come, First Serve - this puts the lead out to the team, and the first team member to take action gets the lead.
+
+   * Weighted Round Robin - create a lead ratio system between team members, ensuring that some agents get more leads than others.
+
+#. Timeframe - choose when this lead route will be active:
+
+   * Always - this lead route is always active.
+
+   * Custom - choose a day, or set of days, plus a time range for the lead to be active. For example, you can set the strategy for Saturday and Sunday, from 8am to 8pm. This gives you a lot of control over active leads. You can set a custom time range for each day of the week.
+
+Agent Settings
+^^^^^^^^^^^^^^
+
+Each agent on your team has settings that the rainmaker can edit from the Lead Routing settings page. Each of these settings can be turned on or off (the **Required** toggle), as well as edited. This includes the following:
+
+1. Lead Type - specify whether this agent gets Buyer and/or Seller leads.
+
+#. Budget - set a budget range for the agent, with the understanding that any lead with a higher or lower budget range than this, does not go to this agent.
+
+#. Transaction Timeframe - set a transaction timeframe for the agent, with the understanding that any lead with a different transaction timeframe than this, does not go to this agent.
+
+#. Weighted Round Robin Weight - If you have three agents on your team, they each get their own "Weight" for this type of Round Robin:
+
+   Agent A: weight = 1
+
+   Agent B: weight = 2
+
+   Agent C: weight = 3
+
+   Round One: The first lead would go to Agent C, the next lead would go to Agent B, then Agent A would get a lead. Each agent got a lead.
+
+   Round Two: The fourth lead would go to Agent C, then a lead to Agent B, but Agent A would not get the next lead.
+
+   Round Three: The sixth lead would go to Agent C, but none of the other agents would get a lead this round.
+
+   Round Four: Each Agent gets a lead and the pattern repeats.
+
+Capture Rules (Settings)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Capture rules set expectations for agents who receive leads:
+
+1. Response Time - select a response time from the drop-down. If the agent who receives the lead does not take the required action, from the time they get the lead, to the end of the Response Time, then the lead will go to the next agent.
+
+#. Accepted Actions - select the action(s) that the receiving agent needs to take, in order to keep the lead:
+
+   * Phone Call
+
+   * Email
+
+   * Text Message
+
+   * Appointment Scheduled
+
+To keep the lead, the receiving agent needs to take the required action, then go to the lead record, in Contact Management, and log that interaction.

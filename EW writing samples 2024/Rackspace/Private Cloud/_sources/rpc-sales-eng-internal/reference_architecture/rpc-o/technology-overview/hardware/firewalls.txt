@@ -1,0 +1,7 @@
+=========
+Firewalls
+=========
+
+1x Pair of Cisco ASA 5515 X 6 Port Firewall (High Availability)
+
+.. image:: ../../figures/Security-ASA-5515-X_frnt_rt_1000.jpg

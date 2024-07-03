@@ -1,0 +1,16 @@
+====================================
+Searching logs using the Head plugin
+====================================
+
+Head is a web interface used for browsing an interacting with data
+inside Elasticsearch.
+
+
+Accessing Head
+~~~~~~~~~~~~~~
+
+#. In a web browser, enter the following url:
+   ``http://external_lb_vip_address``:9200/\_plugin/head.
+
+#. All Elasticsearch indices will be displayed in the main Dashboard
+   panel.

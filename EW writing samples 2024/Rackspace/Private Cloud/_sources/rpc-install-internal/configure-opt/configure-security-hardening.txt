@@ -1,0 +1,41 @@
+============================
+Configure security hardening
+============================
+
+RPCO r13 applies security hardening to hosts and many services running
+on those hosts during deployment. Detailed information about the
+security hardening role and its application is provided in the
+`OpenStack-Ansible security documentation
+<http://docs.openstack.org/developer/openstack-ansible-security/>`_.
+
+For installation information including how to enable or disable the
+feature on deployment, see
+`docs.openstack.org/developer/openstack-ansible-security/getting-started.html
+<http://docs.openstack.org/developer/openstack-ansible-security/getting-started.html>`_.
+
+
+.. list-table:: **Security hardening matrix**
+   :widths: 30 30 30
+   :header-rows: 1
+
+   * - Release
+     - Applied by default
+     - Optional
+   * - RPC r14 greenfield
+     - x
+     -
+   * - RPC r13 greenfield
+     - x
+     -
+   * - Upgrades to RPC r13
+     -
+     - x
+   * - RPC r12.2 greenfield
+     -
+     - x
+   * - Upgrades to RPC r12.2
+     -
+     - x
+   * - Releases prior to r12.2
+     - N/A
+     - N/A

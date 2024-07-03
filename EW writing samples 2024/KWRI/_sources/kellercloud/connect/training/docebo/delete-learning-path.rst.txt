@@ -1,0 +1,15 @@
+
+.. _delete-learning-path-docebo-connect:
+
+Delete a Learning Path
+======================
+
+To delete a Learning Path, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+#. Click **Learning Paths** from the **E-Learning section**.
+
+#. Click the red X in the learning plan’s row. When you delete a learning plan, the courses associated with the learning plans are not deleted, and users are not automatically unenrolled from the courses included in the learning plan. If you want to unenroll users from the courses included in the learning plan after deleting the learning plan, you have to do it manually.

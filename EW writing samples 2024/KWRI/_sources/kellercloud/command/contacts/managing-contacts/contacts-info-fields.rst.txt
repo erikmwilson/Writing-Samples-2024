@@ -1,0 +1,141 @@
+
+.. _contacts-info-fields-command:
+
+Contacts Information Fields
+===========================
+
+The following information can be added to a contact record within Command.
+
+* **Full Name**
+
+ Enter the contact's full name. This field is required.
+
+* **Add Relationship**
+
+ Click **Add Relationship** to specify your relationship to this contact (if any).
+
+* **Primary Email**
+
+ Enter the contact's email address, and label the address as Personal, Work, or Other.
+
+* **Primary Phone**
+
+ Enter the contact's phone number, and label it as Home, Mobile, Work, or Other.
+
+* **Select Owner**
+
+ When you are on a team, you have the ability to give ownership of a lead or contact to your team. Team contacts and leads can be claimed, assigned, and released. Rainmakers also have the ability to send a new lead through lead routing. If you are a solo agent, you can skip this field. If you are on a team, select either your team's name or yourself.
+
+* **Mark as Lead**
+
+ Checking this box to indicate that this is a lead. Unchecking this box, in the future, converts the lead to a contact.
+
+ Leads are people you have contact information for, but have not connected with yet. Communication is one-way, offer-based, and focused on getting a response and beginning a relationship.
+
+* **Send to Lead Routing** (Teams only)
+
+ If you are on a team, you have the option to send a new lead through lead routing. First, you must check the **Mark as Lead** checkbox to unlock this checkbox, then check **Send to Lead Routing**. You also have to give the lead a **Lead Source** (in the **Sales Pipeline** section). Without a lead source, the lead will not be routed. After you click **Create**, the lead will be routed through the routes that you have set up.
+
+ For more information, see :ref:`getting-started-lead-routing-settings-command`.
+
+ For more information, see :ref:`lead-routing-contacts-command`.
+
+* **Add to Sales Pipeline**
+
+ If you check this box, after you click **Create**, you are taken to the Opportunities application, where you can create an Opportunity for this contact.
+
+* **Tags**
+
+ Tags are a way for you to organize your database. From the drop-down, start typing the name of the tag, and select the tag from the results list. If this is a new tag, a **Create Custom Tag** option appears. After you create the tag for one contact, you can find it on the Custom Tags results list in the future.
+
+ For more information, see :ref:`custom-tags-settings-command`.
+
+Click **Add More Information** to get access to the following fields:
+
+Additional Contact Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **Preferred Method of Contact**
+
+ Choose between Email, Phone, Text, or Do Not Contact.
+
+* **Additional Email**
+
+ Enter any additional email addresses, and label the addresses as Personal, Work, or Other.
+
+ Click **Add Email**, to add additional email addresses.
+
+* **Additional Phone**
+
+ Enter any additional phone numbers, and label them as Home, Mobile, Work, or Other.
+
+ Click **Add Phone** to add additional phone numbers.
+
+*  **Addresses**
+
+ Enter the physical address of your contact, and label it as Home, Work, or Other. If this is the contact's mailing address, check the **Same as Mailing Address** checkbox.
+
+ Click **Add Address** to add additional physical addresses.
+
+* **Social Profiles**
+
+ Add the contact's social media profiles. Select the type of social media, then enter their profile ID or handle. The system will auto-fill the social media platforms domain name automatically.
+
+ Click **Add Profile** to add multiple social media profiles to the contact.
+
+About
+^^^^^
+
+* **Legal Name**
+
+ Enter a legal name, for the contact, if it is different than the name they go by.
+
+* **Description**
+
+ Enter a description of your contact. This is separate from any notes you add in the future.
+
+* **Birthday**
+
+ Use the Month, Day and Year drop-down lists to add their birthday. This enables you to add them to the Birthday SmartPlan.
+
+ For more information about adding a contact to the Birthday SmartPlan, see :ref:`add-smartplan-command`.
+
+* **Home Anniversary**
+
+ Use the Month, Day and Year drop-down lists to add the contact's home anniversary date. This enables you to add them to the Home Anniversary SmartPlan.
+
+ For more information about adding a contact to the Home Anniversary SmartPlan, see :ref:`add-smartplan-command`.
+
+* **Relationships**
+
+ If any of your contacts (that have already been added to your database) are associated with this person, add the relationship. Start typing their name and select the related contact from the drop-down list. Then label the relationship from the relationships list.
+
+ Click **Add More** if the contact you are entering is associated with more than one other contact in your database. Search for and select the contact before saving the update.
+
+* **Work**
+
+ Enter the contact's work information. Start typing and select the company name from the drop-down, then enter the contact's job title. If the company is not in Command, click **Create Company** to add a new company.
+
+Sales Pipeline
+^^^^^^^^^^^^^^
+
+* **Stage**
+
+ Select the stage your contact is in, **Captured** or **Connected**.
+
+* **Lead Source**
+
+ Label where the lead came from. This can be from an outside source, or from a contact in your database. Choose one of the **Lead Source Type** options:
+
+ **Select from list** - choose an outside lead source from the drop-down provided.
+
+ **Select from Contacts** - start typing the contact's name and choose the contact from the drop-down.
+
+Custom
+^^^^^^
+
+Everyone organizes their database in a different way, and you may need to add unique types of information for each contact.
+
+Click **Add Custom Field** to create a new field. Using the drop-down, start typing the name of the custom field, and select the custom field from the results list. If this is a new custom field, click **Create Custom Field**. After you create the custom field for one contact, you can to find it in the custom fields results list in the future.
+
+For more information, see :ref:`custom-fields-settings-command`.

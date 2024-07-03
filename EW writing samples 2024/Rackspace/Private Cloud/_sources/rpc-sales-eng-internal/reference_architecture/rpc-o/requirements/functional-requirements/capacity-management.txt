@@ -1,0 +1,14 @@
+===================
+Capacity management
+===================
+
+.. list-table:: **Capacity management**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - CAM2.0
+     - The system shall provide capacity management including:
+   * - CAM2.0.1
+     - The system shall scale horizontally and vertically based on need.

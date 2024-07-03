@@ -1,0 +1,26 @@
+
+.. _edit-details-transaction-commandmc:
+
+Edit Transaction Details
+========================
+
+You can edit transactions that are in **Open** or **Approved** status.
+
+A transaction in **Closed** status cannot be edited. However, if the transaction was closed in the current accounting period, you can change the status back to **Approved** and edit transaction.
+
+To edit transaction details, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page:
+
+#. Search for the correct transaction. For more information, see :ref:`search-transactions-commandmc`.
+
+#. Click the transaction number to view the transaction details.
+
+   * If the transaction is in **Open** status, you can edit the information in the sections by clicking the **Next** and **Back** buttons in the lower right corner. When complete, click **Save Progress & Close**. To abandon any changes, click **Exit From Transaction**.
+
+   * If the transaction is in **Approved** status, click the edit icon, |edit-icon| in the top-right corner. You can edit the information in the sections by clicking the **Next** and **Back** buttons in the lower right corner. When complete, click **Save Progress & Close**. To discard any changes, click **Exit From Transaction**.
+
+      .. |edit-icon| image:: ../../../images/edit-icon.png
+         :height: 25

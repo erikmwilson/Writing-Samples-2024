@@ -1,0 +1,38 @@
+=====================================================
+Object Storage multi-region deployments upgrade notes
+=====================================================
+
+While Object Storage (swift) can run with different
+versions of OpenStack in each region, it is recommended
+that the versions are in sync.
+
+To minimize the period where the Object Storage versions are
+different across regions, upgrade the regions separately
+excluding Object Storage. Coordinate the upgrade of
+Object Storage in the different regions so that there is
+no overlap on the ring/key sync.
+
+
+#. Complete a full RPCO upgrade on both regions,
+   **excluding** Object Storage. This can be done
+   simultaneously, or whenever is suitable for both
+   regions.
+
+   - To exclude Object Storage, set ``DEPLOY_SWIFT`` to ``no``
+     in the `rpc-openstack/scripts/deploy.sh
+     <https://github.com/rcbops/rpc-openstack/blob/master/scripts/deploy.sh#L15>`_
+     file.
+
+   - Complete the upgrade prerequisites and run the
+     ``upgrade.sh`` script to upgrade RPCO without
+     Object Storage.
+
+   - Complete the upgrade for both regions.
+
+#. Run the ``os-swift-setup.yml`` playbook on both regions. This
+   can be done simultaneously.
+
+#. Run the ``os-swift-sync.yml`` playbook on region A.
+
+#. When the upgrade is complete for region A, run the
+   ``os-swift-sync.yml`` playbook on region B.

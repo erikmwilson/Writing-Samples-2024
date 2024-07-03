@@ -1,0 +1,21 @@
+=====
+Scope
+=====
+
+This document describes the system, components, and configurations,
+required to meet the general needs necessary to host cloud ready
+applications.
+
+Infrastructure as a Service:
+
+-  Stable, performant, scale out solution
+
+-  Strong security & operational controls over the environment
+
+-  On-going support and management
+
+-  Physical and logical separation to handle Prod and DR
+
+-  Self service capabilities
+
+-  Rapid deployment of compute, object, and storage resources

@@ -1,0 +1,30 @@
+:deconsttitle: Optimization and Visualization User Guide
+
+.. _rpc-appformix:
+
+=========================================
+Optimization and Visualization User Guide
+=========================================
+
+**Rackspace Private Cloud Powered By Openstack**
+
+**Optimization and Visualization Powered By AppFormix from  Juniper Networks®**
+
+*Last updated:* |today|
+
+Optimization and Visualization enables cloud operators and users to monitor,
+visualize, and control how infrastructure resources are utilized by workloads
+and plan adequate capacity to ensure application performance. It also
+provides visibility into operational performance of infrastructure resources.
+
+For more information about |service appformix|, see the `AppFormix Overview <https://www.juniper.net/documentation/en_US/appformix/topics/concept/about-appformix.html>`_ in the *AppFormix User Guide*.
+
+This guide is intended to assist customers in setting up and using
+the capabilities of |service appformix|.
+
+.. toctree::
+    :maxdepth: 2
+
+    RPCO Optimization and Visualization User Guide<self>
+    overview/index.rst
+    using/index.rst

@@ -1,0 +1,13 @@
+
+.. _connect-settings-index-command:
+
+Connect Settings
+================
+
+The following sections contain information about how to configure
+settings for the Connect application.
+
+.. toctree::
+   :maxdepth: 1
+
+   marketing-profile

@@ -1,0 +1,17 @@
+
+.. _smartview-associates-commandmc:
+
+Create Smartviews for Associates
+================================
+
+You can change the Associates dashboard using filters, search terms, and customizing the columns. Use Smartviews to save the view you have created on the Associates dashboard.
+
+To create Smartviews for associates, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Select the required filters, search items, and/or columns. For more information, see :ref:`filter-associates-commandmc`, :ref:`search-associates-commandmc`, and :ref:`customize-columns-associates-commandmc`.
+
+#. After the desired filters have been selected, click the **Smartview** drop-down and select **Create Smartview**.
+
+#. Name your SmartView, then click **Save Smartview**. To access this Smartview in the future, click the **All Associates** drop-down at the top of your associates list, and choose it from the list.

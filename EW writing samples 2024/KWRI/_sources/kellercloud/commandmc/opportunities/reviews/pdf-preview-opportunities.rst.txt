@@ -1,0 +1,65 @@
+
+.. _pdf-review-opportunities-commandmc:
+
+Compliance Request PDF Tool
+===========================
+
+Market Centers review submitted compliance checklists in Command. Agents can use Dotloop or DocuSign (or a more traditional way) to complete their documents and import them into Command. After agents add all of the required, completed documents, they submit the documents for review. Market Center Administrators, Assistant MCAs and Compliance Coordinators review the documents in submitted checklists, and either accept them or return them to the agent.
+
+For more information, see :ref:`review-compliance-opportunities-commandmc`.
+
+After you click to review documents, the PDF Review tool will open.
+
+At the top-left of the PDF Review tool, the following document information is listed for the specific document you are reviewing:
+
+* The total number of documents you are reviewing and where you are in the review order.
+
+* The name of the compliance checklist item.
+
+* The name of the file that was submitted.
+
+* The time and date that the document was added to the checklist.
+
+* If you are viewing an older version of a document, this section also shows the reason for replacing the document.
+
+At the bottom of the PDF Review tool, you can open the following tabs:
+
+* **All Documents Preview** - This tab shows each document that you are reviewing. Click a document to open it. There is a checkmark or an X on documents that you have already reviewed, and either accepted or rejected.
+
+* **Version History** - This tab shows you every version of the document you are viewing. Click on the previous versions to see the document and the reasons for rejection.
+
+* **Opportunity Details** - This tab shows the **Opportunity Agent Owner**, listing **Address**, and **Closed Date**.
+
+.. |cross-icon| image:: ../../../../images/cross-icon.png
+   :height: 20
+
+On the right side of the PDF Review tool, use the plus and minus signs to zoom in and out of the document. You can also click the arrow cross |cross-icon| icon, to see more viewing options:
+
+ * **Zoom**
+
+ * **Actual Size**
+
+ * **Page Width**
+
+ * **Page Fit**
+
+Use the left and right arrows to navigate to the next and previous document.
+
+At the top-right of the page, you can complete the following actions:
+
+* Use the magnifying glass |magnifying-glass-icon| icon, to open a keyword search. You can search for specific words in the document, no matter how long the document is.
+
+* Use the print |print-icon| icon, to print the open document.
+
+* Use the download |download-icon| icon, to download a copy of the open document.
+
+.. |magnifying-glass-icon| image:: ../../../../images/magnifying-glass-icon.png
+   :height: 20
+
+.. |print-icon| image:: ../../../../images/print-icon.png
+   :height: 20
+
+.. |download-icon| image:: ../../../../images/download-icon.png
+   :height: 20
+
+When you are finished reviewing the open document, click **Approve Document** or **Reject Document**.

@@ -1,0 +1,37 @@
+
+.. _add-asset-docebo-connect:
+
+Add an Asset
+============
+
+To add an asset to Docebo, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. On the **All Channels** page click the **Contribute!** icon (blue cloud).
+
+#. Complete on of the following actions:
+
+   * Drag and drop (or browse) for an existing file.
+
+   * Start recording your screen to create a demo.
+
+   * Paste a link for video hosted in uStudio into the **Create a knowledge asset by sharing a link!** field and click **Share**.
+
+#. On the resulting **Finalize Publishing** pop-up complete the mandatory fields:
+
+   * **Details** - Enter the title and description.
+
+   * **Asset Visibility**
+
+     * Private - The asset is only visible to the creator and to people they decide to invite. In that case, selecting a **Channel** is not needed.
+
+     * Public - All users can see the asset.
+
+   * Select **Channels** for your asset (if the asset is public).
+
+#. Click **Publish Now**.
+
+#. After the asset is published, click **Invite To Watch** (if the asset is private), to share it with users.
+
+#. To view the asset, click on the **Published** tab. Click **View all of my contributions** to see all assets created by you, or click **View** for a specific asset.

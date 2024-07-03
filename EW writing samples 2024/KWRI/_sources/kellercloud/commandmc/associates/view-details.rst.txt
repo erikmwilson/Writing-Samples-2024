@@ -1,0 +1,59 @@
+
+.. _view-details-associates-commandmc:
+
+View or Edit Associate Details
+==============================
+
+To view associate details, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the associate name to view the associate details.
+
+   The left-side of the **Associate Details** window includes the following editable sections:
+
+   * Contact information
+
+   * General Information
+
+   * Emergency Contact
+
+   The right-side contains the following tabs with editable information:
+
+   * **Business** tab - contains business, incorporation, caps and splits, real estate license, and MLS information
+
+   * **Financial Info** tab - contains profit share bank and beneficiary information
+
+   * **Appointments** tab - contains any recruit appointments
+
+   * **SmartPlans** tab - contains associate SmartPlans
+
+   * **Need Analysis** tab - contains a needs analysis for the associate
+
+   * **Tasks** tab - contains associate tasks
+
+   * **Deductions** tab - contains all deductions for this associate
+
+   * **Notes** tab
+
+   * **Timeline** tab
+
+
+#. Click the edit icon, |edit-icon| for the section or tab that you want to modify.
+
+   .. |edit-icon| image:: ../../../images/edit-icon.png
+      :height: 25
+
+#. Edit the necessary information in the pop-up window and click **Save Changes**.
+
+#. Also, on the right-side of the **Associate Details** window, you can:
+
+   * Click on the **Appointments** tab to view appointments related to this associate. Click **Add New** to add an appointment. For more information, see :ref:`add-appointment-associates-commandmc`.
+
+   * Click on the **Tasks** tab to view Tasks related to this associate. Click **Create Task** to add this associate. For more information, see :ref:`tasks-associates-index-commandmc`.
+
+   * Click on the **Notes** tab to view notes related to this associate. You can sort tasks by **Most Recent** or **Least Recent** or click **Add Note** to add a note. For more information, see :ref:`add-note-associates-commandmc`.
+
+   * Click on the **Timelines** tab to view all the activity of the associate. You can sort the Timeline by a **Date Range** or by the type of activity. Click **View Calendar** to view your Google calendar or click **Add activity** to add an activity. For more information, see :ref:`add-activity-associates-commandmc`.

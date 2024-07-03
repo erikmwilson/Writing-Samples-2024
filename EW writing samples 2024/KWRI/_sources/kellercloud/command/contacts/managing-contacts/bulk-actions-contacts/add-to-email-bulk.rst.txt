@@ -1,0 +1,26 @@
+
+.. _add-to-email-bulk-command:
+
+Add Multiple Contacts to Email List
+===================================
+
+To add multiple contacts to your Mailchimp email list, complete the following steps:
+
+.. note::
+
+   Your must have a connected Mailchip account. For more information, see :ref:`connect-application-settings-command`.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts you to add to your email list. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Add to Email List**.

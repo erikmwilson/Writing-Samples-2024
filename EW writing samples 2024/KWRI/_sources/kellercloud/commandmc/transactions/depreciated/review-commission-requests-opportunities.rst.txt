@@ -1,0 +1,21 @@
+
+.. _review-commissions-opportunities-commandmc:
+
+Review Commission Requests
+==========================
+
+When a transaction is complete, agents submit a detailed commission disbursement request to your Market Center. You must review this commission request and either approve it or return it.
+
+To review, approve, or return a commission request, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. At the top of the page, click the **Commission Requests** tab to see a list of all submitted commission requests.
+
+#. Find the correct Commission Request and click **View Commission**.
+
+#. On the **Offers & Commissions** tab, review the Commission Request details. In the **Summary** section, click either **Approve** or **Return**.
+
+If you approved the Commission Request, the agent sees the approval within the Opportunity, and you can import the Opportunity into WinMORE.
+
+If you returned the Commission Request, enter the **Reason for Return** in the **Return opportunity** pop-up and click **Return Opportunity**. The agent sees a message in the Opportunity, letting them know you returned their Commission Request and the reason. The agent must resubmit the Commission Request, and you can repeat the process until you approve the request.

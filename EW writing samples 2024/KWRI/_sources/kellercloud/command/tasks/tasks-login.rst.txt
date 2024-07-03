@@ -1,0 +1,13 @@
+
+.. _access-tasks-command:
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-left corner, click **Command**.
+
+#. On the left toolbar, click **Tasks** |tasks-icon|.
+
+   .. |tasks-icon| image:: ../../../images/tasks-icon.png
+      :height: 30

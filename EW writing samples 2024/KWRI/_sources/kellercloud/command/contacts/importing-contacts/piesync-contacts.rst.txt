@@ -1,0 +1,38 @@
+
+.. _piesync-contacts-command:
+
+Synchronize Your Contacts With PieSync
+======================================
+
+PieSync is an application that allows you to synchronize your contacts to Command from other contact databases you use. PieSync’s two-way syncing keeps your data current in both systems to allow you to get the most out of your customer data.
+
+You are in control of what applications you connect to Command and the contact data that you want to sync. For example, you can sync your Salesforce contacts to Command and customize what details (for example, tags, group) are synchronized.
+
+There is a 500 character limit when syncing contact descriptions. If you go over this limit, that contact will not synchronize.
+
+.. note::
+
+   KW associates have access to special pricing with PieSync. You get one free connection (tPieSync automatically makes your largest connection free), then you get 50% off on any of PieSync's pricing plans.
+
+   Also, all connections between Command and other real estate applications are FREE. Click `here <https://www.piesync.com/connections/real-estate/>`_ to see a list of these real estate applications.
+
+   For more information about PieSync's pricing plans, see `PieSync Pricing <https://www.piesync.com/pricing/>`_.
+
+To connect PieSync with Command, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Click **Applications**.
+
+#. Find PieSync, in the Connections list (under Productivity) and click **Connect Account**.
+
+#. Read PieSync's Terms and Conditions and click **I Accept** (If you have already created a previous connection, you will skip this step).
+
+#. PieSync sends a code to your email address. Enter this code and click **Confirm Link**.
+
+#. Find and click on the applications that contain the contacts data that you need to connect to Command, then follow the prompts to complete the connections.
+
+For more information, see the `PieSync documentation <https://help.piesync.com/connector-apps/kwcommand>`_.

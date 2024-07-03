@@ -1,0 +1,23 @@
+
+.. _add-to-pipeline-bulk-commandmc:
+
+Add Multiple Recruits to Pipeline
+=================================
+
+To add multiple recruits to the pipeline, complete the following steps:
+
+.. include:: recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab.
+
+#. Select the check boxes next to the recruits that you want to add to the pipeline. To select all recruits, select the check box in the header row.
+
+   .. note::
+
+      You can filter your recruits list using Filters to target certain criteria (for example, **Pipeline Status**).
+
+#. Click **Add to Pipeline** under the recruits list.
+
+#. On the **Add to Pipeline** window, select the **Production Status**, **Phase**, and **Stage**.
+
+#. Click **Save**.

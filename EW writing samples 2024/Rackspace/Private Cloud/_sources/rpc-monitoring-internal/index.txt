@@ -1,0 +1,34 @@
+:deconsttitle: RPC Monitoring and Logging Guide
+
+.. _rpc-monitoring-logging:
+
+============================
+Monitoring and Logging Guide
+============================
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   preface.rst
+   monitoring-design/index.rst
+   monitoring-impl/index.rst
+   logging/index.rst
+   postface.rst
+
+
+.. link to monitoring installation in Installation Guide
+.. link to monitoring installation in Upgrade Guide (in 14.1)
+
+.. Rackspace Monitoring Product Web:
+   https://one.rackspace.com/display/productweb/Rackspace+Monitoring
+   Includes a lot of design graphics
+
+.. Monitoring API reference:
+   https://developer.rackspace.com/docs/rackspace-monitoring/v1/api-reference/

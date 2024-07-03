@@ -1,0 +1,19 @@
+
+.. _training-index-connect:
+
+Taking Training
+===============
+
+The following sections contain information about taking Connect Training.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview-training
+   search-training
+   filter-training
+   add-training-my-bookshelf
+   begin-training
+   share-training
+   add-playlist
+   download-file

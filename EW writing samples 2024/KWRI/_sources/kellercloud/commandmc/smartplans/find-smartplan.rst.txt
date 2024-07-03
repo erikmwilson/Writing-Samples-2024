@@ -1,0 +1,42 @@
+
+.. _find-smartplan-commandmc:
+
+Find a SmartPlan from the SmartPlans Library
+============================================
+
+The SmartPlans library contains SmartPlans created by KWRI and your associates. After a SmartPlan is added to the **MC Plans** list, you can start adding recruits and turn it on.
+
+To find a SmartPlan from the SmartPlans Library, complete the following steps:
+
+.. include:: smartplans-mc-login.rst
+
+#. Click the **Library** tab, at the top of the page.
+
+Search
+^^^^^^
+
+Use the **Search** to find specific SmartPlans. Choose the search parameter from the drop-down list:
+
+* SmartPlan Name
+
+* Author Name
+
+* Description
+
+Filter
+^^^^^^
+
+Click **Filters** to open the filters fly-out. You are able to filter the library by **Duration**, **Author**, number of **Touches**, number of **Downloads**, or by **Rating**.
+
+Categories
+^^^^^^^^^^
+
+The SmartPlans Library contains the following categories:
+
+* **Keller Williams** - SmartPlans that Keller Williams has authored, for example, Quarterly Call Plan. If you click this category title, it filters the library by author to only show Keller Williams SmartPlans.
+
+* **Top Rated** - SmartPlans that have the best rating compared to the number of reviews. Clicking this category title sorts the library by rating. If a SmartPlan has five stars, but only one review, it is not featured as predominantly as a SmartPlan with four stars and ten ratings.
+
+* **What's New** - these are the newest SmartPlans that have been published. If you click this category title, it sorts the library by published date.
+
+After you find the correct Smartplan, :ref:`add-smartplan-commandmc`.

@@ -1,0 +1,13 @@
+
+.. _training-index-command-ug:
+
+Training User Guide
+===================
+
+The following sections contain information about using the Training application and the administrative tasks requires to create training in Docebo.
+
+.. toctree::
+   :maxdepth: 1
+
+   training/index
+   docebo/index

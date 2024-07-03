@@ -1,0 +1,39 @@
+==========
+Networking
+==========
+
+Get answers to common technical questions about networking for Rackspace
+Private Cloud Powered By OpenStack (RPCO) |release|.
+
+**Why does RPCO supporting OpenStack Networking (neutron) by default?**
+
+The OpenStack community is moving forward with neutron, and RPCO
+will remain in sync with community development.
+
+**Why is RPCO using Linux Bridge plug-in?**
+
+The Linux Bridge plug-in is known to be stable with OpenStack Networking
+and can be used to create bridges within containers.
+
+**What advantages do containers offer in configuring OpenStack
+Networking?**
+
+Namespaces, taps, tunnels, VLAN-tagged interfaces, vEth-pairs,
+iptables, and other kinds of network technology are all fully functional
+inside containers. Containers also provide scalability and the ability to
+work around restrictions of one external network per L3 agent.
+
+**Do I have do anything differently when networking roles
+are assigned to separate networking nodes?**
+
+In this scenario, you would modify the host ``rpc_user_config.yml`` file
+with the new host(s) information under the ``network_hosts`` group.
+
+After the new hosts are active and functional, delete the old containers,
+remove the old container information from the
+``openstack_inventory.json`` file, and update the neutron database to
+reflect the deleted nodes.
+
+The environment is fully configurable. While RPCO has specified groups
+and populated those groups, it is possible to make changes in the
+``rpc_environment.yml`` file.

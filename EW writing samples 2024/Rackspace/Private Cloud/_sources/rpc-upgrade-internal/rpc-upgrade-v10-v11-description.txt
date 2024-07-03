@@ -1,0 +1,106 @@
+===========
+Description
+===========
+
+Actions performed by upgrade script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section describes the actions that are performed by the upgrade
+script.
+
+.. warning::
+
+   Do **not** actually perform these actions. This list is provided for
+   reference only.
+
+**File and configuration changes**
+
+-  Deploys the Ansible bootstrap script. This enables the
+   **openstack-ansible** command wrapper. This command ensures that all
+   variable files are included when running openstack-ansible playbooks.
+   This command should always be used instead of **ansible-playbook**.
+
+-  Copies configuration files from the ``/etc/rpc_deploy`` directory to
+   the ``/etc/openstack_deploy`` directory and rename the original
+   directory to ``/etc/rpc_deploy.OLD``.
+
+-  Renames ``rpc_*`` files to ``openstack_*``.
+
+-  Creates the ``/etc/openstack_deploy/conf.d`` and
+   ``/etc/openstack_deploy/env.d`` directories.
+
+-  Adds ``beaver.yml``, which is a new playbook for distributed
+   multi-line log shipping:
+
+-  Moves MaaS and other Rackspace variables from the
+   ``/etc/openstack_deploy/user_secrets.yml`` and
+   ``/etc/openstack_deploy/user_variables.yml`` files to the
+   ``/etc/openstack_deploy/user_extras_variables.yml`` and
+   ``/etc/openstack_deploy/user_extra_secrets.yml`` files.
+
+**Container changes**
+
+-  Removes the following defunct containers from the inventory:
+
+   - ``rsyslog_all``
+
+   - ``nova_api_ec2``
+
+   - ``nova_spice_console``
+
+-  Upgrades containers and services that reside directly on target
+   hosts.
+
+**Other changes and actions**
+
+-  Backs up the ``/etc/rpc_deploy`` directory in the
+   ``pre-upgrade-backup.tgz`` file.
+
+   ..  note::
+
+       The script does not back up configuration files in containers.
+
+-  The Apache configuration implements ``SSLCACertificateFile``,
+   replacing ``SSLCACertificatePath``, which ensures browsers receive
+   appropriate signing certificates.
+
+-  The ``OS_AUTH_URL`` is updated to the Identity v3 internal endpoint
+   for MaaS checks.
+
+-  Performs a full update of RabbitMQ, including:
+
+   -  Sets the variable controls value to true and running the
+      RabbitMQ playbook to shut down the cluster and upgrade RabbitMQ.
+
+   -  Sets the ``rabbitmq_ignore_version_state`` variable controls to
+      true, so you can re-run the playbooks in an environment where the
+      playbooks were upgraded and the default version of RabbitMQ
+      changed within the role. From here, you can re-cluster an
+      environment as needed without affecting the package state.
+
+   -  Sets the primary cluster node in an environment and determines the
+      restart order of RabbitMQ nodes.
+
+Changes to cinder-volume in RPCO v11
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, RPCO v11 deploys the ``cinder-volume`` service on bare
+metal. However, if the RPCO version 10 deployment to be upgraded
+installed the ``cinder-volume`` service inside an LXC container, this
+configuration is preserved and bare metal is not used. The default
+location for the ``cinder-scheduler`` service is the
+``cinder_scheduler_container`` container on the ``storage-infra_hosts``
+host.
+
+The location of ``cinder-volume`` is managed in the
+``etc/openstack_deploy/env.d/cinder.yml`` file, and may need to be
+edited depending on environment requirements.
+
+-  When using LVM as a cinder back end, it is recommended to run the
+   ``cinder-volume`` service on metal (the default).
+
+-  When using the NFS or NetApp driver, it is recommended to disable
+   bare metal deployment by removing ``is_metal: true`` from the
+   ``etc/openstack_deploy/env.d/cinder.yml`` file so that the service is
+   installed into an LXC container. Note that changing the deployment
+   location after installation requires you to migrate the volumes.

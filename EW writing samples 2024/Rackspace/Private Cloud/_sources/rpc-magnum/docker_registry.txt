@@ -1,0 +1,49 @@
+Private Docker registry
+=======================
+
+The clusters that Magnum provisions include a private Docker registry
+managed by Kubernetes. The registry runs in a pod with no persistent
+storage. It is exposed on port ``30001`` on each node, which is
+blocked from external access. The only way to access the registry from
+the outside is through ``kubectl`` port-forwarding (described below),
+which must authenticate with the Kubernetes API.
+
+Using the private Docker registry
+---------------------------------
+
+To access the registry externally, you can use ``kubectl``
+port forwarding to forward the registry's port to a local port:
+
+.. code-block:: console
+
+   $ POD_TMP='{{range .items}}{{.metadata.name}} {{.status.phase}}{{"\n"}}{{end}}'
+   $ POD=$(kubectl get pods --namespace kube-system -l k8s-app=kube-registry \
+           -o template --template $POD_TMP \
+           | grep Running | head -1 | cut -f1 -d' ')
+   $ kubectl port-forward --namespace kube-system $POD 30001:5000 &
+
+
+These commands make the registry available at ``127.0.0.1:30001``. You
+can push and pull images to and from the registry by using the prefix
+``127.0.0.1:30001/`` when tagging them. For example:
+
+.. code-block:: console
+
+   $ docker pull alpine
+   $ docker tag alpine 127.0.0.1:30001/alpine
+   $ docker push 127.0.0.1:30001/alpine
+   $ docker pull 127.0.0.1:30001/alpine
+
+
+After an image is pushed to the private registry, you can use it in a
+Kubernetes manifest with the same name that it was pushed with, since
+the port exposed internally is also ``30001``. For example:
+
+.. code-block:: yaml
+
+   apiVersion: v1
+   kind: Pod
+   spec:
+      containers:
+         image: 127.0.0.1:30001/alpine
+   ...

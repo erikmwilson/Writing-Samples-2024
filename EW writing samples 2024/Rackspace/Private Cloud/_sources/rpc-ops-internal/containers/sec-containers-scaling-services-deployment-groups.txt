@@ -1,0 +1,86 @@
+=============================================
+ Scaling services with new deployment groups
+=============================================
+
+In any OpenStack environment installed with Ansible, Deployment Groups
+reside on specific nodes. Specific groups of containers are collected
+open source project services, run within containers.
+
+For example, the ``compute_hosts ``\ deployment group holds the
+``nova_compute_container``, which contains the
+``neutron_linuxbridge_agent`` and ``nova_compute`` OpenStack services.
+This deployment group resides on the compute node.
+
+Users can create new infrastructure nodes, and scale OpenStack services
+within containers, by generating new deployment groups. The process
+requires setting up a new deployment groups inside the host
+configuration files.
+
+#. On the host machine, navigate to the directory where
+   ``openstack_config`` file resides.
+
+   This configuration file defines which deployment groups are assigned
+   to each node.
+
+#. Add a new deployment group to the configuration file. Adjust the
+   deployment group name followed by the affinity values within the
+   deployment group section of the ``openstack_config`` config file to
+   scale services.
+
+   .. code-block:: ini
+
+      compute_hosts
+      infra_hosts
+      identity_hosts
+      log_hosts
+      network_hosts
+      os-infra_hosts
+      repo-infra_hosts
+      shared-infra_hosts
+      storage-infra_hosts
+      storage_hosts
+      swift_hosts
+      swift-proxy_hosts
+
+#. Modify the ``openstack_config`` file, adding containers for the new
+   deployment group.
+
+#. Specify the required affinity levels. Add a zero value for any
+   OpenStack or open source services not needed that would ordinarily
+   run on the deployment group.
+
+   For example, to add a new deployment group with nova\_api and
+   cinder\_api services reconfigure the ``openstack_config`` file:
+
+   .. code-block:: ini
+
+      os-infra_hosts:
+         my_new_node:
+           ip: 3.4.5.6
+           affinity:
+             glance_container: 0
+             heat_apis_container: 0
+             heat_engine_container: 0
+             horizon_container: 0
+             nova_api_metadata_container: 0
+             nova_cert_container: 0
+             nova_conductor_container: 0
+             nova_scheduler_container: 0
+             nova_console_container: 0
+
+   *``my_new_node``* is the name for the new deployment group.
+   *``ip 3.4.5.6``* is the ip address assigned to the new deployment
+   group.
+
+#. As another example, a new deployment group that houses the
+   ``cinder_api`` would have the following values:
+
+   .. code-block:: ini
+
+      storage-infra_hosts:
+         my_new_node:
+           ip: 3.4.5.6
+           affinity:
+           cinder_api_container: 0
+
+   The ``storage-infra_host`` contains only the ``cinder_api`` services.

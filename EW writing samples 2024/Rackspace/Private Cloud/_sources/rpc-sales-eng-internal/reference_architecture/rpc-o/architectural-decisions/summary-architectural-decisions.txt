@@ -1,0 +1,21 @@
+=========================================
+Summary of architectural design decisions
+=========================================
+
+.. list-table:: **Summary of architectural design decisions**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **ID**
+     - **Decision**
+   * - RPC-000
+     - Open Source software will be utilized as a priority.
+   * - RPC-001
+     - Neutron L2 networks are preferred to guarantee throughput.
+   * - RPC-002
+     - All deployments will be delivered via the OpenStack-Ansible
+       deployment project.
+   * - RPC-003
+     - Swift will be used as the back end for Image service (glance).
+   * - RPC-004
+     - Ceph will be used as the back-end for Block Storage (cinder).

@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Integrating &mdash; Support Delivery Platform documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.5.6',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="Disclaimer" href="../../copyright.html" />
+    <link rel="prev" title="Ticketing event feed" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Support Delivery Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rackspace Ticketing API v2.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/index.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-api-info/index.html">General API information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-reference/index.html">API reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Ticketing event feed</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Integrating</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#consuming-events">Consuming events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requesting-events">Requesting events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../copyright.html">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Rackspace Ticketing Integration for ServiceNow</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Support Delivery Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace Ticketing API v2.0</a> &raquo;</li>
+        
+          <li><a href="index.html">Ticketing event feed</a> &raquo;</li>
+        
+      <li>Integrating</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api-docs/ticketing-event-feed/integrating.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="integrating">
+<span id="id1"></span><h1>Integrating<a class="headerlink" href="#integrating" title="Permalink to this headline">#</a></h1>
+<p>During the onboarding process, a user granted the <code class="docutils literal"><span class="pre">cloudfeeds:observer</span></code>
+role is needed to consume events from the Ticketing feed. If you do not
+have this role already, authenticate as this user and retrieve your API Key
+from either the my.rackspace.com or mycloud.rackspace.com portal.</p>
+<p>For more information about credentials, see
+<a class="reference internal" href="../getting-started/get-credentials.html#get-credentials"><span class="std std-ref">Get your credentials</span></a>.</p>
+<p>For authentication instructions, see
+<a class="reference internal" href="../getting-started/authenticate-to-rackspace.html#authenticate-to-rackspace"><span class="std std-ref">Authenticate to Rackspace</span></a>.</p>
+<div class="section" id="consuming-events">
+<h2>Consuming events<a class="headerlink" href="#consuming-events" title="Permalink to this headline">#</a></h2>
+<p>The following feeds are available. The demo feed is for development purposes
+and the production feed is for the consumption of live, production events.
+Integrate with the appropriate endpoint.</p>
+<p><strong>Demo</strong>: <code class="docutils literal"><span class="pre">https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/&lt;accountID&gt;</span></code></p>
+<p><strong>Production</strong>: <code class="docutils literal"><span class="pre">https://ord.feeds.api.rackspacecloud.com/consolidated_ticketing/events/&lt;accountID&gt;</span></code></p>
+<p>Account IDs are formatted in the following way:</p>
+<ul class="simple">
+<li>Dedicated Hosting - <code class="docutils literal"><span class="pre">hybrid:12345</span></code></li>
+<li>Managed Cloud - <code class="docutils literal"><span class="pre">12345</span></code> (no prefix)</li>
+<li>Managed AWS - <code class="docutils literal"><span class="pre">faws:12345</span></code></li>
+<li>Managed MGCP - <code class="docutils literal"><span class="pre">managed_gcp:12345</span></code></li>
+</ul>
+</div>
+<div class="section" id="requesting-events">
+<h2>Requesting events<a class="headerlink" href="#requesting-events" title="Permalink to this headline">#</a></h2>
+<p>For more information about interacting with the Cloud Feed API, see
+<a class="reference external" href="https://developer.rackspace.com/docs/cloud-feeds/v1/developer-guide/#document-getting-started/send-request-ovw">Sending API requests to Cloud Feeds</a>.</p>
+<p>The following sections describe the contents of the events
+to help map documented elements to records within your system.</p>
+<p>The following request retrieves the events for the specified account ID:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lon</span><span class="o">.</span><span class="n">feeds</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">rackspacecloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">consolidated_ticketing</span><span class="o">/</span><span class="n">events</span><span class="o">/&lt;</span><span class="n">accountID</span><span class="o">&gt;</span>
+
+<span class="n">Headers</span><span class="p">:</span>
+    <span class="n">X</span><span class="o">-</span><span class="n">Auth</span><span class="o">-</span><span class="n">Token</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">token</span><span class="o">&gt;</span>
+    <span class="n">Accept</span><span class="p">:</span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">rackspace</span><span class="o">.</span><span class="n">atom</span><span class="o">+</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>The feed is consumed from the last event to the first. The most relevant
+information is in the <code class="docutils literal"><span class="pre">product</span></code> object:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">feed</span><span class="o">.</span><span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">product</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to the categories within the category list, the <code class="docutils literal"><span class="pre">term</span> <span class="pre">type</span></code>
+describes the type of the event:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">feed</span><span class="o">.</span><span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">category</span><span class="p">[</span><span class="s2">&quot;term&quot;</span><span class="o">=</span><span class="s2">&quot;type:&lt;type&gt;&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Available events are contained within the <code class="docutils literal"><span class="pre">entry</span></code> list in the response body.
+Each entry has common attributes.</p>
+<p>After you have consumed a page of results, save the ID marker
+(<code class="docutils literal"><span class="pre">feed.entry[0].id</span></code>) of the last event consumed. To fetch the next page of
+events, add the <code class="docutils literal"><span class="pre">marker</span></code> query parameter, as shown in the following request:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span>GET https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/&lt;accountID&gt;?marker=&lt;marker&gt;
+
+Headers:
+    X-Auth-Token: &lt;token&gt;
+    Accept:application/vnd.rackspace.atom+json
+</pre></div>
+</div>
+<p>The next page returned skips over the <code class="docutils literal"><span class="pre">marker</span></code> provided within the query
+parameter and gives you all of the events that have occurred after it.
+Consume this page again, last to first.</p>
+<div class="section" id="response-parameters">
+<h3>Response parameters<a class="headerlink" href="#response-parameters" title="Permalink to this headline">#</a></h3>
+<p>These are the most relevant response parameters of an event.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>The unique ID (UUID) of the event updated and published the timestamp of when
+the event was pushed to the feed.</td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>List</td>
+<td>Terms that provide additional information about the events.</td>
+</tr>
+<tr class="row-even"><td>category (TID)</td>
+<td>String</td>
+<td>The account ID for the event, also known as tenant ID.
+Example: <code class="docutils literal"><span class="pre">{&quot;term&quot;:</span> <span class="pre">&quot;tid:123456789&quot;}</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>category (RID)</td>
+<td>String</td>
+<td>The resource associated with the event, in this case, our
+ticket ID. Example: <code class="docutils literal"><span class="pre">{&quot;term&quot;:</span> <span class="pre">&quot;rid:180717-iad-0000000&quot;}</span></code>.</td>
+</tr>
+<tr class="row-even"><td>category (Type)</td>
+<td>String</td>
+<td>The event type. The feed has the following event types:
+<code class="docutils literal"><span class="pre">type:consolidatedticketing.create.ticket.create.hybrid</span></code>
+<code class="docutils literal"><span class="pre">type:consolidatedticketing.update.ticket.update.hybrid</span></code>
+<code class="docutils literal"><span class="pre">type:consolidatedticketing.create.ticket.create.cloud</span></code>
+<code class="docutils literal"><span class="pre">type:consolidatedticketing.update.ticket.update.cloud</span></code>
+Example: <code class="docutils literal"><span class="pre">{&quot;term&quot;:</span> <span class="pre">&quot;type:consolidatedticketing.update.ticket.update.cloud&quot;}</span></code></td>
+</tr>
+<tr class="row-odd"><td>content.event.eventTime</td>
+<td>String</td>
+<td>Time the event was published to the feed. <strong>Note:</strong> this is not the time of last
+update as publishing delays could result in a timestamp later than when the
+actual event occurred.</td>
+</tr>
+<tr class="row-even"><td>content.event.resourceID</td>
+<td>String</td>
+<td>The resource associated with the event, in this case, our ticket ID.</td>
+</tr>
+<tr class="row-odd"><td>content.event.tenantID</td>
+<td>String</td>
+<td>tenantID more commonly known as your account ID.</td>
+</tr>
+<tr class="row-even"><td>content.event.type</td>
+<td>String</td>
+<td>The type of event. Available event types are <code class="docutils literal"><span class="pre">CREATE</span></code>, if a new ticket
+was created, and <code class="docutils literal"><span class="pre">UPDATE</span></code> if an existing record was updated. This
+typically occurs during ticket status changes or comments being added
+to the ticket.</td>
+</tr>
+<tr class="row-odd"><td>content.event.product</td>
+<td>Object</td>
+<td>Provides a snapshot of the record when the event occurred, this
+is described in additional detail below.</td>
+</tr>
+<tr class="row-even"><td>event.product.accountID</td>
+<td>String</td>
+<td>Account ID associated with this event.</td>
+</tr>
+<tr class="row-odd"><td>event.product.lastUpdated</td>
+<td>String</td>
+<td>Date and time the ticket was last modified either through status change
+or comment additions.</td>
+</tr>
+<tr class="row-even"><td>event.product.resources</td>
+<td>List</td>
+<td>Devices associated with the ticket. These are provided in a format
+consistent with our Resource API.</td>
+</tr>
+<tr class="row-odd"><td>event.product.subject</td>
+<td>Subject</td>
+<td>Subject originally provided at creation time.</td>
+</tr>
+<tr class="row-even"><td>event.product.ticketId</td>
+<td>String</td>
+<td>The ticket ID impacted by this event.</td>
+</tr>
+<tr class="row-odd"><td>event.product.comment</td>
+<td>String/Object</td>
+<td>This are either a blank string (&#8220;&#8221;) if no comment occurred within the event
+or an object if the event was triggered by a new comment.</td>
+</tr>
+<tr class="row-even"><td>comment.author</td>
+<td>String</td>
+<td>The creator of this comment, can either be a Racker or a user within your
+organization.</td>
+</tr>
+<tr class="row-odd"><td>comment.authorType</td>
+<td>String</td>
+<td>The type of user who created the request. Available types are <code class="docutils literal"><span class="pre">Rackspace</span></code> or <code class="docutils literal"><span class="pre">Customer</span></code>.</td>
+</tr>
+<tr class="row-even"><td>comment.created</td>
+<td>String</td>
+<td>Timestamp of comment creation.</td>
+</tr>
+<tr class="row-odd"><td>comment.id</td>
+<td>String</td>
+<td>Unique ID of the comment.</td>
+</tr>
+<tr class="row-even"><td>comment.text</td>
+<td>String</td>
+<td>The text of the comment. <strong>Note</strong>: At this time, the length of the comment is
+limited to 10240 characters.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response-example">
+<h3>Response example<a class="headerlink" href="#response-example" title="Permalink to this headline">#</a></h3>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;feed&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.w3.org/2005/Atom&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+        <span class="s2">&quot;entry&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;term&quot;</span><span class="p">:</span> <span class="s2">&quot;tid:123456789&quot;</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;term&quot;</span><span class="p">:</span> <span class="s2">&quot;rid:180717-iad-0000000&quot;</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;term&quot;</span><span class="p">:</span> <span class="s2">&quot;type:consolidatedticketing.update.ticket.update.cloud&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://atom.staging.ord1.us.ci.rackspace.net/consolidated_ticketing/events/entries/123456789/entries/urn:uuid:08e647dc-6f68-47ad-ae7f-81c2f827b9ef&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;self&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;@text&quot;</span><span class="p">:</span> <span class="s2">&quot;ConsolidatedTicketing&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;event&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;http://docs.rackspace.com/event/consolidatedticketing/ticket/update&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;dataCenter&quot;</span><span class="p">:</span> <span class="s2">&quot;iad&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;eventTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-27T03:47:06.446363Z&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bb3a9766-914f-11e8-961c-0050561a0171&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;iad&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;resourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;180717-iad-0000000&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;AtType&quot;</span><span class="p">:</span> <span class="s2">&quot;http://docs.rackspace.com/event/consolidatedticketing/ticket/update&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;product&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;http://docs.rackspace.com/event/consolidatedticketing/ticket/update&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;lastUpdated&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-27T03:47:06.297537Z&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;resourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;TICKET&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;resources&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;serviceCode&quot;</span><span class="p">:</span> <span class="s2">&quot;ConsolidatedTicketing&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Request for Information&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;ticketId&quot;</span><span class="p">:</span> <span class="s2">&quot;180717-iad-0000000&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;AtType&quot;</span><span class="p">:</span> <span class="s2">&quot;http://docs.rackspace.com/event/consolidatedticketing/ticket/update&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Racker&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;authorType&quot;</span><span class="p">:</span> <span class="s2">&quot;Rackspace&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-27T03:47:06.297537Z&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;180727-iad-0000000&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;We are researching a solution now.&quot;</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;urn:uuid:08e647dc-6f68-47ad-ae7f-81c2f827b9ef&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;updated&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-27T03:47:07.622Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;published&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-27T03:47:07.622Z&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;urn:uuid:ad01455d-0ec1-4f32-a74c-7682ad24359b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;@text&quot;</span><span class="p">:</span> <span class="s2">&quot;consolidated_ticketing/events&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;updated&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-27T03:47:23.104Z&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../copyright.html" class="btn btn-neutral float-right" title="Disclaimer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Ticketing event feed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; <a href="../../copyright.html">Copyright</a> 2018, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

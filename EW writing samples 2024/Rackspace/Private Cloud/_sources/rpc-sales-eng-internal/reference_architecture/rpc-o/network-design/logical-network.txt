@@ -1,0 +1,9 @@
+=======================
+Logical network diagram
+=======================
+
+.. note:: The following logical design is intended to be a general
+          design and any network names or ranges are only an example.
+
+.. image:: ../figures/rdc-compute-swift-ceph-logical-network.png
+   :alt: Logical network diagram

@@ -1,0 +1,19 @@
+=======================
+Upgrade from v11 to v12
+=======================
+
+Follow these procedures to upgrade an RPC deployment from version 11 to
+version 12. A single script named ``upgrade.sh`` performs the majority
+of operations to upgrade RPCO from version 11 to 12.
+
+The base directory for the upgrade is the
+``/opt/rpc-openstack`` Liberty deployment directory.
+
+.. toctree::
+   :maxdepth: 2
+
+   rpc-upgrade-v11-v12-swift-multi.rst
+   rpc-upgrade-v11-v12-description.rst
+   rpc-upgrade-v11-v12-prereq.rst
+   rpc-upgrade-v11-v12-perform.rst
+   rpc-upgrade-v12-verify.rst

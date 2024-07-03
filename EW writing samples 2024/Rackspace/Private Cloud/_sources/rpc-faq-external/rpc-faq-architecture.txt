@@ -1,0 +1,403 @@
+=================================
+Operating system and architecture
+=================================
+
+Get answers to common technical questions about the operating system and
+architecture for Rackspace Private Cloud Powered By OpenStack (RPCO) |release|.
+
+**What host operating system does RPCO |release| use?**
+
+RPCO |release| uses and has been tested on Ubuntu 16.04. RPCO uses this
+version of Ubuntu because of its compatibility with Linux Containers (LXC),
+Virtual Extensible LAN (VXLAN), and LinuxBridge.
+
+**What is the recommended minimum number of hosts, and what does each
+host contain?**
+
+The recommended minimum number of hosts is five total: four Infrastructure and
+one Compute, although most production deployments will have many Compute
+hosts. Using Block Storage will require an additional host. RPCO also
+requires a hardware load balancer.
+
+-  Infrastructure hosts represent both scalable Control Plane hosts and
+   a Logging host. Control Plane hosts contain all of the OpenStack APIs
+   and service requirements such as Galera and RabbitMQ. Logging hosts
+   contain Kibana, ElasticSearch, Rsyslog, and Logstash.
+
+-  Compute hosts contain nova-compute and the
+   neutron-linuxbridge-agent dependent package.
+
+-  Storage hosts contain the cinder volume and scheduler services.
+
+Infrastructure nodes can also contain the database services and act as
+database nodes.
+
+.. figure:: ../figures/rpc-layout.png
+   :alt: Host Layout Overview
+
+**How is node scaling accomplished?**
+
+Ansible playbooks make scaling a node a relatively simple process:
+
+#. Build a new node with Ubuntu 16.04.
+
+#. Add the node to the hosts group in the ``rpc_user_config.yml`` file.
+
+#. Run the required playbooks to assign the necessary roles to the node.
+
+** What are the scaling relationships between the services? Do some
+services need to be scaled together?**
+
+The neutron-linuxbridge-agent service scales out with the Compute
+containers. Otherwise, services do not need to be scaled together.
+
+**Do any of the services have scaling limits?**
+
+There is no known limit.
+
+**What is the maximum number of each service that can be deployed
+within a single environment?**
+
+There is no known maximum. However, each node should have only
+one nova-compute and one cinder-volume container. Neutron
+services with a strong relationship to other services are limited by
+those other services. For example, because the neutron-linuxbridge-agent is
+associated with nova-compute, each node has one of those agents.
+
+RPCO |release| is based on the OpenStack |os-release| release. By
+default, OSA deploys ``cinder-volumes`` on physical hosts (``is_metal:
+true`` parameter) instead of in a container. Users must migrate their
+volumes if cinder backups switch to physical hosts from containers.
+For more information, see the :ref:`cinder-migrate` section in the
+RPCO upgrade guide.
+
+**What advantages does Ansible provide as a deployment method over
+Chef?**
+
+Although Chef is a useful deployment method in many circumstances,
+the Ansible automation framework excels at deploying the RPCO
+container-based architecture and managing source code across multiple
+hosts. In addition, Ansible does not require any agents and is resource
+efficient, and the configuration methodology is easy to understand. The
+OpenStack-Ansible deployment process has become the reference Ansible
+deployment model for OpenStack.
+
+**What advantages does LXC provide in the context of OpenStack
+deployment?**
+
+LXC is stable and well-supported. Containers enable separation of host
+management from OpenStack management, and enable management of individual
+OpenStack components and configuration files.
+
+**Does RPCO support Telemetry service (ceilometer)?**
+
+At this time, RPCO does not support the Telemetry service because
+of stability, scalability, and performance issues.
+
+**What options do customers have for the Image service (glance) in a
+customer data center?**
+
+To use the Image service in their own data centers, customers have the
+following options:
+
+- Provide Rackspace with an NFS mount point.
+- Add the Object Storage (swift) service to act as the
+  Image Storage back end.
+- Create a Ceph object store.
+
+**What options do customers have for the Image service (glance) in a
+Rackspace data center?**
+
+To use the Image service in a Rackspace data center, customers have the
+following options:
+
+- Use Cloud Files. Note that a Cloud Files back end may experience additional
+  latency when retrieving or storing images, depending on the customer's
+  location.
+- Use Red Hat Cluster Suite (RHCS) NFS.
+- Add the Object Storage (swift) service to act as the Image service
+  back end.
+- Create a Ceph object store.
+
+**Can I list the instances that are backed by a given image in
+the Image service?**
+
+No, there are no native tools to do this. However, RPCO support
+created the ``image_check.py`` utility script that traverses all active
+instances and checks for deleted, orphaned, or mismatched images. The
+script works for all versions of RPCO. Run the script from the utility
+container. In RPCO |release|, SQL query access to the database on the Galera
+container is restricted to local queries. Therefore, for RPCO |release| run
+``image_check.py`` from within the Galera container.
+
+To create the script, paste the following text into
+``image_check.py`` and mark the file as executable:
+
+.. code-block:: python
+
+   #!/bin/env python
+   import argparse
+   import MySQLdb
+   import ConfigParser
+   import traceback
+   import sys
+   import os
+
+   def mycnf(f=os.environ['HOME'] + '/.my.cnf'):
+       config = ConfigParser.ConfigParser()
+       try:
+           config.read(f)
+           user = config.get('client','user')
+           password = config.get('client','password')
+       except:
+           print '!! Unable to read mysql credentials from %s' % f
+           sys.exit(1)
+
+        return {'user':user, 'password':password}
+
+    def myquery(query, database):
+        cred = mycnf()
+        db = MySQLdb.connect(user=cred['user'], passwd=cred['password'], db=database)
+        c = db.cursor()
+        c.execute(query)
+        results = c.fetchall()
+
+        return results
+
+    def get_instances():
+        i = myquery("SELECT uuid,hostname,image_ref FROM instances WHERE deleted=0", 'nova')
+        instances = {}
+        for z in i:
+            uuid, hostname, image_ref = z
+            instances[uuid] = {'hostname':hostname, 'image_ref': image_ref}
+
+        return instances
+
+    def get_images():
+        i = myquery("SELECT id,name, deleted FROM images", 'glance')
+        images = {}
+        for z in i:
+            id, name, deleted = z
+            deleted = int(deleted)
+            images[id] = {'name':name, 'deleted':deleted}
+
+        return images
+
+    def get_images_ondisk(path='/var/lib/glance/images'):
+        file_list = []
+        for dirpath, dirnames, files in os.walk(path):
+            for name in files:
+                file_list.append(name)
+
+        file_list.sort()
+        return (path, file_list)
+
+    instances = get_instances()
+    images = get_images()
+    images_ondisk = get_images_ondisk()
+
+    missing_images = []
+    unused_images = []
+    zombie_images = []
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--all', help='Show all types of images', action="store_true")
+    parser.add_argument('--missing', help='Check for missing backing images', action="store_true")
+    parser.add_argument('--unused', help='Check unused images', action="store_true")
+    parser.add_argument('--zombie', help='Check images marked as deleted but on disk', action="store_true")
+    parser.add_argument('--ignore', help='Used with --zombie to ignore images still in use', action="store_true")
+    parser.add_argument('--verbose', help='Print detailed list of images', action="store_true")
+    parser.add_argument('--technical', help='Print only uuids', action="store_true")
+    args = parser.parse_args()
+
+    '''
+    Check for missing backing images
+    '''
+
+    for i in instances:
+        try:
+            if not images[ instances[i]['image_ref'] ]['deleted'] == 0:
+                if args.verbose and args.missing or args.all:
+                    print "%s:%s does not have a backing image - %s" % (instances[i]['hostname'], i, instances[i]['image_ref'])
+                missing_images.append(i)
+        except:
+            traceback.print_exc()
+
+    '''
+    Check for images marked as deleted in DB, but still on disk
+    '''
+
+    if args.zombie or args.all:
+        for uuid in images_ondisk[1]:
+            q = "SELECT name, status FROM images WHERE id='%s'" % uuid
+            result = myquery(q, "glance")
+            name, status = result[0]
+            if status == 'deleted':
+                if args.verbose:
+                    print "%s:%s is marked as deleted, but found on disk" % (name, uuid)
+                if not args.ignore:
+                    q = "SELECT uuid from nova.instances as n join glance.images as g on \
+                         g.id = n.image_ref where g.deleted='1' and n.deleted='0' and g.id='%s'" % uuid
+                    result = myquery(q, "nova")
+                    if not result:
+                        zombie_images.append(uuid)
+                else:
+                        zombie_images.append(uuid)
+
+    '''
+    List of unused images
+    '''
+    if args.unused or args.all:
+        for image in images:
+            inuse = False
+            try:
+                for i in instances:
+                    if image == instances[i]['image_ref']:
+                        inuse = True
+            except:
+                continue
+
+            if not inuse and images[image]['deleted'] == 0:
+                if args.verbose:
+                    print '%s:%s is NOT in use by instances' % (images[image]['name'], image)
+                unused_images.append(image)
+
+    '''
+    Summary
+    '''
+    if args.verbose:
+        print 'Summary:\n\t%i images\n\t%i instances\n\t%i instances missing backing image\
+               \n\t%i unused images\n\t%i marked as deleted but on disk' \
+               % (len(images), len(instances), len(missing_images), len(unused_images), len(zombie_images))
+    if args.technical:
+        if args.missing:
+            print '#missing'
+            for i in missing_images:
+                print i
+        if args.unused:
+            print '#unused'
+            for i in unused_images:
+                print i
+        if args.zombie:
+            print '#zombie'
+            for i in zombie_images:
+                print i
+
+Alternatively, use the following database queries to list out all active
+instances by ID, then obtain the backing image for each instance::
+
+    use database nova;
+    SELECT uuid,hostname,image_ref FROM instances WHERE deleted=0";
+
+    use database glance;
+    SELECT id,name, deleted FROM images";
+
+**Can I find out which glance image my server instance depends on?**
+
+Yes. There are two methods:
+
+- In the Horizon dashboard, in the Instances tab, click Details for a
+   specific instance.
+
+- From the API command line client, run the following command:
+
+  .. code-block:: console
+
+     $ nova show | grep image
+     $ openstack server show | grep image
+
+  The expected output contains the name and hexadecimal ID of the glance
+  backing image.
+
+**How do I determine if a specific commit for a bug is running in
+an upstream OpenStack Installation?**
+
+To determine if a given commit appears in an upstream installation, or a
+``.whl`` archive deployed upstream, use the SHA identifier of the specific
+commit and the SHA identifier of the target installation. Find and confirm
+the commit SHA, and then compare it to the upstream installation SHA history,
+as follows:
+
+#. Record the SHA of the commit, which is
+   `9ff5bb967105451a1c3c1a6dbeb0ec979afaeb` in this example.
+
+#. Log into the container where the OpenStack service resides. This example
+   retrieves information about neutron::
+
+      # lxc-attach -n aio1_neutron_agents_container28d6792d
+      # pbr info neutron
+      neutron 2015.2.4dev9   pre-release 1fafe42
+
+   The seven character entry that appears last on the line is the SHA of
+   the commit used to build neutron in this OpenStack installation.
+
+#. Confirm whether the SHA in question appears inside the upstream OpenStack
+   installation. On any Linux installation, clone the upstream repository
+   and examine the commit history::
+
+      # git clone https://github.com/openstack/neutron.git
+      # cd neutron
+
+#. Search the cloned repository for the SHA identifier, referencing the
+   OpenStack service SHA::
+
+      # git rev-list 1fafe42 | grep 9ff5bb967105451a1c3c1a6dbeb0ec979afaeb
+
+   The ``git rev-list`` command lists all ancestor commits of the
+   commit object *1fafe42* in this git repository, and the ``| grep
+   <SHA>`` option searches for the commit SHA.Replace 1fafe42 with the SHA
+   obtained from the ``pbr info`` command, and
+   `9ff5bb967105451a1c3c1a6dbeb0ec979afaeb` with the specific commit SHA.
+   If the command returns the commit SHA, the
+   OpenStack installation contains the commit::
+
+      # git rev-list 1fafe42 | grep 9ff5bb967105451a1c3c1a6dbeb0ec979afaeb
+      9ff5bb967105451a1c3c1a6dbeb0ec979afaeb
+
+**How do I recover from an Infrastructure node loss, and reattach
+the node to the cluster?**
+
+A manual procedure resets and reattaches the service or cluster
+inside the Infrastructure node. In the following example, the procedure
+restores a RabbitMQ cluster to the infrastructure nodes following a service
+failure.
+
+#. Log in to the ``infra3`` node, and stop the RabbitMQ service as the root
+   user:
+
+   .. code-block:: console
+
+      # rabbitmqctl stop_app
+
+#. Log in to the ``infra1`` node in a separate console instance, and remove
+   the ``infra3`` configuration from the node:
+
+   .. code-block:: console
+
+      # rabbitmqctl forget_cluster_node infra3
+
+#. Reattach the RabbitMQ configuration to the ``infra1`` node:
+
+   .. code-block:: console
+
+      # rabbitmqctl join_cluster rabbit@infra1
+
+#. Start the RabbitMQ service on the ``infra1`` node:
+
+   .. code-block:: console
+
+      # rabbitmqctl start_app
+
+#. Check on the status of the RabbitMQ service:
+
+   .. code-block:: console
+
+      # rabbitmqctl cluster_status
+
+#. Stop and restart the RabbitMQ service on each of the infrastructure nodes,
+   infra1, infra2, and infra3 , as follows:
+
+   .. code-block:: console
+
+      # service rabbitmq-server stop
+      # service rabbitmq-server start

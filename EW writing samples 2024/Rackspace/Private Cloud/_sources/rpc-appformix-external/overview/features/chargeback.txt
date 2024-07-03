@@ -1,0 +1,10 @@
+.. _chargeback-ug:
+
+==========
+Chargeback
+==========
+
+For information about chargeback, see
+`Chargeback <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-chargeback.html>`_ in the AppFormix User Guide.
+
+To configure chargeback, see :ref:`chargeback-tasks-ug`.

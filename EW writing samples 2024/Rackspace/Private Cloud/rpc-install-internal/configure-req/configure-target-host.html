@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure target hosts &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Configure service credentials" href="configure-service-credentials.html" />
+    <link rel="prev" title="Configure target host networking" href="configure-target-hosts-networking.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-configure-required.html">Configure the deployment (required)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configure-prereqs.html">Complete the prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-target-hosts-networking.html">Configure Target host networking to define bridge interfaces and networks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configure a list of target hosts on which to install the software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-service-credentials.html">Configure service credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Installation Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-configure-required.html">Configure the deployment (required)</a> &raquo;</li>
+        
+      <li>Configure target hosts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-install-internal/configure-req/configure-target-host.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-target-hosts">
+<h1>Configure target hosts<a class="headerlink" href="#configure-target-hosts" title="Permalink to this headline">#</a></h1>
+<p>Edit the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code> file to
+configure the target hosts.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Do not assign the same IP address to different target hostnames.
+Unexpected results might occur. Each IP address and hostname must be a
+matching pair. To use the same host in multiple roles, for example
+infrastructure and networking, specify the same hostname and IP address
+in each section.</p>
+<p class="last">Use short hostnames rather than fully-qualified domain names (FQDN) to
+prevent length limitation issues with LXC and SSH. For example, a
+suitable short hostname for a compute host might be: <code class="docutils literal"><span class="pre">123456-Compute001</span></code>.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">In Rackspace data centers, the format for the name is as follows, where
+<code class="docutils literal"><span class="pre">CORE-ID</span></code> is the CORE device ID number, <code class="docutils literal"><span class="pre">category</span></code> is the host category,
+and <code class="docutils literal"><span class="pre">NNN</span></code> is the host number: <code class="docutils literal"><span class="pre">COREID-categoryNNN</span></code>. For more information
+about target host naming conventions, see: <a class="reference internal" href="../ch-hosts-target.html#naming-target-hosts"><span class="std std-ref">Name the target hosts</span></a>.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">In the <code class="docutils literal"><span class="pre">shared-infra_hosts</span></code> section, configure a list that contains
+at least three infrastructure target hosts :</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">shared-infra_hosts</span><span class="p">:</span>
+  <span class="nt">603975-infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA01_IP_ADDRESS</span>
+  <span class="nt">603989-infra02</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA02_IP_ADDRESS</span>
+  <span class="nt">627116-infra03</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA03_IP_ADDRESS</span>
+  <span class="nt">628771-infra04</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal"><span class="pre">_IP_ADDRESS</span></code> with the IP address of the <code class="docutils literal"><span class="pre">br-mgmt</span></code>
+container management bridge on each infrastructure target host. Use
+the same net block as bond0 on the nodes, for example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">shared-infra_hosts</span><span class="p">:</span>
+  <span class="nt">603975-infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.240.0.80</span>
+  <span class="nt">603989-infra02</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.240.0.81</span>
+  <span class="nt">627116-infra03</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.240.0.184</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">os-infra_hosts</span></code> section, configure a list that contains at least
+three infrastructure target hosts  (you can reuse previous hosts, if
+their names and IP addresses are consistent):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">os-infra_hosts</span><span class="p">:</span>
+  <span class="nt">infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA01_IP_ADDRESS</span>
+  <span class="nt">infra02</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA02_IP_ADDRESS</span>
+  <span class="nt">infra03</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA03_IP_ADDRESS</span>
+  <span class="nt">infra04</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">identity_hosts</span></code> section, configure a list of at least three
+Identity target hosts:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">identity_hosts</span><span class="p">:</span>
+  <span class="nt">infra1</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">IDENTITY01_IP_ADDRESS</span>
+  <span class="nt">infra2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">network_hosts</span></code> section, configure a list containing at least one
+network target host. Replace <code class="docutils literal"><span class="pre">_IP_ADDRESS</span></code> with the IP address of the
+<code class="docutils literal"><span class="pre">br-mgmt</span></code> container management bridge on each network target host.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">network_hosts</span><span class="p">:</span>
+  <span class="nt">602117-network01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NETWORK01_IP_ADDRESS</span>
+  <span class="nt">602534-network02</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">compute_hosts</span></code> section, configure a list containing at least one
+compute target host. Replace <code class="docutils literal"><span class="pre">_IP_ADDRESS</span></code> with the IP address of the
+<code class="docutils literal"><span class="pre">br-mgmt</span></code> container management bridge on each compute target host.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">compute_hosts</span><span class="p">:</span>
+  <span class="nt">900089-compute001</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">COMPUTE001_IP_ADDRESS</span>
+  <span class="nt">900090-compute002</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">log_hosts</span></code> section, configure a list containing at least one
+logging target host. Replace <code class="docutils literal"><span class="pre">_IP_ADDRESS</span></code> with the IP address of the
+<code class="docutils literal"><span class="pre">br-mgmt</span></code> container management bridge on each logging target host.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">log_hosts</span><span class="p">:</span>
+  <span class="nt">900088-logging01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LOGGER1_IP_ADDRESS</span>
+  <span class="nt">903877-logging02</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">repo-infra_hosts</span></code> section, configure a list containing at least
+one repository target host. Replace <code class="docutils literal"><span class="pre">_IP_ADDRESS</span></code> with the IP address of
+the <code class="docutils literal"><span class="pre">br-mgmt</span></code> container management bridge on each repository target host.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">repo-infra_hosts</span><span class="p">:</span>
+  <span class="nt">903939-repo01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">REPO1_IP_ADDRESS</span>
+  <span class="nt">907963-repo02</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>The repository typically resides on one or more infrastructure hosts.
+Alternatively, specify a value for the <code class="docutils literal"><span class="pre">openstack_repo_url</span></code>
+variable in the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_group_vars.yml</span></code> file.
+The value should contain a URL for a host with the appropriate
+layout. For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">openstack_repo_git_url</span><span class="p">:</span> <span class="s">&quot;https://rpc-repo.rackspace.com/&quot;</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal"><span class="pre">repo-infra_hosts</span></code> configures a local repository with the
+appropriate layout and sets <code class="docutils literal"><span class="pre">openstack_repo_url</span></code> for you.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">storage-infra_hosts</span></code> section, configure a list containing at
+least three infrastructure target hosts  (you can reuse
+previous hosts as long as their names and IP addresses are consistent):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">storage-infra_hosts</span><span class="p">:</span>
+  <span class="nt">infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA01_IP_ADDRESS</span>
+  <span class="nt">infra02</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA02_IP_ADDRESS</span>
+  <span class="nt">infra03</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFRA03_IP_ADDRESS</span>
+  <span class="nt">infra04</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">storage_hosts</span></code> section, configure a list containing at least one
+optional storage host. Replace <code class="docutils literal"><span class="pre">_IP_ADDRESS</span></code> with the IP address of the
+<code class="docutils literal"><span class="pre">br-mgmt</span></code> container management bridge on each storage target host.
+Each storage host also requires additional configuration to define the back
+end driver.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">storage_hosts</span><span class="p">:</span>
+  <span class="nt">100338-storage01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">STORAGE01_IP_ADDRESS</span>
+  <span class="nt">100392-storage02</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default configuration includes an optional storage host. To
+install without storage hosts, comment out the stanza beginning with
+the <em>storage_hosts:</em> line.</p>
+</div>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configure-service-credentials.html" class="btn btn-neutral float-right" title="Configure service credentials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configure-target-hosts-networking.html" class="btn btn-neutral float-left" title="Configure target host networking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

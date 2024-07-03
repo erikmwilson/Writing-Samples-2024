@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Why Blade Servers are Unsuitable for OpenStack Clouds &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Document history and additional information" href="../postface.html" />
+    <link rel="prev" title="Interface configuration" href="../reference_architecture/rpc-o/network-design/interface-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rackspace Private Cloud Sales Engineering Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference_architecture/index.html">Rackspace Private Cloud Reference Architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Why Blade Servers are Unsuitable for OpenStack Clouds</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reliability">Reliability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operability">Operability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace Private Cloud Sales Engineering Documentation</a> &raquo;</li>
+        
+      <li>Why Blade Servers are Unsuitable for OpenStack Clouds</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-sales-eng-internal/blade_servers/blade-servers-unsuitable-openstack.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="why-blade-servers-are-unsuitable-for-openstack-clouds">
+<h1>Why Blade Servers are Unsuitable for OpenStack Clouds<a class="headerlink" href="#why-blade-servers-are-unsuitable-for-openstack-clouds" title="Permalink to this headline">#</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body"><ul class="first simple">
+<li>Jason Cannavale</li>
+<li>Kevin Jackson</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body"><p class="first last">2016 Rackspace US, Inc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>As more and more businesses choose to adopt cloud technologies, IT
+buyers, administrators and CTOs are increasingly faced with the
+immediate challenge of selecting the right hardware for the underlying
+Infrastructure as a Service (IaaS). Employing the right infrastructure
+components is critical to the implementation of a successful cloud
+project. The following paper takes a look at the particular
+combination of blade servers and OpenStack Clouds.</p>
+<p>There are thousands of servers on the market today that are capable of
+running virtualized workloads; spanning a wide range of prices and
+specifications, improving the performance of all types of applications
+in various ways.</p>
+<p>Blade servers are one of the many choices available on the market
+today. Blade servers are designed with as many as 16 blades contained
+in a single chassis, sharing various components. Advantageously, blade
+servers include more processing power in less rack space, simplifying
+cabling, and reducing power consumption. This makes blade servers an
+ideal candidate for data center consolidation, and optimization.</p>
+<p>OpenStack is a set of open source software components primarily used
+to provide IaaS. An OpenStack IaaS provides a standard set of APIs
+used to control authentication, compute resources, storage, and
+networking resources inside of a datacenter. These APIs provide an
+abstraction layer to the underlying hardware resources so that
+developers can build applications without having to work with IT to
+request and procure additional hardware. To achieve this, OpenStack
+depends on open standards to work with the underlying hardware and
+other components. This is typically in the form of plug-ins that are
+purpose built to interact with vendor hardware and open sourced into
+the OpenStack project.</p>
+<p>IaaS projects are also a way to optimize resource consumption and
+performance, but with a different approach. IaaS is an agile method
+for applications and developers, focusing on the end user and its
+ability to allow for smarter and more economical approaches to
+resource consumption. This paves the way for an optimized physical
+space footprint usage.</p>
+<p>Because of the particular design and approach of the blade server, we
+do not recommend pairing with OpenStack Cloud as it is unsuitable. A
+successful IaaS setup requires the understanding of developers and IT
+buyers, administrators and CTOs that that hardware will fail. Failures
+are handled in the software architecture, allowing your application to
+continue operating somewhere else in the infrastructure. This differs
+to the traditional virtualization approach, which requires additional
+fail over servers to ensure that hardware failure is covered by the
+infrastructure.</p>
+<p>The following points focus on the key elements of reliability,
+performance, and operability depicting the various possible pain- and
+failure points that make blade servers such an unsuitable choice for
+running infrastructure orchestration services like OpenStack.</p>
+</div>
+<div class="section" id="reliability">
+<h2>Reliability<a class="headerlink" href="#reliability" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li>A blade chassis is hardware defined with a closed API. This makes
+them inherently incompatible to OpenStack running software on
+commodity hardware. Stability and functionality of OpenStack is
+directly dependent on your blade server vendor.</li>
+<li>The closed API and internal hardware interfaces make it uncertain if
+upgrades will work without bringing your cloud environment down. The
+inherent nature of a blade chassis affects a larger number of
+components causing greater risk and complexity for such simple
+maintenance tasks.</li>
+<li>There are no common standards for networking within a blade chassis,
+allowing each vendor to offer various aggregation or virtual
+networking options to provide the connectivity required. In some
+scenarios, failure of virtual networking or backplanes within a
+chassis can have an adverse effect on your cloud environment,
+consequently reducing your OpenStack capacity significantly.</li>
+<li>Losing a single blade chassis could take a vast cross section of
+your application down even if you have architected your application
+to survive hardware failure, primarily because there is nowhere left
+for the application to move to.</li>
+<li>In a scenario where a blade chassis is lost due to hardware or power
+failure, depending on the size and span of the blade unit in
+question, it is possible that the entire infrastructure will be down
+until the hardware can be replaced. This means the application that
+your customers, end users, and stakeholders use will be offline as
+well.</li>
+<li>In a rack-mounted approach each rack-mounted server runs the same
+systems and services. However, in the case of hardware failure only
+the server that failed is impacted. This means that your application
+can continue to request new infrastructure resources across many
+hosts resulting in higher uptime and stakeholder satisfaction.</li>
+</ul>
+</div>
+<div class="section" id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li>Shared storage in OpenStack relies on an IP network, not a Fibre
+Channel SAN, so the vendor specific implementation of the shared
+networking becomes saturated. This leaves few options to alleviate
+this.</li>
+<li>East-to-west network throughput within a chassis is a concern. In a
+chassis where networks shared a common backplane, once this gets
+saturated, you are locked in to the chassis vendor upgrade path. You
+quickly come to realize the shared chassis network savings of a
+blade estate is not justified compared to traditional scale-out
+networking approach when it is time to upgrade.</li>
+</ul>
+</div>
+<div class="section" id="operability">
+<h2>Operability<a class="headerlink" href="#operability" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li>Troubleshooting requires extra resources for the internal components
+from the blade vendor, which mean longer time-to-resolution.</li>
+<li>The extra layer adds the requirements for a specialized team on top
+of any 24/7-support organization.</li>
+<li>The chassis you purchase forces lock-in to the blade servers that
+fit that chassis. End of life of blade chassis specification is a
+concern as it drastically reduces the longevity of the servers
+running OpenStack.</li>
+<li>OpenStack environments can make significant use of local hard disks.
+Many blade vendors force compromises in local disk options, where
+you may be forced to sacrifice compute capacity for disk packs. This
+alone makes blade servers a poor choice for Block and Object Storage
+services.</li>
+</ul>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<p>The immediate challenge of selecting the right hardware for the
+underlying IaaS is a difficult task; one must consider the
+reliability, performance, and operability. Key take-away factors of
+these three defining points are the down time associated with
+upgrading, networking, and troubleshooting. In conclusion, blades
+offer great opportunities for physical space consolidation. However,
+this consolidation introduces numerous points of failure. These points
+of failure make blades poor choice for running infrastructure
+orchestration services like OpenStack. Reliability, performance, and
+operability are key to any successful infrastructure deployment, and
+it is imperative that the right choice is made for both your
+employees, and your customers.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../postface.html" class="btn btn-neutral float-right" title="Document history and additional information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../reference_architecture/rpc-o/network-design/interface-configuration.html" class="btn btn-neutral float-left" title="Interface configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

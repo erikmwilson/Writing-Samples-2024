@@ -1,0 +1,24 @@
+======================================
+ Destroying and recreating containers
+======================================
+
+Resolving some issues may require destroying a container, and rebuilding
+that container from the beginning. It is possible to destroy and
+re-create a container with the ``destroy-containers.yml`` and
+``build-containers.yml`` commands. These Ansible scripts reside in the
+``openstack-ansible/playbooks`` repository.
+
+#. Navigate to the ``openstack-ansible`` directory.
+
+#. Run the **openstack-ansible destroy-containers.yml** commands,
+   specifying the target containers and the container to be destroyed.
+
+   .. code-block:: console
+
+      $ openstack-ansible destroy-containers.yml \
+      build-containers.yml OTHER_PLAYS -e container_group="CONTAINER_NAME"
+
+#. Replace *``OTHER_PLAYS``* with the target container, and replace
+
+#. Change the load balancer configuration to match the newly recreated
+   container identity if needed.

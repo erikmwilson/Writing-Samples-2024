@@ -1,0 +1,24 @@
+
+.. _change-pipeline-phase-recruits-cmc:
+
+Change the Recruit's Phase or Stage
+===================================
+
+You change the position of a recruit in the Pipeline from the recruit list.
+
+To change the position of a recruit in the Pipeline, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab, at the top of the page. A list displays of all your Market Center recruits.
+
+#. Search for the correct recruit. For more information, see :ref:`search-recruits-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that recruit and select **Change Pipeline Phase**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Move to another stage** window, select a new **Phase** or **Stage**.
+
+#. Click **Save**.

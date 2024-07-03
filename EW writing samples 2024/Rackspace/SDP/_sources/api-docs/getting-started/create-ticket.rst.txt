@@ -1,0 +1,80 @@
+.. create-ticket:
+
+=================
+Creating a ticket
+=================
+
+In the previous section you fetched the ``account id`` as well as the
+category/subcategory combination for your account type.  With this information
+you can now create a ticket:
+
+.. code::
+
+    $ curl https://demo.ticketing.api.rackspace.com/tickets \
+      -X POST \
+      -H 'Content-Type: application/vnd.ticketing.v2+json' \
+      -H 'X-Auth-Token: xxxxxxx'
+      -H 'cache-control: no-cache' \
+      -d '{
+    "accountId": "faws:576508529999",
+    "subject": "I wish to inquire about your services",
+    "category": "Request for Information",
+    "subcategory": "General",
+    "comment": {"text": "What kind of services do you provide?"}
+    }'
+
+.. code::
+
+    {
+        "ticketId": "181024-iad-0000123",
+        "accountId": "faws:576508529999",
+        "subject": "I wish to inquire about your services",
+        "status": "Pending Rackspace",
+        "severity": "Normal",
+        "resources": [],
+        "category": "Request for Information",
+        "subcategory": "Other",
+        "created": "2018-10-24T19:50:26.637Z",
+        "modified": "2018-10-24T19:50:26.637Z",
+        "modifiedBy": {
+            "id": "RPN-232-800-999",
+            "name": "Sohn Jmith",
+            "roles": [
+                "Administrative",
+                "Technical"
+            ],
+            "type": "customer"
+        },
+        "createdBy": {
+            "id": "RPN-232-800-999",
+            "name": "Sohn Jmith",
+            "roles": [
+                "Administrative",
+                "Technical"
+            ],
+            "type": "customer"
+        },
+        "recipients": [],
+        "comments": [
+            {
+                "id": "181024-iad-0000123",
+                "text": "What kind of services do you provide?",
+                "created": "2018-10-24T19:50:26.637Z",
+                "author": {
+                    "id": "RPN-232-800-999",
+                    "name": "Sohn Jmith",
+                    "roles": [
+                        "Administrative",
+                        "Technical"
+                    ],
+                    "type": "customer"
+                },
+                "attachments": []
+            }
+        ],
+        "classification": "Service Request"
+    }
+
+This is the simplest ticket that can be created. You can create as many tickets
+as needed with resources and a classification. See the :ref:`API reference
+<api-reference>` for more information.

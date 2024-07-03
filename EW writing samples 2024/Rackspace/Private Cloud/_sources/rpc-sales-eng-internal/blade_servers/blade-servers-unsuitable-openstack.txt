@@ -1,0 +1,164 @@
+=====================================================
+Why Blade Servers are Unsuitable for OpenStack Clouds
+=====================================================
+
+:Authors: - Jason Cannavale
+          - Kevin Jackson
+:Copyright: 2016 Rackspace US, Inc.
+
+|
+
+----
+
+|
+
+Introduction
+~~~~~~~~~~~~
+
+As more and more businesses choose to adopt cloud technologies, IT
+buyers, administrators and CTOs are increasingly faced with the
+immediate challenge of selecting the right hardware for the underlying
+Infrastructure as a Service (IaaS). Employing the right infrastructure
+components is critical to the implementation of a successful cloud
+project. The following paper takes a look at the particular
+combination of blade servers and OpenStack Clouds.
+
+There are thousands of servers on the market today that are capable of
+running virtualized workloads; spanning a wide range of prices and
+specifications, improving the performance of all types of applications
+in various ways.
+
+Blade servers are one of the many choices available on the market
+today. Blade servers are designed with as many as 16 blades contained
+in a single chassis, sharing various components. Advantageously, blade
+servers include more processing power in less rack space, simplifying
+cabling, and reducing power consumption. This makes blade servers an
+ideal candidate for data center consolidation, and optimization.
+
+OpenStack is a set of open source software components primarily used
+to provide IaaS. An OpenStack IaaS provides a standard set of APIs
+used to control authentication, compute resources, storage, and
+networking resources inside of a datacenter. These APIs provide an
+abstraction layer to the underlying hardware resources so that
+developers can build applications without having to work with IT to
+request and procure additional hardware. To achieve this, OpenStack
+depends on open standards to work with the underlying hardware and
+other components. This is typically in the form of plug-ins that are
+purpose built to interact with vendor hardware and open sourced into
+the OpenStack project.
+
+IaaS projects are also a way to optimize resource consumption and
+performance, but with a different approach. IaaS is an agile method
+for applications and developers, focusing on the end user and its
+ability to allow for smarter and more economical approaches to
+resource consumption. This paves the way for an optimized physical
+space footprint usage.
+
+Because of the particular design and approach of the blade server, we
+do not recommend pairing with OpenStack Cloud as it is unsuitable. A
+successful IaaS setup requires the understanding of developers and IT
+buyers, administrators and CTOs that that hardware will fail. Failures
+are handled in the software architecture, allowing your application to
+continue operating somewhere else in the infrastructure. This differs
+to the traditional virtualization approach, which requires additional
+fail over servers to ensure that hardware failure is covered by the
+infrastructure.
+
+The following points focus on the key elements of reliability,
+performance, and operability depicting the various possible pain- and
+failure points that make blade servers such an unsuitable choice for
+running infrastructure orchestration services like OpenStack.
+
+
+Reliability
+~~~~~~~~~~~
+
+* A blade chassis is hardware defined with a closed API. This makes
+  them inherently incompatible to OpenStack running software on
+  commodity hardware. Stability and functionality of OpenStack is
+  directly dependent on your blade server vendor.
+
+* The closed API and internal hardware interfaces make it uncertain if
+  upgrades will work without bringing your cloud environment down. The
+  inherent nature of a blade chassis affects a larger number of
+  components causing greater risk and complexity for such simple
+  maintenance tasks.
+
+* There are no common standards for networking within a blade chassis,
+  allowing each vendor to offer various aggregation or virtual
+  networking options to provide the connectivity required. In some
+  scenarios, failure of virtual networking or backplanes within a
+  chassis can have an adverse effect on your cloud environment,
+  consequently reducing your OpenStack capacity significantly.
+
+* Losing a single blade chassis could take a vast cross section of
+  your application down even if you have architected your application
+  to survive hardware failure, primarily because there is nowhere left
+  for the application to move to.
+
+* In a scenario where a blade chassis is lost due to hardware or power
+  failure, depending on the size and span of the blade unit in
+  question, it is possible that the entire infrastructure will be down
+  until the hardware can be replaced. This means the application that
+  your customers, end users, and stakeholders use will be offline as
+  well.
+
+* In a rack-mounted approach each rack-mounted server runs the same
+  systems and services. However, in the case of hardware failure only
+  the server that failed is impacted. This means that your application
+  can continue to request new infrastructure resources across many
+  hosts resulting in higher uptime and stakeholder satisfaction.
+
+
+Performance
+~~~~~~~~~~~
+
+* Shared storage in OpenStack relies on an IP network, not a Fibre
+  Channel SAN, so the vendor specific implementation of the shared
+  networking becomes saturated. This leaves few options to alleviate
+  this.
+
+* East-to-west network throughput within a chassis is a concern. In a
+  chassis where networks shared a common backplane, once this gets
+  saturated, you are locked in to the chassis vendor upgrade path. You
+  quickly come to realize the shared chassis network savings of a
+  blade estate is not justified compared to traditional scale-out
+  networking approach when it is time to upgrade.
+
+
+Operability
+~~~~~~~~~~~
+
+* Troubleshooting requires extra resources for the internal components
+  from the blade vendor, which mean longer time-to-resolution.
+
+* The extra layer adds the requirements for a specialized team on top
+  of any 24/7-support organization.
+
+* The chassis you purchase forces lock-in to the blade servers that
+  fit that chassis. End of life of blade chassis specification is a
+  concern as it drastically reduces the longevity of the servers
+  running OpenStack.
+
+* OpenStack environments can make significant use of local hard disks.
+  Many blade vendors force compromises in local disk options, where
+  you may be forced to sacrifice compute capacity for disk packs. This
+  alone makes blade servers a poor choice for Block and Object Storage
+  services.
+
+
+Conclusion
+~~~~~~~~~~
+
+The immediate challenge of selecting the right hardware for the
+underlying IaaS is a difficult task; one must consider the
+reliability, performance, and operability. Key take-away factors of
+these three defining points are the down time associated with
+upgrading, networking, and troubleshooting. In conclusion, blades
+offer great opportunities for physical space consolidation. However,
+this consolidation introduces numerous points of failure. These points
+of failure make blades poor choice for running infrastructure
+orchestration services like OpenStack. Reliability, performance, and
+operability are key to any successful infrastructure deployment, and
+it is imperative that the right choice is made for both your
+employees, and your customers.

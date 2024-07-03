@@ -1,0 +1,43 @@
+
+.. _add-activity-contacts-command:
+
+Add an Activity
+===============
+
+Command tracks the activities of the contact (in person meetings, calls, or texts) in the contact's timeline. These activities are also tracked through the Goals Report, in the Command Reports application.
+
+To add an activity to a contact, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#.  In the **Contacts** list, click the name of the contact to which you want to add an activity.
+
+#. At the bottom right of the contact details page, click the blue circle |contacts-interactions-icon|.
+
+   .. |contacts-interactions-icon| image:: ../../../../images/contacts-interactions-icon.png
+      :height: 20
+
+#. Above the blue circle, options will appear. Choose the **Add Activity** option.
+
+#. On the **Add New Activity** window, enter the following information:
+
+   a. Choose an **Interaction Type** using the drop-down:
+      * Meeting
+      * Call
+      * Text
+      * Quick Note
+
+   #. Select the date of the activity. Click in the **Date** field and choose from the calendar widget.
+
+   #. Enter a **Description**, or note about the activity.
+
+   #. Check the **Has Responded** check box, if you connected with the contact. This takes the contact off of the 8x8 SmartPlan, if they were on it, and you can now add them to a more personalized touch plan, based on their needs.
+
+#. Click **Save**.
+
+   You are now able to track all of the notes and activities for your contact, in the contact timeline.

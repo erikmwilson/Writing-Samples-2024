@@ -1,0 +1,23 @@
+
+.. _create-internal-listing-commandmc:
+
+Create Internal Listing
+=======================
+
+When creating an internal listing through Transactions, these listing can only be shared with the KW agents who have the same broker of record as you. A listing agreement is signed but is not in the MLS.
+
+Internal listings are only viewable by KW agents, inside of Command. Internal listings are not syndicated externally to any MLS or outside platform and you have full control of the sharing permissions as part of the creation process.
+
+To create an internal listing, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Listings** tab at the top of the page.
+
+#. On the **Listings** tab, click **Create New Listing**.
+
+#. On the **New Internal Listing** window, click **Next**.
+
+#. Read the legal disclaimer, check the **I understand and agree** checkbox and click **Next**.
+
+#. On the **New Internal Listing** window, enter the information for the listing and click **Create Listing**.

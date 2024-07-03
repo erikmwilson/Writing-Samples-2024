@@ -1,0 +1,45 @@
+=====================
+Database architecture
+=====================
+
+Get answers to common technical questions about database architecture for
+Rackspace Private Cloud Powered By OpenStack (RPCO) |release|.
+
+**Why does RPCO use MariaDB with Galera?**
+
+Rackspace DBAs are familiar with MariaDB with Galera, and RPCO
+support can use this knowledge to better support customers.
+
+**What are the requirements and restrictions for a MariaDB with Galera
+database cluster?**
+
+The cluster must contain at least three database nodes. RPCO
+architecture has three infrastructure nodes. and one database
+container is deployed on each node.
+
+MariaDB with Galera clusters with an odd number of nodes function more
+effectively than clusters with an even number. A cluster with an even
+number of nodes is possible, but we do *not* recommend it.
+
+For more information, see *How is the cluster scaled up?*.
+
+**How does the database cluster behave when a node fails?**
+
+If the failure is not a catastrophic failure of all nodes
+in the cluster, the cluster handles the failure gracefully.
+
+** How does a cluster recover from node failure?**
+
+Node failure recovery is documented in the `RPCO Operations
+Guide <https://developer.rackspace.com/docs/private-cloud/rpc/v12/rpc-ops/galera/sec-ops-galera-recovery/>`_.
+
+**How is the cluster scaled up?**
+
+Scaling the cluster must be done in odd numbers. For example,
+when expanding from three nodes, you can expand to five nodes, but not
+four. Even numbers of nodes can cause a "split brain" condition within
+the cluster.
+
+The cluster is scaled by simply adding new nodes to it.
+Galera initiates data replication from within the existing nodes in
+the cluster, and the expansion should be seamless.

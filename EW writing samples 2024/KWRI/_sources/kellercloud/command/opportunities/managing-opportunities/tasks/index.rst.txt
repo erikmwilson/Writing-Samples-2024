@@ -1,0 +1,20 @@
+
+.. _tasks-index-opportunity-command:
+
+Tasks
+=====
+
+Tasks in Command are used to track what you need to get accomplished for your business. Opportunity Tasks come from Opportunity checklists your Administrator or Rainmaker (if on a team) have set up in your pipelines. Opportunity tasks must have a due date assigned to show up in Tasks and for you to receive a notification when the task is due.
+
+The following sections contain information about tasks within an opportunity.
+
+.. toctree::
+   :maxdepth: 1
+
+   view-opportunity-task-details
+   create-task
+   edit-opportunity-task
+   apply-checklist
+   mark-task-complete
+   archive-opportunity-task
+   bulk-opportunity-task

@@ -1,0 +1,26 @@
+
+.. _access-lead-pool-contacts-command:
+
+Assess the Lead Pool (Teams)
+============================
+
+If none of the agents in the route claim a lead, the lead gos to the unassigned lead pool, which can be found on your Contacts Dashboard. The leads in the unassigned lead pool can then be manually assigned, or claimed.
+
+To access the Lead Pool, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select your Team from the **Select Team** drop-down at the top of the page.
+
+#. Above the **Name** header, click the **Lead Pool** toggle, to turn the lead pool filter on or off.
+
+   .. note::
+
+      You must select your team to see the **Lead Pool** toggle button. If you are on a team, but do not see a team drop-down at the top of the page, contact your MCA to make sure you are officially on the team roster.
+
+   When the **Lead Pool** is on, the Contacts list displays only unassigned leads.

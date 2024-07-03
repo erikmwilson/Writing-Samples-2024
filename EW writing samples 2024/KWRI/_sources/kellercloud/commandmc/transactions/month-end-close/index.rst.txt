@@ -1,0 +1,13 @@
+
+.. _month-end-close-index-commandmc:
+
+Month End Close
+===============
+
+The following sections contain information about the month end close process within Transactions.
+
+.. toctree::
+   :maxdepth: 1
+
+   overview
+   close-the-month

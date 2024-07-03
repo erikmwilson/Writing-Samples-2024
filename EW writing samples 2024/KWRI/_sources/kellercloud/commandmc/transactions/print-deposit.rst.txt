@@ -1,0 +1,20 @@
+
+.. _print-deposit-transactions-commandmc:
+
+Print a Deposit
+===============
+
+You can download a deposit as a text file.
+
+To print a deposit, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Deposit** tab at the top of the page.
+
+#. Click the **Deposit History**.
+
+#. Find the correct deposit and click the ellipses icon |menu-options-icon| (on the far right) for that transaction and select **Print .txt**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20

@@ -1,0 +1,86 @@
+:orphan:
+
+=======
+Preface
+=======
+
+Rackspace Private Cloud Powered By OpenStack (RPCO) uses
+`OpenStack-Ansible <https://github.com/openstack/openstack-ansible>`_
+to quickly install an OpenStack private cloud, configured as recommended
+by Rackspace OpenStack specialists.
+
+
+About Rackspace Private Cloud Powered By Openstack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rackspace Private Cloud Powered By Openstack (RPCO) uses the Ansible IT
+automation framework to create an OpenStack cluster on Ubuntu Linux. OpenStack
+components are installed into Linux Containers (LXC) for isolation,
+scalability, and ease of maintenance.
+
+
+RPCO configuration
+~~~~~~~~~~~~~~~~~~
+
+Rackspace Private Cloud Powered By Openstack (RPCO) installs and
+manages OpenStack |os-release| with the following services:
+
+-  `Compute (nova) <http://docs.openstack.org/developer/nova/>`_
+
+-  `Object Storage
+   (swift) <http://docs.openstack.org/developer/swift/>`_
+
+-  `Block Storage (cinder) <https://wiki.openstack.org/wiki/Cinder>`_
+
+-  `Networking (neutron) <https://wiki.openstack.org/wiki/Neutron>`_
+
+-  `Dashboard
+   (horizon) <http://docs.openstack.org/developer/horizon/>`_
+
+-  `Identity
+   (keystone) <http://docs.openstack.org/developer/keystone/>`_
+
+-  `Image service
+   (glance) <http://docs.openstack.org/developer/glance/>`_
+
+-  `Orchestration (heat) <https://wiki.openstack.org/wiki/Heat>`_
+
+
+RPCO also provides the following infrastructure, monitoring, and
+logging services to support OpenStack:
+
+-  `Galera <http://galeracluster.com/>`_ with
+   `MariaDB <https://mariadb.org/>`_
+
+-  `RabbitMQ <http://www.rabbitmq.com/>`_
+
+-  `Memcached <http://memcached.org/>`_
+
+-  `Rsyslog <http://www.rsyslog.com/>`_
+
+-  `Logstash <https://www.elastic.co/products/logstash>`_
+
+-  `Elasticsearch with Kibana <https://www.elastic.co/>`_
+
+
+Rackspace Private Cloud support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rackspace offers 24x7x365 support for Rackspace Private Cloud Powered
+By Openstack (RPCO). To learn about support for your cloud, or to take
+advantage of our training offerings, contact us at:
+`opencloudinfo@rackspace.com <mailto:opencloudinfo@rackspace.com>`_.
+
+You can also visit the RPCO community forums, which are open to all
+Rackspace Private Cloud users. They are moderated and maintained by
+Rackspace personnel and OpenStack specialists. See
+https://community.rackspace.com/products/f/45.
+
+For more information about RPCO, visit the `Rackspace Private Cloud
+Powered by OpenStack <https://www.rackspace.com/openstack/private>`_
+page and the `Resources
+<https://www.rackspace.com/openstack/private/resources>`_ page on the
+Rackspace website.
+
+For the very latest information about RPCO, see the `Release Notes
+<https://staging.developer.rackspace.com/staging.horse/review/docs/private-cloud/rpc/master/rpc-releasenotes/>`_.

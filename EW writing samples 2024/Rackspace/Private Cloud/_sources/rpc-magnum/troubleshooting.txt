@@ -1,0 +1,123 @@
+Troubleshooting Magnum
+======================
+
+Following are some troubleshooting tips for situations that you might see in
+Magnum.
+
+Cluster creation failure
+------------------------
+
+Status reason: Timed out
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+First determine which resource timed out.
+
+1. Install ``magnumclient`` and find the ``stack_id`` in the ``magnum
+   cluster-show`` output.
+
+   .. code-block:: console
+
+      $ pip install python-magnumclient
+      $ magnum cluster_show <cluster_id> | grep stack_id
+
+2. List the stack resources for the failed stack. Take note of the
+   ``resource_name`` of the failed resource. Find the failed resource's
+   ``physical_resource_id``.  This is the stack ID of a nested Orchestration
+   (heat) stack.
+
+   .. code-block:: console
+
+      $ openstack stack resource list <stack_id>
+
+3. Find the nested stack's ``physical_resource_id``. This is another
+   nested stack ID.
+
+   .. code-block:: console
+
+      $ openstack stack resource list <nested_stack_id>
+
+4. List the resources of the doubly-nested stack.
+
+   .. code-block:: console
+
+      $ openstack stack resource list <doubly_nested_stack_id>
+
+There is usually a wait condition in ``CREATE_FAILED`` status. Next, you
+log into the server to find logs that help determine
+where the failure occurred.
+
+5. Find the ``physical_resource_id`` of the failed resource in the output
+   of step 4 above. Normally either the``kube_masters`` or
+   ``kube_minions`` resource have failed. For example, if the
+   ``kube_masters`` resource failed, get the ID of the ``kube-master``
+   resource in the output of step 4 above. Then find the IP address
+   of the server.
+
+   .. code-block:: console
+
+      $ openstack server show <kube-master-id>
+
+6. Log into the server.
+
+   .. code-block:: console
+
+      $ ssh fedora@<kube-master-ip-address>
+
+7. Check the contents of ``/var/log/cloud-init-output.log`` and the output
+   ``journalctl -xe`` for the topmost errors or user data script
+   failures.
+
+8. If the error looks like a bug, paste it in a `gist
+   <https://gist.github.rackspace.com>`_ and send it to the Magnum
+   product team.
+
+Status reason: Cluster type (vm, fedora.magnum, kubernetes) not supported
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This situation occurs because the ``os_distro`` property of the glance image
+specified in the cluster template does not match the ``os_distro`` property
+expected by the Magnum driver. To resolve, make sure that the image you
+specified in the cluster template matches the Rackspace driver (``os_distro``
+should be ``fedora``). Additionally, make sure that you have installed the
+Rackspace Kubernetes driver on the server.
+
+Status reason: Resource CREATE failed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You might receive the following message:
+
+ .. code-block:: ini
+
+    Status reason: Resource CREATE failed: Forbidden:
+    resources.<resource>: Quota exceeded for instances: Requested 1, but
+    already used X of Y instances (HTTP 403)
+
+This situation occurs when heat is unable to create one or more resources for
+the Magnum cluster due to a quota issue. Make sure that
+sufficient quotas are in place and attempt to recreate the cluster.
+
+Use the following steps to determine what type of resource was
+unable to be created.
+
+1. Install ``magnumclient`` and find the ``stack_id`` in the ``magnum
+   cluster-show`` output.
+
+   .. code-block:: console
+
+      $ pip install python-magnumclient
+      $ magnum cluster_show <cluster_id> | grep stack_id
+
+2. List the stack resources of the failed stack. Look at the ``resource_name``
+   on the right, and look for the one that matches the error message.
+
+   .. code-block:: console
+
+      $ openstack stack resource list <stack_id> --nested 3
+
+
+Additional troubleshooting
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Additional troubleshooting documentation can be found in the
+`troubleshooting guide
+<https://github.com/openstack/magnum/blob/master/doc/source/troubleshooting-guide.rst>`_.

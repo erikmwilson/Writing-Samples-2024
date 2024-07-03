@@ -1,0 +1,31 @@
+
+.. _create-recommended-social-ad-opportunities-command:
+
+Create a Recommended Social Ad
+==============================
+
+You can use the **Marketing** tab to create and track your marketing plan for an Opportunity. Recommended designs and campaigns are displayed based on where your Opportunity is in its lifecycle. You can edit one of these recommendation to use or create a custom design or campaign.
+
+To create a social ad, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name to view the Opportunity details.
+
+#. At the top of the Opportunity page, click the **Marketing** tab. The **Marketing** tab shows the recommended designs and social ads for the Opportunity.
+
+#. In the **Social Ads** section, locate the appropriate recommended social add, click the More Options menu (ellipses |menu-options-icon| icon) and select **Set Up Campaign**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Create Campaign** page, configure the social ad to add your specific information.
+
+#. When complete, click **Save Draft** or **Publish Campaign** in the top-right corner.

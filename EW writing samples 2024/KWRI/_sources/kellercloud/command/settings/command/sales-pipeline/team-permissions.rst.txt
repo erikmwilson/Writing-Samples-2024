@@ -1,0 +1,24 @@
+
+.. _team-permissions-settings-command:
+
+Team Permissions
+================
+
+To set permissions for your teams, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Sales Pipeline**.
+
+#. Click **Team Permissions**.
+
+#. You can choose whether or not the agents on your team can have personal Opportunities that are not in your team's pipeline. This applies only within your Market Center.
+
+   a. To enable all team members, select **Yes**.
+
+   #. To disable all team members, select **No**.
+
+   #. To enable specific team members, click **Select Agents** and select each team member individually.

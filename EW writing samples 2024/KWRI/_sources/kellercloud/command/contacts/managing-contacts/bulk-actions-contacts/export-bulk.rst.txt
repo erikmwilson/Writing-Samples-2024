@@ -1,0 +1,33 @@
+
+.. _export-bulk-command:
+
+Export Multiple Contacts
+========================
+
+To export multiple contacts, complete the following steps:
+
+.. note::
+
+    You can select and export up to 50 contacts at a time.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts you want to export. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Export Contacts**.
+
+#. The following confirmation message appears, confirming that the export was successful: "Your export was successful, please check your notifications".
+
+#. Click the notifications |notification-icon| icon, and within the export notification, click the link to download the export file.
+
+   .. |notification-icon| image:: ../../../../../images/system-notifications-icon.png
+      :height: 20

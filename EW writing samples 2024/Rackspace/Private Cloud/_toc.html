@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="_static/bolditalic.css" type="text/css" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>&lt;no title&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/_toc.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-faq-external/index.html">Technical FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpc-faq-external/preface.html">Preface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/preface.html#about-rackspace-private-cloud-powered-by-openstack">About Rackspace Private Cloud Powered By Openstack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/preface.html#rpco-configuration">RPCO configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/preface.html#rackspace-private-cloud-support">Rackspace Private Cloud support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-faq-external/rpc-technical-faq-content.html">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-faq-architecture.html">Operating system and architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-faq-network.html">Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-faq-database.html">Database architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-faq-clusteredqueue.html">Clustered queue management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-faq-failoverha.html">Failover and high availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-faq-loadbalance.html">Load balancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-faq-logs.html">Log aggregation and management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-faq-external/rpc-supported-software.html">Supported Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-supported-software.html#rackspace-private-cloud-v14">Rackspace Private Cloud v14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-supported-software.html#rackspace-private-cloud-v13">Rackspace Private Cloud v13</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/rpc-supported-software.html#special-notes">Special Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-faq-external/postface.html">Document history and additional information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-faq-external/postface.html#additional-resources">Additional resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-faq-external/postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-ironic/index.html">Bare Metal Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpc-ironic/index.html#deploying-ironic">Deploying Ironic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-ironic/hardware-prereqs.html">Tested Hardware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/hardware-prereqs.html#dell">Dell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/hardware-prereqs.html#hp">HP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-ironic/hardware-prereqs.html#firmware-configuration-requirements">Firmware configuration requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/hardware-prereqs.html#id1">Dell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/hardware-prereqs.html#id2">HP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html">Ironic configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html#configure-the-network">Configure the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html#defining-host-groups">Defining host groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html#setting-up-ironic-endpoints-for-health-checks">Setting up ironic endpoints for health checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html#configuring-neutron-dhcp">Configuring neutron DHCP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html#swift-setup">Swift Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/deploying-rpc-ironic.html#set-up-and-configure-the-neutron-network">Set up and configure the neutron network</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-ironic/post-deploy-rpc-ironic.html">Post-deployment image registration and node enrollment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/post-deploy-rpc-ironic.html#creating-and-registering-images">Creating and registering images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-ironic/post-deploy-rpc-ironic.html#registering-the-nodes">Registering the nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html#openstack-ansible-deployment">OSA Ironic deployment documentation</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html">OSA Ironic configuration documentation</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic/latest/install/configure-compute.html">Configure the Compute service to use the Bare Metal service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-ironic/index.html#using-ironic">Using Ironic</a><ul>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic/latest/admin/index.html">Administration Guide</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic-ui/latest/">Ironic UI</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/python-ironicclient/latest/cli/osc/v1/index.html">Python-openstackclient</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/python-ironicclient/latest/">Python-ironicclient</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://developer.openstack.org/api-ref/baremetal/">API documentation</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic/latest/_modules/ironic/conductor/manager.html">Ironic conductor</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html#setup-a-neutron-network-for-use-by-ironic">Ironic neutron integration</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic/latest/admin/portgroups.html">Port groups support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-ironic/index.html#troubleshooting-ironic">Troubleshooting Ironic</a><ul>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic/latest/admin/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-ironic/index.html#reference-materials">Reference materials</a><ul>
+<li class="toctree-l3"><a class="reference external" href="https://docs.openstack.org/ironic/latest/contributor/architecture.html">Ironic system architecture</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://pages.github.rackspace.com/rpc-internal/docs-rpc/master/rpc-sales-eng-internal/reference_architecture/rpc-o/index.html">RPCO reference architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-appformix-external/index.html">Optimization and Visualization User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpc-appformix-external/index.html">RPCO Optimization and Visualization User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-appformix-external/overview/index.html">Product overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-appformix-external/overview/architecture.html">Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-appformix-external/overview/features/index.html">Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-appformix-external/overview/features/alarms.html">Alarms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-appformix-external/overview/features/ceph-monitor.html">Ceph monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-appformix-external/overview/features/chargeback.html">Chargeback</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-appformix-external/overview/features/charts.html">Charts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-appformix-external/overview/features/heat-map.html">Heat map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-appformix-external/overview/features/metrics.html">Metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-appformix-external/overview/features/reports.html">Reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-appformix-external/using/index.html">How-To</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-appformix-external/using/dynamic-threshold-tasks.html">Configure a dynamic threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-appformix-external/using/chargeback-tasks.html">Configure chargeback costs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-releasenotes/index.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpc-releasenotes/preface.html">Preface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/preface.html#about-rackspace-private-cloud-powered-by-openstack">About Rackspace Private Cloud Powered By Openstack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/preface.html#rpco-configuration">RPCO configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/preface.html#rackspace-private-cloud-support">Rackspace Private Cloud support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-releasenotes/known-issues.html">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-releasenotes/whats-new.html">What&#8217;s new</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#block-storage-service-cinder">Block Storage service (cinder)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#prelude">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#unsupported">Unsupported</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#compute-service-nova">Compute service (nova)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id1">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#critical">Critical</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#upgrade">Upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#deprecations">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id2">Unsupported</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id3">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#dashboard-horizon">Dashboard (horizon)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id4">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#fixes">Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id5">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#identity-service-keystone">Identity service (keystone)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id6">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#security">Security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id7">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id8">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id9">Unsupported</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#image-service-glance">Image service (glance)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id10">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id11">Critical</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id12">Upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id13">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id14">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#networking-service-neutron">Networking service (neutron)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id15">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id16">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id17">Unsupported</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#object-storage-swift">Object Storage (swift)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id18">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id19">Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id20">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-new.html#orchestration-heat">Orchestration (heat)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id21">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-releasenotes/whats-new.html#id22">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-releasenotes/whats-changed.html">What&#8217;s changed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/whats-changed.html#rpco-changelog-by-release">RPCO changelog by release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-releasenotes/postface.html">Document history and additional information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-releasenotes/postface.html#additional-resources">Additional resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-releasenotes/postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common/rpc-common-front.html">Preface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="common/rpc-common-front.html#about-rackspace-private-cloud-powered-by-openstack">About Rackspace Private Cloud Powered By Openstack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common/rpc-common-front.html#rpco-configuration">RPCO configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common/rpc-common-front.html#rackspace-private-cloud-support">Rackspace Private Cloud support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-swift/ch-object-storage-overview.html">Object Storage overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-overview.html#components">Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-overview.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-overview.html#system-requirements">System requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-swift/ch-object-storage-prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-swift/ch-object-storage-install.html">Install Object Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch_object-storage-example-install-arch.html">Example Object Storage installation architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-storage-devices.html">Configure and mount storage devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-network-planning.html">Create networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-configure.html">Configure an Object Storage deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rpc-swift/ch-object-storage-configure.html#update-the-stand-alone-object-storage-configuration-files">Update the stand-alone Object Storage configuration files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpc-swift/ch-object-storage-configure.html#allow-identity-users-to-use-object-storage">Allow Identity users to use Object Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-playbook.html">Run the Object Storage playbooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-verifying-install.html">Verify the installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-swift/ch-object-storage-monitoring.html">Object Storage monitoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-monitoring.html#service-and-response">Service and response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpc-swift/ch-object-storage-monitoring.html#object-storage-monitors">Object Storage monitors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpc-swift/app-object-storage-configfiles.html">Object Storage configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common/rpc-common-end.html">Document history and additional information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="common/rpc-common-end.html#additional-resources">Additional resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

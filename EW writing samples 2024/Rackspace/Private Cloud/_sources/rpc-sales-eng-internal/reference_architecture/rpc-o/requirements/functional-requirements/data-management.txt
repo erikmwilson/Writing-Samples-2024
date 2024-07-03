@@ -1,0 +1,29 @@
+===============
+Data management
+===============
+
+.. list-table:: **Data management**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - DM5.0
+     - The system shall provide data management including:
+   * - DM5.0.1
+     - The system shall provide logging native to OpenStack.
+
+       **Solution:** Logging is a component of every deployment
+       through the ELK stack.
+   * - DM5.0.2
+     - The system shall provide east/west traffic isolation between
+       tenants.
+
+       **Solution:** Layer 2 segmentation is the easiest way to
+       achieve this.
+   * - DM5.0.3
+     - The system shall allow for routing of egress traffic
+
+       **Solution:** The system allows for this by defining
+       appropriate security groups and gateways for traffic to flow
+       through.

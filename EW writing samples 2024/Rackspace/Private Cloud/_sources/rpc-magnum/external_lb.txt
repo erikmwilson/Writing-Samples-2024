@@ -1,0 +1,9 @@
+External load balancers
+=======================
+
+Kubernetes' external load balancer feature is enabled in Magnum clusters and
+automatically provisions and manages a Neutron LBaaS v2 load balancer with a
+floating IP for external access. For information about how to configure a
+service with an external load balancer, see the `Kubernetes external load
+balancer documentation <https://kubernetes.io/docs/tasks/
+access-application-cluster/create-external-load-balancer/>`_.

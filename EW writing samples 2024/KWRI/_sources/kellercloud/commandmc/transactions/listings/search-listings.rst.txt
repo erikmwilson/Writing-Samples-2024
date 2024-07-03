@@ -1,0 +1,15 @@
+
+.. _search-listings-commandmc:
+
+Search Listings
+===============
+
+While you are managing your listings in Transactions, you may need to find a specific listing.
+
+To search listings, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Listings** tab, at the top of the page. A list displays of all your Market Center listings.
+
+#. Enter the search information for the desired listing. After you locate the listing in the list, click the listing to view the listing details.

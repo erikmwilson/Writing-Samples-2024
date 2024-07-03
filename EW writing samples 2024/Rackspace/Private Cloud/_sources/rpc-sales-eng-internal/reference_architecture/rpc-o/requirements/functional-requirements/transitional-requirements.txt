@@ -1,0 +1,18 @@
+=========================
+Transitional requirements
+=========================
+
+Transitional requirements are the steps and parameters needed to
+implement the new product or process smoothly.
+
+.. list-table:: **Transitional requirements**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - TR1.0
+     - The system shall provide transitional requirements including:
+   * - TR1.0.1
+     - The system shall run required base software frameworks to
+       support current application design.

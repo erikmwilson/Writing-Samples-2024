@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Monitoring conntrack metrics &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="RPCO logging" href="../logging/index.html" />
+    <link rel="prev" title="Rackspace monitoring" href="monitoring-external.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Monitoring and Logging Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-design/index.html">Rackspace monitoring design</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RPCO monitoring implementation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="monitoring-external.html">Rackspace monitoring</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Monitoring conntrack metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provisioning-monitoring-for-customers-on-dedicated-hardware">Provisioning monitoring for customers on dedicated hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-deployment-qc">Post-deployment QC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-maas-reporter-tool">Using the MaaS Reporter tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-maas-reporter-on-linux-or-osx">Installing MaaS Reporter on Linux or OSX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-maas-reporter-on-windows">Installing MaaS Reporter on Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-maas-reporter">Using MaaS Reporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/index.html">RPCO logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Monitoring and Logging Guide</a> &raquo;</li>
+        
+          <li><a href="index.html">RPCO monitoring implementation</a> &raquo;</li>
+        
+      <li>Monitoring conntrack metrics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-monitoring-internal/monitoring-impl/monitoring-internal.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="monitoring-conntrack-metrics">
+<h1>Monitoring conntrack metrics<a class="headerlink" href="#monitoring-conntrack-metrics" title="Permalink to this headline">#</a></h1>
+<p>The <code class="docutils literal"><span class="pre">rpc_maas</span></code> playbook automatically configures a monitoring plugin
+for the <code class="docutils literal"><span class="pre">/proc/sys/net/netfiletr/nf_conntrack_count</span></code> and the
+<code class="docutils literal"><span class="pre">/proc/sys/net/netfilter/nf_conntrack_max</span></code> files. The monitor collects
+and reports the maximum connections and total number of connections
+accumulated by Linux servers, sending the results as metrics.</p>
+<p>Connection Metrics trigger an alert if the total connections approach
+90% of maximum allowed connections (specified in
+<code class="docutils literal"><span class="pre">/proc/sys/net/netfilter/nf_conntrack_max</span></code>).</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Load the <code class="docutils literal"><span class="pre">nf_conntrack_ipv4</span></code>, or the <code class="docutils literal"><span class="pre">nf_conntrack_ipv6</span></code> kernel
+modules to enable this plugin to work.</p>
+</div>
+</div></blockquote>
+<p>An example of output metrics:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> get_metrics
+<span class="go">status okay</span>
+<span class="go">metrics nf_conntrack_max uint32 262144</span>
+<span class="go">metrics nf_conntrack_count uint32 345</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="provisioning-monitoring-for-customers-on-dedicated-hardware">
+<h1>Provisioning monitoring for customers on dedicated hardware<a class="headerlink" href="#provisioning-monitoring-for-customers-on-dedicated-hardware" title="Permalink to this headline">#</a></h1>
+<p>For monitoring customers running dedicated hardware, additional
+configuration is required to enable Rackspace Cloud Monitoring Service
+and ticket generation.</p>
+<p>Optionally, the monitoring service can also check the validity of SSL
+certificates that run on load balancers handling OpenStack API access.
+By default, this service raises a warning alarm for certificates due to
+expire in less than 30 days and a critical alarm for certificates due to
+expire in less than 10 days.</p>
+<p>Each dedicated Rackspace device is associated with an account in CORE.
+To manage or configure checks and alerts for dedicated devices, a token
+to access the monitoring API that is associated with the corresponding
+CORE account is required.</p>
+<p>Follow these steps to acquire the prerequisites for dedicated device
+monitoring and for configuring the environment.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As of October 22, 2014, MaaS entities must be created by the ASOPS
+team before the MaaS playbooks are run. The play will fail if the
+entities do exist. Until this issue is resolved, email
+<a class="reference external" href="mailto:asops&#37;&#52;&#48;lists&#46;rackspace&#46;com">asops<span>&#64;</span>lists<span>&#46;</span>rackspace<span>&#46;</span>com</a>
+with a list of the device numbers before proceeding.</p>
+</div>
+</div></blockquote>
+<p>Join the Active Directory group <code class="docutils literal"><span class="pre">RackImpersonation</span></code> by requesting
+membership to this group at
+<a class="reference external" href="http://rackerapp.rackspace.com/">http://rackerapp.rackspace.com/</a>:</p>
+<ol class="arabic">
+<li><p class="first">Click <strong>My Work Dashboard</strong>.</p>
+</li>
+<li><p class="first">Click <strong>Make a Process Request</strong>.</p>
+</li>
+<li><p class="first">Click <strong>Continue</strong>.</p>
+</li>
+<li><p class="first">Select <strong>Group Access Request</strong>.</p>
+</li>
+<li><p class="first">Select <strong>RackImpersonation</strong> group.</p>
+</li>
+<li><p class="first">Complete the Reason for Request field and submit the request.</p>
+</li>
+<li><p class="first">Use the <code class="docutils literal"><span class="pre">maas-token</span></code> script to request a MaaS impersonation token.</p>
+<p>This script, <code class="docutils literal"><span class="pre">maas-token.py</span></code> (formerly referred to as
+<code class="docutils literal"><span class="pre">cloud-token.py</span></code>) is available at the <a class="reference external" href="https://one.rackspace.com/display/PrivateCloud/Support+Scripts">Support wiki</a>.
+Use the device&#8217;s CORE account number and individual SSO.</p>
+</li>
+<li><p class="first">Before running the monitoring playbook, set the following variables in
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_secrets.yml</span></code>.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">maas_auth_method: token</span>
+<span class="na">maas_auth_token:IMPERSONATION_TOKEN</span>
+<span class="na">maas_api_url: https://monitoring.api.rackspacecloud.com/v1.0/hybrid:CORE_ACCOUNT_ID</span>
+<span class="na">maas_fqdn_extension: FQDN_extension</span>
+<span class="na">maas_notificnation_plan: npManaged</span>
+<span class="na">maas_repo_version: V.n.n</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Optionally, set the agent token for each entity. When running the
+monitoring playbook, an agent token is created for each entity, matching
+the agent token label with the entity label.</p>
+</li>
+<li><p class="first">Install raxmon-cli tools on your local workstation:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install rackspace-monitoring-cli
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a new agent token if one has not been created previously, using
+the MaaS impersonation token:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> raxmon-agent-tokens-create --label IMPERSONATION_TOKEN
+</pre></div>
+</div>
+</li>
+<li><p class="first">If an agent token has already been created, obtain the token ID:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> raxmon-agent-tokens-list
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add the agent token ID variable to the <code class="docutils literal"><span class="pre">user_rpco_variables_overrides.yml</span></code>
+file:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">maas_agent_token: TOKEN_ID</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">For each host, configure the agent to use the agent token in
+<code class="docutils literal"><span class="pre">/etc/rackspace-monitoring-agent.cfg</span></code> file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> cat /etc/rackspace-monitoring-agent.cfg
+</pre></div>
+</div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">monitoring_id MONITORING_ID</span>
+<span class="na">monitoring_token TOKEN_ID</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the monitoring playbooks.</p>
+<p>API calls to the device with raxmon can be made. Any alerts generated
+will go into RBA and generate support tickets.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="post-deployment-qc">
+<h1>Post-deployment QC<a class="headerlink" href="#post-deployment-qc" title="Permalink to this headline">#</a></h1>
+<p>After deployment, follow the post-deployment tests documented in the
+&#8220;MaaS-based Tests&#8221; section on the RPCO Support Wiki.</p>
+<p>These tests verify the following information:</p>
+<ul class="simple">
+<li>Local API checks are working</li>
+<li>OpenStack services are in an &#8220;up&#8221; state</li>
+<li>Elasticsearch, Galera, Memcached, OpenManage, and RabbitMQ are
+available</li>
+<li>Queues are synchronized across all nodes</li>
+</ul>
+</div>
+<div class="section" id="using-the-maas-reporter-tool">
+<h1>Using the MaaS Reporter tool<a class="headerlink" href="#using-the-maas-reporter-tool" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This section is for Rackspace only, and does not appear in the
+customer-facing version of the document.</p>
+</div>
+</div></blockquote>
+<p>The MaaS Reporter tool allows Rackspace Support to retrieve metrics for
+all entities that belong to a CORE account number within a given date
+range. By default, metrics are reported by 60-minute data resolution
+points. The tool generates a report in the form of a <code class="docutils literal"><span class="pre">.csv</span></code> file in
+the directory from which the tool is executed. Each <code class="docutils literal"><span class="pre">.csv</span></code> file will
+be named according to the type of check that was performed.</p>
+<p>The MaaS reporter tool is currently hosted at
+<a class="reference external" href="https://github.com/jrcloud/maas-reporter">https://github.com/jrcloud/maas-reporter</a>,
+which is a private repository. Contact Zack Feldstein
+(<a class="reference external" href="mailto:zack&#46;feldstein&#37;&#52;&#48;rackspace&#46;com">zack<span>&#46;</span>feldstein<span>&#64;</span>rackspace<span>&#46;</span>com</a>) for access to this repository.</p>
+<div class="section" id="installing-maas-reporter-on-linux-or-osx">
+<h2>Installing MaaS Reporter on Linux or OSX<a class="headerlink" href="#installing-maas-reporter-on-linux-or-osx" title="Permalink to this headline">#</a></h2>
+<p>To use the tool, you must have the <code class="docutils literal"><span class="pre">RackImpersonate</span></code> role enabled on
+your SSO. You can request this role from RackerApp. You must also have
+Python 2.7 installed.</p>
+<ol class="arabic">
+<li><p class="first">Install
+<a class="reference external" href="http://docs.python-requests.org/en/latest/user/install/">Requests</a>.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install requests
+</pre></div>
+</div>
+</li>
+<li><p class="first">Clone the <code class="docutils literal"><span class="pre">maas-reporter</span></code> repository.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/jrcloud/maas-reporter
+</pre></div>
+</div>
+</li>
+<li><p class="first">Switch to the <code class="docutils literal"><span class="pre">maas-reporter</span></code> directory.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> maas-reporter
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the setup file.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py install
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="installing-maas-reporter-on-windows">
+<h2>Installing MaaS Reporter on Windows<a class="headerlink" href="#installing-maas-reporter-on-windows" title="Permalink to this headline">#</a></h2>
+<p>An executable installer is available on the <code class="docutils literal"><span class="pre">maas-reporter</span></code> github
+repository.</p>
+<ol class="arabic">
+<li><p class="first">In your browser, navigate to
+<a class="reference external" href="https://github.com/jrcloud/maas-reporter">https://github.com/jrcloud/maas-reporter</a>.</p>
+<p>Click <strong>Download Zip</strong>.</p>
+</li>
+<li><p class="first">When the download is complete, extract the <code class="docutils literal"><span class="pre">.zip</span></code> file and launch
+<code class="docutils literal"><span class="pre">setup.exe</span></code>.</p>
+</li>
+<li><p class="first">Follow the installation wizards and leave the defaults selected.</p>
+</li>
+<li><p class="first">Depending on your version of Windows, you may need to restart your
+computer to ensure that the <code class="docutils literal"><span class="pre">mreporter</span></code> tool is on your path.</p>
+</li>
+<li><p class="first">When the installation is complete, you can use <code class="docutils literal"><span class="pre">mreporter</span></code> in a
+command prompt or power shell prompt window.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="using-maas-reporter">
+<h2>Using MaaS Reporter<a class="headerlink" href="#using-maas-reporter" title="Permalink to this headline">#</a></h2>
+<p>The command for MaaS Reporter is <code class="docutils literal"><span class="pre">mreporter</span></code>. This command takes the
+following parameters.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-a</span></code></dt>
+<dd>The CORE account number on which you want to generate the report.</dd>
+<dt><code class="docutils literal"><span class="pre">-s</span></code></dt>
+<dd>The start date for the report, in the format <code class="docutils literal"><span class="pre">MM/DD/YYYY</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-e</span></code></dt>
+<dd>The end date for the report, in the format <code class="docutils literal"><span class="pre">MM/DD/YYYY</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-u</span></code></dt>
+<dd>The SSO username to authorize the command.</dd>
+<dt><code class="docutils literal"><span class="pre">-p</span></code></dt>
+<dd>The SSO password associated with that username. If you do not supply
+a password, you will be prompted to enter one.</dd>
+<dt><code class="docutils literal"><span class="pre">-r</span></code></dt>
+<dd>The data resolution that you want to capture, in minutes. The
+default is 60 minutes. Valid intervals are 5, 20, 60, 240, 1440, and
+full.</dd>
+</dl>
+<p>As an example, a search on an account with the CORE account number
+123456 between the October 1 and October 15 would be performed with the
+following command.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> mreporter -a <span class="m">123456</span> -s <span class="m">10</span>/01/2014 -e <span class="m">10</span>/15/2014 -u username -p password
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../logging/index.html" class="btn btn-neutral float-right" title="RPCO logging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="monitoring-external.html" class="btn btn-neutral float-left" title="Rackspace monitoring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+.. _add-smartplan-bulk-command:
+
+Add Multiple Contacts to a SmartPlan
+====================================
+
+To add multiple contacts to a SmartPlan, complete the following steps:
+
+.. note::
+
+   You can also add individual contacts to a SmartPlan. For more information, see :ref:`add-smartplans-contacts-command`.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts you want to add to a SmartPlan. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Add to SmartPlan**.
+
+#. On the **Add Contacts to SmartPlan** window, find the correct SmartPlan and click **Select**. You can enter the name of the SmartPlan to find it in the list.
+
+#. On the resulting **Add Contacts to SmartPlan** window, determine when the SmartPlan starts for the contacts and click **Confirm**.
+
+#. On the confirmation window, click **Confirm**.

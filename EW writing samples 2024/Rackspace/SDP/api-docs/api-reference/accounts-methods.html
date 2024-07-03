@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Accounts &mdash; Support Delivery Platform documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.5.6',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="Categories" href="categories-methods.html" />
+    <link rel="prev" title="API reference" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Support Delivery Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rackspace Ticketing API v2.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/index.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-api-info/index.html">General API information</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">API reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Accounts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-accounts">Get accounts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="categories-methods.html">Categories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tickets-methods.html">Tickets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ticketing-event-feed/index.html">Ticketing event feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copyright.html">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Rackspace Ticketing Integration for ServiceNow</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Support Delivery Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace Ticketing API v2.0</a> &raquo;</li>
+        
+          <li><a href="index.html">API reference</a> &raquo;</li>
+        
+      <li>Accounts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api-docs/api-reference/accounts-methods.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="accounts">
+<span id="accounts-methods"></span><h1>Accounts<a class="headerlink" href="#accounts" title="Permalink to this headline">#</a></h1>
+<p>Use the accounts API operation to get a list of accounts available to the
+authenticated user.</p>
+<div class="section" id="get-accounts">
+<span id="id1"></span><h2>Get accounts<a class="headerlink" href="#get-accounts" title="Permalink to this headline">#</a></h2>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">accounts</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ticketing</span><span class="o">.</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>During ticket creation, an account ID is required. This endpoint can be used to
+fetch all accounts that the authenticated user has permissions to view or
+create tickets in.</p>
+<div class="section" id="request-parameters">
+<h3>Request parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">#</a></h3>
+<p>This operation does not accept a request body.</p>
+</div>
+<div class="section" id="response-parameters">
+<h3>Response parameters<a class="headerlink" href="#response-parameters" title="Permalink to this headline">#</a></h3>
+<p>The response has the following body parameters in the accounts list.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>String</td>
+<td>The name of the account.</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>String</td>
+<td>The ID of the account. Accounts are comprised of a type prefix and account ID, with the exception of cloud accounts such as Cloud: 12345 or Managed Hosting: dedicated:12345.</td>
+</tr>
+<tr class="row-even"><td>rnc</td>
+<td>String</td>
+<td>The Rackspace Customer Number of the account.</td>
+</tr>
+<tr class="row-odd"><td>serviceLevel</td>
+<td>String</td>
+<td>The service level of the account, if applicable.</td>
+</tr>
+<tr class="row-even"><td>severities</td>
+<td>List</td>
+<td>The severities that the account is allowed to set during ticket creation.</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>Object</td>
+<td>The type of the account.</td>
+</tr>
+<tr class="row-even"><td>type.id</td>
+<td>String</td>
+<td>The common identifier of the account product type.</td>
+</tr>
+<tr class="row-odd"><td>type.name</td>
+<td>String</td>
+<td>The common name of the account product type.</td>
+</tr>
+<tr class="row-even"><td>permission</td>
+<td>List</td>
+<td>The permissions the user has on the account, contains either
+<code class="docutils literal"><span class="pre">admin</span></code> or <code class="docutils literal"><span class="pre">observer</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response-example">
+<h3>Response example<a class="headerlink" href="#response-example" title="Permalink to this headline">#</a></h3>
+<p>The following example shows the JSON response for the request:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;accounts&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Faws Account&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;faws:12345&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rcn&quot;</span><span class="p">:</span> <span class="s2">&quot;RCN-000-000-000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;serviceLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;Aviator&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;severities&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Low&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;High&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Urgent&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;faws&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;permission&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cloud Account&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;12345&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rcn&quot;</span><span class="p">:</span> <span class="s2">&quot;RCN-000-000-000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;serviceLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;severities&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Normal&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cloud&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rackspace Cloud&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;permission&quot;</span><span class="p">:</span> <span class="s2">&quot;observer&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response-codes">
+<h3>Response codes<a class="headerlink" href="#response-codes" title="Permalink to this headline">#</a></h3>
+<p>The following table shows the possible response codes for this operation:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>200</td>
+<td>Success</td>
+<td>The request succeeded.</td>
+</tr>
+<tr class="row-odd"><td>429</td>
+<td>Too Many Requests</td>
+<td>The application has a built-in rate limit of 60 requests per minute.
+If you exceed this limit, you receive a 429 status code response
+until the cool off period has elapsed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="categories-methods.html" class="btn btn-neutral float-right" title="Categories" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="API reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; <a href="../../copyright.html">Copyright</a> 2018, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+
+.. _manage-offers-opportunities-command:
+
+Manage Offers
+=============
+
+Within Opportunities, Keller Williams has created an offer management system. After you enter an offer, you have the ability to edit the information, add negotiations, and ultimately accept or reject the offer. After you have accepted an offer, the data is automatically entered into the Opportunity details and Commissions pages.
+
+.. note::
+
+   For more information about offers, see the following topics:
+
+   * :ref:`create-offer-opportunities-command`
+
+   * :ref:`create-offer-comparison-opportunities-command`
+
+To manage offers, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Offers & Commissions** tab.
+
+#. Click the three dots, to the right of the offer, and choose on of the following options:
+
+   * **Add Negotiation** - Enter the **Negotiation Name**, click **Next**, and then replace any of the information on the offer. After you save the negotiation details, you will see a **Previous Negotiations** link on the offer where you can view details of the previous versions of the offer.
+
+   * **Edit Offer** - Edit the offer details. This option is available for not yet accepted offers and accepted offers with a commission in the Open or Returned status.
+
+   * **Add Analysis** - Edit the agent analysis details.
+
+   * **Send Offer** - Email the offer details to your clients.
+
+   * **Remove Offer** - Deletes this offer without keeping a record of the details. This action can not be undone.
+
+#. You have the option to either **Accept** or **Reject** each offer.
+
+   * **Reject** marks the offer as rejected, but keeps it on the list. You can change the response later, if the situation changes.
+
+   * **Accept** enables the **Manage Commissions** button. Click the **Manage Commissions** button to open the **Manage Commission** window, which auto-fills with the details of the accepted offer. You change the response later, if the situation changes.
+
+      .. note::
+
+         For Listings and Buyers Opportunities, when an offer is accepted, the offer **Closed Date** replaces the **Closed Date** from the Opportunity Details page.
+
+#. After you have accepted or rejected an offer, you can click **Change Response**, which will reset the offer status and allow you to make a new selection.
+
+If an offer falls through after you have accepted the offer and requested a commission, see :ref:`resubmit-commissions-opportunities-command`.

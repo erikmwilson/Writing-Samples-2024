@@ -1,0 +1,19 @@
+
+.. _settings-index-commandmc:
+
+CommandMC Settings
+==================
+
+The following sections contain information about how to configure
+CommandMC settings.
+
+.. toctree::
+   :maxdepth: 1
+
+   compliance/index
+   custom-tags/index
+   docusign-settings/index
+   broker-groups/index
+   team-mgmt/index
+   recruits/index
+   smartplans/index

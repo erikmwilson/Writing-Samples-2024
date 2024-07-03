@@ -1,0 +1,91 @@
+
+.. _help-command-ug:
+
+Get help and information
+========================
+
+To access the **Help & Information** pane:
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-right corner of the Command interface, click the Help
+   |question-mark-icon| icon.
+
+   .. |question-mark-icon| image:: ../../../images/question-mark-icon.png
+      :height: 20
+
+Find training
+^^^^^^^^^^^^^
+
+Before you contact KW Support with your question, check
+Keller Williams University to see if there is a help article or video
+that answers your question.
+
+To access the Keller Williams University topics:
+
+1. From the Help & Information pane, click the **Keller Williams University**
+   link.
+
+   The KW University results are application specific. For example,
+   when you are in Contacts, you see topics that focus on that application.
+   The search results also application specific.
+
+#. If you want to see the full screen version of the article, click the
+   full screen icon, |full-screen-icon|.
+   The topic opens in the KW Help Center, https://answers.kw.com.
+   Searching for topics on answers.kw.com gives you results from the entire
+   knowledge base.
+
+   .. |full-screen-icon| image:: ../../../images/full-screen-icon.png
+      :height: 20
+
+#. To close the **Help & Information** pane, click the **X**, at the
+   top-right of the pane.
+
+Get Support
+^^^^^^^^^^^
+
+To reach out to Support with a bug or issue, use the get in touch with
+Support feature.
+
+1. On the **Help & Information** pane, click **Chat with Support**.
+
+#. On the KW Support window, click **Get in touch**:
+
+   * Type a question in the space provided. The system pulls up help articles
+     and videos to try to answer your question.
+
+   * Click **Live chat** to chat with a KW Support representative.
+     If you do not see this option, it means that Support is chatting with
+     other agents and the option will become available as soon as they are
+     finished.
+
+   * Click **Leave a message** and enter your name, email address, subject,
+     a description of the issue you are having, your MC #, and any attachments
+     (it is recommended to attach a screenshot of the issue you are seeing).
+     Click Send, and the Support team will respond as soon as they are able.
+
+#. To close the KW Support window, click the Minimize icon on the
+   top-right corner of the KW Support window.
+
+Submit an idea
+^^^^^^^^^^^^^^
+
+As you are using Command, if you notice that we missed or could
+improve something, use the Post an Idea feature.
+
+1. On the **Help & Information** pane, click **Post an Idea**.
+
+#. Describe your idea, attach any screenshots or files that would help the
+   product team see what you are referring to (recommended), and click Next.
+   Command automatically knows which screen you are on and attaches this
+   information to your feedback submission.
+
+#. Create an **Idea title**, select a **Category** from the drop-down list, and
+   click **Post idea**.
+
+   The idea is posted on https://ideas.kw.com, where other agents can vote
+   on it. The product team review the site regularly to find ideas to
+   implement in Command.

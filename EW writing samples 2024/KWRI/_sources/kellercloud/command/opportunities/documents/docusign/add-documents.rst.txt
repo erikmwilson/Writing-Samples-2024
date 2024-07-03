@@ -1,0 +1,31 @@
+
+.. _add-document-opportunities-command:
+
+Add Documents to a DocuSign Room
+================================
+
+After you create and connect your DocuSign account in Command, you can create Rooms for an Opportunity. This creates a secure connection that allows you to import forms into Command from DocuSign so that you can submit them for compliance approval.
+
+To add documents to a DocuSign room, complete the following steps:
+
+#. :ref:`access-room-opportunities-command`.
+
+#. In the DocuSign Room, click **Add** and select **DocuSign forms** from the drop-down list.
+
+#. Enter your NRDS ID, select your MLS from the drop-down, and click **Save**.
+
+   You only have to do this once. DocuSign saves this information going forward.
+
+#. On the **Add Docusign Forms** pop-up, select one of the following places from which to pull the document:
+
+   * **DocuSign Forms Library** - Forms libraries are set up by MLS and contain forms to which MLS has given you access.
+   * **DocuSign Forms Group** -  Forms groups are set up by your market center and are organized based on the type of transaction.
+
+
+#. From the **Select Group** drop-down list, select the group you want to pull the documents from.
+
+#. Select the desired documents by checking them one by one or by clicking **Select All**. After the documents have been selected, click **Add**.
+
+#. The documents are then available in the DocuSign Room.
+
+For more information, see :ref:`docusign-rooms-opportunities-command`.

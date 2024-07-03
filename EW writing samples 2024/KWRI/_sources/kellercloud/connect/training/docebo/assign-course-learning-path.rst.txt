@@ -1,0 +1,21 @@
+
+.. _assign-course-learning-path-docebo-connect:
+
+Assign a Course to a Learning Path
+==================================
+
+Learning Paths consist of a list of courses that the user must follow in a specific order. For more information, see `Creating and Managing Learning Paths <https://www.docebo.com/knowledge-base/elearning-how-to-manage-curricula/>`_.
+
+To assign a course to a Learning Path, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+#. Click **Learning Paths** from the **E-Learning section**.
+
+#. Click the **Assign Courses** icon in the learning plan’s row and then click the large **Assign Courses** icon.
+
+#. In the pop-up box, select the courses you want to add to the plan and click **Confirm**.
+
+  You can change the order of the courses by clicking the Move icon (the crossing arrows), then dragging and dropping the courses according to the order that you need.

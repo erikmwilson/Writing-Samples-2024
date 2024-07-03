@@ -1,0 +1,82 @@
+
+
+.. _opportunity-fields-command:
+
+Create Opportunity Fields
+=========================
+
+The following information can be added to an Opportunity within Command.
+
+**Market Center**
+
+If you are in multiple Market Centers, you can choose which Market Center you want to associate with the Opportunity, for compliance reasons.
+
+**Team**
+
+Select the team you want to associate with the Opportunity.
+
+**Opportunity Type**
+
+Choose the Pipeline to add this Opportunity to, based on the type of transaction:
+
+* Listing
+
+* Buyer
+
+* Tenant
+
+* Landlord
+
+**Owner (Teams)**
+
+During the transaction process, the Opportunity might be assigned to different team members, depending on the phase and stage of the Opportunity. No matter who it is assigned to, the Owner of the Opportunity always stays the same.
+
+**Client**
+
+An Opportunity must be associated with a contact. You can either choose an existing contact or enter a new contact.
+
+* For an existing contact, start typing the contact's name, then choose from the results list.
+
+* To enter a new contact, type in the contact name and click the blue **Add New Contact:** link. Enter the **Client Email Address** and **Client Phone**. This contact is created (and added to the Contact applet) when you create the opportunity.
+
+**Co-Seller**
+
+You have the option of associating a second contact with the Opportunity, if the second contact is involved in the transaction.
+
+* To add an existing contact, start typing the contact's name, then choose from the results list.
+
+* To enter a new contact, type in the contact name and click the blue **Add New Contact:** link. Enter the **Client Email Address** and **Client Phone**. This contact is created (and added to the Contact applet) when you create the opportunity.
+
+**Opportunity Name**
+
+By default, the Opportunity Name will be auto-filled with the Opportunity Type and the last name of the primary contact associated with the Opportunity. The Opportunity name is fully editable and searching for this name is an easy way to find an Opportunity, whether you are searching for an active or closed Opportunity.
+
+**Custom Tags**
+
+Everyone organizes their business in a different way. Custom Tags allow you to add searchable terms to the Opportunity, so that you can easily find and manage it later.
+
+Start typing the tag name, and if you have already added it, then select the tag from the results list. If this is a new tag, you will see a **Create <tag>** option. After you create the tag for one contact, you can find it on the Custom Tags results list in the future.
+
+**Estimated Closed Date**
+
+Select the expected close date using the calendar widget.
+
+**Estimated Listing Price**
+
+Enter the estimated listing price. This drives the volume total, until a listing is attached to the Opportunity later in the process.
+
+**Commission Rate**
+
+Enter your commission rate. This drives the probable and expected income numbers, when looking at Sales Pipeline insights.
+
+**Opportunity Phase and Stage**
+
+Opportunities allows you to customize your transaction workflow in the system, to fit your business. Choose the phase and stage where you want this new Opportunity to begin.
+
+**Assignees (Teams)**
+
+Assign members of your team to this Opportunity. Anyone who is assigned has access to view and manage the Opportunity details, and is added to the DocuSign Room for this Opportunity (if you are going to create a DocuSign Room).
+
+.. note::
+
+   Team members must be added to the **Assignees** list or they will not be able to view the Opportunity.

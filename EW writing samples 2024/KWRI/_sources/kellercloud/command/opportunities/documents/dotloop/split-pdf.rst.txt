@@ -1,0 +1,29 @@
+
+.. _split-pdf-dotloop-opportunities-command:
+
+Split a PDF into Multiple Documents in Dotloop
+==============================================
+
+As you are working with clients and other agents to get documents and forms signed, you may be sent several forms in one file, which could be too large to attach in Command. Using Dotloop, you can split this file into separate documents for easier organization and to import them into the Opportunity.
+
+To split a PDF into multiple documents, complete the following steps:
+
+#. Log in to https://dotloop.com with your Dotloop credentials.
+
+#. Select a **Loop**.
+
+#. Under **Documents**, click on the desired PDF and you are directed to the document editor.
+
+#. Hover over the **File** tab and choose **Split Document** from the drop-down.
+
+#. On the **Split Name** pop-up window:
+
+   a. Select the number of documents to split the PDF into.
+
+   #. Select which pages of the PDF each document should contain.
+
+   #. Name each document.
+
+   #. Click **Split document**.
+
+   The split documents are available in the same Loop with the new names you have chosen. You can access the original PDF by clicking **Show Archived**.

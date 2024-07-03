@@ -1,0 +1,35 @@
+Cluster operations
+==================
+
+Create, delete, or scale a cluster
+----------------------------------
+
+For documentation about creating, deleting, and scaling a cluster up
+or down, see the `Magnum User Guide
+<https://docs.openstack.org/developer/magnum/userguide.html#life-cycle>`__.
+
+Create a cluster template
+-------------------------
+
+The cluster template creation parameters are documented in the `Magnum
+User Guide
+<https://docs.openstack.org/developer/magnum/userguide.html#clustertemplate>`__.
+
+The following example shows how to create a cluster template in an RPC
+environment.
+
+**Note: This command should only be used by Rackspace Support.**
+
+ .. code-block:: console
+
+    $ magnum cluster-template-create kubernetes-dev \
+        --image-id 93f12048-81fb-4e7d-90f9-ceb8b10bc0ea  \
+        --external-network public \
+        --coe kubernetes  \
+        --dns-nameserver 8.8.8.8 \
+        --flavor-id m1.medium \
+        --master-flavor-id m1.medium \
+        --docker-volume-size 20 \
+        --master-lb-enabled \
+        --keypair-id rpc_support \
+        --label number_of_masters=3

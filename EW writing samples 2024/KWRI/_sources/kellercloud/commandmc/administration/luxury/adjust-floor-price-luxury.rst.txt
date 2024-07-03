@@ -1,0 +1,47 @@
+
+.. _admin-luxury-floor-price-commandmc:
+
+Adjust the Floor Price Point for KW Luxury Eligibility (Regional Leadership)
+============================================================================
+
+Using CommandMC, Regional leaders (this includes the Regional Operating Principal, Regional Director, Regional MCA, Regional Operations Manager, Regional Staff, Regional Director Assistant, Regional MCA Assistant, and Area Director roles) are able to manage KW Luxury for their region by accepting or adjusting the standard for the Luxury Price Floor for each county. This creates a consistent standard among all Market Centers that operate within that area.
+
+To adjust the price floor for KW Luxury in your region, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles, click your name, at the top-right of the page, and make sure the Regional profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Luxury**.
+
+#. The **Counties & Thresholds** section, click the **Edit** icon |edit-icon| beside the correct county.
+
+   .. |edit-icon| image:: ../../../../images/edit-icon.png
+      :height: 30
+
+   .. note::
+
+      * When considering adjusting the Luxury Price Floor, be sure to do so in conversation with your Market Center.
+
+      * County names on the **Luxury** tab are not displayed if they are spelled incorrectly in WinMORE.
+
+
+#. On the **Update County Luxury Floor** window, enter a new **Luxury Min. Price** and click **Apply**.
+
+   .. note::
+
+      You are only able to increase the luxury price floor for a county.
+
+      Clicking **Apply** allows you to see the impact of the changes but does not change anything permanently in CommandMC.
+
+   The Market Centers are displayed with the number of total units and the number of qualified units within the county. The number of qualifying units that are going to become ineligible as a result of the price floor change display in parenthesis.
+
+#. Click **Save** to update CommandMC.
+
+   KW recommends only changing the Luxury price floor once a year, preferably in January, to keep consistency throughout the next twelve months.
+
+   After the price floor change is saved, the changes take effect immediately.

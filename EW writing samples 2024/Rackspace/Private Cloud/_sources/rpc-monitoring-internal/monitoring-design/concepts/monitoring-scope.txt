@@ -1,0 +1,26 @@
+================
+Monitoring scope
+================
+
+Rackspace monitors the bare metal hardware and OpenStack services
+within your cloud.
+
+Host hardware monitoring
+~~~~~~~~~~~~~~~~~~~~~~~~
+
++-----------------------+
+| Bare Metal Hardware   |
++-----------------------+
+| CPU                   |
++-----------------------+
+| Disk                  |
++-----------------------+
+| Memory utilization    |
++-----------------------+
+
+
+OpenStack monitoring
+~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../../../figures/openstack-monitoring-scope.png
+   :alt: OpenStack monitoring

@@ -1,0 +1,36 @@
+
+.. _add-tags-bulk-command:
+
+Add Tags to Multiple Contacts
+=============================
+
+You can add tags to multiple contacts using the Bulk Action feature. You can add two tag types: System Tags and Custom Tags. System Tags are tags provided by Command (for example, Builder, Expired). Custom Tags are created by you.
+
+To add tags to multiple contacts, complete the following steps:
+
+.. note::
+
+   You create and manage your custom tags in Command Settings. For more information, see :ref:`custom-tags-settings-command`.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts you want to add tags to. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Add Bulk Tags**.
+
+#. The **Add Bulk Tags** window shows the list of the contacts you have selected. Select the tags (System Tags or Custom Tags) to apply to these contacts.
+
+   Start typing the tag name, and if you have already added it, then select the tag from the results list. If this is a new tag, click **Create Custom Tag** to add a new custom tag.
+
+   After you create a custom tag for one contact, it displays on the Custom Tags results list in the future.
+
+#. Click **Submit** when you are finished adding tags.

@@ -1,0 +1,44 @@
+
+.. _connect-dotloop-opportunities-command:
+
+Connect Your Dotloop Account with Command
+=========================================
+
+You can connect your existing Dotloop account with Command. With this connection you can create loops through your Opportunities and import your completed forms from Dotloop into the corresponding Opportunity to submit for compliance approval.
+
+.. note:
+
+   * This connection is for Command users who already have a paid for a Dotloop account.
+
+   * If you have not created your Dotloop account yet, contact Dotloop directly. Dotloop will create your account and ensure that it can be connected to Command.
+
+To connect you Dotloop account to Command, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. Click the MarketPlace icon |marketplace-icon|, at the top of the screen.
+
+   .. |marketplace-icon| image:: ../../../../../images/marketplace-icon.png
+      :height: 20
+
+#. Log in to the KW Marketplace with your KW login credentials.
+
+#. In the KW MarketPlace, click **Transaction Management**, in the **CATEGORIES** section.
+
+#. Choose **Dotloop**.
+
+#. At the top-right of the page, click **Activate**.
+
+#. On the pop-up, click **Go to MyApps**.
+
+#. On the Applications window, click **Dotloop**. This takes you to Command Settings where you can connect your account.
+
+#. On the Connected Apps page, in Command Settings, find Dotloop and click **Connect**.
+
+   For more information, see :ref:`connect-application-settings-command`.
+
+#. On the pop-up window, enter your Dotloop credentials.
+
+#. To authorize Command to access your Dotloop profiles, click **Approve**.
+
+   You can now start creating loops through your Opportunities.

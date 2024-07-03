@@ -1,0 +1,70 @@
+===================
+Perform the upgrade
+===================
+
+#. Navigate to the ``/opt/rpc-openstack/openstack-ansible/`` directory.
+
+#. Run the host setup playbook, which runs a series of sub-playbooks:
+
+   .. code-block:: console
+
+      # ansible-playbook -e @/etc/rpc_deploy/user_variables.yml \
+        playbooks/setup/host-setup.yml
+
+   Confirm satisfactory completion with zero items unreachable or
+   failed:
+
+   .. code-block:: ini
+
+      PLAY RECAP ******************************************************
+      ...
+      deployment_host :  ok=18   changed=11   unreachable=0    failed=0
+
+#. Run the infrastructure setup playbook, which runs a series of
+   sub-playbooks:
+
+   .. code-block:: console
+
+      # ansible-playbook -e @/etc/rpc_deploy/user_variables.yml \
+        playbooks/infrastructure/infrastructure-setup.yml
+
+   Confirm satisfactory completion with zero items unreachable or
+   failed:
+
+   .. code-block:: ini
+
+      PLAY RECAP ******************************************************
+      ...
+      deployment_host  : ok=27   changed=0    unreachable=0    failed=0
+
+#. When upgrading from v9.0.6 to v10.1.2, fix horizon permissions before
+   running the openstack-setup playbook:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack/openstack-ansible/playbooks
+
+      # ansible horizon_container -m shell -a 'chown -R \
+        www-data:www-data \
+        /usr/local/lib/python2.7/dist-packages/openstack_dashboard \
+        /usr/local/lib/python2.7/dist-packages/static/horizon \
+        /usr/local/lib/python2.7/dist-packages/static/'
+
+#. Run the OpenStack setup playbook, which runs a series of sub-playbooks:
+
+   .. code-block:: console
+
+      # ansible-playbook -e @/etc/rpc_deploy/user_variables.yml \
+        playbooks/openstack/openstack-setup.yml
+
+   Confirm satisfactory completion with zero items unreachable or failed:
+
+   .. code-block:: ini
+
+      PLAY RECAP ******************************************************
+      ...
+      deployment_host  : ok=27   changed=0    unreachable=0    failed=0
+
+#. (Optional) If adding Object Storage to the environment, see the
+   `Object Storage Deployment Guide
+   <https://developer.rackspace.com/docs/private-cloud/rpc/v10rpc-v10-swift/>`_.

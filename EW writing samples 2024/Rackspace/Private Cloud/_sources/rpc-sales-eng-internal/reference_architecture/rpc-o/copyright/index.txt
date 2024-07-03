@@ -1,0 +1,45 @@
+=========
+Copyright
+=========
+
+This document contains proprietary information, which is for exclusive
+use of Rackspace and is not to be shared with personnel other than
+Rackspace. This document, and any portion thereof, may not be copied,
+reproduced, photocopied, stored electronically on a retrieval system, or
+transmitted without the express written consent of the owner.
+
+Rackspace does not warrant this document to be free of errors or
+omissions. Rackspace reserves the right to make corrections, updates,
+revisions, or changes to the information contained herein. Rackspace
+does not warrant the material described herein to be free of patent
+infringement.
+
+Unless provided otherwise in writing BY RACKSPACE, the information and
+programs described herein are provided “as is” without warranty of any
+kind, including but not limited to the implied warranties of
+merchantability and fitness for a particular purpose. In no event is
+RACKSPACE, its officers, directors, or employees or affiliates of
+RACKSPACE, their respective officers, directors, or employees liable
+to any entity for any special, collateral, incidental, or consequential
+damages, including without any limitation, for any lost profits or lost
+savings, related or arising in any way from or out of the use or
+inability to use the information or programs set forth herein, even if
+it has been notified of the possibility of such damage by the purchaser
+or any third party.
+
+
+Distribution
+~~~~~~~~~~~~
+
+Do not **forward** or **copy** without written permission.
+
+Copies of this document are restricted to the following names:
+
+   - Rackspace, Inc.
+
+
+Confidentiality
+~~~~~~~~~~~~~~~
+
+All information supplied to the customer for the purpose of this project is
+to be considered Rackspace confidential.

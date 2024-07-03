@@ -1,0 +1,31 @@
+.. _integration-hub-index:
+
+===================================================
+Rackspace |product name| Integration for ServiceNow
+===================================================
+
+Rackspace |product name| integration for ServiceNow (Rackspace Integration
+Hub) enables you to perform the following tasks:
+
+* Synchronize an incident created in your ServiceNow instance with a
+  ticket in the Rackspace ticketing system.
+
+* Synchronize a ticket created in the Rackspace ticketing system with
+  an incident in your ServiceNow instance.
+
+* Synchronize an incident or ticket created in either system with
+  the opposite system.
+
+.. note::
+
+   At this time, only the incident process can be integrated and
+   synchronized between your ServiceNow instance and Rackspace.
+
+The Rackspace Integration Hub was developed on ServiceNow version
+Kingston Patch 4.
+
+.. toctree::
+   :maxdepth: 2
+
+   integration-hub/index.rst
+   ../copyright.rst

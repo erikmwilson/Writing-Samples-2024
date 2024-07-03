@@ -1,0 +1,16 @@
+
+.. _opportunity-archive-command:
+
+Opportunity Archive
+===================
+
+To restore an archived Opportunity, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Opportunity Archive**.
+
+#. Click **Restore** on an Opportunity to move it back into your Sales Pipeline.

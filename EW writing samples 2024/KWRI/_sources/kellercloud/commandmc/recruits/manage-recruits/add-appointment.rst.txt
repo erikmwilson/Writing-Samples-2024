@@ -1,0 +1,33 @@
+
+.. _add-appointment-recruits-commandmc:
+
+Add an Appointment
+==================
+
+To add an apppointment to a recruit, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click one of the following tabs at the top of the page:
+
+   * Click the **Recruit Management** tab to display a list of all your Market Center recruits.
+
+   * Click the **Recruiting Pipeline** tab to display all recruits that are in the Pipeline. Recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Search for the correct recruit. For more information, see :ref:`search-recruits-commandmc`.
+
+#. Click the recruit name to view the recruit details.
+
+#. On the **Recruit Details** window, click the **Appointments** tab.
+
+#. On the **Add New Appointment** window, enter the appointment details. Select who the appointment is **Conducted by**, the **Apointment Type**, **Date Conducted**, and any **Notes**.
+
+#. You can add **Attachments** to the appointment by drag and dropping them or clicking **Browse**. If the appointment has an attachment, click **Attach Files** to upload additional files. Click the download icon to download an existing attachment or click the delete icon to remove it from the appointment.
+
+   .. note::
+
+      When deleting an attachment, you must click **Save** after you click the delete icon.
+
+#. Click **Save**.
+
+  You can now access this, and other appointments that you add, on both the recruit's timeline, and on the recruit details **Appointments** tab.

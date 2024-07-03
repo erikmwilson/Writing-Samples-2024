@@ -1,0 +1,30 @@
+
+.. _team-management-command:
+
+Team Management
+===============
+
+Set roles and access levels for your team members by completing the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Team Management**.
+
+#. Select the correct team from the **Select team** drop-down box.
+
+   Each team member is listed along with their Legacy role.
+
+#. To change a team member's role, select a role in the **Command Role** column.
+
+#. To change a team member's access level, select a level from the *Access Level** column.
+
+#. To view available roles and their access levels, click on **Roles**.
+
+   To add a new role, click **Create Role**. Enter the role name, select a default access level, and click **Save**.
+
+#. To view the history log of team changes, click **History**.
+
+#. To view access level definitions, click **Access Levels**.

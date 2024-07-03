@@ -1,0 +1,14 @@
+.. _index-overview-ug:
+
+================
+Product overview
+================
+
+This section describes the architecture and features
+of |service appformix|.
+
+.. toctree::
+   :maxdepth: 2
+
+   architecture.rst
+   features/index.rst

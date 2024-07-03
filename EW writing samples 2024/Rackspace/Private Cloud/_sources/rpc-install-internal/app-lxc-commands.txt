@@ -1,0 +1,39 @@
+.. _appendix-c:
+
+========================
+Linux container commands
+========================
+
+Useful commands:
+
+- List containers and summary information such as operational state
+  and network configuration:
+
+  .. code-block:: console
+
+     # lxc-ls --fancy
+
+- Show container details including operational state, resource
+  utilization, and virtual Ethernet (veth) pairs:
+
+  .. code-block:: console
+
+     # lxc-info --name container_name
+
+- Start a container:
+
+  .. code-block:: console
+
+     # lxc-start --name container_name
+
+- Attach to a container:
+
+  .. code-block:: console
+
+     # lxc-attach --name container_name
+
+- Stop a container:
+
+  .. code-block:: console
+
+     # lxc-stop --name container_name

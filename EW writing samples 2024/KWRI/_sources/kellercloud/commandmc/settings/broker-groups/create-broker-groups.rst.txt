@@ -1,0 +1,53 @@
+
+.. _create-broker-groups-settings-commandmc:
+
+Create Broker Groups and Assign Compliance Checklists
+=====================================================
+
+As agents are creating Opportunities and managing their transactions in Command, they  must upload documents for compliance approval. Before they can do this, the Market Center must create a checklist of all of the documents that are needed.
+
+* For more information, see :ref:`create-compliance-checklists-settings-commandmc`.
+
+* For more information, see :ref:`edit-compliance-checklists-settings-commandmc`.
+
+You can create Broker Groups for your Market Center, assign Compliance Coordinators and Assistant MCAs to each group, and assign each of your checklists to the Broker Groups. Using Broker Groups, you can restrict access for Compliance Coordinators/Assistant MCAs to be only able to review Opportunities that are using those specific checklist types.
+
+* If your Market Center has multiple brokers, you can use Broker Groups to limit the transactions that each Compliance Coordinator/Assistant MCA has access to.
+
+* If you have Business Centers that are far from the Market Center, you can create compliance checklists that are specific to the Business Center, and assign local Compliance Coordinators/Assistant MCAs to those checklists.
+
+.. note::
+
+   * MCAs have automatic access to all Broker Groups. Assistant MCAs must be added to the broker groups they need access to.
+
+   * After you assign checklist types to a Broker Group, it immediately restricts access to review Opportunities using those checklist types.
+
+   * If you do not assign Broker Groups, every Compliance Coordinator/Assistant MCA is able to review the compliance for Opportunities of all checklist types.
+
+To create Broker Groups and assign Compliance Checklists, complete the
+following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **Broker Groups**.
+
+#. Select your **Market Center** from the drop-down.
+
+#. Click the **Broker Groups** tab and click **Create Group**.
+
+#. Complete the **Create Broker Group** form:
+
+   * Enter the **Group Name**.
+
+   * Use the **Add Group Members** drop-down to add group members (Compliance Coordinators and Assistant MCAs) to this Broker Group. These members are the only people in the Market Center who have access to review Opportunities using the checklist types selected for this Broker Group.
+
+   * **Add Checklist Types** that you want to assign to this Broker Groups.
+
+#. Repeat the above steps to create all of the Broker Groups that your Market Center needs based on the number of brokers and Business Centers that need separate compliance review.
+
+#. To edit existing Broker Groups, from the **Broker Groups** tab, click the **three dots** to the right of the group you want to edit, and select **Edit**.
+
+#. On the **Edit Groups** pop-up, make any changes and click **Save changes**.

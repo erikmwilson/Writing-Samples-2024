@@ -1,0 +1,15 @@
+
+.. _reviews-opportunities-commandmc:
+
+Compliance and Commission Reviews
+=================================
+
+The following pages contain information about managing compliance and commission reviews.
+
+.. toctree::
+   :maxdepth: 1
+
+   search-compliance-requests-opportunities
+   compliance-folder-messaging-opportunities
+   add-tags-compliance-requests-opportunities
+   review-compliance-requests-opportunities

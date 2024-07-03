@@ -1,0 +1,274 @@
+==============================
+ Monitoring conntrack metrics
+==============================
+
+The ``rpc_maas`` playbook automatically configures a monitoring plugin
+for the ``/proc/sys/net/netfiletr/nf_conntrack_count`` and the
+``/proc/sys/net/netfilter/nf_conntrack_max`` files. The monitor collects
+and reports the maximum connections and total number of connections
+accumulated by Linux servers, sending the results as metrics.
+
+Connection Metrics trigger an alert if the total connections approach
+90% of maximum allowed connections (specified in
+``/proc/sys/net/netfilter/nf_conntrack_max``).
+
+ .. note::
+
+    Load the ``nf_conntrack_ipv4``, or the ``nf_conntrack_ipv6`` kernel
+    modules to enable this plugin to work.
+
+An example of output metrics:
+
+ .. code-block:: console
+
+    # get_metrics
+    status okay
+    metrics nf_conntrack_max uint32 262144
+    metrics nf_conntrack_count uint32 345
+
+
+
+=============================================================
+ Provisioning monitoring for customers on dedicated hardware
+=============================================================
+
+For monitoring customers running dedicated hardware, additional
+configuration is required to enable Rackspace Cloud Monitoring Service
+and ticket generation.
+
+Optionally, the monitoring service can also check the validity of SSL
+certificates that run on load balancers handling OpenStack API access.
+By default, this service raises a warning alarm for certificates due to
+expire in less than 30 days and a critical alarm for certificates due to
+expire in less than 10 days.
+
+Each dedicated Rackspace device is associated with an account in CORE.
+To manage or configure checks and alerts for dedicated devices, a token
+to access the monitoring API that is associated with the corresponding
+CORE account is required.
+
+Follow these steps to acquire the prerequisites for dedicated device
+monitoring and for configuring the environment.
+
+ .. note::
+
+    As of October 22, 2014, MaaS entities must be created by the ASOPS
+    team before the MaaS playbooks are run. The play will fail if the
+    entities do exist. Until this issue is resolved, email
+    `asops@lists.rackspace.com <mailto:asops@lists.rackspace.com>`__
+    with a list of the device numbers before proceeding.
+
+Join the Active Directory group ``RackImpersonation`` by requesting
+membership to this group at
+`http://rackerapp.rackspace.com/ <http://rackerapp.rackspace.com/>`__:
+
+#. Click **My Work Dashboard**.
+
+#. Click **Make a Process Request**.
+
+#. Click **Continue**.
+
+#. Select **Group Access Request**.
+
+#. Select **RackImpersonation** group.
+
+#. Complete the Reason for Request field and submit the request.
+
+#. Use the ``maas-token`` script to request a MaaS impersonation token.
+
+   This script, ``maas-token.py`` (formerly referred to as
+   ``cloud-token.py``) is available at the `Support wiki
+   <https://one.rackspace.com/display/PrivateCloud/Support+Scripts>`__.
+   Use the device's CORE account number and individual SSO.
+
+#. Before running the monitoring playbook, set the following variables in
+   ``/etc/openstack_deploy/user_rpco_secrets.yml``.
+
+   .. code-block:: ini
+
+      maas_auth_method: token
+      maas_auth_token:IMPERSONATION_TOKEN
+      maas_api_url: https://monitoring.api.rackspacecloud.com/v1.0/hybrid:CORE_ACCOUNT_ID
+      maas_fqdn_extension: FQDN_extension
+      maas_notificnation_plan: npManaged
+      maas_repo_version: V.n.n
+
+#. Optionally, set the agent token for each entity. When running the
+   monitoring playbook, an agent token is created for each entity, matching
+   the agent token label with the entity label.
+
+#. Install raxmon-cli tools on your local workstation:
+
+   .. code-block:: console
+
+      $ pip install rackspace-monitoring-cli
+
+#. Create a new agent token if one has not been created previously, using
+   the MaaS impersonation token:
+
+   .. code-block:: console
+
+      $ raxmon-agent-tokens-create --label IMPERSONATION_TOKEN
+
+#. If an agent token has already been created, obtain the token ID:
+
+   .. code-block:: console
+
+      $ raxmon-agent-tokens-list
+
+#. Add the agent token ID variable to the ``user_rpco_variables_overrides.yml``
+   file:
+
+   .. code-block:: ini
+
+      maas_agent_token: TOKEN_ID
+
+#. For each host, configure the agent to use the agent token in
+   ``/etc/rackspace-monitoring-agent.cfg`` file:
+
+   .. code-block:: console
+
+      # cat /etc/rackspace-monitoring-agent.cfg
+
+   .. code-block:: ini
+
+      monitoring_id MONITORING_ID
+      monitoring_token TOKEN_ID
+
+#. Run the monitoring playbooks.
+
+   API calls to the device with raxmon can be made. Any alerts generated
+   will go into RBA and generate support tickets.
+
+
+====================
+ Post-deployment QC
+====================
+
+After deployment, follow the post-deployment tests documented in the
+"MaaS-based Tests" section on the RPCO Support Wiki.
+
+These tests verify the following information:
+
+-  Local API checks are working
+
+-  OpenStack services are in an "up" state
+
+-  Elasticsearch, Galera, Memcached, OpenManage, and RabbitMQ are
+   available
+
+-  Queues are synchronized across all nodes
+
+
+==============================
+ Using the MaaS Reporter tool
+==============================
+
+ .. note::
+
+    This section is for Rackspace only, and does not appear in the
+    customer-facing version of the document.
+
+The MaaS Reporter tool allows Rackspace Support to retrieve metrics for
+all entities that belong to a CORE account number within a given date
+range. By default, metrics are reported by 60-minute data resolution
+points. The tool generates a report in the form of a ``.csv`` file in
+the directory from which the tool is executed. Each ``.csv`` file will
+be named according to the type of check that was performed.
+
+The MaaS reporter tool is currently hosted at
+`https://github.com/jrcloud/maas-reporter <https://github.com/jrcloud/maas-reporter>`__,
+which is a private repository. Contact Zack Feldstein
+(zack.feldstein@rackspace.com) for access to this repository.
+
+
+Installing MaaS Reporter on Linux or OSX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use the tool, you must have the ``RackImpersonate`` role enabled on
+your SSO. You can request this role from RackerApp. You must also have
+Python 2.7 installed.
+
+#. Install
+   `Requests <http://docs.python-requests.org/en/latest/user/install/>`__.
+
+   .. code-block:: console
+
+      $ pip install requests
+
+#. Clone the ``maas-reporter`` repository.
+
+   .. code-block:: console
+
+      $ git clone https://github.com/jrcloud/maas-reporter
+
+#. Switch to the ``maas-reporter`` directory.
+
+   .. code-block:: console
+
+      $ cd maas-reporter
+
+#. Run the setup file.
+
+   .. code-block:: console
+
+      $ python setup.py install
+
+
+Installing MaaS Reporter on Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An executable installer is available on the ``maas-reporter`` github
+repository.
+
+#. In your browser, navigate to
+   `https://github.com/jrcloud/maas-reporter <https://github.com/jrcloud/maas-reporter>`__.
+
+   Click **Download Zip**.
+
+#. When the download is complete, extract the ``.zip`` file and launch
+   ``setup.exe``.
+
+#. Follow the installation wizards and leave the defaults selected.
+
+#. Depending on your version of Windows, you may need to restart your
+   computer to ensure that the ``mreporter`` tool is on your path.
+
+#. When the installation is complete, you can use ``mreporter`` in a
+   command prompt or power shell prompt window.
+
+
+Using MaaS Reporter
+~~~~~~~~~~~~~~~~~~~
+
+The command for MaaS Reporter is ``mreporter``. This command takes the
+following parameters.
+
+``-a``
+    The CORE account number on which you want to generate the report.
+
+``-s``
+    The start date for the report, in the format ``MM/DD/YYYY``.
+
+``-e``
+    The end date for the report, in the format ``MM/DD/YYYY``.
+
+``-u``
+    The SSO username to authorize the command.
+
+``-p``
+    The SSO password associated with that username. If you do not supply
+    a password, you will be prompted to enter one.
+
+``-r``
+    The data resolution that you want to capture, in minutes. The
+    default is 60 minutes. Valid intervals are 5, 20, 60, 240, 1440, and
+    full.
+
+As an example, a search on an account with the CORE account number
+123456 between the October 1 and October 15 would be performed with the
+following command.
+
+ .. code-block:: console
+
+    $ mreporter -a 123456 -s 10/01/2014 -e 10/15/2014 -u username -p password

@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>What an engagement with Rackspace looks like &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Solution overview" href="../../solution-overview/index.html" />
+    <link rel="prev" title="A comprehensive offering" href="../comprehensive-offering.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../../../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../index.html">Rackspace Private Cloud Sales Engineering Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../preface.html">Preface</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html">Rackspace Private Cloud Reference Architecture</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html">Rackspace Private Cloud Powered by OpenStack (RPCO)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../copyright/index.html">Copyright</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../executive-summary/index.html">Executive summary</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">Rackspace advantages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../solution-overview/index.html">Solution overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../technology-overview/index.html">Technology overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../requirements/index.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../environment-sizing/index.html">Environment sizing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../architectural-decisions/index.html">Architectural decisions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cloud-design/index.html">Cloud design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../physical-design/index.html">Physical design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../network-design/index.html">Network design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../rpc-monitoring-internal/monitoring-design/index.html">Rackspace monitoring design</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../blade_servers/blade-servers-unsuitable-openstack.html">Why Blade Servers are Unsuitable for OpenStack Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Rackspace Private Cloud Sales Engineering Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Rackspace Private Cloud Reference Architecture</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Rackspace Private Cloud Powered by OpenStack (RPCO)</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace advantages</a> &raquo;</li>
+        
+      <li>What an engagement with Rackspace looks like</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/rpc-sales-eng-internal/reference_architecture/rpc-o/rackspace/rackspace-engagement/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="what-an-engagement-with-rackspace-looks-like">
+<h1>What an engagement with Rackspace looks like<a class="headerlink" href="#what-an-engagement-with-rackspace-looks-like" title="Permalink to this headline">#</a></h1>
+<p>This design is a very generic general solution that takes the very high
+level basic requirements for IaaS. For many, if not most companies, they
+would need a cloud tailored to their specific applications and
+requirements. For that we would go through a process similar to the one below.</p>
+<div class="section" id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h2>
+<p>The RPC Delivery Methodology is a core component of the Rackspace
+solution design.</p>
+<img alt="RPC delivery methodology" src="../../../../../_images/methodology.png" />
+</div>
+<div class="section" id="gathering-requirements">
+<h2>Gathering requirements<a class="headerlink" href="#gathering-requirements" title="Permalink to this headline">#</a></h2>
+<p>Within and throughout the RPC delivery methodology we use the “Nine
+Block” Requirement Gathering Framework as a core component of the
+Rackspace solution design methodology. Within each customer engagement,
+the use of this framework may differ. Keep in mind that each
+“Block” may not be used to design a customer solution due to their
+preferences.</p>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text"><strong>Nine Block Requirement Gathering Framework</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><em>Service quality management</em></th>
+<th class="head"><em>Capacity management</em></th>
+<th class="head"><em>Standard operating environment</em></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>Service quality management</em> is the appropriate level of
+performance, availability, and functionality of a solution that
+meets the customer&#8217;s business and technical needs of an
+organization and maintains agreed upon service levels.</td>
+<td><em>Capacity management</em> is the processes, policies, and
+technologies, which create and maintain suitable resource and
+service capacity to meet the demands of the customer&#8217;s business
+in a cost effective manner.</td>
+<td>The <em>Standard operating environment</em> is the standard
+architectures, applications, operating environments, test
+frameworks, methodologies, procedures, and terminologies used
+to enhance consistency and manageability within an
+organization.</td>
+</tr>
+<tr class="row-odd"><td><strong>Availability management</strong></td>
+<td><strong>Data management</strong></td>
+<td><strong>System management</strong></td>
+</tr>
+<tr class="row-even"><td><em>Availability management</em> is the set of the processes,
+policies, and technologies that determine the availability of
+IT services as they relate to the business needs of the
+customer.</td>
+<td><em>Data management</em> is the processes, policies, and technologies
+that control, protect, deliver, and enhance the value of data
+and information assets critical to the business needs of the
+customer.</td>
+<td><em>System management</em> is the people, processes, policies, and
+technologies used to manage and maintain the business IT
+environment.</td>
+</tr>
+<tr class="row-odd"><td><strong>Continuity management</strong></td>
+<td><strong>Information security management</strong></td>
+<td><strong>Operational readiness</strong></td>
+</tr>
+<tr class="row-even"><td><em>Continuity management</em> is the set of processes, policies, and
+technologies used to enable recovery or continuation of
+customer business processes after situations that impact
+business-critical IT services.</td>
+<td><em>Information security management</em> is the control of access to
+the customer&#8217;s information and information systems and the
+protection of these systems from unauthorized access, use, and
+disruption.</td>
+<td><em>Operational readiness</em> is a measure of an organization&#8217;s
+existing knowledge and processes as they relate to platform and
+application knowledge, support and escalation processes, and
+over all familiarity with the IT service.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../solution-overview/index.html" class="btn btn-neutral float-right" title="Solution overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../comprehensive-offering.html" class="btn btn-neutral float-left" title="A comprehensive offering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

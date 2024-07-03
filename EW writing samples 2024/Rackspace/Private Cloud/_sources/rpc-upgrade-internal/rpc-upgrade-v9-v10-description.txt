@@ -1,0 +1,94 @@
+===========
+Description
+===========
+
+Features
+~~~~~~~~
+
+The following features can be enabled. In some cases, these features
+could already exist on deployments using later releases of version 9.
+
+-  Add: Block storage availability zones
+
+   To enable this feature, see the `OpenStack-Ansible cinder role documentation
+   <http://docs.openstack.org/developer/openstack-ansible-os_cinder/configure-cinder.html#availability-zones>`_.
+
+-  Add: Object Storage (swift)
+
+   To enable this feature, see the `Object Storage Deployment Guide
+   <https://developer.rackspace.com/docs/private-cloud/rpc/v11rpc-swift/>`_.
+
+Configuration Options
+~~~~~~~~~~~~~~~~~~~~~
+
+The following configuration options require attention. In some cases,
+these options could already exist on deployments using later releases of
+RPCO version 9.
+
+-  Add: Dashboard secret key (required)
+
+   In the ``user_variables.yml`` file, add the ``horizon_secret_key``
+   option with a suitable value. The `password generation script
+   <http://docs.openstack.org/developer/openstack-ansible/install-guide/configure-creds.html>`_
+   can add a random value.
+
+-  Add: Galera wait timeout (optional)
+
+   In the ``user_variables.yml``, file optionally add the
+   ``galera_wait_timeout`` with a suitable value in seconds.
+
+-  Remove: MaaS repository version
+
+   In the ``user_variables.yml`` file, remove the ``maas_repo_version``
+   option.
+
+-  Remove: the following MaaS checks. These should be removed before
+   running the MaaS playbooks; when the playbooks are run, the checks
+   and alarms will be recreated.
+
+   -  ``swift_account_replication_check``
+
+   -  ``swift_async_check``
+
+   -  ``swift_md5_check``
+
+   -  ``swift_object_replication_check``
+
+   -  ``swift_quarantine_check``
+
+   -  ``swift_object_server_check``
+
+   -  ``swift_container_server_check``
+
+   -  ``swift_account_server_check``
+
+   -  ``swift_proxy_server_check``
+
+   -  ``rabbitmq_status``
+
+   -  ``galera_check``
+
+-  Change: RabbitMQ and Galera alarm names
+
+   Using the Cloud Control Panel or API, delete all alarms (not checks)
+   on each node associated with the RabbitMQ and Galera plugins. For
+   example:
+
+   -  ``rabbitmq_disk_free_alarm_status--nodename``
+
+   -  ``rabbitmq_mem_alarm_status--nodename``
+
+   -  ``wsrep_local_state--nodename``
+
+   -  ``wsrep_cluster_size--nodename``
+
+   ..  note::
+
+       The upgrade process generates new alarms.
+
+Issues
+~~~~~~
+
+For the latest information about RPCO known issues, refer to `Known issues
+<https://developer.rackspace.com/docs/private-cloud/rpc/v10rpc-v10-releasenotes-external/known-issues/>`_
+in the RPCO Release Notes.

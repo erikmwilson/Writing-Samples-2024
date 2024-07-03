@@ -1,0 +1,27 @@
+
+.. _tasks-index-commandmc:
+
+Tasks
+=====
+
+Tasks in CommandMC are used to track what you need to get accomplished for your business. These tasks come from SmartPlans, Recruits checklists, or manually entered tasks.
+
+The following sections contain information about the
+Tasks application.
+
+.. toctree::
+   :maxdepth: 1
+
+   view-checklist-details
+   view-other-details
+   filter-tasks
+   search-tasks
+   create-custom-task
+   edit-custom-task
+   mark-task-complete
+   mark-task-incomplete
+   add-note
+   reassign-task
+   reschedule-task
+   archive-custom-task
+   delete-task

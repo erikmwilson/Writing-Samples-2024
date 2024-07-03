@@ -1,0 +1,26 @@
+
+.. _edit-deductions-commandmc:
+
+Edit a Deduction
+================
+
+To edit a deduction, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Deductions**.
+
+#. Search for the correct deduction. For more information, see :ref:`search-deductions-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that deduction and select **Edit**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. Update the deduction information and click **Save Changes**.

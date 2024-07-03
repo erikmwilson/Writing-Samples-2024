@@ -1,0 +1,41 @@
+
+.. _create-checklists-recruits-commandmc:
+
+Create or Edit Recruit Checklist Templates
+==========================================
+
+The Recruiting Pipeline can methodically track and manage your recruiting efforts. An important part of this is tracking all of the tasks you have to complete at each stage of the recruiting process. You can create a checklist template for each stage of the Recruiting Pipeline, which are applied to every recruit that you add.
+
+While using the system, you may need to make adjustments to your Recruiting Pipeline checklist templates.
+
+.. note::
+
+   Changes to checklist templates do not affect existing recruit records. Only new recruits added after the checklist templates have been changed use the new template.
+
+To create or edit checklist templates, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab.
+
+#. Click the phase that contains the stage to which you want to add a checklist. For example, **Appointment**.
+
+#. Click **Edit Stages**, at the top-right of the page.
+
+#. On the **Edit Stages** window, click the edit icon, |edit-icon| for the stage you want to modify.
+
+   .. |edit-icon| image:: ../../../../images/edit-icon.png
+      :height: 25
+
+#. Edit any checklist items.
+
+#. Click **Add checklist item**, to add a checklist item.
+
+#. To delete a checklist item, click the delete icon |remove-circle-icon| to the right of the item.
+
+   .. |remove-circle-icon| image:: ../../../../images/remove-circle-icon.png
+      :height: 25
+
+   Drag and drop a checklist item to move it to another position in the list.
+
+8. Click **Save**.

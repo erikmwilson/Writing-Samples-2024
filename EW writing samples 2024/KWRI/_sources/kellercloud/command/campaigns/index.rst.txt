@@ -1,0 +1,11 @@
+
+.. _campaigns-index:
+
+Campaigns
+=========
+
+The following sections contain information about the
+Campaigns application.
+
+.. toctree::
+   :maxdepth: 1

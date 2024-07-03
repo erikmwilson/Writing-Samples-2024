@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Authenticate by using cURL &mdash; Support Delivery Platform documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.5.6',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Support Delivery Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Ticketing API v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Rackspace Ticketing Integration for ServiceNow</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Support Delivery Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Authenticate by using cURL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api-docs/common-gs/auth-using-curl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="authenticate-by-using-curl">
+<h1>Authenticate by using cURL<a class="headerlink" href="#authenticate-by-using-curl" title="Permalink to this headline">#</a></h1>
+<p>Follow these steps to authenticate to the Rackspace Cloud by
+<a class="reference internal" href="how-to-use-curl.html#how-curl-commands-work"><span class="std std-ref">using cURL</span></a>.</p>
+<ul class="simple">
+<li><a class="reference internal" href="../getting-started/authenticate-to-rackspace.html#send-auth-req-curl"><span class="std std-ref">Send an authentication request</span></a></li>
+<li><a class="reference internal" href="../getting-started/authenticate-to-rackspace.html#review-auth-resp"><span class="std std-ref">Review the authentication response</span></a></li>
+</ul>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The cURL examples in this guide are provided for reference only. Because
+the use of cURL has environmental dependencies, copying and pasting the
+examples might not work in your environment.</p>
+</div>
+<div class="section" id="send-an-authentication-request">
+<span id="send-auth-req-curl"></span><h2>Send an authentication request<a class="headerlink" href="#send-an-authentication-request" title="Permalink to this headline">#</a></h2>
+<p>From a command prompt, send a <strong>POST tokens</strong> request to the Rackspace Cloud
+Identity service.  Include your username and <a class="reference internal" href="../getting-started/get-credentials.html#get-credentials"><span class="std std-ref">API key</span></a>,
+as shown in the following example.</p>
+<div class="code highlight-default" id="auth-curl-request"><div class="highlight"><pre><span></span>$ curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
+   -X POST \
+   -d
+   &#39;{&quot;auth&quot;:{&quot;RAX-KSKEY:apiKeyCredentials&quot;:{&quot;username&quot;:&quot;yourUserName&quot;,&quot;api
+   Key&quot;:&quot;$apiKey&quot;}}}&#39; \
+   -H &quot;Content-type: application/json&quot; | python -m json.tool
+</pre></div>
+</div>
+</div>
+<div class="section" id="review-the-authentication-response">
+<span id="review-auth-resp"></span><h2>Review the authentication response<a class="headerlink" href="#review-the-authentication-response" title="Permalink to this headline">#</a></h2>
+<p>If your credentials are valid, the Identity service returns an authentication
+response that includes the following information:</p>
+<blockquote>
+<div><ul class="simple">
+<li>An authentication token</li>
+<li>A service catalog with information about the services that you can access</li>
+<li>user information and role assignments</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For detailed information about the authentication response, see the
+<a class="reference external" href="http://developer.rackspace.com/docs/cloud-identity/v2/general-api-info/authentication-info/sample-auth-req-response/#annotated-auth-req-resp">Annotated authentication request and response</a>
+in the Rackspace Cloud API documentation.</p>
+</div>
+<p>In the following example, the ellipsis (...)  represents other service
+endpoints, which are not shown. The values shown in this and other examples
+vary because the information returned is specific to your account.</p>
+<p><strong>Example: Authentication response</strong></p>
+<div class="code highlight-default" id="auth-response-example"><div class="highlight"><pre><span></span> <span class="p">{</span>
+  <span class="s2">&quot;access&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;expires&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-11-24T22:05:39.115Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;tenant&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;RAX-AUTH:authenticatedBy&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;APIKEY&quot;</span>
+      <span class="p">]</span>
+     <span class="p">},</span>
+      <span class="s2">&quot;serviceCatalog&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cloudDatabases&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpoints&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+          <span class="s2">&quot;publicURL&quot;</span><span class="p">:</span>
+          <span class="s2">&quot;https://syd.databases.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;SYD&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;publicURL&quot;</span><span class="p">:</span>
+            <span class="s2">&quot;https://dfw.databases.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;DFW&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;publicURL&quot;</span><span class="p">:</span>
+            <span class="s2">&quot;https://ord.databases.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;ORD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;publicURL&quot;</span><span class="p">:</span>
+            <span class="s2">&quot;https://iad.databases.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;IAD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;publicURL&quot;</span><span class="p">:</span>
+            <span class="s2">&quot;https://hkg.databases.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;HKG&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;rax:database&quot;</span>
+      <span class="p">},</span>
+
+      <span class="o">...</span>
+
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cloudDNS&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpoints&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;publicURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dns.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;rax:dns&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;rackCDN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpoints&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;internalURL&quot;</span><span class="p">:</span>
+            <span class="s2">&quot;https://global.cdn.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;publicURL&quot;</span><span class="p">:</span>
+            <span class="s2">&quot;https://global.cdn.api.rackspacecloud.com/v1.0/110011&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;rax:cdn&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+      <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;roles&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A Role that allows a user access to keystone</span>
+          <span class="n">Service</span> <span class="n">methods</span><span class="s2">&quot;,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;compute:default&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;110011&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;User Admin Role.&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;identity:user-admin&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;jsmith&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;RAX-AUTH:defaultRegion&quot;</span><span class="p">:</span> <span class="s2">&quot;ORD&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the request was successful, it returns the following values that you need to
+include when you make service requests to the Rackspace product API:</p>
+<dl class="docutils">
+<dt>token ID</dt>
+<dd><p class="first">The token ID value is required to confirm your identity each
+time you access the service. Include it in the <code class="docutils literal"><span class="pre">X-Auth-Token</span></code> header
+for each API request.</p>
+<p class="last">The <code class="docutils literal"><span class="pre">expires</span></code> attribute indicates the date and time that the token
+expires, unless it is revoked before the expiration. To get a new token,
+submit another authentication request. For more information, see
+<a class="reference external" href="http://developer.rackspace.com/docs/cloud-identity/v2/getting-started/manage-auth-tokens/#manage-authentication-tokens">Manage tokens and token expiration</a></p>
+</dd>
+<dt>tenant ID</dt>
+<dd>The tenant ID provides your account number. For most Rackspace Cloud
+service APIs, the tenant ID is appended to the API endpoint in the service
+catalog automatically. For Rackspace Cloud services, the tenant ID has the
+same value as the tenant name.</dd>
+<dt>endpoint</dt>
+<dd>The API endpoint provides the URL that you use to access the API service.</dd>
+</dl>
+<p>If the request failed, review the response message and
+the following error message descriptions to determine next steps.</p>
+<ul>
+<li><p class="first">If you see the following error message, review the authentication request
+for syntax or coding errors. If you are using cURL, see
+<a class="reference internal" href="how-to-use-curl.html#how-curl-commands-work"><span class="std std-ref">Using cURL</span></a>.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">400</span> <span class="n">Invalid</span> <span class="n">request</span> <span class="n">body</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">parse</span> <span class="n">Auth</span> <span class="n">data</span><span class="o">.</span> <span class="n">Please</span> <span class="n">review</span> <span class="n">XML</span> <span class="ow">or</span>
+<span class="n">JSON</span> <span class="n">formatting</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you see the following error message, verify the authentication credentials
+submitted in the authentication request. If necessary, contact your Rackspace
+Cloud Administrator or Rackspace Support to get valid credentials.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="mi">401</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">authenticate</span> <span class="n">user</span> <span class="k">with</span> <span class="n">credentials</span> <span class="n">provided</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For additional information about authentication errors, see the
+<a class="reference external" href="https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#token-operations">Identity API Reference</a>
+documentation.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; <a href="../../copyright.html">Copyright</a> 2018, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

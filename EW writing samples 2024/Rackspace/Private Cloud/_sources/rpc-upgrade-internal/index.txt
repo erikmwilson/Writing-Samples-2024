@@ -1,0 +1,28 @@
+:deconsttitle: Upgrade Guide
+
+.. _rpc-upgrade-internal:
+
+=============
+Upgrade Guide
+=============
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+This guide contains information and instructions for upgrading a
+Rackspace Private Cloud environment.
+
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   preface.rst
+   ch-upgrade.rst
+   upgrade-v12-v13.rst
+   upgrade-v11-v12.rst
+   upgrade-v10-v11.rst
+   rpc-upgrade-v9-v10.rst
+   postface.rst

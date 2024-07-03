@@ -1,0 +1,19 @@
+
+.. _close-transaction-commandmc:
+
+Close Transaction
+=================
+
+A transaction must be in balance (**Approved** status) in order to be set to **Closed**. The money received plus any adjustments must equal the pay to KW plus any disbursements.
+
+To close a transaction, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page:
+
+#. Search for the correct transaction. For more information, see :ref:`search-transactions-commandmc`.
+
+#. Click the transaction number to view the transaction details.
+
+#. Click **Close Transaction**.

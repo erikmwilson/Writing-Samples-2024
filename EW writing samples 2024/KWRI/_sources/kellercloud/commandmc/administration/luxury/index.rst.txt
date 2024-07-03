@@ -1,0 +1,17 @@
+
+.. _luxury-index-commandmc:
+
+Luxury
+======
+
+The following pages contain information about managing your Luxury program.
+
+.. toctree::
+   :maxdepth: 1
+
+   manage-luxury-roster
+   luxury-exception
+   luxury-min-units
+   adjust-floor-price-luxury
+   manage-luxury-requests
+   remove-luxury

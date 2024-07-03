@@ -1,0 +1,10 @@
+===============
+Instance design
+===============
+
+Instance sizing and configuration is one of the most critical
+components of the virtualization design effort because under-sizing
+instances creates application bottlenecks and over-sizing
+instances creates resource waste. Resource waste becomes an issue
+when admission control prevents an instance from powering on, although
+there are available resources to be used.

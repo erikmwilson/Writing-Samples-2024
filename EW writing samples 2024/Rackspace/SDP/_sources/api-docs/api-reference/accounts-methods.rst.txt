@@ -1,0 +1,10 @@
+.. _accounts-methods:
+
+========
+Accounts
+========
+
+Use the accounts API operation to get a list of accounts available to the
+authenticated user.
+
+.. include:: ./methods/get-accounts.rst

@@ -1,0 +1,37 @@
+
+.. _remove-team-member-settings-commandmc:
+
+Remove a Team Member
+====================
+
+Market Center Administrators (MCAs), Assistant Market Center Administrators (AMCAs), System Admins, and Legal users can manage the teams, team members, and guests in your Market Center. Teams are used in Command apps and affect KWRI Awards.
+
+.. note::
+
+   The team will no longer have access to the removed member’s personal contacts and the removed team member will no longer have access to the team owned contacts. Before removing a team member, it is recommended that you contact them to transfer their team owned contacts to their personal account using the Contacts application.
+
+To remove a team member, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **MC Team Management**.
+
+   .. note::
+
+      If you are a member of more than one Market Center, select your Market Center from the drop-down list.
+
+#. On the **MC Team Management** page, find the team you want to add or remove members to/from using the search box and the **Show** drop-down menu and click on the team name.
+
+#. On the **Team Details** page, click the **Current Members** tab.
+
+#. Locate the appropriate associate, click the ellipses icon |menu-options-icon| and select **Remove from Team**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+   You cannot edit the start date once you have removed an associate from a team. Verify that the start date is correct before you remove an associate.
+
+   The default team member end date is yesterday's date. If the team member left the team on an earlier date, you must edit the end date to reflect the proper end date. Transactions are credited to the team when the contract date in WinMORE is within the time frame (between start and end dates) of the associate being on the team. If the end date is not correct, production may be incorrectly attributed to the team, and if the associate is joining a new team you may not be able to set their proper start date on the new team.

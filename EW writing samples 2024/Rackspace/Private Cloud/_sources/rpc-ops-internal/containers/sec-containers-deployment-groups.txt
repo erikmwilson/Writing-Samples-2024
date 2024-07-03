@@ -1,0 +1,140 @@
+Deployment groups
+=================
+
+The segregation of containers and services into deployment groups in
+OpenStack-Ansible allow scalability of services. The deployment groups
+available are listed below:
+
+ .. code-block:: ini
+
+    infra_hosts:
+      - cinder_api_container
+        - cinder_api
+      - galera_container
+        - galera
+      - glance_container
+        - glance_api
+        - glance_registry
+      - heat_apis_container
+        - heat_api_cloudwatch
+        - heat_api_cfn
+        - heat_api
+      - heat_engine_container
+        - heat_engine
+      - horizon_container
+        - horizon
+      - keystone_container
+        - keystone
+      - memcached_container
+        - memcached
+      - nova_api_metadata_container
+        - nova_api_metadata
+      - nova_api_os_compute_container
+        - nova_api_os_compute
+      - nova_cert_container
+        - nova_cert
+      - nova_conductor_container
+        - nova_conductor
+      - nova_scheduler_container
+        - nova_scheduler
+      - nova_console_container
+        - nova_console
+      - rabbit_mq_container
+        - rabbitmq
+      - utility_container
+        - utility
+
+
+    compute_hosts:
+      - nova_compute_container
+        - neutron_linuxbridge_agent
+        - nova_compute
+
+
+    os-infra_hosts:
+      - glance_container
+        - glance_api
+        - glance_registry
+      - heat_apis_container
+        - heat_api_cloudwatch
+        - heat_api_cfn
+        - heat_api
+      - heat_engine_container
+        - heat_engine
+      - horizon_container
+        - horizon
+      - nova_api_metadata_container
+        - nova_api_metadata
+      - nova_api_os_compute_container
+        - nova_api_os_compute
+      - nova_cert_container
+        - nova_cert
+      - nova_conductor_container
+        - nova_conductor
+      - nova_scheduler_container
+        - nova_scheduler
+      - nova_console_container
+        - nova_console
+
+
+    shared-infra_hosts:
+      - galera_container
+        - galera
+      - memcached_container
+        - memcached
+      - rabbit_mq_container
+        - rabbitmq
+      - utility_container
+        - utility
+
+
+    storage-infra_hosts:
+      - cinder_api_container
+        - cinder_api
+
+
+    storage_hosts:
+      - cinder_volumes_container
+        - cinder_scheduler
+        - cinder_volume
+
+
+    identity_hosts:
+      - keystone_container
+        - keystone
+
+
+    log_hosts:
+      - rsyslog_container
+        - rsyslog
+
+
+    network_hosts:
+      - neutron_agents_container
+        - neutron_agent
+        - neutron_metadata_agent
+        - neutron_metering_agent
+        - neutron_linuxbridge_agent
+        - neutron_l3_agent
+        - neutron_dhcp_agent
+      - neutron_server_container
+        - neutron_server
+
+
+    repo-infra_hosts:
+      - repo_container
+        - pkg_repo
+
+
+    swift_hosts:
+      - swift_acc_container
+        - swift_acc
+      - swift_obj_container
+        - swift_obj
+      - swift_cont_container
+        - swift_cont
+
+
+    swift-proxy_hosts:
+      - swift_proxy_container
+        - swift_proxy

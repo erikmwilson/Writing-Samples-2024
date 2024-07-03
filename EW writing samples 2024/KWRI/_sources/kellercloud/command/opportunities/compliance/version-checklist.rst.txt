@@ -1,0 +1,46 @@
+
+.. _version-checklist-opportunities-command:
+
+Create a New Compliance Checklist Version for an Opportunity
+============================================================
+
+As you are working an Opportunity, something may happen to cause the deal to fall through. If this happens, we want to keep a record of the compliance documents that were completed, but you will need to move forward with the transaction and find another buyer or seller.
+
+You can create a new compliance document checklist version in Opportunities. This allows you to start fresh with a new set of documents for the transaction, while still having the ability to access the archived documents for the buyer or seller that dropped out of the deal.
+
+To create a new compliance checklist version for an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. On the left side of the page, choose the type of checklist you are creating a new version for from the Checklist Type drop-down.
+
+#. Choose the compliance event you are creating a new checklist version for:
+
+   * For **Listings** - Listed, Under Contract, Closed
+
+   * For **Buyers** - Consultation, Under Contract, Closed
+
+   * For **Leases**:
+
+     * **Tenant**: Under Contract, Closed
+
+     * **Landlord** - Listed, Under Contract, Closed
+
+   Depending on the situation, you may need to create a new checklist version for more than one of these compliance events.
+
+#. At the top of the checklist, click the compliance event name and choose **Add Version**.
+
+#. On the **Add New Version** pop-up, enter the **Version's Name** and click **Create New Version**.
+
+You can now add documents to the new version of the checklist. Click on the compliance event name in the checklist to access the previous checklist versions.

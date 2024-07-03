@@ -1,0 +1,26 @@
+
+.. _email-address-applications-settings-command:
+
+Customize Your Display Name and Reply-to Address for Command Email
+==================================================================
+
+Command Email is the default service used by Keller Williams to send emails on your behalf from your KW Technology applications. Each user receives 5,000 email sends per month at no charge.
+
+To customize your display name and reply-to address for Command Email, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Click **Applications**.
+
+#. On the **Applications** page, navigate to the Command Email application and click **Manage**.
+
+#. On the **Manage Command Email** pop-up, you can edit your **Agent Displayed Name**, and your **Reply-To Email**.
+
+   .. note::
+
+      If you want to add a different reply-to email, click **Add a custom email**, enter your desired reply-to email and click **Add Email**. You can edit your custom email by clicking the edit icon or remove it by clicking the delete icon.
+
+#. Click **Save Changes**.

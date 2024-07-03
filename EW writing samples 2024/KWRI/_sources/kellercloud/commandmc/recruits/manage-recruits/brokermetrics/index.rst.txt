@@ -1,0 +1,19 @@
+
+.. _brokermetrics-index-recruits-commandmc:
+
+BrokerMetrics®
+==============
+
+BrokerMetrics is a real estate recruiting analytics tool kit that delivers accurate and timely real estate metrics pulled directly from MLS. You can pull production details for recruits directly from BrokerMetrics.
+
+The following sections contain information about how to work with
+BrokerMetrics within the Recruits applet.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-account
+   connect
+   disconnect
+   link
+   manage

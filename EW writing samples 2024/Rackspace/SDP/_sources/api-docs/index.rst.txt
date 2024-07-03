@@ -1,0 +1,34 @@
+.. _index:
+
+===============================================
+Rackspace |product name| API |contract version|
+===============================================
+
+The Rackspace |product name| service enables users to
+create and update tickets for Rackspace using their own ticketing
+systems. Tickets created in the user’s ticketing system flow to
+Rackspace’s ticketing systems and vice versa.
+
+This guide is intended to assist software developers who want to develop
+applications by using the REST application programming interface (API) for
+the |product name| service.
+
+To use the information provided here, you should have a general understanding
+of the service and have access to an installation of it. You should also be
+familiar with the following technologies:
+
+* RESTful web services
+* HTTP/1.1
+* JSON serialization formats
+
+Use the following links to go directly to user and reference information
+for the |product name| service REST API:
+
+.. toctree::
+    :maxdepth: 2
+
+    getting-started/index.rst
+    general-api-info/index.rst
+    api-reference/index.rst
+    ticketing-event-feed/index.rst
+    ../copyright.rst

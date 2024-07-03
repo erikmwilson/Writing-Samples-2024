@@ -1,0 +1,103 @@
+============
+Ceph storage
+============
+
+Ceph is a distributed data object store designed to provide excellent
+performance, reliability, and scalability. Distributed object stores are the
+future of storage, because they accommodate unstructured data, and because
+clients can use modern object interfaces and legacy interfaces, such as those
+listed below, simultaneously.
+
+-  Native language binding interfaces (C/C++, Java, Python)
+-  RESTful interfaces (S3/Swift)
+-  Block device interfaces
+-  File system interfaces
+
+The power of Ceph can transform your organization’s IT infrastructure and your
+ability to manage vast amounts of data, especially for cloud computing
+platforms like RPCO.  Ceph delivers industry-leading scalability – thousands of
+clients accessing petabytes to exabytes of data and beyond.
+
+At the heart of every Ceph deployment is the Ceph Storage Cluster. The cluster
+consists of two types of daemons:
+
+-  Ceph OSD daemon: Ceph OSDs store data on behalf of Ceph clients.
+   Additionally, Ceph OSDs utilize the CPU and memory of Ceph nodes to perform
+   data replication, rebalancing, recovery, monitoring, and reporting
+   functions.
+
+-  Ceph monitor: A Ceph monitor maintains a master copy of the Ceph Storage
+   Cluster map with the current state of the storage cluster.
+
+Ceph client interfaces read data from and write data to the Ceph Storage
+Cluster. Clients need the following data to communicate with the Ceph Storage
+Cluster:
+
+-  The Ceph configuration file, or the cluster name (usually ceph) and monitor
+   address
+-  The pool name
+-  The user name and the path to the secret key
+
+Ceph clients maintain object IDs and the pool name(s) where they store the
+objects, but they do not need to maintain an object-to-OSD index or communicate
+with a centralized object index to look up data object locations. To store and
+retrieve data, Ceph clients access a Ceph monitor and retrieve the latest copy
+of the storage cluster map. Then, Ceph clients can provide an object name and
+pool name, and Ceph uses the cluster map and the Controlled Replication under
+Scalable Hashing (CRUSH) algorithm
+(http://docs.ceph.com/docs/master/rados/operations/crush-map/) to compute the
+object placement group and the primary Ceph OSD for storing or retrieving data.
+The Ceph client connects to the primary OSD where it may perform read and write
+operations. There is no intermediary server, broker, or bus between the client
+and the OSD.
+
+When an OSD stores data, it receives data from a Ceph client — whether the
+client is a Ceph Block Device, a Ceph Object Gateway, or another interface —
+and it stores the data as an object. Each object corresponds to a file in a
+file system, which is stored on a storage device such as a hard disk. Ceph OSDs
+handle the read and write operations on the storage device.
+
+Ceph OSDs store all data as objects in a flat namespace (that is, no hierarchy
+of directories). An object has a cluster-wide unique identifier, binary data,
+and metadata consisting of a set of name and value pairs. The semantics are
+determined by the Ceph clients. For example, the Ceph block device maps a block
+device image to a series of objects stored across the cluster.
+
+Storage cluster architecture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A Ceph Storage Cluster accommodates large numbers of Ceph nodes for massive
+scalability, high availability, and performance. Each node uses
+commodity hardware and intelligent Ceph daemons that communicate with each
+other to perform the following tasks:
+
+-  Store and retrieve data
+-  Replicate data
+-  Monitor and report on cluster health (heartbeating)
+-  Redistribute data dynamically (backfilling)
+-  Ensure data integrity (scrubbing)
+-  Recover from failures
+
+To the Ceph client interface that reads and writes data, a Ceph Storage Cluster
+looks like a simple pool where it stores data. However, the storage cluster
+performs many complex operations in a manner that is completely transparent to
+the client interface. Ceph clients and Ceph OSDs both use the CRUSH algorithm.
+
+Ceph client architecture
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ceph clients differ in how they present data storage interfaces. A Ceph block
+device presents block storage that mounts just like a physical storage drive.
+A Ceph gateway presents an object storage service with S3-compliant and
+Swift-compliant RESTful interfaces with its own user management. However, all
+Ceph clients use the Reliable Autonomic Distributed Object Store (RADOS)
+protocol to interact with the Ceph storage cluster. They all have the following
+basic needs:
+
+-  The Ceph configuration file, or the cluster name (usually ceph) and monitor
+   address
+-  The pool name
+-  The user name and the path to the secret key.
+
+Ceph clients tend to follow some similar patterns, such as object-watch-notify
+and striping.

@@ -1,0 +1,54 @@
+
+.. _view-details-recruits-commandmc:
+
+View or Edit Recruit Details
+============================
+
+You can view recruit details from the **Recruit Management** tab or the **Recruiting Pipeline** tab.
+
+To view recruit details, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click one of the following tabs at the top of the page:
+
+   * Click the **Recruit Management** tab to display a list of all your Market Center recruits.
+
+   * Click the **Recruiting Pipeline** tab to display all recruits that are in the Pipeline. Recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Search for the correct recruit. For more information, see :ref:`search-recruits-commandmc`.
+
+#. Click the recruit name to view the recruit details.
+
+   The left-side of the **Recruit Details** window includes the following editable sections:
+
+   * Name and contact information
+
+   * General Information
+
+   * Additional Information
+
+   The right-side contains the following tabs with editable information:
+
+   * **Production** tab - contains production metrics
+
+   * **Business** tab - contains work history
+
+#. Click the edit icon, |edit-icon| for the section or tab that you want to modify.
+
+   .. |edit-icon| image:: ../../../../images/edit-icon.png
+      :height: 25
+
+#. Edit the necessary information in the pop-up window and click **Save Changes**.
+
+#. Also, on the right-side of the **Recruit Details** window, you can:
+
+   * Click on the **Appointments** tab to view appointments related to this recruit. Click **Add New** to add an appointment. For more information, see :ref:`add-appointment-recruits-commandmc`.
+
+   * Click on the **Tasks** tab to view Tasks related to this recruit. Click **Create Task** to add this recruit. For more information, see :ref:`tasks-recruits-index-mc`.
+
+   * Click on the **SmartPlans** tab to view SmartPlans related to this recruit. Click **Add to SmartPlan** to add this recruit. For more information, see :ref:`add-smartplan-recruits-commandmc`.
+
+   * Click on the **Notes** tab to view notes related to this recruit. You can sort tasks by **Most Recent** or **Least Recent** or click **Add Note** to add a note. For more information, see :ref:`add-note-recruits-commandmc`.
+
+   * Click on the **Timelines** tab to view all the activity of the recruit. You can sort the Timeline by a **Date Range** or by the type of activity. Click **View Calendar** to view your Google calendar or click **Add activity** to add an activity. For more information, see :ref:`add-activity-recruits-commandmc`.

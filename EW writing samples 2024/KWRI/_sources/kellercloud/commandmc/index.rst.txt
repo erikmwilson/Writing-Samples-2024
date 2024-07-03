@@ -1,0 +1,27 @@
+
+.. _command-mc-index-command-ug:
+
+CommandMC User Guide
+=====================
+
+The following sections contain information about using CommandMC.
+
+.. note::
+
+   CommandMC is available only to certain KW roles.
+
+.. toctree::
+   :maxdepth: 1
+
+   settings/index
+   administration/index
+   transactions/index
+   opportunities/index
+   reports/index
+   accounting/index
+   tasks/index
+   smartplans/index
+   recruits/index
+   associates/index
+   directory/index
+   support-tools/index

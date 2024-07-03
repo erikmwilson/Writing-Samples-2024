@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instances &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Images" href="ch-images.html" />
+    <link rel="prev" title="Access" href="ch-access.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operations Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-verify.html">Verifying cloud deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-access.html">Access</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instances</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-an-instance-using-the-dashboard">Creating an instance using the Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-an-instance-using-the-command-line">Creating an instance using the command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-an-instance">Managing an instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-volumes-for-persistent-storage">Managing volumes for persistent storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-compute.html">Compute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-galera.html">Managing Galera clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ceph.html">RPC Ceph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-swift.html">Managing Object Storage for multiple regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-containers.html">Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load-Balancer-as-a-Service (LBaaS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-backups.html">Backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Operations Guide</a> &raquo;</li>
+        
+      <li>Instances</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ops-internal/ch-instances.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instances">
+<h1>Instances<a class="headerlink" href="#instances" title="Permalink to this headline">#</a></h1>
+<p>This chapter describes how to create and access instances when running
+RPCO.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Nova volumes are not supported in RPCO. For Block Storage, refer
+to the instructions for <a class="reference external" href="https://docs.openstack.org/newton/install-guide-ubuntu/cinder.html">configuring OpenStack Block Storage</a>.</p>
+</div>
+</div></blockquote>
+<div class="section" id="creating-an-instance-using-the-dashboard">
+<h2>Creating an instance using the Dashboard<a class="headerlink" href="#creating-an-instance-using-the-dashboard" title="Permalink to this headline">#</a></h2>
+<p>Using an image, create a new instance via the Dashboard options.</p>
+<ol class="arabic">
+<li><p class="first">Log into the Dashboard, and select the <strong>Compute</strong> project from the
+drop down list.</p>
+</li>
+<li><p class="first">Click the <strong>Images</strong> option.</p>
+</li>
+<li><p class="first">Locate the image that will act as the instance base from the
+<strong>Images</strong> table.</p>
+</li>
+<li><p class="first">Click <strong>Launch</strong> from the <strong>Actions</strong> column.</p>
+</li>
+<li><p class="first">Check the <strong>Launch Instances</strong> dialog, and find the <strong>details</strong> tab.
+Enter the appropriate values for the instance.</p>
+<ol class="arabic">
+<li><p class="first">In the Launch Instance dialog, click the Access &amp; Security tab.
+Select the keypair. Set the security group as &#8220;default&#8221;.</p>
+</li>
+<li><p class="first">Click the <strong>Networking tab</strong>. This tab will be unavailable if
+OpenStack networking (neutron) has not been enabled. If networking
+is enabled, select the networking on which the instance will
+reside.</p>
+</li>
+<li><p class="first">Click the <strong>Volume Options tab</strong>. This tab will only be available
+a Block Storage volume created. Select <strong>Don&#8217;t boot from a
+volume</strong> for now.</p>
+<p>For more information on attaching Block Storage volumes to
+instances for persistent storage, see <a class="reference external" href="manage-volumes-persistent-storage.html">the section called
+“Managing volumes for persistent
+storage”</a>.</p>
+</li>
+<li><p class="first">Add customisation scripts, if needed, by clicking the
+<strong>Post-Creation</strong> tab. These run after the instance has been
+created. Some instances support user data, such as root passwords,
+or admin users. Enter the information specific to to the instance
+here if required.</p>
+</li>
+<li><p class="first">Click <strong>Advanced Options</strong>. Specify whether the instance uses a
+configuration drive to store metadata by selecting a disk
+partition type.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Click <strong>Launch</strong> to create the instance. The instance will start on a
+compute node. The <strong>Instance</strong> page will open and start creating a
+new instance. The <strong>Instance</strong> page that opens will list the instance
+name, size, status, and task. Power state and public and private IP
+addresses are also listed here.</p>
+<p>The process will take less than a minute to complete. Instance
+creation is complete when the status is listed as active. Refresh the
+page to see the new active instance.</p>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text"><strong>Launching an instance options</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field Name</th>
+<th class="head">Required</th>
+<th class="head">Details</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Availability Zone</strong></td>
+<td>Optional</td>
+<td>The availability zone in which the image service creates the instance.
+If no availability zones is defined, no instances will be found. The
+cloud provider sets the availability zone to a specific value.</td>
+</tr>
+<tr class="row-odd"><td><strong>Instance Name</strong></td>
+<td>Required</td>
+<td>The name of the new instance, which becomes the initial host name of the
+server. If the server name is changed in the API or directly changed,
+the Dashboard names remain unchanged</td>
+</tr>
+<tr class="row-even"><td><strong>Image</strong></td>
+<td>Required</td>
+<td>The type of container format, one of <code class="docutils literal"><span class="pre">ami</span></code>, <code class="docutils literal"><span class="pre">ari</span></code>, <code class="docutils literal"><span class="pre">aki</span></code>,
+<code class="docutils literal"><span class="pre">bare</span></code>, or <code class="docutils literal"><span class="pre">ovf</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>Flavor</strong></td>
+<td>Required</td>
+<td>The vCPU, Memory, and Disk configuration. Note that larger flavors can
+take a long time to create. If creating an instance for the first time
+and want something small with which to test, select <code class="docutils literal"><span class="pre">m1.small</span></code>.</td>
+</tr>
+<tr class="row-even"><td><strong>Instance Count</strong></td>
+<td>Required</td>
+<td>If creating multiple instances with this configuration, enter an integer
+up to the number permitted by the quota, which is <code class="docutils literal"><span class="pre">10</span></code> by default.</td>
+</tr>
+<tr class="row-odd"><td><strong>Instance Boot Source</strong></td>
+<td>Required</td>
+<td>Specify whether the instance will be based on an image or a snapshot. If
+it is the first time creating an instance, there will not yet be any
+snapshots available.</td>
+</tr>
+<tr class="row-even"><td><strong>Image Name</strong></td>
+<td>Required</td>
+<td>The instance will boot from the selected image. This option will be
+pre-populated with the instance selected from the table. However, choose
+<code class="docutils literal"><span class="pre">Boot</span> <span class="pre">from</span> <span class="pre">Snapshot</span></code> in <strong>Instance Boot Source</strong>, and it will default
+to <code class="docutils literal"><span class="pre">Snapshot</span></code> instead.</td>
+</tr>
+<tr class="row-odd"><td><strong>Security Groups</strong></td>
+<td>Optional</td>
+<td>Activate any security groups to assign to the instance with this option.
+The default security group activates when no customised group is
+specified here. Security Groups, similar to a cloud firewall, define
+which incoming network traffic is forwarded to instances.</td>
+</tr>
+<tr class="row-even"><td><strong>Keypair</strong></td>
+<td>Optional</td>
+<td>Specify a key pair with this option. If the image uses a static key set
+(not recommended), a key pair is not needed.</td>
+</tr>
+<tr class="row-odd"><td><strong>Selected Networks</strong></td>
+<td>Optional</td>
+<td>To add a network to an instance, click the <strong>+</strong> in the <strong>Networks
+field</strong>.</td>
+</tr>
+<tr class="row-even"><td><strong>Customization Script</strong></td>
+<td>Optional</td>
+<td>Specify a customization script. This script runs after the instance
+launches and becomes active.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+<div class="section" id="creating-an-instance-using-the-command-line">
+<h2>Creating an instance using the command line<a class="headerlink" href="#creating-an-instance-using-the-command-line" title="Permalink to this headline">#</a></h2>
+<p>On the command line, image creation is managed with the <strong>nova boot</strong>
+command. Before launching an image, determine what images and flavors
+are available to create a new instance using the <strong>nova image-list</strong> and
+<strong>nova flavor-list</strong> commands.</p>
+<ol class="arabic">
+<li><p class="first">Log in to the controller node.</p>
+</li>
+<li><p class="first">Issue the <strong>nova boot</strong> command with a name for the instance, along
+with the name of the image and flavor to use:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova boot --image precise-image --flavor<span class="o">=</span><span class="m">2</span> --key-name example-key example-instance
+<span class="go">+-------------------------------------+--------------------------------------+</span>
+<span class="go">|               Property              |                Value                 |</span>
+<span class="go">+-------------------------------------+--------------------------------------+</span>
+<span class="go">|          OS-DCF:diskConfig          |                MANUAL                |</span>
+<span class="go">|         OS-EXT-SRV-ATTR:host        |                 None                 |</span>
+<span class="go">| OS-EXT-SRV-ATTR:hypervisor_hostname |                 None                 |</span>
+<span class="go">|    OS-EXT-SRV-ATTR:instance_name    |          instance-0000000d           |</span>
+<span class="go">|        OS-EXT-STS:power_state       |                  0                   |</span>
+<span class="go">|        OS-EXT-STS:task_state        |              scheduling              |</span>
+<span class="go">|         OS-EXT-STS:vm_state         |               building               |</span>
+<span class="go">|              accessIPv4             |                                      |</span>
+<span class="go">|              accessIPv6             |                                      |</span>
+<span class="go">|              adminPass              |             ATSEfRY9fZPx             |</span>
+<span class="go">|             config_drive            |                                      |</span>
+<span class="go">|               created               |         2012-08-02T15:43:46Z         |</span>
+<span class="go">|                flavor               |               m1.small               |</span>
+<span class="go">|                hostId               |                                      |</span>
+<span class="go">|                  id                 | 5bf46a3b-084c-4ce1-b06f-e460e875075b |</span>
+<span class="go">|                image                |             precise-image            |</span>
+<span class="go">|               key_name              |              example-key             |</span>
+<span class="go">|               metadata              |                  {}                  |</span>
+<span class="go">|                 name                |           example-instance           |</span>
+<span class="go">|               progress              |                  0                   |</span>
+<span class="go">|                status               |                BUILD                 |</span>
+<span class="go">|              tenant_id              |   b4769145977045e2a9279c842b09be6a   |</span>
+<span class="go">|               updated               |         2012-08-02T15:43:46Z         |</span>
+<span class="go">|               user_id               |   5f2f2c28bdc844f9845251290b524e80   |</span>
+<span class="go">+-------------------------------------+--------------------------------------+</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">To check that the instance was created successfully, issue the <strong>nova
+list</strong> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova list
+<span class="go">+------------------+------------------+--------+-------------------+</span>
+<span class="go">|        ID        |       Name       | Status |      Networks     |</span>
+<span class="go">+------------------+------------------+--------+-------------------+</span>
+<span class="go">| [ID truncated]   | example-instance | ACTIVE |  public=192.0.2.0 |</span>
+<span class="go">+------------------+------------------+--------+-------------------+</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="managing-an-instance">
+<h2>Managing an instance<a class="headerlink" href="#managing-an-instance" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li>Log in to the Dashboard. Select one of the projects, and click
+<strong>Instances</strong>.</li>
+<li>Select an instance from the list of available instances.</li>
+<li>Check the <strong>Actions</strong> column, and click on the <strong>More</strong> option.
+Select the instance state.</li>
+</ol>
+<p>The <strong>Actions</strong> column includes the following options:</p>
+<ul class="simple">
+<li>Resize or rebuild any instance</li>
+<li>View the instance console log</li>
+<li>Edit the instance</li>
+<li>Modify security groups</li>
+<li>Pause, resume, or suspend the instance</li>
+<li>Soft or hard reset the instance</li>
+</ul>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Terminate the instance under the <strong>Actions</strong> column.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="managing-volumes-for-persistent-storage">
+<h2>Managing volumes for persistent storage<a class="headerlink" href="#managing-volumes-for-persistent-storage" title="Permalink to this headline">#</a></h2>
+<p>Volumes attach to instances, enabling persistent storage. Volume
+storage provides a source of memory for instances. Administrators can
+attach volumes to a running instance, or move a volume from one
+instance to another.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-images.html" class="btn btn-neutral float-right" title="Images" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-access.html" class="btn btn-neutral float-left" title="Access" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

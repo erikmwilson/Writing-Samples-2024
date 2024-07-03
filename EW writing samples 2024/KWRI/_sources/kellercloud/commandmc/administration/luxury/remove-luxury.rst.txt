@@ -1,0 +1,24 @@
+
+.. _admin-remove-luxury-commandmc:
+
+Remove Luxury Status (Regional Leadership)
+============================================================================
+Using CommandMC, Market Center Leadership (this includes the MCA, AMCA, Operating Principal, Team Leader, Assistant Team Leader, and General Manager roles) can remove an agent from the Luxury program.
+
+To remove an agent from the Luxury roster, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Luxury**.
+
+#. In the **Qualified Luxury Agent Roster** section, click the name of the correct agent.
+
+#. On the **Luxury Agent Profile** window, click **Remove Luxury Status**.
+
+#. On the **Remove Luxury Status** window, click **Yes, Remove Status**.

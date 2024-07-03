@@ -1,0 +1,13 @@
+
+.. _broker-groups-settings-index-command:
+
+Broker Groups
+=============
+
+The following sections contain information about how to configure
+broker groups for the CommandMC.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-broker-groups

@@ -1,0 +1,9 @@
+=======================
+Architectural decisions
+=======================
+
+.. toctree::
+   :maxdepth: 2
+
+   summary-architectural-decisions.rst
+   design-decisions.rst

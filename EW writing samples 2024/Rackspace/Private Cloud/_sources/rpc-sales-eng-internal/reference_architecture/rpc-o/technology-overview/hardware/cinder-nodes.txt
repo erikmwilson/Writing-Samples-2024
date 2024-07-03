@@ -1,0 +1,35 @@
+============
+Cinder nodes
+============
+
+.. note:: Cinder nodes are optional.
+
+HP DL380 Gen9
+~~~~~~~~~~~~~
+
+-  Operating System: OpenStack on Ubuntu 16.04
+
+-  Model: HP DL380 Gen9 LFF - 3.5" Chassis
+
+-  Chassis Size: 2U
+
+-  Processor: Dual Socket Octo Core Intel Xeon E5-2630 2.40 Ghz
+
+-  Memory: 128 GB
+
+-  RAID Config: RAID1
+
+-  Hard Drives: 2x HP 600GB 15K SAS 2.5" in a 3.5" Hybrid Carrier
+
+-  RAID Config: RAID10
+
+-  Hard Drives: 10x HP 6TB 7.2K SAS 6Gbps 3.5"
+
+-  Onboard NIC: HP Ethernet 1Gb 4-Port 366T PCIe NIC (Already included)
+
+-  Onboard NIC: Intel Ethernet 2-Port 561T 10Gb PCIe NIC (RJ45) (Already
+   included)
+
+-  Additional NIC: Intel Ethernet 2-Port 561T 10Gb PCIe NIC (RJ45)
+
+.. image:: ../../figures/dl380_gen9_front_back.jpg

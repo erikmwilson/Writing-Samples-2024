@@ -1,0 +1,34 @@
+
+.. _reccuring-deductions-commandmc:
+
+Set Up Recurring Deductions for Agents
+======================================
+
+To set up recurring deductions for agents, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Deductions**.
+
+#. Search for the correct deduction. For more information, see :ref:`search-deductions-commandmc`.
+
+#. Click the the deduction ID to see the **Deduction Details**.
+
+#. In the **Deduction Details**, click **Set Recurring Amount**.
+
+#. In the **Assign Agent to Deduction** window, add the agents, amount for the recurring deduction, select if the agent can modify the deduction amount, and click **Assign**.
+
+   .. note::
+
+      You can edit or remove agents and deduction amounts for agents listed in the **Agents on this Deduction** section.
+
+      Click the ellipses icon |menu-options-icon| (on the far right) for that agent and select **Edit** or **Remove**.
+
+      .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+         :height: 20

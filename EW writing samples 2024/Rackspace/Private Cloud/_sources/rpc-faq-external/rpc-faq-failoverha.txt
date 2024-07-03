@@ -1,0 +1,14 @@
+==============================
+Failover and high availability
+==============================
+
+Get answers to common technical questions about failover and high availability
+for Rackspace Private Cloud Powered By OpenStack (RPCO) |release|.
+
+**How does a failover scenario work?**
+
+Services running within containers are managed on a virtual
+interface, and failover is managed through the load balancer. If a
+service fails for any reason, the load balancer detects the failure
+and removes the failed container from the pool of load-balanced
+containers.

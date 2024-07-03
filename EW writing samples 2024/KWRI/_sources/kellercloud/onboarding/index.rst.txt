@@ -1,0 +1,13 @@
+
+.. _index-kw-ug:
+
+Getting Started at KW (Onboarding)
+==================================
+
+The following section contains information about getting started at KW.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-account-kw
+   ../command/getting-started/index

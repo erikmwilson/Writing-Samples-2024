@@ -1,0 +1,37 @@
+======================
+RabbitMQ upgrade notes
+======================
+
+RPCO v10.1.7 and v11.0.2 and later provide a configuration setting that
+determines how RabbitMQ recovers from a network partition. For more
+information, see `rabbitmq.com/partitions.html
+<http://www.rabbitmq.com/partitions.html>`_.
+
+The RabbitMQ default setting for handling a network partition is
+``ignore``. Beginning with RPCO v10.1.7, the
+``rabbitmq_cluster_partition_handling`` variable is ``pause_minority``.
+With this setting, nodes in a single partition continue to run in the
+event of a partition. RabbitMQ automatically pauses cluster nodes that
+are in a minority as soon as a network partition starts and restarts
+them after the partition ends.
+
+Evaluate this setting and ensure it is appropriate for the deployment.
+To apply this change after an upgrade, simply restart RabbitMQ. You
+should use a maintenance window to minimize interruption of service.
+
+To restart RabbitMQ, use the ``rabbitmq-restart`` tag while applying the
+updated configuration from the ``playbooks`` directory, as follows:
+
+.. code-block:: console
+
+   $ cd /opt/rpc-openstack/openstack-ansible/playbooks
+   $ openstack-ansible rabbitmq-install.yml -t \
+   rabbitmq-restart
+
+Alternatively, restart individual RabbitMQ processes by one at a time by
+specifying a host append:
+
+.. code-block:: console
+
+   $ openstack-ansible rabbitmq-install.yml -t \
+     rabbitmq-restart --limit ${INFRA_HOST}

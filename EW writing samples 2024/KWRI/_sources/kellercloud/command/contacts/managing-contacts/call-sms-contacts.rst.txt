@@ -1,0 +1,28 @@
+
+.. _call-sms-contacts-command:
+
+Call or Text a Contact
+======================
+
+To call or text a contact, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. In the **Contacts** list, click the name of the contact you want to edit.
+
+#. Click on the contact's phone number.
+
+#. On the **Client Interaction** window, click the call or text button.
+
+   a. If you click the call button, you can enter **Timeline Details** to note this call on the contact's timeline. Click **Add Timeline**.
+
+   #. If you click the text button, enter the **Text Message** and attach any additional files by dragging them to the window or browsing for them. Click **Send SMS**.
+
+   .. note::
+
+      The contact must have a phone number that accepts texts.

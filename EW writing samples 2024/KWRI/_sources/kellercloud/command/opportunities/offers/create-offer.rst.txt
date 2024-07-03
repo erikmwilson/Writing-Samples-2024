@@ -1,0 +1,68 @@
+
+.. _create-offer-opportunities-command:
+
+Create an Offer
+===============
+
+Within Opportunities, Keller Williams has created an offer management system. When you enter offers into the system, you can use that data to improve your future offers, through reports and insights. You can create an offer for a Buying of Listing opportunity.
+
+To create an offer, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Offers & Commissions** tab.
+
+#. Click **Add New Offer**, on the right side of the page.
+
+#. Complete the **Create New Offer** page.
+
+   The following fields are required to create an offer:
+
+   * **Offer Name** - We recommend including "Initial Offer" in this title, as it distinguishes the offer from any counters or negotiations.
+
+   * **Property Address** - In order to accept a Listing offer, the property must exist in KWLS.
+
+   * **Seller Info** - Enter **Seller Name** and the **Seller's Agent Representative**. The side you are representing should be auto-filled with any information you have already entered in Opportunities.
+
+   * **Buyer Info** - Enter the **Buyer Name** and the **Buyer's Agent Representative**. The side you are representing should be auto-filled with any information you have already entered in Opportunities.
+
+   * **Sales Price**
+
+   * **Cash**
+
+   * **Contract Date**
+
+   * **Closing Date**
+
+   The following fields are required to accept an offer:
+
+   * **Listing ID** (listing from KWLS) - In order to accept a Listing offer, the property must exist in KWLS.
+
+   * **Property Type**
+
+   * **Property Classification**
+
+   * **Total Units**
+
+   The following fields are not required:
+
+   * **Pre-approved**
+
+   * **Pre-qualified**
+
+   * **Earnest Amount or Percentage**
+
+   * **Comments**
+
+#. Click **Create Offer**.
+
+After you have created an offer, see :ref:`manage-offers-opportunities-command`.

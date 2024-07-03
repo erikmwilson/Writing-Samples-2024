@@ -1,0 +1,74 @@
+
+.. _docusign-rooms-opportunities-command:
+
+Working with DocuSign Rooms
+===========================
+
+Keller Williams has partnered with DocuSign to integrate their document management platform with Opportunities in Command. A DocuSign Room is a secure, digital work space, where you can store documents and get forms signed. You can then import those forms into Command for compliance purposes. Each DocuSign Room must be created from within an Opportunity in Command, which establishes a secure connection and keeps our data protected.
+
+Set up Your DocuSign Account
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:ref:`connect-docusign-opportunities-command`.
+
+
+Access Your DocuSign Room
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To use DocuSign, you first need to create the DocuSign Room from within an Opportunity in Command. After you have created the Room, you access DocuSign through the Opportunity, where you can then manage your documents.
+
+For more information, see :ref:`create-room-opportunities-command`.
+
+For more information, see :ref:`access-room-opportunities-command`.
+
+General DocuSign Navigation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Click on your profile picture to access **DocuSign Settings**. Within DocuSign Settings you can:
+
+* Edit your profile
+
+* Update your DocuSign password
+
+* Edit your contact information
+
+* Edit your notification preferences
+
+* Manage integrations (for example, connect your ZipForm Plus account to DocuSign)
+
+  * For more information, see `How to link your ZipForm account and add ZipForm documents <https://support.docusign.com/en/videos/DocuSign-Transaction-Rooms-zipForm-link-add-edit>`_.
+
+  * For more information, see `ZipForm Plus integration within DocuSign <https://support.docusign.com/en/videos/DocuSign-Transaction-Rooms-Sending-an-Envelope-using-a-zipForm-Plus-Document>`_.
+
+**Rooms** - Search for and access the Rooms within your DocuSign account.
+
+**Inbox** - Access your DocuSign inbox. Your DocuSign Inbox email address, which can be found at the top-left of the Inbox, allows you to have documents sent to your inbox. You can then move or copy them to any room, or to your My Docs folder.
+
+**My Docs** - Access all of the forms you have stored in your DocuSign account. These include the following:
+
+* Form Libraries - Access forms provisioned by your Board, Association, or MLS. These should include all available forms, not organized in any way.
+
+* Form Groups - Access subsets of forms, set up by your Market Center, which are generally organized by transaction type.
+
+* Personal Forms - Access any document you have added from your computer, Box, Dropbox, or Google Drive.
+
+For more information, see `My Docs tab <https://support.docusign.com/en/guides/my-docs-rooms>`_.
+
+DocuSign Room Navigation
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Details** - The Details tab is where you enter any listing or transaction details. You can also set up the different roles for the Room by labeling Seller 1, Buyer 1, etc., and adding their contact information. The information and roles you add to the Room Details page will auto-fill in your forms, when you create Envelopes to send for signatures and completion.
+
+**Documents** - Manage all of the forms and documents that you need for this transaction. This is also where your signed forms will be located, after they are completed.
+
+For more information, see :ref:`add-document-opportunities-command`.
+
+For more information, see :ref:`split-pdf-opportunities-command`.
+
+**People** - Invite others to your DocuSign Room. These are usually members of your team who will be completing tasks in the room. You can invite members, control the access to forms, and remove Room members.
+
+**Envelopes** - Create and manage your Envelopes for this Room. Envelopes are used to send, sign, and complete forms in DocuSign. Envelopes consist of single or multiple documents, recipients who need to complete or view documents, and an email message that accompanies the Envelope.
+
+For more information, see :ref:`create-send-envelope-opportunities-command`.
+
+**History** - starting from the creation of the Room, DocuSign will keep a log of everything that is being done in this Room, which you can access from the History tab. This is important, especially if you have invited several people to the Room, and they are completing tasks for you. On this tab, you also have the ability to export a Room Summary, and post comments to other Room members.

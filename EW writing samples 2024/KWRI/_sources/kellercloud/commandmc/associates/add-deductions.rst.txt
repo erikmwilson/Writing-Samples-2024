@@ -1,0 +1,31 @@
+
+.. _add-deductions-associates-commandmc:
+
+Add Deductions for an Associate
+===============================
+
+The following roles can add deductions to an associate:
+
+* MCA
+
+* AMCA
+
+* Operating Principal
+
+* General Manager
+
+To add deductions to an associate, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the associate name to view the associate details.
+
+#. Click the **Deductions** tab. All current deductions are listed for the associate.
+
+#. Click **Add Recurring Deduction**. To go to the Deductions applet, click **Manage all MC deductions**.
+
+#. On the **Add Recurring Deduction** page, search for the correct deduction and enter the **Amount Per Transaction**.
+
+#. Click **Add Recurring Deduction**.

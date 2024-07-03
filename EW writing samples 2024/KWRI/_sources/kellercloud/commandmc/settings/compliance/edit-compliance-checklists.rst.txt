@@ -1,0 +1,33 @@
+
+.. _edit-compliance-checklists-settings-commandmc:
+
+Edit Market Center Compliance Checklists
+========================================
+
+As agents are creating Opportunities and managing their transactions in Command, they must upload documents for compliance approval. You can edit checklists if you need to replace documents or make other changes to the checklists.
+
+For more information, see :ref:`create-compliance-checklists-settings-commandmc`.
+
+To edit and reorganize Market Center checklists, complete the
+following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **Compliance**.
+
+#. Select your **Market Center** from the drop-down and select the **Opportunity Type**.
+
+   .. note::
+
+      Each Checklist Type has a separate compliance checklist that must be created and edited separately.
+
+#. To edit a checklist, click **Edit** under the correct compliance event.
+
+#. On the **Edit Listing Stage** pop-up, modify the **Due Date**, change the order of the documents, or delete a document, and click **Save**.
+
+#. To edit a document within a checklist, click the three dots to the right of the document.
+
+#. Choose either **Edit**, which will give you the ability to edit any details or replace the document, or choose **Delete**, which opens a delete confirmation prompt.

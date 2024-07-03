@@ -1,0 +1,32 @@
+
+.. _upload-channel-resource-docebo-connect:
+
+Channel Resource Upload Guide
+=============================
+
+Channels are created to address the following needs:
+
+* To accommodate a larger selection of content which needs to be grouped together by roles or communities of users.
+
+* To target access of the wider group of content to a specific role or community.
+
+* The content collection does not solve for a well-defined learning need; therefore, alternatives must be created. This content then serves to provide possible solutions for multiple knowledge gaps falling under specific topical roles or communities of persons and activities.
+
+* To fully address any knowledge gaps and achieve content continuity, some information may need to be engaged in a more prescribed order.
+
+* Occasionally, a knowledge seeker may not need to complete all the learning content associated with a particular channel, in this case the focus and use of the channel is more informal.
+
+
+To create a Channel in Docebo, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Create a Channel. For more information, see the Docebo Help topic: `Creating and Managing Channels <https://help.docebo.com/hc/en-us/articles/360020124219-Creating-and-Managing-Channels>`_.
+
+#. Add content to a Channel. For more information, see the Docebo Help topic: `Managing Channels and Their Content <https://help.docebo.com/hc/en-us/articles/360020126179-Managing-Channels-and-Their-Content>`_.
+
+#. Add documents to a Channel. For more information, see the Docebo Help topic: `Managing Channels and Their Content <https://help.docebo.com/hc/en-us/articles/360020126179-Managing-Channels-and-Their-Content>`_.
+
+#. Create a Playlist. For more information, see the Docebo Help topic: `Creating and Managing Playlists <https://help.docebo.com/hc/en-us/articles/360020126279-Creating-and-Managing-Playlists>`_.
+
+#. Add content to a Playlist. For more information, see the Docebo Help topic: `Creating and Managing Playlists <https://help.docebo.com/hc/en-us/articles/360020126279-Creating-and-Managing-Playlists>`_.

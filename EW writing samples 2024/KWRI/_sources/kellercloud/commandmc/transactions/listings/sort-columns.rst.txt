@@ -1,0 +1,13 @@
+
+.. _sort-columns-listings-commandmc:
+
+Sort Columns in Listings
+========================
+
+To sort columns in Transactions, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Listings** tab at the top of the page.
+
+#. Click on a column header to sort by that column.

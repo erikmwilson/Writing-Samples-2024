@@ -1,0 +1,28 @@
+
+.. _generate-reports-settings-commandmc:
+
+Generate Report
+===============
+
+Market Center Administrators (MCAs), Assistant Market Center Administrators (AMCAs), System Admins, and Legal users can manage the teams, team members, and guests in your Market Center. Teams are used in Command apps and affect KWRI Awards.
+
+To generate and export a group report, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **MC Team Management**.
+
+   .. note::
+
+      If you are a member of more than one Market Center, select your Market Center from the drop-down list.
+
+#. On the **MC Team Management** page, find the team for which you want to generate a report using the search box and the **Show** drop-down menu and click on the team name.
+
+#. On the **Team Details** page, click the **Current Members** tab.
+
+#. Click **Generate Report**.
+
+#. On the **Generate Report** pop-up, click **Export**. The report is downloaded as a **.CSV** file.

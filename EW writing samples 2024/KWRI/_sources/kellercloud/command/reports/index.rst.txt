@@ -1,0 +1,11 @@
+
+.. _reports-command-index:
+
+Reports
+=======
+
+The following sections contain information about the
+Reports application.
+
+.. toctree::
+   :maxdepth: 1

@@ -1,0 +1,26 @@
+
+.. _edit-inactive-command:
+
+Edit an Inactive SmartPlan
+==========================
+
+If a SmartPlan is inactive (you have not added contacts to the SmartPlan), you fully edit the content. This includes adding or removing steps as well editing the name of the SmartPlan, the email and text content, and task descriptions.
+
+Some SmartPlans do not contain any editable content (for example, The Monthly/Bi-weekly Neighborhood Nurture and Quarterly Call SmartPlans).
+
+You can also edit an active SmartPlan. For more information, see :ref:`edit-active-command`.
+
+To edit an inactive SmartPlan, complete the following steps:
+
+.. include:: smartplans-login.rst
+
+#. Click the **My SmartPlans** tab, at the top of the page.
+
+#. Find the correct SmartPlan in the list and click the **Edit** icon |edit-icon|.
+
+   .. |edit-icon| image:: ../../../images/edit-icon.png
+      :height: 30
+
+#. On the **Edit SmartPlan** page, you can add, remove, rearrange steps as well as edit the names and content.
+
+#. After you have made edits, click the **Save** in the top-right corner of the page.

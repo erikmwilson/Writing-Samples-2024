@@ -1,0 +1,15 @@
+
+.. _share-training-connect:
+
+Share Training*
+===============
+
+To share training, complete the following steps:
+
+.. include:: training-login.rst
+
+#. Search for the On Demand Course, Learning Path, or Channel Resource. For more information, see :ref:`search-training-connect`.
+
+#. Click the training name.
+
+#. On the course page, click the **Share** button (arrow).

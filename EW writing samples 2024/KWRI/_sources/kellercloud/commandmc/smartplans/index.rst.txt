@@ -1,0 +1,29 @@
+
+.. _smartplans-index-commandmc:
+
+SmartPlans
+==========
+
+With SmartPlans you can automate your listing checklists, marketing touch points, and drip campaigns. You can create a custom SmartPlan or use a SmartPlan template from the Library. After you have created or added the SmartPlan to your Smart Plan list, you can add contacts and turn it on.
+
+Not only can you use KWRI created SmartPlans from the Library, but all KW associates have the ability to publish their custom SmartPlans to the Library for use by other associates.
+
+The following sections contain information about the
+SmartPlans application.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-custom-smartplan
+   find-smartplan
+   add-smartplan
+   add-recruits
+   unsubscribe-recruits
+   edit-active-smartplan
+   edit-inactive-smartplan
+   copy-smartplan
+   delete-smartplan
+   publish-smartplan
+   publish-best-practices-smartplan
+   unpublish-smartplan
+   change-designated-assignee

@@ -1,0 +1,29 @@
+
+.. _search-pl-recruits-mc:
+
+Search Recruits
+===============
+
+While you are managing your recruits, you may need to find a specific recruit. Instead of searching through your Phases and Stages to find the recruits you are looking for, you can search for the recruit.
+
+To search recruits, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruiting Pipeline** tab, at the top of the page. Your recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Select how you want to search for the recruit using the drop-down beside the search bar. You can search recruits based on the following attributes:
+
+   * All
+
+   * Name
+
+   * City
+
+   * Postal Code
+
+   * Email
+
+#. Enter the search information for the desired recruit. After you locate the recruit card, click the recruit name to view the recruit details.
+
+To move between Recruit details in the same stage, click **Previous Recruit** or **Next Recruit** at the top of the recruit details page.

@@ -1,0 +1,32 @@
+
+.. _manange-luxury-roster-commandmc:
+
+Manage Market Center Luxury Roster (Market Center Leadership)
+=============================================================
+
+Using CommandMC, Market Center Leadership (this includes the MCA, AMCA, Operating Principal, Team Leader, and Assistant Team Leader roles) have the ability to approve or reject eligible agents from joining the Luxury program. If an agent is approved, they remain in the Luxury program for two years before they need to become eligible again. An agent can become eligible to be a part of the Luxury program by meeting the following requirements:
+
+* Have the required amount of luxury transactions within the last 24 months (Buyer or Seller).
+
+* Have an average listing sold price that meets or is above the Luxury Floor minimum price point for that county.
+
+To manage the Market Center Luxury roster, complete the following steps:
+
+.. include:: directory-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click the **Offices** tab.
+
+#. From the **Office** column, click your office name.
+
+#. To add an agent to the Luxury roster, on the **Luxury** tab, click the ellipse icon |menu-options-icon| next to the correct agent and select **Approve as Luxury**.
+
+   After they are approved, the agent remains in the Luxury community for the next two years.
+
+#. To remove an agent from the Luxury roster, on the **Luxury** tab, click the ellipse icon |menu-options-icon| next to the correct agent and select **Remove Luxury Status**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 30

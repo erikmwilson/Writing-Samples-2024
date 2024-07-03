@@ -1,0 +1,59 @@
+============================
+Orchestration service (heat)
+============================
+
+RCPO Orchestration provides templates to create and manage cloud
+resources such as storage, networking, instances, or applications.
+Templates are used to create stacks, which are collections of resources.
+
+For example, you can create templates for instances, floating IPs,
+volumes, security groups, or users. Orchestration offers access to all
+OpenStack core services with a single modular template, as well as
+capabilities such as auto-scaling and basic high availability.
+
+RCPO Orchestration advantages include:
+
+-  A single template provides access to all underlying service APIs.
+
+-  Templates are modular and resource-oriented.
+
+-  Templates can be recursively defined and reusable, such as nested
+   stacks. The cloud infrastructure can then be defined and reused in a
+   modular way.
+
+-  Resource implementation is pluggable, which allows for custom
+   resources.
+
+-  Resources can be auto-scaled, and therefore added or removed from the
+   cluster based on usage.
+
+-  Basic high availability functionality is available.
+
+
+.. list-table:: **Orchestration service (heat) components**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+   * - heat-api
+     - Native REST API that processes API requests by sending the
+       requests to the heat-engine service over RPC.
+   * - heat-api-cfn
+     - Manages all metadata for each image.
+   * - heat-engine
+     - Orchestrates template launch and generates events for the API
+       consumer.
+   * - heat-cfntools
+     - Package of helper scripts such as cfn-hup, which handle updates
+       to metadata and execute custom hooks.
+   * - heat
+     - Command-line client to access the API.
+
+
+The following high level diagram shows the main interfaces that the
+Orchestration service uses to create a new stack of two new instances
+and a local network.
+
+.. image:: ../../../figures/heat-orchestration.png
+   :alt: RCPO Orchestration service high level data flow

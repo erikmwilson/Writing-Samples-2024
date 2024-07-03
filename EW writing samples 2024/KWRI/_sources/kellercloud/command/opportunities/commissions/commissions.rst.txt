@@ -1,0 +1,98 @@
+
+.. _commissions-opportunities-command:
+
+Submit Commission
+=================
+
+You use the **Offers & Commissions** tab to detail the commission disbursement for an Opportunity and then submit this to your Market Center.
+
+.. note::
+
+   You must have accepted an offer for the Opportunity before you can access the Commissions page for that offer.
+
+   * For more information, see :ref:`create-offer-opportunities-command`.
+
+   * For more information, see :ref:`manage-offers-opportunities-command`.
+
+To submit a Commission, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name to view the Opportunity details.
+
+#. At the top of the Opportunity page, click the **Offers & Commissions** tab. The **Offers & Commissions** tab lists all offers for the Opportunity.
+
+#. Click **Manage Commission** next to the accepted offer.
+
+   The **Offers & Commissions** tab auto-fills with the data you entered into the accepted offer.
+
+#. To edit the information in the **General Information** section, click **Edit General Information**. In the **Edit General Information** window, you can edit the **Sales Price**, **Total Units**, **Contract Date**, and **Closed Date**. When done, click **Save Changes**.
+
+#. To edit the information in the **Commission Information** section, click **Edit Commission Information**. In the **Edit Commission Information** window, edit the necessary information, and click **Save Changes**.
+
+   For Seller and Landlord opportunities, you can add a co-broker to the opportunity, click **Add Co-Broker**. For more information, see :ref:`co-broker-opportunities-command`.
+
+   If you need to add an outside referral to the opportunity, click **Add Outside Referral**. For more information, see :ref:`outside-referral-opportunities-command`.
+
+#. To edit the information in the **Agent Payment** section, click **Edit Agent Payment**.
+
+   Each agent added to the Commission Request shows Cap Status information. The Cap Status data displayed is a snapshot of where the deal currently stands and may not reflect the Cap Status after the deal closes.
+
+   To find the most accurate Cap Status data, access the Associate Income Summary Report, which uses official transmittal data. At the beginning of each month, the report updates with new data. The exact date this is completed each month varies, but usually the data is updated by the 6th of each month.
+
+   If you need to add another agent to the opportunity, click **Add Another Agent**. For more information, see :ref:`add-agent-opportunities-command`.
+
+#. On the **Edit Agent Payment** window, make any adjustments to your deductions. If you have split a unit with another agent, make sure you have distributed the other half of the unit properly. If you make any adjustments to the unit, click **Calculate Commission** to update the **Agent Gross Commission**.
+
+   Each agent has a financial breakdown details section. In the **Deductions** section, there are spaces provided where each agent can donate to **KW Cares**, **KW Kids Can**, and the **BOLD Scholarship** fund.
+
+   .. note::
+
+      **E&O** (Errors and Omissions insurance fee) in not collected by all Market Centers. Contact your MCA to determine this amount.
+
+   If there are additional items that needs to be deducted from the total, click **Add Item**, at the bottom of the section. On the **Add Item** window, select one of the following deductions, enter the correct information, and click **Save**.
+
+   * Bonus (credit) - an additional fixed amount added to the standard commission amount normally to incentivize offers in a specified time frame. For example, a home builder might pay X percent commission. However, when close to selling out a subdivision, they may offer an additional amount if a contract is assigned by a particular date.
+
+   * Concession - a portion of the commission that is generally owed to the agent but waived in order to get the deal to close. For example, an agent could waive a portion of their commission to cover a home warranty to alleviate buyer fears from the results of an inspection. This is an optional tracking mechanism.
+
+   * Deduction (debit) - a payment for an expense incurred by the agent, paid from the agent’s net commission by the Market Center. For example, an agent contracts with a transaction coordinator for X dollars for closing. The Market Center deducts X dollars from the commission and cuts a check directly to the transaction coordinator.
+
+   * Inside Referral - a portion of the commission that is sent to an agent inside your Market Center. For example, an agent would like to send a referral fee to an agent inside my Market Center.
+
+   * Outside Referral - a referral fee that is sent to another broker. For example, you need to pay out a referral fee to another brokerage (the outside referral payment comes out of the your commission).
+
+     When adding an outside referral on the **Add Item** window, if the agent does not have record in your Market Center database, click **Add New Agent** and add the agent details. An agent record will be created in vendor database for your Market Center.
+
+     If the **Company Name/DBA** does not have record in your Market Center database, click **Add New Company**.
+
+     The agent record you created will be available to you for any future transactions. The Market Center Administrator can also add this record to the Market Center database, making it available to all agents for future transactions.
+
+#. To leave a note for your MCA or Compliance Coordinator, click **Add Note**  on the right side of the page. They will see this note as they are reviewing the Commission request for this Opportunity.
+
+#. After your unit and commission totals are balanced and each agent's deductions have been entered, click **Submit** on the right side of the page.
+
+   .. note::
+
+      If you have not entered any charitable deductions, the **Charitable Deductions** window opens. You can select a donation and click **Donate and Continue** or choose not to, and click **No, Not this time**. For more information, see :ref:`one-time-charitable-deductions-opportunities-command` or :ref:`recurring-charitable-deductions-opportunities-command`.
+
+After your MCA, or Compliance Coordinator, reviews the Commission request, they will either accept or return it. You will receive a Kelle notification and Command notification after is is reviewed.
+
+If the commission request is accepted and imported into WinMORE, the **DA ID** is automatically populated and can have the following statuses:
+
+* U = Unposted
+
+* P = Posted
+
+* I = Incomplete
+
+* T = Terminated
+
+If your request is returned, review the reason for the rejection, and follow the steps above to correct any errors and resubmit the report.

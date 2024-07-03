@@ -1,0 +1,30 @@
+
+.. _filter-deductions-commandmc:
+
+Filter Deductions
+=================
+
+While you are managing your deductions in CommandMC, you may need to find specific deductions. Instead of scrolling through your list of deductions to find the deduction you are looking for, you can use filters.
+
+To filter deductions, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Deductions**.
+
+#. Click the filter icon |filter-icon| at the top of the page.
+
+   .. |filter-icon| image:: ../../../../images/filter-icon.png
+      :height: 30
+
+#. When the filters fly-out menu appears on the right side of the page, select filters by clicking the checkbox beside them. To remove filters, you can either remove them individually or click **Rest** at the bottom of the fly-out menu to remove all of the filters.
+
+#. Click **Apply Filters**.
+
+   The deductions are filtered and the total number of applied filters appears next to the filter icon. Click **Clear Filters** to remove all filters.

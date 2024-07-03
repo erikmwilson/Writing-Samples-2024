@@ -1,0 +1,48 @@
+=====================
+Business requirements
+=====================
+
+Business requirements are a series of needs that must be fulfilled to
+achieve a high-level objective. Products, systems, software, and
+processes are the ways to deliver, satisfy, or meet the business
+requirements.
+
+.. list-table:: **Business requirements**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Section/Requirement**
+     - **Requirement definition**
+   * - BR1.0
+     - The system shall provide a self-service capability including:
+   * - BR1.0.1
+     - The system shall provide the ability for a user to provision
+       virtual machine instances.
+
+       **Solution:** This can be achieved through the UI, API, or CLI.
+       Image creation will be based on what a user has been granted
+       permission to deploy.
+   * - BR1.0.2
+     - The system shall provide the ability for a user to provision
+       block storage to instances.
+
+       **Solution:** This can be achieved through the UI, API, or CLI.
+       Storage creation will be based on what a user has been granted
+       permission to deploy.
+   * - BR1.0.3
+     - The system shall provide the ability for a user to provision
+       networks.
+
+       **Solution:** This can be achieved through the UI, API, or
+       CLI. Network creation is based on what a user has been granted
+       permission to deploy.
+   * - BR1.0.4
+     - The system shall allow users to manage logging.
+
+       **Solution:** The solution will come with a logging node that
+       contains an ELK (Elasticsearch, Logstash, Kibana) stack. This
+       allows Rackspace to track an monitor the platform.
+   * - BR2.0
+     - The system shall provide Service Quality Management, including:
+   * - BR2.0.1
+     - The system shall provide a 99.99 API Uptime SLA.

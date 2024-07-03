@@ -1,0 +1,41 @@
+
+.. _create-course-docebo-connect:
+
+Create a Course
+===============
+
+Using Docebo, you can create and manage courses that display in the Training module of Connect. For more information, see `Creating and Managing Courses <https://www.docebo.com/elearning-knowledge-base-support/learning-object-management/>`_.
+
+To create a course, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+#. Click **Courses Management** from the **E-Learning section**.
+
+   From the Courses Management page, you can create new courses, new categories, create and manage courses and enrollment additional fields, organize courses into categories, import ILT sessions using CSV and enroll users into courses.
+
+#. Click **Create** (blue plus) in the top right corner of the main Courses page and select **New Course**.
+
+#. In the **New Course** panel, enter the course name, the course description and select the course type. Click **Create and Edit**.
+
+   The course name should simple and clear. Users should instantly understand the topic of the course upon reading the title. The course description helps users have a clear idea of what they will learn in the course.
+
+#. Click the **Training Material** tab.
+
+#.  To add a new learning object, click **Add Training Material**, and choose the type of training material you want to upload. For more information about the types of training materials, see `Learning Object Management <https://www.docebo.com/elearning-knowledge-base-support/learning-object-management/>`_.
+
+#. You can organize training material into folders. Folders are very useful when you need to organize your material by topic or chapter. The root folder takes the same name as the course.
+
+   To create a new folder, click **Add Training Material** and select **New Folder** from the dropdown menu. Enter a name and save your changes. After a folder is created, you can delete the folder or edit it by clicking on the menu at the end of the folder row in the training material area and then selecting the corresponding option. If you try to delete a folder containing training material, the system asks you whether you want to set the course as completed for users who have completed all of the other learning objects in the course.
+
+   You can change the order of the folders by dragging them to the desired position. To add a subfolder, select the destination folder and create a new folder following the same steps described above.
+
+#. To change the layout of the course, click **Add Course Widgets**. You can add specific areas to the page of your course, providing your learners with additional information about the course (such as the instructor name and related files) and making their experience more interactive through comments, forums and Q&A sections. For more information, see `Managing the Course Layout and Content <https://www.docebo.com/knowledge-base/elearning-how-to-manage-the-course-contents-add-training-materials-blocks/>`_.
+
+#. When you have finished editing your course, click on the **Properties** tab.
+
+#. At the bottom of the page, click the **Status: Published** menu and select **Published**. Click **Save Changes**.
+
+   The Course is available for users in Training.

@@ -1,0 +1,174 @@
+====================================
+Rackspace internal support questions
+====================================
+
+.. note::
+   This chapter contains Rackspace internal information, and should not be
+   distributed to customers.
+
+.. DRAFT COMMENT: These need updated for v11.0.
+
+   As of early August, the following questions remain:
+
+   * Overall upgrade methodology.
+
+   * Enforcing upgrades ensures customers are kept on a common base of up
+     to date packages. This is easier to facilitate with the three-node
+     controller cluster model.
+
+   * Upgrading cinder and compute.
+
+   * Upgrading any containers with state, such as MariaDB and RabbitMQ.
+
+   * Documentation for regular operating system patching and managing
+     exclusions (LXC, kernel and libvirt).
+
+   * Future releases might use Suse Manager for automated patching for
+     Ubuntu.
+
+Load Balancing
+~~~~~~~~~~~~~~
+**Q:** How does Rackspace Support access the load balancers?
+
+**A:**  For a physical load balancer within the Rackspace data center, Support
+should call NetSec.
+
+Repositories
+~~~~~~~~~~~~
+
+**Q:** Can we treat a customer install as a feature branch in the
+``rpc-openstack`` Git repository?
+
+**A:** No. We want to keep customers from having access to each other's
+branches, and Git security is at repository level, not branch level.
+
+**Q:** When working with a customer, do we commit playbook changes to a
+local repository?
+
+**A:** Yes. All changes should be committed to a local branch. The
+playbook repository should be checked out, and a branch created for the
+customer. Any local changes should be committed to that local branch.
+For example:
+
+.. code-block:: console
+
+   # git clone https://github.com/rcbops/ansible-lxc-rpc
+   # git checkout -b customerName
+
+**Q:** Will the customer branch then be committed to an upstream
+repository?
+
+**A:** Yes. Each customer will need a Git server with one bare
+repository. The customer local branch should be pushed to the customer
+remote repository when changes are made. Remote push should be automated
+with a post-commit hook.
+
+**Q:** What about per-customer Git repositories on GitHub?
+
+**A:** You can create a Git repository per customer on GitHub, and then
+`create Git-only SSH keys for each
+customer <http://git-scm.com/book/en/Git-on-the-Server-Setting-Up-the-Server>`_.
+These keys should also be limited with ``from=`` in authorized keys.
+Refer to `sshd documentation <http://man.he.net/man5/authorized_keys>`_
+for more information.
+
+Per-customer GitHub repositories have some advantages over keeping
+customer configurations only on their installations. The repository
+provides a backup of their configuration and allows Rackspace to compare
+customer configurations without logging into customer servers. This can
+be done by cloning the public repository, adding both customer private
+repositories as remotes, fetching (not pull) from both, and then running
+``diff`` on the branches.
+
+**Q:** Can we run gating on a customer branch?
+
+**A:** No, because it will be specific to their installation and gating
+requires its own configuration.
+
+Supporting services
+~~~~~~~~~~~~~~~~~~~
+
+**Q:** How does the initial supporting services deployment work?
+
+**A:** The initial supporting services deployment is part of the
+standard RPCO Ansible deployment. These supporting services will be
+deployed onto the initial three controller hosts, with one RabbitMQ and
+MariaDB instance running in a container on the hosts.
+
+**Q:** Can RabbitMQ or MariaDB be deployed in isolation?
+
+**A:** No. RabbitMQ and MariaDB are deployed along with all the other
+containerized services in RPC.
+
+**Q:** How are the supporting services upgraded?
+
+**A:** Each service has conditions which need to be factored into
+upgrade plans, so specific upgrade documentation will need to be crafted
+and thoroughly tested prior to launch. Refer the Upgrade Guide for more
+information.
+
+..TODO Add link when the |release| Upgrade Guide is published.
+
+**Q:** How are the supporting services scaled when additional RabbitMQ /
+MariaDB capacity is required?
+
+**A:** In the case of a three-node controller cluster that has an
+instance of RabbitMQ and MariaDB installed in each node, there are two
+primary ways of scaling out the supporting services.
+
+* Add two additional hardware nodes and replicate all the containers
+  and services from each of the initial three nodes. Two additional
+  hardware nodes are required because the MariaDB Galera cluster needs
+  to be deployed in an odd number of instances to achieve quorum.
+
+* Move the supporting services to a separate cluster which can be
+  scaled out horizontally and / or vertically, independently of the
+  OpenStack installation. This cluster could use nodes from the same
+  pool as the initial controller cluster, but the end goal is to have a
+  set of nodes dedicated to the supporting services. This would be the
+  preferred deployment strategy for the support services on a large
+  installation or one expected to experience significant growth.
+
+Note that RabbitMQ and MariaDB should be accessible via a load balanced
+virtual IP (VIP), which means that the supporting services can be scaled
+with no changes required to the OpenStack installation. This is true
+with both scaling methods. As additional RabbitMQ / MariaDB nodes are
+added to the load balancer, the additional capacity would be immediately
+visible to the OpenStack services using them.
+
+Versions and upgrades
+~~~~~~~~~~~~~~~~~~~~~
+
+**Q:** How do you determine version creation and releases?
+
+**A:** There are two aspects to version creation:
+
+*  Ansible playbooks and deployment scripts and tools that will be
+   changed by the RPCO engineering team to improve the deployments and
+   fix bugs.
+
+*  Upgrades to packages and source builds.
+
+RPCO will upgrade on a schedule. There will be a regular test of new
+packages and scripts, and once testing is complete, we will release the
+packages and scripts at the new tested versions.
+
+Critical patches will be addressed on an ad-hoc basis.
+
+**Q:** What is the process end-to-end for building, testing and
+rolling-out a minor or trivial version?
+
+**A:** RPCO plans to automate the process, which will proceed as
+follows:
+
+#. A CI/CD process retrieves the latest versions of all packages in the
+   frozen repo and the latest source builds.
+
+#. The process then initiates a gate and test job with QE.
+
+#. When the tests are successful (the newest packages and scripts are
+   functional) deployments of the new version can begin.
+
+The upgrade path for stateless containers should be relatively
+straightforward in our three-node controller cluster model. The upgrade
+path for containers with state is still being researched.

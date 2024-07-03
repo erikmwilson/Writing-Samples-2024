@@ -1,0 +1,33 @@
+
+.. _mark-task-complete-opportunities-command:
+
+Mark Task as Complete
+=====================
+
+Once you have completed a task, click the empty checkbox to the left of the task to mark it as complete.
+
+To mark a task as complete, complete the following steps:
+
+.. include:: ../../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity Name to view the Opportunity details.
+
+#. Click on the checklist icon, |checklist-icon|.
+
+   .. |checklist-icon| image:: ../../../../../images/checklist-icon.png
+      :height: 30
+
+#. On the **Tasks** window, complete one of the following:
+
+   * Click the empty check icon next to the correct task. The icon turns green for completed tasks. You can also uncheck a task to mark it incomplete.
+
+   * Click on the task name, on the **Task Details** window, click **Complete Task**.
+
+You can see all opportunity tasks in the Tasks applet. For more information, see :ref:`tasks-index-command`.

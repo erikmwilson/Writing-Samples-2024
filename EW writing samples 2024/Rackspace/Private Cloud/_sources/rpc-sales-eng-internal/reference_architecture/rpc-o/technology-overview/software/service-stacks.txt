@@ -1,0 +1,10 @@
+=========================
+High level service stacks
+=========================
+
+RCPO is composed of multiple stacks of services and components that
+are used to deliver IaaS and to keep it up and running and performing
+as expected.
+
+.. image:: ../../figures/service-stacks.png
+   :alt: Service stacks

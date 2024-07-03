@@ -1,0 +1,260 @@
+.. _integrating:
+
+===========
+Integrating
+===========
+
+During the onboarding process, a user granted the ``cloudfeeds:observer``
+role is needed to consume events from the Ticketing feed. If you do not
+have this role already, authenticate as this user and retrieve your API Key
+from either the my.rackspace.com or mycloud.rackspace.com portal.
+
+For more information about credentials, see
+:ref:`Get your credentials <get-credentials>`.
+
+For authentication instructions, see
+:ref:`Authenticate to Rackspace <authenticate-to-rackspace>`.
+
+Consuming events
+----------------
+
+The following feeds are available. The demo feed is for development purposes
+and the production feed is for the consumption of live, production events.
+Integrate with the appropriate endpoint.
+
+**Demo**: ``https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>``
+
+**Production**: ``https://ord.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>``
+
+Account IDs are formatted in the following way:
+
+* Dedicated Hosting - ``hybrid:12345``
+* Managed Cloud - ``12345`` (no prefix)
+* Managed AWS - ``faws:12345``
+* Managed MGCP - ``managed_gcp:12345``
+
+Requesting events
+-----------------
+
+For more information about interacting with the Cloud Feed API, see
+`Sending API requests to Cloud Feeds <https://developer.rackspace.com/docs/cloud-feeds/v1/developer-guide/#document-getting-started/send-request-ovw>`_.
+
+The following sections describe the contents of the events
+to help map documented elements to records within your system.
+
+The following request retrieves the events for the specified account ID:
+
+.. code::
+
+    GET https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>
+
+    Headers:
+        X-Auth-Token: <token>
+        Accept:application/vnd.rackspace.atom+json
+
+The feed is consumed from the last event to the first. The most relevant
+information is in the ``product`` object:
+
+.. code::
+
+   (feed.entry[0].content.event.product)
+
+In addition to the categories within the category list, the ``term type``
+describes the type of the event:
+
+.. code::
+
+   (feed.entry[0].category["term"="type:<type>"])
+
+Available events are contained within the ``entry`` list in the response body.
+Each entry has common attributes.
+
+After you have consumed a page of results, save the ID marker
+(``feed.entry[0].id``) of the last event consumed. To fetch the next page of
+events, add the ``marker`` query parameter, as shown in the following request:
+
+.. code::
+
+    GET https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>?marker=<marker>
+
+    Headers:
+        X-Auth-Token: <token>
+        Accept:application/vnd.rackspace.atom+json
+
+The next page returned skips over the ``marker`` provided within the query
+parameter and gives you all of the events that have occurred after it.
+Consume this page again, last to first.
+
+Response parameters
+~~~~~~~~~~~~~~~~~~~
+
+These are the most relevant response parameters of an event.
+
+.. list-table::
+   :widths: 15 10 30
+   :header-rows: 1
+
+   * - Name
+     - Type
+     - Description
+   * - id
+     - string
+     - The unique ID (UUID) of the event updated and published the timestamp of when
+       the event was pushed to the feed.
+   * - category
+     - List
+     - Terms that provide additional information about the events.
+   * - category (TID)
+     - String
+     - The account ID for the event, also known as tenant ID.
+       Example: ``{"term": "tid:123456789"}``.
+   * - category (RID)
+     - String
+     - The resource associated with the event, in this case, our
+       ticket ID. Example: ``{"term": "rid:180717-iad-0000000"}``.
+   * - category (Type)
+     - String
+     - The event type. The feed has the following event types:
+       ``type:consolidatedticketing.create.ticket.create.hybrid``
+       ``type:consolidatedticketing.update.ticket.update.hybrid``
+       ``type:consolidatedticketing.create.ticket.create.cloud``
+       ``type:consolidatedticketing.update.ticket.update.cloud``
+       Example: ``{"term": "type:consolidatedticketing.update.ticket.update.cloud"}``
+   * - content.event.eventTime
+     - String
+     - Time the event was published to the feed. **Note:** this is not the time of last
+       update as publishing delays could result in a timestamp later than when the
+       actual event occurred.
+   * - content.event.resourceID
+     - String
+     - The resource associated with the event, in this case, our ticket ID.
+   * - content.event.tenantID
+     - String
+     - tenantID more commonly known as your account ID.
+   * - content.event.type
+     - String
+     - The type of event. Available event types are ``CREATE``, if a new ticket
+       was created, and ``UPDATE`` if an existing record was updated. This
+       typically occurs during ticket status changes or comments being added
+       to the ticket.
+   * - content.event.product
+     - Object
+     - Provides a snapshot of the record when the event occurred, this
+       is described in additional detail below.
+   * - event.product.accountID
+     - String
+     - Account ID associated with this event.
+   * - event.product.lastUpdated
+     - String
+     - Date and time the ticket was last modified either through status change
+       or comment additions.
+   * - event.product.resources
+     - List
+     - Devices associated with the ticket. These are provided in a format
+       consistent with our Resource API.
+   * - event.product.subject
+     - Subject
+     - Subject originally provided at creation time.
+   * - event.product.ticketId
+     - String
+     - The ticket ID impacted by this event.
+   * - event.product.comment
+     - String/Object
+     - This are either a blank string ("") if no comment occurred within the event
+       or an object if the event was triggered by a new comment.
+   * - comment.author
+     - String
+     - The creator of this comment, can either be a Racker or a user within your
+       organization.
+   * - comment.authorType
+     - String
+     - The type of user who created the request. Available types are ``Rackspace`` or ``Customer``.
+   * - comment.created
+     - String
+     - Timestamp of comment creation.
+   * - comment.id
+     - String
+     - Unique ID of the comment.
+   * - comment.text
+     - String
+     - The text of the comment. **Note**: At this time, the length of the comment is
+       limited to 10240 characters.
+
+Response example
+~~~~~~~~~~~~~~~~
+
+.. code::
+
+    {
+        "feed": {
+            "@type": "http://www.w3.org/2005/Atom",
+            "link": [ ... ],
+            "entry": [
+                {
+                    "category": [
+                        {
+                            "term": "tid:123456789"
+                        },
+                        {
+                            "term": "rid:180717-iad-0000000"
+                        },
+                        {
+                            "term": "type:consolidatedticketing.update.ticket.update.cloud"
+                        }
+                    ],
+                    "link": [
+                        {
+                            "href": "https://atom.staging.ord1.us.ci.rackspace.net/consolidated_ticketing/events/entries/123456789/entries/urn:uuid:08e647dc-6f68-47ad-ae7f-81c2f827b9ef",
+                            "rel": "self"
+                        }
+                    ],
+                    "title": {
+                        "type": "text",
+                        "@text": "ConsolidatedTicketing"
+                    },
+                    "content": {
+                        "event": {
+                            "@type": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                            "dataCenter": "iad",
+                            "eventTime": "2018-07-27T03:47:06.446363Z",
+                            "id": "bb3a9766-914f-11e8-961c-0050561a0171",
+                            "region": "iad",
+                            "resourceId": "180717-iad-0000000",
+                            "tenantId": "123456789",
+                            "type": "UPDATE",
+                            "version": "1",
+                            "AtType": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                            "product": {
+                                "@type": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                                "accountId": "123456789",
+                                "lastUpdated": "2018-07-27T03:47:06.297537Z",
+                                "resourceType": "TICKET",
+                                "resources": "",
+                                "serviceCode": "ConsolidatedTicketing",
+                                "subject": "Request for Information",
+                                "ticketId": "180717-iad-0000000",
+                                "version": "1",
+                                "AtType": "http://docs.rackspace.com/event/consolidatedticketing/ticket/update",
+                                "comment": {
+                                    "author": "Racker",
+                                    "authorType": "Rackspace",
+                                    "created": "2018-07-27T03:47:06.297537Z",
+                                    "id": "180727-iad-0000000",
+                                    "text": "We are researching a solution now."
+                                }
+                            }
+                        }
+                    },
+                    "id": "urn:uuid:08e647dc-6f68-47ad-ae7f-81c2f827b9ef",
+                    "updated": "2018-07-27T03:47:07.622Z",
+                    "published": "2018-07-27T03:47:07.622Z"
+                }
+            ],
+            "id": "urn:uuid:ad01455d-0ec1-4f32-a74c-7682ad24359b",
+            "title": {
+                "type": "text",
+                "@text": "consolidated_ticketing/events"
+            },
+            "updated": "2018-07-27T03:47:23.104Z"
+        }
+    }

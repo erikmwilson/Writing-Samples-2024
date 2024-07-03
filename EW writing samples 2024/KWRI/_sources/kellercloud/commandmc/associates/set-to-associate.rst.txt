@@ -1,0 +1,20 @@
+
+.. _set-to-associate-associates-commandmc:
+
+Set to Associate
+================
+
+Setting to associate removes the agent role, any existing licenses, and MLS information from this associate. This also removes this associate from your agent count.
+
+To set to associate, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that associate and select **Set to Associate**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Set to Associate** window, click **Confirm**.

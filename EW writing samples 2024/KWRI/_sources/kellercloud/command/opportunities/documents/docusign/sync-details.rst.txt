@@ -1,0 +1,36 @@
+
+.. _sync-details-opportunities-command:
+
+Sync Opportunity Details with a DocuSign Room
+=============================================
+
+When you create the DocuSign Room for an Opportunity, much of the information that has already been entered into Command (listing details, details from your agent profile, information about the associated contact) is imported into the new DocuSign Room. You can also push new and updated information to DocuSign.
+
+.. note::
+
+   You must create the DocuSign Room from within the Opportunity to be able to sync the Opportunity details.
+
+   For more information, see :ref:`create-room-opportunities-command`.
+
+   When you sync Opportunity details, the information is exported from Command into DocuSign only.  Information is not imported from DocuSign into Command.
+
+To sync Opportunity details with a DocuSign Room, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. Click **Sync Transaction**, at the top-right of the page.
+
+#. On the **Sync Transaction** pop-up, click **Update**.
+
+   At the top of the Opportunity page, you will see a message saying that your data has synced: Your room information has been successfully updated from Command.

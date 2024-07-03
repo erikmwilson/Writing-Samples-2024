@@ -1,0 +1,64 @@
+
+.. _roles-franconnect-ug:
+
+CommandMC Access by Role
+========================
+
+The following roles can access CommandMC.
+
+Regional Access
+^^^^^^^^^^^^^^^
+
+* Regional Operating Principal
+
+* Regional Director
+
+* Regional MCA
+
+* Regional Operations Manager
+
+* Regional Staff
+
+* Regional Director Assistant
+
+* Regional MCA Assistant
+
+* Area Director
+
+* MAPS Regional Leadership Coach
+
+* Regional Tech Trainer
+
+Market Center Access
+^^^^^^^^^^^^^^^^^^^^
+
+* Market Center Administrator (MCA)
+
+* Assistant Market Center Administrator (AMCA)
+
+* Market Center Leader
+
+* Operating Principal
+
+* Team Leader
+
+* Assistant Team Leader
+
+* General Manager
+
+* MC Tech Coordinator
+
+* Productivity Coach
+
+* MC Broker
+
+MC Team Management Access
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* MCA
+
+* AMCA
+
+* KWRI System Administrators
+
+* KWRI Legal

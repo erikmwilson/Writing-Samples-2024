@@ -1,0 +1,16 @@
+.. _run-post-upgrade-playbook:
+
+==================
+Verify the upgrade
+==================
+
+The ``rpc-post-upgrades.yml`` playbook performs tasks to verify the state of
+the cluster after an upgrade. For a list of the tasks that it performs, see the
+`README <https://github.com/rcbops/rpc-openstack/blob/master/rpcd/playbooks/roles/rpc_post_upgrade/README.rst>`_.
+
+To run the ``rpc-post-upgrades.yml`` playbook, use the following commands:
+
+.. code-block:: console
+
+   # cd /opt/rpc-openstack/rpcd/playbooks
+   # openstack-ansible rpc-post-upgrades.yml

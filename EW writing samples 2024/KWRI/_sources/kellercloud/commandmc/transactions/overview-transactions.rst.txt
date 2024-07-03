@@ -1,0 +1,13 @@
+
+.. _overview-transactions-commandmc:
+
+Transactions Overview
+=====================
+
+Transactions are created after an offer goes "Under Contract" or is executed by both parties. At this point the buyer and seller have agreed to transfer the ownership of the property upon closing based on a specific sales price. As a part of the listing agreement, the seller has agreed to pay a portion of those sales proceeds to the agents in the form of a commission.
+
+In most cases, the buyer has the right to have the home inspected and appraised. Should the home have repairs that are needed the buyer can negotiate to either have the repairs completed prior to closing, or possibly lower the sale price in stead of having the repairs completed. Likewise if the home does not appraise for enough, a re-negotiation on price can occur. The renegotiation may not be successful which gives the buyer the opportunity to back out of the transaction (terminate). Upon successful renegotiation, the sales price is updated and any effects on commission are re-calculated.
+
+The paid commissions are split between the brokerage and the agent. The brokerage will withhold the amount due the brokerage as well as any KW royalties.
+
+At the end of the month, once all closings are recorded, the Market Center has a franchise obligation to close the month (lock the period) and report their profitability. The month end closing process is used to calculate the amount the market center owes KWRI for the month. After all Market Centers have closed the month, the KW Finance team drafts the funds from each Market Center based on the amount calculated in the Month End Close Process.

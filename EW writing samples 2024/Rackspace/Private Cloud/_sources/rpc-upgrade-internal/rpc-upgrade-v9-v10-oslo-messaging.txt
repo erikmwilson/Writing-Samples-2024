@@ -1,0 +1,86 @@
+======================================
+Downgrade oslo.messaging upgrade notes
+======================================
+
+Before upgrading RPCO version 9.0.5 and earlier, oslo.messaging may need
+to be downgraded from version 1.5.1 to 1.4.1.
+
+#. Change to the ``rpc_deployment`` directory:
+
+   .. code-block:: console
+
+      # cd /opt/openstack-ansible/rpc_deployment \
+        || cd /opt/ansible-lxc-rpc/rpc_deployment
+
+#. Determine which systems are affected by the oslo.messaging downgrade:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack/openstack-ansible/playbooks
+
+      # ansible all -m shell -a 'test -x $(which pip) && pip freeze \
+        |grep "oslo.messaging=="' | awk '/success / {print $1}' \
+        | tee /root/oslo.messaging.to-downgrade.log
+
+#. Change the pip repository to the repository containing the earlier
+   oslo.messaging version. For example:
+
+   .. code-block:: console
+
+      # ansible all_containers -m shell -a "sed -ie 's/9\.0\../9\.0\.1/g' \
+        /root/.pip/pip.conf"
+
+      # ansible compute_hosts -m shell -a "sed -ie 's/9\.0\../9\.0\.1/g' \
+        /root/.pip/pip.conf"
+
+#. Downgrade oslo.messaging from version 1.5.1 to 1.4.1:
+
+   .. code-block:: console
+
+      # ansible --forks 1 all -m shell -a 'test -x $(which pip) && pip freeze \
+        |grep oslo.messaging==1.5.1 && pip uninstall -y oslo.messaging && \
+        pip install oslo.messaging==1.4.1'
+
+#. Change the pip repository back to the installed RPCO version:
+
+   .. code-block:: console
+
+      # ansible all_containers -m shell -a "sed -i 's/9\.0\../9\.0\.6/g' \
+        /root/.pip/pip.conf"
+
+      # ansible compute_hosts -m shell -a "sed -i 's/9\.0\../9\.0\.6/g' \
+        /root/.pip/pip.conf"
+
+#. Change the pip repository back to the installed RPCO version:
+
+   .. code-block:: console
+
+      # ansible all_containers -m shell -a "sed -i 's/9\.0\../9\.0\.6/g' \
+        /root/.pip/pip.conf"
+
+      # ansible compute_hosts -m shell -a "sed -i 's/9\.0\../9\.0\.6/g' \
+        /root/.pip/pip.conf"
+
+#. Restart all RabbitMQ dependent services.
+
+   ..  warning::
+
+       Restarting the neutron_agents_container will potentially
+       disrupt L3 configured agents due to HA failover.
+
+   .. code-block:: console
+
+      # ansible --forks 1 cinder_volumes_container -m shell -a \
+        "service cinder-scheduler restart; service cinder-volume restart"
+      # ansible --forks 1 heat_engine_container -m shell -a reboot
+      # ansible --forks 1 heat_apis_container -m shell -a reboot
+      # ansible --forks 1 neutron_agents_container -m shell -a reboot
+      # ansible --forks 1 neutron_server_container -m shell -a reboot
+      # ansible --forks 1 nova_api_metadata_container -m shell -a \
+        'service nova-api-metadata restart'
+      # ansible --forks 1 nova_cert_container -m shell -a reboot
+      # ansible --forks 1 nova_scheduler_container -m shell -a reboot
+      # ansible --forks 1 nova_spice_console_container -m shell -a reboot
+      # ansible --forks 1 nova_conductor_container -m shell -a reboot
+      # ansible --forks 1 compute_hosts -m shell -a \
+        'service neutron-linuxbridge-agent restart; service nova-compute restart'

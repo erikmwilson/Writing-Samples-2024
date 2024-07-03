@@ -1,0 +1,21 @@
+
+.. _access-command-ug:
+
+Access Command
+==============
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+   Click the eye icon to view your password as you enter it.
+
+   .. note::
+
+      If you have forgotten your password, click **Forgot Password** to
+      reset your password.
+
+      If you are unable to recover your password using the **Forgot Password**
+      link, you can contact KW Support at support@kw.com.
+
+#. Click **Sign In**.

@@ -1,0 +1,35 @@
+
+.. _connect-docusign-settings-commandmc:
+
+Create and Connect Your Market Center DocuSign Account
+======================================================
+
+To create and connect your MC DocuSign account, complete the
+following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **DocuSign Settings**.
+
+#. Select your **Market Center** from the drop-down and click **Connect Market Center**.
+
+#. On the **Market Center Registration** pop-up click **Send Registration Email**.
+
+   .. note::
+
+       The pop-up displays the Market Center's **klrwxxx@kw.com** email address. It is not possible to use any other email address for your Market Center's DocuSign account. This is the email address that you use to log in to this DocuSign account and where all DocuSign email communication for this account is sent.
+
+#. A DocuSign invitation email is sent to this email address. Open the email and click **Accept Invite**.
+
+#. On the DocuSign **Activate Your Account** pop-up, enter your password for your DocuSign account and choose a password recovery validation question and answer. Click **Activate**.
+
+#. On the next screen, click the **DocuSign Customer Agreement** link, to review the terms and conditions of your new DocuSign account. Click **Accept Agreement** after you have reviewed the customer agreement.
+
+#. Now that the account has been created, you need to connect it to Command. In the **DocuSign Settings** section of CommandMC, click **Sign In**.
+
+#. Enter your DocuSign password and click **Log In**.
+
+#. To give Command permission to connect to your new DocuSign account, click **Accept**.

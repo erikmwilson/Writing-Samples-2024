@@ -1,0 +1,22 @@
+
+.. _access-accounting-spreadsheets-commandmc:
+
+Access Accounting Reports
+=========================
+
+To access Accounting reports, complete the following steps:
+
+.. include:: accounting-mc-login.rst
+
+#. Click one of the following tabs:
+
+   * **Balance Sheet** - Select the correct month in the **Select Month** drop-down.
+
+   * **Income Statement** - Select the correct month in the **Select Month** drop-down.
+
+   * **Account History**
+
+#. To print the report, click the print icon |print-icon|.
+
+   .. |print-icon| image:: ../../../images/action-print.svg
+      :height: 30

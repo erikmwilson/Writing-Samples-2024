@@ -1,0 +1,17 @@
+.. _alarms-ug:
+
+======
+Alarms
+======
+
+For information about alarms, see
+`Alarms <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-alarms.html>`_ in the AppFormix User Guide.
+
+For information about alarms operation (sliding window analysis,
+static alarms, and dynamic alarms), see
+`AppFormix Alarms Operation <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-alarms.html#jd0e44>`_ in the AppFormix User Guide.
+
+To configure an alarm, see
+`Alarm Definition <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-alarms.html#jd0e195>`_ in the AppFormix User Guide.
+
+To configure a dynamic threshold, see :ref:`dynamic-threshold-task-ug`.

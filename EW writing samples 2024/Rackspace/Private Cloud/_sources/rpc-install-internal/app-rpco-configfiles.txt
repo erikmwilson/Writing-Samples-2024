@@ -1,0 +1,12 @@
+.. _appendix-b:
+
+========================
+RPCO configuration files
+========================
+
+The `rpc-openstack/etc/openstack_deploy
+<https://github.com/rcbops/rpc-openstack/tree/master/rpcd/etc/openstack_deploy>`_
+directory contains configuration files for RPCO Monitoring as a
+Service (MaaS) and other variables specific to Rackspace.
+
+.. remote-include:: https://raw.githubusercontent.com/rcbops/rpc-openstack/newton/rpcd/etc/openstack_deploy/README.rst

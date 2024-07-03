@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reschedule Task &mdash; Command 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/bespoke.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Archive a Custom Task" href="archive-custom-task.html" />
+    <link rel="prev" title="Reassign Task" href="reassign-task.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/KW_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../onboarding/index.html">Getting Started at KW (Onboarding)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../onboarding/create-account-kw.html">Create a KW Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/getting-started/index.html">Getting Started with Command</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/access-command.html">Access Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/configure-settings.html">Configure Command Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/index.html">Command Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/connect/index.html">Connect Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/navigation.html">Navigate the Command dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/navigation.html#top-menu">Top menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/navigation.html#left-hand-menu">Left-hand menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/navigation.html#dashboard-modules">Dashboard modules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/select-team.html">Select your KW team</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/marketplace.html">Access the KW MarketPlace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/edit-profile.html">Edit profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/help.html">Get help and information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/help.html#find-training">Find training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/help.html#get-support">Get Support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/help.html#submit-an-idea">Submit an idea</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/log-out.html">Log out of Command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../command/index.html">Command User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../command/getting-started/index.html">Getting Started with Command</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/access-command.html">Access Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/configure-settings.html">Configure Command Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/index.html">Command Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/connect/index.html">Connect Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/navigation.html">Navigate the Command dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/navigation.html#top-menu">Top menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/navigation.html#left-hand-menu">Left-hand menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/navigation.html#dashboard-modules">Dashboard modules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/select-team.html">Select your KW team</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/marketplace.html">Access the KW MarketPlace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/edit-profile.html">Edit profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/help.html">Get help and information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/help.html#find-training">Find training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/help.html#get-support">Get Support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/getting-started/help.html#submit-an-idea">Submit an idea</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/getting-started/log-out.html">Log out of Command</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/settings/index.html">Command settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../command/settings/command/index.html">Command Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/applications/index.html">Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/add-admin.html">Add Admin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/contacts/index.html">Contacts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/sales-pipeline/index.html">Sales Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/opportunity-archive.html">Opportunity Archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/team-management.html">Team Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/opportunity-settings/index.html">Opportunity Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/agent-sites/index.html">Agent Sites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/import-logs/index.html">Import Logs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/command/lead-routing/index.html">Lead Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/settings/connect/index.html">Connect Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/settings/connect/marketing-profile.html">Marketing Profile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/contacts/index.html">Contacts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../command/contacts/overview-contacts.html">Contacts Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/contacts/viewing-contacts/index.html">Viewing Contacts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/viewing-contacts/customize-columns.html">Customize Columns in Contacts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/viewing-contacts/filter-contacts.html">Filter Contacts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/viewing-contacts/smartviews-contacts.html">Create SmartViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/viewing-contacts/details-overview-contacts.html">Contacts Details Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/contacts/managing-contacts/index.html">Managing contacts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-contacts.html">Add a Contact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-leads.html">Add Leads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/edit-contacts.html">Edit a Contact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-activity-contacts.html">Add an Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-calendar-event.html">Add a Calendar Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-note-contacts.html">Add a Note</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/archive-contacts.html">Archive a Contact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/view-smartplans-contacts.html">View SmartPlans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-smartplans-contacts.html">Add a Contact to a SmartPlan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/mark-unmark-lead-contacts.html">Mark or Unmark a Contact as a Lead</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/call-sms-contacts.html">Call or Text a Contact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-neighborhood.html">Add a Neighborhood to a Contact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/add-task.html">Add a Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/create-opportunity-contacts.html">Create an Opportunity for a Contact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/saved-search-contacts.html">Create a Saved Search for a Contact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/more-options-menu.html">More Options Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/bulk-actions-contacts/index.html">Bulk Actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/managing-contacts/team-contacts/index.html">Using Teams with Contacts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/contacts/importing-contacts/index.html">Importing contacts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/importing-contacts/import-contacts.html">Import Contacts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/importing-contacts/transfer-contacts.html">Transfer Contacts from an Exported Spreadsheet into the Command Contact Import Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/contacts/importing-contacts/piesync-contacts.html">Synchronize Your Contacts With PieSync</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/tasks/index.html">Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../command/tasks/view-contact-task-details.html">View Contact Task Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/tasks/view-opportunity-task-details.html">View Opportunity Task Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/tasks/filter-tasks.html">Filter Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/tasks/create-contact-task.html">Create a Contact Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/tasks/mark-task-complete.html">Mark Task as Complete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/tasks/snooze-task.html">Snooze a Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/tasks/delete-task.html">Delete a Task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/smartplans/index.html">SmartPlans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/create-custom-smartplan.html">Create a Custom SmartPlan</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/smartplans/create-custom-smartplan.html#merge-fields">Merge Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/smartplans/create-custom-smartplan.html#remove-a-step">Remove a Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/add-trigger-smartplan.html">Add Trigger to a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/find-smartplan.html">Find a SmartPlan from the SmartPlans Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/smartplans/find-smartplan.html#search">Search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/smartplans/find-smartplan.html#filter">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/smartplans/find-smartplan.html#categories">Categories</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/add-smartplan.html">Add a SmartPlan from the SmartPlans Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/add-contacts.html">Subscribe Contacts to a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/unsubscribe-contacts.html">Unsubscribe Recruits from a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/edit-active-smartplan.html">Edit an Active SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/edit-inactive-smartplan.html">Edit an Inactive SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/copy-smartplan.html">Copy a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/delete-smartplan.html">Delete a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/publish-smartplan.html">Publish a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/publish-best-practices-smartplan.html">Publishing Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/smartplans/unpublish-smartplan.html">Unpublish a SmartPlan</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/referrals/index.html">Referrals</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/opportunities/index.html">Opportunities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/overview-opportunities.html">Opportunities Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/start-finish-opportunities.html">Opportunities: From Start to Finish</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/managing-opportunities/index.html">Managing Opportunities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/search-opportunities.html">Search Opportunities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/filter-opportunities.html">Filter Opportunities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/smartview-opportunities.html">Create Smartviews for Opportunities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/access-opportunities.html">Access an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/edit-stages-opportunities.html">Edit Stages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/create-opportunity.html">Create an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/edit-opportunity.html">Edit an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/enable-disable-personal-pipelines.html">Enable or Disable Personal Opportunity Pipelines (Teams)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/add-listing-opportunity.html">Add a Listing to an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/move-opportunity.html">Move an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/transaction-summary.html">Generate a Transaction Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/close-opportunity.html">Close an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/checklists/index.html">Opportunity Checklists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/tasks/index.html">Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/archive-opportunity.html">Archive an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/lost-opportunity.html">Mark an Opportunity as Lost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/managing-opportunities/discussions/index.html">Opportunity Discussions (Teams)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/designs/index.html">Marketing in Opportunities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/designs/create-recommended-design.html">Create a Recommended Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/designs/create-recommended-social-ad.html">Create a Recommended Social Ad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/designs/create-design.html">Create a Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/designs/create-social-ad.html">Create a Social Ad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/designs/create-social-ad-from-design.html">Create a Social Ad from a Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/designs/preview-template.html">Preview a Design Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/designs/dismiss-recommendation.html">Dismiss a Recommended Design or Social Ad</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/offers/index.html">Managing Offers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/offers/create-offer.html">Create an Offer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/offers/create-commission.html">Create Lease Commission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/offers/create-offer-comparison.html">Create an Offer Comparison</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/offers/manage-offers.html">Manage Offers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/documents/index.html">Managing Documents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/documents/docusign/index.html">Using DocuSign with Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/documents/dotloop/index.html">Using Dotloop with Command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/compliance/index.html">Compliance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/compliance/overview.html">Compliance Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/compliance/add-documents.html">Add Compliance Documents to an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/compliance/create-custom-folders.html">Create and Manage Custom Folders for Opportunities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/compliance/add-one-off-document.html">Add a One-off Compliance Document to an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/compliance/version-checklist.html">Create a New Compliance Checklist Version for an Opportunity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/compliance/submit-documents.html">Submit Compliance Documents to Your Market Center</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/compliance/resubmit-documents.html">Resubmit Rejected Compliance Documents to Your Market Center</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/commissions/index.html">Commissions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/commissions/commissions.html">Submit Commission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/commissions/add-agent.html">Add an Another Agent Payment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/commissions/add-co-broker.html">Add a Co-Broker Payment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/commissions/add-outside-referral.html">Add an Outside Referral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/commissions/resubmit-commissions.html">Submit a New Commission after an Offer Falls Through</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/commissions/charitable-deductions/index.html">Charitable Deductions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../command/opportunities/earnnest/index.html">Earnnest Intergration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/earnnest/create-earnnest.html">Create an Earnnest Account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../command/opportunities/earnnest/send-earnnest.html">Use Earnnest to Send a Digital Earnest Money Request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/campaigns/index.html">Campaigns</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/reports/index.html">Reports</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/designs/index.html">Designs</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/listings/index.html">Listings</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/insights/index.html">Insights</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/consumer/index.html">Consumer</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../command/listing-consult/index.html">Listing Consult</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">CommandMC User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../settings/index.html">CommandMC Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../settings/compliance/index.html">Compliance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/compliance/create-compliance-checklists.html">Create Market Center Compliance Checklists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/compliance/edit-compliance-checklists.html">Edit Market Center Compliance Checklists</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../settings/custom-tags/index.html">Custom Tags</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/custom-tags/create-tags.html">Create Tags for Submitted Compliance Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../settings/docusign-settings/index.html">DocuSign Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/docusign-settings/create-docusign.html">Create and Connect Your Market Center DocuSign Account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/docusign-settings/docusign-access.html">Enable DocuSign Access for Your Associates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/docusign-settings/access-docusign-form-libraries.html">Access Market Center Form Libraries in DocuSign</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/docusign-settings/create-docusign-form-groups.html">Create Market Center Form Groups in DocuSign</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/docusign-settings/add-forms-docusign-form-groups.html">Add Forms to Your Market Center Form Groups in DocuSign</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/docusign-settings/create-docusign-template-groups.html">Create Your Market Center Template Sharing Group in DocuSign</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../settings/broker-groups/index.html">Broker Groups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/broker-groups/create-broker-groups.html">Create Broker Groups and Assign Compliance Checklists</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../settings/team-mgmt/index.html">MC Team Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/overview.html">MC Team Management Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/add-team.html">Add a Team</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/edit-team.html">Edit a Team</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/deactivate-team.html">Deactivate a Team</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/transfer-team.html">Transfer a Team to a Different Market Center</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/transfer-request.html">Respond to a Team Transfer Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/add-team-member.html">Add Team Members</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/edit-team-member.html">Edit a Team Member</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/view-change-log.html">View Member Change Log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/remove-team-member.html">Remove a Team Member</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/generate-report.html">Generate Report</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../settings/recruits/index.html">Recruits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/recruits/create-recruiting-tags.html">Create Recruiting Tags</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../settings/smartplans/index.html">SmartPlans</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/smartplans/designated-associates-smartplans.html">Select Designated Associates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../administration/index.html">Administration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../administration/luxury/index.html">Luxury</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../administration/luxury/manage-luxury-roster.html">Manage Market Center Luxury Requests (Market Center Leadership)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/luxury/luxury-exception.html">Submit Luxury Agent Exception Request (Market Center Leadership)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/luxury/luxury-min-units.html">Adjust Minimum Units Required for Luxury Eligibility (Market Center Leadership)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/luxury/adjust-floor-price-luxury.html">Adjust the Floor Price Point for KW Luxury Eligibility (Regional Leadership)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/luxury/manage-luxury-requests.html">Manage Luxury Program Exception Requests (Regional Leadership)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/luxury/remove-luxury.html">Remove Luxury Status (Regional Leadership)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../administration/vendors/index.html">Vendors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../administration/vendors/accept-vendor.html">Add Vendor Added by Agent (Market Center Leadership)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/vendors/remove-vendor.html">Remove Vendor Added by Agent (Market Center Leadership)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../administration/deductions/index.html">Deductions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../administration/deductions/search-deductions.html">Search Deductions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/deductions/filter-deductions.html">Filter Deductions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/deductions/add-deduction.html">Add a Deduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/deductions/edit-deduction.html">Edit a Deduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/deductions/recurring-deductions.html">Set Up Recurring Deductions for Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/deductions/deduction-requests.html">Deduction Requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../administration/deductions/archive-deduction.html">Archive a Deduction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../settings/team-mgmt/index.html">MC Team Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/overview.html">MC Team Management Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/add-team.html">Add a Team</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/edit-team.html">Edit a Team</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/deactivate-team.html">Deactivate a Team</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/transfer-team.html">Transfer a Team to a Different Market Center</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/transfer-request.html">Respond to a Team Transfer Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/add-team-member.html">Add Team Members</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/edit-team-member.html">Edit a Team Member</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/view-change-log.html">View Member Change Log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/remove-team-member.html">Remove a Team Member</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../settings/team-mgmt/generate-report.html">Generate Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../transactions/index.html">Transactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/overview-transactions.html">Transactions Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/search-transactions.html">Search Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/filter-transactions.html">Filter Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/sort-columns.html">Sort Columns in Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/smartview-transactions.html">Create Smartviews for Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/create-transaction.html">Add a New Transaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/view-transaction-details.html">View Transaction Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/edit-transaction-details.html">Edit Transaction Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/close-transaction.html">Close Transaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/delete-transaction.html">Delete Transaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/transfer-company-currency.html">Transfer Company Currency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/create-deposit.html">Create a Deposit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/view-deposit.html">View a Deposit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/edit-deposit.html">Edit a Deposit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/print-deposit.html">Print a Deposit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/delete-deposit.html">Delete a Deposit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/listings/index.html">Listings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/listings/search-listings.html">Search Listings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/listings/filter-listings.html">Filter Listings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/listings/sort-columns.html">Sort Columns in Listings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/listings/create-internal-listing.html">Create Internal Listing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/listings/edit-listing.html">Edit Listing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/listings/relist-listing.html">Relist Listing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/listings/delete-listing.html">Delete Listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../transactions/month-end-close/index.html">Month End Close</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/month-end-close/overview.html">Month End Close Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../transactions/month-end-close/close-the-month.html">Close the Month</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../opportunities/index.html">Opportunities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../opportunities/overview.html">Compliance Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/overview.html#compliance-roles">Compliance Roles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/overview.html#commandmc-setup">CommandMC Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/overview.html#market-center-docusign-setup">Market Center DocuSign Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/overview.html#docusign-templates">DocuSign Templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/overview.html#review-compliance-and-commissions">Review Compliance and Commissions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../opportunities/assign-compliance-coordinator.html">Assign the Compliance Coordinator Role to an Associate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opportunities/checklists/index.html">Compliance Document Checklists</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/checklists/create-checklists-opportunities-mc.html">Create Opportunity Checklists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/checklists/edit-checklists-opportunities.html">Edit Opportunity Checklists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/checklists/manage-checklists-opportunities.html">Manage Opportunity Checklists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/checklists/client-update.html">Configure Client Updates for an Individual Opportunity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../opportunities/reviews/index.html">Compliance and Commission Reviews</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/reviews/search-compliance-requests-opportunities.html">Find Submitted Compliance Requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/reviews/compliance-folder-messaging-opportunities.html">Compliance Folder Messaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/reviews/add-tags-compliance-requests-opportunities.html">Add Tags to Submitted Compliance Requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../opportunities/reviews/review-compliance-requests-opportunities.html">Review Submitted Compliance Requests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reports/index.html">Reports</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reports/access-activity-reports.html">Access Activity Reports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reports/progress-to-commitment.html">Yearly Progress to Commitment Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reports/access-progress-report.html">Access Yearly Progress to Commitment Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reports/progress-to-commitment-set-goals.html">Set Goals for Yearly Progress to Commitment Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../accounting/index.html">Accounting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../accounting/access-accounting-spreadsheets.html">Access Accounting Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tasks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="view-checklist-details.html">View Checklist Task Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="view-other-details.html">View Custom Task Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter-tasks.html">Filter Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search-tasks.html">Search Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create-custom-task.html">Create a Custom Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edit-custom-task.html">Edit a Custom Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mark-task-complete.html">Mark Task as Complete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mark-task-incomplete.html">Mark Task as Incomplete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add-note.html">Add a Note</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reassign-task.html">Reassign Task</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Reschedule Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="archive-custom-task.html">Archive a Custom Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="delete-task.html">Delete a Task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../smartplans/index.html">SmartPlans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/create-custom-smartplan.html">Create a Custom SmartPlan</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../smartplans/create-custom-smartplan.html#merge-fields">Merge Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../smartplans/create-custom-smartplan.html#remove-a-step">Remove a Step</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/find-smartplan.html">Find a SmartPlan from the SmartPlans Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../smartplans/find-smartplan.html#search">Search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../smartplans/find-smartplan.html#filter">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../smartplans/find-smartplan.html#categories">Categories</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/add-smartplan.html">Add a SmartPlan from the SmartPlans Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/add-recruits.html">Subscribe Recruits to a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/unsubscribe-recruits.html">Unsubscribe Recruits from a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/edit-active-smartplan.html">Edit an Active SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/edit-inactive-smartplan.html">Edit an Inactive SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/copy-smartplan.html">Copy a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/delete-smartplan.html">Delete a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/publish-smartplan.html">Publish a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/publish-best-practices-smartplan.html">Publishing Best Practices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/unpublish-smartplan.html">Unpublish a SmartPlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../smartplans/change-designated-assignee.html">Change the Default Designated Assignees</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../recruits/index.html">Recruits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../recruits/overview-recruits.html">Recruits Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/overview-recruits.html#recruit-management">Recruit Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/overview-recruits.html#recruiting-pipeline">Recruiting Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/overview-recruits.html#find-recruits">Find Recruits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../recruits/manage-recruits/index.html">Managing Recruits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/import-recruits.html">Import Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/import-transfer-recruits.html">Transfer Existing Recruits Records into the Import Recruits Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/export-recruits.html">Export Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/search-recruits.html">Search Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/filter-recruits.html">Filter Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/smartview-recruits.html">Create Smartviews for Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/sort-columns.html">Sort Columns in Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/customize-columns.html">Customize Columns in Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/add-recruit.html">Add a Recruit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/view-details.html">View or Edit Recruit Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/add-activity.html">Add an Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/add-note.html">Add a Note</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/add-appointment.html">Add an Appointment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/add-recruit-smartplan.html">Add a Recruit to a SmartPlan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/unsubscribe-recruit-smartplan.html">Unsubscribe a Recruit from a SmartPlan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/tasks/index.html">Tasks within Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/add-to-pipeline.html">Add Recruit to Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/change-pipeline-phase.html">Change the Recruit’s Phase or Stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/manage-checklist-list.html">Manage a Recruit’s Checklist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/assign-recruit.html">Add or Edit an Assignee for a Recruit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/remove-from-pipeline.html">Remove Recruit from Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/archive-recruit.html">Archive a Recruit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/bulk-actions-recruits/index.html">Bulk Actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruits/brokermetrics/index.html">BrokerMetrics®</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../recruits/manage-recruit-pipeline/index.html">Managing the Recruiting Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/search-recruits.html">Search Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/filter-recruits.html">Filter Recruits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/smartview-recruits.html">Create Smartviews for Recruiting Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/sort-recruits.html">Sort Recruiting Pipeline Cards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/edit-stages-recruits.html">Edit Stages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/create-checklist-templates.html">Create or Edit Recruit Checklist Templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/manage-checklist-card.html">Manage a Recruit’s Checklist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/change-pipeline-phase-card.html">Change the Recruit’s Phase or Stage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/remove-from-pipeline-card.html">Remove Recruit from Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/archive-recruit-card.html">Archive a Recruit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/assign-recruit-card.html">Add or Edit an Assignee for a Recruit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recruits/manage-recruit-pipeline/invite-recruit.html">Invite a Recruit to Join KW</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../recruits/find-recruits/find-recruits.html">Finding Recruits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../associates/index.html">Associates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../associates/search-associates.html">Search Associates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/filter-associates.html">Filter Associates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/smartview-associates.html">Create Smartviews for Associates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/customize-columns.html">Customize Columns in Associates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/view-details.html">View or Edit Associate Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/add-appointment.html">Add an Appointment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/add-activity.html">Add an Activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/add-note.html">Add a Note</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/tasks/index.html">Tasks within Associates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/view-checklist-details.html">View Checklist Task Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/view-other-details.html">View Custom Task Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/filter-tasks.html">Filter Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/mark-task-complete.html">Mark Task as Complete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/mark-task-incomplete.html">Mark Task as Incomplete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/add-note.html">Add a Note</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/edit-custom-task.html">Edit a Custom Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/reassign-task.html">Reassign Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/reschedule-task.html">Reschedule Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/archive-custom-task.html">Archive a Custom Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../associates/tasks/delete-task.html">Delete a Task</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/add-license.html">Add a License to an Associate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/activate-agent.html">Activate Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/add-existing.html">Add Existing KW Associate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/set-to-associate.html">Set to Associate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/add-deductions.html">Add Deductions for an Associate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../associates/remove-associate.html">Remove Associate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../directory/index.html">Directory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../directory/manage-luxury-roster.html">Manage Market Center Luxury Roster (Market Center Leadership)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../directory/luxury-exception.html">Submit Luxury Agent Exception Request (Market Center Leadership)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../directory/luxury-min-units.html">Adjust Minimum Units Required for Luxury Eligibility (Market Center Leadership)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../directory/adjust-floor-price-luxury.html">Adjust the Floor Price Point for KW Luxury Eligibility (Regional Leadership)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../directory/manage-luxury-requests.html">Manage Luxury Program Exception Requests (Regional Leadership)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../support-tools/index.html">KWRI Support Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../support-tools/ps-calculator/index.html">Profit Share Calculator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../support-tools/ps-calculator/run-ps-calculator.html">Run Profit Share Calculator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../connect/index.html">Connect User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../connect/training/index.html">Training User Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../connect/training/training/index.html">Taking Training</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/overview-training.html">Training Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/search-training.html">Search Training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/filter-training.html">Filter Training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/add-training-my-bookshelf.html">Add Training to My Bookshelf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/begin-training.html">Begin Training</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/share-training.html">Share Training*</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/add-playlist.html">Add Training to Playlist*</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/training/download-file.html">Download a File</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../connect/training/docebo/index.html">Working in Decebo (Administrative Tasks)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/overiew-channel-learning-path.html">Channels and Learning Paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/upload-channel-resource.html">Channel Resource Upload Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/add-asset.html">Add an Asset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/create-course.html">Create a Course</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/unpublish-course.html">Unpublish a Course</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/add-thumbnail.html">Add a Custom Channel Thumbnail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/create-learning-path.html">Create a Learning Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/assign-course-learning-path.html">Assign a Course to a Learning Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/map-main-catalog.html">Associate a Catalog with a Chanel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/map-recommended-catalog.html">Associate a Recommended Catalog with a Chanel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/delete-learning-path.html">Delete a Learning Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../connect/training/docebo/hide-courses.html">Hide a Learning Path’s Courses from the Bookshelf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../franconnect/index.html">Organization Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../franconnect/add-organization.html">Add an Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../franconnect/edit-market-center.html">Edit a Market Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../franconnect/edit-business-center.html">Edit a Business Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../franconnect/close-market-center.html">Close a Market Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../franconnect/close-business-center.html">Close a Business Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../franconnect/manage-roles.html">Manage Leadership Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api-internal/index.html">KWRI Internal API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Command</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">CommandMC User Guide</a> &raquo;</li>
+        
+          <li><a href="index.html">Tasks</a> &raquo;</li>
+        
+      <li>Reschedule Task</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/kellercloud/commandmc/tasks/reschedule-task.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reschedule-task">
+<span id="reschedule-task-commandmc"></span><h1>Reschedule Task<a class="headerlink" href="#reschedule-task" title="Permalink to this headline">¶</a></h1>
+<p>To reschedule a task, complete the following steps:</p>
+<div class="admonition note" id="access-tasks-commandmc">
+<p class="admonition-title">Note</p>
+<p>CommandMC is available only to certain KW roles. For more information, see <a class="reference internal" href="../commandmc-roles.html#command-mc-roles-command-ug"><span class="std std-ref">CommandMC Access by Role</span></a>.</p>
+</div>
+<ol class="arabic simple">
+<li><p>From a browser, go to: <a class="reference external" href="https://console.command.kw.com">https://console.command.kw.com</a>.</p></li>
+<li><p>Log in using your Keller Williams user name and password.</p></li>
+<li><p>On the top-left corner, click <strong>CommandMC</strong>.</p></li>
+<li><p>On the left toolbar, click <strong>Tasks</strong> <a class="reference internal" href="../../../_images/tasks-icon1.png"><img alt="tasks-icon" src="../../../_images/tasks-icon1.png" style="height: 30px;" /></a>.</p></li>
+<li><p>Click the <strong>Recruits</strong> tab, at the top of the page.</p></li>
+<li><p>From the <strong>View Tasks</strong> drop-down, select either <strong>My Tasks</strong> or <strong>All MC Tasks</strong> to display only your tasks or all Market Center tasks.</p></li>
+<li><p>Click either <strong>Checklist Tasks</strong> or <strong>Other Tasks</strong>. Only tasks in <strong>To Do</strong> status can be rescheduled.</p></li>
+<li><p>Locate the appropriate task, click the More Options menu (ellipses <a class="reference internal" href="../../../_images/menu-options-icon10.png"><img alt="menu-options-icon" src="../../../_images/menu-options-icon10.png" style="height: 20px;" /></a> icon) and select <strong>Reschedule</strong>.</p></li>
+<li><p>On the <strong>Reschedule Task</strong> window, enter a date interval or select a specific date and click <strong>Reschedule</strong>.</p></li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="archive-custom-task.html" class="btn btn-neutral float-right" title="Archive a Custom Task" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="reassign-task.html" class="btn btn-neutral float-left" title="Reassign Task" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, KWRI
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

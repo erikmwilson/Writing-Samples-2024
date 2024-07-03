@@ -1,0 +1,32 @@
+
+.. _create-checklists-opportunities-commandmc:
+
+Create Opportunity Checklists
+=============================
+
+Opportunities can methodically track and manage your current and future transactions. An important part of this is tracking all of the tasks you have to complete, at every stage of the process. Because of this, Command includes checklists that you can create for every stage in the Sales Pipeline, which are applied to every Opportunity you add.
+
+To create or edit checklists, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. On the Opportunities dashboard, click on the phase to which you want to add a checklist.
+
+#. Click **Edit Stages**, at the top-right of the page.
+
+#. Click on the checklist icon, |checklist-icon| for the stage you want to modify.
+
+   .. |checklist-icon| image:: ../../../../images/checklist-icon.png
+      :height: 30
+
+#. Click **Add Item**, to add a checklist item.
+
+#. To display this checklist item (when completed) in a daily client email, check **Client Update**.
+
+   For more information, see :ref:`client-update-opportunities-commandmc` or :ref:`client-update-settings-command`.
+
+#. To the right of each checklist item, click the three dots to edit or delete an existing checklist item.
+
+   Click and hold on a checklist item to move it to another position in the list.
+
+8. Click **Save**.

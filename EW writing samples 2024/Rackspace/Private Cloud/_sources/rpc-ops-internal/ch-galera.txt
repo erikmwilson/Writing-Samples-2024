@@ -1,0 +1,9 @@
+========================
+Managing Galera clusters
+========================
+
+ .. toctree::
+    :maxdepth: 2
+
+    galera/sec-ops-galera-maintenance.rst
+    galera/sec-ops-galera-recovery.rst

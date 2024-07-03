@@ -1,0 +1,21 @@
+Magnum API
+==========
+
+The Magnum API provides developers with HTTP calls to administrate
+clusters, cluster templates, and the Magnum service itself.
+
+Upstream documentation
+----------------------
+
+The official Magnum API documentation is
+`here <http://developer.openstack.org/api-ref/container-infrastructure-management>`_.
+
+RPC-specific API usage
+----------------------
+
+Cluster templates
+~~~~~~~~~~~~~~~~~
+
+See the :doc:`cluster template <cluster_templates>` documentation
+for more information about the values supplied to the
+``POST /clustertemplates`` endpoint.

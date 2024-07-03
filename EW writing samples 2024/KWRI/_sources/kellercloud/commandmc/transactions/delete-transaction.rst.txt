@@ -1,0 +1,22 @@
+
+.. _delete-transaction-commandmc:
+
+Delete Transaction
+==================
+
+You can only delete transactions in **Open** status.
+
+To delete a transaction, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Transaction** tab at the top of the page:
+
+#. Search for the correct transaction. For more information, see :ref:`search-transactions-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that transaction and select **Delete**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Delete existing transaction?** window, click **Yes, Delete**.

@@ -1,0 +1,17 @@
+
+.. _marketplace-command-ug:
+
+Access the KW MarketPlace
+=========================
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-right of the Command interface, click the **MarketPlace**
+   icon |marketplace-icon|.
+
+   .. |marketplace-icon| image:: ../../../images/marketplace-icon.png
+      :height: 20
+
+   The KW MarketPlace opens in a new browser tab.

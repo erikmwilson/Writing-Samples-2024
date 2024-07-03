@@ -1,0 +1,69 @@
+
+.. _overview-compliance-opportunities-commandmc:
+
+Compliance Overview
+===================
+
+The following sections describe how to configure your Market Center to review agent compliance documents.
+
+Compliance Roles
+^^^^^^^^^^^^^^^^
+
+The MCA and Assistant MCA roles give automatic access to CommandMC Opportunities, but you might need extra help approving Compliance and Commissions. You can assign the Compliance Coordinator Role to any associate, which gives access them to CommandMC Opportunities. This gives them the same access as an Assistant MCA.
+
+For more information, see :ref:`assign-compliance-coordinator-commandmc`.
+
+CommandMC Setup
+^^^^^^^^^^^^^^^^
+
+Document compliance is managed using CommandMC. For each transaction type, a Market Center must create and manage Compliance Document Checklists. These Checklists are used to ensure that each transaction has all the required documents.
+
+1. :ref:`create-compliance-checklists-settings-commandmc`.
+
+#. :ref:`edit-compliance-checklists-settings-commandmc`.
+
+#. :ref:`create-broker-groups-settings-commandmc`.
+
+Market Center DocuSign Setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If your Market Centers is integrated with DocuSign, you to create the Market Center DocuSign account, enable the DocuSign integration for your agents, and organize the agent's forms that have been added to DocuSign.
+
+1. :ref:`connect-docusign-settings-commandmc`.
+
+#. :ref:`docusign-access-commandmc`.
+
+#. :ref:`create-docusign-form-groups-commandmc`.
+
+#. :ref:`add-forms-docusign-groups-commandmc`.
+
+DocuSign Templates
+^^^^^^^^^^^^^^^^^^
+
+Each Market Center has pre-labeled DocuSign forms used by your agents for each transaction. If your team uses branded forms or there is a missing form, you can manually create a form template. You can add the template to your Market Center template group to share these templates with the agents in your Market Center.
+
+1. :ref:`create-docusign-template-groups-commandmc`.
+
+#. :ref:`templates-opportunities-command`.
+
+Review Compliance and Commissions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After CommandMC Opportunities are set up and your agents start submitting compliance documents and commission requests, you must review these submissions.
+
+.. note::
+
+   While reviewing an opportunity, you may need to edit the opportunity details. From the **Opportunity Details** tab, click the edit icon |edit-icon| next to the section you want to edit.
+
+   .. |edit-icon| image:: ../../../images/edit-icon.png
+      :height: 25
+
+1. :ref:`search-compliance-requests-opportunities-commandmc`.
+
+#. :ref:`compliance-folder-messaging-opportunities-commandmc`.
+
+#. :ref:`add-tags-compliance-opportunities-commandmc`.
+
+#. :ref:`review-compliance-opportunities-commandmc`.
+
+#. :ref:`review-commissions-opportunities-commandmc`.

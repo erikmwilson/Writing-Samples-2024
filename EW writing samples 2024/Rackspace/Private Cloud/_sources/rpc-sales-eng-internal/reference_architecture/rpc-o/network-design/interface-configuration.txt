@@ -1,0 +1,21 @@
+=======================
+Interface configuration
+=======================
+
+In order to provide network resiliency, server interfaces are
+configured in an NFT bond within the Rackspace Private Cloud
+environment.
+
+.. list-table:: **Management interface configurations**
+   :widths: 40 30 30
+   :header-rows: 1
+
+   * - Bond
+     - Interface
+     - Standby interface
+   * - bond0
+     - em1
+     - p3p1
+   * - bond1
+     - em2
+     - p3p2

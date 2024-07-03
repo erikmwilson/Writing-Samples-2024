@@ -1,0 +1,57 @@
+
+.. _search-compliance-requests-opportunities-commandmc:
+
+Find Submitted Compliance Requests
+==================================
+
+After your agents have submitted compliance requests through Opportunities, you can sort, filter, search, or use tags to find a specific request.
+
+To find a submitted compliance request, complete the following steps:
+
+.. include:: ../opportunities-mc-login.rst
+
+#. At the top of the page, click the **Compliance Requests** tab to see a list of all submitted compliance requests.
+
+#. Use one of the following methods to find the correct request:
+
+   * Use the **Sort** drop-down to sort the submitted requests by:
+
+     * Submission Date
+
+     * Opportunity Name
+
+     * Opportunity Owner Name
+
+     * Closing Date
+
+     * DA Number
+
+   * Along the left side of the page, there are several **filters** you can use to find the submitted compliance request you are looking for.
+
+     * In the **Compliance Status** section, check the box next to each status that you want to filter by. Only submitted requests with the selected statuses show in the list. By default, the **Submitted**, **Resubmitted** and **Changed** statuses are selected.
+
+     * In the **Opportunity Type** section, check the box next to each type that you want to filter by. Only submitted requests with the selected Opportunity types show in the list. By default, all of the **Opportunity Types** are selected.
+
+     * In the **Custom Tags** section, use the drop-down to select the tags you want to filter by. If an Opportunity includes one of the tags that has been selected in the filter, it shows in the list. You can filter by as many tags as necessary.
+
+   * At the top of the page, you can **Search** to find specific compliance requests. Use the drop-down (attached to the search bar), to choose the category of information you want to search:
+
+    * Address
+
+    * Opportunity Name
+
+    * Opportunity ID (found at the top left of the compliance request card)
+
+    * Opportunity Owner Name
+
+    * Assignee(s) Name
+
+    * Main Contact Name
+
+    * DA ID
+
+    * Tags
+
+After you find the compliance request you are looking for, click **Review**, on the compliance request card.
+
+For more information, see :ref:`review-compliance-opportunities-commandmc`.

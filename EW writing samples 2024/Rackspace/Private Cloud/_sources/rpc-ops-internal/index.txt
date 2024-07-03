@@ -1,0 +1,48 @@
+.. _rpc-ops-internal:
+
+================
+Operations Guide
+================
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+This guide contains information and instructions for configuring and
+managing a Rackspace Private Cloud environment. The information in this
+guide is intended for Cloud Operators who perform the following tasks:
+
+-  Install and deploy a Rackspace Private Cloud environment
+
+-  Manage a deployed cloud environment
+
+-  Manage containers
+
+-  Manage Galera clusters
+
+-  Diagnose and fix issues with the cloud environment
+
+.. important::
+
+   This content is for internal Rackspace use only. Do not distribute
+   externally.
+
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   preface.rst
+   ch-verify.rst
+   ch-access.rst
+   ch-instances.rst
+   ch-images.rst
+   ch-compute.rst
+   ch-galera.rst
+   ch-ceph.rst
+   ch-swift.rst
+   ch-containers.rst
+   ch-lbaas.rst
+   ch-backups.rst
+   postface.rst

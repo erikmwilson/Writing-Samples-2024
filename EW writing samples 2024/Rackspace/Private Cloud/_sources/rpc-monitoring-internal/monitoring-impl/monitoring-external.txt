@@ -1,0 +1,112 @@
+====================
+Rackspace monitoring
+====================
+
+Service and response
+~~~~~~~~~~~~~~~~~~~~
+
+When a threshold is reached or functionality fails, the Rackspace Cloud
+Monitoring Service generates an alert, which creates a ticket in the
+Rackspace ticketing system. This ticket moves into the RPCO support
+queue. Tickets flagged as monitoring alerts are given highest priority,
+and response is delivered according to the Service Level Agreement
+(SLA). Refer to the SLA for detailed information about incident severity
+levels and corresponding response times.
+
+Specific monitoring alert guidelines can be set for the installation.
+These details should be arranged by a Rackspace account manager.
+
+
+Hardware monitoring
+~~~~~~~~~~~~~~~~~~~
+
+Hardware monitoring is available only for customers whose clouds are
+hosted within a Rackspace data center. Customers whose clouds are hosted
+in their own data centers are responsible for monitoring their own
+hardware.
+
+For clouds hosted within a Rackspace data center, Rackspace will
+provision monitoring support for the customer. Rackspace Support assists
+in handling functionality failure, running system health checks, and
+managing system capacity. Rackspace Cloud Monitoring Service will notify
+Support when a host is down, or when hardware fails.
+
+
+Software monitoring
+~~~~~~~~~~~~~~~~~~~
+
+For software monitoring, polling time is determined by the
+``maas_check_period``, which defaults to 60 seconds.
+
+Rackspace Monitoring Service has two kinds of checks:
+
+-  **Local**: These ``agent.plugin`` checks are performed against
+   containers. The checks poll the API and gather lists of metrics.
+
+   These checks will generate a critical alert after three consecutive
+   failures.
+
+   Local checks are performed on the following services:
+
+   -  Compute (nova)
+
+   -  Block Storage (cinder)
+
+   -  Identity (keystone)
+
+   -  Networking (neutron)
+
+   -  Orchestration (heat)
+
+   -  Image service (glance): The check connects to the glance registry
+      and tests status by calling an arbitrary URL.
+
+   -  Dashboard (horizon): The check verifies that the login page is
+      available and uses the credentials from ``openrc-maas`` to log in.
+
+   -  Galera: The check connects to each member of a Galera cluster and
+      verifies that the members are fully synchronized and active.
+
+   -  RabbitMQ: The check connects to each member of a RabbitMQ cluster
+      and gathers statistics from the API.
+
+   -  Memcached: The check connects to a Memcached server.
+
+-  **Global**: These ``remote.http`` checks poll
+   the load-balanced public endpoints, such as a public nova API. If a
+   service is marked as administratively down, the check will skip it.
+
+   These checks will generate a critical alert after one failure.
+
+   Global checks are performed on the following services:
+
+   -  Compute (nova)
+
+   -  Block Storage (cinder)
+
+   -  Identity (keystone)
+
+   -  Networking (neutron)
+
+   -  Image service (glance)
+
+   -  Orchestration (heat)
+
+
+CDM monitoring
+~~~~~~~~~~~~~~
+
+The ``setup_maas`` playbook also configures CDM monitoring for the
+following services and generates alerts at the specified thresholds.
+
+-  CPU Idle: < 10%
+
+-  Memory used: > 95%
+
+-  Disk space used: > 95%
+
+The playbook also configures Object Storage mount point checks. These
+checks monitor disk space on the mount points and generate alerts if
+they are unmounted or unavailable. For clouds using OpenStack Object
+Storage, it is important to re-run the setup playbook whenever the
+number of Object Storage nodes changes.

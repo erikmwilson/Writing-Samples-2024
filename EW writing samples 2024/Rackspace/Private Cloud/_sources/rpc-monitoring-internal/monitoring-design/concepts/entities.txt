@@ -1,0 +1,55 @@
+========
+Entities
+========
+
+.. Adapted from
+   https://one.rackspace.com/pages/viewpage.action?pageId=192877963
+
+An entity is a representation of a server or device in the Rackspace
+Monitoring infrastructure (such as ``en0Rl6ATbq`` ). The entity is the
+top-level hierarchy of monitoring for a server. All configured checks
+and alarms for a server exist under the associated entity. Each entity
+can have multiple checks. Entities are created by an automated RBA
+process when a server initially reaches "Segment Configuration" status
+in CORE.
+
+Note that:
+
+- There should always be a one-to-one mapping of a server in CORE and
+  an entity in the Rackspace Monitoring API. If there is more than one
+  entity for a server something is very wrong. In other words, two
+  entities should never have the same URI (link to a server in CORE).
+
+- During the entity creation process:
+
+  - ``entityLabel`` is populated with the server name in CORE.
+
+  - ``agentID`` is left null.
+
+  - IP addresses are automatically associated using data from CORE.
+
+
+.. list-table:: **Entity Elements**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Entity
+     - Description
+   * - ``entityID``
+     - The unique ID of an entity (starts with ``enXXXXXXXX``).
+   * - Label
+     - The name of the entity. Typically set to the server's name in
+       CORE at creation time.
+   * - ``agentID``
+     - Set by the playbook to match the ``entityLabel``. Left null at
+       creation time.
+   * - URI
+     - Link to CORE server page
+   * - IP address
+     - Primarily used for remote checks. Set to server's IPs in CORE
+       at creation time.
+   * - Managed
+     - Automatically set to true for dedicated servers.
+   * - Active/scheduled suppressions
+     - If there is an active or future scheduled MaaS suppression for
+       this ``entityid``.

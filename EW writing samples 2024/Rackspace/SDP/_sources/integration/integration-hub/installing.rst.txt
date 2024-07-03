@@ -1,0 +1,29 @@
+.. _installing-hub-SDP-IG:
+
+==========
+Installing
+==========
+
+To install the Ticketing Integration application from the GitHub
+repository, complete the following steps:
+
+1. Contact your Rackspace Account Manager for the ``Rackspace Ticketing
+   Integration Update Set v1.xml`` file.
+
+#. Open ServiceNow.
+
+#. Navigate to **System Update Sets > Retrieved Update Sets**.
+
+#. Click **Import Update Set from XML**.
+
+#. Click **Choose File** and select ``Rackspace Ticketing Integration``.
+
+#. Click **Upload**.
+
+#. After the file is uploaded, click **Preview Update Set**.
+
+#. After you preview the file, **Click Commit Update Set**.
+
+#. Assign the roles ``integration_hub_user`` and
+   ``x_racus_integratio.integration_hub_user`` to any user that
+   needs to configure or administer your ServiceNow instance.

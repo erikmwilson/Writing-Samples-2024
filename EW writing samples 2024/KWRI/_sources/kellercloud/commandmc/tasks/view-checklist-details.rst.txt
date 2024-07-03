@@ -1,0 +1,25 @@
+
+.. _view-details-checklist-tasks-commandmc:
+
+View Checklist Task Details
+===========================
+
+You can view checklist task details from the **Recruits** tab.
+
+To view checklist task details, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click the **Recruits** tab, at the top of the page.
+
+#. From the **View Tasks** drop-down, select either **My Tasks** or **All MC Tasks** to display only your tasks or all Market Center tasks.
+
+#. Click **Checklist Tasks**. A list displays of all the checklist tasks.
+
+#. Click the status of checklist tasks to display, **To Do** or **Completed**.
+
+#. Search for the correct task. For more information, see :ref:`search-tasks-commandmc`.
+
+#. Click the task name to view the task details.
+
+#. To mark the task as complete, click **Complete Task**, otherwise click **Cancel** to close the details window.

@@ -1,0 +1,20 @@
+
+.. _delete-task-recruits-commandmc:
+
+Delete a Task
+=============
+
+Only Recruit pipeline checklist tasks can be deleted.
+
+To delete a task, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Select **Checklist Tasks** from the drop-down. Task in both **To Do** and **Completed** statuses can be deleted.
+
+#. Locate the appropriate task, click the More Options menu (ellipses |menu-options-icon| icon) and select **Delete**.
+
+   .. |menu-options-icon| image:: ../../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the confirmation window, click **Delete**.

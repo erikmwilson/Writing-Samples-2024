@@ -1,0 +1,31 @@
+
+.. _index-command-ug:
+
+Command User Guide
+==================
+
+The following sections contain information about using Command.
+
+.. toctree::
+   :maxdepth: 1
+
+   getting-started/index
+
+**Command applications**
+
+.. toctree::
+  :maxdepth: 1
+
+  settings/index
+  contacts/index
+  tasks/index
+  smartplans/index
+  referrals/index
+  opportunities/index
+  campaigns/index
+  reports/index
+  designs/index
+  listings/index
+  insights/index
+  consumer/index
+  listing-consult/index

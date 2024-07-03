@@ -1,0 +1,25 @@
+
+.. _start-finish-opportunities-command:
+
+Opportunities: From Start to Finish
+===================================
+
+Opportunities is the system we use to track our current and potential transactions within Command. Each Opportunity (current or potential transaction) starts at the Cultivate Phase, where you can track an Opportunity before you have even set an appointment, and is tracked through to the Closed Phase, after being approved for compliance and Commissions. You can customize your Opportunity pipelines to allow you to track your transactions in a way that make sense for your business.
+
+To take an Opportunities from start to finish, complete the following steps:
+
+#. :ref:`create-opportunities-command`.
+
+#. :ref:`create-checklists-opportunities-command`.
+
+#. :ref:`move-opportunities-command`.
+
+#. :ref:`add-listing-opportunities-command`.
+
+#. :ref:`create-offer-opportunities-command`.
+
+#. :ref:`documents-opportunities-command`.
+
+#. :ref:`add-documents-opportunities-command`.
+
+#. :ref:`commissions-opportunities-command`.

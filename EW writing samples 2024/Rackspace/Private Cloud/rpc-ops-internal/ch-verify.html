@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Verifying cloud deployment &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Access" href="ch-access.html" />
+    <link rel="prev" title="Preface" href="preface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operations Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Verifying cloud deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#verifying-openstack-operation">Verifying OpenStack operation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#checking-a-commit-in-a-deployed-cloud-environment-exists-upstream">Checking a commit in a deployed cloud environment exists upstream</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-access.html">Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-instances.html">Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-compute.html">Compute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-galera.html">Managing Galera clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ceph.html">RPC Ceph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-swift.html">Managing Object Storage for multiple regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-containers.html">Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load-Balancer-as-a-Service (LBaaS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-backups.html">Backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Operations Guide</a> &raquo;</li>
+        
+      <li>Verifying cloud deployment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ops-internal/ch-verify.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="verifying-cloud-deployment">
+<h1>Verifying cloud deployment<a class="headerlink" href="#verifying-cloud-deployment" title="Permalink to this headline">#</a></h1>
+<div class="section" id="verifying-openstack-operation">
+<h2>Verifying OpenStack operation<a class="headerlink" href="#verifying-openstack-operation" title="Permalink to this headline">#</a></h2>
+<p>Verify basic operation of the OpenStack API and dashboard.</p>
+<p>The utility container provides a CLI environment for additional
+configuration and testing.</p>
+<ol class="arabic">
+<li><p class="first">Determine the utility container name:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> lxc-ls <span class="p">|</span> grep utility
+<span class="go">infra1_utility_container-161a4084</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Access the utility container:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> lxc-attach -n infra1_utility_container-161a4084
+</pre></div>
+</div>
+</li>
+<li><p class="first">Source the <code class="docutils literal"><span class="pre">admin</span></code> tenant credentials:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">source</span> openrc
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run an OpenStack command that uses one or more APIs. For example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> openstack user list --domain default
+<span class="go">+----------------------------------+--------------------+</span>
+<span class="go">| ID                               | Name               |</span>
+<span class="go">+----------------------------------+--------------------+</span>
+<span class="go">| 04007b990d9442b59009b98a828aa981 | glance             |</span>
+<span class="go">| 0ccf5f2020ca4820847e109edd46e324 | keystone           |</span>
+<span class="go">| 1dc5f638d4d840c690c23d5ea83c3429 | neutron            |</span>
+<span class="go">| 3073d0fa5ced46f098215d3edb235d00 | cinder             |</span>
+<span class="go">| 5f3839ee1f044eba921a7e8a23bb212d | admin              |</span>
+<span class="go">| 61bc8ee7cc9b4530bb18acb740ee752a | stack_domain_admin |</span>
+<span class="go">| 77b604b67b79447eac95969aafc81339 | alt_demo           |</span>
+<span class="go">| 85c5bf07393744dbb034fab788d7973f | nova               |</span>
+<span class="go">| a86fc12ade404a838e3b08e1c9db376f | swift              |</span>
+<span class="go">| bbac48963eff4ac79314c42fc3d7f1df | ceilometer         |</span>
+<span class="go">| c3c9858cbaac4db9914e3695b1825e41 | dispersion         |</span>
+<span class="go">| cd85ca889c9e480d8ac458f188f16034 | demo               |</span>
+<span class="go">| efab6dc30c96480b971b3bd5768107ab | heat               |</span>
+<span class="go">+----------------------------------+--------------------+</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">With a web browser, access the dashboard using the external load
+balancer IP address defined by the <code class="docutils literal"><span class="pre">external_lb_vip_address</span></code>
+option in the <code class="docutils literal"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code>
+file. The dashboard uses HTTPS on port 443.</p>
+</li>
+<li><p class="first">Authenticate using the username <code class="docutils literal"><span class="pre">admin</span></code> and password defined by
+the <code class="docutils literal"><span class="pre">keystone_auth_admin_password</span></code> option in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_secrets.yml</span></code> file.</p>
+</li>
+<li><p class="first">To run this play, run the <code class="docutils literal"><span class="pre">verify-maas.yml</span></code> playbook inside the
+playbooks directory in <code class="docutils literal"><span class="pre">rpc-openstack</span></code>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This is not included in a MaaS install run by default because
+there is a brief period between the agent restarting with new
+checks, and when the checks are reflected in MaaS.</p>
+</div>
+</li>
+</ol>
+<div class="section" id="checking-a-commit-in-a-deployed-cloud-environment-exists-upstream">
+<h3>Checking a commit in a deployed cloud environment exists upstream<a class="headerlink" href="#checking-a-commit-in-a-deployed-cloud-environment-exists-upstream" title="Permalink to this headline">#</a></h3>
+<p>To determine if an upstream commit appears in a cloud installation,
+use the grep command to search for the distributed release in
+the cloned repository:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">grep &lt;DISTRIBUTED_RELEASE&gt;/etc/rpc-release/etc/&lt;OPENSTACK_RELEASE&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-access.html" class="btn btn-neutral float-right" title="Access" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preface.html" class="btn btn-neutral float-left" title="Preface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

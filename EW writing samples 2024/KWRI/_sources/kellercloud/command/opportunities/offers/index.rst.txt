@@ -1,0 +1,15 @@
+
+.. _offers-opportunities-command:
+
+Managing Offers
+===============
+
+The following pages contain information about offers.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-offer
+   create-commission
+   create-offer-comparison
+   manage-offers

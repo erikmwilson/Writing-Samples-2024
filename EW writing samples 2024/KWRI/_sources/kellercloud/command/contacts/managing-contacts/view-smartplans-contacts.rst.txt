@@ -1,0 +1,21 @@
+
+.. _view-smartplans-contacts-command:
+
+View SmartPlans
+===============
+
+To view a contact's SmartPlans, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. Locate the appropriate contact, click the More Options menu (ellipses |menu-options-icon| icon) and select **View SmartPlans**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. The **SmartPlans Quickview** window displays all the SmartPlans for this contact.

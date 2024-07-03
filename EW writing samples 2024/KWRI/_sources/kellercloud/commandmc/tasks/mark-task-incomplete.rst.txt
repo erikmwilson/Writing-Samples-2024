@@ -1,0 +1,25 @@
+
+.. _mark-task-incomplete-commandmc:
+
+Mark Task as Incomplete
+=======================
+
+Sometimes, you may have to move a task back to incomplete status.
+
+To mark a task as incomplete, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click the **Recruits** tab, at the top of the page.
+
+#. From the **View Tasks** drop-down, select either **My Tasks** or **All MC Tasks** to display only your tasks or all Market Center tasks.
+
+#. Click **Checklist Tasks**.
+
+#. Click **Completed**. Only checklist tasks in this status can be marked as incomplete.
+
+#. Click the checkbox next to the correct task.
+
+#. On the **Mark Task as Incomplete** window, click **Mark as Incomplete**.
+
+   The task displays in the **To Do** section.

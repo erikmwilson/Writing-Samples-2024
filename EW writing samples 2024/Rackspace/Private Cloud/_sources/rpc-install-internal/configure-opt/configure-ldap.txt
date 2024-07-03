@@ -1,0 +1,11 @@
+=============================================
+Configure Active Directory or LDAP (optional)
+=============================================
+
+Configuring Active Directory or LDAP require an understanding of OpenStack
+Identity (keystone) core concepts, including users, roles, projects, and
+tokens, and a working knowledge of Active Directory and LDAP.
+
+For more information see: `Integrate Keystone with OpenLDAP or Active
+Directory for Identity Authentication on OpenStack Liberty
+<https://github.com/rsoprivatecloud/rpc-architecture-docs/blob/master/identity/Keystone-with-LDAP-and-Multi-Domain.md>`_

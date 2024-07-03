@@ -1,0 +1,45 @@
+================================
+Example - virtual machine sizing
+================================
+
+.. list-table:: **Example guest compute size small**
+   :widths: 40 60
+   :header-rows: 1
+
+   * - **Specification**
+     - **Value**
+   * - CPU
+     - 2 virtual CPUs
+   * - Memory
+     - 4 GB
+   * - Boot storage
+     - 60 GB
+   * - Boot storage type
+     - Steady
+   * - IOPs profile
+     - 1,000 sustained IOPs at less than 5ms
+   * - IOPs profile
+     - 10,000 peak IOPs at less than 10ms
+   * - Guest uptime
+     - 24 x 7 x 365
+
+.. list-table:: **Example guest compute size large**
+   :widths: 40 60
+   :header-rows: 1
+
+   * - **Specification**
+     - **Value**
+   * - CPU
+     - 8 virtual CPUs
+   * - Memory
+     - 16 GB
+   * - Boot storage
+     - 120 GB
+   * - Boot storage type
+     - Steady
+   * - IOPs profile
+     - 1,000 sustained IOPs at less than 5ms
+   * - IOPs profile
+     - 10,000 peak IOPs at less than 10ms
+   * - Guest uptime
+     - 24 x 7 x 365

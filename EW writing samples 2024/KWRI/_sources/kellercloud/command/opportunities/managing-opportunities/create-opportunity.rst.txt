@@ -1,0 +1,26 @@
+
+.. _create-opportunities-command:
+
+Create an Opportunity
+=====================
+
+Opportunities is the system within Command that we use to track our current and potential transactions. Each Opportunity (current or potential transaction) starts at the Cultivate Phase, where you can track an Opportunity before you have even set an appointment, and is tracked through to the Closed Phase, after being approved for compliance and Commissions. Opportunities can track everything involved with the transaction, from activity checklists and offer management, to potential commission income and compliance.
+
+To learn how to customize your Opportunity pipelines, see :ref:`edit-stages-opportunities-command`.
+
+To create an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click **Create Opportunity**, at the top-right of the page.
+
+#. Complete the **Create Opportunity** form.
+
+   For more information, see :ref:`opportunity-fields-command`.
+
+#. Click **Create**.

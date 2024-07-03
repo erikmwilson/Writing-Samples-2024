@@ -1,0 +1,26 @@
+
+.. _edit-custom-task-commandmc:
+
+Edit a Custom Task
+====================
+
+To edit a custom task, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Click the **Recruits** tab, at the top of the page.
+
+#. Click **Other Tasks**.
+
+#. Locate the appropriate task, click the More Options menu (ellipses |menu-options-icon| icon) and select **Edit**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Edit Task** window, update the information as necessary.
+
+   .. note::
+
+      Because each task is tied to a specific recruit, you cannot change the recruit name. Instead, delete the task and create a new task for the new recruit.
+
+#. Click **Edit Task**.

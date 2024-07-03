@@ -1,0 +1,1092 @@
+==========
+What's new
+==========
+
+Rackspace Private Cloud Powered By OpenStack (RPCO) release |release|
+(\ |version|\ ) is based on the OpenStack-Ansible (OSA) project. For
+OSA release notes, see `OpenStack-Ansible Newton Release Notes
+<http://docs.openstack.org/releasenotes/openstack-ansible/newton.html>`_.
+
+Major new releases of OpenStack such as |os-release| typically include
+many changes, enhancements, and new features. RPCO is a tested
+configuration of a subset of all available OpenStack services.
+
+This page lists some of the significant upstream OpenStack changes and
+is provided for your awareness. It is not a statement of support. For
+more information about supported features and configurations, contact
+your Rackspace sales team or support specialist.
+
+.. Release note categories
+   Inspired by: http://docs.openstack.org/developer/reno/usage.html
+   Add these for each affected OpenStack project below
+
+   Prelude
+   -------
+
+     - Project release notes: <insert link>
+     - Introductory text
+
+   Critical
+   --------
+
+     - Add critical notes here, or remove this section.
+
+   Security
+   --------
+
+     - Add security notes here, or remove this section.
+
+   Issues
+   ------
+
+     - List known issues here, or remove this section.
+
+   Upgrade
+   -------
+
+     - List service upgrade notes here, or remove this section.
+
+   Deprecations
+   ------------
+
+     - List deprecation notes here, or remove this section.
+
+   Unsupported
+   -----------
+
+     - List notable upstream features that are explicitly not
+       supported in RPCO.
+
+   Fixes
+   -----
+
+     - Add normal bug fixes here, or remove this section.
+
+   Features
+   --------
+
+     - List new features here, or remove this section.
+
+   Other
+   -----
+
+     - Add other notes here, or remove this section.
+
+
+
+Block Storage service (cinder)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+  - Project release notes:
+    http://docs.openstack.org/releasenotes/cinder/newton.html
+
+
+Features
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/620
+
+- Generic volume groups
+
+  - This feature adds the ability to create groups of volumes and
+    create snapshots of groups of volumes. Volume groups are more
+    generic than consistency groups, which are only supported by a
+    small number of backends. Volume groups allow operations to be
+    executed against a number of volumes at the same time.
+
+  - The ``create/delete/update/list/show`` APIs are now supported for
+    groups.
+
+  - To use this feature, a customer must have a previously unencrypted
+    volume to be encrypted, or vice versa.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/621
+
+- Volume encryption, retype support
+
+  - This feature adds the ability to migrate or retype volumes to
+    either unencrypted or encrypted states. You can reconfigure an
+    environment to use encryption best practices.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/622
+
+- Supported driver checks
+
+  - This feature adds a flag for each driver in use. If a driver no
+    longer meets the Block Storage community testing standards, the
+    driver supported flag is set to ``False``.
+
+  - Supported status is checked when the ``cinder-volume`` service
+    starts. If the status is ``False``, an error is logged. If
+    ``enable_unsupported_driver = False`` is set and the driver status
+    is ``False``, the driver will not start.
+
+
+Unsupported
+-----------
+
+.. https://github.com/rcbops/u-suk-dev/issues/619
+
+- [Not supported in RPCO] Hybrid aggregate support for NetApp cDot
+
+  - Hybrid aggregates (Flash Pools) are now available when using a
+    NetApp FAS with cDot as a Block Storage backend.
+
+  - This feature supports a customer carrying out the same operation,
+    at the same time, against multiple volumes. Some, but not all, of
+    the backends hosting these volumes support consistency group
+    operations.
+
+  - To use this feature, the customer must have a NetApp FAS with SSDs
+    or HDDs.
+
+
+
+Compute service (nova)
+~~~~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+
+- Project release notes:
+  https://docs.openstack.org/releasenotes/nova/newton.html
+
+
+Critical
+--------
+
+- The 2.37 micro version requires that the API server create request
+  body includes ``networks``. Specifying ``networks:auto`` is similar
+  to not requesting specific networks when creating a server before
+  version 2.37.
+
+- Compute requires the Glance v2 API.
+
+
+Upgrade
+-------
+
+- The default value of the ``live_migration_tunnelled`` configuration
+  option (in the ``libvirt`` section) is now ``False``. When upgrading
+  nova to Newton, all live migrations become non-tunneled, unless
+  ``live_migration_tunnelled`` is set to ``True``.
+
+  .. yes, "tunnelled" is misspelled in the code
+
+  - By default, the migration traffic does not go through libvirt and
+    therefore is not encrypted.
+
+
+Deprecations
+------------
+
+- All APIs that proxy to other services are deprecated.
+
+  - These APIs return 404 on micro version 2.36 or higher.
+
+  - Use native APIs instead of using pure proxies for other REST APIs.
+
+  - The quotas and limits related to network resources including
+    ``fixed_ips``, ``floating ips``, ``security_groups``,
+    ``security_group_rules``, and ``networks`` are filtered out of the
+    ``os-quotas`` and ``limit`` APIs. Manage those quotas through the
+    OpenStack network service.
+
+  - You can only use APIs and manage quotas under micro version 2.36
+    for ``nova-network``.
+
+  - The deprecated ``os-fping`` API is only related to
+    ``nova-network`` and depends on the deployment.
+
+  - The deprecated APIs are:
+
+    .. code-block:: ini
+
+       /images
+       /os-networks
+       /os-fixed-ips
+       /os-floating-ips
+       /os-floating-ips-bulk
+       /os-floating-ip-pools
+       /os-floating-ip-dns
+       /os-security-groups
+       /os-security-group-rules
+       /os-security-group-default-rules
+       /os-volumes
+       /os-snapshots
+       /os-baremetal-nodes
+       /os-fping
+
+
+- The ``use_usb_tablet`` option is deprecated.
+
+  - The ``pointer_model`` configuration option and the
+    ``hw_pointer_model`` image property replace the ``use_usb_tablet``
+    option. You can specify different pointer models for input
+    devices. The default value for ``pointer_model`` is
+    ``usb_tablet``.
+
+
+Unsupported
+-----------
+
+.. https://github.com/rcbops/u-suk-dev/issues/673
+.. https://github.com/rcbops/u-suk-dev/issues/674
+
+- The ``nova-lxd`` LXD hypervisor is not supported in RPCO.
+
+
+- [Not supported in RPCO] Cells v2 now supports booting instances for
+  one v2 cell only. Multi-cell support is planned for Ocata. You can
+  prepare for Ocata now by creating a cellv2 by using the
+  ``nova-manage`` commands. Configuring Cells v2 is optional for
+  Newton.
+
+
+
+Features
+--------
+
+- Perf event support for the libvirt driver
+
+  - You can use this feature by adding the ``enabled_perf_events``
+    configure option in the libvirt section of ``nova.conf``. This
+    feature requires ``libvirt>=2.0.0``.
+
+
+- Two new ``oslo.policy`` CLI scripts
+
+  - The first script, when called as ``oslopolicy-list-redundant
+    –namespace nova`` outputs a list of policy rules in
+    ``policy.[json|yaml]`` that match the project defaults. You can
+    remove these redundant rules from the policy file.
+
+  - The second script, when called as ``oslopolicy-policy-generator
+    –namespace nova –output-file policy-merged.yaml``, populates the
+    ``policy-merged.yaml`` file with the effective policy. This policy
+    is the merged result of project defaults and configuration file
+    overrides.
+
+
+- ``nova-manage`` quota refresh
+
+  - Newton adds a ``nova-manage`` command to refresh the quota usages
+    for a project or user. You can use this command when the usages in
+    the ``quota-usages`` database table are out of sync with the
+    actual usages. For example, if a resource usage is at the limit in
+    the ``quota_usages`` table, but the actual usage is less, nova
+    does not allow VMs to be created for that project or user. Use the
+    ``nova-manage`` command to re-sync the ``quota_usages`` table with
+    the actual usage.
+
+
+- New ``reserved_huge_pages`` option
+
+  - You can use the ``reserved_huge_pages`` option to reserve the
+    amount of huge pages used by third-party components.
+
+
+- New ``soft-affinity`` and ``soft-anti-affinity``  policies
+
+  - These policies are implemented for the ``server-group`` Compute
+    feature. A ``POST /v2.1/{tenant_id}/os-server-groups`` API
+    resource now accepts ``soft-affinity`` and ``soft-anti-affinity``
+    as values of the policies request body key.
+
+
+- API policy defaults defined in code like configuration options
+
+   - The sample ``policy.json`` file  shipped with nova is empty.
+     Editing this file is  only necessary if you want to override the
+     API policy from the defaults in the code.
+
+   - To generate the policy file, type:
+
+     .. code-block:: console
+
+        # oslopolicy-sample-generator --config-file=etc/nova/nova-policy-generator.conf
+
+
+
+Dashboard (horizon)
+~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+
+- Project release notes:
+  http://docs.openstack.org/releasenotes/horizon/newton.html
+
+
+
+Fixes
+-----
+
+.. https://github.com/rcbops/u-suk-dev/issues/647
+
+- Consistent bread crumb navigation trails
+
+  - Dashboard now consistently displays navigation bread crumbs.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/navigation-improvements.
+
+
+
+Features
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/637
+.. https://github.com/rcbops/u-suk-dev/issues/644
+
+- **Allowed Address Pairs** tab
+
+  - The ``port-details`` page has a new tab for managing allowed
+    address pairs. This tab and its features are only available when
+    this extension is active in Neutron. The **Allowed Address Pairs**
+    tab enables creating, deleting, and listing address pairs for the
+    current port.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/638
+
+- Support for managing neutron L3 agent hosts
+
+  - The **Admin** screen for system information now provides links and
+    views showing which routers reside on what hosts. In addition, the
+    **Admin** view of routers also provides a list of where the router
+    is hosted and the link to see which other routers are sharing the
+    same host.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/admin-neutron-l3-agent.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/639
+
+- Scheduler hints added to **Launch Instance**
+
+  - You can use this feature to add scheduler hints to an instance at
+    launch. In addition to adding custom key-value pairs, you can also
+    choose from properties in the glance metadata definitions catalog
+    that have the ``OS::Nova::Server`` resource type and the
+    ``scheduler_hints`` properties target.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/640
+
+- Administrator ability to graphically manage floating IPs
+
+  - System administrators can manipulate floating IPs in the **Admin**
+    panel.
+
+    - List floating IPs.
+
+    - Create a floating IP from a existing network.
+
+    - Associate, disassociate, or delete a floating IP.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/manage-ips.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/641
+
+- Initial filtering of admin tables
+
+  - This feature provides a configurable setting to require admin
+    users to first provide a search criteria before loading data into
+    admin views.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/admin-views-filter-first
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/642
+
+- Cinder consistency groups
+
+  - This feature adds two tabs to the **Project -> Volumes** panel.
+
+  - The first tab displays consistency groups. The second tab displays
+    consistency group snapshots. Consistency groups (CG) contain
+    existing volumes and allow users to perform actions on the volumes
+    in one step. Actions include: create/update/delete CGs, snapshot
+    all volumes in a CG, clone all volumes in a CG, and create a new
+    CG and volumes from a CG snapshot.
+
+  - Policies associated with consistency groups exist in the cinder
+    policy file. By default, all actions are disabled.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/cinder-consistency-groups.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/643
+
+- Boot sources restriction in **Launch Instance**
+
+  - The feature allows operators to mark boot sources as available or
+    disabled. You can restrict boot sources by setting:
+
+    - ``LAUNCH_INSTANCE_DEFAULTS (disable_image,
+      disable_instance_snapshot, disable_volume,
+      disable_volume_snapshot)``
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/configurable-boot-sources.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/645
+
+- Restrict CIDR range for user private networks
+
+  - This feature allows a cloud administrator to restrict user private
+    network address CIDR input.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/restrict-private-network-input.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/646
+
+- Extra properties in **Project** and **User** panels
+
+  - This feature provides extra data in the **Project** and **User**
+    panels displayed as table columns and supported in CRUD
+    operations.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/support-extra-prop-for-project-and-user.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/648
+
+- Glance V2 support
+
+  - Dashboard adds complete support for glance v2. Dashboard no longer
+    depends on having a glance v1 endpoint in the keystone catalog.
+    The feature also provides code compatibility between glance v1 and
+    v2.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/649
+
+- Dashboard runs without nova or glance
+
+  - Nova and glance are no longer required to run Dashboard. As long as
+    keystone is present, Dashboard runs correctly.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/650
+
+- Support for network IP availability
+
+  - The admin network dashboard now displays IP availability. Two
+    columns in the admin network subnets table display the allocated
+    IPs in a given subnet and unallocated free IPs for each subnet in
+    the network.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/651
+
+- User operation history log
+
+  - This feature logs all Dashboard operations to an external file.
+
+  - For more information, see
+    https://blueprints.launchpad.net/horizon/+spec/operation-history-log.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/652
+
+- Limiting **Overview** panel scope
+
+  - This feature adds a new ``OVERVIEW_DAYS_RANGE`` setting. This
+    setting defines the default date range in the **Overview** panel
+    meters - either today minus ``n`` days (if the value is integer
+    ``n``), or from the beginning of the current month until today (if
+    set to ``None``).
+
+  - You can use this setting to limit the amount of data fetched by
+    default when rendering the **Overview** panel. The default value
+    is ``1``. The default differs from the past behavior, which caused
+    serious lags on large deployments.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/653
+
+- New logout behavior setting
+
+  - Deployers can set the ``TOKEN_DELETE_DISABLED`` variable to revoke
+    a user's token on logout.
+
+
+
+Identity service (keystone)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+  - Project release notes:
+    http://docs.openstack.org/releasenotes/keystone/newton.html
+
+
+
+Security
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/661
+
+- Identity service supports encrypted credentials at rest. Credential
+  encryption is enabled by default and uses a known encryption key.
+  Because the key is known, no additional security is provided over
+  prior releases of Identity service. Replace the known key with a
+  valid key repository to re-encrypt all credentials with secure keys.
+  RPCO does not automatically create or configure this key repository.
+  For more information, see
+  https://github.com/openstack/keystone/blob/9a559c730a5854c47f1f7198b46bc8ebf5de4bef/etc/keystone.conf.sample#L598-L610.
+
+
+
+Features
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/134
+
+- Default token format changes from UUID to Fernet
+
+  - In a greenfield deployment, no additional action is required.
+
+  - For more information, see
+    http://lists.openstack.org/pipermail/openstack-dev/2016-November/106649.html
+    and https://review.openstack.org/#/c/326748/.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/657
+
+- LDAP mapping table pre-population
+
+  - The ``keystone-manage mapping_populate`` command pre-populates a
+    mapping table with all LDAP users. Pre-population improves future
+    query performance. Use this feature when an LDAP is first
+    configured, or before making any domain queries and calling the
+    ``keystone-manage mapping_purge`` command.
+
+
+  - For help with command options, type ``keystone-manage
+    mapping_populate --help``.
+
+    .. note::
+
+       Pre-population causes the keystone database to grow as large as
+       the customer-configured LDAP tree. If all of those users won't
+       log into OpenStack, pre-population can be counterproductive and
+       permanently degrade keystone database performance.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/658
+
+- Add ``cache_on_issue`` attribute to validation cache
+
+  - This feature enables placing issued tokens into the validation
+    cache, which reduces the first validation time.
+
+  - Caching might make debugging a running system more difficult,
+    since data might be stale.
+
+  - For more information, see the `keystone sample configuration file
+    <https://github.com/openstack/keystone/blob/9a559c730a5854c47f1f7198b46bc8ebf5de4bef/etc/keystone.conf.sample#L2713-L2716>`_.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/659
+
+- Add ``password_expires_at`` attribute to user response object
+
+  - PCI-DSS support requires this attribute in the user response
+    object.
+
+  - For more information, see the `list-users API operation
+    <http://developer.openstack.org/api-ref/identity/v3/index.html?expanded=list-users-detail>`_.
+
+
+
+Deprecations
+------------
+
+.. https://github.com/rcbops/u-suk-dev/issues/654
+
+- The ``keystone-manage domain_config_upload`` option is deprecated in
+  favor of using the `domain configuration API
+  <https://review.openstack.org/#/c/339259/>`_.
+
+  .. note::
+
+     RPCO does not use the new domain configuration API.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/660
+
+- If you customize the ``policy.json`` file, update it to use these
+  new variables:
+
+  - ``identity:list_projects_for_user`` replaces
+    ``identity:list_projects_for_groups``.
+
+  - ``identity:list_domains_for_user`` replaces
+    ``identity:list_domains_for_groups``.
+
+
+
+Unsupported
+-----------
+
+.. https://github.com/rcbops/u-suk-dev/issues/655
+
+- RPCO does not support `rolling upgrades
+  <http://docs.openstack.org/developer/keystone/upgrading.html#upgrading-without-downtime>`_
+  of the Identity service.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/656
+
+- RPCO does not support `OSProfiler
+  <https://docs.openstack.org/developer/osprofiler/>`_.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/662
+
+- RPCO does not support running Identity service in Python v3. For
+  more information about Identity support of Python v3, see
+  https://blueprints.launchpad.net/keystone/+spec/python3.
+
+
+
+Image service (glance)
+~~~~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+  - Project release notes:
+    http://docs.openstack.org/releasenotes/glance/newton.html
+
+
+
+Critical
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/627
+
+- Database downgrade ability removed
+
+  - At a project level, OpenStack is dropping support for downgrading
+    databases. In this release, Image service removed the capability
+    to downgrade its database to an older version.
+
+ .. warning::
+
+    It is highly recommended to back up the database before upgrading
+    Image service. Backups provide the only method to revert to a
+    previous version of the database.
+
+
+ - For more information, see
+   https://github.com/openstack/glance/commit/2f803d3fa9d5870b38b195f91a146db9ef755ed1
+   and
+   https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/remove-db-downgrade.rst.
+
+
+
+Upgrade
+-------
+
+.. https://github.com/rcbops/u-suk-dev/issues/629
+
+- ``show_multiple_locations`` deprecated
+
+  - Previous releases provided two ways to enable multiple storage
+    locations to be shown: a ``master-switch`` and a policy file. This
+    change deprecates the master switch default (``False``).
+
+  - Prior to upgrading, check to see if this change impacts the
+    customer environment.
+
+  - For more information, see
+    https://github.com/openstack/glance/commit/dbfc121072dff4981532b068bb210f9c73c7b98c
+    and
+    https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#deprecate-show_multiple_locations-configuration-option.
+
+
+
+Deprecations
+------------
+
+.. https://github.com/rcbops/u-suk-dev/issues/625
+
+- Amazon S3 store driver removed
+
+  - Amazon S3 is no longer supported as a backend store for Image
+    service. There is no recommended migration path.
+
+  - For more information, see
+    https://github.com/openstack/glance_store/commit/4432e60af2a2bdbfc456d8d99d93d1157fc86dcd
+    and https://github.com/rcbops/u-suk-dev/issues/736.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/628
+
+- Adding locations to a non-active or non-queued image not allowed
+
+  - In previous releases, Image service allowed an authorized user to
+    set locations on any image that is not *deleted*. This could lead
+    to image data integrity issues.
+
+  - With this release, image locations must be added only when the
+    image is either in *queued* or *active* status. Otherwise, these
+    requests will fail.
+
+  - Multiple locations must now be controlled via policies. Customers
+    using this features might need to set appropriate policies to
+    accurately control who can add, remove, or fetch locations.
+
+  - For more information, see
+    https://github.com/openstack/glance/commit/7c7dd626896d732d75c6b802a33b9462aee885fd
+    and
+    https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#return-409-if-setting-location-to-saving-or-deactivated-image.
+
+
+
+Features
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/623
+
+- The ``vhdx`` image format is supported
+
+  - For more information, see
+    https://github.com/openstack/glance/commit/fc0b47beb60c0dbbe620798665d0e9bab07f7029
+    and
+    https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#add-vhdx-to-list-of-supported-disk-formats.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/626
+
+- Expired tasks are deleted
+
+  - All Image service tasks are set to expire in a certain time after
+    they are created. However, expired tasks were not filtered out
+    when a user lists tasks. As a result, a user would see a long list
+    of tasks spanning multiple pages. With this change, Image service
+    automatically deletes all expired tasks. This feature keeps the
+    task list readable.
+
+  - For more information, see
+    https://github.com/openstack/glance/commit/38563b0555d5974f641cb8fa5a0f197279bed04d
+    and
+    https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#add-functionality-to-soft-delete-the-tasks.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/648
+
+- Glance v2 API support
+
+  - This release adds complete support for the glance v2 API.
+    Dashboard no longer depends on having a glance v1 endpoint in the
+    Identity catalog. This release also provides code compatibility
+    between glance v1 and v2.
+
+  - New installations of RPC should use only glance v2.
+
+  .. note::
+
+     The glance v1 API is deprecated and marked for removal in
+     OpenStack Pike. All existing RPC installations must move to v2.
+     See https://github.com/rcbops/u-suk-dev/issues/624.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/649
+
+- Image service not required by Dashboard
+
+  - With this release, Dashboard does not require Compute or Image
+    service.
+
+
+
+Networking service (neutron)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+
+- Project release notes:
+  http://docs.openstack.org/releasenotes/neutron/newton.html
+
+
+Deprecations
+------------
+
+.. https://github.com/rcbops/u-suk-dev/issues/666
+
+- The ``min_13_agents_per_router`` and ``cache_url router`` configuration
+  options are replaced by the following setting: ``[cache] group,
+  setting enable = True``.
+
+- Scheduling of new HA routers is always allowed.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/665
+
+- The ``global_physnet_mtu``, ``path_mtu``, and
+  ``physical_network_mtus`` variables replace ``network_device_mtu``.
+
+- The ``is_default`` variable replaces ``default_ipv4_subnet_pool``
+  and ``default_ipv6_subnet_pool``.
+
+
+
+Unsupported
+-----------
+
+.. https://github.com/rcbops/u-suk-dev/issues/671
+
+- RPCO does not support `Project Calico
+  <http://docs.projectcalico.org/v2.0/introduction/>`_.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/669
+.. https://github.com/rcbops/u-suk-dev/issues/670
+
+- RPCO does not support OVS.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/664
+
+- RPCO does not support the ``external_network_bridge`` and
+  ``ipam_driver`` variables.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/663
+
+- RPCO does not support creating VLAN-aware virtual machines.
+  VLAN-aware virtual machines use "trunks" of neutron ports that carry
+  VLAN tags from the VM out through virtual switches.
+
+
+
+Object Storage (swift)
+~~~~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+  - Project release notes: https://github.com/openstack/swift/blob/master/CHANGELOG
+
+
+
+Fixes
+-----
+
+.. https://github.com/rcbops/u-suk-dev/issues/679
+
+- Container Sync supports syncing SLO objects
+
+  - For more information, see https://review.openstack.org/#/c/348495/
+    and https://bugs.launchpad.net/swift/+bug/1605597.
+
+
+
+Features
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/675
+
+- Object versioning
+
+  - Object versioning supports a "history" mode in addition to the
+    older "stack" mode. The modes differ in how ``DELETE`` requests
+    are handled. For more information, see:
+    http://docs.openstack.org/developer/swift/overview_object_versioning.html.
+
+  - Deletion of objects is handled in two different methods. Using the
+    header ``X-History-Location``, the current object version is
+    removed, but can still be recovered from the archive container. By
+    using header ``X-Versions-Location``, the current version is
+    removed by copying the previous version over it. The copy in the
+    archive container is deleted. If there are multiple version of an
+    object, multiple deletes must be performed to remove the object.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/676
+
+- Concurrent bulk deletes
+
+  - This feature allows concurrent bulk deletes for server-side
+    deletes of static large objects.
+
+  - Before this feature, deletes were single-threaded and each
+    ``DELETE`` executed serially. The new ``delete_concurrency`` value
+    defaults to ``2`` in the ``[filter:slo]`` and ``[filter:bulk]``
+    sections of the proxy server configurations. This value controls
+    the concurrency used to perform the ``DELETE`` requests for
+    referenced segments. The default value is recommended. Setting the
+    value to ``1`` restores the previous behavior.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/677
+
+- TempURL responses now include an ``Expires`` header with the
+  expiration time embedded in the URL.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/678
+
+- The object auditor deletes old tombstones. This ensures that they
+  are reclaimed and do not waste inodes.
+
+  - To save disk I/O, Object Storage uses a hash to determine what
+    changed so that the replicator knows what needs to be synced. The
+    replicator reclaims deleted objects after the ``reclaim_age`` time
+    period. Deleted objects are empty tombstone files with the ``.ts``
+    extension. If the suffix hash file for a tombstone file was
+    calculated before the reclaim age and no object is placed in the
+    same suffix, the replicator would never delete them. The situation
+    led to many ``.ts`` files consuming inodes. The object auditor now
+    marks the suffix hash for reclaimable ``.ts`` files as dirty, so
+    they can be cleaned and the hashes recalculated.
+
+  - This feature potentially changes the load on an Object Storage
+    cluster. For example, the initial object replicator run can cause
+    a spike in disk I/O while old ``.ts`` files (which can be
+    numerous) are reclaimed. The impact might be negligible on smaller
+    clusters, but can regularly be high in large clusters.
+
+  - For more information, see
+    https://bugs.launchpad.net/swift/+bug/1301728 and
+    https://review.openstack.org/#/c/346865/.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/680
+
+- Atomic object creation in Linux
+
+  - Object Storage uses the ``O_TMPFILE`` flag when opening a file
+    instead of creating a temporary file and renaming it on commit.
+    This makes the data path simpler and allows the filesystem to more
+    efficiently optimize the files on disk, increasing performance.
+
+  - The Linux kernel from 3.15 onward (and XFS) adds support for
+    ``O_TMPFILE``, while enables atomic object creation in Linux.
+    Previously, the object was written to a temporary folder and
+    renamed after the object finished writing. This new kernel feature
+    creates a write-only lock in the final destination and links to
+    the directory. Writing the object becomes an atomic operation.
+
+  - This change corrects a performance problem discovered in XFS that
+    allocated all objects created in the same device-specific
+    temporary folder to the same allocation group. Storage nodes with
+    kernels newer than 3.15 automatically use atomic object creation,
+    but fall back to the non-atomic method if unsupported.
+
+  - For more information, see
+    https://review.openstack.org/#/c/162243/.
+
+
+
+Orchestration (heat)
+~~~~~~~~~~~~~~~~~~~~
+
+Prelude
+-------
+  - Project release notes:
+    http://docs.openstack.org/releasenotes/heat/newton.html
+
+
+
+Features
+--------
+
+.. https://github.com/rcbops/u-suk-dev/issues/630
+
+- Support for conditionals
+
+  - This feature adds condition functions such as ``equals``, ``not``,
+    and ``and or``. When added to a conditions section, they define
+    one or more conditions that are evaluated based on input parameter
+    values provided when a user creates or updates a stack.
+
+  - An optional section condition is available for resource and output
+    definitions. Condition names defined in conditions and condition
+    functions can be referenced in this section. They conditionally
+    create resources or conditionally give outputs of a stack.
+
+  - The feature includes a function to return corresponding values
+    based on condition evaluation. You can use this function to
+    conditionally set the value of resource properties and outputs.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/631
+
+- Enhanced support for Block Storage QoS and quotas
+
+  - A new ``OS::Cinder::QoSSpecs`` resource plugin supports Block
+    Storage QoS specs provided by the ``qos-specs`` API extension.
+
+  - A new ``cinder.qos_specs`` constraint supports validation of the
+    QoS specs attribute.
+
+  - A new ``OS::Cinder::Quota`` resource is added to manage Block
+    Storage quotas. These quotas are operational limits to projects on
+    Block Storage resources. These include ``gigabytes``,
+    ``snapshots``, and ``volumes``.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/632
+
+- Support for DNS resolution using internal or external DNS services
+  for neutron resources
+
+  - This feature supports internal DNS resolution and integration with
+    external DNS services for neutron resources. Template authors can
+    use the ``dns_name`` and ``dns_domain`` properties of neutron
+    resource plugins.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/633
+
+- New ``max_server_name_length`` configuration option
+
+  - This feature adds the ``max_server_name_length`` configuration
+    option. The option defaults to the prior upper bound (``53``).
+    Users can change the value if necessary. For example, lower the
+    value to comply with LDAP other internal name limit restrictions.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/634
+
+- New template directory configuration option
+
+  - This feature adds the ``template_dir`` configuration option.
+    Typically, Orchestration uses the ``/etc/heat/templates``
+    directory. This option makes it configurable.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/635
+
+- New ``map_replace`` function
+
+  - A new ``map_replace`` function accepts two arguments: an input map
+    and a map containing a keys/values map. Key or value substitutions
+    on the input map are performed based on arguments.
+
+
+.. https://github.com/rcbops/u-suk-dev/issues/636
+
+- New ``yaql`` function
+
+  - The ``yaql`` function accepts two arguments: an expression of type
+    ``string`` and data of type ``map``. The function evaluates
+    expressions on a given data set.

@@ -1,0 +1,29 @@
+
+.. _archive-contacts-command:
+
+Archive a Contact
+=================
+
+Sometimes you need to remove a contact from your database, maybe they are non-responsive or they do not want to be contacted. Command gives you the ability to first archive contacts, and then to fully delete them, if necessary.
+
+To archive a contact, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#.  In the **Contacts** list, click the name of the contact to archive.
+
+#. Click the Archive |archive-icon| icon.
+
+   .. |archive-icon| image:: ../../../../images/archive-icon.png
+      :height: 20
+
+#. On the confirmation window, click **Archive**.
+
+To delete or restore an archived contact, see :ref:`contact-archive-settings-command`.
+
+To archive or permanently delete all your contacts, see :ref:`database-wipe-settings-command`.

@@ -1,0 +1,30 @@
+
+.. _archive-bulk-command:
+
+Archive Multiple Contacts
+=========================
+
+To archive multiple contacts, complete the following steps:
+
+.. note::
+
+   You can also archive individual contacts. For more information, see :ref:`archive-contacts-command`.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts you want to archive. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Archive**.
+
+#. The **Confirm Archive Contacts** window displays the names of the contacts to archive.
+
+#. Click **Archive**.

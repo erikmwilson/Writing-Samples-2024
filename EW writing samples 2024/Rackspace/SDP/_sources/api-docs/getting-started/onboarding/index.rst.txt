@@ -1,0 +1,41 @@
+.. onboarding:
+
+==========
+Onboarding
+==========
+
+Before you can start integrating, you first need to complete the onboarding
+process. Contact your Rackspace Account Manager to help you with the following
+tasks:
+
+* If you are integrating Dedicated Hosting accounts, request to have
+  these accounts granted the ability to leverage API keys. While this is the
+  default behavior for our managed cloud accounts,
+  this feature needs to be enabled to view your API key within the
+  MyRackspace portal.
+
+* To synchronize events from Rackspace systems, you need a user that can
+  authenticate to the Rackspace ticketing event feed. This user can be created
+  by anyone with administrative privileges on your account, or you can ask
+  your Account Manager to help with the creation process. This user
+  needs to have the ``cloudfeeds:observer`` role.
+
+* Provide your Account Manager with a list of account IDs that need to
+  communicate with the API and ticketing feed.
+
+Integration
+-----------
+
+After your accounts have been granted access to the Rackspace demo environment,
+you can begin writing your integration. To avoid unintended interruptions to
+your support experience, Rackspace recommends that development occurs against
+our demo environment. After you have tested your integration, you can ask your
+Account Manager to enable production access.
+
+At a high level, you are using two Rackspace services as complementary
+components in your integration. The Ticketing API provides a mechanism to
+submit your ticket create and update events with Rackspace.
+The Rackspace ticketing event
+feed is leveraged to consume any ticketing events that occur within your
+account. This ensures that your applications keep informed of any new service
+requests, as well as any updates to existing requests.

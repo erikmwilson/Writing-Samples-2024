@@ -1,0 +1,36 @@
+==============================
+Log aggregation and management
+==============================
+
+Get answers to common technical questions about logs for
+Rackspace Private Cloud Powered By OpenStack (RPCO) |release|.
+
+**What log analysis and visualization tools are available?**
+
+By default, Kibana is installed with a dashboard that resembles OpenStack
+dashboard. Charts that reflect the frequency of errors and warnings are
+included. Users can filter logs by the request UUID, and can display and
+graph requests per second by type and the return codes for each API
+service.
+
+Rsyslog and Logstash are also available.
+
+**How does Support interact with ElasticSearch?**
+
+The `es2unix <https://github.com/elastic/es2unix>`_
+package is installed on all infrastructure nodes, which enables
+Support to interact with ElasticSearch directly.
+
+**How do I manage the MySQL database size to prevent the
+``django_sessions`` table from filling up with older and expired logs?**
+
+To clear expired logs from the ``django_sessions`` table:
+
+#. On the deployment host, change into the ``playbooks`` directory.
+
+#. Run the following command, replacing `TARGET` with the name of the
+   horizon containers:
+
+   .. code-block:: console
+
+      $ ansible TARGET -i inventory/ -a "horizon-manage.py clearsessions"

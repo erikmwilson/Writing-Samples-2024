@@ -1,0 +1,11 @@
+=================
+Magnum monitoring
+=================
+
+ .. toctree::
+    :maxdepth: 2
+
+    monitoring/api.rst
+    monitoring/service.rst
+
+We use `Rackspace MaaS <https://github.com/rcbops/rpc-openstack/tree/master/rpcd/playbooks/roles/rpc_maas>`_ to monitor the Magnum API and services.

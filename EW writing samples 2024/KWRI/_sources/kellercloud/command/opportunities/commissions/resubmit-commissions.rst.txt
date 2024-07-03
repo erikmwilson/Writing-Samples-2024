@@ -1,0 +1,68 @@
+
+.. _resubmit-commissions-opportunities-command:
+
+Submit a New Commission after an Offer Falls Through
+====================================================
+
+When an offer falls through after you have already requested a commission from your Market Center (on an accepted offer), and you accept a new offer, you must request a termination of that commission and submit a commission for the new offer.
+
+.. note::
+
+   You must request termination of the previous commission before you can accept a new offer.
+
+   * For more information, see :ref:`create-offer-opportunities-command`.
+
+   * For more information, see :ref:`manage-offers-opportunities-command`.
+
+Terminate the Existing Commission
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To terminate an existing commission, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name to view the Opportunity details.
+
+#. At the top of the Opportunity page, click the **Offers & Commissions** tab. The **Offers & Commissions** tab lists all offers for the Opportunity.
+
+#. Click **Manage Commission** next to the accepted offer that fell through.
+
+#. On the Commission page, click **Request Termination**.
+
+   .. note::
+
+      After requesting a termination, you can immediately accept a new offer in the following situations:
+
+      * DA ID is blank - the commission has not been imported to WinMORE
+
+      * DA ID status is U (Unposted) or I (Incomplete)
+
+      * Commission status is Submitted, Approved, Pending Import, or Imported.
+
+      If the DA status is P (Posted), you cannot request a termination of the commission or accept a new offer until the MCA manually terminates the original commission.
+
+   After a commission has been terminated, you will receive a Kelle notification and Command notification. The offer and commission will both show the status of terminated. The commission sheet and offer can be viewed but are not longer editable.
+
+Submit a New Commission
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To submit a new commission, complete the following steps:
+
+#. From the correct Opportunity, click the **Offers & Commissions** tab and accept the new offer. For more information, see :ref:`manage-offers-opportunities-command`.
+
+   .. note::
+
+      Multiple offers can have a status of accepted. However, only one offer can have a DA ID status that is non-terminated, all other offers must eventually have a DA ID status of T (terminated).
+
+#. Click **Manage Commission** next to the accepted offer.
+
+   The **Offers & Commissions** tab auto-fills with the data you entered into the accepted offer.
+
+#. Click **Submit**. For more information see :ref:`commissions-opportunities-command`.

@@ -1,0 +1,17 @@
+
+.. _contacts-settings-index-command:
+
+Contacts
+========
+
+The following sections contain information about how to configure
+Contacts settings.
+
+.. toctree::
+   :maxdepth: 1
+
+   import-contacts
+   contact-archive
+   database-wipe
+   custom-tags
+   custom-fields

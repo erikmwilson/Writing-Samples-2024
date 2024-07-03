@@ -1,0 +1,54 @@
+============================================
+Rackspace Private Cloud Powered by OpenStack
+============================================
+
+.. image:: figures/powered-by-openstack-modified.png
+   :target: http://www.openstack.org
+
+| **Last updated:** |today|
+| **Release:** |release|
+|
+
+- :ref:`rpc-faq-external`
+- :ref:`rpc-ironic`
+- :ref:`rpc-appformix`
+- :ref:`rpc-releasenotes`
+- :ref:`rpc-swift`
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   Rackspace Private Cloud <self>
+   rpc-faq-external/index.rst
+   rpc-ironic/index.rst
+   rpc-appformix-external/index.rst
+   rpc-releasenotes/index.rst
+   rpc-swift/index.rst
+
+.. ifconfig:: internal
+
+   **Internal documents**
+
+   - :ref:`rpc-faq-internal`
+   - :ref:`rpc-install-internal`
+   - :ref:`rpc-magnum`
+   - :ref:`rpc-monitoring-logging`
+   - :ref:`rpc-ops-internal`
+   - :ref:`rpc-sales-eng-internal`
+   - :ref:`rpc-upgrade-exp`
+   - :ref:`rpc-upgrade-internal`
+
+   .. toctree::
+      :hidden:
+      :caption: Internal documents
+      :maxdepth: 2
+
+      rpc-faq-internal/index.rst
+      rpc-install-internal/index.rst
+      rpc-magnum/index.rst
+      rpc-monitoring-internal/index.rst
+      rpc-ops-internal/index.rst
+      rpc-sales-eng-internal/index.rst
+      rpc-upgrade-exp/index.rst
+      rpc-upgrade-internal/index.rst

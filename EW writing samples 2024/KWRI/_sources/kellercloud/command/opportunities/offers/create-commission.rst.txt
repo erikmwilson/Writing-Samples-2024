@@ -1,0 +1,44 @@
+
+.. _create-commission-opportunities-command:
+
+Create Lease Commission
+=======================
+
+You can create a Lease commission for a Lease opportunity.
+
+To create an offer, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within the deal type (Listings or Buyer) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Commission** tab.
+
+#. Click **Add New Commission**, on the right side of the page.
+
+#. Complete the **Create Commission** page.
+
+   The following fields are required to create and accept a lease commission:
+
+   * **Property Address**
+
+   * **Property Type**
+
+   * **Property Classification**
+
+   * **Landlord Info** - Enter **Landlord Name**, **Co-Landlord Name** (if necessary) and the **Landlords's Agent Representative**. The side you are representing should be auto-filled with any information you have already entered in Opportunities.
+
+   * **Tenant Info** - Enter the **Tenant Name**, **Co-Tenant Name** (if necessary)  and the **Tenant's Agent Representative**. The side you are representing should be auto-filled with any information you have already entered in Opportunities.
+
+   * **Lease Signed Date**
+
+   * **Occupancy Date**
+
+#. Click **Create Commission**.

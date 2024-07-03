@@ -1,0 +1,92 @@
+
+.. _overview-opportunities-command:
+
+Opportunities Overview
+======================
+
+Opportunities is the system we use to track our current and potential transactions within Command. Each Opportunity (current or potential transaction) starts at the Cultivate Phase, where you can track an Opportunity before you have even set an appointment, and is tracked through to the Closed Phase, after being approved for compliance and Commissions. You can customize your Opportunity pipelines to allow you to track your transactions in a way that make sense for your business.
+
+To open the Opportunities application, complete the following steps:
+
+.. include:: opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../images/applet-opportunities.svg
+      :height: 20
+
+   .. note::
+
+      You can also access Opportunities through the **Opportunities** tab in a Contact record.
+
+The Opportunities dashboard shows you a high-level view of your business, including the number of Opportunities per phase and the volume for each, probable commission based on where each Opportunity is at in the process, and insight into your overall Opportunities activity.
+
+The Opportunities system is broken up into the following individual pipelines:
+
+* Listings
+
+* Buyers
+
+* Leases
+
+Each individual pipeline breaks down the transaction process into the following phases:
+
+* Cultivate
+
+* Appointment
+
+* Active
+
+* Under Contract
+
+* Closed
+
+Each phase is broken up into stages, which you can  customize to fit your transaction process. There are default stages in your pipeline to get you started. These can also be edited or deleted. From the Sales Pipeline dashboard, click on each phase to see the stages that have been set up.
+
+For more information, see :ref:`edit-stages-opportunities-command`.
+
+.. note::
+
+   The phases for your pipelines are standard, and are not editable. Within each phase, the stages are editable, and you can create as many as you require.
+
+The Opportunities dashboard also includes a **Ratio** table of probable and potential earnings, an **Activity** graph, and a listing of Opportunities **Closing This Month**.
+
+Each Opportunity includes the client name, listing, and the following tabs:
+
+* Details
+
+* Seller Profile
+
+* Documents
+
+* Offers
+
+* Commissions
+
+* Notes
+
+* Timeline
+
+You can manage your Opportunities as follows:
+
+* View Opportunities for your team or for yourself. For more information, see :ref:`access-opportunity-opportunities-command`.
+
+* View a list of **All Opportunities** or **All Discussions**. For more information, see :ref:`search-opportunities-command` and :ref:`access-discussions-opportunities-command`.
+
+* Create an Opportunity. For more information, see :ref:`create-opportunities-command`.
+
+* Import Opportunities from DotLoop. For more information, see :ref:`import-dotloop-opportunities-command`.
+
+* View Opportunities by stage within a phase.
+
+* Show comparisons between your pipeline performance and all Command Agents.
+
+* Filter Opportunities by Assignee.
+
+Within Opportunities, you can also:
+
+* Manage your documents. For more information, see :ref:`docusign-opportunities-command`.
+
+* Complete compliance requirements. For more information, see :ref:`compliance-opportunities-command`.
+
+* Submit your Commission information to your Market Center. For more information, see :ref:`commissions-opportunities-command`.

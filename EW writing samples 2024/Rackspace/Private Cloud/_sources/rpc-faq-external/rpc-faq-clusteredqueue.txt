@@ -1,0 +1,21 @@
+==========================
+Clustered queue management
+==========================
+
+Get answers to common technical questions about clustered queue management for
+Rackspace Private Cloud Powered By OpenStack (RPCO) |release|.
+
+**How does RabbitMQ recover after a single node failure?**
+
+If the node goes offline for some time and then returns, it will
+automatically rejoin the cluster with no user intervention required.
+
+**How does a cluster recover from a catastrophic failure of all
+nodes?**
+
+As with an upgrade, the nodes should be brought back in reverse
+order. However, in a case where nodes go down simultaneously, you must
+manually start all nodes in quick succession to ensure that they can
+identify each other, as described in `this discussion thread
+<http://grokbase.com/t/rabbitmq/rabbitmq-discuss/136apcb5p3/restart-cluster
+-after-crash>`_.

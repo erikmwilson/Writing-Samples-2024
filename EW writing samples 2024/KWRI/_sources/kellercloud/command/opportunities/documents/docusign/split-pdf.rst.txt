@@ -1,0 +1,30 @@
+
+.. _split-pdf-opportunities-command:
+
+Split a PDF into Multiple Documents in DocuSign
+===============================================
+
+As you are working with clients and other agents to get documents and forms signed, you may be sent several forms in one file, which could be too large to attach in Command. Using DocuSign, you can split this file into separate documents for easier organization and to import them into the Opportunity.
+
+To split a PDF into multiple documents, complete the following steps:
+
+#. :ref:`access-room-opportunities-command`.
+
+#. By default, the DocuSign Room opens to the **Documents** tab, click the document that you want to split.
+
+#. Click the **Document Actions** icon |document-icon| at the top of the page, and choose **Split** from the drop-down list.
+
+   .. |document-icon| image:: ../../../../../images/docusign-document-icon.png
+      :height: 20
+
+   On the right side of the page, you will see each page in the document as a thumbnail with a page number, and on the left, the list of documents you are creating out of this split PDF.
+
+#. Enter the name of the first document that you want to create, then select the pages to include in this document. You can either click on the specific pages on the right, or enter a page range (or multiple page ranges, separated by a comma) next to the document name, on the left.
+
+#. Click **Add a Document** to create additional documents out of this PDF, then repeat the above step.
+
+#. When you have finished creating individual documents, click **Save** at the top-right of the page.
+
+   Clicking **SAVE** creates the documents you added as separate files, and keeps the original file in your Room's documents list.
+
+For more information, see :ref:`docusign-rooms-opportunities-command`.

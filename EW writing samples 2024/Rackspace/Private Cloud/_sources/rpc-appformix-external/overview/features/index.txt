@@ -1,0 +1,18 @@
+.. _index-features-ug:
+
+========
+Features
+========
+
+|service appformix| provides the following features:
+
+.. toctree::
+   :maxdepth: 2
+
+   alarms.rst
+   ceph-monitor.rst
+   chargeback.rst
+   charts.rst
+   heat-map.rst
+   metrics.rst
+   reports.rst

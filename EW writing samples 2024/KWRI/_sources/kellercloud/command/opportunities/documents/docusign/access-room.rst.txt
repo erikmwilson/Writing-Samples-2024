@@ -1,0 +1,36 @@
+
+.. _access-room-opportunities-command:
+
+Access an existing DocuSign Room
+================================
+
+After you create and connect your DocuSign account in Command, you can create Rooms for an Opportunity. This creates a secure connection that allows you to import forms into Command from DocuSign so that you can submit them for compliance approval.
+
+To access a DocuSign room, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. At the top of the Opportunity page, click the **Documents** tab.
+
+#. Click **Go to Transaction**.
+
+#. On the DocuSign Rooms sign in window, enter the email address associated with your DocuSign account and click **Continue**.
+
+#. Enter your password and click **Log In**.
+
+    .. note::
+
+       You only have to log in once per session.
+
+#. The DocuSign Room for that Opportunity appears where you can manage the documents, people, and envelopes for the Room.
+
+For more information, see :ref:`docusign-rooms-opportunities-command`.

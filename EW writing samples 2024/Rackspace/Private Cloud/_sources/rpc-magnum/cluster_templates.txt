@@ -1,0 +1,116 @@
+Cluster Templates
+=================
+
+What are they
+-------------
+
+Cluster Templates are used to store settings that will later be used to
+create a Magnum cluster.
+
+How do they work
+----------------
+
+Cluster Templates need to be created before you are able to create a
+Magnum cluster, and must be specified during cluster creation time
+
+What settings can I use?
+------------------------
+
+The following settings are available to be configured in a Cluster
+Template
+
+-  ``keypair-id``: UUID of SSH Key to be used for Nova servers OR
+
+-  ``keypair``: Name of SSH Key to be used for Nova servers
+
+-  ``external-network-id``: UUID of External Network OR
+
+-  ``external-network``: Name of External Network
+
+-  ``master-flavor-id``: UUID of Nova Flavor that will be used for the
+   Kubernetes/etcd master servers OR
+
+-  ``master-flavor``: Name of Nova Flavor that will be used for the
+   Kubernetes/etcd master servers
+
+-  ``flavor-id``: UUID of Nova Flavor that will be used for the
+   Kubernetes worker servers OR
+
+-  ``flavor``: Name of Nova Flavor that will be used for the Kubernetes
+   worker servers
+
+-  ``image-id``: UUID of Glance Image that will be used for the Nova
+   servers OR
+
+-  ``image``: Name of Glance Image that will be used for the Nova
+   servers *NOTE: The Glance Image chosen needs to have an ``os_distro``
+   property that matches the Magnum driver in use. Currently, the
+   Rackspace Managed Kubernetes driver requires ``os_distro = fedora``*
+
+-  ``name``: The name to be used for the Cluster Template
+
+-  ``coe``: The name of the Container Orchestration Engine that will be
+   used. *NOTE: The COE that is chosen needs to match an existing Magnum
+   driver. Currently, the Rackspace Managed Kubernetes driver supports
+   ``kubernetes``*
+
+-  ``fixed-network``: The Neutron network to use as the private network
+   for Cluster nodes. If this is not set, it will create a new private
+   network
+
+-  ``fixed-subnet``: The Neutron subnet to use for Cluster Nodes. This
+   is only required if ``fixed-network`` is in use
+
+-  ``network-driver``: The name of the network driver for internal
+   Container networking. Valid options are ``flannel`` or ``docker``
+   *NOTE: The Rackspace Managed Kubernetes driver requires ``flannel``*
+
+-  ``volume-driver``: The name of the volume driver for Persistent
+   Volumes within the COE Valid options are ``cinder`` or ``rexray``
+   *NOTE: The Rackspace Managed Kubernetes driver does not currently
+   support either volume driver*
+
+-  ``dns-nameserver``: The DNS nameserver to be used on all Cluster
+   nodes and containers. Defaults to '8.8.8.8'. This will be used in the
+   private Neutron network configuration
+
+-  ``docker-volume-size``: The size of the Cinder volume to be attached
+   to all Docker nodes to store images. If the volume is too small,
+   users may encounter errors when attempting to pull new images
+
+-  ``docker-storage-driver``: The name of the driver used to store
+   Docker images and the container's writeable layer Valid options are
+   ``devicemapper`` and ``overlay`` *NOTE: The Rackspace Managed
+   Kubernetes driver uses ``devicemapper``*
+
+-  ``http-proxy``: URL, including a port number, to be used to proxy
+   HTTP requests
+
+-  ``https-proxy``: URL, includign a port number, to be used to proxy
+   HTTPS requests
+
+-  ``no-proxy``: Comma separated list of IP addresses to be excluded
+   from the ``http-proxy`` and ``https-proxy``
+
+-  ``labels``: Arbitrary ``key=value`` pairs. These are used to pass
+   additional information to the drivers
+
+-  ``tls-disabled``: Disable TLS authentication/security on the cluster,
+   allowing anonymous authentication
+
+-  ``public``: Make this template appear to all Magnum users
+
+-  ``registry-enabled``: Creates an internal Docker registry on this
+   cluster
+
+-  ``server-type``: Whether to use VM or Bare Metal servers for this
+   cluster. Valid options are ``vm`` and ``bm`` *NOTE: Racksapce Managed
+   Kubernetes only supports ``vm`` at this time*
+
+-  ``master-lb-enabled``: Creates a Load Balancer across the Master
+   nodes *NOTE: This should be used when using the Rackspace Managed
+   Kubernetes driver*
+
+-  ``floating-ip-enabled``
+
+

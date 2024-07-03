@@ -1,0 +1,15 @@
+
+.. _bm-create-account-recruits-mc:
+
+Create a BrokerMetrics® Account
+===============================
+
+To automatically pull recruit production information from BrokerMetrics, you must first create a BrokerMetrics account through the KW Marketplace.
+
+If you already have a BrokerMetrics account, see :ref:`bm-connect-recruits-commandmc`.
+
+To create a BrokerMetrics account, complete the following steps:
+
+1. :ref:`marketplace-command-ug`.
+
+#. In the KW Marketplace, purchase a subscription to BrokerMetrics and create your account.

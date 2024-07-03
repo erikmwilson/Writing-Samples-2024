@@ -1,0 +1,24 @@
+
+.. _view-shared-contacts-command:
+
+View Shared Contacts (Teams)
+============================
+
+As you are working with your team and contacts are being shared with you, those shared contacts do not automatically show in your main, Contacts view. There is a filter that displays the contacts that your teammates have shared with you, and hides all other contacts.
+
+To view shared contacts, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click **Filters** above the contact list.
+
+#. In the **Filters** window, select **Shared with me** from the **Ownership** drop-down.
+
+#. Click **Apply**.
+
+   Only the contacts that have been shared with you display, until the filter is cleared.

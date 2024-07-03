@@ -1,0 +1,19 @@
+
+.. _one-time-charitable-deductions-opportunities-command:
+
+One Time Charitable Deductions
+==============================
+
+You can share a portion of your commission as a one-time tax-deductible donation.
+
+When you submit a commission, if you have not entered any charitable deductions, the **Charitable Deductions** window appears. For more information, see :ref:`commissions-opportunities-command`.
+
+#. Select the dollar amounts you want to donate to KW Cares or KWKC and click **Donate and Continue**. The donation amount is entered on the **Commissions** page.
+
+   If there are multiple agents on the Opportunity, you can leave different amounts for each agent. Move between the agents by clicking the links at the bottom of the **Charitable Deductions** window.
+
+   .. note::
+
+      If you choose not to donate, click **No, Not this time** or **Skip Donation for All**.
+
+#. On the **Offers and Commissions** tab, click **Submit**.

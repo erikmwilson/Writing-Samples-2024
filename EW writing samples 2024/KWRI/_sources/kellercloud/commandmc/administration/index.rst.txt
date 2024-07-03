@@ -1,0 +1,17 @@
+
+.. _admin-index-commandmc:
+
+Administration
+==============
+
+Use the Administration applet to view current information on your Market Center and make updates to Luxury and Team Management.
+
+The following pages contain information about the Administration applet.
+
+.. toctree::
+   :maxdepth: 1
+
+   luxury/index
+   vendors/index
+   deductions/index
+   ../settings/team-mgmt/index

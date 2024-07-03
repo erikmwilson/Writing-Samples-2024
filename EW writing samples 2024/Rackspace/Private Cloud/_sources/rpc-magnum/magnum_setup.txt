@@ -1,0 +1,121 @@
+Installing and Configuring Magnum
+=================================
+
+Prerequisites
+-------------
+
+Openstack Services
+~~~~~~~~~~~~~~~~~~
+
+-  Nova
+-  Glance
+-  Neutron
+-  **Neutron LBaaS v2**
+-  Cinder
+-  Heat
+
+*must be Mitaka or above*
+
+Installation
+------------
+
+During RPC Setup
+~~~~~~~~~~~~~~~~
+
+Magnum installation has been integrated into RPC, so you can install
+Magnum by setting the DEPLOY\_MAGNUM environment variable to 'yes'
+before running 'deploy.sh'.
+
+After RPC Setup
+~~~~~~~~~~~~~~~
+
+In order to set up Magnum after RPC has already been created, you will
+need to add the Magnum configuration variables to the appropriate
+Openstack Ansible files, as well as re-running several of the playbooks.
+First, you will need to set the following Environment Variables:
+
+OA\_DIR
+
+CONTRIB\_DIR
+
+The values for these should match the values in 'deploy.sh' After you
+have done so, you can run the 'magnum.sh' script in
+/opt/rpc-openstack/contrib/scripts, which should put the appropriate
+variables in place. Then, you will need to run the following playbooks:
+
+/opt/rpc-openstack/openstack-ansible/playbooks/setup-everything.yml
+/opt/rpc-openstack/rpcd/filebeat.yml
+
+As long as all the playbooks run successfully, Magnum should now be
+installed and running.
+
+Installing a Driver
+~~~~~~~~~~~~~~~~~~~
+
+In order to install (or update) a Magnum driver, you will need to use
+the 'install\_driver.yml' playbook. You can find the documentation for
+this playbook in '/rpc-setup/README.md'. This playbook will need to be
+run from the Openstack deployment host, as it does rely on the OSA/RPC
+inventory file.
+
+Verification
+------------
+
+NOTE: Ensure that you have set your environment variables properly (e.g.
+by using the 'openrc' file) before attempting the following steps
+
+The first step for verification is to ensure that the conductor services
+are up and running. You can do this by running the following command
+using the Python Magnum client (python-magnumclient):
+
+::
+
+    magnum service-list
+
+You should see something like this:
+
+::
+
+    +----+--------------+------------------+-------+----------+-----------------+---------------------------+---------------------------+
+    | id | host         | binary           | state | disabled | disabled_reason | created_at                | updated_at                |
+    +----+--------------+------------------+-------+----------+-----------------+---------------------------+---------------------------+
+    | 1  | 192.168.0.94 | magnum-conductor | up    |          | -               | 2016-12-12T20:57:19+00:00 | 2017-01-12T17:15:36+00:00 |
+    +----+--------------+------------------+-------+----------+-----------------+---------------------------+---------------------------+
+
+If you see one entry per 'control' node in the RPC cluster, all the
+conductor services are up and running as expected.
+
+The next step in verification is to create a Cluster Template and then
+attempt to create a cluster based on that template. In order to do this,
+please ensure that the following are true: \* You have installed the
+appropriate version of the Rackspace Managed Kubernetes driver
+
+-  You have the matching Rackspace Managed Kubernetes Fedora image in
+   Glance, and that the 'os\_distro' property matches the driver you
+   have installed.
+
+-  You have a valid SSH key saved under the account you are using to
+   test
+
+-  You have an external provider network set up in Openstack
+
+You can run the following command to set up a Magnum Cluster Template
+for testing (be sure to fill in the command with appropriate values):
+
+::
+
+    magnum cluster-template-create --name kubernetes-dev --image-id <IMAGE_ID> --external-network <EXTERNAL_NETWORK> --coe kubernetes  --dns-nameserver <EXTERNAL_DNS> --flavor-id m1.medium --master-flavor-id m1.medium --docker-volume-size 20 --master-lb-enabled --keypair-id <KEYPAIR_NAME> --label master_anti_affinity=false --label number_of_masters=3
+
+This command will set up a Cluster Template using the minimum worker and
+master flavor sizes, as well as setting some sane default volume sizes.
+Once you've created the Cluster Template, you can run the following
+command to create a Kubernetes cluster:
+
+::
+
+    magnum cluster-create --cluster-template kubernetes-dev --name <CLUSTER_NAME> --master-count 3 --node-count 3
+
+This will create a cluster with 3 master and 3 worker nodes, which will
+ensure that the load balancing and clustering aspects of the master
+nodes are functional. This can take up to 15 minutes to complete
+successfully.

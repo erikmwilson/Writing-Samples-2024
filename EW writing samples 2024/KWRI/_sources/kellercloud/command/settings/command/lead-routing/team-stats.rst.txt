@@ -1,0 +1,22 @@
+
+.. _team-stats-settings-command:
+
+Team Stats
+==========
+
+To view lead routing statistics for your team, complete the following steps.
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Lead Routing**.
+
+#. Click **Team Stats**.
+
+#. Select the correct team in the header.
+
+#. The **Claims** view (default), shows the number of leads given and claimed by each team member.
+
+#. Click **Routes** to view detailed route information for each team member.

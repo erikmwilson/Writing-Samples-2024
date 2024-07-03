@@ -1,0 +1,30 @@
+
+.. _options-menu-contacts-command:
+
+More Options Menu
+=================
+
+Many of the tasks needed to manage your contacts can be accessed from the Contacts list without opening an individual contact record.
+
+The More Options menu (ellipses |menu-options-icon| icon) is in the last column of each contact in the Contact list.
+
+.. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+   :height: 20
+
+Click the icon for the following options:
+
+* :ref:`edit-contacts-command`
+
+* :ref:`add-activity-contacts-command`
+
+* :ref:`share-contacts-command`
+
+* :ref:`add-note-contacts-command`
+
+* :ref:`archive-contacts-command`
+
+* :ref:`view-smartplans-contacts-command`
+
+* :ref:`add-smartplans-contacts-command`
+
+* :ref:`mark-unmark-lead-contacts-command`

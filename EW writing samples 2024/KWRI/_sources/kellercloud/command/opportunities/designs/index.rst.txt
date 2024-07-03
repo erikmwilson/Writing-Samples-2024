@@ -1,0 +1,18 @@
+
+.. _index-designs-opportunities-command:
+
+Marketing in Opportunities
+==========================
+
+The following pages contain information about creating marketing collateral for your opportunities.
+
+.. toctree::
+   :maxdepth: 1
+
+   create-recommended-design
+   create-recommended-social-ad
+   create-design
+   create-social-ad
+   create-social-ad-from-design
+   preview-template
+   dismiss-recommendation

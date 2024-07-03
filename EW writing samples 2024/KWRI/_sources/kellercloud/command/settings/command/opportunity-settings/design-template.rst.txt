@@ -1,0 +1,16 @@
+
+.. _design-template-command:
+
+Design Template
+===============
+
+Choose the Sketchouse template to use to send offers to your clients and co-broker agents by completing the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Opportunity Settings**.
+
+#. Select the default Sketchouse template to use to send offers to your clients and co-broker agents and click **Save Settings**.

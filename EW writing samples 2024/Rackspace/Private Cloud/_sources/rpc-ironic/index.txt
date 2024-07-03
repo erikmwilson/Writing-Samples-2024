@@ -1,0 +1,72 @@
+:deconsttitle: Bare Metal Service
+
+.. _rpc-ironic:
+
+
+==================
+Bare Metal Service
+==================
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+
+Deploying Ironic
+~~~~~~~~~~~~~~~~
+
+This section contains information and instructions for deploying
+and configuring RPC Ironic.
+
+.. toctree::
+   :maxdepth: 2
+
+   hardware-prereqs.rst
+   deploying-rpc-ironic.rst
+   post-deploy-rpc-ironic.rst
+   OSA Ironic deployment documentation <https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html#openstack-ansible-deployment>
+   OSA Ironic configuration documentation <https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html>
+   Configure the Compute service to use the Bare Metal service <https://docs.openstack.org/ironic/latest/install/configure-compute.html>
+
+
+Using Ironic
+~~~~~~~~~~~~
+
+This section contains information and instructions for operating and
+using RPC Ironic.
+
+.. toctree::
+   :maxdepth: 2
+
+   Administration Guide <https://docs.openstack.org/ironic/latest/admin/index.html>
+   Ironic UI <https://docs.openstack.org/ironic-ui/latest/>
+   Python-openstackclient <https://docs.openstack.org/python-ironicclient/latest/cli/osc/v1/index.html>
+   Python-ironicclient <https://docs.openstack.org/python-ironicclient/latest/>
+   API documentation <https://developer.openstack.org/api-ref/baremetal/>
+
+   Ironic conductor <https://docs.openstack.org/ironic/latest/_modules/ironic/conductor/manager.html>
+   Ironic neutron integration <https://docs.openstack.org/openstack-ansible-os_ironic/latest/configure-ironic.html#setup-a-neutron-network-for-use-by-ironic>
+   Port groups support <https://docs.openstack.org/ironic/latest/admin/portgroups.html>
+
+
+Troubleshooting Ironic
+~~~~~~~~~~~~~~~~~~~~~~
+
+This section contains information and instructions for
+troubleshooting RPC Ironic.
+
+
+.. toctree::
+   :maxdepth: 2
+
+   Troubleshooting <https://docs.openstack.org/ironic/latest/admin/troubleshooting.html>
+
+
+Reference materials
+~~~~~~~~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 2
+
+   Ironic system architecture <https://docs.openstack.org/ironic/latest/contributor/architecture.html>
+   RPCO reference architecture <https://pages.github.rackspace.com/rpc-internal/docs-rpc/master/rpc-sales-eng-internal/reference_architecture/rpc-o/index.html>

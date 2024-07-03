@@ -1,0 +1,31 @@
+
+.. _create-send-envelope-opportunities-command:
+
+Create and Send an Envelope in DocuSign
+=======================================
+
+Envelopes are what we use to send, sign, and complete forms in DocuSign. Envelopes contain important information about the recipient, documents, document fields, and timestamps to track the delivery progress. They also contain information about the sender, as well as security and authentication information.
+
+To create and send an envelope, complete the following steps:
+
+#. :ref:`access-room-opportunities-command`.
+
+#. In the DocuSign Room, click **New**.
+
+   You will be directed to a page where you will fill out fields of information for the envelope.
+
+#. Enter a name for the envelope.
+
+#. To add documents, click **Room Docs**, select the desired documents, and click **Add Selected** when done.
+
+#. To add recipients, click **Add Recipient** and choose the **Email Address** option.
+
+#. Enter the name and email address of the recipient in the corresponding fields. You can also specify if the recipient needs to sign, view, or receive a copy of the envelope as well as add access authentication or a private message.
+
+#. Enter your **Email Subject** and **Email Message** in the corresponding fields.
+
+#. click **Next** in the top-right hand corner.
+
+#. You will now see the documents you added to the Envelope, with all of the labeled fields. Make any final edits to these documents. The edits you make to the documents here do not update the forms in the Room, they are only for this specific Envelope. After you have completed editing the documents, click **Send** at the top-right of the page.
+
+   After these forms have been signed, they appear in your Room documents list, with a Signed status.

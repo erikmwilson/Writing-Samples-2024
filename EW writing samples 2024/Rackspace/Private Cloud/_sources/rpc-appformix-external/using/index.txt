@@ -1,0 +1,13 @@
+.. _index-how-to-ug:
+
+======
+How-To
+======
+
+This section provides information about using |product name appformix|.
+
+.. toctree::
+   :maxdepth: 1
+
+   dynamic-threshold-tasks.rst
+   chargeback-tasks.rst

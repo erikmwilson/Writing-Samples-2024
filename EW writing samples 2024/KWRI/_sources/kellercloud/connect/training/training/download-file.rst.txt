@@ -1,0 +1,7 @@
+
+.. _download-file-training-connect:
+
+Download a File
+===============
+
+Some lessons consist of downloadable files. If a lesson is downloadable, a link appears in the course window. Click the link to download the file and complete the lesson.

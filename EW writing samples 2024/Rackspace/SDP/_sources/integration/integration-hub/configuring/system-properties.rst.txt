@@ -1,0 +1,43 @@
+.. _system-properties-SDP-IG:
+
+=====================
+Set system properties
+=====================
+
+Use the following steps to set system properties:
+
+1. Open ServiceNow.
+
+#. In the left-hand navigation pane, click **Properties**.
+
+#. On the **Properties** screen, set the following properties:
+
+   * **Error Handling Contact** – Enter the email address of the person
+     or distribution list that should receive any system error notifications.
+
+   * **Outbound Endpoint URL (Accounts,categories)**
+
+     * Testing (demo): ``https://demo.ticketing.api.rackspace.com``
+
+     * Production: ``https://ticketing.api.rackspace.com``
+
+   * **Identity Rest URL**
+
+     * Testing (demo): ``https://demo.identity.api.rackspacecloud.com``
+
+     * Production: ``https://identity.api.rackspacecloud.com``
+
+   * **Event Feed URL**
+
+     * Testing (demo): ``https://lon.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>``
+
+     * Production: ``https://ord.feeds.api.rackspacecloud.com/consolidated_ticketing/events/<accountID>``
+
+     Examples of account IDs:
+
+     * Cloud Account – 12345
+
+     * Dedicated Account – hybrid:12345
+
+   * **User to run the scheduled jobs for the cloud fields** - Enter the
+     ``sys_id`` for an admin user in your instance.

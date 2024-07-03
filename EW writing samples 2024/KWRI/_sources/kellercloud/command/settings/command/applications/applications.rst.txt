@@ -1,0 +1,133 @@
+
+.. _connect-application-settings-command:
+
+Connect to an Application
+=========================
+
+To connect an application to the Keller Williams cloud, complete the
+following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Click **Applications**.
+
+#. On the **Applications** page, click **Connect Account** next to the
+   application that you want to connect to Keller Cloud.
+
+#. Complete the instructions on the resulting window to connect
+   the application to the Keller Williams cloud.
+
+.. note::
+
+   After you connect an application, you can:
+
+   * For applications that allow multiple accounts, click **Connect More**
+     to add additional accounts or **Manage** to manage those accounts.
+
+   * To disconnect an account, click **Disconnect Account**.
+
+To see a complete list of available application in the Keller Williams
+MarketPlace, click **Connect more apps** at the top of the **Applications**
+pane.
+
+The following applications are available in Command:
+
+**Social**
+
+Facebook (Post Scheduling)
+
+Log in to your personal Facebook account through Command to connect to the
+application. After connecting, you can use the Post Scheduling
+feature within Campaigns to create a social post schedule of
+Facebook posts to be delivered.
+
+Twitter (Post Scheduling)
+
+Log in to your personal Twitter account through Command to connect to the
+application. After connecting, you can use the Post Scheduling
+feature within Campaigns to create a social post schedule of
+Twitter posts to be delivered.
+
+**Productivity**
+
+Google Calendar
+
+Command opens Google in a new tab where you can sign in to your primary Google account. Connect to the Google account that has your primary Google Calendar. After connecting, you can create calendar events directly from the Command Contacts application.
+
+Mailjet
+
+When you add contacts to a SmartPlan, the emails are sent using Mailjet. This is automatic and you do not need to set up an account with Mailjet. All emails sent through Mailjet are sent from ``noreply@kw.com``. To enter the email address where you want replies to to be sent, click **Connect Account**, enter the email address, and click **Save Changes**.
+
+eEdge
+
+Synchronize your existing eEdge contacts to Command by leveraging Google through PieSync. Click the respective **Learn how** button for instructions on how to synchronize your eEdge account with Google and syncronize Command with Google via PieSync.
+
+Gmail
+
+Command opens a new Google tab where you can sign in to your primary Google account. Make sure you connect to the Gmail account you will use to communicate with your contacts. Command automatically tracks and logs all of your email communications with your contacts, past or present.
+
+Twilio
+
+Create or connect your existing Twilio account with Command. Using Twilio, you can text your contacts directly from Command. The system also automatically creates a log of the communication.
+
+PieSync
+
+Create or connect your existing PieSync account with Command. Using PieSync you can synchronize contacts from 150+ outside applications, including Google and iCloud Contacts.
+
+Office 365
+
+Log in to your Office 365 account through Command and accept Office 365 permissions requests to connect to the application. After logging in, Command to automatically track and log all of your email communications with your contacts, past or present.
+
+**Marketing Automation**
+
+Facebook (Ads Mananger)
+
+Log in to your personal Facebook account through Command to connect to the
+application. After connecting, you can create ads for Facebook and Instagram, through Campaigns. Make sure that you connect the personal Facebook account that your Facebook Business Page is attached to.
+
+After you have connected a Facebook account, you can add a second Facebook account by clicking **Connect More**. You can choose between the two accounts, when creating a Facebook ad in Campaigns.
+
+Twitter (Ads Manager)
+
+Log in to your personal Twitter account through Command to connect to the
+application. After connecting, you can create ads for Twitter, through Campaigns.
+
+.. note::
+
+   This connection to your Twitter account is successful only if you have already started a Twitter Ads account with your Twitter credentials. Twitter handles all payment activity, you must have an up to date credit card added to your Twitter Ads profile so that campaigns created from Lead Accelerator are created successfully.
+
+Google Adwords
+
+Log in to your Google account through Command to connect to the
+application. After connecting, you can create ads for Google Adwords, through Campaigns. Make sure to connect to the Google account where your Google Adwords account is set up.
+
+.. note::
+
+   Google handles all payment activity, you must have an up to date credit card added to your Google Ads account so that campaigns created from Lead Accelerator are created successfully.
+
+Mailchimp (Email Campaigns)
+
+Log in to your Mailchimp account through Command to connect to the
+application. After connecting, you can create emails through Campaigns.
+
+.. note::
+
+   MailChimp recently announced changes to their free email product. This may result in Command users experiencing limited functionality or incurring a charge while using Mailchimp Email Campaigns and offers.
+
+   To disconnect your MailChimp account, (to ensure that no emails are sent from Command using MailChimp) click **Disconnect Account**.
+
+**Email Marketing**
+
+
+MailChimp
+
+Command opens a new tab where you can sign in to your Mailchimp account. Whenever you email an offer through the Sales Pipeline, email a template from Designs, or send an email through SmartPlans (except for the Monthly Neighborhood Nurture SmartPlan), these emails are sent through MailChimp, and you must have a MailChimp account connected to Command to do so.
+
+.. note::
+
+   MailChimp recently announced changes to their free email product. This may result in Command users experiencing limited functionality or incurring a charge while using Mailchimp Email Campaigns and offers.
+
+   To disconnect your MailChimp account, (to ensure that no emails are sent from Command using MailChimp) click **Disconnect Account**.

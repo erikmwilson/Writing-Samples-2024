@@ -1,0 +1,63 @@
+
+.. _map-recommended-catalog-docebo-connect:
+
+Associate a Recommended Catalog with a Chanel
+=============================================
+
+All of the recommended course and learning paths for a specific channel should be added to a catalog. That catalog then must be associated with that specific channel. Users can then see all courses and learning paths by selecting that channel topic.
+
+.. note::
+
+   Assets and playlists should be assigned to the channel ands courses and learning paths should be assigned to the catalog.
+
+To associate recommenced catalog with a channel, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Open the channel to which you are adding recommended content. Remember the channel ID. The channel ID is the number near the end of the Channel page URL.
+
+#. Create a new Course Catalog:
+
+   a. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+   #. Click **Course Catalog** from the **E-Learning section**.
+
+   #. On the **Course Catalog** page click **New Catalog**.
+
+   #. The **Name** should be the same as the above Channel name.
+
+   #. Enter the Channel ID with the pattern **R-%ID%** in the **Code** field. For example, ``R-108``.
+
+   #. Click **Confirm**.
+
+#. Assign the same group(s) of users that have access to the above channel:
+
+   a. On the **Course Catalog** page, click the Assign User icon for the Course Catalog.
+
+   #. Click **Assign Users**.
+
+   #. On the **Assign Users** window, click **Groups** and select the same groups as above.
+
+   #. Click **Confirm**.
+
+   #. When the users are assigned, click **Close**.
+
+#. Assign the recommended courses and learning paths to the Course Catalog:
+
+   a. On the **Course Catalog** page, click the Assign Courses icon for the Course Catalog.
+
+   #. Click **Assign Courses**.
+
+   #. On the **Assign Courses** window, select the courses and learning paths to add to this catalog.
+
+   #. Click **Confirm**.
+
+   #. When the courses and learning paths are assigned, click **Close**.
+
+   All assets, recommended courses, and recommended learning paths are now grouped under the topic channel.
+
+   .. note::
+
+      It can take some time for the new channel to display in Connect.
+
+See also, :ref:`map-main-catalog-docebo-connect`.

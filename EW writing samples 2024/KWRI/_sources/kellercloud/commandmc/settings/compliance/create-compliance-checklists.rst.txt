@@ -1,0 +1,71 @@
+
+.. _create-compliance-checklists-settings-commandmc:
+
+Create Market Center Compliance Checklists
+==========================================
+
+As agents are create Opportunities and manage their transactions in Command, they need to upload documents for compliance approval. Before they can do this, the Market Center must create checklists of all of the documents that are required.
+
+Using multiple checklist types, you can create an unlimited collection of checklists for your agents to choose from to help them gather the necessary items for compliance review of their unique Opportunity type. Differentiate between transaction types (for example, residential, commercial, or industrial) and/or the unique requirements of transactions that occur across state lines (for example, Missouri, Kentucky, Tennessee).
+
+Included in each checklist are different compliance events (for example, Listed, Under Contract, Closed) for each of the checklist types you create, in every Opportunity type (Listing, Buyer, Tenant, Landlord).
+
+Consider the following when creating your checklists:
+
+* Documents must be attached to a checklist item to be added to the Opportunity within the three compliance events (Listing, Under Contract, Closed). Make sure that all the different documents that are needed for a transaction have a checklist item. You can add a category for amendments, however, be specific if you do, for example, Price Change Amendments, Listing Extensions, Contract Closing Extensions, Termination Amendment. Keeping each amendment type separate allow you to see the history of each amendment.
+
+  .. note::
+
+     Do not forget the items the Market Center may upload during the closing process, such as the Distribution Authorization.
+
+* The checklist order is the default order that you  see within the Opportunity. Consider both the order in which you would like to view the documents during compliance as well as the chronological order of when they are completed so your Agents can work their way down the list.
+
+* There are custom folders separate from the actual checklist. Custom folders are intended to be used for documentation outside the compliance process, for example, email correspondence with the client, photos, unaccepted offer forms, or anything else an agent wants to keep a record of.
+
+To create Market Center checklists, complete the
+following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **Compliance**.
+
+#. Select your **Market Center** from the drop-down and select the **Opportunity Type**.
+
+   .. note::
+
+      Each Opportunity type (Listing, Buyer, Landlord, and Tenant) must have a separate compliance checklist that is created and edited separately.
+
+#. After you select the **Opportunity Type**, you can create a new checklist type or edit an existing checklist type. Each checklist type can have a separate set of checklist items.
+
+   a. To create a new checklist type, click **Create Type**, enter a **Checklist Name**, and click **Create New Type**.
+
+   b. To change the name of an existing checklist type, select a checklist type and then click **Edit Type**.
+
+#. To add documents to a Checklist, click **Add Document** under the correct compliance event.
+
+#. Complete the **Add Document** form:
+
+   * Enter the **Document Name** (required).
+
+   * Select the **Document Type** (required).
+
+   * Choose the Requirement level (required):
+
+     * Required - Agents must add this document for compliance approval.
+
+     * Conditionally Required - Unlocks the **Condition** field, where you can  enter the conditions that make this document required.
+
+     * Optional - Agents have the option of adding this document, but it is not required.
+
+   * Add a **Note**. Agents see this note when they are adding this document.
+
+   * Click **Attach File** to **Attach an Example Document** for agents to reference.
+
+#. Click **Add Document**.
+
+In each Opportunity type (Listing, Buyer, Landlord, Tenant), follow this process to create your Market Center's Compliance Checklists for each type of checklist your agents need, in each compliance event (Listed, Under Contract, Closed).
+
+For more information, see :ref:`edit-compliance-checklists-settings-commandmc`.

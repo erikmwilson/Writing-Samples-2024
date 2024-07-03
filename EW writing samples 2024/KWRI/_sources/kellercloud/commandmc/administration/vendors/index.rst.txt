@@ -1,0 +1,13 @@
+
+.. _vendors-index-commandmc:
+
+Vendors
+=======
+
+The following pages contain information about managing your vendor roster.
+
+.. toctree::
+   :maxdepth: 1
+
+   accept-vendor
+   remove-vendor

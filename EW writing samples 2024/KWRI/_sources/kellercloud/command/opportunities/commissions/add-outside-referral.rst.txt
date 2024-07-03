@@ -1,0 +1,40 @@
+
+.. _outside-referral-opportunities-command:
+
+Add an Outside Referral
+=======================
+
+You use the **Offers & Commissions** tab to detail the commission disbursement for an Opportunity and then submit this to your Market Center.
+
+.. note::
+
+   You must have accepted an offer for the Opportunity before you can access the Commissions page for that offer.
+
+   * For more information, see :ref:`create-offer-opportunities-command`.
+
+   * For more information, see :ref:`manage-offers-opportunities-command`.
+
+To add an outside referral payment, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name to view the Opportunity details.
+
+#. At the top of the Opportunity page, click the **Offers & Commissions** tab. The **Offers & Commissions** tab lists all offers for the Opportunity.
+
+#. Click **Manage Commission** next to the accepted offer.
+
+   The **Offers & Commissions** tab auto-fills with the data you entered into the accepted offer.
+
+#. In the **Commission Information** section, click **Add Outside Referral**.
+
+#. On the **Add Outside Referral** page, add the outside referral information.
+
+#. Click **Add Outside Referral**.

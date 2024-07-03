@@ -1,0 +1,413 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure the Image service (optional) &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Configure the Block Storage service (optional)" href="configure-block-storage.html" />
+    <link rel="prev" title="Configure the hypervisor (optional)" href="configure-hypervisor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-configure-optional.html">Configure the deployment (optional)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configure-proxy-environment.html">Configure proxy environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-hypervisor.html">Configure the hypervisor</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configure the Image service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-block-storage.html">Configure the Block Storage service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-object-storage.html">Configure the Object Storage service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-haproxy.html">Configure HAProxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-maas.html">Configure MaaS variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-f5-load-balancer.html">Generate F5 load balancer configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-ldap.html">Configure Active Directory or LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-dashboard-ssl.html">Configure Dashboard SSL settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-security-hardening.html">Configure security hardening</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Installation Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-configure-optional.html">Configure the deployment (optional)</a> &raquo;</li>
+        
+      <li>Configure the Image service (optional)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-install-internal/configure-opt/configure-image-service.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-the-image-service-optional">
+<h1>Configure the Image service (optional)<a class="headerlink" href="#configure-the-image-service-optional" title="Permalink to this headline">#</a></h1>
+<p>In an all-in-one deployment with a single infrastructure node, the Image
+service uses the local file system on the target host to store images.
+In a Rackspace deployment with multiple infrastructure nodes, the Image
+service must use a non-local storage system such as Swift, NetApp, or
+Ceph.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For deployments that use the Image service with NFS, use the default
+<code class="docutils literal"><span class="pre">file</span></code> store and configure NFS after deployment of RPCO.</p>
+</div>
+<p>The following procedure describes how to configure the Image service to
+use Rackspace Cloud Files as an image store. In
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_rpco_variables_overrides.yml</span></code>:</p>
+<ol class="arabic">
+<li><p class="first">Set the appropriate authentication URL:</p>
+<p>For US Rackspace cloud accounts:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">rackspace_cloud_auth_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://identity.api.rackspacecloud.com/v2.0</span>
+</pre></div>
+</div>
+<p>For UK Rackspace cloud accounts:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">rackspace_cloud_auth_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://lon.identity.api.rackspacecloud.com/v2.0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Deployments that use the service network should use the internal API
+endpoint instead of the public API endpoint.</p>
+</div>
+</li>
+<li><p class="first">Set the Rackspace cloud account credentials:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">rackspace_cloud_tenant_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RAX_CLOUD_TENANT_ID</span>
+<span class="nt">rackspace_cloud_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RAX_CLOUD_USER_NAME</span>
+<span class="nt">rackspace_cloud_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RAX_CLOUD_PASSWORD</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">RAX_CLOUD_TENANT_ID</span></code> is your Rackspace Public Cloud account number.
+You can find it by logging in to mycloud.rackspace.com and clicking your
+username in the upper-right corner of the panel.</p>
+<p>Replace <code class="docutils literal"><span class="pre">RAX_CLOUD_USER_NAME</span></code> and <code class="docutils literal"><span class="pre">RAX_CLOUD_PASSWORD</span></code> with
+the account credentials that you used to log in to the Cloud Control Panel.</p>
+</li>
+</ol>
+<p>Because the file <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> is
+not copied in the configuration prerequisites, make sure that you copy over
+that file. <code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> contains
+no variable definitions. You need to add the following variable definitions to
+the file:</p>
+<ol class="arabic">
+<li><p class="first">Set the default store to use Object Storage (swift), the
+underlying architecture of Cloud Files:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_default_store</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">swift</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If Object Storage hosts exist in the environment,
+the <code class="docutils literal"><span class="pre">glance_default_store</span></code> variable is automatically
+set to <code class="docutils literal"><span class="pre">swift</span></code>.</p>
+</div>
+</li>
+<li><p class="first">Set <code class="docutils literal"><span class="pre">glance_swift_store_auth_address</span></code>, <code class="docutils literal"><span class="pre">glance_swift_store_user</span></code>,
+and <code class="docutils literal"><span class="pre">glance_swift_store_key</span></code> to point at the previously defined
+<code class="docutils literal"><span class="pre">rackspace_cloud_</span></code> variables:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_swift_store_auth_address</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">rackspace_cloud_auth_url</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="nt">glance_swift_store_user</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">rackspace_cloud_tenant_id</span><span class="nv"> </span><span class="s">}}:{{</span><span class="nv"> </span><span class="s">rackspace_cloud_username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="nt">glance_swift_store_key</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">rackspace_cloud_password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set <code class="docutils literal"><span class="pre">glance_swift_store_auth_version</span></code> to version 2.
+<code class="docutils literal"><span class="pre">glance_swift_store_auth_version</span></code> now defaults to version 3, which
+is not compatible with Rackspace&#8217;s auth system:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_swift_store_auth_version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set the <code class="docutils literal"><span class="pre">glance_swift_store_endpoint_type</span></code> from the default
+<code class="docutils literal"><span class="pre">internalURL</span></code> settings to <code class="docutils literal"><span class="pre">publicURL</span></code> if needed. Glance
+services are typically backed by Rackspace Cloud Files in the
+Rackspace data center. If the OpenStack environment must run outside
+the data center, adjust the key value:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_swift_store_endpoint_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">publicURL</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Specify the name of the container. Replace <code class="docutils literal"><span class="pre">STORE_NAME</span></code> with the
+container name in Cloud Files to be used for storing images. If the
+container doesn&#8217;t exist, it will be automatically created.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_swift_store_container</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">STORE_NAME</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Define the region. Replace <code class="docutils literal"><span class="pre">STORE_REGION</span></code> with one of the following
+region codes: DFW, HKG, IAD, LON, ORD, SYD. UK Rackspace cloud accounts
+must use the <code class="docutils literal"><span class="pre">LON</span></code> region. US Rackspace cloud accounts can use any region
+except <code class="docutils literal"><span class="pre">LON</span></code>.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_swift_store_region</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">STORE_REGION</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">(Optional) Set the paste deploy flavor:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_flavor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GLANCE_FLAVOR</span>
+</pre></div>
+</div>
+<p>By default, the Image service uses caching and authenticates with the
+Identity service. The default maximum size of the image cache is 10
+GB. The default Image service container size is 12 GB. In some
+configurations, the Image service might attempt to cache an image
+that exceeds the available disk space. If necessary, you can disable
+caching. For example, to use Identity without caching, replace
+<code class="docutils literal"><span class="pre">GLANCE_FLAVOR</span></code> with <code class="docutils literal"><span class="pre">keystone</span></code>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_flavor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">keystone</span>
+</pre></div>
+</div>
+<p>Or, to disable both authentication and caching, set <code class="docutils literal"><span class="pre">GLANCE_FLAVOR</span></code> to
+no value:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">glance_flavor</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option is set by default to use authentication and cache
+management in the
+<code class="docutils literal"><span class="pre">/etc/ansible/roles/os_glance/defaults/main.yml</span></code> file. To
+override the default behavior, set <code class="docutils literal"><span class="pre">glance_flavor</span></code> to a
+different value in the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file.</p>
+</div>
+<p>The possible values for <code class="docutils literal"><span class="pre">GLANCE_FLAVOR</span></code> are as follows:</p>
+<ul class="simple">
+<li>No value</li>
+<li><code class="docutils literal"><span class="pre">caching</span></code></li>
+<li><code class="docutils literal"><span class="pre">cachemanagement</span></code></li>
+<li><code class="docutils literal"><span class="pre">keystone</span></code></li>
+<li><code class="docutils literal"><span class="pre">keystone+caching</span></code></li>
+<li><code class="docutils literal"><span class="pre">keystone+cachemanagement</span></code> (default)</li>
+<li><code class="docutils literal"><span class="pre">trusted-auth</span></code></li>
+<li><code class="docutils literal"><span class="pre">trusted-auth+cachemanagement</span></code></li>
+</ul>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configure-block-storage.html" class="btn btn-neutral float-right" title="Configure the Block Storage service (optional)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configure-hypervisor.html" class="btn btn-neutral float-left" title="Configure the hypervisor (optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

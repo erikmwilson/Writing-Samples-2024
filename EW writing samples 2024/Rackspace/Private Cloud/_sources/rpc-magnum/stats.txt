@@ -1,0 +1,31 @@
+=================
+Magnum statistics
+=================
+
+Magnum statistics API provides useful metrics such as overall current
+usage information to OpenStack administrators and service providers.
+Non-admin tenants are also able to fetch tenant scoped statistics.
+
+Currently, the API only provides the total active Clusters and nodes count.
+
+Clusters and nodes count
+------------------------
+
+-  A non-admin user gets self stats by using following command.
+
+   .. code-block:: console
+
+      $ magnum stats-list
+
+-  An admin user requests stats for the given project by using following
+   command.
+
+   .. code-block:: console
+
+      $ magnum stats-list --project-id <project-id>
+
+-  An admin user requests overall statistics by using following command.
+
+   .. code-block:: console
+
+      $ magnum stats-list

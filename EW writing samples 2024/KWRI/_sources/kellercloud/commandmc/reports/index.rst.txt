@@ -1,0 +1,18 @@
+
+.. _reports-index-commandmc:
+
+Reports
+=======
+
+The Reports applet displays the Yearly Progress to Commitment Report caclualated from self-set goals for your Market Center.
+
+The following sections contain information about the
+Reports applet.
+
+.. toctree::
+   :maxdepth: 1
+
+   access-activity-reports
+   progress-to-commitment
+   access-progress-report
+   progress-to-commitment-set-goals

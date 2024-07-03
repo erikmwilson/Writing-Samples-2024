@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Searching logs using the Elasticsearch API &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Searching logs using the es2unix command line" href="sec-logs-es2unix.html" />
+    <link rel="prev" title="Getting Started" href="sec-logging-elasticsearchintro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Monitoring and Logging Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-design/index.html">Rackspace monitoring design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monitoring-impl/index.html">RPCO monitoring implementation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RPCO logging</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sec-logging-elasticsearchintro.html">Getting Started</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Searching logs using the Elasticsearch API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simple-searches">Simple searches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#complex-queries">Complex queries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-es2unix.html">Searching logs using the es2unix command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-head.html">Searching logs using the Head plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sec-logs-kibana.html">Searching logs using Kibana plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#es2unix-commands">ES2Unix Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#http-requests">HTTP requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Monitoring and Logging Guide</a> &raquo;</li>
+        
+          <li><a href="index.html">RPCO logging</a> &raquo;</li>
+        
+      <li>Searching logs using the Elasticsearch API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-monitoring-internal/logging/sec-logs-esapi.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="searching-logs-using-the-elasticsearch-api">
+<h1>Searching logs using the Elasticsearch API<a class="headerlink" href="#searching-logs-using-the-elasticsearch-api" title="Permalink to this headline">#</a></h1>
+<p>There are two primary ways to search logs using the Elasticsearch API:
+Query-string and Query DSL. Query-string search is a lightweight
+search method that is easy to use from the command line. This section
+provides examples of using the query-string method to interact with
+the Elasticsearch API using the command line.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A useful tool for searching logs is HTTPie, a command line HTTP
+client. HTTPie will format and color the search response, making it
+much easier to read. Install HTTPie using the command <strong>apt-get -y
+install httpie</strong>.</p>
+</div>
+</div></blockquote>
+<div class="section" id="simple-searches">
+<h2>Simple searches<a class="headerlink" href="#simple-searches" title="Permalink to this headline">#</a></h2>
+<p>The following examples show how to view and search logs with the
+<strong>http</strong> command that is enabled with HTTPie.</p>
+<dl class="docutils">
+<dt>View logs across all indices</dt>
+<dd><p class="first">When performing a simple search, Elasticsearch returns the first 10
+log documents.</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search
+</pre></div>
+</div>
+</dd>
+<dt>Limit the number of logs</dt>
+<dd><p class="first">Specify the number of logs shown with <code class="docutils literal"><span class="pre">size=</span></code>.</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search?size<span class="o">=</span><span class="m">2</span><span class="p">&amp;</span><span class="nv">from</span><span class="o">=</span><span class="m">10</span>
+</pre></div>
+</div>
+</dd>
+<dt>View a selected number of logs</dt>
+<dd><p class="first">Specify the number of logs with <code class="docutils literal"><span class="pre">size=</span></code> and the point from which
+the search starts with <code class="docutils literal"><span class="pre">from=</span></code>.</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search?size<span class="o">=</span><span class="m">10</span><span class="p">&amp;</span><span class="nv">from</span><span class="o">=</span><span class="m">10</span>
+</pre></div>
+</div>
+</dd>
+<dt>View logs across a specific index</dt>
+<dd><p class="first">Specify an index by including the index name.</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/logstash-XXXX.XX.XX/_search
+</pre></div>
+</div>
+</dd>
+<dt>View logs across multiple indices</dt>
+<dd><p class="first">Specify multiple indices by including a comma-separated list.</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/logstash-XXXX.XX.XX,logstash-XXXX.XX.XX/_search
+</pre></div>
+</div>
+</dd>
+<dt>Create a specific query by including a value for the <code class="docutils literal"><span class="pre">q=</span></code></dt>
+<dd><p class="first">parameter. Common queries in RPCO environments include the UUID of
+the instance, tenant, user, or request. Elasticsearch will respond
+with 10 of the most relevant log documents based on the specified
+query.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search?q<span class="o">=</span>query
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search?q<span class="o">=</span>1874fdd4758b498482c53f1fc098b2a1
+</pre></div>
+</div>
+</dd>
+<dt>Create a query within a field name across all indices</dt>
+<dd><p class="first">Create a query within a specific field name by including a value for
+the field name and the query term for the <code class="docutils literal"><span class="pre">q=</span></code> parameter.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search?q<span class="o">=</span>field:query
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search?q<span class="o">=</span>@timestamp:2015-02-18T00:35:35.516Z
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="complex-queries">
+<h2>Complex queries<a class="headerlink" href="#complex-queries" title="Permalink to this headline">#</a></h2>
+<p>The following section shows examples of more complex queries.</p>
+<div class="section" id="specify-multiple-fields-and-specific-queries">
+<h3>Specify multiple fields and specific queries<a class="headerlink" href="#specify-multiple-fields-and-specific-queries" title="Permalink to this headline">#</a></h3>
+<p>To specify multiple fields in a query, use <code class="docutils literal"><span class="pre">+</span></code>before each
+fieldname. To eliminate a specific field query from the results use
+<code class="docutils literal"><span class="pre">-</span></code>. HTTPie will automatically percent encode the query.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search <span class="se">\</span>
+  <span class="nv">q</span><span class="o">==</span><span class="s1">&#39;+field:query +field:query&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search <span class="se">\</span>
+  <span class="nv">q</span><span class="o">==</span><span class="s1">&#39;+program:neutron+@messsage:1874fdd4758b498482c53f1fc098b2a1&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Specify multiple fields and specific queries with AND NOT OR
+operators When searching for all terms in a field, separate them with
+AND. Use OR if searching for any of the terms. Use NOT to exclude a
+specific query. HTTPie will automatically percent encode the query.</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search <span class="se">\</span>
+  <span class="nv">q</span><span class="o">==</span><span class="s1">&#39;+field:query AND query +field:query&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search <span class="se">\</span>
+  <span class="nv">q</span><span class="o">==</span><span class="s1">&#39;+program:neutron \</span>
+<span class="s1">  AND server+@message:1874fdd4758b498482c53f1fc098b2a1&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search <span class="se">\</span>
+  <span class="nv">q</span><span class="o">==</span><span class="s1">&#39;+program:nova AND api OR scheduler \</span>
+<span class="s1">  NOT compute+@message:1874fdd4758b498482c53f1fc098b2a1&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="searching-logs-from-a-specific-time-range-across-all-indices">
+<h3>Searching logs from a specific time range across all indices<a class="headerlink" href="#searching-logs-from-a-specific-time-range-across-all-indices" title="Permalink to this headline">#</a></h3>
+<p>Use the <code class="docutils literal"><span class="pre">&#64;timestamp</span></code> field and <code class="docutils literal"><span class="pre">[min</span> <span class="pre">to</span> <span class="pre">max]</span></code> to specify a date
+range.</p>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> http http://external_lb_vip_address:9200/_search
+<span class="go">  q==&#39;+program:nova AND api NOT compute+@message: \</span>
+<span class="go">  1874fdd4758b498482c53f1fc098b2a1&#39; \</span>
+<span class="go">  +@timestamp:&quot;2015-02-19T20:00:00.000Z&quot; TO &quot;2015-02-19T21:00:00.000Z&quot;&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span>$ http http://external_lb_vip_address:9200/_search \
+  q==&#39;+program:nova AND api NOT compute+@message: \
+  1874fdd4758b498482c53f1fc098b2a1&#39; \
+  +@timestamp:&quot;2015-02-19T20:00:00.000Z&quot; TO *&#39;
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sec-logs-es2unix.html" class="btn btn-neutral float-right" title="Searching logs using the es2unix command line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sec-logging-elasticsearchintro.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

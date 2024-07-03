@@ -1,0 +1,31 @@
+
+.. _assign-compliance-coordinator-commandmc:
+
+Assign the Compliance Coordinator Role to an Associate
+======================================================
+
+The Compliance Coordinator role gives an associate, other than the MCA or Assistant MCA, access to CommandMC Opportunities. This role allows views of Opportunities in the Market Center, including closed transaction data.
+
+.. note::
+
+   This role is added outside of the Command application.
+
+To Assign the Compliance Coordinator Role to an Associate, complete the following steps:
+
+1. Log in to mykw.kw.com with your KW **User Name** and **Password**.
+
+#. At the bottom-right of the **mykw** page, in the **Quick Links** section, click **White Pages**.
+
+#. On the **KW White Pages window, click **Associate Information**.
+
+#. Find the correct associate by entering their information and clicking **Search** at the bottom ofthe page.
+
+#. At the top of the **View or Edit Associate** page, click **Add Associate Role**.
+
+#. On the **Add Associate Role** page, in the **Organization** drop-down, select your Market Center.
+
+#. In the **Role** drop-down, select **Compliance Coordinator**.
+
+#. Click **Save**.
+
+After you save the role, the associate gains access to CommandMC.

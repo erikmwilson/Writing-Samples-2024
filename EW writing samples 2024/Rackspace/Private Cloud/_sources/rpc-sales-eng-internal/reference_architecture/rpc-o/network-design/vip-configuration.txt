@@ -1,0 +1,9 @@
+=================
+VIP configuration
+=================
+
+The private cloud is configured with both internal and external VIP
+front ends. These IPs are used to access the OpenStack APIs, gain
+access to the Horizon dashboard, and access the ELK stack. Make
+sure to reserve the external VIP address. You are strongly encouraged
+to tie the VIP addresses to DNS records to ease consumption.

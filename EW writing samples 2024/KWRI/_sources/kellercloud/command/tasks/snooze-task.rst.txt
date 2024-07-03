@@ -1,0 +1,22 @@
+
+.. _snooze-task-command:
+
+Snooze a Task
+=============
+
+If you need more time to complete a task, you can snooze (reschedule) the task.
+
+To snooze a task, complete the following steps:
+
+.. include:: tasks-login.rst
+
+#. Click either the **Contact Tasks** tab or the **Opportunity Tasks** tab, at the top of the page.
+
+#. For Contact tasks, click **To Do**. Only tasks in this status can be snoozed.
+
+#. Click the snooze icon |snooze-icon|.
+
+   .. |snooze-icon| image:: ../../../images/snooze-icon.png
+      :height: 20
+
+#. On the **Snooze this task** window, choose to **Snooze interval in days** or **Snooze until specific date** and click **Snooze**.

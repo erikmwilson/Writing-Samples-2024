@@ -1,0 +1,20 @@
+===========================
+Image service upgrade notes
+===========================
+
+When you update the Image (glance) service from v12 to v13 in
+RPCO, consider the following information:
+
+-  **Changes to heat templates**: Metadata definitions previously associated
+   with ``OS::Nova::Instance`` have changed to be associated with
+   ``OS::Nova::Server`` to align with heat and Searchlight.
+
+   If you are using ``OS::Nova::Instance`` in your Orchestration (heat)
+   templates, you now need to use ``OS::Nova::Server``. This requirement
+   changes when the glance database migrations run for RPCO version 13.1.
+
+-  **Deprecation of the task API**: The task API is being deprecated and it
+   has been made admin only.
+
+   The API is enabled in RPCO version 13.1, but it is accessible only by admin
+   users.

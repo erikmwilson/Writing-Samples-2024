@@ -1,0 +1,27 @@
+
+.. _create-tags-settings-commandmc:
+
+Create Tags for Submitted Compliance Requests
+=============================================
+
+Market Center Administrators (MCAs) can create tags for submitted compliance requests. This allows you to filter and search for requests, or to clearly label requests for your compliance team to reference later. You can create up to 50 tags for your compliance team.
+
+While only the MCA can create and edit the tags, your entire compliance team can add and remove tags from compliance requests.
+
+For more information, see :ref:`add-tags-compliance-opportunities-commandmc`.
+
+To create and edit tags, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings**.
+
+#. On the CommandMC settings page, click **Custom Tags**.
+
+# On the **Custom Tags** page, select your Market Center from the drop-down list.
+
+#. Click **Create New Tag**.
+
+#. On the **Add New Tag** pop-up, enter the **Tag Name**, select the **Tag Color**, and click **Create Tag**.
+
+#. To edit or delete an existing Custom Tag, click the respective icon to the right of the Custom Tag.

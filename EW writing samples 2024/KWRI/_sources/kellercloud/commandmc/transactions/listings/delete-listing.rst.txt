@@ -1,0 +1,20 @@
+
+.. _delete-listing-commandmc:
+
+Delete Listing
+==============
+
+To delete a listing, complete the following steps:
+
+.. include:: transactions-mc-login.rst
+
+#. Click the **Listings** tab at the top of the page.
+
+#. Search for the correct listing. For more information, see :ref:`search-listings-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that listing and select **Delete**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the pop-up window, click **Delete Listing**.

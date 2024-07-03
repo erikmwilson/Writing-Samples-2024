@@ -1,0 +1,47 @@
+
+.. _create-earnnest-opportunities-command:
+
+Create an Earnnest Account
+==========================
+
+`Earnnest <http://earnnest.com>`_ is a secure, convenient, digital payments platform that allows for fully digital transfers of funds in real estate transactions. With Earnnest you can complete earnest money transfers digitally in minutes, saving you and your clients time and effort, while allowing you to avoid failed payments, delays, and fraud.
+
+Keller Williams has partnered with Earnnest to bring you secure and convenient digital earnest money deposits, allowing you to request and receive payments at any time, from anywhere. After you set up an account with Earnnest, you can use the Earnnest + Command integration to send earnest money requests through buyer and listing Opportunities in Command.
+
+For more information, see :ref:`send-earnnest-opportunities-command`.
+
+To create an Earnnest account, complete the following steps:
+
+1. Go to https://earnnest.com and click **Sign In**, at the top right of the page.
+
+#. Enter the **Email address** you want associated with Earnnest, and click **Continue**.
+
+   It is recommended that you use the email address associated with the KW Marketplace. If you want to use a different email address, you can edit the email address associated with the Marketplace.
+
+   For more information, see `Verify/Update Email Address Associated with the KW Marketplace <https://answers.kw.com/hc/en-us/articles/7792400671123-Verify-Update-the-Email-Address-Associated-with-the-KW-Marketplace>`_.
+
+#. You will receive an Earnnest email with a six digit validation code. Enter the six digit code (sent from support@earnnest.com), and click **Continue**.
+
+   .. note::
+
+      This code expires after five minutes.
+
+#. On the **New Earrnest Account** window, enter your **First name**, **Last name**, and **Phone number**. Click **Create**.
+
+   .. note::
+
+      The phone number must be able to receive SMS text messages.
+
+#. Verify your phone number and click **Continue**.
+
+#. You will receive a verification text message from Earnnest, enter the six digit code and click **Continue**.
+
+#. On the **What type of account do you need?** window, select **Register as an Individual** and click **Continue**.
+
+#. Click **Begin**.
+
+#. At the top right of the page, click the menu icon and click **Logout**.
+
+#. Close the window and you are now ready to start sending digital earnest money requests through Command.
+
+For more information, see :ref:`send-earnnest-opportunities-command`.

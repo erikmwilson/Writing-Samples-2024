@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Alarms &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Monitoring scope" href="monitoring-scope.html" />
+    <link rel="prev" title="Checks" href="checks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../rpc-sales-eng-internal/preface.html">Preface</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/index.html">Rackspace Private Cloud Reference Architecture</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/index.html">Rackspace Private Cloud Powered by OpenStack (RPCO)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/copyright/index.html">Copyright</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/executive-summary/index.html">Executive summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/rackspace/index.html">Rackspace advantages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/solution-overview/index.html">Solution overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/technology-overview/index.html">Technology overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/requirements/index.html">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/environment-sizing/index.html">Environment sizing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/architectural-decisions/index.html">Architectural decisions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/cloud-design/index.html">Cloud design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/physical-design/index.html">Physical design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rpc-sales-eng-internal/reference_architecture/rpc-o/network-design/index.html">Network design</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">Rackspace monitoring design</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rpc-sales-eng-internal/blade_servers/blade-servers-unsuitable-openstack.html">Why Blade Servers are Unsuitable for OpenStack Clouds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rpc-sales-eng-internal/postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rpc-sales-eng-internal/postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Monitoring and Logging Guide</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace monitoring design</a> &raquo;</li>
+        
+          <li><a href="maas-concepts.html">MaaS concepts</a> &raquo;</li>
+        
+      <li>Alarms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/rpc-monitoring-internal/monitoring-design/concepts/alarms.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="alarms">
+<h1>Alarms<a class="headerlink" href="#alarms" title="Permalink to this headline">#</a></h1>
+<p>When checks run (either locally or remote), they produce output in the
+form of metrics. Alarms can be configured to alert when these metrics
+breach upper or lower thresholds. Once installed, the MaaS agent runs
+on each physical host and either communicates metrics out to the Cloud
+Monitoring platform or listens for connections from Cloud Monitoring
+pollers.</p>
+<p>An alarm is an evaluation engine. It takes a <a class="reference external" href="https://developer.rackspace.com/docs/rackspace-monitoring/v1/api-reference/metrics-operations/">metric</a>
+generated by a check and determines a state (OK, WARNING or CRITICAL).
+Actions occur based on state changes. For example, from OK to
+CRITICAL, an alarm executes the default <code class="docutils literal"><span class="pre">npManaged</span></code> notification
+plan for all dedicated entities. A monitoring payload is sent to RBA,
+which starts the process of generating a CORE ticket for an alert.
+Every alert will have a RBA bake time of 7 minutes before a ticket is
+generated.</p>
+<p>RPC uses <code class="docutils literal"><span class="pre">consecutiveCount=3</span></code> on all alarms, which only allows a
+state change to occur after three successive occurrences of an
+identical state.</p>
+<div class="section" id="alarm-elements">
+<h2>Alarm elements<a class="headerlink" href="#alarm-elements" title="Permalink to this headline">#</a></h2>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text"><strong>Alarm elements</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>entityID</td>
+<td>Parent entityID of the alarm.</td>
+</tr>
+<tr class="row-odd"><td>checkID</td>
+<td>Parent checkID of the alarm.</td>
+</tr>
+<tr class="row-even"><td>alarmID</td>
+<td>Unique ID of an alarm (starts with <code class="docutils literal"><span class="pre">alXXXXXXXX</span></code>).</td>
+</tr>
+<tr class="row-odd"><td>Status</td>
+<td>Boolean which activates or disables the alarm.</td>
+</tr>
+<tr class="row-even"><td>Label</td>
+<td>The name of the alarm.</td>
+</tr>
+<tr class="row-odd"><td>notification_plan_id</td>
+<td>Playbooks deploy using <code class="docutils literal"><span class="pre">npManaged</span></code> (for managed dedicated
+devices).</td>
+</tr>
+<tr class="row-even"><td>criteria</td>
+<td>Evaluation criteria written in alarm domain-specific language
+(DSL).</td>
+</tr>
+<tr class="row-odd"><td>Active/scheduled suppressions</td>
+<td>If there is an active or future scheduled MaaS suppression for
+this alarmID.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="alarm-evaluation-process">
+<h2>Alarm evaluation process<a class="headerlink" href="#alarm-evaluation-process" title="Permalink to this headline">#</a></h2>
+<p>This section explains how an alarm results in a CORE ticket. Only
+checks with the <code class="docutils literal"><span class="pre">npManaged</span></code> notification plan and an alarm payload
+with AlarmStatus of CRITICAL (WARNING is not included) generates a
+ticket. The following conditions trigger an alarm failure. The timing
+is based on the frequency of the check, with a default of 60 seconds.</p>
+<ol class="arabic simple">
+<li>The check is initially run when an alarm evaluates status from OK
+to CRITICAL.</li>
+<li>After 60s, the check is run again, evaluating status as CRITICAL
+(second time).</li>
+<li>After 60s, the check is run again, evaluating status as CRITICAL
+(third time).</li>
+<li>The MaaS payload is sent to RBA, starting the RBA bake time o seven
+minutes.</li>
+<li>If RBA doesn&#8217;t receive an alarm clear message within the seven minute
+window, a ticket is generated.</li>
+<li>If RBA receives an alarm clear message within the seven minute
+window, (MaaS reports the alarm is OK) a ticket is NOT generated.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="monitoring-scope.html" class="btn btn-neutral float-right" title="Monitoring scope" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="checks.html" class="btn btn-neutral float-left" title="Checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

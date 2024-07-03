@@ -1,0 +1,213 @@
+Post-upgrade operations
+-----------------------
+
+Remove the cinder-scheduler service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+During the upgrade to Kilo, cinder schedulers are moved from inside the
+``cinder_volumes`` container, or if on metal, to their own container
+on the infra hosts. Ensure that the ``cinder-scheduler`` services on
+the physical storage hosts or ``cinder-volumes`` containers are
+stopped and disabled after the upgrade has completed.
+
+Follow this procedure on the cinder_volumes hosts:
+
+#. Stop the cinder-scheduler service:
+
+   .. code-block:: console
+
+      # service stop cinder-scheduler
+
+#. Remove the init script:
+
+   .. code-block:: console
+
+      # rm /etc/init.d/cinder-scheduler.conf
+
+#. Remove the ``cinder-scheduler`` service from the cinder database:
+
+   .. code-block:: console
+
+      $ mysql -e 'DELETE from cinder.services WHERE topic="cinder-scheduler" \
+      AND host="[HOSTNAME]"'
+
+   where ``[HOSTNAME]`` is the hostname of the volumes container or host for
+   which you are removing the ``cinder-scheduler`` service.
+
+Change F5 monitor URL
+~~~~~~~~~~~~~~~~~~~~~~
+
+After upgrading to Kilo, the HTTP monitor for Dashboard fails due to generating
+a HTTP redirect to the URL ``/auth/login/``. Change the F5 generator to
+accommodate this change, and change the ``/RPC/RPC_MON_HTTPS_HORIZON_SSL``
+monitor URL from ``/`` to ``/auth/login/``.
+
+The following command updates the Horizon URL:
+
+.. code-block:: console
+
+   $ modify ltm monitor https /RPC/RPC_MON_HTTPS_HORIZON_SSL \
+   { send "HEAD /auth/login/ HTTP/1.1\r\nHost: rpc\r\n\r\n" }
+
+Delete nova service entries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The upgrade script will remove ``nova_spice_console`` containers.  After the
+script completes, disable the ``nova-consoleauth`` binary for each
+``nova_spice_console`` container:
+
+.. code-block:: console
+
+   $ nova-manage service disable --service nova-consoleauth \
+   --host CONTAINER_NAME
+
+
+Delete NULL Nova database entries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Scan the backing nova database for table entries where ``instances.uuid`` or
+``instance_uuid`` columns are ``NULL`` and delete those entries:
+
+.. code-block:: console
+
+   $ nova-manage db null_instance_uuid_scan
+
+For more information, see https://review.openstack.org/97946/.
+
+Remove storage host variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Remove the ``storage_address`` and ``storage_netmask`` variables that you set
+for storage hosts in ``rpc_user_config.yml``:
+
+.. code-block:: ini
+
+   storage_hosts:
+   12345-sample_storagehost:
+   ip: 172.16.0.2
+   container_vars:
+   storage_address: 10.142.0.2
+   storage_netmask: 255.255.255.0
+   cinder_backends:
+   lvm:
+   volume_group: cinder-volumes
+   volume_driver: cinder.volume.drivers.lvm.LVMISCSIDriver
+   volume_backend_name: LVM_iSCSI
+
+
+Run the MaaS setup playbook
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After the upgrade script completes, run the MaaS setup playbook:
+
+.. code-block:: console
+
+   $ cd /opt/rpc-openstack/rpcd/playbooks
+   $ openstack-ansible setup-maas.yml
+
+Restore the load balancer configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For deployments using an external (hardware) load balancer, the upgrade
+script implements changes to prevent issues with package updates.
+
+To generate a new F5 configuration, type the following commands:
+
+.. code-block:: console
+
+   $ cd /opt/rpc-openstack
+   $ scripts/f5-config.py
+
+By default, the script uses the
+``/etc/openstack_deploy/openstack_inventory.json`` inventory file. To specify a
+different inventory file:
+
+.. code-block:: console
+
+   $ cd /opt/rpc-openstack
+   $ scripts/f5-config.py --file /full/path/to/inventory.json
+
+Use the ``-e`` or ``--export`` option to specify an alternate output file.
+
+The ``f5-config.p`` script generates a file named ``rpc_f5_config.sh`` in the
+home directory of the current user. That file can be provided to NetSec or the
+person with permission to run scripts on the F5.
+
+Restore the load balancer configuration for package repositories before
+returning the deployment into operation, as follows:
+
+.. code-block:: console
+
+   $ cd /opt/rpc-openstack/openstack-ansible/playbooks
+
+.. code-block:: console
+
+   $ rm /etc/openstack_deploy/user_deleteme_post_upgrade_variables.yml
+   $ ansible all -m shell -a "rm /root/.pip/links.d/*"
+   $ cd /opt/rpc-openstack/openstack-ansible/playbooks
+   $ openstack-ansible setup-infrastructure.yml \
+   --tags lock-down-pip-conf,lock-pip-files
+   $ openstack-ansible setup-openstack.yml \
+   --tags lock-down-pip-conf,lock-pip-files
+   $ cd /opt/rpc-openstack/rpcd/playbooks
+   $ openstack-ansible repo-pip-setup.yml
+
+Upgrade MaaS checks and alarms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This upgrade process captures check IDs, deletes old checks, and
+registers new checks on upgrade. This migration is broken into 6 steps
+
+#. Operations are performed from the ``rpcd/playbooks`` directory.
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack/rpcd/playbooks
+
+#. Maas Migration Requirements Checks:
+
+   .. code-block:: console
+
+      # openstack-ansible maas-20151013-1-requirements.yml
+
+   #. Capture MaaS checks pre-migrate:
+
+      .. code-block:: console
+
+         # openstack-ansible maas-20151013-2-pre-migrate.yml
+
+   #. Purge existing MaaS checks:
+
+      .. code-block:: console
+
+         # openstack-ansible maas-20151013-3-purge-checks.yml
+
+   #. Run the setup-maas playbook to ensure a current configuration:
+
+      .. code-block:: console
+
+         # openstack-ansible setup-maas.yml
+
+   #. Run the maas verify-maas playbook:
+
+      ..  note::
+
+          If this does not pass the first time, wait and try again as it may
+          take some time before all the new checks are registered on the
+          MaaS server.
+
+      .. code-block:: console
+
+         # openstack-ansible verify-maas.yml
+
+   #. Capture MaaS checks Post-Migrate:
+
+      .. code-block:: console
+
+         # openstack-ansible maas-20151013-6-post-migrate.yml
+
+Configure full load balancer checks for Galera
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Configure the load balancer to perform full checks on the Galera
+cluster.

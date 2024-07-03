@@ -1,0 +1,29 @@
+===========================
+Rackspace monitoring design
+===========================
+
+The `Rackspace Monitoring Service
+<https://one.rackspace.com/display/productweb/Rackspace+Monitoring>`_
+helps your private cloud powered by OpenStack® run at an optimal
+performance level. It proactively monitors your environment,
+continually checks your disk space, disk utilization, CPU idle time,
+and memory capacity. It verifies that each OpenStack service is
+responding to calls as intended. This service is included as part of
+your Rackspace Private Cloud Core Support agreement.
+
+The RPC monitoring agent and scripts, referred to as MaaS (Monitoring
+as a Service), are installed locally on the hosts and check in with
+Rackspace Cloud Monitoring endpoints through SSL at a defined
+interval.
+
+
+.. toctree::
+   :maxdepth: 2
+
+   concepts/maas-concepts.rst
+   host-monitoring-metrics.rst
+   openstack-monitoring-metrics.rst
+   rpc-monitoring-checks-alarms.rst
+   ../../rpc-swift/ch-object-storage-monitoring.rst
+   accessing-data-and-configuration.rst
+   responding-to-alerts.rst

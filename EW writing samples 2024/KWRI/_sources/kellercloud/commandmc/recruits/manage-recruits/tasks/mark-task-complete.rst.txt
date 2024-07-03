@@ -1,0 +1,21 @@
+
+.. _mark-task-complete-recruits-commandmc:
+
+Mark Task as Complete
+=====================
+
+Once you have completed a task, click the empty checkbox to the left of the task to mark it as complete.
+
+To mark a task as complete, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Select either **Checklist Tasks** or **Other Tasks** from the drop-down.
+
+#. Select **To Do** from the drop-down. Only tasks in this status can be marked as complete.
+
+#. Click the empty checkbox next to the correct task.
+
+#. On the **Mark Task as Complete** window, click **Mark as Complete**.
+
+   The task displays in the **Completed** section.

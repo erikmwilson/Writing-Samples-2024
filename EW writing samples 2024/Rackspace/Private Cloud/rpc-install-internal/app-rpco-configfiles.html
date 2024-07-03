@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RPCO configuration files &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Linux container commands" href="app-lxc-commands.html" />
+    <link rel="prev" title="OpenStack-Ansible configuration files" href="app-osa-configfiles.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-configure-optional.html">Configure the deployment (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rpco-user-variables">RPCO user variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#files-in-etc-openstack-deploy">Files in <code class="docutils literal"><span class="pre">/etc/openstack_deploy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files-in-etc-openstack-deploy-conf-d">Files in <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files-in-etc-openstack-deploy-env-d">Files in <code class="docutils literal"><span class="pre">/etc/openstack_deploy/env.d/</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation Guide</a> &raquo;</li>
+        
+      <li>RPCO configuration files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-install-internal/app-rpco-configfiles.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rpco-configuration-files">
+<span id="appendix-b"></span><h1>RPCO configuration files<a class="headerlink" href="#rpco-configuration-files" title="Permalink to this headline">#</a></h1>
+<p>The <a class="reference external" href="https://github.com/rcbops/rpc-openstack/tree/master/rpcd/etc/openstack_deploy">rpc-openstack/etc/openstack_deploy</a>
+directory contains configuration files for RPCO Monitoring as a
+Service (MaaS) and other variables specific to Rackspace.</p>
+</div>
+<div class="section" id="rpco-user-variables">
+<h1>RPCO user variables<a class="headerlink" href="#rpco-user-variables" title="Permalink to this headline">#</a></h1>
+<div class="section" id="files-in-etc-openstack-deploy">
+<h2>Files in <code class="docutils literal"><span class="pre">/etc/openstack_deploy</span></code><a class="headerlink" href="#files-in-etc-openstack-deploy" title="Permalink to this headline">#</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">user_osa_variables_defaults.yml</span></code></dt>
+<dd>This file contains any variables specific to the OpenStack-Ansible
+project that are overridden and become the default values for RPCO
+deployments. This file should not be modified by deployers.</dd>
+<dt><code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code></dt>
+<dd>Any OpenStack-Ansible variable that needs to be overridden by the
+deployer can be specified in this file.</dd>
+<dt><code class="docutils literal"><span class="pre">user_rpco_variables_overrides.yml</span></code></dt>
+<dd>Any RPCO specific variable that needs to be overridden by the
+deployer can be specified in this file.</dd>
+<dt><code class="docutils literal"><span class="pre">user_rpco__secrets.yml</span></code></dt>
+<dd><p class="first">This file contains RPCO specific variables that are used as
+passwords, keys, or tokens. These values are populated by running
+the <code class="docutils literal"><span class="pre">pw-token-gen.py</span></code> script in the OpenStack-Ansible
+<code class="docutils literal"><span class="pre">scripts/</span></code> directory. For example:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /opt/rpc-openstack/openstack-ansible/scripts <span class="o">&amp;&amp;</span> <span class="se">\</span>
+  ./pw-token-gen.py --file /etc/openstack_deploy/user_rpco_secrets.yml
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="files-in-etc-openstack-deploy-conf-d">
+<h2>Files in <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/</span></code><a class="headerlink" href="#files-in-etc-openstack-deploy-conf-d" title="Permalink to this headline">#</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">ceph.yml.aio</span></code></dt>
+<dd>This file contains target host configurations for an AIO ceph
+infrastructure. It defines ceph monitor hosts, OSD hosts, and
+storage hosts for an AIO ceph deployment. For more information, see
+<a class="reference external" href="https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-install-internal/ch-ceph.html#deploy-ceph">https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-install-internal/ch-ceph.html#deploy-ceph</a>.</dd>
+</dl>
+</div>
+<div class="section" id="files-in-etc-openstack-deploy-env-d">
+<h2>Files in <code class="docutils literal"><span class="pre">/etc/openstack_deploy/env.d/</span></code><a class="headerlink" href="#files-in-etc-openstack-deploy-env-d" title="Permalink to this headline">#</a></h2>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">ceph.yml</span></code></dt>
+<dd>Defines container groups and service mappings for the ceph software
+components.</dd>
+<dt><code class="docutils literal"><span class="pre">elasticsearch.yml</span></code></dt>
+<dd>Defines container groups and service mappings for the Elasticsearch
+software components.</dd>
+<dt><code class="docutils literal"><span class="pre">kibana.yml</span></code></dt>
+<dd>Defines container groups and service mappings for the Kibana
+software components.</dd>
+<dt><code class="docutils literal"><span class="pre">logstash.yml</span></code></dt>
+<dd>Defines container groups and service mappings for the Logstash
+software components.</dd>
+</dl>
+<p>For more information about container groups, see
+<a class="reference external" href="http://docs.openstack.org/project-deploy-guide/openstack-ansible/newton/app-custom-layouts.html">http://docs.openstack.org/project-deploy-guide/openstack-ansible/newton/app-custom-layouts.html</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="app-lxc-commands.html" class="btn btn-neutral float-right" title="Linux container commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="app-osa-configfiles.html" class="btn btn-neutral float-left" title="OpenStack-Ansible configuration files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

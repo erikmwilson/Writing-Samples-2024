@@ -1,0 +1,32 @@
+
+.. _remove-associates-commandmc:
+
+Remove Associate
+================
+
+To remove an associates from the Market Center, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that associate and select **Remove Associate**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Remove Associate** window, select the **Departure Actual Date** and **Reason of Departure**.
+
+#. In the **Send Information to** section, enter the **Email** of anyone who should be notified and any **Additional Notes**.
+
+   .. note::
+
+      You can add multiple email addresses by hitting enter after each email is entered.
+
+#. Click **Save**.
+
+#. On the **Confirm Departure** window, click **Confirm**.
+
+   If the departure date is in the future, the Associate status is changed to **Leaving**. If the departure date is in the past, the Associate status is changed to **Inactive**.
+
+   If the Associate has a departure date in the future and then decides to stay, you can open the **Remove Associate** window and click **Cancel** any time before the departure date.

@@ -1,0 +1,40 @@
+.. _network-object-storage:
+
+----------------------------------------
+Create networks
+----------------------------------------
+
+The second step in the process of installing Object Storage for RPCO is
+creating the networks that are needed. Object Storage for RPCO requires the
+``br-storage`` and ``br-mgmt`` networks. These networks are specified in the
+``provider_networks`` section of the
+``/etc/openstack_deploy/openstack_user_config.yml`` file.
+
+#. Open the ``/etc/openstack_deploy/openstack_user_config.yml`` file for
+   editing.
+
+#. In the ``provider_networks`` section, add the following network information.
+
+.. code-block:: ini
+
+    # provider_networks
+    #   - network:
+    #       container_bridge: "br-mgmt"
+    #       container_interface: "eth1"
+    #       ip_from_q: "container"
+    #       group_binds:
+    #         - all_containers
+    #         - all hosts
+    #   - network:
+    #       container_bridge: "br-storage"
+    #       container_interface: "eth2"
+    #       ip_from_q: "storage"
+    #       group_binds:
+    #         - glance_api
+    #         - cinder_api
+    #         - cinder_volume
+    #         - nova_compute
+    #         - swift_proxy
+
+To view an annotated example of the ``openstack_user_config.yml`` file, see
+:ref:`Object Storage configuration files<object-storage-configuration-files>`.

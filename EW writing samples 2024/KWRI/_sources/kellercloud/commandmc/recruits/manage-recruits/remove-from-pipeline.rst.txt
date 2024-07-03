@@ -1,0 +1,26 @@
+
+.. _remove-from-pipeline-recruits-cmc:
+
+Remove Recruit from Pipeline
+============================
+
+If the recruit you are working with falls through for any reason, you can remove them from the pipeline. The recruit record remains in the Recruit database.
+
+To remove a recruit from the pipeline, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab, at the top of the page. A list displays of all your Market Center recruits.
+
+#. Search for the correct recruit. For more information, see :ref:`search-recruits-commandmc`.
+
+#. Click the ellipses icon |menu-options-icon| (on the far right) for that recruit and select **Remove from Pipeline**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Remove from Pipeline** window, select **Fall out**.
+
+#. Enter a removal comment in **Why are you removing this recruit?**. The recruit is returned to the recruiting database for further engagement.
+
+#. Click **Save**.

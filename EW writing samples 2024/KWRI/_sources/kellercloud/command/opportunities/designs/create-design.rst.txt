@@ -1,0 +1,34 @@
+
+.. _create-design-opportunities-command:
+
+Create a Design
+===============
+
+You can use the **Marketing** tab to create and track your marketing plan for an Opportunity. Create personalized marketing materials from scratch or from professionally designed templates.
+
+To create a design, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name to view the Opportunity details.
+
+#. At the top of the Opportunity page, click the **Marketing** tab. The **Marketing** tab shows the recommended print designs and social ads for the Opportunity.
+
+#. To create or use a template, click **Create Design**
+
+#. In the designs editor, create or select a template.
+
+#. Edit the template to add your specific information.
+
+#. When complete, click **Done** in the top-right corner.
+
+#. Click **Save**.
+
+After a design is saved, it can also be accessed from the Designs applet.

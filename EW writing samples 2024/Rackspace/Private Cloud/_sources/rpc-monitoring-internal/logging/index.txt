@@ -1,0 +1,204 @@
+============
+RPCO logging
+============
+
+ .. toctree::
+    :maxdepth: 2
+
+    sec-logging-elasticsearchintro.rst
+    sec-logs-esapi.rst
+    sec-logs-es2unix.rst
+    sec-logs-head.rst
+    sec-logs-kibana.rst
+
+
+In an RPCO deployment, each OpenStack service and infrastructure
+container stores log files in a bind-mount (``/openstack/log``) located
+on every host in the environment. The Rsyslog container on these hosts
+reads, parses, and ships log files to the Logstash container residing on
+the logger host. The Logstash container on the logger host is
+responsible for processing the logs received from Rsyslog containers and
+ensuring they are properly stored into Elasticsearch. The logs inside
+Elasticsearch are indexed and can be accessed via the Elasticsearch API,
+**es2unix** command line (CLI), or a variety of GUI plugins including
+Kibana and Head.
+
+ .. figure:: ../../figures/RPC_Log_Flow.png
+    :width: 6in
+    :alt: RPCO Logging Work Flow
+
+By default, all API logs and system logs are collected. The logs are
+kept for 90 days. Contents and activities within VMs are not logged.
+
+ES2Unix Commands
+~~~~~~~~~~~~~~~~
+
+ES2Unix commands to assist debugging are described below with example outputs.
+For ease of administration, export the URL to Elasticsearch as ESURL:
+
+.. code-block:: console
+
+   $ export ESURL="http://$( grep -A2 elasticsearch_container /etc/*_deploy/*_hostnames_ips.yml \
+     | tail -1 | awk '/container_address/ { gsub(/"/, "" ); print $2 }' ):9200"
+
+- Cluster health
+
+  .. code-block:: console
+
+     # es -v -u $ESURL health
+       time     cluster   status nodes data pri shards relo init unassign
+       15:33:29 openstack green      1    1  18     18    0    0        0
+
+- List all nodes in the cluster
+
+  .. code-block:: console
+
+     # es -v -u $ESURL nodes
+       id                     http-ip        port tran-ip        tran-port jdk       heap uptime data/client master? name
+       QzoV-MlGSO6FkVKu_W-BRw 1.2.3.4 9200 1.2.3.4 9300      1.7.0_65 46.1%      0 d           *       Silver Scorpion
+
+- List available shards
+
+  .. code-block:: console
+
+     # es -v -u $ESURL shards
+       index               shard pri/rep state      docs size     bytes ip             node
+       logstash-2014.10.13     0 p       STARTED   19337        8881563 1.2.3.4 Silver Scorpion
+       logstash-2014.10.15     0 p       STARTED    8690        4320059 1.2.3.4 Silver Scorpion
+       logstash-2014.10.12     0 p       STARTED      45          27893 1.2.3.4 Silver Scorpion
+
+
+HTTP requests
+~~~~~~~~~~~~~
+
+- Single-query syntax
+
+  .. code-block:: ini
+
+     {
+     "_source" : [ "Field1", "Field2"],                  #Comma seperated list of _source fields to return, if left out returns all fields.
+     "query" : {                                         #Start of Query line
+         "match" : {                                     #Start match clause
+             "@message" : "Thing you are grepping for"   #Define what we are matching
+         }
+     },
+     "size": "Number of Results you want Returned",      #Defaults to 10 if left out
+     "from": "Offset to start results from"              #Defaults to 0, starting at 10 will return results 10-X, etc.
+     }
+
+- Multi-query syntax
+
+  .. code-block:: ini
+
+     {
+     "_source" : [ "Field1", "Field2"],                  #Comma seperated list of _source fields to return, if left out returns all fields.
+     "query" : {                                         #Start of Query line
+         "bool" : {                                      #Start of bool Query for multi-query requests
+             "must" : [                                  #Start array of what must match. must_not and should are other options. Should is an "OR" clause.
+                 "match": {                              #Define what you are matching
+                     "program" : {                       #Specify what we are matching
+                         "query" : "Search1 Search2",    #You can specify multiple search words using another query, likely the thing we're looking for
+                         "operator" : "and" }            #The default is OR. AND makes it require both
+                     },                                  #Don't forget your Comma
+                 "match" : {
+                     "@message" : "SEARCH_TERM"          #Your UUID or whatever you would normally grep a log for
+                 }]
+         }
+     },
+     "size": "Number of Results you want Returned",      #Defaults to 10 if left out
+     "from": "Offset to start results from"              #Defaults to 0, starting at 10 will return results 10-X, etc.
+     }
+
+- Search
+
+  .. code-block:: bash
+
+     $ curl -X GET "$ESURL/_search?pretty" -d '{
+       "query": {
+        "query_string": {
+         "query": "@source_host:*cinder*"
+       }
+     },
+     "sort": [
+       {
+         "@timestamp": "desc"
+       }
+     ],
+     "filter": {
+       "range": {
+         "@timestamp": {
+           "from": "2014-10-10T22:24:07",
+           "to": "2014-10-13T22:24:07"
+          }
+        }
+      }
+     }'
+
+- Retrieve size of index
+
+  .. code-block:: console
+
+     $ curl -X GET "$ESURL/_cat/indices?v"
+
+- Remove indices
+
+  .. code-block:: console
+
+     $ curl -X DELETE "$ESURL/logstash-YYYY.MM.DD"
+
+- Find all log entries of a single UUID
+
+  .. code-block:: bash
+
+     $ http GET http://$ESURL/_search <<< '{ "_source" : [ "@fields.program", "@message"],
+       "query" : {
+         "match" : {
+             "@message" : "acd45117-d0b1-462d-a0b2-31d492de4945" }}}'
+
+- Find nova api log entries across all days for a UUID
+
+  .. code-block:: bash
+
+     $ http GET http://$ESURL/logstash-2015.01.28/_search <<< '{ "_source": ["@fields.program", "@message" ],
+       "query" : {
+        "bool" : {
+         "must": [{
+            "match" : {
+                "program": {
+                    "query" : "nova api",
+                    "operator": "and" }}},
+            {"match": {
+                "@message" : "acd45117-d0b1-462d-a0b2-31d492de4945" }}]}}}'
+
+- Find nova api log entries across a single day for an instance ID
+
+  .. code-block:: bash
+
+     $ http GET http://$ESURL/_search <<< '{ "_source": ["@fields.program", "@message" ],
+       "query" : {
+        "bool" : {
+         "must": [{
+            "match": {
+                "@message" : "acd45117-d0b1-462d-a0b2-31d492de4945" }},
+            {"range" : {
+                "@timestamp" : {
+                    "gte" : "2015-01-28T15:30:00",
+                    "lte" : "2015-01-28T23:50:00" }}}]}}}'
+
+- Find all Log entries for a single instance within a range of time
+
+  .. code-block:: bash
+
+     $ http GET http://172.29.236.1:9200/_search <<< '{ "_source": ["@fields.program", "@message" ],
+       "query" : {
+        "bool" : {
+         "must": [{
+            "match" : {
+                "program": {
+                    "query" : "nova api", "operator": "and" }}},
+            {"match": {
+                "@message" : "acd45117-d0b1-462d-a0b2-31d492de4945" }},
+            {"range" : {
+                "@timestamp" : {
+                    "gte" : "2015-01-28T15:30:00",
+                    "lte" : "2015-01-28T23:50:00" }}}]}}}'

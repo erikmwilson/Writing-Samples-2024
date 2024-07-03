@@ -1,0 +1,23 @@
+
+.. _brokermetrics-manage-recruits-commandmc:
+
+Manage Recruit Link to BrokerMetrics®
+=====================================
+
+To automatically pull recruit production information from BrokerMetrics, you must link the specific recruit to their information in BrokerMetrics. After you have linked a record, you can unlink the recruit, add an addition link, or link to a different record.
+
+To manage recruit links to BrokerMetrics, complete the following steps:
+
+.. include:: brokermetrics-mc-login.rst
+
+#. At the top of the **Production** tab, click **Manage Record**.
+
+#. On the **Manage Record** window, you can:
+
+   * Click **Remove Record** next to an existing record and click **Save Changes** to unlink the record. All BrokerMetrics information from that link is removed from the recruit's production details.
+
+   * Click **Link to BrokerMetrics® Record** to search for additional records. On the **Suggested BrokerMetrics® Records** window, select a record and click **Link Record** or manually search for a record.
+
+   .. note::
+
+      Importing multiple record for the same recruit can distort the recruit's production metrics.

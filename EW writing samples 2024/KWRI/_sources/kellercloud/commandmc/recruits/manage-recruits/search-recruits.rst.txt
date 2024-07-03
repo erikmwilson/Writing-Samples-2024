@@ -1,0 +1,31 @@
+
+.. _search-recruits-commandmc:
+
+Search Recruits
+===============
+
+While you are managing your recruits in Command, you may need to find a specific recruit.
+
+.. note::
+
+   Search is also the only way to view archived recruits.
+
+To search recruits, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab, at the top of the page. A list displays of all your Market Center recruits.
+
+#. Select how you want to search for the recruit using the drop-down beside the search bar. You can search recruits based on the following attributes:
+
+   * All
+
+   * Name
+
+   * City
+
+   * Postal Code
+
+   * Email
+
+#. Enter the search information for the desired recruit. After you locate the recruit in the list, click the recruit name to view the recruit details.

@@ -1,0 +1,31 @@
+
+.. _submit-luxury-exception-commandmc:
+
+Submit Luxury Agent Exception Request (Market Center Leadership)
+================================================================
+
+Using CommandMC, Market Center Leadership (this includes the MCA, AMCA, Operating Principal, Team Leader, and Assistant Team Leader roles) have the ability to submit exception requests on behalf of agents to be allowed into the Luxury program. For example, an exception request can be submitted when a new agent is joining KW and their Market Center is aware that they were a luxury agent prior to joining KW. Exception requests can also be submitted if an agent is on the boarder line of the luxury floor price. These requests are submitted to the Regional office of the Market Center. If Regional Leadership decides to approve the exception request, the agent is added to the Luxury agent roster of their Market Center.
+
+To submit Luxury Agent program exception requests, complete the following steps:
+
+.. include:: directory-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click the **Offices** tab.
+
+#. From the **Office** column, click your office name.
+
+#. On the **Luxury** tab, click the ellipse icon |menu-options-icon| next to the correct agent and select **Request Exception**.
+
+#. On the **Request Luxury Status** window, enter the **Units Sold** in the last 24 months, the **Average Price Point** for the last 24 months, and a short explanation for the request.
+
+#. Click **Submit Request**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 30
+
+
+   After the request is submitted the agent is labeled with a **Luxury Requested** tag. After the request is approved or denied by the Regional Leadership the agent is labeled with a tag of either **Luxury Agent** or **Luxury Denied** (with the date that they were denied).

@@ -1,0 +1,36 @@
+
+.. _add-team-member-settings-commandmc:
+
+Add Team Members
+================
+
+Market Center Administrators (MCAs), Assistant Market Center Administrators (AMCAs), System Admins, and Legal users can manage the teams, team members, and guests in your Market Center. Teams are used in Command apps and affect KWRI Awards.
+
+To add a team member, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **MC Team Management**.
+
+   .. note::
+
+      If you are a member of more than one Market Center, select your Market Center from the drop-down list.
+
+#. On the **MC Team Management** page, find the team you want to add or remove members to/from using the search box and the **Show** drop-down menu and click on the team name.
+
+#. On the **Team Details** page, click the **Current Members** tab.
+
+#. Click **Add Team Member**.
+
+#. Find the associates to add using the search box and the **Show** drop-down menu and select the check box next to their name.
+
+#. Select a **Role** for each team member and a **Start Date**.
+
+   Team Members are added using a start date of the current date. If the team member started on an earlier date, you must edit the start date to reflect the proper start date. Transactions are credited to the team when the contract date in WinMORE is within the time frame (between start and end dates) of the associate being on the team. If the dates are not correct, production may not be credited to the team.
+
+#. After you have selected all team members, click **Add Team Members**.
+
+   An associate can only be on one team at a time. If they move from one team to another, you must first remove them from their old team before adding them to the new team.

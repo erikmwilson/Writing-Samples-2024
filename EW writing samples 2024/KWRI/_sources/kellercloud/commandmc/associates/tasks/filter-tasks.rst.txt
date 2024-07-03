@@ -1,0 +1,24 @@
+
+.. _filter-tasks-associates-commandmc:
+
+Filter Tasks
+============
+
+To filter tasks, complete the following steps:
+
+.. include:: tasks-mc-login.rst
+
+#. Select **Checklist Tasks** from the drop-down. A list displays of all the checklist tasks.
+
+#. Select the status of checklist tasks to display, **To Do** or **Completed** from the drop-down.
+
+#. Click the filter icon |filter-icon|.
+
+   .. |filter-icon| image:: ../../../../images/filter-icon.png
+      :height: 30
+
+#. On the filters fly-out menu on the right side of the page, select time frame, enter a date range, or select the assignee from the drop-down list. To remove filters, you can either remove them individually or click **Clear All** at the bottom of the fly-out menu to remove all of the filters.
+
+#. Click **Apply**.
+
+   The tasks are filtered and the total number of applied filters appears next to the filter icon. You can click the **X** to delete these filter.

@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure HAProxy (optional) &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Configure MaaS variables (optional)" href="configure-maas.html" />
+    <link rel="prev" title="Configure the Object Storage service (optional)" href="configure-object-storage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-deployment.html">Prepare the deployment host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-hosts-target.html">Target hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-configure-required.html">Configure the deployment (required)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ch-configure-optional.html">Configure the deployment (optional)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configure-proxy-environment.html">Configure proxy environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-hypervisor.html">Configure the hypervisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-image-service.html">Configure the Image service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-block-storage.html">Configure the Block Storage service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-object-storage.html">Configure the Object Storage service</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configure HAProxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-to-run-haproxy-keepalived">Where to run HAProxy/Keepalived?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#designate-haproxy-hosts">Designate HAProxy hosts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#important-configuration-options">Important configuration options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-configuration">Example configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configure-maas.html">Configure MaaS variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-f5-load-balancer.html">Generate F5 load balancer configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-ldap.html">Configure Active Directory or LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-dashboard-ssl.html">Configure Dashboard SSL settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configure-security-hardening.html">Configure security hardening</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-lbaas.html">Load balancing for applications (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-external-ceph.html">RPC Ceph installation process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-playbooks-rpc.html">Deployment playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch-ops.html">Post-installation operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-osa-configfiles.html">OpenStack-Ansible configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html">RPCO configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-rpco-configfiles.html#rpco-user-variables">RPCO user variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-lxc-commands.html">Linux container commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Installation Guide</a> &raquo;</li>
+        
+          <li><a href="../ch-configure-optional.html">Configure the deployment (optional)</a> &raquo;</li>
+        
+      <li>Configure HAProxy (optional)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rpc-install-internal/configure-opt/configure-haproxy.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-haproxy-optional">
+<h1>Configure HAProxy (optional)<a class="headerlink" href="#configure-haproxy-optional" title="Permalink to this headline">#</a></h1>
+<p>This section provides information about configuring HAProxy.</p>
+<p>HAProxy can be either the primary load balancer for RPCO or a temporary load
+balancer that provides load balancing services before an F5 is configured by
+NetSec.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If you use HAProxy, note the following issues and caveats:</p>
+<ul class="last simple">
+<li>Do not permanently configure the <code class="docutils literal"><span class="pre">internal_lb_vip_address</span></code>
+option in the <code class="docutils literal"><span class="pre">openstack_user_config.yml</span></code> file to reference the
+<code class="docutils literal"><span class="pre">br-mgmt</span></code> bridge IP address on the infrastructure target host.</li>
+<li>If you are using HAProxy prior to an F5 configuration, you must disable
+the HAProxy service from starting automatically when the target host
+boots.</li>
+<li>This configuration of HAProxy does not provide high availability (HA) of
+load balancing services. See <a class="reference external" href="https://github.com/rsoprivatecloud/rpc-architecture-docs/blob/master/load-balancers/Correctly-configure-HAProxy-Keepalive.md/">how to correctly configure HAProxy</a>
+for a highly available HAProxy configuration.</li>
+<li>If you are using HAProxy prior to an F5 configuration, you must disable
+automatic deployment of monitoring as a service (MaaS).</li>
+</ul>
+</div>
+<div class="section" id="where-to-run-haproxy-keepalived">
+<h2>Where to run HAProxy/Keepalived?<a class="headerlink" href="#where-to-run-haproxy-keepalived" title="Permalink to this headline">#</a></h2>
+<p>Both processes are ideally run on dedicated machines that are running no
+other services in parallel. Do not run HAProxy inside containers. Currently
+used <code class="docutils literal"><span class="pre">sysctl</span></code> settings are not available inside the container like
+<code class="docutils literal"><span class="pre">bind_on_non_local</span></code> options.</p>
+</div>
+<div class="section" id="designate-haproxy-hosts">
+<h2>Designate HAProxy hosts<a class="headerlink" href="#designate-haproxy-hosts" title="Permalink to this headline">#</a></h2>
+<p>To configure HAProxy in RPCO, use the following steps:</p>
+<ol class="arabic simple">
+<li>Add hosts to your /etc/openstack_deploy/openstack_user_config.yml.</li>
+</ol>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">haproxy_hosts</span><span class="p">:</span>
+  <span class="nt">123456-infra01</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.29.236.51</span>
+  <span class="nt">123457-infra02</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.29.236.52</span>
+  <span class="nt">123458-infra03</span><span class="p">:</span>
+    <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.29.236.53</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Ensure that the <code class="docutils literal"><span class="pre">internal_lb_vip_address</span></code> and <code class="docutils literal"><span class="pre">external_lb_vip_address</span></code>
+use different IP addresses or DNS names because SSL is now directly
+offloaded on the HAProxy. Using the same endpoints causes HTTP/HTTPS
+protocol mismatch issues.</li>
+</ol>
+</div>
+<div class="section" id="important-configuration-options">
+<h2>Important configuration options<a class="headerlink" href="#important-configuration-options" title="Permalink to this headline">#</a></h2>
+<p>You can set the following options inside the
+<code class="docutils literal"><span class="pre">/etc/openstack_deploy/user_osa_variables_overrides.yml</span></code> file:</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">haproxy_use_keepalived</span></code></p>
+<p>Enabled to deploy Keepalived onto the HAProxy hosts.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">haproxy_bind_on_non_local</span></code></p>
+<p>Disabled to allow Keepalived to bind the IP address to the host interface.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">haproxy_keepalived_external_vip_cidr</span></code></p>
+<p>This is preset to <code class="docutils literal"><span class="pre">external_lb_vip_address</span></code>
+but you can alter it to reflect your local cloud - for example,
+when <code class="docutils literal"><span class="pre">external_lb_vip_address</span></code> is configured to a DNS name or
+endpoint addresses are translated in firewalls.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">haproxy_keepalived_internal_vip_cidr</span></code></p>
+<p>Same as the external address but limited to the internal
+VIPs.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">haproxy_keepalived_external_interface</span></code> and
+<code class="docutils literal"><span class="pre">haproxy_keepalived_internal_interface</span></code></p>
+<p>This setting defines the interfaces where
+<code class="docutils literal"><span class="pre">haproxy_keepalived_external_vip_cidr</span></code> and
+<code class="docutils literal"><span class="pre">haproxy_keepalived_internal_vip_cidr</span></code> are bound.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">keepalived_bind_on_non_local</span></code></p>
+<p>Enabled to let Keepalived roam the VIPs inside the HAProxy cluster.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">keepalived_ping_address</span></code></p>
+<p>Defines the gateway address used to determine health of the current network
+connectivity.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">keepalived_scripts</span></code></p>
+<p>This configuration rarely needs to be updated. Most common use cases
+should be covered with the default setup.
+The configuration <code class="docutils literal"><span class="pre">fall</span></code> defines the number of failed attempts before the
+node is considered unhealthy. Conversely, the <code class="docutils literal"><span class="pre">rise</span></code> parameter defines
+after how many successful check attempts the node is considered healthly.
+This is mainly necessary to counteract flapping connectivity issues.</p>
+</li>
+</ul>
+<p>For additional information, refer to <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+</div>
+<div class="section" id="example-configuration">
+<h2>Example configuration<a class="headerlink" href="#example-configuration" title="Permalink to this headline">#</a></h2>
+<p>The following configuration was used to test and verify
+HAProxy/Keepalived configuration:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nt">haproxy_use_keepalived</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="nt">haproxy_keepalived_external_vip_cidr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.2.3.4/32</span>
+<span class="nt">haproxy_keepalived_internal_vip_cidr</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.29.236.10/32</span>
+<span class="nt">haproxy_keepalived_external_interface</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">br-extern</span>
+<span class="nt">haproxy_keepalived_internal_interface</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">br-mgmt</span>
+<span class="nt">haproxy_bind_on_non_local</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+<span class="nt">keepalived_use_latest_stable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="nt">keepalived_ping_address</span><span class="p">:</span> <span class="s">&quot;172.29.236.1&quot;</span>
+<span class="nt">keepalived_ping_count</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">keepalived_bind_on_non_local</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="nt">keepalived_scripts</span><span class="p">:</span>
+  <span class="nt">haproxy_check_script</span><span class="p">:</span>
+    <span class="nt">check_script</span><span class="p">:</span> <span class="s">&quot;kill</span><span class="nv"> </span><span class="s">-0</span><span class="nv"> </span><span class="s">`cat</span><span class="nv"> </span><span class="s">/var/run/haproxy.pid`&quot;</span>
+    <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">pingable_check_script</span><span class="p">:</span>
+    <span class="nt">check_script</span><span class="p">:</span> <span class="s">&quot;/bin/ping</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">keepalived_ping_count</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">keepalived_ping_address</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">1&gt;&amp;2&quot;</span>
+    <span class="nt">interval</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">keepalived_ping_interval</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="nt">fall</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+    <span class="nt">rise</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+    <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>The installation of HAProxy and Keepalived is straight forward, requiring only
+that the <code class="docutils literal"><span class="pre">haproxy-install.yml</span></code> playbook be executed. Keepalived is enabled as
+described earlier and is automatically installed along side HAProxy.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://github.com/openstack/openstack-ansible-haproxy_server/blob/master/doc/source/configure-haproxy.rst">https://github.com/openstack/openstack-ansible-haproxy_server/blob/master/doc/source/configure-haproxy.rst</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configure-maas.html" class="btn btn-neutral float-right" title="Configure MaaS variables (optional)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configure-object-storage.html" class="btn btn-neutral float-left" title="Configure the Object Storage service (optional)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

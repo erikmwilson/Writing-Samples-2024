@@ -1,0 +1,32 @@
+
+.. _respond-transfer-team-settings-commandmc:
+
+Respond to a Team Transfer Request
+==================================
+
+Market Center Administrators (MCAs), Assistant Market Center Administrators (AMCAs), System Admins, and Legal users can transfer teams from one KW Market Center to another.
+
+To respond to a team transfer request, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **MC Team Management**.
+
+   .. note::
+
+      If you are a member of more than one Market Center, select the Market Center with a pending transfer request from the drop-down list.
+
+#. On the **MC Team Management** page, click the **Pending Team Requests** tab.
+
+#. For the correct request, click one of the following options:
+
+   * To approve the request, click **Approve** and then **Yes, Approve Request** on the confirmation page. After approving the transfer request for a team, we recommend the following actions:
+
+     * Invite all transferring team members, including the Rainmaker, to the new Market Center.
+
+     * Add all transferring team members to the team. If team members are not added right away, they will appear in the list of **Unallocated Associates** in the Market Center the members are transferring from.
+
+   * To decline the request, click **Decline** and then **Yes, Decline Request** on the confirmation page.

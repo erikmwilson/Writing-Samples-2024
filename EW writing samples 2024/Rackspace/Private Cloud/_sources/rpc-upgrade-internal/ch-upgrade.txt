@@ -1,0 +1,22 @@
+================
+Upgrade overview
+================
+
+Follow the procedures in this guide to upgrade a Rackspace Private Cloud
+Powered By OpenStack (RPCO) deployment from major release to major release.
+
+Before you begin an upgrade, be aware the following considerations:
+
+-  Before you can upgrade to the current major release, you must upgrade to
+   the last minor release of the previous major release. For example, to
+   upgrade from v12 to v13, upgrade to the latest v12.x release, and
+   then upgrade to v13.
+
+-  You cannot upgrade more than one major release, between nonsequential
+   major releases, or from version 4. Contact Rackspace Support for further
+   assistance.
+
+-  The upgrade process interrupts cloud management, including API access and
+   the Dashboard. However, cloud instances and services such as networking
+   and storage should continue to operate normally. Inform users of the
+   potential impacts of the upgrade process before beginning the upgrade.

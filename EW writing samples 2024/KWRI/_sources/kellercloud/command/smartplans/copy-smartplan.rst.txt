@@ -1,0 +1,26 @@
+
+.. _copy-smartplan-command:
+
+Copy a SmartPlan
+================
+
+You can copy a SmartPlan so that you do not have to create a new SmartPlan from scratch. If you need to make changes to an active SmartPlan, you can copy it, make your changes, and then add contacts.
+
+You can also edit an inactive SmartPlan. For more information, see :ref:`edit-inactive-command`.
+
+To copy a SmartPlan, complete the following steps:
+
+.. include:: smartplans-login.rst
+
+#. Click the **My SmartPlans** tab, at the top of the page.
+
+#. Find the correct Smartplan in the list and click the menu options icon |menu-options-icon| and select **Copy**.
+
+   .. |menu-options-icon| image:: ../../../images/menu-options-icon.png
+      :height: 30
+
+#. On the **Copy SmartPlan** page, enter a unique **Plan Name**.
+
+#. Click **Apply**.
+
+   You can now edit this duplicate Smartplan.

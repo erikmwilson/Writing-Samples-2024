@@ -1,0 +1,28 @@
+
+.. _managing-opportunities-command:
+
+Managing Opportunities
+======================
+
+The following pages contain information about managing opportunities.
+
+.. toctree::
+   :maxdepth: 1
+
+   search-opportunities
+   filter-opportunities
+   smartview-opportunities
+   access-opportunities
+   edit-stages-opportunities
+   create-opportunity
+   edit-opportunity
+   enable-disable-personal-pipelines
+   add-listing-opportunity
+   move-opportunity
+   transaction-summary
+   close-opportunity
+   checklists/index
+   tasks/index
+   archive-opportunity
+   lost-opportunity
+   discussions/index

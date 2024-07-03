@@ -1,0 +1,25 @@
+
+.. _admin-vendor-accept-commandmc:
+
+Add Vendor Added by Agent (Market Center Leadership)
+====================================================
+
+When a new vendor is added during Opportunity creation, that vendor is added to the agent's personal version of the vendor database. Market Center Leadership can then add the vendor to the Market Center database so they can be accessed by anyone in the Market Center.
+
+To add a vendor added by an agent, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+    If you have Regional and Market Center roles, click your name, at the top-right of the page, and make sure the Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Vendors**.
+
+#. Find the vendor you want to add and click on their name.
+
+#. In the vendor details, click **Add Contact**.
+
+#. In the pop-up click **Approve Contact** or, if the agent's branch is also new **Approve Contact and Branch**.

@@ -1,0 +1,29 @@
+
+.. _overview-find-recruits-commandmc:
+
+Finding Recruits
+================
+
+You can search geographical areas to find recruits to add to your recruits database.
+
+To find recruits, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click the **Find Recruits** tab, at the top of the page.
+
+#. You can search for recruits by using the interactive map, or entering a city, or zip code.
+
+#. After, you have found the correct search area, you can view the market share for this area by selecting one of the following options (under **Market Share**):
+
+   * All
+
+   * My Market Center
+
+   * KW
+
+   The recruits in this area that match the selected market share are listed on the right side of the window. Click on a name for some additional information about that recruit.
+
+#. Click the add button next to the recruit name to add them to your Recruit database. If there is no button next to their name, they are already in your database.
+
+  The added recruit displays in the Recruits list on the **Recruit Management** tab.

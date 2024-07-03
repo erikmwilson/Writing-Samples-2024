@@ -1,0 +1,35 @@
+:deconsttitle: Magnum Guide
+
+.. _rpc-magnum:
+
+============
+Magnum Guide
+============
+
+**Rackspace Private Cloud Powered By OpenStack**
+
+*Last updated:* |today|
+
+This guide contains information and instructions for managing and
+troubleshooting RPC Magnum.
+
+**Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   api.rst
+   architecture.rst
+   cluster_templates.rst
+   cluster_certs.rst
+   cluster_operations.rst
+   dev_environment.rst
+   logging.rst
+   magnum_setup.rst
+   ha.rst
+   monitoring.rst
+   pv.rst
+   external_lb.rst
+   stats.rst
+   docker_registry.rst
+   troubleshooting.rst

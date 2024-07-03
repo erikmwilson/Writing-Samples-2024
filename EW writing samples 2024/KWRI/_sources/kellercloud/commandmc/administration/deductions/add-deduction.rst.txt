@@ -1,0 +1,21 @@
+
+.. _add-deductions-commandmc:
+
+Add a Deduction
+===============
+
+To add a deduction, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Deductions**.
+
+#. Click **New Deduction**.
+
+#. In the **New Deduction** window, enter the deduction information and click **Create**. To create a new deduction **Category**, click **Add New Category** in the **Category** drop-down.

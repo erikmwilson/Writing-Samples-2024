@@ -1,0 +1,1207 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>What’s new &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="What’s changed" href="whats-changed.html" />
+    <link rel="prev" title="Known issues" href="known-issues.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Release Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known issues</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">What&#8217;s new</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#block-storage-service-cinder">Block Storage service (cinder)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prelude">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unsupported">Unsupported</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compute-service-nova">Compute service (nova)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#critical">Critical</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upgrade">Upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deprecations">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Unsupported</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-horizon">Dashboard (horizon)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fixes">Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#identity-service-keystone">Identity service (keystone)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Unsupported</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#image-service-glance">Image service (glance)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Critical</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#networking-service-neutron">Networking service (neutron)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Deprecations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Unsupported</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#object-storage-swift">Object Storage (swift)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#orchestration-heat">Orchestration (heat)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Prelude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="whats-changed.html">What&#8217;s changed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Release Notes</a> &raquo;</li>
+        
+      <li>What&#8217;s new</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-releasenotes/whats-new.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="what-s-new">
+<h1>What&#8217;s new<a class="headerlink" href="#what-s-new" title="Permalink to this headline">#</a></h1>
+<p>Rackspace Private Cloud Powered By OpenStack (RPCO) release 14.0
+(r14-dev) is based on the OpenStack-Ansible (OSA) project. For
+OSA release notes, see <a class="reference external" href="http://docs.openstack.org/releasenotes/openstack-ansible/newton.html">OpenStack-Ansible Newton Release Notes</a>.</p>
+<p>Major new releases of OpenStack such as Newton typically include
+many changes, enhancements, and new features. RPCO is a tested
+configuration of a subset of all available OpenStack services.</p>
+<p>This page lists some of the significant upstream OpenStack changes and
+is provided for your awareness. It is not a statement of support. For
+more information about supported features and configurations, contact
+your Rackspace sales team or support specialist.</p>
+<div class="section" id="block-storage-service-cinder">
+<h2>Block Storage service (cinder)<a class="headerlink" href="#block-storage-service-cinder" title="Permalink to this headline">#</a></h2>
+<div class="section" id="prelude">
+<h3>Prelude<a class="headerlink" href="#prelude" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Project release notes:
+<a class="reference external" href="http://docs.openstack.org/releasenotes/cinder/newton.html">http://docs.openstack.org/releasenotes/cinder/newton.html</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Generic volume groups<ul>
+<li>This feature adds the ability to create groups of volumes and
+create snapshots of groups of volumes. Volume groups are more
+generic than consistency groups, which are only supported by a
+small number of backends. Volume groups allow operations to be
+executed against a number of volumes at the same time.</li>
+<li>The <code class="docutils literal"><span class="pre">create/delete/update/list/show</span></code> APIs are now supported for
+groups.</li>
+<li>To use this feature, a customer must have a previously unencrypted
+volume to be encrypted, or vice versa.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Volume encryption, retype support<ul>
+<li>This feature adds the ability to migrate or retype volumes to
+either unencrypted or encrypted states. You can reconfigure an
+environment to use encryption best practices.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Supported driver checks<ul>
+<li>This feature adds a flag for each driver in use. If a driver no
+longer meets the Block Storage community testing standards, the
+driver supported flag is set to <code class="docutils literal"><span class="pre">False</span></code>.</li>
+<li>Supported status is checked when the <code class="docutils literal"><span class="pre">cinder-volume</span></code> service
+starts. If the status is <code class="docutils literal"><span class="pre">False</span></code>, an error is logged. If
+<code class="docutils literal"><span class="pre">enable_unsupported_driver</span> <span class="pre">=</span> <span class="pre">False</span></code> is set and the driver status
+is <code class="docutils literal"><span class="pre">False</span></code>, the driver will not start.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="unsupported">
+<h3>Unsupported<a class="headerlink" href="#unsupported" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>[Not supported in RPCO] Hybrid aggregate support for NetApp cDot<ul>
+<li>Hybrid aggregates (Flash Pools) are now available when using a
+NetApp FAS with cDot as a Block Storage backend.</li>
+<li>This feature supports a customer carrying out the same operation,
+at the same time, against multiple volumes. Some, but not all, of
+the backends hosting these volumes support consistency group
+operations.</li>
+<li>To use this feature, the customer must have a NetApp FAS with SSDs
+or HDDs.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="compute-service-nova">
+<h2>Compute service (nova)<a class="headerlink" href="#compute-service-nova" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id1">
+<h3>Prelude<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Project release notes:
+<a class="reference external" href="https://docs.openstack.org/releasenotes/nova/newton.html">https://docs.openstack.org/releasenotes/nova/newton.html</a></li>
+</ul>
+</div>
+<div class="section" id="critical">
+<h3>Critical<a class="headerlink" href="#critical" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>The 2.37 micro version requires that the API server create request
+body includes <code class="docutils literal"><span class="pre">networks</span></code>. Specifying <code class="docutils literal"><span class="pre">networks:auto</span></code> is similar
+to not requesting specific networks when creating a server before
+version 2.37.</li>
+<li>Compute requires the Glance v2 API.</li>
+</ul>
+</div>
+<div class="section" id="upgrade">
+<h3>Upgrade<a class="headerlink" href="#upgrade" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>The default value of the <code class="docutils literal"><span class="pre">live_migration_tunnelled</span></code> configuration
+option (in the <code class="docutils literal"><span class="pre">libvirt</span></code> section) is now <code class="docutils literal"><span class="pre">False</span></code>. When upgrading
+nova to Newton, all live migrations become non-tunneled, unless
+<code class="docutils literal"><span class="pre">live_migration_tunnelled</span></code> is set to <code class="docutils literal"><span class="pre">True</span></code>.<ul>
+<li>By default, the migration traffic does not go through libvirt and
+therefore is not encrypted.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="deprecations">
+<h3>Deprecations<a class="headerlink" href="#deprecations" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p class="first">All APIs that proxy to other services are deprecated.</p>
+<ul>
+<li><p class="first">These APIs return 404 on micro version 2.36 or higher.</p>
+</li>
+<li><p class="first">Use native APIs instead of using pure proxies for other REST APIs.</p>
+</li>
+<li><p class="first">The quotas and limits related to network resources including
+<code class="docutils literal"><span class="pre">fixed_ips</span></code>, <code class="docutils literal"><span class="pre">floating</span> <span class="pre">ips</span></code>, <code class="docutils literal"><span class="pre">security_groups</span></code>,
+<code class="docutils literal"><span class="pre">security_group_rules</span></code>, and <code class="docutils literal"><span class="pre">networks</span></code> are filtered out of the
+<code class="docutils literal"><span class="pre">os-quotas</span></code> and <code class="docutils literal"><span class="pre">limit</span></code> APIs. Manage those quotas through the
+OpenStack network service.</p>
+</li>
+<li><p class="first">You can only use APIs and manage quotas under micro version 2.36
+for <code class="docutils literal"><span class="pre">nova-network</span></code>.</p>
+</li>
+<li><p class="first">The deprecated <code class="docutils literal"><span class="pre">os-fping</span></code> API is only related to
+<code class="docutils literal"><span class="pre">nova-network</span></code> and depends on the deployment.</p>
+</li>
+<li><p class="first">The deprecated APIs are:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">/images</span>
+<span class="na">/os-networks</span>
+<span class="na">/os-fixed-ips</span>
+<span class="na">/os-floating-ips</span>
+<span class="na">/os-floating-ips-bulk</span>
+<span class="na">/os-floating-ip-pools</span>
+<span class="na">/os-floating-ip-dns</span>
+<span class="na">/os-security-groups</span>
+<span class="na">/os-security-group-rules</span>
+<span class="na">/os-security-group-default-rules</span>
+<span class="na">/os-volumes</span>
+<span class="na">/os-snapshots</span>
+<span class="na">/os-baremetal-nodes</span>
+<span class="na">/os-fping</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">use_usb_tablet</span></code> option is deprecated.</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">pointer_model</span></code> configuration option and the
+<code class="docutils literal"><span class="pre">hw_pointer_model</span></code> image property replace the <code class="docutils literal"><span class="pre">use_usb_tablet</span></code>
+option. You can specify different pointer models for input
+devices. The default value for <code class="docutils literal"><span class="pre">pointer_model</span></code> is
+<code class="docutils literal"><span class="pre">usb_tablet</span></code>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Unsupported<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">nova-lxd</span></code> LXD hypervisor is not supported in RPCO.</li>
+<li>[Not supported in RPCO] Cells v2 now supports booting instances for
+one v2 cell only. Multi-cell support is planned for Ocata. You can
+prepare for Ocata now by creating a cellv2 by using the
+<code class="docutils literal"><span class="pre">nova-manage</span></code> commands. Configuring Cells v2 is optional for
+Newton.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>Features<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p class="first">Perf event support for the libvirt driver</p>
+<ul class="simple">
+<li>You can use this feature by adding the <code class="docutils literal"><span class="pre">enabled_perf_events</span></code>
+configure option in the libvirt section of <code class="docutils literal"><span class="pre">nova.conf</span></code>. This
+feature requires <code class="docutils literal"><span class="pre">libvirt&gt;=2.0.0</span></code>.</li>
+</ul>
+</li>
+<li><p class="first">Two new <code class="docutils literal"><span class="pre">oslo.policy</span></code> CLI scripts</p>
+<ul class="simple">
+<li>The first script, when called as <code class="docutils literal"><span class="pre">oslopolicy-list-redundant</span>
+<span class="pre">–namespace</span> <span class="pre">nova</span></code> outputs a list of policy rules in
+<code class="docutils literal"><span class="pre">policy.[json|yaml]</span></code> that match the project defaults. You can
+remove these redundant rules from the policy file.</li>
+<li>The second script, when called as <code class="docutils literal"><span class="pre">oslopolicy-policy-generator</span>
+<span class="pre">–namespace</span> <span class="pre">nova</span> <span class="pre">–output-file</span> <span class="pre">policy-merged.yaml</span></code>, populates the
+<code class="docutils literal"><span class="pre">policy-merged.yaml</span></code> file with the effective policy. This policy
+is the merged result of project defaults and configuration file
+overrides.</li>
+</ul>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">nova-manage</span></code> quota refresh</p>
+<ul class="simple">
+<li>Newton adds a <code class="docutils literal"><span class="pre">nova-manage</span></code> command to refresh the quota usages
+for a project or user. You can use this command when the usages in
+the <code class="docutils literal"><span class="pre">quota-usages</span></code> database table are out of sync with the
+actual usages. For example, if a resource usage is at the limit in
+the <code class="docutils literal"><span class="pre">quota_usages</span></code> table, but the actual usage is less, nova
+does not allow VMs to be created for that project or user. Use the
+<code class="docutils literal"><span class="pre">nova-manage</span></code> command to re-sync the <code class="docutils literal"><span class="pre">quota_usages</span></code> table with
+the actual usage.</li>
+</ul>
+</li>
+<li><p class="first">New <code class="docutils literal"><span class="pre">reserved_huge_pages</span></code> option</p>
+<ul class="simple">
+<li>You can use the <code class="docutils literal"><span class="pre">reserved_huge_pages</span></code> option to reserve the
+amount of huge pages used by third-party components.</li>
+</ul>
+</li>
+<li><p class="first">New <code class="docutils literal"><span class="pre">soft-affinity</span></code> and <code class="docutils literal"><span class="pre">soft-anti-affinity</span></code>  policies</p>
+<ul class="simple">
+<li>These policies are implemented for the <code class="docutils literal"><span class="pre">server-group</span></code> Compute
+feature. A <code class="docutils literal"><span class="pre">POST</span> <span class="pre">/v2.1/{tenant_id}/os-server-groups</span></code> API
+resource now accepts <code class="docutils literal"><span class="pre">soft-affinity</span></code> and <code class="docutils literal"><span class="pre">soft-anti-affinity</span></code>
+as values of the policies request body key.</li>
+</ul>
+</li>
+<li><p class="first">API policy defaults defined in code like configuration options</p>
+<blockquote>
+<div><ul>
+<li><p class="first">The sample <code class="docutils literal"><span class="pre">policy.json</span></code> file  shipped with nova is empty.
+Editing this file is  only necessary if you want to override the
+API policy from the defaults in the code.</p>
+</li>
+<li><p class="first">To generate the policy file, type:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> oslopolicy-sample-generator --config-file<span class="o">=</span>etc/nova/nova-policy-generator.conf
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="dashboard-horizon">
+<h2>Dashboard (horizon)<a class="headerlink" href="#dashboard-horizon" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id4">
+<h3>Prelude<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Project release notes:
+<a class="reference external" href="http://docs.openstack.org/releasenotes/horizon/newton.html">http://docs.openstack.org/releasenotes/horizon/newton.html</a></li>
+</ul>
+</div>
+<div class="section" id="fixes">
+<h3>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Consistent bread crumb navigation trails<ul>
+<li>Dashboard now consistently displays navigation bread crumbs.</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/navigation-improvements">https://blueprints.launchpad.net/horizon/+spec/navigation-improvements</a>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Features<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><strong>Allowed Address Pairs</strong> tab<ul>
+<li>The <code class="docutils literal"><span class="pre">port-details</span></code> page has a new tab for managing allowed
+address pairs. This tab and its features are only available when
+this extension is active in Neutron. The <strong>Allowed Address Pairs</strong>
+tab enables creating, deleting, and listing address pairs for the
+current port.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Support for managing neutron L3 agent hosts<ul>
+<li>The <strong>Admin</strong> screen for system information now provides links and
+views showing which routers reside on what hosts. In addition, the
+<strong>Admin</strong> view of routers also provides a list of where the router
+is hosted and the link to see which other routers are sharing the
+same host.</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/admin-neutron-l3-agent">https://blueprints.launchpad.net/horizon/+spec/admin-neutron-l3-agent</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Scheduler hints added to <strong>Launch Instance</strong><ul>
+<li>You can use this feature to add scheduler hints to an instance at
+launch. In addition to adding custom key-value pairs, you can also
+choose from properties in the glance metadata definitions catalog
+that have the <code class="docutils literal"><span class="pre">OS::Nova::Server</span></code> resource type and the
+<code class="docutils literal"><span class="pre">scheduler_hints</span></code> properties target.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Administrator ability to graphically manage floating IPs<ul>
+<li>System administrators can manipulate floating IPs in the <strong>Admin</strong>
+panel.<ul>
+<li>List floating IPs.</li>
+<li>Create a floating IP from a existing network.</li>
+<li>Associate, disassociate, or delete a floating IP.</li>
+</ul>
+</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/manage-ips">https://blueprints.launchpad.net/horizon/+spec/manage-ips</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Initial filtering of admin tables<ul>
+<li>This feature provides a configurable setting to require admin
+users to first provide a search criteria before loading data into
+admin views.</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/admin-views-filter-first">https://blueprints.launchpad.net/horizon/+spec/admin-views-filter-first</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Cinder consistency groups<ul>
+<li>This feature adds two tabs to the <strong>Project -&gt; Volumes</strong> panel.</li>
+<li>The first tab displays consistency groups. The second tab displays
+consistency group snapshots. Consistency groups (CG) contain
+existing volumes and allow users to perform actions on the volumes
+in one step. Actions include: create/update/delete CGs, snapshot
+all volumes in a CG, clone all volumes in a CG, and create a new
+CG and volumes from a CG snapshot.</li>
+<li>Policies associated with consistency groups exist in the cinder
+policy file. By default, all actions are disabled.</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/cinder-consistency-groups">https://blueprints.launchpad.net/horizon/+spec/cinder-consistency-groups</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Boot sources restriction in <strong>Launch Instance</strong><ul>
+<li>The feature allows operators to mark boot sources as available or
+disabled. You can restrict boot sources by setting:<ul>
+<li><code class="docutils literal"><span class="pre">LAUNCH_INSTANCE_DEFAULTS</span> <span class="pre">(disable_image,</span>
+<span class="pre">disable_instance_snapshot,</span> <span class="pre">disable_volume,</span>
+<span class="pre">disable_volume_snapshot)</span></code></li>
+</ul>
+</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/configurable-boot-sources">https://blueprints.launchpad.net/horizon/+spec/configurable-boot-sources</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Restrict CIDR range for user private networks<ul>
+<li>This feature allows a cloud administrator to restrict user private
+network address CIDR input.</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/restrict-private-network-input">https://blueprints.launchpad.net/horizon/+spec/restrict-private-network-input</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Extra properties in <strong>Project</strong> and <strong>User</strong> panels<ul>
+<li>This feature provides extra data in the <strong>Project</strong> and <strong>User</strong>
+panels displayed as table columns and supported in CRUD
+operations.</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/support-extra-prop-for-project-and-user">https://blueprints.launchpad.net/horizon/+spec/support-extra-prop-for-project-and-user</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Glance V2 support<ul>
+<li>Dashboard adds complete support for glance v2. Dashboard no longer
+depends on having a glance v1 endpoint in the keystone catalog.
+The feature also provides code compatibility between glance v1 and
+v2.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Dashboard runs without nova or glance<ul>
+<li>Nova and glance are no longer required to run Dashboard. As long as
+keystone is present, Dashboard runs correctly.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Support for network IP availability<ul>
+<li>The admin network dashboard now displays IP availability. Two
+columns in the admin network subnets table display the allocated
+IPs in a given subnet and unallocated free IPs for each subnet in
+the network.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>User operation history log<ul>
+<li>This feature logs all Dashboard operations to an external file.</li>
+<li>For more information, see
+<a class="reference external" href="https://blueprints.launchpad.net/horizon/+spec/operation-history-log">https://blueprints.launchpad.net/horizon/+spec/operation-history-log</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Limiting <strong>Overview</strong> panel scope<ul>
+<li>This feature adds a new <code class="docutils literal"><span class="pre">OVERVIEW_DAYS_RANGE</span></code> setting. This
+setting defines the default date range in the <strong>Overview</strong> panel
+meters - either today minus <code class="docutils literal"><span class="pre">n</span></code> days (if the value is integer
+<code class="docutils literal"><span class="pre">n</span></code>), or from the beginning of the current month until today (if
+set to <code class="docutils literal"><span class="pre">None</span></code>).</li>
+<li>You can use this setting to limit the amount of data fetched by
+default when rendering the <strong>Overview</strong> panel. The default value
+is <code class="docutils literal"><span class="pre">1</span></code>. The default differs from the past behavior, which caused
+serious lags on large deployments.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>New logout behavior setting<ul>
+<li>Deployers can set the <code class="docutils literal"><span class="pre">TOKEN_DELETE_DISABLED</span></code> variable to revoke
+a user&#8217;s token on logout.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="identity-service-keystone">
+<h2>Identity service (keystone)<a class="headerlink" href="#identity-service-keystone" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id6">
+<h3>Prelude<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Project release notes:
+<a class="reference external" href="http://docs.openstack.org/releasenotes/keystone/newton.html">http://docs.openstack.org/releasenotes/keystone/newton.html</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="security">
+<h3>Security<a class="headerlink" href="#security" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Identity service supports encrypted credentials at rest. Credential
+encryption is enabled by default and uses a known encryption key.
+Because the key is known, no additional security is provided over
+prior releases of Identity service. Replace the known key with a
+valid key repository to re-encrypt all credentials with secure keys.
+RPCO does not automatically create or configure this key repository.
+For more information, see
+<a class="reference external" href="https://github.com/openstack/keystone/blob/9a559c730a5854c47f1f7198b46bc8ebf5de4bef/etc/keystone.conf.sample#L598-L610">https://github.com/openstack/keystone/blob/9a559c730a5854c47f1f7198b46bc8ebf5de4bef/etc/keystone.conf.sample#L598-L610</a>.</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Features<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Default token format changes from UUID to Fernet<ul>
+<li>In a greenfield deployment, no additional action is required.</li>
+<li>For more information, see
+<a class="reference external" href="http://lists.openstack.org/pipermail/openstack-dev/2016-November/106649.html">http://lists.openstack.org/pipermail/openstack-dev/2016-November/106649.html</a>
+and <a class="reference external" href="https://review.openstack.org/#/c/326748/">https://review.openstack.org/#/c/326748/</a>.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p class="first">LDAP mapping table pre-population</p>
+<ul>
+<li><p class="first">The <code class="docutils literal"><span class="pre">keystone-manage</span> <span class="pre">mapping_populate</span></code> command pre-populates a
+mapping table with all LDAP users. Pre-population improves future
+query performance. Use this feature when an LDAP is first
+configured, or before making any domain queries and calling the
+<code class="docutils literal"><span class="pre">keystone-manage</span> <span class="pre">mapping_purge</span></code> command.</p>
+</li>
+<li><p class="first">For help with command options, type <code class="docutils literal"><span class="pre">keystone-manage</span>
+<span class="pre">mapping_populate</span> <span class="pre">--help</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Pre-population causes the keystone database to grow as large as
+the customer-configured LDAP tree. If all of those users won&#8217;t
+log into OpenStack, pre-population can be counterproductive and
+permanently degrade keystone database performance.</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Add <code class="docutils literal"><span class="pre">cache_on_issue</span></code> attribute to validation cache<ul>
+<li>This feature enables placing issued tokens into the validation
+cache, which reduces the first validation time.</li>
+<li>Caching might make debugging a running system more difficult,
+since data might be stale.</li>
+<li>For more information, see the <a class="reference external" href="https://github.com/openstack/keystone/blob/9a559c730a5854c47f1f7198b46bc8ebf5de4bef/etc/keystone.conf.sample#L2713-L2716">keystone sample configuration file</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Add <code class="docutils literal"><span class="pre">password_expires_at</span></code> attribute to user response object<ul>
+<li>PCI-DSS support requires this attribute in the user response
+object.</li>
+<li>For more information, see the <a class="reference external" href="http://developer.openstack.org/api-ref/identity/v3/index.html?expanded=list-users-detail">list-users API operation</a>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Deprecations<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p class="first">The <code class="docutils literal"><span class="pre">keystone-manage</span> <span class="pre">domain_config_upload</span></code> option is deprecated in
+favor of using the <a class="reference external" href="https://review.openstack.org/#/c/339259/">domain configuration API</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">RPCO does not use the new domain configuration API.</p>
+</div>
+</li>
+</ul>
+<ul class="simple">
+<li>If you customize the <code class="docutils literal"><span class="pre">policy.json</span></code> file, update it to use these
+new variables:<ul>
+<li><code class="docutils literal"><span class="pre">identity:list_projects_for_user</span></code> replaces
+<code class="docutils literal"><span class="pre">identity:list_projects_for_groups</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">identity:list_domains_for_user</span></code> replaces
+<code class="docutils literal"><span class="pre">identity:list_domains_for_groups</span></code>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>Unsupported<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>RPCO does not support <a class="reference external" href="http://docs.openstack.org/developer/keystone/upgrading.html#upgrading-without-downtime">rolling upgrades</a>
+of the Identity service.</li>
+</ul>
+<ul class="simple">
+<li>RPCO does not support <a class="reference external" href="https://docs.openstack.org/developer/osprofiler/">OSProfiler</a>.</li>
+</ul>
+<ul class="simple">
+<li>RPCO does not support running Identity service in Python v3. For
+more information about Identity support of Python v3, see
+<a class="reference external" href="https://blueprints.launchpad.net/keystone/+spec/python3">https://blueprints.launchpad.net/keystone/+spec/python3</a>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="image-service-glance">
+<h2>Image service (glance)<a class="headerlink" href="#image-service-glance" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id10">
+<h3>Prelude<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Project release notes:
+<a class="reference external" href="http://docs.openstack.org/releasenotes/glance/newton.html">http://docs.openstack.org/releasenotes/glance/newton.html</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h3>Critical<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Database downgrade ability removed<ul>
+<li>At a project level, OpenStack is dropping support for downgrading
+databases. In this release, Image service removed the capability
+to downgrade its database to an older version.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It is highly recommended to back up the database before upgrading
+Image service. Backups provide the only method to revert to a
+previous version of the database.</p>
+</div>
+<ul class="simple">
+<li>For more information, see
+<a class="reference external" href="https://github.com/openstack/glance/commit/2f803d3fa9d5870b38b195f91a146db9ef755ed1">https://github.com/openstack/glance/commit/2f803d3fa9d5870b38b195f91a146db9ef755ed1</a>
+and
+<a class="reference external" href="https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/remove-db-downgrade.rst">https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/remove-db-downgrade.rst</a>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h3>Upgrade<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">show_multiple_locations</span></code> deprecated<ul>
+<li>Previous releases provided two ways to enable multiple storage
+locations to be shown: a <code class="docutils literal"><span class="pre">master-switch</span></code> and a policy file. This
+change deprecates the master switch default (<code class="docutils literal"><span class="pre">False</span></code>).</li>
+<li>Prior to upgrading, check to see if this change impacts the
+customer environment.</li>
+<li>For more information, see
+<a class="reference external" href="https://github.com/openstack/glance/commit/dbfc121072dff4981532b068bb210f9c73c7b98c">https://github.com/openstack/glance/commit/dbfc121072dff4981532b068bb210f9c73c7b98c</a>
+and
+<a class="reference external" href="https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#deprecate-show_multiple_locations-configuration-option">https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#deprecate-show_multiple_locations-configuration-option</a>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Deprecations<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Amazon S3 store driver removed<ul>
+<li>Amazon S3 is no longer supported as a backend store for Image
+service. There is no recommended migration path.</li>
+<li>For more information, see
+<a class="reference external" href="https://github.com/openstack/glance_store/commit/4432e60af2a2bdbfc456d8d99d93d1157fc86dcd">https://github.com/openstack/glance_store/commit/4432e60af2a2bdbfc456d8d99d93d1157fc86dcd</a>
+and <a class="reference external" href="https://github.com/rcbops/u-suk-dev/issues/736">https://github.com/rcbops/u-suk-dev/issues/736</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Adding locations to a non-active or non-queued image not allowed<ul>
+<li>In previous releases, Image service allowed an authorized user to
+set locations on any image that is not <em>deleted</em>. This could lead
+to image data integrity issues.</li>
+<li>With this release, image locations must be added only when the
+image is either in <em>queued</em> or <em>active</em> status. Otherwise, these
+requests will fail.</li>
+<li>Multiple locations must now be controlled via policies. Customers
+using this features might need to set appropriate policies to
+accurately control who can add, remove, or fetch locations.</li>
+<li>For more information, see
+<a class="reference external" href="https://github.com/openstack/glance/commit/7c7dd626896d732d75c6b802a33b9462aee885fd">https://github.com/openstack/glance/commit/7c7dd626896d732d75c6b802a33b9462aee885fd</a>
+and
+<a class="reference external" href="https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#return-409-if-setting-location-to-saving-or-deactivated-image">https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#return-409-if-setting-location-to-saving-or-deactivated-image</a>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>Features<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">vhdx</span></code> image format is supported<ul>
+<li>For more information, see
+<a class="reference external" href="https://github.com/openstack/glance/commit/fc0b47beb60c0dbbe620798665d0e9bab07f7029">https://github.com/openstack/glance/commit/fc0b47beb60c0dbbe620798665d0e9bab07f7029</a>
+and
+<a class="reference external" href="https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#add-vhdx-to-list-of-supported-disk-formats">https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#add-vhdx-to-list-of-supported-disk-formats</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Expired tasks are deleted<ul>
+<li>All Image service tasks are set to expire in a certain time after
+they are created. However, expired tasks were not filtered out
+when a user lists tasks. As a result, a user would see a long list
+of tasks spanning multiple pages. With this change, Image service
+automatically deletes all expired tasks. This feature keeps the
+task list readable.</li>
+<li>For more information, see
+<a class="reference external" href="https://github.com/openstack/glance/commit/38563b0555d5974f641cb8fa5a0f197279bed04d">https://github.com/openstack/glance/commit/38563b0555d5974f641cb8fa5a0f197279bed04d</a>
+and
+<a class="reference external" href="https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#add-functionality-to-soft-delete-the-tasks">https://github.com/openstack/glance-specs/blob/master/specs/newton/approved/glance/lite-specs.rst#add-functionality-to-soft-delete-the-tasks</a>.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p class="first">Glance v2 API support</p>
+<ul class="simple">
+<li>This release adds complete support for the glance v2 API.
+Dashboard no longer depends on having a glance v1 endpoint in the
+Identity catalog. This release also provides code compatibility
+between glance v1 and v2.</li>
+<li>New installations of RPC should use only glance v2.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The glance v1 API is deprecated and marked for removal in
+OpenStack Pike. All existing RPC installations must move to v2.
+See <a class="reference external" href="https://github.com/rcbops/u-suk-dev/issues/624">https://github.com/rcbops/u-suk-dev/issues/624</a>.</p>
+</div>
+</li>
+</ul>
+<ul class="simple">
+<li>Image service not required by Dashboard<ul>
+<li>With this release, Dashboard does not require Compute or Image
+service.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="networking-service-neutron">
+<h2>Networking service (neutron)<a class="headerlink" href="#networking-service-neutron" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id15">
+<h3>Prelude<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Project release notes:
+<a class="reference external" href="http://docs.openstack.org/releasenotes/neutron/newton.html">http://docs.openstack.org/releasenotes/neutron/newton.html</a></li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>Deprecations<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">min_13_agents_per_router</span></code> and <code class="docutils literal"><span class="pre">cache_url</span> <span class="pre">router</span></code> configuration
+options are replaced by the following setting: <code class="docutils literal"><span class="pre">[cache]</span> <span class="pre">group,</span>
+<span class="pre">setting</span> <span class="pre">enable</span> <span class="pre">=</span> <span class="pre">True</span></code>.</li>
+<li>Scheduling of new HA routers is always allowed.</li>
+</ul>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">global_physnet_mtu</span></code>, <code class="docutils literal"><span class="pre">path_mtu</span></code>, and
+<code class="docutils literal"><span class="pre">physical_network_mtus</span></code> variables replace <code class="docutils literal"><span class="pre">network_device_mtu</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">is_default</span></code> variable replaces <code class="docutils literal"><span class="pre">default_ipv4_subnet_pool</span></code>
+and <code class="docutils literal"><span class="pre">default_ipv6_subnet_pool</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>Unsupported<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>RPCO does not support <a class="reference external" href="http://docs.projectcalico.org/v2.0/introduction/">Project Calico</a>.</li>
+</ul>
+<ul class="simple">
+<li>RPCO does not support OVS.</li>
+</ul>
+<ul class="simple">
+<li>RPCO does not support the <code class="docutils literal"><span class="pre">external_network_bridge</span></code> and
+<code class="docutils literal"><span class="pre">ipam_driver</span></code> variables.</li>
+</ul>
+<ul class="simple">
+<li>RPCO does not support creating VLAN-aware virtual machines.
+VLAN-aware virtual machines use &#8220;trunks&#8221; of neutron ports that carry
+VLAN tags from the VM out through virtual switches.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="object-storage-swift">
+<h2>Object Storage (swift)<a class="headerlink" href="#object-storage-swift" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id18">
+<h3>Prelude<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Project release notes: <a class="reference external" href="https://github.com/openstack/swift/blob/master/CHANGELOG">https://github.com/openstack/swift/blob/master/CHANGELOG</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id19">
+<h3>Fixes<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Container Sync supports syncing SLO objects<ul>
+<li>For more information, see <a class="reference external" href="https://review.openstack.org/#/c/348495/">https://review.openstack.org/#/c/348495/</a>
+and <a class="reference external" href="https://bugs.launchpad.net/swift/+bug/1605597">https://bugs.launchpad.net/swift/+bug/1605597</a>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>Features<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Object versioning<ul>
+<li>Object versioning supports a &#8220;history&#8221; mode in addition to the
+older &#8220;stack&#8221; mode. The modes differ in how <code class="docutils literal"><span class="pre">DELETE</span></code> requests
+are handled. For more information, see:
+<a class="reference external" href="http://docs.openstack.org/developer/swift/overview_object_versioning.html">http://docs.openstack.org/developer/swift/overview_object_versioning.html</a>.</li>
+<li>Deletion of objects is handled in two different methods. Using the
+header <code class="docutils literal"><span class="pre">X-History-Location</span></code>, the current object version is
+removed, but can still be recovered from the archive container. By
+using header <code class="docutils literal"><span class="pre">X-Versions-Location</span></code>, the current version is
+removed by copying the previous version over it. The copy in the
+archive container is deleted. If there are multiple version of an
+object, multiple deletes must be performed to remove the object.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Concurrent bulk deletes<ul>
+<li>This feature allows concurrent bulk deletes for server-side
+deletes of static large objects.</li>
+<li>Before this feature, deletes were single-threaded and each
+<code class="docutils literal"><span class="pre">DELETE</span></code> executed serially. The new <code class="docutils literal"><span class="pre">delete_concurrency</span></code> value
+defaults to <code class="docutils literal"><span class="pre">2</span></code> in the <code class="docutils literal"><span class="pre">[filter:slo]</span></code> and <code class="docutils literal"><span class="pre">[filter:bulk]</span></code>
+sections of the proxy server configurations. This value controls
+the concurrency used to perform the <code class="docutils literal"><span class="pre">DELETE</span></code> requests for
+referenced segments. The default value is recommended. Setting the
+value to <code class="docutils literal"><span class="pre">1</span></code> restores the previous behavior.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>TempURL responses now include an <code class="docutils literal"><span class="pre">Expires</span></code> header with the
+expiration time embedded in the URL.</li>
+</ul>
+<ul class="simple">
+<li>The object auditor deletes old tombstones. This ensures that they
+are reclaimed and do not waste inodes.<ul>
+<li>To save disk I/O, Object Storage uses a hash to determine what
+changed so that the replicator knows what needs to be synced. The
+replicator reclaims deleted objects after the <code class="docutils literal"><span class="pre">reclaim_age</span></code> time
+period. Deleted objects are empty tombstone files with the <code class="docutils literal"><span class="pre">.ts</span></code>
+extension. If the suffix hash file for a tombstone file was
+calculated before the reclaim age and no object is placed in the
+same suffix, the replicator would never delete them. The situation
+led to many <code class="docutils literal"><span class="pre">.ts</span></code> files consuming inodes. The object auditor now
+marks the suffix hash for reclaimable <code class="docutils literal"><span class="pre">.ts</span></code> files as dirty, so
+they can be cleaned and the hashes recalculated.</li>
+<li>This feature potentially changes the load on an Object Storage
+cluster. For example, the initial object replicator run can cause
+a spike in disk I/O while old <code class="docutils literal"><span class="pre">.ts</span></code> files (which can be
+numerous) are reclaimed. The impact might be negligible on smaller
+clusters, but can regularly be high in large clusters.</li>
+<li>For more information, see
+<a class="reference external" href="https://bugs.launchpad.net/swift/+bug/1301728">https://bugs.launchpad.net/swift/+bug/1301728</a> and
+<a class="reference external" href="https://review.openstack.org/#/c/346865/">https://review.openstack.org/#/c/346865/</a>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Atomic object creation in Linux<ul>
+<li>Object Storage uses the <code class="docutils literal"><span class="pre">O_TMPFILE</span></code> flag when opening a file
+instead of creating a temporary file and renaming it on commit.
+This makes the data path simpler and allows the filesystem to more
+efficiently optimize the files on disk, increasing performance.</li>
+<li>The Linux kernel from 3.15 onward (and XFS) adds support for
+<code class="docutils literal"><span class="pre">O_TMPFILE</span></code>, while enables atomic object creation in Linux.
+Previously, the object was written to a temporary folder and
+renamed after the object finished writing. This new kernel feature
+creates a write-only lock in the final destination and links to
+the directory. Writing the object becomes an atomic operation.</li>
+<li>This change corrects a performance problem discovered in XFS that
+allocated all objects created in the same device-specific
+temporary folder to the same allocation group. Storage nodes with
+kernels newer than 3.15 automatically use atomic object creation,
+but fall back to the non-atomic method if unsupported.</li>
+<li>For more information, see
+<a class="reference external" href="https://review.openstack.org/#/c/162243/">https://review.openstack.org/#/c/162243/</a>.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="orchestration-heat">
+<h2>Orchestration (heat)<a class="headerlink" href="#orchestration-heat" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id21">
+<h3>Prelude<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Project release notes:
+<a class="reference external" href="http://docs.openstack.org/releasenotes/heat/newton.html">http://docs.openstack.org/releasenotes/heat/newton.html</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id22">
+<h3>Features<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li>Support for conditionals<ul>
+<li>This feature adds condition functions such as <code class="docutils literal"><span class="pre">equals</span></code>, <code class="docutils literal"><span class="pre">not</span></code>,
+and <code class="docutils literal"><span class="pre">and</span> <span class="pre">or</span></code>. When added to a conditions section, they define
+one or more conditions that are evaluated based on input parameter
+values provided when a user creates or updates a stack.</li>
+<li>An optional section condition is available for resource and output
+definitions. Condition names defined in conditions and condition
+functions can be referenced in this section. They conditionally
+create resources or conditionally give outputs of a stack.</li>
+<li>The feature includes a function to return corresponding values
+based on condition evaluation. You can use this function to
+conditionally set the value of resource properties and outputs.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Enhanced support for Block Storage QoS and quotas<ul>
+<li>A new <code class="docutils literal"><span class="pre">OS::Cinder::QoSSpecs</span></code> resource plugin supports Block
+Storage QoS specs provided by the <code class="docutils literal"><span class="pre">qos-specs</span></code> API extension.</li>
+<li>A new <code class="docutils literal"><span class="pre">cinder.qos_specs</span></code> constraint supports validation of the
+QoS specs attribute.</li>
+<li>A new <code class="docutils literal"><span class="pre">OS::Cinder::Quota</span></code> resource is added to manage Block
+Storage quotas. These quotas are operational limits to projects on
+Block Storage resources. These include <code class="docutils literal"><span class="pre">gigabytes</span></code>,
+<code class="docutils literal"><span class="pre">snapshots</span></code>, and <code class="docutils literal"><span class="pre">volumes</span></code>.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Support for DNS resolution using internal or external DNS services
+for neutron resources<ul>
+<li>This feature supports internal DNS resolution and integration with
+external DNS services for neutron resources. Template authors can
+use the <code class="docutils literal"><span class="pre">dns_name</span></code> and <code class="docutils literal"><span class="pre">dns_domain</span></code> properties of neutron
+resource plugins.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>New <code class="docutils literal"><span class="pre">max_server_name_length</span></code> configuration option<ul>
+<li>This feature adds the <code class="docutils literal"><span class="pre">max_server_name_length</span></code> configuration
+option. The option defaults to the prior upper bound (<code class="docutils literal"><span class="pre">53</span></code>).
+Users can change the value if necessary. For example, lower the
+value to comply with LDAP other internal name limit restrictions.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>New template directory configuration option<ul>
+<li>This feature adds the <code class="docutils literal"><span class="pre">template_dir</span></code> configuration option.
+Typically, Orchestration uses the <code class="docutils literal"><span class="pre">/etc/heat/templates</span></code>
+directory. This option makes it configurable.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>New <code class="docutils literal"><span class="pre">map_replace</span></code> function<ul>
+<li>A new <code class="docutils literal"><span class="pre">map_replace</span></code> function accepts two arguments: an input map
+and a map containing a keys/values map. Key or value substitutions
+on the input map are performed based on arguments.</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>New <code class="docutils literal"><span class="pre">yaql</span></code> function<ul>
+<li>The <code class="docutils literal"><span class="pre">yaql</span></code> function accepts two arguments: an expression of type
+<code class="docutils literal"><span class="pre">string</span></code> and data of type <code class="docutils literal"><span class="pre">map</span></code>. The function evaluates
+expressions on a given data set.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="whats-changed.html" class="btn btn-neutral float-right" title="What’s changed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="known-issues.html" class="btn btn-neutral float-left" title="Known issues" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

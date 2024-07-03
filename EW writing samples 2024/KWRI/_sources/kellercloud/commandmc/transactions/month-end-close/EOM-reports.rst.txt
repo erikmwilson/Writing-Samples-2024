@@ -1,0 +1,68 @@
+
+.. _EOM-reports-month-end-close-commandmc:
+
+End of Month Reports
+====================
+
+Reports required to print in order to close the month:
+
+* EOM/Production Reports
+
+   * Activity Report
+
+   * Associate Recap
+
+   * Monthly Written Sales Volume by Associate Name
+
+   * Monthly Closed Sales Volume by Associate Name
+
+   * Monthly Written Sales Volume by Type, Class and Associate Name
+
+   * Monthly Closed Sales Volume by Type, Class, and Associate Name
+
+   * Monthly Closed Sales Volume by Name, Type and Class
+
+   * Monthly Written Sales Volume by Name, Type and Class
+
+   * Monthly Cancelled sales volume (TNCs)by Associate Name
+
+   * Monthly Listings Taken volume
+
+   * Projected Closings by Closing Date
+
+   * Royalty Exceptions Report
+
+   * Strategic Alliances- All Vendor Activity by Vendor Name
+
+   * Strategic Alliances -All Associate Activity by Associate Name
+
+   * Temporary Sponsor Report
+
+* EOM/Reconciliation (Fees) Reports
+
+   * New Associates Report
+
+   * Associate Tech Fee Report
+
+   * KW Cares Report
+
+   * KW Kids Can Report
+
+   * KW Bold Scholarship Report
+
+* Optional Reports
+
+   * Associate Birthdays
+
+   * Associate Anniversaries
+
+   * E&O Report
+
+   * Transmittal Proof Report
+
+   * Deposit Summary Report
+
+   * Associates Capped this Month
+
+   * Royalty Anniversary Report
+   

@@ -1,0 +1,29 @@
+
+.. _add-note-contacts-command:
+
+Add a Note
+==========
+
+Command tracks the activities of the contact (in person meetings, calls, or texts) in the contact's timeline. These activities are also tracked through the Goals Report, in the Command Reports application.
+
+To add an activity to a contact, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#.  In the **Contacts** list, click the name of the contact to which you want to add an activity.
+
+#. At the bottom right of the contact details page, click the blue circle |contacts-interactions-icon|.
+
+   .. |contacts-interactions-icon| image:: ../../../../images/contacts-interactions-icon.png
+      :height: 20
+
+#. Above the blue circle, options will appear. Choose the **Add Note** option.
+
+#. On the **Add New Note** window, enter a **Note Title**, **Description**, and click **Save**.
+
+  You can now access this, and other notes that you add, on both the contact's timeline, and on the contact details **Notes** tab.

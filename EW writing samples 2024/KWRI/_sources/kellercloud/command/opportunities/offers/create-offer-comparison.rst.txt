@@ -1,0 +1,34 @@
+
+.. _create-offer-comparison-opportunities-command:
+
+Create an Offer Comparison
+==========================
+
+Within Opportunities, Keller Williams has created an offer management system. When you enter multiple offers for a Listing into the system, you can create offer comparisons that you can either download or email to your clients.
+
+To create an offer comparison, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) within **Listings** that contains the Opportunity.
+
+#. Click on the Opportunity name.
+
+#. To compare offers, check the box next to each offer you want to add to the comparison, then click **Compare Offers**.
+
+opportunities_compare_offers.png
+
+#. On the **Compare offers** page, click either **Download** or **Email offer Comparison**.
+
+   * Download - Creates a live web page with the offer comparison. Use your browser functionality to either download or print this web page.
+
+   * Email Offer Comparison - Enter the **Email Address** of the recipient, a **Subject Title** for the email, and update the **Email Message** (if necessary).
+
+     You also have the option to **Add Attachment** and to **Send a copy to my email** (send a copy of the email to yourself).
+
+#. Click **Send Offer**.

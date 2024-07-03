@@ -1,0 +1,56 @@
+===========
+Swift nodes
+===========
+
+.. note:: Swift nodes are optional. If the customer is using Swift, a
+          minimum of 3 Swift nodes are required.
+
+HP DL380 Gen9
+~~~~~~~~~~~~~
+
+-  Operating System: OpenStack on Ubuntu 16.04
+
+-  Model: HP DL380 Gen9 LFF - 3.5" Chassis
+
+-  Chassis Size: 2U
+
+-  Processor: Dual Socket Octo Core Intel Xeon E5-2630 2.40 Ghz
+
+-  Memory: 128 GB
+
+-  RAID Config: RAID1
+
+-  Hard Drives: 2x HP 600GB 15K SAS 2.5" in a 3.5" Hybrid Carrier
+
+-  RAID Config: RAID0 (Each SSD is in its OWN RAID0. Used for Swift
+   Account and Container services)
+
+-  Hard Drives: 2x HP 480GB 6G SATA MU 3.5inch SCC SSD
+
+-  RAID Config: RAID0 (Each drive is in its OWN RAID0. Used for Swift
+   Object Data)
+
+-  Hard Drives: 8x HP 6TB 7.2K NL-SAS 3.5”
+
+-  Onboard NIC: HP Ethernet 1Gb 4-Port 366T PCIe NIC (Already included)
+
+-  Onboard NIC: Intel Ethernet 2-Port 561T 10Gb PCIe NIC (RJ45) (Already
+   included)
+
+-  Additional NIC: Intel Ethernet 2-Port 561T 10Gb PCIe NIC (RJ45)
+
+.. image:: ../../figures/dl380_gen9_front_back.jpg
+
+If more storage is required per Swift Object Storage node, you can
+attach up to two JBODs (only one JBOD per Swift Object Storage node is
+recommended to adhere to the 2 disks per 1 physical core). Each Swift
+Object Storage node needs as many storage cards as there are JBODs.
+The following storage card and the following JBOD model should be used:
+
+Storage Card: Adaptec PMC 8885Q
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+JBOD: Supermicro CSE-847E26 3.5"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../../figures/SC847-RJBOD_spec.jpg

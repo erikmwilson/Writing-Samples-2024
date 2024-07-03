@@ -1,0 +1,35 @@
+========================
+Private Cloud components
+========================
+
+The proposed private cloud architecture consists of the following
+components:
+
+-  RPC Powered by OpenStack (RPCO)
+
+   -  (3) Infrastructure Nodes hosting LXC Containers
+
+   -  (1) Logging Node ELK Stack (ElasticSearch, LogStash, Kibana)
+
+   -  (3) Compute Nodes
+
+   -  (5) Swift object storage nodes
+
+   -  (5) Ceph storage nodes
+
+-  (17) HP DL380 Gen9
+
+-  (2) Cisco 9372PX (aggregation layer)
+
+-  (2) 10Gbps Cisco 9372TX (TOR)
+
+-  (2) Cisco ASA 5515
+
+-  (2) F5 BIG-IP 2000s with AFM (Advanced Firewall Module) with
+   F5-UPG-SFP+-R
+
+.. note:: The above Logging Node is intended to aid in the troubleshooting and
+          auditing of actions executed within the private cloud. All OpenStack
+          services related logs are aggregated onto this centralized logging
+          server through rsyslog and ELK stack tools are then used to analyze
+          these logs.

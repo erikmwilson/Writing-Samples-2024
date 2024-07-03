@@ -1,0 +1,68 @@
+============================
+OpenStack monitoring metrics
+============================
+
+The OpenStack services API uptime and metrics are set up as remote
+Cloud Monitoring checks. Those checks then kick off pollers that then
+query the local MaaS agent. The MaaS agent periodically obtains a list
+of Rackspace Cloud Monitoring endpoints to send monitoring data to and
+returns a list of metrics defined by the corresponding *check* to all
+endpoints once a Rackspace polling event is kicked off.
+
+Following is a list of network ranges of the Rackspace Cloud
+Monitoring endpoints that would require ingress connectivity into the
+RPC cloud:
+
+.. list-table:: **Cloud monitoring endpoints**
+   :widths: 50 50
+   :header-rows: 1
+
+   * - IP
+     - Endpoint
+   * - 50.56.142.128/26
+     - DFW
+   * - 180.150.149.64/26
+     - HKG
+   * - 69.20.52.192/26
+     - IAD
+   * - 78.136.44.0/26
+     - LON
+   * - 50.57.61.0/26
+     - ORD
+   * - 119.9.5.0/26
+     - SYD
+
+
+The remote Cloud Monitoring system polls the locally running MaaS
+agent, which in turn polls the public OpenStack API endpoint to verify
+overall API functionality. Remote checks do not send credentials or
+any other identifying information. The poller checks for a ``200 OK``
+response code. Any other response generates an alert. These specific
+monitoring checks are recommended but not a hard requirement for RPC
+supportability.
+
+The following list of TCP ports must be allowed from Rackspace Cloud
+Monitoring pollers:
+
+.. list-table:: **Cloud monitoring TCP ports**
+   :widths: 50 50
+   :header-rows: 1
+
+   * - TCP port
+     - OpenStack service
+   * - 443
+     - Horizon
+   * - 8000
+     - Heat
+   * - 8004
+     - Heat
+   * - 5000
+     - Keystone
+   * - 9292
+     - Glance
+   * - 9696
+     - Neutron
+   * - 8774
+     - Nova
+   * - 8776
+     - Cinder

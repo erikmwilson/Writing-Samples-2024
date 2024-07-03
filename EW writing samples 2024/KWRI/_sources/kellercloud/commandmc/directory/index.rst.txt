@@ -1,0 +1,19 @@
+
+.. _directory-index-commandmc:
+
+Directory
+=========
+
+The Directory displays all the regions and offices in your Market Center. Within each region you can see all counties and within each office, you can see all agents. Using the Directory, you can set the Luxury program criteria and then add or remove individual agents to the program.
+
+The following sections contain information about the
+Directory applet.
+
+.. toctree::
+   :maxdepth: 1
+
+   manage-luxury-roster
+   luxury-exception
+   luxury-min-units
+   adjust-floor-price-luxury
+   manage-luxury-requests

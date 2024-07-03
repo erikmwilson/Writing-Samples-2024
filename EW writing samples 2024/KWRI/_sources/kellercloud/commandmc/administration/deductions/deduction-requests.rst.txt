@@ -1,0 +1,23 @@
+
+.. _deductions-requests-commandmc:
+
+Deduction Requests
+==================
+
+To approve or decline a deduction request, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Deductions**.
+
+#. Click **Deduction Requests**. The number of outstanding requests is displayed in red.
+
+#. On the **Deduction Requests** page, if necessary, select the **Category**, click **Add Recurring Amount** and enter **Amount Per Transaction**
+
+#. Click **Approve** or **Decline**.

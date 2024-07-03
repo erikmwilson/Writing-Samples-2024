@@ -1,0 +1,91 @@
+
+.. _overview-recruits-commandmc:
+
+Recruits Overview
+=================
+
+With Recruits, you can track all interactions with potential KW associates. Recruits consists of phases that are subdivided into stages. Within each stage you can create a checklist of tasks.
+
+A recruit begins at the first stage of the first Phase. As the checklist tasks are completed within a stage, the recruit is moved to the next stage. When all the stages in a phase are completed, they are moved to the next phase, until they finally either join your Market Center or are removed from the pipeline.
+
+You can add recruits manually one at a time (:ref:`add-recruit-recruits-cmc`) or import multiple recruits using CSV files (:ref:`import-recruits-cmc`).
+
+Recruits consists of the following tabs:
+
+Recruit Management
+^^^^^^^^^^^^^^^^^^
+
+The **Recruit Management** tab contains a list view of all the recruits in your database. The tab displays some basic recruit information. You can click on a recruit name to see the recruit details. Recruits listed on this tab are not necessarily in the Pipeline yet, but can be added.
+
+From **Recruit Management** tab you can complete the following tasks:
+
+* :ref:`view-details-recruits-commandmc`
+
+* :ref:`manage-checklist-list-recruits-commandmc`
+
+* :ref:`add-recruit-to-pipeline-recruits-cmc`
+
+* :ref:`change-pipeline-phase-recruits-cmc`
+
+* :ref:`assign-recruits-cmc`
+
+* :ref:`remove-from-pipeline-recruits-cmc`
+
+* :ref:`archive-recruits-cmc`
+
+Recruiting Pipeline
+^^^^^^^^^^^^^^^^^^^
+
+The **Recruiting Pipeline** tab displays your recruits as cards organized by phase and stage. Each card displays some basic recruit information. You can click on a recruit name to see the recruit details.
+
+The following phases and stages are preset and cannot be deleted:
+
+* Active Recruit
+
+  * Recruit Lead
+
+  * Scheduling Appointment
+
+* Appointment
+
+  * Appointment Set
+
+  * Appointment Held
+
+  * Consultation Set
+
+  * Consultation Held
+
+* Cultivate
+
+  * Follow Up
+
+  * Transition Discussion
+
+* Committed
+
+  * Join in Process
+
+  * Joined
+
+You can add additional stages to each phase. For more information, see :ref:`edit-stages-recruits-cmc`.
+
+From the **Recruiting Pipeline** tab you can complete the following tasks:
+
+* :ref:`view-details-recruits-commandmc`
+
+* :ref:`manage-checklist-card-recruits-cmc`
+
+* :ref:`change-pipeline-phase-card-recruits-cmc`
+
+* :ref:`assign-recruits-pipeline-cmc`
+
+* :ref:`remove-from-pipeline-card-recruits-cmc`
+
+* :ref:`assign-recruits-cmc`
+
+Find Recruits
+^^^^^^^^^^^^^
+
+Use the **Find Recruits** tab to find recruits based on their geographical location. You can then add them to your recruits database.
+For more information, see :ref:`overview-find-recruits-commandmc`.

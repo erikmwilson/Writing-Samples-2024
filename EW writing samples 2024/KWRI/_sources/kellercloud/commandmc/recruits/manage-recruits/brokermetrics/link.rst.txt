@@ -1,0 +1,29 @@
+
+.. _brokermetrics-link-recruits-commandmc:
+
+Link Recruit to BrokerMetrics®
+==============================
+
+To automatically pull recruit production information from BrokerMetrics, you must link the specific recruit to their information in BrokerMetrics.
+
+To link a recruit to BrokerMetrics, complete the following steps:
+
+.. include:: brokermetrics-mc-login.rst
+
+#. At the top of the **Production** tab, click **Link BrokerMetrics Record**.
+
+#. On the **Suggested BrokerMetrics®** window, select the correct agent record and click **Link Record**.
+
+   You receive a **BrokerMetrics® Record Linked** confirmation message.
+
+   .. note::
+
+      The search for agent records can return multiple records. Importing multiple record for the same recruit can distort the recruit's production metrics.
+
+#. If no recruit records are returned or you do not see a correct result for the recruit, click **Search for Agents** to run a manual search.
+
+#. On the **Link to BrokerMetrics®** window, enter relevant recruit search information and click **Search for Agents**.
+
+#. Select a recruit result and click **Link Record**.
+
+   You receive a **BrokerMetrics® Record Linked** confirmation message.

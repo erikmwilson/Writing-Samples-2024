@@ -1,0 +1,67 @@
+======================
+Image service (glance)
+======================
+
+The RCPO Image service acts as a registry for virtual disk images.
+Users can add new images or take a snapshot of an existing server for
+immediate storage. You can use the snapshots for backup or as
+templates for new servers.
+
+Registered images can be stored in the Object Storage service or in
+other locations, such as simple file systems or external Web servers.
+
+The following image disk formats are supported:
+
+-  aki/ami/ari (Amazon kernel, ramdisk, or machine image)
+
+-  iso (archive format for optical discs, such as CDs)
+
+-  qcow2 (Qemu/KVM, supports Copy on Write)
+
+-  raw (unstructured format)
+
+-  vhd (Hyper-V, common for virtual machine monitors from vendors such
+   as VMware, Xen, Microsoft, and VirtualBox)
+
+-  vdi (Qemu/VirtualBox)
+
+-  vmdk (VMware)
+
+Container formats can also be registered by the Image service. The
+container format determines the type and detail level of the virtual
+machine metadata to store in the image.
+
+-  The following container formats are supported:
+
+-  bare (no metadata)
+
+-  ova (OVA tar archive)
+
+-  ovf (OVF format)
+
+-  aki/ami/ari (Amazon kernel, ramdisk, or machine image)
+
+
+.. list-table:: **Image service (glance) components**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+   * - glance-api
+     - Interacts with storage back ends to handle requests for image
+       retrieval and storage. The API uses glance-registry to retrieve
+       image information. You must not access the registry service
+       directly.
+   * - glance-registry
+     - Manages all metadata for each image.
+   * - glance
+     - Command-line client to access the API.
+
+
+The following high level diagram shows the main interfaces that the
+Image service uses to register and retrieve images from the Image
+database.
+
+.. image:: ../../../figures/glance-image-service.png
+   :alt: RCPO Image service high-level data flow

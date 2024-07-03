@@ -1,0 +1,47 @@
+
+.. _channel-learning-path-docebo-connect:
+
+Channels and Learning Paths
+===========================
+
+The following information should help you to determine when to create a Channel or a Learning Path for your content.
+
+Channel
+^^^^^^^
+
+A Channel is a container that holds a collection of learning assets in support of a topic, role or community. The goal of a Channel is to help users easily find information.
+
+Some examples of assets are: courses, videos, links, Learning Paths, Playlists, documents, PDFs, peer feedback, coach and share, and user generated content.
+
+A Channel should be used when your content meets the following criteria:
+
+* There is a larger selection of content that needs to grouped together by topic, role, or community.
+
+* Access to the wider group of content need to be limited to a role or community.
+
+* The collection of content does not solve a specific learning problem, and instead, provides solutions for multiple learning problems that fall under a topic, role, or community.
+
+* Some of the content, but not all, may need to be taken in a specific order.
+
+* Learners do not need or are not required to complete all the learning content included in the channel.
+
+* The focus is on informal consumption and access of learning content.
+
+Learning Path
+^^^^^^^^^^^^^
+
+A Learning Path is a series of online courses that are taken in a specified order. Learning Paths can be added to the appropriate Channels. The goal of a Learning Path is to help a user learn a specific behavior or skill.
+
+A Learning Path should be used when your content meets the following criteria:
+
+* There is a specific learning problem that needs to be solved.
+
+* The learning experience is designed for or needs to be assigned to specific people or roles.
+
+* The learning experience builds on what is learned and needs to be taken in specific order.
+
+* Completion needs to be tracked and documented.
+
+* The structure is on-demand or blended (on-demand AND webinar, virtual classroom, or livestream).
+
+* The focus is on formal consumption and completion of learning content.

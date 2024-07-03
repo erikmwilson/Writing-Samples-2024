@@ -1,0 +1,25 @@
+
+.. _add-note-bulk-commandmc:
+
+Add a Note to Multiple Recruits
+===============================
+
+You can add a note to multiple recruits using the Bulk Action feature. You can also add notes to individual recruits. For more information, see :ref:`add-note-recruits-commandmc`.
+
+To add a note to multiple recruits, complete the following steps:
+
+.. include:: recruits-mc-login.rst
+
+#. Click the **Recruit Management** tab.
+
+#. Select the check boxes next to the recruits to which you want to add a note. To select all recruits, select the check box in the header row.
+
+   .. note::
+
+      You can filter your recruits list using Filters to target certain criteria (for example, **Pipeline Status**).
+
+#. Click **Add A Note** under the recruits list.
+
+#. On the **Add New Note** window, enter the **Note Title** and **Note Description**.
+
+#. Click **Save**.

@@ -1,0 +1,25 @@
+
+.. _run-ps-calculator-commandmc:
+
+Run Profit Share Calculator
+===========================
+
+To run the Profit Share Calculator, complete the following steps:
+
+.. include:: ../support-tools-login.rst
+
+#. On the left-hand Supprt Tools pane, click **PS Calculation**.
+
+#. On the **Calculator** tab, click **Let's Go**.
+
+#. The tool calculates your Market Center data, click **Next to Associates**.
+
+   .. note::
+
+      To repeat a step, click **Recalculate**. If a step returns a **Failed** message, click **Restart Calculation**. (**Are there troubleshooting steps to fix a failed calculation?**)
+
+#. The tool calculates your Associate data, click **Next to Profit Share**.
+
+#. The tool calculates your Profit Share data, click **Validate & Create Reports**.
+
+  Validated reports display on the **Calculator** tab.

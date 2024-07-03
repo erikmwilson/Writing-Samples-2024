@@ -1,0 +1,10 @@
+========================
+Physical cabling diagram
+========================
+
+.. note:: The following physical cabling design is a general design
+          and any network names or ranges depicted here are only an
+          example.
+
+.. image:: ../figures/rdc-physical-10g-cabling.png
+   :alt: Physical cabling diagram

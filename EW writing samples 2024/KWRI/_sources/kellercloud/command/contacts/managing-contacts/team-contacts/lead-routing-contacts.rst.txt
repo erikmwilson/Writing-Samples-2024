@@ -1,0 +1,44 @@
+
+.. _lead-routing-contacts-command:
+
+Create a Lead and Send It Through Lead Routing (Teams)
+======================================================
+
+With Command, you can add individual contacts or import multiple contacts at one time from a database such as a CRM or contact list (for example, Google Contacts).
+
+For information about working with leads, see the following topics:
+
+* :ref:`claim-lead-notification-command`
+
+* :ref:`access-lead-pool-contacts-command`
+
+* :ref:`claim-lead-pool-contacts-command`
+
+To create a Lead and send it through lead routing, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click **Add Contact**, at the top right of the page.
+
+#. In the **Add to Contacts** window, Enter the **Full Name**, **Primary Email** and **Primary Phone** (optional).
+
+#. In the **Select Owner** drop-down, select your team.
+
+#. Check **Mark as Lead** box and check the **Send to Lead Routing** box. You are not able to send a contact through lead routing (leads only), so the **Mark as Lead** check box must be checked to unlock the **Send to Lead Routing** check box.
+
+#. Complete any other contact fields that you have information for.
+
+   For more information see, :ref:`contacts-info-fields-command`.
+
+#. Click **Add More Information**.
+
+#. In the **Sales Pipeline** section, choose the **Select From List** option, and choose a **Lead Source** from the drop-down.
+
+   Every lead route you create is lead source specific, even if you choose all lead sources. If the lead does not have a lead source, it will not route.
+
+#. Click **Create**. The lead is sent through your lead routes.

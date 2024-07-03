@@ -1,0 +1,43 @@
+
+.. _add-activity-recruits-commandmc:
+
+Add an Activity
+===============
+
+CommandMC tracks the activities of the recruit (in person meetings, calls, or texts) in the recruit's timeline.
+
+To add an activity to a recruit, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click one of the following tabs at the top of the page:
+
+   * Click the **Recruit Management** tab to display a list of all your Market Center recruits.
+
+   * Click the **Recruiting Pipeline** tab to display all recruits that are in the Pipeline. Recruit cards are organized by Phase, Stage, and the currently selected Sort pattern.
+
+#. Search for the correct recruit. For more information, see :ref:`search-recruits-commandmc`.
+
+#. Click the recruit name to view the recruit details.
+
+#. On the **Recruit Details** window, click the **Timeline** tab.
+
+#. Click **Add Activity**.
+
+#. On the **Add New Activity** window, enter the following information:
+
+   a. Choose an **Interaction Type** using the drop-down:
+      * Meeting
+      * Call
+      * Text
+      * Quick Note
+
+   #. Select the date of the activity. Click in the **Date** field and choose from the calendar widget.
+
+   #. Enter a **Description**, or note about the activity.
+
+   #. Check the **Has Responded** check box, if you connected with the recruit.
+
+#. Click **Save**.
+
+   You are now able to track all of the notes and activities for your recruit, in the recruit's timeline.

@@ -1,0 +1,36 @@
+
+.. _add-activity-associates-commandmc:
+
+Add an Activity
+===============
+
+CommandMC tracks the activities of the associate (in person meetings, calls, or texts) in the associate's timeline.
+
+To add an activity to an associate, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the associate name to view the associate details.
+
+#. On the **Associate Details** window, click the **Timeline** tab.
+
+#. Click **Add Activity**.
+
+#. On the **Add New Activity** window, enter the following information:
+
+   a. Choose an **Interaction Type** using the drop-down:
+      * Meeting
+      * Call
+      * Text
+
+   #. Select the date of the activity. Click in the **Date** field and choose from the calendar widget.
+
+   #. For calls or texts enter the **Outcome**.
+
+   #. Enter a **Description**, or note about the activity.
+
+#. Click **Save**.
+
+   You are now able to track all of the notes and activities for your associate, in the associate's timeline.

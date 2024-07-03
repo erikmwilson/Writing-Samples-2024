@@ -1,0 +1,29 @@
+
+.. _add-organization-franconnect:
+
+Add an Organization
+===================
+
+For the first phase of FranConnect, synchronization between organizations created in FranConnect and AMS organizations are requested through the API.
+
+To add a new Business Center or Market Center to FranConnect, contact the Data Team. Requests for new organizations are processed every 24 hours at 10 PM.
+
+When creating a new organization, make sure you choose the correct region. The region defines whether the Market Center is WorldWide or KWRI. Any update to a region (for example, the region profile is updated, a new region is opened, a region is closed), must be communicated to the Data Team and is updated manually on a case-by-case basis.
+
+.. note::
+
+   The following regions are not valid and should not be used:
+
+   * Arkansas
+
+   * California, Orange Co.
+
+   * Germany
+
+   * KWRI
+
+   * Southern Arizona
+
+Use the Parent Organization value to connect a Business Center to a World Wide or a KWRI Market Center.
+
+After an organization is created in FranConnect, you can edit selected information in the FranConnect user interface.

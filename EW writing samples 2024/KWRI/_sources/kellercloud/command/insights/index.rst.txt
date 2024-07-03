@@ -1,0 +1,11 @@
+
+.. _insights-command-index:
+
+Insights
+========
+
+The following sections contain information about the
+Insights application.
+
+.. toctree::
+   :maxdepth: 1

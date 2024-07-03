@@ -1,0 +1,29 @@
+===============
+Tested Hardware
+===============
+
+Dell
+~~~~
+
+* R720
+
+HP
+~~
+
+* DL380 G9
+
+===================================
+Firmware configuration requirements
+===================================
+
+Dell
+~~~~
+
+* Boot from PXE must be disabled on all interfaces but your PXE network.
+
+* Boot order must have the primary hard disk first and the PXE network second.
+
+HP
+~~
+
+* The bootable PXE interface must be bootable before any other bootable device.

@@ -1,0 +1,49 @@
+========================================
+Downgrade and pin RabbitMQ upgrade notes
+========================================
+
+Before upgrading RPCO versions 9.0.6 and earlier, check the RabbitMQ
+version. RabbitMQ versions later than 3.4.3-1 must be manually
+downgraded.
+
+#. Check the RabbitMQ version:
+
+   .. code-block:: console
+
+      # rabbitmqctl status
+
+#. If RabbitMQ version is later than 3.4.3-1, download RabbitMQ version
+   3.4.3-1.
+
+#. Stop the RabbitMQ server for each node in reverse order, for example,
+   from node 03 to node 01:
+
+   .. code-block:: console
+
+      # service rabbitmq-server stop
+
+#. Downgrade the RabbitMQ server:
+
+   .. code-block:: console
+
+      # wget http://www.rabbitmq.com/releases/rabbitmq-server
+        /v3.4.3/rabbitmq-server_3.4.3-1_all.deb && \
+        dpkg -i rabbitmq-server_3.4.3-1_all.deb && \
+        rm -f rabbitmq-server_3.4.3-1_all.deb
+
+#. Start the RabbitMQ server for each node in sequential order, for
+   example, from node 01 to node 03:
+
+   .. code-block:: console
+
+      # service rabbitmq-server start
+
+For RPCO versions 9.0.7 and later, RabbitMQ is pinned to version 3.4.3-1
+by default. The pinned RabbitMQ version can be set by editing the
+``opt/openstack-ansible/etc/rpc-deploy/rpc_user_config.yml`` file and
+adding the ``rabbitmq_package_url`` variable with the RabbitMQ package
+URL. For example:
+
+.. code-block:: ini
+
+   rabbitmq_package_url: "https://mirror.rackspace.com/rackspaceprivatecloud/downloads/rabbitmq-server_3.4.3-1_all.deb"

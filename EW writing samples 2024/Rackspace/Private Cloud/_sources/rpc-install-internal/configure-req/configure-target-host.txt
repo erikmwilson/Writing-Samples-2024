@@ -1,0 +1,171 @@
+======================
+Configure target hosts
+======================
+
+Edit the ``/etc/openstack_deploy/openstack_user_config.yml`` file to
+configure the target hosts.
+
+
+.. warning::
+
+   Do not assign the same IP address to different target hostnames.
+   Unexpected results might occur. Each IP address and hostname must be a
+   matching pair. To use the same host in multiple roles, for example
+   infrastructure and networking, specify the same hostname and IP address
+   in each section.
+
+   Use short hostnames rather than fully-qualified domain names (FQDN) to
+   prevent length limitation issues with LXC and SSH. For example, a
+   suitable short hostname for a compute host might be: ``123456-Compute001``.
+
+.. important::
+
+   In Rackspace data centers, the format for the name is as follows, where
+   ``CORE-ID`` is the CORE device ID number, ``category`` is the host category,
+   and ``NNN`` is the host number: ``COREID-categoryNNN``. For more information
+   about target host naming conventions, see: :ref:`naming-target-hosts`.
+
+#. In the ``shared-infra_hosts`` section, configure a list that contains
+   at least three infrastructure target hosts :
+
+   .. code-block:: yaml
+
+      shared-infra_hosts:
+        603975-infra01:
+          ip: INFRA01_IP_ADDRESS
+        603989-infra02:
+          ip: INFRA02_IP_ADDRESS
+        627116-infra03:
+          ip: INFRA03_IP_ADDRESS
+        628771-infra04: ...
+
+   Replace ``_IP_ADDRESS`` with the IP address of the ``br-mgmt``
+   container management bridge on each infrastructure target host. Use
+   the same net block as bond0 on the nodes, for example:
+
+   .. code-block:: yaml
+
+      shared-infra_hosts:
+        603975-infra01:
+          ip: 10.240.0.80
+        603989-infra02:
+          ip: 10.240.0.81
+        627116-infra03:
+          ip: 10.240.0.184
+
+#. In the ``os-infra_hosts`` section, configure a list that contains at least
+   three infrastructure target hosts  (you can reuse previous hosts, if
+   their names and IP addresses are consistent):
+
+   .. code-block:: yaml
+
+      os-infra_hosts:
+        infra01:
+          ip: INFRA01_IP_ADDRESS
+        infra02:
+          ip: INFRA02_IP_ADDRESS
+        infra03:
+          ip: INFRA03_IP_ADDRESS
+        infra04: ...
+
+#. In the ``identity_hosts`` section, configure a list of at least three
+   Identity target hosts:
+
+   .. code-block:: yaml
+
+      identity_hosts:
+        infra1:
+          ip: IDENTITY01_IP_ADDRESS
+        infra2: ...
+
+#. In the ``network_hosts`` section, configure a list containing at least one
+   network target host. Replace ``_IP_ADDRESS`` with the IP address of the
+   ``br-mgmt`` container management bridge on each network target host.
+
+   .. code-block:: yaml
+
+      network_hosts:
+        602117-network01:
+          ip: NETWORK01_IP_ADDRESS
+        602534-network02: ...
+
+#. In the ``compute_hosts`` section, configure a list containing at least one
+   compute target host. Replace ``_IP_ADDRESS`` with the IP address of the
+   ``br-mgmt`` container management bridge on each compute target host.
+
+   .. code-block:: yaml
+
+      compute_hosts:
+        900089-compute001:
+          ip: COMPUTE001_IP_ADDRESS
+        900090-compute002: ...
+
+#. In the ``log_hosts`` section, configure a list containing at least one
+   logging target host. Replace ``_IP_ADDRESS`` with the IP address of the
+   ``br-mgmt`` container management bridge on each logging target host.
+
+   .. code-block:: yaml
+
+      log_hosts:
+        900088-logging01:
+          ip: LOGGER1_IP_ADDRESS
+        903877-logging02: ...
+
+
+#. In the ``repo-infra_hosts`` section, configure a list containing at least
+   one repository target host. Replace ``_IP_ADDRESS`` with the IP address of
+   the ``br-mgmt`` container management bridge on each repository target host.
+
+   .. code-block:: yaml
+
+      repo-infra_hosts:
+        903939-repo01:
+          ip: REPO1_IP_ADDRESS
+        907963-repo02: ...
+
+   The repository typically resides on one or more infrastructure hosts.
+   Alternatively, specify a value for the ``openstack_repo_url``
+   variable in the ``/etc/openstack_deploy/user_group_vars.yml`` file.
+   The value should contain a URL for a host with the appropriate
+   layout. For example:
+
+   .. code-block:: yaml
+
+      openstack_repo_git_url: "https://rpc-repo.rackspace.com/"
+
+   Using ``repo-infra_hosts`` configures a local repository with the
+   appropriate layout and sets ``openstack_repo_url`` for you.
+
+#. In the ``storage-infra_hosts`` section, configure a list containing at
+   least three infrastructure target hosts  (you can reuse
+   previous hosts as long as their names and IP addresses are consistent):
+
+   .. code-block:: yaml
+
+      storage-infra_hosts:
+        infra01:
+          ip: INFRA01_IP_ADDRESS
+        infra02:
+          ip: INFRA02_IP_ADDRESS
+        infra03:
+          ip: INFRA03_IP_ADDRESS
+        infra04: ...
+
+#. In the ``storage_hosts`` section, configure a list containing at least one
+   optional storage host. Replace ``_IP_ADDRESS`` with the IP address of the
+   ``br-mgmt`` container management bridge on each storage target host.
+   Each storage host also requires additional configuration to define the back
+   end driver.
+
+   .. code-block:: yaml
+
+      storage_hosts:
+        100338-storage01:
+          ip: STORAGE01_IP_ADDRESS
+        100392-storage02: ...
+
+   .. note::
+
+      The default configuration includes an optional storage host. To
+      install without storage hosts, comment out the stanza beginning with
+      the *storage_hosts:* line.

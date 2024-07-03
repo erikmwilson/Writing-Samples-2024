@@ -1,0 +1,56 @@
+===========================================
+Configure Dashboard SSL settings (optional)
+===========================================
+
+Customizing the Dashboard deployment is done within the ``os-horizon``
+role in the ``/etc/ansible/roles/os_horizon/defaults.main.yml`` file.
+
+There are two options for deploying SSL certificates with Dashboard:
+self-signed and user-provided certificates. Auto-generated self-signed
+certificates are currently the default.
+
+.. note::
+
+   If F5 is used, update the certificates on the
+   SSL profile for the horizon SSL virtual IP address.
+
+
+Self-signed SSL certificates
+----------------------------
+
+For self-signed certificates, users can configure the subject of the
+certificate by using the ``horizon_ssl_self_signed_subject`` variable. By
+default, the playbook does not regenerate a self-signed SSL certificate
+if one already exists on the target. To force the certificate to be
+regenerated the next time the playbook runs, set
+``horizon_ssl_self_signed_regen`` to ``true``. The playbook then
+distributes the certificates and keys to each horizon container.
+
+.. note::
+
+   When self-signed certificates are regenerated, they overwrite any
+   existing certificates and keys, including ones that were previously
+   user-provided.
+
+
+User-provided SSL certificates
+------------------------------
+
+Users can provide their own trusted certificates.
+
+#. Copy the SSL certificate, key, and CA certificate to the deployment host.
+
+#. In the ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file, set
+   the following variables:
+
+   - ``horizon_user_ssl_cert`` - path to the SSL certificate in the
+     container
+
+   - ``horizon_user_ssl_key`` - path to the key in the container
+
+   - ``horizon_user_ssl_ca_cert`` - path to the CA certificate in the
+     container
+
+   If those three variables are provided, self-signed certificate
+   generation and usage are disabled. However, the user is responsible
+   for deploying those certificates and keys within each container.

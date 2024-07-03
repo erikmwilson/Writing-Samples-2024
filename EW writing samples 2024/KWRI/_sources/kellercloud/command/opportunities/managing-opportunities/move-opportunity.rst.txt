@@ -1,0 +1,27 @@
+
+.. _move-opportunities-command:
+
+Move an Opportunity
+===================
+
+As your Opportunity progresses, you can move it through the phases and stages of your pipeline.
+
+To move an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click and hold the Opportunity card to drag the Opportunity to the correct stage. If you need to move it to another phase, drag the Opportunity to the correct phase above the stages. This moves the opportunity to the first stage of that phase.
+
+   As your Opportunity progresses, you will add more information, associate a listing with the Opportunity, and create and track offers.
+
+Closed Opportunities
+^^^^^^^^^^^^^^^^^^^^
+
+After you move an Opportunity to the Closed phase, the transaction is complete. You can find the details for all funded transactions by checking the Closed phase of your Opportunities pipeline. Closed Opportunities remain in your pipelines for 30 days, after that, you must :ref:`search-opportunities-command` to view them.

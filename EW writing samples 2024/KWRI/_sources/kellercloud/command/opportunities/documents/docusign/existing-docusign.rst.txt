@@ -1,0 +1,25 @@
+
+.. _existing-docusign-opportunities-command:
+
+Create a KW DocuSign Account from an Existing DocuSign Account
+==============================================================
+
+In order to use DocuSign with Command, you must create the DocuSign account from within Command. This ensures that you get the free DocuSign Rooms account, that all KW agents have available to them, and that your DocuSign account is connected to your Market Center.
+
+.. note::
+
+   The email address attached to your DocuSign account is a key part of your DocuSign identity. If you have an existing DocuSign account, you cannot create a new KW DocuSign account with the same email address as in your existing DocuSign account.
+
+You can create a DocuSign acount in one of the following ways:
+
+* Change the email address on your existing DocuSign account to free up the email address in question for you to use with your new account. For more information, see `How to Update Your Email Address After Linking Your Rooms and eSign Accounts <https://support.docusign.com/en/guides/update-linked-accounts-email>`_.
+
+* Have the account using that email address closed. Contact DocuSign support and ask them to close the account associated with the email address in question. `Submit a request to DocuSign Support <https://support.docusign.com/SAR>`_.
+
+* Choose a different email address to associate with your new KW DocuSign account. It is recommended that you use your @KW.com email address, but not required.
+
+After you decide on a path for completion from the options above, you can now go to Command and set up your KW DocuSign account.
+
+For more information, see :ref:`connect-docusign-opportunities-command`.
+
+If your Command account already shows you partially connected, from attempting to connect to your existing account, click **Resend Invite**. On the next screen, click the create new account option and from there follow the steps linked above to create your new account.

@@ -1,0 +1,23 @@
+
+.. _add-note-associates-commandmc:
+
+Add a Note
+==========
+
+CommandMC tracks all notes related to the associate.
+
+To add a note to a associate, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the associate name to view the associate details.
+
+#. On the **Associate Details** window, click the **Notes** tab.
+
+#. Click **Add Note**.
+
+#. On the **Add New Note** window, enter a **Note Title**, **Description**, and click **Save**.
+
+  You can now access this, and other notes that you add, on both the associate's timeline, and on the associate details **Notes** tab.

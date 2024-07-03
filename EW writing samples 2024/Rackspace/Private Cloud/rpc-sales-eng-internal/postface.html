@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Document history and additional information &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Upgrade Expectations" href="../rpc-upgrade-exp/index.html" />
+    <link rel="prev" title="Why Blade Servers are Unsuitable for OpenStack Clouds" href="blade_servers/blade-servers-unsuitable-openstack.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Rackspace Private Cloud Sales Engineering Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference_architecture/index.html">Rackspace Private Cloud Reference Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blade_servers/blade-servers-unsuitable-openstack.html">Why Blade Servers are Unsuitable for OpenStack Clouds</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Document history and additional information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Rackspace Private Cloud Sales Engineering Documentation</a> &raquo;</li>
+        
+      <li>Document history and additional information</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-sales-eng-internal/postface.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="document-history-and-additional-information">
+<h1>Document history and additional information<a class="headerlink" href="#document-history-and-additional-information" title="Permalink to this headline">#</a></h1>
+<p>This release replaces and obsoletes all earlier releases. The most
+recent releases are listed in the following table:</p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Revision Date</th>
+<th class="head">Release information</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2017-04-24</td>
+<td>Rackspace Private Cloud r14.0.0 release</td>
+</tr>
+<tr class="row-odd"><td>2017-01-19</td>
+<td>Rackspace Private Cloud r13.1.3 release</td>
+</tr>
+<tr class="row-even"><td>2016-11-29</td>
+<td>Rackspace Private Cloud r13.1.2 release</td>
+</tr>
+<tr class="row-odd"><td>2016-11-15</td>
+<td>Rackspace Private Cloud r13.1.1 release</td>
+</tr>
+<tr class="row-even"><td>2016-10-31</td>
+<td>Rackspace Private Cloud r13.1.0 release</td>
+</tr>
+<tr class="row-odd"><td>2016-10-24</td>
+<td>Rackspace Private Cloud r13.0.3 release</td>
+</tr>
+<tr class="row-even"><td>2016-10-07</td>
+<td>Rackspace Private Cloud r13.0.2 release</td>
+</tr>
+<tr class="row-odd"><td>2016-09-26</td>
+<td>Rackspace Private Cloud r13.0.1 release</td>
+</tr>
+<tr class="row-even"><td>2016-09-09</td>
+<td>Rackspace Private Cloud r13.0.0 release</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="section" id="additional-resources">
+<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">#</a></h2>
+<p>These additional resources help you learn more about Rackspace Private
+Cloud powered By OpenStack.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://support.rackspace.com/how-to/rpc-openstack/">Rackspace Private Cloud How-To support</a></li>
+<li><a class="reference external" href="http://docs.openstack.org">OpenStack Documentation</a></li>
+<li><a class="reference external" href="http://developer.openstack.org/">OpenStack Developer
+Documentation</a></li>
+<li><a class="reference external" href="http://developer.openstack.org/api-guide/quick-start/">OpenStack API Quick Start</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/developer/cinder/">OpenStack Block Storage (cinder) Developer
+Documentation</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/developer/nova/">OpenStack Compute (nova) Developer
+Documentation</a></li>
+<li><a class="reference external" href="http://developer.openstack.org/api-ref/compute/">OpenStack Compute API v2 Developer
+Guide</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/developer/horizon/">OpenStack Dashboard (horizon) Developer
+Documentation</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/developer/keystone/">OpenStack Identity (keystone) Developer
+Documentation</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/developer/glance/">OpenStack Image service (glance) Developer
+Documentation</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/developer/swift/">OpenStack Object Storage (swift) Developer
+Documentation</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="disclaimer">
+<h1>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">#</a></h1>
+<p><strong>THE INFORMATION CONTAINED IN THE RACKSPACE DEVELOPER DOCUMENTATION IS</strong>
+<strong>FOR  INFORMATIONAL PURPOSES ONLY AND IS PROVIDED “AS IS.”</strong></p>
+<p>Except as set forth in Rackspace general terms and conditions,
+and other Rackspace agreement(s) you may sign, Rackspace assumes
+no liability whatsoever, and disclaims any express or implied warranty,
+relating to its services including, but not limited to, the implied
+warranty of merchantability, fitness for a particular purpose, and
+non-infringement.</p>
+<p>Although part of this document explains how Rackspace services may
+work with third-party products, the information contained in the document
+is in no way a guarantee of support or compatibility. Any use or changes
+to third-party products or configurations should be made at the discretion
+of your administrators and subject to the applicable third-party terms and
+conditions. Except as otherwise specified in your signed Rackspace
+agreement(s), Rackspace does not provide technical support for third-party
+products and accepts no responsibility for third-party products.</p>
+<p>Except as expressly provided in any written license agreement from
+Rackspace, the furnishing of this document does not give you any license
+to patents, trademarks, copyrights, or other intellectual property.
+Rackspace®, the Rackspace logo, and Fanatical Support® are registered
+service marks of Rackspace US, Inc. All other third-party product
+names and trademarks used in this document do not imply endorsement
+or sponsorship of Rackspace by those third-parties and are used
+solely for identification purposes and are property of their
+respective owners.</p>
+<p>Rackspace cannot guarantee the accuracy of any information presented
+after the date of publication.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rpc-upgrade-exp/index.html" class="btn btn-neutral float-right" title="Upgrade Expectations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="blade_servers/blade-servers-unsuitable-openstack.html" class="btn btn-neutral float-left" title="Why Blade Servers are Unsuitable for OpenStack Clouds" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

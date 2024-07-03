@@ -1,0 +1,42 @@
+
+.. _begin-course-training-connect:
+
+Begin Training
+==============
+
+To to begin training, complete the following steps:
+
+.. include:: training-login.rst
+
+#. Search for the On Demand Course, Learning Path, or Channel Resource. For more information, see :ref:`search-training-connect`.
+
+#. Click the training name.
+
+Learning Path
+^^^^^^^^^^^^^
+
+On the Learning Path page, click **Start Learning Path**. To take an individual course within the Learning Path, click the **Start Course** link for that course. The **Learning Path Progress** keeps track of your percentage of courses complete.
+
+If you leave a course before completion, you can click **Resume Course** to complete it. To retake a completed course, click **Retake Course**.
+
+On Demand Course
+^^^^^^^^^^^^^^^^
+
+To begin a course, click the course name in the right-hand table of contents.
+
+If you leave a course before completion, you can click **Resume Course** to complete it. To retake a completed lesson, click the lesson name in the table of contents.
+
+To move between lessons, use the **Previous** and **Next** arrows. When you complete a lesson, a green check appears by the lesson name. When you have completed all the lessons in the course, you receive a congratulations completion message and the trophy icon displays in yellow.
+
+To change the appearance of the course table of contents, choose one of the following options from the **View** box:
+
+* Full Table of Contents
+
+* Small Table of Contents
+
+* Hide Table of Contents
+
+Channel Resource
+^^^^^^^^^^^^^^^^
+
+Resources are supplementary training content. You can view this content outside of structured training.

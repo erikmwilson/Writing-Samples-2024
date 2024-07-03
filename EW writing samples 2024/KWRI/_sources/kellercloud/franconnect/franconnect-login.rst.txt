@@ -1,0 +1,12 @@
+
+.. _access-franconnect:
+
+.. note::
+
+   Access to FranConnect requires the Corporate Administrator KW role.
+
+1. From a browser, go to: https://kw.franconnect.net/fc/.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the left fly-out menu, click **Info Manager**.

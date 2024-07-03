@@ -1,0 +1,32 @@
+
+.. _send-sms-bulk-command:
+
+Send SMS to Multiple Contacts
+=============================
+
+To send an short message service (SMS) to multiple contacts, complete the following steps:
+
+.. note::
+
+   The contacts must have a primary phone number that accepts texts.
+
+   You can also add individual contacts to a SmartPlan. For more information, see :ref:`call-sms-contacts-command`.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts you want to send an SMS. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Send Bulk SMS**.
+
+#. On the **Send Bulk SMS** window, enter the **Text Message** and attach any additional files by dragging them to the window or browsing for them.
+
+#. Click **Send SMS**.

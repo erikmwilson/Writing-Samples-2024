@@ -1,0 +1,21 @@
+
+.. _search-deductions-commandmc:
+
+Search Deductions
+=================
+
+While you are managing your deductions in CommandMC, you may need to find a specific deduction.
+
+To search deductions, complete the following steps:
+
+.. include:: admin-mc-login.rst
+
+.. note::
+
+   If you have Regional and Market Center roles or have leadership roles in multiple Market Centers, click your name, at the top-right of the page, and make sure the correct Market Center profile is selected.
+
+5. Click **My Market Center**.
+
+#. In the **My Market Center** section, click **Deductions**.
+
+#. Enter the search information for the desired deduction. After you locate the deduction in the list, click the deduction ID to view the deduction details.

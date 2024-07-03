@@ -1,0 +1,9 @@
+.. _categories-methods:
+
+==========
+Categories
+==========
+
+Use the categories API operation to get a list of ticket categories.
+
+.. include:: ./methods/get-categories.rst

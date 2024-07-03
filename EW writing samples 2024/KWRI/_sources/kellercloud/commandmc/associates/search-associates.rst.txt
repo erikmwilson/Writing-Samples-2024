@@ -1,0 +1,15 @@
+
+.. _search-associates-commandmc:
+
+Search Associates
+=================
+
+While you are managing your associates in Command, you may need to find a specific associate. You can search associates based on the first and/or last name of the associate.
+
+To search associates, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Enter the search information for the desired associate. After you locate the associate in the list, click the associate name to view the associate details.
+
+To save these results as a Smartview, see :ref:`smartview-associates-commandmc`.

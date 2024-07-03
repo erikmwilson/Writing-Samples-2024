@@ -1,0 +1,6 @@
+================
+Solution summary
+================
+
+The purpose for this design is to create a generic Rackspace Private
+Cloud powered by OpenStack IaaS solution.

@@ -1,0 +1,27 @@
+
+.. _assign-contacts-command:
+
+Add Contact or Lead (Teams)
+===========================
+
+For Teams, Rainmakers have the ability to manually assign Contacts and Leads to Team Members.
+
+To assign a Contact or Lead, complete the following steps:
+
+.. include:: ../../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select your Team from the **Select Team** drop-down at the top of the page.
+
+#.  Locate the appropriate contact, click the More Options menu (ellipses |menu-options-icon| icon) and select **Assign To**.
+
+   .. |menu-options-icon| image:: ../../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Set Claim** window, select the Team Member to assign the lead to, and click **Assign**.
+
+   The lead appears in the assignee's contact list and the contact record shows it has been claimed by the assignee.

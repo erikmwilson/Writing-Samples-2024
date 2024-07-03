@@ -1,0 +1,11 @@
+
+.. _designs-command-index:
+
+Designs
+=======
+
+The following sections contain information about the
+Designs application.
+
+.. toctree::
+   :maxdepth: 1

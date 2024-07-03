@@ -1,0 +1,22 @@
+
+.. _smartviews-contacts-command:
+
+Create SmartViews
+=================
+
+After you have a column and filters setup that you will use on a regular basis, you can save this setup as a SmartView. This allows quick access to that set of filters without having to reset them each time. To create a SmartView, complete the following steps:
+
+.. include:: ../contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../images/contacts-icon.png
+      :height: 20
+
+#. Click the SmartView drop-down and choose **+ Create SmartView**.
+
+#. Enter a name for your SmartView. To make this the view that shows up by default every time you access your contacts, check the **Set As Default SmartView** checkbox.
+
+#. Click **Save SmartView**.
+
+#. To change the default Smartview, edit, or delete an existing SmartView, choose **Manage Smartviews** from the Smartview drop-down.

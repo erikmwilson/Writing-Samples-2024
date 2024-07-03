@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tickets &mdash; Support Delivery Platform documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.5.6',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/bolditalic.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="Ticketing event feed" href="../ticketing-event-feed/index.html" />
+    <link rel="prev" title="Categories" href="categories-methods.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Support Delivery Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rackspace Ticketing API v2.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/index.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general-api-info/index.html">General API information</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">API reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="accounts-methods.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="categories-methods.html">Categories</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tickets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#post-tickets">Post tickets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch-tickets">Patch tickets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-ticket-comment">Post ticket comment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ticketing-event-feed/index.html">Ticketing event feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copyright.html">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Rackspace Ticketing Integration for ServiceNow</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Support Delivery Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Rackspace Ticketing API v2.0</a> &raquo;</li>
+        
+          <li><a href="index.html">API reference</a> &raquo;</li>
+        
+      <li>Tickets</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api-docs/api-reference/tickets-methods.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tickets">
+<span id="tickets-methods"></span><h1>Tickets<a class="headerlink" href="#tickets" title="Permalink to this headline">#</a></h1>
+<p>Use the tickets API operations to create a ticket, add a comment, or update
+the status of a ticket. Rackspace Ticketing is currently limited to Dedicated
+Hosting or Managed Hosting products at Rackspace.</p>
+<div class="section" id="post-tickets">
+<span id="id1"></span><h2>Post tickets<a class="headerlink" href="#post-tickets" title="Permalink to this headline">#</a></h2>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">tickets</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ticketing</span><span class="o">.</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ticketing</span><span class="o">.</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Creates a new ticket within Rackspace.</p>
+<p>For our dedicated and fazure accounts (account IDs prefixed <code class="docutils literal"><span class="pre">hybrid:</span></code>), the
+user must have either the <code class="docutils literal"><span class="pre">account_admin</span></code> or <code class="docutils literal"><span class="pre">edit_ticket</span></code> role
+assigned to them.
+These roles can be managed within the <a class="reference external" href="https://my.rackspace.com">my.rackspace.com</a> portal.</p>
+<p>For all other accounts, the user must have the <code class="docutils literal"><span class="pre">identity:user-admin</span></code>
+or <code class="docutils literal"><span class="pre">ticketing:admin</span></code> role. This role can be managed in the
+<a class="reference external" href="https://login.rackspace.com">Cloud Control Panel</a>.</p>
+<div class="section" id="request-parameters">
+<h3>Request parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">#</a></h3>
+<p>The request has the following body parameters:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>accountId</td>
+<td>String <strong>(Required)</strong></td>
+<td>The account for which the ticket is being created
+(for example <code class="docutils literal"><span class="pre">hybrid:12345</span></code>).</td>
+</tr>
+<tr class="row-odd"><td>subject</td>
+<td>String <strong>(Required)</strong></td>
+<td>The subject line for the ticket.</td>
+</tr>
+<tr class="row-even"><td>category</td>
+<td>String <strong>(Required)</strong></td>
+<td>The category name. The categories are <code class="docutils literal"><span class="pre">Account</span></code>,
+<code class="docutils literal"><span class="pre">Billing</span> <span class="pre">and</span> <span class="pre">Payments</span></code>, <code class="docutils literal"><span class="pre">Request</span> <span class="pre">for</span>
+<span class="pre">Information</span></code>, <code class="docutils literal"><span class="pre">Change</span></code>, and <code class="docutils literal"><span class="pre">Incident</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>subcategory</td>
+<td>String <strong>(Required)</strong></td>
+<td>The subcategory name.</td>
+</tr>
+<tr class="row-even"><td>severity</td>
+<td>String</td>
+<td>The severity of your request, please use the /accounts endpoint to determine what severities available to your account.</td>
+</tr>
+<tr class="row-odd"><td>comment</td>
+<td>Object</td>
+<td>This object can be used to provide a description of your ticket.</td>
+</tr>
+<tr class="row-even"><td>comment.text</td>
+<td>String <strong>(Required)</strong></td>
+<td>A detailed description of the nature of your request</td>
+</tr>
+<tr class="row-odd"><td>resources</td>
+<td>String</td>
+<td>The URLs of the resources affected by the issue described in the ticket.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="request-example">
+<h3>Request example<a class="headerlink" href="#request-example" title="Permalink to this headline">#</a></h3>
+<p>The following example shows the JSON request for creating a ticket:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;hybrid:12345&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Help! We need more servers!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Technical Incident&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;subcategory&quot;</span><span class="p">:</span> <span class="s2">&quot;General&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;severity&quot;</span><span class="p">:</span> <span class="s2">&quot;Urgent&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;We are receiving a ton of traffic, we need more servers!&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;https://resources.api.rackspace.com/resources/dedicated/123456&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;https://resources.api.rackspace.com/resources/dedicated/678999&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response-parameters">
+<h3>Response parameters<a class="headerlink" href="#response-parameters" title="Permalink to this headline">#</a></h3>
+<p>The response has the following body parameters:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ticketId</td>
+<td>String</td>
+<td>The UUID of the ticket.</td>
+</tr>
+<tr class="row-odd"><td>accountId</td>
+<td>String</td>
+<td>The ID of the account for which the ticket is being created.</td>
+</tr>
+<tr class="row-even"><td>subject</td>
+<td>String</td>
+<td>The subject line for the ticket.</td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>String</td>
+<td>The status of the ticket.</td>
+</tr>
+<tr class="row-even"><td>severity</td>
+<td>String</td>
+<td>The severity of the issue. Available severities are <code class="docutils literal"><span class="pre">Low</span></code>, <code class="docutils literal"><span class="pre">Normal</span></code>,
+<code class="docutils literal"><span class="pre">High</span></code>, <code class="docutils literal"><span class="pre">Urgent</span></code>, and <code class="docutils literal"><span class="pre">Emergency</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>resources</td>
+<td>String</td>
+<td>The URLs of the resources affected by the issue described in the ticket.</td>
+</tr>
+<tr class="row-even"><td>category</td>
+<td>String</td>
+<td>The category name. The categories are <code class="docutils literal"><span class="pre">Account</span></code>,
+<code class="docutils literal"><span class="pre">Billing</span> <span class="pre">&amp;</span> <span class="pre">Payment</span></code>, <code class="docutils literal"><span class="pre">Request</span> <span class="pre">for</span>
+<span class="pre">Information</span></code>, <code class="docutils literal"><span class="pre">Change</span></code>, and <code class="docutils literal"><span class="pre">Incident</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>subcategory</td>
+<td>String</td>
+<td>The subcategory name. There is one subcategory, <code class="docutils literal"><span class="pre">General</span></code>.</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>String</td>
+<td>The date and time the ticket was created.</td>
+</tr>
+<tr class="row-odd"><td>modified</td>
+<td>String</td>
+<td>The date and time the ticket was last updated.</td>
+</tr>
+<tr class="row-even"><td>modifiedBy</td>
+<td>Object</td>
+<td>The user whom last modified the ticket, typically this is the
+last user to comment on the ticket.</td>
+</tr>
+<tr class="row-odd"><td>modifiedBy.id</td>
+<td>String</td>
+<td>The Rackspace Person Number (RPN) of the commenter if modified
+by someone within your account. This is empty if the last
+person to modify the ticket was a Racker.</td>
+</tr>
+<tr class="row-even"><td>modifiedBy.name</td>
+<td>String</td>
+<td>Either the name of the account user or the first name and
+last initial of Racker who last modified the ticket.</td>
+</tr>
+<tr class="row-odd"><td>modifiedBy.roles</td>
+<td>List</td>
+<td>The roles assigned to the user who last modified the ticket. This
+is <code class="docutils literal"><span class="pre">Primary</span></code>, <code class="docutils literal"><span class="pre">Administrative</span></code>, or <code class="docutils literal"><span class="pre">Technical</span></code> if last
+modified by an account user or <code class="docutils literal"><span class="pre">Racker</span></code> if the ticket was last
+modified by Rackspace.</td>
+</tr>
+<tr class="row-even"><td>modifiedBy.type</td>
+<td>List</td>
+<td>The type of user who last modified the ticket, this is either
+<code class="docutils literal"><span class="pre">customer</span></code> or <code class="docutils literal"><span class="pre">racker</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>createdBy</td>
+<td>Object</td>
+<td>The user whom created the ticket.</td>
+</tr>
+<tr class="row-even"><td>createdBy.id</td>
+<td>String</td>
+<td>The Rackspace Person Number (RPN) of the commenter if created
+by someone within your account. This is empty if the ticket
+was created by Rackspace.</td>
+</tr>
+<tr class="row-odd"><td>createdBy.name</td>
+<td>String</td>
+<td>Either the name of the account user or the first name and
+last initial of Racker who created the ticket.</td>
+</tr>
+<tr class="row-even"><td>createdBy.roles</td>
+<td>List</td>
+<td>The roles assigned to the user who created the ticket. This
+is <code class="docutils literal"><span class="pre">Primary</span></code>, <code class="docutils literal"><span class="pre">Administrative</span></code>, or <code class="docutils literal"><span class="pre">Technical</span></code> if
+created by an account user or <code class="docutils literal"><span class="pre">Racker</span></code> if the ticket was
+created by Rackspace.</td>
+</tr>
+<tr class="row-odd"><td>createdBy.type</td>
+<td>List</td>
+<td>The type of user who created the ticket, this is either
+<code class="docutils literal"><span class="pre">customer</span></code> or <code class="docutils literal"><span class="pre">racker</span></code>.</td>
+</tr>
+<tr class="row-even"><td>comments</td>
+<td>List</td>
+<td>All comments associated with the ticket.</td>
+</tr>
+<tr class="row-odd"><td>comments.id</td>
+<td>String</td>
+<td>The comment ID of the individual comment.</td>
+</tr>
+<tr class="row-even"><td>comments.text</td>
+<td>String</td>
+<td>The text content of the comment.</td>
+</tr>
+<tr class="row-odd"><td>comments.created</td>
+<td>String</td>
+<td>The date and time the comment was created.</td>
+</tr>
+<tr class="row-even"><td>comments.author</td>
+<td>Object</td>
+<td>Information about the author of the comment.</td>
+</tr>
+<tr class="row-odd"><td>comments.author.id</td>
+<td>String</td>
+<td>The Rackspace Person Number (RPN) of the commenter if created
+by someone within your account. This is empty if the ticket
+was created by Rackspace.</td>
+</tr>
+<tr class="row-even"><td>comments.author.name</td>
+<td>String</td>
+<td>Either the name of the account user or the first name and
+last initial of Racker who created the ticket.</td>
+</tr>
+<tr class="row-odd"><td>comments.author.roles</td>
+<td>List</td>
+<td>The roles assigned to the user who created the ticket. This
+is <code class="docutils literal"><span class="pre">Primary</span></code>, <code class="docutils literal"><span class="pre">Administrative</span></code>, or <code class="docutils literal"><span class="pre">Technical</span></code> if
+created by an account user or <code class="docutils literal"><span class="pre">Racker</span></code> if the ticket was
+created by Rackspace.</td>
+</tr>
+<tr class="row-even"><td>comments.author.type</td>
+<td>List</td>
+<td>The type of user who created the ticket, this is either
+<code class="docutils literal"><span class="pre">customer</span></code> or <code class="docutils literal"><span class="pre">racker</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>classification</td>
+<td>String</td>
+<td>The classification of the ticket. The classifications
+are <code class="docutils literal"><span class="pre">Service</span> <span class="pre">Request</span></code>, <code class="docutils literal"><span class="pre">Change</span></code>, and <code class="docutils literal"><span class="pre">Incident</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response-example">
+<h3>Response example<a class="headerlink" href="#response-example" title="Permalink to this headline">#</a></h3>
+<p>The following example shows the JSON response for the request:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;ticketId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456-dfw-9876543&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;faws:12345&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Help! We need more servers!&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;In Progess&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;severity&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Incident&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;subcategory&quot;</span><span class="p">:</span> <span class="s2">&quot;General&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-04-03T16:44:27.644Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-04-03T16:44:27.644Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modifiedBy&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;RPN-123-456-789&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Billing User&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;roles&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;billing&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;customer&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;createdBy&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rackspace R.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;roles&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;racker&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;racker&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;We are receiving a ton of traffic, we need more servers!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;170503-ord-0000001&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;RPN-123-456-789&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Billing User&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;roles&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;billing&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;customer&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-04-03T16:44:27.644Z&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;We are on it!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;170503-ord-0000002&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rackspace R.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;roles&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;racker&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;racker&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-04-03T16:45:27.644Z&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response-codes">
+<h3>Response codes<a class="headerlink" href="#response-codes" title="Permalink to this headline">#</a></h3>
+<p>This operation can have the following response codes:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>200</td>
+<td>Success</td>
+<td>The request succeeded.</td>
+</tr>
+<tr class="row-odd"><td>429</td>
+<td>Too Many Requests</td>
+<td>The application has a built-in rate limit of 1 request per minute.
+If you exceed this limit, you receive a 429 status code response
+until the cool off period has elapsed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="patch-tickets">
+<span id="id2"></span><h2>Patch tickets<a class="headerlink" href="#patch-tickets" title="Permalink to this headline">#</a></h2>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">tickets</span><span class="o">/</span><span class="p">{</span><span class="n">ticketId</span><span class="p">}</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ticketing</span><span class="o">.</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ticketing</span><span class="o">.</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Updates a ticket by closing (updating the status) of the ticket.</p>
+<p>A successful response returns a response code of 204, meaning
+the operation completed successfully. You can update your local
+record based upon the request that you sent, but your update is also
+populated by Cloud Feeds.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Rackspace recommends the PATCH HTTP method. However, the PUT method
+is available for users with compatibility issues.</p>
+</div>
+<div class="section" id="id3">
+<h3>Request parameters<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>The request has the following URI parameters.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ticketId</td>
+<td>String <strong>(Required)</strong></td>
+<td>The ticket ID stored through the Ticketing API.</td>
+</tr>
+</tbody>
+</table>
+<p>The request has the following body parameters:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>status</td>
+<td>String</td>
+<td>Update the status to close the ticket. The only option is
+<code class="docutils literal"><span class="pre">Closed</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>Request example<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>The following example shows the JSON request for updating the status of
+a ticket:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Closed&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>Response example<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>The following example shows the response for a response code 204 (No Content)
+request:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">No</span> <span class="n">Content</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Thu</span><span class="p">,</span> <span class="mi">01</span> <span class="n">Nov</span> <span class="mi">2017</span> <span class="mi">21</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">47</span> <span class="n">GMT</span>
+</pre></div>
+</div>
+<p>The following example shows the JSON response for a response code 404
+(Not Found) request:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Ticket with this ID could not be found&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;faultCode&quot;</span><span class="p">:</span> <span class="s2">&quot;ticketNotFound&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;moreInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;docs/ticketing/general-api-info/faults/#ticketNotFound&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Response codes<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>This operation can have the following response codes:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>200</td>
+<td>Success</td>
+<td>The request succeeded.</td>
+</tr>
+<tr class="row-odd"><td>404</td>
+<td>Not Found</td>
+<td>The ticket was not found.</td>
+</tr>
+<tr class="row-even"><td>429</td>
+<td>Too Many Requests</td>
+<td>The application has a built-in rate limit of 5 requests per minute.
+If you exceed this limit, you receive a 429 status code response
+until the cool off period has elapsed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="post-ticket-comment">
+<h2>Post ticket comment<a class="headerlink" href="#post-ticket-comment" title="Permalink to this headline">#</a></h2>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">tickets</span><span class="o">/</span><span class="p">{</span><span class="n">ticketId</span><span class="p">}</span><span class="o">/</span><span class="n">comments</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ticketing</span><span class="o">.</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">ticketing</span><span class="o">.</span><span class="n">v2</span><span class="o">+</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Updates a ticket by adding a comment</p>
+<p>A successful response returns a response code of 204, meaning
+the operation completed successfully. You can update your local
+record based upon the request you sent but your update is also
+populated via Cloud Feeds.</p>
+<div class="section" id="id7">
+<h3>Request parameters<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<p>The request has the following URI parameters.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ticketId</td>
+<td>String <strong>(Required)</strong></td>
+<td>The ticket ID stored through the Ticketing API.</td>
+</tr>
+</tbody>
+</table>
+<p>The add comment request has the following body parameters:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>comment</td>
+<td>Object</td>
+<td>A comment about the issue described in the ticket.</td>
+</tr>
+<tr class="row-odd"><td>comment.text</td>
+<td>String <strong>(Required)</strong></td>
+<td>A comment providing information about the current state
+of your support request</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>Request example<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<p>The following example shows the JSON request for adding a comment to a ticket:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Any updates on the new servers?&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>Response example<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<p>The following example shows the response for a response code 204 (No Content)
+request:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">No</span> <span class="n">Content</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Thu</span><span class="p">,</span> <span class="mi">01</span> <span class="n">Nov</span> <span class="mi">2017</span> <span class="mi">21</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">47</span> <span class="n">GMT</span>
+</pre></div>
+</div>
+<p>The following example shows the JSON response for a response code 404
+(Not found) request:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Ticket with this ID could not be found&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;faultCode&quot;</span><span class="p">:</span> <span class="s2">&quot;ticketNotFound&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;moreInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;docs/ticketing/general-api-info/faults/#ticketNotFound&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>Response codes<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<p>This operation can have the following response codes:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>200</td>
+<td>Success</td>
+<td>The request succeeded.</td>
+</tr>
+<tr class="row-odd"><td>404</td>
+<td>Not Found</td>
+<td>The ticket was not found.</td>
+</tr>
+<tr class="row-even"><td>429</td>
+<td>Too Many Requests</td>
+<td>The application has a built-in rate limit of 5 requests per minute.
+If you exceed this limit, you receive a 429 status code response
+until the cool off period has elapsed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ticketing-event-feed/index.html" class="btn btn-neutral float-right" title="Ticketing event feed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="categories-methods.html" class="btn btn-neutral float-left" title="Categories" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; <a href="../../copyright.html">Copyright</a> 2018, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

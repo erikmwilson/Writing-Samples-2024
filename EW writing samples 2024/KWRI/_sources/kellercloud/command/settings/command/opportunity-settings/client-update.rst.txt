@@ -1,0 +1,52 @@
+
+.. _client-update-settings-command:
+
+Configure Client Update for all Opportunities
+=============================================
+
+For an Opportunity, you can automatically send your clients daily updates on any checklist activities that have been performed.
+
+This includes any activities that have been completed since the previous email. In the first email, all completed activities that have been flagged for communication are included.
+
+You are able to choose which activities are included in the email. By default, no activities are included in the email.
+
+For more information about choose specific activities, see :ref:`checklists-opportunities-command`.
+
+.. note::
+
+   Email updates are sent only if an activity has been completed.
+
+This setting can be set globally for all of your contacts or you can set this for each individual opportunity. Individual settings supersede global settings.
+
+For more information about client update settings for individual contacts, see :ref:`client-update-opportunities-command`.
+
+Emails are formatted using a default email template.
+
+To set up global client updates, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **Command Settings** to display the
+   Command settings.
+
+#. Under **Command Settings**, click **Opportunity Settings**.
+
+#. Click **Client Update**.
+
+#. On the **Client Update** page, select the correct team (if using).
+
+#. Set the time to send out the client updates. This time is based on your browser time zone.
+
+#. Select who the email is **Sent from**.
+
+#. Select the recipients of the client updates:
+
+   * Client and Co-client
+
+   * Primary Client Only
+
+#. To copy the owner, select the **Owner** check box.
+
+#. Click **Save Changes**.
+
+   You receive a confirmation message that the settings have been updated.

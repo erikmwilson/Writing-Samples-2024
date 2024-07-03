@@ -1,0 +1,22 @@
+==========
+Containers
+==========
+
+ .. toctree::
+    :maxdepth: 2
+
+    containers/sec-containers-scale-individual-service.rst
+    containers/sec-containers-scaling-services-deployment-groups.rst
+    containers/sec-containers-destroy-recreate-containers.rst
+    containers/sec-containers-archiving-containers.rst
+    containers/sec-containers-ansible-scripts.rst
+    containers/sec-containers-deployment-groups.rst
+
+
+With Ansible, the OpenStack installation process is entirely automated
+using playbooks written in YAML. After installation, the settings
+configured by the playbooks can be changed and modified. Services and
+containers can shift to accommodate certain environment requirements.
+Scaling services is achieved by adjusting services within containers, or
+adding new deployment groups. It is also possible to destroy containers
+if needed after changes and modifications are complete.

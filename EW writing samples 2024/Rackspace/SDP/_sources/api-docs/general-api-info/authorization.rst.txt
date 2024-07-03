@@ -1,0 +1,37 @@
+.. _authorization:
+
+=============
+Authorization
+=============
+
+The user is validated against Rackspace's internal permission systems
+when the create and update API calls are made and when the user
+associates a resource to the ticket.
+
+Rackspace cannot prevent an unauthorized user from viewing a synchronized
+ticket within the user's ticketing system. Controlling tickets read in the
+synchronized ticketing system is the sole responsibility of the user.
+
+Optionally, a user’s permission to create, edit, or associate a ticket to a
+resource can be enforced by the user’s ticketing and permission
+systems for a better user experience.
+
+.. note::
+
+   Rackspace has two permissions systems. One
+   supports our dedicated product offerings and another supports all
+   other product offerings.
+
+Dedicated permissions
+---------------------
+
+If a user wants to create or update a ticket under a particular
+dedicated account, the authenticated user needs either the
+``Account Administrator`` or ``Edit Account Tickets`` permission on that
+account.
+
+If the user also wants to attach resources or update a ticket with
+resources currently attached, they need ``Edit`` privileges on at
+least one of those resources.
+
+All existing permissions can be viewed and edited within the `my.rackspace.com <https://my.rackspace.com>`_ portal.

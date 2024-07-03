@@ -1,0 +1,6 @@
+======================
+Reference architecture
+======================
+
+.. image:: ../figures/reference-architecture.png
+   :alt: RPCO reference architecture

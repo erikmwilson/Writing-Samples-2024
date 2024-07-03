@@ -1,0 +1,809 @@
+.. calling-prerequisites:
+
+===================================
+Prerequisites for creating a ticket
+===================================
+
+In order to create a ticket, fetch the following information from Rackspace:
+
+- An authentication token (documented in the :ref:`previous section
+  <authenticate-into-rackspace>`).
+- An account number that the ticket applies to
+- A suitable category and subcategory for the ticket
+
+The following sections show examples of fetching information about
+accounts and categories.
+
+Fetching account information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. important::
+
+   The cURL examples in this guide are provided for reference only. Because
+   the use of cURL has environmental dependencies, copying and pasting the
+   examples might not work in your environment.
+
+The accounts call returns a list of accounts that you have access to create
+tickets on. The call is a simple GET request:
+
+.. code::
+
+     $ curl https://demo.ticketing.api.rackspace.com/accounts \
+        -X GET \
+        -H 'X-Auth-Token: xxxxxxx'
+        -H 'Content-Type: application/vnd.ticketing.v2+json' \
+        -H 'Accept: application/vnd.ticketing.v2+json' \
+        | python -m json.tool
+
+.. code::
+
+    {
+        "accounts": [
+            {
+                "name": "FAWS Account1",
+                "id": "faws:576508529999",
+                "rcn": "RCN-449-496-999",
+                "serviceLevel": "navigator",
+                "severities": [
+                    "Low",
+                    "Normal",
+                    "High",
+                    "Urgent"
+                ],
+                "type": {
+                    "id": "faws",
+                    "name": "AWS"
+                },
+                "permission": "admin"
+            },
+            {
+                "name": "GCP Account1",
+                "id": "managed_gcp:compact-retina-198999",
+                "rcn": "RCN-449-496-999",
+                "serviceLevel": "runway",
+                "severities": [
+                    "Low"
+                ],
+                "type": {
+                    "id": "managed_gcp",
+                    "name": "GCP"
+                },
+                "permission": "admin"
+            }
+        ]
+    }
+
+Depending on what services you use, you may have one or more product accounts
+within Rackspace. The response in this case has two accounts, a Fanatical AWS
+account with ``account id`` ``faws:576508529999``, and a Google Cloud account
+with ``account id`` ``managed_gcp:compact-retina-198999``. The account type is
+needed for sorting through ticket category/subcategory combinations, and the
+``account id`` is needed when creating a ticket.
+
+
+Fetching categories information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Calling the categories endpoint returns a list of categories with their
+attendant subcategories. Each category/subcategory combination has a list
+of account types it is applicable to. The following example shows
+``allowedProducts``.
+
+.. code::
+
+    $ curl https://demo.ticketing.api.rackspace.com/categories  \
+       -X GET \
+       -H 'X-Auth-Token: xxxxxxx'
+       -H 'Content-Type: application/vnd.ticketing.v2+json' \
+       -H 'Accept: application/vnd.ticketing.v2+json' \
+       | python -m json.tool
+
+.. code::
+
+    {
+        "categories": [
+            {
+                "id": 1,
+                "name": "Account",
+                "description": "Account access, account settings, contact information, or managing users",
+                "classification": "Service Request",
+                "subcategories": [
+                    {
+                        "name": "Compute",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Containers",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Storage",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Networking",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Caching",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Queueing",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Databases",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Monitoring",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Backups",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Rackspace Managed Security",
+                        "allowedProducts": [
+                            "cloud",
+                            "faws",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Other",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Account Management",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Servers",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    },
+                    {
+                        "name": "Orchestration",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    },
+                    {
+                        "name": "Service Level Upgrades",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Billing and Payments",
+                "description": "My bill, usage, my payments or payment options",
+                "classification": "Service Request",
+                "subcategories": [
+                    {
+                        "name": "Compute",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Containers",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Storage",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Networking",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Caching",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Queueing",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Databases",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Monitoring",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Backups",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Rackspace Managed Security",
+                        "allowedProducts": [
+                            "cloud",
+                            "faws",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Other",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Billing",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Servers",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    },
+                    {
+                        "name": "Orchestration",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Change",
+                "description": "Add/remove/modify infrastructure",
+                "classification": "Change",
+                "subcategories": [
+                    {
+                        "name": "Compute",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Containers",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Storage",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Networking",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Caching",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Queueing",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Databases",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Monitoring",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Backups",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Rackspace Managed Security",
+                        "allowedProducts": [
+                            "cloud",
+                            "faws",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Other",
+                        "allowedProducts": [
+                            "cloud",
+                            "faws",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Compute Cloud (EC2)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Container Service (ECS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Block Store (EBS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Load Balancing (ELB)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Virtual Private Cloud (VPC)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Route 53",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Relational Database Service (RDS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "ElastiCache",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Storage Service (S3)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CloudFront",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Queue Service (SQS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Notification Service (SNS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Email Service (SES)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CloudFormation",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CodeDeploy",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Identity and Access Management (IAM)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CloudWatch",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Servers",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    },
+                    {
+                        "name": "Orchestration",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Incident",
+                "description": "An unplanned interruption or reduction in service quality",
+                "classification": "Incident",
+                "subcategories": [
+                    {
+                        "name": "Compute",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Containers",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Storage",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Networking",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Caching",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Queueing",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Databases",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Monitoring",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Backups",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Rackspace Managed Security",
+                        "allowedProducts": [
+                            "cloud",
+                            "faws",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Other",
+                        "allowedProducts": [
+                            "cloud",
+                            "faws",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Compute Cloud (EC2)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Container Service (ECS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Block Store (EBS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Elastic Load Balancing (ELB)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Virtual Private Cloud (VPC)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Route 53",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Relational Database Service (RDS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "ElastiCache",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Storage Service (S3)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CloudFront",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Queue Service (SQS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Notification Service (SNS)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Simple Email Service (SES)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CloudFormation",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CodeDeploy",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Identity and Access Management (IAM)",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "CloudWatch",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Servers",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    },
+                    {
+                        "name": "Orchestration",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Request for Information",
+                "description": "General questions",
+                "classification": "Service Request",
+                "subcategories": [
+                    {
+                        "name": "Compute",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Containers",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Storage",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Networking",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Caching",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Queueing",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Databases",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Monitoring",
+                        "allowedProducts": [
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Backups",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Rackspace Managed Security",
+                        "allowedProducts": [
+                            "cloud",
+                            "faws",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "Other",
+                        "allowedProducts": [
+                            "cloud",
+                            "managed_gcp"
+                        ]
+                    },
+                    {
+                        "name": "General",
+                        "allowedProducts": [
+                            "faws"
+                        ]
+                    },
+                    {
+                        "name": "Servers",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    },
+                    {
+                        "name": "Orchestration",
+                        "allowedProducts": [
+                            "cloud"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+
+To create a ticket for the FAWS type account from our
+account list, you could choose any category/subcategory combination with an
+``allowedProducts`` list that includes ``faws``.  Let's assume you want to
+create a ticket with a category/subcategory of ``Request For Information``
+/``General``. This would be allowed because subcategory ``General`` under
+category ``Request for Information`` has ``faws`` in its ``allowedProducts``
+list.

@@ -1,0 +1,26 @@
+====================================
+ Searching logs using Kibana plugin
+====================================
+
+Kibana is a web interface tool used to view and search logs.
+
+
+Accessing Kibana
+~~~~~~~~~~~~~~~~
+
+#. In a web browser, enter the enter the external load balancer IP
+   address on port 8443: ``https://external_lb_vip_address``:8443.
+
+#. Log in with the username *``kibana``* and the password set in the
+   ``/etc/openstack_deploy/user_rpco_secrets.yml`` file.
+
+   Logs will be displayed in the main Dashboard panel.
+
+When auto-refresh is enabled, the main Dashboard panel will display the
+following message: ***``Minutes/Seconds``* ago refreshed every 5s**. To
+disable auto-refresh, select the triangle to the right of the message
+and set auto-refresh to ``Off``.
+
+For more information on viewing logs and filtering events, refer to the
+`Kibana
+documentation <http://www.elasticsearch.org/guide/en/kibana/current/index.html>`__.

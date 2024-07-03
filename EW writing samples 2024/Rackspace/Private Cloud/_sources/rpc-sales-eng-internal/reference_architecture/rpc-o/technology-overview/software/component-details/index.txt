@@ -1,0 +1,27 @@
+=======================
+RCPO component details
+=======================
+
+The RCPO high level components are comprised of multiple interrelated
+components running on multiple servers. In order to facility a smoother
+upgrade process we put most of those components in LXC containers.
+
+The following diagram provides an overview of the interrelated
+components and which server(s) they are on.
+
+.. image:: ../../../figures/component-details.png
+   :alt: RCPO component details
+
+.. toctree::
+   :maxdepth: 2
+
+   networking-service.rst
+   block-storage-service.rst
+   compute-service/index.rst
+   image-service.rst
+   orchestration-service.rst
+   identity-service.rst
+   dashbaord-service.rst
+   ceph-storage.rst
+   third-party-components/index.rst
+   external-dependencies.rst

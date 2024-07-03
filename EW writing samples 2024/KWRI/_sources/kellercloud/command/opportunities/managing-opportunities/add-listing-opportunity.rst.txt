@@ -1,0 +1,33 @@
+
+.. _add-listing-opportunities-command:
+
+Add a Listing to an Opportunity
+===============================
+
+If you are creating a listing opportunity you can attach your listing from the KWLS. After you get to the stage where you have taken the listing, added the listing to the MLS, and the listing has pulled into Command, you can add the listing to the Opportunity.
+
+To add a listing an Opportunity, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity to which to add the listing.
+
+#. At the top of the Opportunity page, click **Select from Listings**.
+
+   .. note::
+
+      By default, the system shows you your personal listings first. You can also search all listings by using the **Status:** and **Show:** filters.
+
+#. Click **Select** on the desired listing.
+
+Remove or Edit a Listing
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you need to remove or change the attached listing, click the address at the top of the Opportunity page, and then choose either **Edit** or **Remove**.

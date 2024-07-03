@@ -1,0 +1,282 @@
+=============
+Prerequisites
+=============
+
+This section documents the manual tasks that you must perform before
+beginning an upgrade.
+
+.. note::
+
+   -  Before you can upgrade to the current major release, you must upgrade to
+      the latest minor release of the previous major release. For example, to
+      upgrade from v12 to v13, upgrade to the latest 12.x release, and
+      then upgrade to v13.
+
+   -  Read the `RPCO Release Notes
+      <https://developer.rackspace.com/docs/private-cloud/rpc/v13/rpc-releasenotes/>`_
+      before beginning the upgrade. The release notes provide late-breaking
+      information about known issues and the steps to correct them.
+
+Verify infrastructure health
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``rpc-pre-upgrades.yml`` playbook performs tasks that list the
+information that you can use to analyze the state of an environment.
+Currently, the playbook performs the following tasks:
+
+* Lists RabbitMQ cluster status
+* Lists MySQL cluster status
+* Gathers nova service status
+* Gathers cinder service status
+* Gathers neutron service status
+* Gathers OpenStack endpoints
+* Gathers running instances from MySQL
+* Gathers instance-volume mappings from MySQL
+* Gathers swift recon status
+* Rotates OpenStack aggregate logs
+* Cleans up rsyslog forward and state files
+
+To run the ``rpc-pre-upgrades.yml`` playbook, enter the following commands:
+
+  .. code-block:: console
+
+     # cd /opt/rpc-openstack/rpcd/playbooks
+     # openstack-ansible rpc-pre-upgrades.yml
+
+By default, the playbook outputs the status of the environment in
+``$HOME/rpc13-upgrade-<date_stamp>``.
+
+Inspect the output and verify that the OpenStack cluster is in a
+healthy state.
+
+Back up the environment
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The upgrade playbook backs up the ``/etc/openstack_deploy`` directory.
+However, we recommend that you perform a separate, full backup of the
+environment, including the source repository.
+
+Prepare to run the MaaS setup playbook
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run the MaaS setup playbook during the upgrade, set the ``DEPLOY_MAAS``
+variable to ``yes``.
+
+Set the MaaS token
+~~~~~~~~~~~~~~~~~~
+
+#. Generate a MaaS token by using
+   `Pitchfork <https://pitchfork.eco.rackspace.com/monitoring/>`_ or the
+   following example script:
+
+   .. code-block:: console
+
+      AUTH_USER=$(read -p 'Enter Username: ' username; echo $username) \
+      AUTH_PASS=$(read -s -p 'Enter Password: ' password; echo $password) \
+      MAAS_TOKEN=$(curl -s -X GET http://si.rackspace.com/auth/Token/AuthDetails \
+      -H "x-auth-user: $AUTH_USER" -H "x-auth-password: $AUTH_PASS" \
+      | sed 's/<[^>]*>//g') echo echo $MAAS_TOKEN
+
+#. Use the token value for the ``maas_auth_token`` option in the
+   ``/etc/openstack_deploy/user_variables.yml`` file.
+
+Configure SSL certificates for the Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For information about configuring Dashboard SSL, see the
+"Securing horizon communication with SSL certificates" section
+in `Configuring the Dashboard (horizon)
+<http://docs.openstack.org/developer/openstack-ansible/mitaka/install-guide/configure-horizon.html>`_.
+
+Following are the primary upgrade scenarios that affect OpenSSL certificates
+and the actions required for an upgrade:
+
+-  You are using the defaults from v12 with a self-signed certificate
+   and want to continue using that certificate.
+
+-  You are using your own certificate, key, and so on, but the
+   configuration was done manually.
+
+-  You are using the defaults but now want to change something about
+   them.
+
+-  After upgrading RPCO, new security settings cause older browsers to fail to
+   connect to the Dashboard.
+
+Use the default certificates
+----------------------------
+
+No action is necessary to continue using the existing ``horizon.pem`` and
+``horizon.key`` certificate and key.
+
+
+Use your own key and certificate
+--------------------------------
+
+Set the ``horizon_user_ssl_cert``, ``horizon_user_ssl_key``, and
+``horizon_user_ca_cert`` variables in the
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file. This overrides
+any self-signed certificates in v12.
+
+If the ``horizon_user_ssl_cert`` or ``horizon_user_ssl_key`` variable is not
+defined, the missing certificate and key are generated on the first
+Dashboard container and distributed to other Dashboard containers.
+
+Regenerate self-signed certificates
+-----------------------------------
+
+Use one of the following scenarios to regenerate self-signed certificates.
+
+-  Set the variables as instructed in the preceding section and add the
+   following line to the
+   ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file:
+
+  .. code-block:: ini
+
+     horizon_ssl_self_signed_regen: true
+
+-  Change the subject of the certificate as appropriate for your environment:
+
+   .. code-block:: ini
+
+      horizon_ssl_self_signed_subject: "..."
+
+Enable the trusty-backports repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The trusty-backports repository is required to install or upgrade OpenStack
+Object Storage (swift). Add repository details in the ``/etc/apt/sources.list``
+file and update the package list, as follows:
+
+.. code-block:: console
+
+   # cd /opt/rpc-openstack/openstack-ansible/playbooks
+   # ansible hosts -m lineinfile -a 'dest=/etc/apt/sources.list regexp="^deb \
+     http.*trusty-backports.*" line="deb http://mirror.rackspace.com/ubuntu \
+     trusty-backports main restricted universe multiverse" state=present'
+   # ansible hosts -m command -a "apt-get update"
+
+..  note::
+
+    The preceding commands assume that the ``/etc/apt/sources.list`` file is
+    using ``http://mirror.rackspace.com/ubuntu`` for ``trusty`` and
+    ``trusty-updates`` distributions. Verify which mirror is being used and, if
+    necessary, update the preceding command by replacing
+    ``http://mirror.rackspace.com/ubuntu`` with the appropriate mirror.
+
+Truncate tables
+~~~~~~~~~~~~~~~
+
+If the ``dash.django_sessions`` and ``keystone.token`` tables
+are very large, the database locks and API calls fail for up to
+30 minutes. Run the following commands to truncate these tables.
+
+.. note::
+
+   You only need to truncate these tables when you are using the UUID
+   keystone token provider.
+
+   Before truncating the tables, connect to a Galera container.
+
+.. code-block:: console
+
+   # mysql -e 'TRUNCATE TABLE dash.django_session;'
+   # mysql -e 'TRUNCATE TABLE keystone.token;'
+
+.. _elk-prereqs:
+
+Elasticsearch preupgrade reindexing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Because of some inconsistencies in the legacy Elasticsearch
+mappings, all Elasticsearch data must be reindexed into indices
+with the updated 2.x compatible mappings. For additional information, see
+:ref:`Upgrade the ELK stack <upgrade-elk>`.
+
+The reindexing process can take a very long time--several days for very large
+clusters. We recommend that you perform the majority of the reindexing before
+starting the actual upgrade. If the legacy indices are not dropped until
+the actual upgrade, the legacy data remains undisturbed while the reindexing
+is in progress.
+
+Whether you perform preupgrade reindexing is determined
+primarily by the size of the data stored within the Elasticsearch cluster.
+You can determined this with the ``reindex-liberty.py --list`` command or with
+the following curl command:
+
+.. code-block:: console
+
+   # curl -sk http://localhost:9200/_cat/indices?v
+
+If the indices in aggregate are larger than 5 gigabytes (GiB), you should
+perform reindexing before proceeding with the upgrade.
+
+Use the following steps to perform a preupgrade reindex:
+
+#. Run the top level ``/opt/rpc-openstack/rpcd/playbooks/elasticsearch.yml``
+   playbook by using the following command:
+
+   .. code-block:: console
+
+      # openstack-ansible -e 'logging_upgrade=true' --tags \
+        'reindex-wrapper,elasticsearch-upgrade' elasticsearch.yml
+
+   This step deploys the ``reindex-liberty.py`` script to the ``/opt/``
+   directory in the first Elasticsearch container.
+
+#. Get a list of indices from the Elasticsearch container.
+
+   .. code-block:: console
+
+      # /opt/reindex-liberty.py --list
+
+#. Determine start and end dates. Based on the size of the indices, testing
+   determined that the total size of each batch of indices should not exceed
+   50 GiB. The reindexing slows considerably and can stop completely on batches
+   larger than 50 GiB.
+
+#. Start the reindexing process:
+
+   .. code-block:: console
+
+      # /opt/reindex-liberty.py --batch --start <start_date> --end \
+        <end_date>
+
+#. You can monitor the reindexing process with either the ``--continuous``
+   argument or with the ``watch`` command:
+
+   .. code-block:: console
+
+      # watch -n 30 /opt/reindex-liberty.py --monitor --verbose
+
+   .. note::
+
+      Do not use time values smaller than 30 seconds due to
+      Elasticsearch connection timeouts.
+
+#. Repeat the batches until all indices through the previous day have been
+   reindexed. Do not reindex the current day because that index is in use and
+   new entries will not be reindexed.
+
+#. After the batches are complete, continue with the upgrade from the
+   deployment host.
+
+   .. code-block:: console
+
+      # openstack-ansible -e 'logging_upgrade=true' -e \
+        'force_upgrade=yes' --tags 'elasticsearch-upgrade' \
+        elasticsearch.yml
+
+.. note::
+
+   A bug exists when the ``reindex-wrapper`` tag is used to deploy the
+   ``reindex-liberty.py`` script where the plug-in is removed from
+   Elasticsearch. You can remedy the problem by running the following
+   command:
+
+   .. code-block:: console
+
+      # /usr/share/elasticsearch/bin/plugin -install \
+        org.codelibs/elasticsearch-reindexing/1.7.0
+
+   Then restart the Elasticsearch service.

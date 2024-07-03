@@ -1,0 +1,33 @@
+
+.. _eedge-contacts-command:
+
+Export eEdge Contacts
+=====================
+
+You have the ability to export your contacts from eEdge so that you can move those contacts into Command.
+
+.. note::
+
+   When you export your contacts, it does not remove them from your contact database in eEdge.
+
+To export your contacts from eEdge, complete the following steps:
+
+1. From your **myKW** home page, go into your eEdge account by clicking the **New Leads** link under **myLeads** in the eEdge Control Panel.
+
+#. At the top-right of the page, click **Contacts** and choose **Import/Export Contacts** from the drop-down list.
+
+#. On the new window, click the **Export Contacts** tab.
+
+#. In the **Export** page, you can choose to filter the contacts you want to export by **Contact Group** or **Contact Status**.
+
+   * From the **Contact Groups** drop-down, check the box next to the group or groups that you want to export.
+
+   * From the **Contact Status** drop-down, choose a status to export. If you select a status to filter, it only exports the contacts from the selected groups that have that status.
+
+   .. note::
+
+      If you want to export all of your contacts, leave the group field blank (make sure that it says **Select Options** at the top of the drop-down) and choose **All** in the **Contact Status** drop-down menu.
+
+#. Click **Export**.
+
+   Your contacts are exported in a .CSV file to your Downloads folder.

@@ -1,0 +1,20 @@
+
+.. _getting-started-index:
+
+Getting Started with Command
+============================
+
+The following topics contain information about getting started with the
+Command application.
+
+.. toctree::
+   :maxdepth: 1
+
+   access-command
+   configure-settings
+   navigation
+   select-team
+   marketplace
+   edit-profile
+   help
+   log-out

@@ -1,0 +1,45 @@
+
+.. _export-recruits-command:
+
+Export Recruits
+===============
+
+You can export recruit details to a .cvs file. You can choose to:
+
+* Export all recruits
+
+* Export manually selected recruits
+
+* Export a filtered list of recruits
+
+To export recruits, complete the following steps:
+
+.. note::
+
+   Only users with the role of Operating Principal (OP) can export recruit details. For more information, see :ref:`command-mc-roles-command-ug`.
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-left corner, click **CommandMC**.
+
+#. On the left toolbar, click **Recruits** |recruits-icon|.
+
+   .. |recruits-icon| image:: ../../../../images/recruits-icon.png
+      :height: 30
+
+#. Click the **Recruit Management** tab.
+
+   a. To export all recruits, click **Import/Export** and choose **Export All Recruits (number of recruits) (.CVS)**.
+
+   #. To export manually selected recruits, select the check boxes next to the recruits you want to export. To select all recruits on the page, select the check box in the header row. Click **Import/Export** and choose **Export Selected Recruits (number of recruits) (.CVS)**.
+
+   #. To export a filtered list of recruits, create one or more filters (For more information, see :ref:`filter-recruits-commandmc`), click **Import/Export** and choose **Export Filtered List (number of recruits) (.CVS)**.
+
+   You will receive the following message: **Exporting Recruit List. Refresh the page and check your notifications to download the file.**
+
+#. Click the notifications |notification-icon| icon, and within the export notification, click the link to download the export file.
+
+   .. |notification-icon| image:: ../../../../images/system-notifications-icon.png
+      :height: 20

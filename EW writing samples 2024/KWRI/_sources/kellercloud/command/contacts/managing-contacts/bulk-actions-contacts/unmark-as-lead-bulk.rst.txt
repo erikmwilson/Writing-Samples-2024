@@ -1,0 +1,30 @@
+
+.. _unmark-as-lead-bulk-command:
+
+Unmark Multiple Contacts as Leads
+=================================
+
+To unmark multiple contacts as leads, complete the following steps:
+
+.. note::
+
+   You can mark an individual contact as a lead. For more information, see :ref:`mark-unmark-lead-contacts-command`.
+
+.. include:: contacts.rst
+
+#. On the left toolbar, click **Contacts** |contacts-icon|.
+
+   .. |contacts-icon| image:: ../../../../../images/contacts-icon.png
+      :height: 20
+
+#. Select the check boxes next to the contacts that you want to unmark as leads. To select all contacts, select the check box in the header row.
+
+   .. note::
+
+      You can filter your contact list using Filters to target certain criteria (for example, **Primary Address**).
+
+#. Click the **Select Bulk Action** drop-down menu and select **Unmark a Leads**.
+
+#. The **Bulk Unmark as Leads** window, displays the selected contacts. If a contact is not a lead, they display with an asterisk (*).
+
+#. Click **Unmark**.

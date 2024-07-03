@@ -1,0 +1,24 @@
+====================
+Responding to alerts
+====================
+
+The Rackspace Monitoring Service issues an alert when a warning or
+failure occurs or a threshold is exceeded. Each alert is assigned a
+severity level that determines your live response time. The following
+table highlights the severity levels and associated response time
+guarantees offered with Core Support:
+
+.. list-table:: **Alert response SLA**
+   :widths: 70 30
+   :header-rows: 1
+
+   * - Severity level
+     - Initial live response
+   * - Emergency – instances are failing or the OpenStack cloud is
+       partially or wholly inoperable
+     - 15 minutes
+   * - Urgent – inability to launch or terminate new instances
+     - One hour
+   * - Standard – delay in launching new instances or in interacting
+       with the OpenStack API
+     - Four hours

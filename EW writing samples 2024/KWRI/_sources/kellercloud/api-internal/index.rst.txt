@@ -1,0 +1,11 @@
+
+.. _index-api-internal-ug:
+
+KWRI Internal API Documentation
+===============================
+
+To view the documentation for internal KWRI APIs, log in to: https://kellerwilliams.stoplight.io.
+
+.. note::
+
+   You must have a KWRI username and password to view the API documentation.

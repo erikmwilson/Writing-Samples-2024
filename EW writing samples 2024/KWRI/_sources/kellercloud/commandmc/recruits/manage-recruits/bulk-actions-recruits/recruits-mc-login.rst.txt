@@ -1,0 +1,17 @@
+
+.. _access-recruits-bulk-commandmc:
+
+.. note::
+
+   CommandMC is available only to certain KW roles.
+
+1. From a browser, go to: https://console.command.kw.com.
+
+#. Log in using your Keller Williams user name and password.
+
+#. On the top-left corner, click **CommandMC**.
+
+#. On the left toolbar, click **Recruits** |recruits-icon|.
+
+   .. |recruits-icon| image:: ../../../../../images/recruits-icon.png
+      :height: 30

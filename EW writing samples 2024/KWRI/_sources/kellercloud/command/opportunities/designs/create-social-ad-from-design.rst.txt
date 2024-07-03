@@ -1,0 +1,31 @@
+
+.. _create-social-ad-from-design-opportunities-command:
+
+Create a Social Ad from a Design
+================================
+
+You can use the **Marketing** tab to create and track your marketing plan for an Opportunity. Create personalized marketing materials from scratch or from professionally designed templates.
+
+To create a social ad from a design, complete the following steps:
+
+.. include:: ../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity name to view the Opportunity details.
+
+#. At the top of the Opportunity page, click the **Marketing** tab. The **Marketing** tab shows the recommended print designs and social ads for the Opportunity.
+
+#. Locate the appropriate design, click the More Options menu (ellipses |menu-options-icon| icon) and select **Create Social Ad**.
+
+   .. |menu-options-icon| image:: ../../../../images/menu-options-icon.png
+      :height: 20
+
+#. On the **Create Campaign** page, configure the social ad to add your specific information.
+
+#. When complete, click **Save Draft** or **Publish Campaign** in the top-right corner.

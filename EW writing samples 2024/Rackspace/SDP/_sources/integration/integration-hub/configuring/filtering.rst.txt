@@ -1,0 +1,54 @@
+.. _filtering-incidents-SDP-IG:
+
+===================
+Filtering incidents
+===================
+
+You can filter the incidences that are sent to the Rackspace ticketing systems
+and filter the Rackspace tickets that create incidences in your
+ServiceNow instance.
+
+Filtering incidents sent to Rackspace
+-------------------------------------
+
+Filter incidents to determine which ServiceNow incidents are sent to
+the Rackspace ticketing systems. Two methods are available to filter these
+incidents. Use the following steps for the method that you choose to use.
+
+Method 1
+~~~~~~~~
+
+1. Open the Business Rule ``Trigger Check v2`` and click **Update**.
+
+#. On the **When to run** tab, set the conditions for when this
+   business rule should be run.
+
+Method 2
+~~~~~~~~
+
+1. Open the Outbound Event ``Rackspace Ticketing (Create Incident)``.
+
+#. On the **Outbound Events** window, set the **Conditions** by which
+   the event processes incidents.
+
+   You can create a filter by using any incident attributes. For example,
+   filters can be based on the Assignment Group or based on the
+   Incident Classification.
+
+#. Click **Update**.
+
+#. Repeat for the Outbound Event ``Rackspace Ticketing (Update Incident)``.
+
+
+Filtering incidents received from Rackspace
+-------------------------------------------
+
+You can filter inbound incidents to determine which Rackspace tickets
+create incidents in your ServiceNow instance.
+
+Use the following steps to filter the incidents:
+
+1. In Rackspace Ticketing Integration, from the **Scripts and Logs** menu,
+   click on **Transform Scripts** to edit the inbound transform script.
+
+#. Add the desired filter conditions to the inbound transform script.

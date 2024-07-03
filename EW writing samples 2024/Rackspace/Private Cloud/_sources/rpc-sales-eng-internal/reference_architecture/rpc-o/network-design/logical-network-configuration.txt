@@ -1,0 +1,60 @@
+=============================
+Logical network configuration
+=============================
+
+The following table includes the listing of networks that are required
+for an RPC deployment.
+
+.. note:: The table values are for example purposes only.
+
+.. list-table:: **RPC network allocation**
+   :widths: 20 20 20 20 20
+   :header-rows: 1
+
+   * - VLAN name
+     - Interface
+     - Network range
+     - Gateway
+     - Gateway device
+   * - Host
+     - bond0
+     - 10.240.0.0/22
+     - 10.240.0.1
+     - F5
+   * - Container
+     - bond0
+     - 172.29.236.0/22
+     - 172.29.236.1
+     - F5
+   * - Tunnel
+     - bond1
+     - 172.29.240.0/22
+     - non-routable
+     - N/A
+   * - Storage
+     - bond0
+     - 172.29.244.0/22
+     - non-routable
+     - N/A
+   * - Storage mgmt.
+     - bond1
+     - 172.29.248.0/22
+     - non-routable
+     - N/A
+   * - Gateway
+     - bond1
+     - 10.239.0.0/22
+     - 10.239.0.1
+     - F5
+   * - Tenant
+     - bond1
+     - 10.242.0.0/22
+     - 10.242.0.1
+     - F5
+
+
+.. note:: You can create and trunk additional Layer-2 VLANs that you
+          want to use as Neutron networks (physical networks that your
+          OpenStack instances can connect to). Those VLANs
+          translate to Layer-2 provider networks within the private
+          cloud.

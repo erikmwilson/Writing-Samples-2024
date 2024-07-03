@@ -1,0 +1,47 @@
+
+.. _import-recruits-cmc:
+
+Import Recruits
+===============
+
+You can import multiple recruits from comma-separated values (CSV) files.
+
+For more information about manually adding contacts, see :ref:`add-recruit-recruits-cmc`.
+
+To import contacts using the Command Contact Import Template, complete the following steps:
+
+.. include:: ../recruits-mc-login.rst
+
+#. Click **Import**, at the top-right of the page to open the Import menu and select **Import Recruits**.
+
+#. On the **Import Recruits** window, download the import template by clicking the **Download Excel Template**.
+
+   The system only reliably accepts files that conform to the downloaded Excel template (import recruits template) that has come from CommandMC because the files must have identical header names and column orders. If you import from a different CSV file, you may see some fields pull in correctly, but you might see others pull in incorrectly or you might get error messages.
+
+   .. note::
+
+      * Your spreadsheet must be saved as a **.csv** file type for the system to accept the file.
+
+      * The CSV data format must be set to 'TEXT' when the file is saved.
+
+      * Each recruit must have the **First Name** and **Last Name** field populated for the recruit to import.
+
+      * If you are entering a Postal Code that begins with a zero, you must format the cells to display as text fields (Excel and Numbers removes the first zero otherwise).
+
+      * Phone numbers should be in the following format: xxx-xxx-xxxx. You can also include the country code: xx-xxx-xxx-xxxxx.
+
+      * You can only download one file at a time.
+
+#. Using the import Excel template, copy/paste or enter any information you have for each recruit, into the corresponding fields. For more information, see :ref:`import-transfer-spreadsheet-recruits-cmc`.
+
+#. On the **Import Recruits** window, drop the file into the space provided or **Browse** for the file that you saved.
+
+#. Click **Submit**.
+
+   When the import is complete, you receive a confirmation message.
+
+#. Click **Done** to close the window, **Import More Contacts** to import another file, or **View Import Log** to see the status of each imported record.
+
+.. note::
+
+   You can also view the import logs at any time from the **Import** menu. Click **Import**, at the top-right of the page and select **View Import Log**.

@@ -1,0 +1,56 @@
+================
+Controller nodes
+================
+
+.. note:: A minimum of 3 Controller Nodes are required.
+
+HP DL380 Gen9
+~~~~~~~~~~~~~
+
+-  Operating System: OpenStack on Ubuntu 16.04
+
+-  Model: HP DL380 Gen9 LFF - 3.5" Chassis
+
+-  Chassis Size: 2U
+
+-  Processor: Dual Socket Octo Core Intel Xeon E5-2630 2.40 Ghz
+
+-  Memory: 128 GB
+
+-  RAID Config: RAID10
+
+-  Hard Drives: 12x HP 600GB 15K SAS 2.5" in a 3.5" Hybrid Carrier
+
+-  Onboard NIC: HP Ethernet 1Gb 4-Port 366T PCIe NIC (Already included)
+
+-  Onboard NIC: Intel Ethernet 2-Port 561T 10Gb PCIe NIC (RJ45) (Already
+   included)
+
+-  Additional NIC: Intel Ethernet 2-Port 561T 10Gb PCIe NIC (RJ45)
+
+.. image:: ../../figures/dl380_gen9_front_back.jpg
+
+
+Dell R720 (recycled)
+~~~~~~~~~~~~~~~~~~~~
+
+-  Operating System: OpenStack on Ubuntu 16.04
+
+-  Model: Dell R720 Chassis
+
+-  Chassis Size: 2U
+
+-  Processor: Dual Socket Hex Core Intel Xeon E5-2640 2.50 Ghz
+
+-  Memory: 64 GB
+
+-  RAID Config: RAID1
+
+-  Hard Drives: 2 x Dell 600GB 15K SAS 3.5"
+
+-  Onboard NIC: 4-Port NIC (Already included)
+
+-  Additional NIC: Intel X540-T2 Dual Port PCIe 10Gbase-T NIC (RJ-45)
+
+.. image:: ../../figures/powerEdgeR720_front.jpg
+.. image:: ../../figures/powerEdgeR720_rear.jpg

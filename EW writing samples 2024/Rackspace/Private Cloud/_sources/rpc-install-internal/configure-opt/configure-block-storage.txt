@@ -1,0 +1,455 @@
+==============================================
+Configure the Block Storage service (optional)
+==============================================
+
+Block Storage (cinder) provides persistent storage to guest instances.
+The service manages volumes and snapshots.
+
+
+Configure the Block Storage service to use LVM
+----------------------------------------------
+
+Logical Volume Management (LVM) is the default back end for Block
+Storage. To configure an LVM back end, edit the
+``/etc/openstack_deploy/openstack_user_config.yml`` file and configure
+each storage node that uses LVM.
+
+.. important::
+
+   When you use LVM, the ``cinder-volume`` service is closely tied to
+   the underlying disks of the physical host, and does not benefit
+   greatly from containerization. By default, Block Storage is
+   deployed on metal, not in a container (``is_metal`` is set to
+   ``true``).
+
+#. For each storage node, add the ``lvm`` stanza under the
+   ``cinder_backends`` stanza:
+
+   .. code-block:: yaml
+
+      cinder_backends:
+        lvm:
+
+   The options in subsequent steps fit under the ``lvm`` stanza.
+
+#. Provide a ``volume_backend_name``. This name is arbitrary and
+   becomes a volume type within the Block Storage service.
+
+   .. code-block:: yaml
+
+      volume_backend_name: LVM_iSCSI
+
+#. Configure the volume_driver:
+
+   .. code-block:: yaml
+
+      volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+
+#. Configure the volume_group:
+
+   .. code-block:: yaml
+
+      volume_group: cinder-volumes
+
+#. Confirm that the ``openstack_user_config.yml`` configuration is
+   accurate:
+
+   .. code-block:: yaml
+
+      storage_hosts:
+        xxxxxx-Infra01:
+          ip: 172.29.236.16
+          container_vars:
+            cinder_storage_availability_zone: cinderAZ_1
+            cinder_default_availability_zone: cinderAZ_1
+            cinder_backends:
+              lvm:
+                volume_backend_name: LVM_iSCSI
+                volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+                volume_group: cinder-volumes
+
+
+Configure the Block Storage service to use NetApp
+-------------------------------------------------
+
+By default, the Block Storage service uses the LVM back end. To use a
+NetApp storage appliance back end instead, edit the
+``/etc/openstack_deploy/openstack_user_config.yml`` file and configure
+each storage node that uses it:
+
+.. note::
+
+   Make sure that the NAS Team enables ``httpd.admin.access``.
+
+#. For each storage node, add the ``netapp`` stanza under the
+   ``cinder_backends`` stanza:
+
+    .. code-block:: yaml
+
+       cinder_backends:
+         netapp:
+
+    The options in subsequent steps fit under the ``netapp`` stanza.
+
+#. Configure the storage family. Replace ``STORAGE_FAMILY`` with
+   ``ontap_7mode`` for Data ONTAP operating in 7-mode or
+   ``ontap_cluster`` for Data ONTAP operating as a cluster.
+
+   .. code-block:: yaml
+
+      netapp_storage_family: STORAGE_FAMILY
+
+#. Configure the storage protocol. Replace ``STORAGE_PROTOCOL`` with
+   ``iscsi`` for iSCSI or ``nfs`` for NFS.
+
+    .. code-block:: yaml
+
+       netapp_storage_protocol: STORAGE_PROTOCOL
+
+   If you specified NFS, you must also specify the location of the
+   configuration file that lists the shares available to the Block
+   Storage service. Replace ``FILENAME_NFS_SHARES`` with the location
+   of the share configuration file. For example,
+   ``/etc/cinder/nfs_shares``.
+
+    .. code-block:: yaml
+
+       nfs_shares_config: FILENAME_NFS_SHARES
+
+
+
+#. Configure the server. Replace ``SERVER_HOSTNAME`` with the
+   hostnames for both netapp controllers.
+
+    .. code-block:: yaml
+
+       netapp_server_hostname: SERVER_HOSTNAME
+
+#. Configure the server API port. Replace ``PORT_NUMBER`` with 80 for
+   HTTP or 443 for HTTPS.
+
+    .. code-block:: yaml
+
+       netapp_server_port: PORT_NUMBER
+
+#. Configure the server credentials. Replace ``USER_NAME`` and
+   ``PASSWORD`` with the appropriate values.
+
+    .. code-block:: yaml
+
+       netapp_login: USER_NAME
+       netapp_password: PASSWORD
+
+#. Select the NetApp driver:
+
+    .. code-block:: yaml
+
+       volume_driver: cinder.volume.drivers.netapp.common.NetAppDriver
+
+#. Configure the volume back end name. Replace ``BACKEND_NAME`` with a
+   suitable value that provides a hint for the Block Storage
+   scheduler. For example, ``NETAPP_iSCSI``.
+
+    .. code-block:: yaml
+
+       volume_backend_name: BACKEND_NAME
+
+    .. note::
+
+       The back end name is arbitrary and becomes a volume type within the
+       Block Storage service.
+
+#. Disable Block Storage on-metal deployment by creating the
+   ``/etc/openstack_deploy/env.d/cinder.yml`` file with the following
+   contents:
+
+   .. code-block:: yaml
+
+      container_skel:
+        cinder_volumes_container:
+          properties:
+            is_metal: false
+
+#. Check that the ``openstack_user_config.yml`` configuration is
+   accurate:
+
+    .. code-block:: yaml
+
+       storage_hosts:
+         xxxxxx-Infra01:
+           ip: 172.29.236.16
+           container_vars:
+             cinder_backends:
+               limit_container_types: cinder_volume
+               netapp:
+                 netapp_storage_family: ontap_7mode
+                 netapp_storage_protocol: nfs
+                 netapp_server_hostname: 111.222.333.444
+                 netapp_server_port: 80
+                 netapp_login: openstack_cinder
+                 netapp_password: password
+                 volume_driver: cinder.volume.drivers.netapp.common.NetAppDriver
+                 volume_backend_name: NETAPP_NFS
+
+    - For ``netapp_server_hostname``, specify the IP address of the Data
+      ONTAP server.
+
+    - For ``netapp_storage_family``, specify iSCSI depending on the
+      configuration.
+
+    - For ``netapp_server_port``, specify 80 if using HTTP or 443 if using
+      HTTPS.
+
+    The ``cinder-volume.yml`` playbook will automatically install the
+    ``nfs-common`` file across the hosts, transitioning from an LVM to
+    a NetApp back end.
+
+
+Configure the Block Storage service with NFS protocols
+------------------------------------------------------
+
+If the NetApp backend is configured to use an NFS storage protocol,
+edit the ``/etc/openstack_deploy/openstack_user_config.yml`` file and
+configure the NFS client on each storage node that uses it.
+
+#. For each storage node, add the ``cinder_backends`` stanza under the
+   ``container_vars`` stanza. Each Block Storage backend is defined
+   with a unique key (such as ``nfs-volume1``) that represents a
+   unique Block Storage backend and volume type.
+
+   .. code-block:: yaml
+
+      container_vars:
+        cinder_backends:
+          nfs-volume1:
+
+#. Configure the appropriate Block Storage volume backend name.
+
+   .. code-block:: yaml
+
+      volume_backend_name: nfs_volume1
+
+#. Configure the appropriate Block Storage NFS driver.
+
+   .. code-block:: yaml
+
+      volume_driver: cinder.volume.drivers.nfs.NfsDriver
+
+#. Configure the location of the file that lists the shares available
+   to the Block Storage service. This configuration file must include
+   ``nfs_shares_config``, as follows. Replace ``FILENAME_NFS_SHARES``
+   with the location of the share configuration file. For example,
+   ``/etc/cinder/nfs_shares``.
+
+   .. code-block:: yaml
+
+      nfs_shares_config: FILENAME_NFS_SHARES
+
+#. If necessary, define NFS mount options.
+
+   .. code-block:: yaml
+
+      nfs_mount_options: "rsize=65535,wsize=65535,timeo=1200,actimeo=120"
+
+#. Configure one or more NFS shares. Replace ``HOSTNAME`` with the IP
+   address or hostname of the NFS server. Replace
+   ``PATH_TO_NFS_VOLUME`` with the absolute path to an accessible NFS
+   share (excluding the IP address or hostname).
+
+   .. code-block:: yaml
+
+      shares:
+         - { ip: "HOSTNAME", share: "PATH_TO_NFS_VOLUME" }
+
+#. Disable Block Storage on-metal deployment by creating the
+   ``/etc/openstack_deploy/env.d/cinder.yml`` file with the following
+   contents:
+
+   .. code-block:: yaml
+
+      container_skel:
+        cinder_volumes_container:
+          properties:
+            is_metal: false
+
+   The ``cinder-volume`` service runs in an LXC container.
+
+#. The following section shows a full configuration example of a Block
+   Storage NFS backend named ``nfs_volume1``. The cinder playbooks
+   automatically add a custom ``volume-type`` ``nfs-volume1`` in this
+   example:
+
+   .. code-block:: yaml
+
+     container_vars:
+       cinder_backends:
+         nfs-volume1:
+           volume_backend_name: nfs_volume1
+           volume_driver: cinder.volume.drivers.nfs.NfsDriver
+           nfs_shares_config: /etc/cinder/nfs_shares_volume1
+           nfs_mount_options: "rsize=65535,wsize=65535,timeo=1200,actimeo=120"
+           shares:
+           - { ip: "1.2.3.4", share: "/vol" }
+
+.. note::
+
+   When varying backup or other service policies apply, we recommend
+   breaking out multiple NFS volumes into separate Block Storage
+   backends.
+
+
+Configure Block Storage backups to Object Storage
+-------------------------------------------------
+
+During installation of Block Storage, the backup service is configured.
+
+Environments that deploy Object Storage turn on Block Storage
+backups to Object Storage by automatically setting the
+``cinder_service_backup_program_enabled`` variable to ``True`` in the
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file.
+The default configuration backs up volumes to an Object Storage
+installation accessible within your environment.
+
+.. note::
+
+   You can disable the automatic backups to Object Storage by setting
+   the ``cinder_service_backup_program_enabled`` variable to ``False``
+   in the ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file.
+
+When automatic backups are enabled, as they are by default, you can set
+``cinder_service_backup_swift_url`` and other variables to back up to an
+external Object Storage installation.
+
+By default, Block Storage uses the access credentials of the user
+initiating the backup. Default values are set in the
+``/etc/ansible/roles/os_cinder/defaults/main.yml`` file. You can
+override those defaults by setting variables in the
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file to
+change how Block Storage performs backups. As needed, add and edit any
+of the following variables in the
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file:
+
+   .. code-block:: yaml
+
+      ...
+      # cinder_service_backup_swift_auth: Options include 'per_user' or
+      #                                   'single_user', we default to
+      #                                   'per_user' so that backups are saved
+      #                                   to a user's swift account.
+      cinder_service_backup_swift_auth: per_user
+      # cinder_service_backup_swift_url: This is your swift storage url when
+      #                                  using 'per_user', or keystone
+      #                                  endpoint when using 'single_user'.
+      #                                  When using 'per_user', you can leave
+      #                                  this as empty or as None to allow
+      #                                  cinder-backup to
+      #                                  obtain storage url from environment.
+      cinder_service_backup_swift_url:
+      cinder_service_backup_swift_auth_version: 2
+      cinder_service_backup_swift_user:
+      cinder_service_backup_swift_project:
+      cinder_service_backup_swift_key:
+      cinder_service_backup_swift_container: volumebackups
+      cinder_service_backup_swift_object_size: 52428800
+      cinder_service_backup_swift_retry_attempts: 3
+      cinder_service_backup_swift_retry_backoff: 2
+      cinder_service_backup_compression_algorithm: zlib
+      cinder_service_backup_metadata_version: 2
+
+For more information about Object Storage, see the `Standalone Object
+Storage for RPCO guide
+<https://developer.rackspace.com/docs/private-cloud/rpc/master/rpc-swift/>`_.
+
+Configure Block Storage backups to external Cloud Files
+-------------------------------------------------------
+
+You can configure Block Storage (cinder) to back up volumes to
+external Cloud Files by setting variables.
+
+#. In the ``/etc/openstack_deploy/user_osa_variables_overrides.yml``
+   file, add or edit the following line and set the value to ``True``:
+
+   .. code-block:: yaml
+
+      cinder_service_backup_program_enabled: True
+
+#. By default, Block Storage uses the access credentials of the user
+   initiating the backup. Default values are set in the
+   ``/etc/ansible/roles/os_cinder/defaults/main.yml`` file. You can
+   override those defaults by setting variables in the
+   ``/etc/openstack_deploy/user_osa_variables_overrrides.yml`` file to
+   change how Block Storage performs backups. As needed, add and edit
+   any of the following variables in the
+   ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file:
+
+   .. code-block:: yaml
+
+      ...
+      cinder_service_backup_swift_auth: single_user
+      cinder_service_backup_swift_url: https://identity.api.rackspacecloud.com/v2.0
+      cinder_service_backup_swift_auth_version: 2
+      cinder_service_backup_swift_user:
+      cinder_service_backup_swift_project:
+      cinder_service_backup_swift_key:
+      cinder_service_backup_swift_container: volumebackups
+      cinder_service_backup_swift_object_size: 52428800
+      cinder_service_backup_swift_retry_attempts: 3
+      cinder_service_backup_swift_retry_backoff: 2
+      cinder_service_backup_compression_algorithm: zlib
+      cinder_service_backup_metadata_version: 2
+
+
+    - For ``cinder_service_backup_swift_user``, specify the Rackspace
+      Public account name of the Cloud Files user.
+
+    - For ``cinder_service_backup_swift_project``, specify the Public
+      Cloud account number.
+
+    - For ``cinder_service_backup_swift_key``, specify the Cloud Files
+      password. The Cloud Files password is "*not*"" the API key.
+
+The backup service is configured during installation of Block Storage.
+
+
+Create Block Storage availability zones
+---------------------------------------
+
+You can create multiple availability zones to manage Block Storage
+storage hosts. To set up availability zones, edit the
+``/etc/openstack_deploy/openstack_user_config.yml`` and
+``/etc/openstack_deploy/user_osa_variables_overrides.yml`` files .
+
+#. For each Block Storage storage host, configure the availability
+   zone under the ``container_vars`` stanza in the
+   ``/etc/openstack_deploy/openstack_user_config.yml`` file. Replace
+   ``CINDERAZ`` with a suitable name. For example ``cinderAZ_2``.
+
+   .. code-block:: yaml
+
+      cinder_storage_availability_zone: CINDERAZ
+
+#. When creating more than one availability zone, configure the default
+   availability zone for all hosts by adding a default availability zone
+   value to the ``/etc/openstack_deploy/user_osa_variables_overrides.yml``
+   file. Replace ``CINDERAZ_DEFAULT`` with a suitable name. For example,
+   ``cinderAZ_1``. The default availability zone should be the same
+   for all cinder storage hosts.
+
+   .. code-block:: yaml
+
+      cinder_default_availability_zone: CINDERAZ_DEFAULT
+
+   .. important::
+
+      If you do not define ``cinder_default_availability_zone``, the
+      default variable is used (nova), which might cause the Dashboard
+      (horizon) volume creation to fail.
+
+.. note::
+
+   The ``nova_cross_az_attach`` variable should be configured according
+   to the Block Storage variable. Ideally, the Block Storage and Compute
+   availability zones use the same name, so Compute can pass through the
+   availability zone to Block Storage.
+   If the availability zones have different names, set ``nova_cross_az_attach``
+   to ``TRUE``.

@@ -1,0 +1,8 @@
+.. _architecture:
+
+============
+Architecture
+============
+
+For information about the architecture of |service appformix|, see
+`Understanding the AppFormix Architecture in a Cloud Infrastructure <https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-architecture.html>`_ in the AppFormix User Guide.

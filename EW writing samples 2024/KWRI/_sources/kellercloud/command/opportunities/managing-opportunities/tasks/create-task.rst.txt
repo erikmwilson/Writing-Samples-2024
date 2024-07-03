@@ -1,0 +1,53 @@
+
+.. _add-task-opportunities-command:
+
+Create/Add a Task
+=================
+
+To create or add a task to an Opportunity, complete the following steps:
+
+.. include:: ../../opportunities-login.rst
+
+#. On the left toolbar, click **Opportunities** |opportunities-icon|.
+
+   .. |opportunities-icon| image:: ../../../../../images/applet-opportunities.svg
+      :height: 20
+
+#. Click on the phase (Cultivate, Appointment, Active, Under Contract, Closed) that contains the Opportunity.
+
+#. Click on the Opportunity Name to view the Opportunity details.
+
+#. Click on the checklist icon, |checklist-icon|.
+
+   .. |checklist-icon| image:: ../../../../../images/checklist-icon.png
+      :height: 30
+
+#. On the **Tasks** window, click **Create Task** in the header to create a task for any phase and stage or click **Add Task** within a phase and stage to create a task in that phase and stage.
+
+   .. note::
+
+      In both cases, you can change the phase and stage to match your needs.
+
+#. On the **Create Task** window, enter the following information:
+
+   * **Task Name**
+
+   * **Opportunity Phase**
+
+   * **Opportunity Stage**
+
+   * **Task Type**
+
+   * **Task Description** (optional)
+
+   * **Hyperlink** that you need to complete the task (optional)
+
+   * **Priority** (optional)
+
+   * **Due Date**
+
+   * **Assigned To** - Agent attached to this task (optional)
+
+#. Click **Create**.
+
+You can see all opportunity tasks in the Tasks applet. For more information, see :ref:`tasks-index-command`.

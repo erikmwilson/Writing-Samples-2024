@@ -1,0 +1,23 @@
+
+.. _hide-courses-docebo-connect:
+
+Hide a Learning Path's Courses from the Bookshelf
+=================================================
+
+To increase the agent's user experience (and reduce clutter when filtering courses), you can prevent learning path courses from displaying on the courses section of the bookshelf.
+
+To hide a learning path's courses from the bookshelf, complete the following steps:
+
+1. From a browser, log in to Docebo using your Keller Williams user name and password.
+
+#. Select the learning path with the course you want to hide from the **All Channels** page.
+
+#. Remember the learning path ID. The learning path ID is the number near the end of the learning path page URL.
+
+#. Click the gear icon in the top right corner to access the **Admin Menu**.
+
+#. Click **Courses Management** from the **E-Learning section**.
+
+#. Click on the course (assigned to the above learning path) that you want to hide. The courses must be assigned learning path.
+
+#. On the course **Properties** tab, enter code with the pattern **hidden-%LearningPathID%-%NumberOfCourseInPath%** in the **Code** field. For example, ``hidden-121-01`` is the first course in the learning path and ``hidden-121-02`` is the second course in the learning path.

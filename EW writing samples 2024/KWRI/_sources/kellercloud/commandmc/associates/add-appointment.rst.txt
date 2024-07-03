@@ -1,0 +1,29 @@
+
+.. _add-appointment-associates-commandmc:
+
+Add an Appointment
+==================
+
+To add an apppointment to an associate, complete the following steps:
+
+.. include:: associates-mc-login.rst
+
+#. Search for the correct associate. For more information, see :ref:`search-associates-commandmc`.
+
+#. Click the associate name to view the associate details.
+
+#. On the **Associate Details** window, click the **Appointments** tab.
+
+#. Click **New Appointment**.
+
+#. On the **Create an Appointment** window, enter the appointment details. Select who the appointment is **Conducted by**, the **Apointment Type**, **Date Conducted**, and any **Notes**.
+
+#. You can add **Attachments** to the appointment by drag and dropping them or clicking **Browse**. If the appointment has an attachment, click **Attach Files** to upload additional files. Click the download icon to download an existing attachment or click the delete icon to remove it from the appointment.
+
+   .. note::
+
+      When deleting an attachment, you must click **Save** after you click the delete icon.
+
+#. Click **Save Appointment**.
+
+  You can now access this, and other appointments that you add, on both the associate's timeline, and on the associate details **Appointments** tab.

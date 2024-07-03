@@ -1,0 +1,45 @@
+===================
+Perform the upgrade
+===================
+
+Run the upgrade script from the original deployment host.
+
+- The upgrade process takes at least 30 minutes depending on the number of
+  nodes.
+
+- During the upgrade process, instances may experience a brief
+  interruption in network connectivity. This is expected behavior, and the
+  environment will operate normally afterwards.
+
+- Creation of the following new containers might fail during the initial
+  clean-up phase after ``upgrade.sh`` is launched:
+
+  - ``nova_console``
+  - ``repo_server``
+  - ``cinder_scheduler``
+
+  After the script runs the playbook that creates LXC containers, these
+  containers should be successfully created.
+
+#. Clone the RPCO repository into the ``/opt/rpc-openstack`` directory:
+
+   .. code-block:: console
+
+      # git clone -b TAG --recursive https://github.com/rcbops/rpc-openstack \
+      /opt/rpc-openstack
+
+   Replace ``TAG`` with the current stable release tag.
+
+#. Change to the ``/opt/rpc-openstack`` directory and run the upgrade script:
+
+   .. code-block:: console
+
+      # cd /opt/rpc-openstack
+      # FORKS=10 scripts/upgrade.sh
+
+#. Confirm the completion of the upgrade process with no tasks
+   unreachable or failed.
+
+   If failures occur during the upgrade process, an error message will
+   indicate where it occurred, and the playbooks to be rerun to complete
+   the upgrade process.

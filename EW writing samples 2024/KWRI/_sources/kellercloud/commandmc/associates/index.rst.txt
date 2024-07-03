@@ -1,0 +1,27 @@
+
+.. _associates-index-commandmc:
+
+Associates
+==========
+
+The following sections contain information about the
+Associates applet. Associates include all agents and support personnel in your Market Center.
+
+.. toctree::
+   :maxdepth: 1
+
+   search-associates
+   filter-associates
+   smartview-associates
+   customize-columns
+   view-details
+   add-appointment
+   add-activity
+   add-note
+   tasks/index
+   add-license
+   activate-agent
+   add-existing
+   set-to-associate
+   add-deductions
+   remove-associate

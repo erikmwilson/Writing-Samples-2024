@@ -1,0 +1,1048 @@
+===============================================
+Configure the Object Storage service (optional)
+===============================================
+
+Object Storage (swift) is a multi-project object storage system. It is
+highly scalable, can manage large amounts of unstructured data, and
+provides a RESTful HTTP API.
+
+.. note::
+
+   If Object Storage hosts exist in the environment, the following
+   variables are automatically set in the
+   ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file to use
+   Object Storage:
+
+   - ``glance_default_store`` variable is set to ``swift``
+
+   - ``cinder_service_backup_program_enabled`` variable is set to ``True``
+
+The following topics describe how to set up storage devices and modify
+the Object Storage configuration files to enable Object Storage usage.
+
+.. contents::
+  :local:
+  :depth: 1
+
+
+.. _configure-and-mount-storage-devices:
+
+Configure and mount storage devices
+-----------------------------------
+
+Before you can install Object Storage for RPCO, you must set up
+Object Storage storage devices. The storage devices must be set up
+before installing Object Storage.
+
+**Configuring and mounting storage devices**
+
+RPCO Object Storage requires a minimum of three Object Storage devices
+with mounted storage drives. The example commands in this procedure
+assume the storage devices for Object Storage are devices ``sdc``
+through ``sdg``.
+
+#. Determine the storage devices on the node to use for Object Storage.
+
+#. Format each of these devices with XFS. While
+   formatting the devices, add a unique label for each device.
+
+   .. note::
+
+      Without labels, a failed drive can cause mount points to shift and
+      data to become inaccessible.
+
+   For example, create the file systems on the devices by using the
+   **mkfs** command
+
+   .. code-block:: console
+
+      # apt-get -y install xfsprogs
+
+      # mkfs.xfs -f -i size=1024 -L sdc /dev/sdc
+      # mkfs.xfs -f -i size=1024 -L sdd /dev/sdd
+      # mkfs.xfs -f -i size=1024 -L sde /dev/sde
+      # mkfs.xfs -f -i size=1024 -L sdf /dev/sdf
+      # mkfs.xfs -f -i size=1024 -L sdg /dev/sdg
+
+#. Add the mount locations to the ``/etc/fstab`` file so that the
+   storage devices are remounted on boot. The following example mount
+   options are recommended when using XFS.
+
+   .. note::
+      Finish all modifications to the ``/etc/fstab`` file before mounting
+      the new file systems created within the storage devices.
+
+   .. code-block:: ini
+
+      LABEL=sdc /srv/node/sdc xfs noatime,nodiratime,nobarrier,logbufs=8 0 0
+      LABEL=sdd /srv/node/sdd xfs noatime,nodiratime,nobarrier,logbufs=8 0 0
+      LABEL=sde /srv/node/sde xfs noatime,nodiratime,nobarrier,logbufs=8 0 0
+      LABEL=sdf /srv/node/sdf xfs noatime,nodiratime,nobarrier,logbufs=8 0 0
+      LABEL=sdg /srv/node/sdg xfs noatime,nodiratime,nobarrier,logbufs=8 0 0
+
+#. Create the mount points for the devices by using the **mkdir** command.
+
+   .. code-block:: console
+
+      # mkdir -p /srv/node/sdc
+      # mkdir -p /srv/node/sdd
+      # mkdir -p /srv/node/sde
+      # mkdir -p /srv/node/sdf
+      # mkdir -p /srv/node/sdg
+
+   The mount point is referenced as the ``mount_point`` parameter in the
+   ``swift.yml`` file (``/etc/openstack_deploy/conf.d/swift.yml``).
+
+#. Mount the storage devices by using the ``mount`` command:
+
+   .. code-block:: console
+
+      # mount /srv/node/sdc
+      # mount /srv/node/sdd
+      # mount /srv/node/sde
+      # mount /srv/node/sdf
+      # mount /srv/node/sdg
+
+To view an annotated example of the ``swift.yml`` file, see :ref:`appendix-a`.
+
+For the devices mounted in the preceding steps, the mount locations would
+be as follows:
+
+.. list-table:: Mounted devices
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Device
+     - Mount location
+   * - /dev/sdc
+     - /srv/node/sdc
+   * - /dev/sdd
+     - /srv/node/sdd
+   * - /dev/sde
+     - /srv/node/sde
+   * - /dev/sdf
+     - /srv/node/sdf
+   * - /dev/sdg
+     - /srv/node/sdg
+
+The entry in the ``swift.yml`` file for the mounted devices would be as
+follows:
+
+.. code-block:: yaml
+
+   #    drives:
+   #        - name: sdc
+   #        - name: sdd
+   #        - name: sde
+   #        - name: sdf
+   #        - name: sdg
+   #    mount_point: /srv/node
+
+
+.. _configure-an-object-storage-deployment:
+
+Configure an Object Storage deployment
+--------------------------------------
+
+Object Storage is configured using the following files:
+
+- ``/etc/openstack_deploy/conf.d/swift.yml.example`` file
+- ``/etc/openstack_deploy/user_osa_variables_defaults.yml`` file
+
+The group variables in the
+``/etc/openstack_deploy/conf.d/swift.yml.example`` file are used by
+the Ansible playbooks when installing Object Storage. Some variables
+cannot be changed after they are set, while some changes require
+re-running the playbooks. The values in the ``swift_hosts`` section
+supersede values in the ``swift`` section.
+
+To view the configuration files, including information about which
+variables are required and which are optional, see :ref:`appendix-a`.
+
+
+Update the Object Storage configuration swift.yml file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Copy the ``/etc/openstack_deploy/conf.d/swift.yml.example`` file to
+   ``/etc/openstack_deploy/conf.d/swift.yml``:
+
+   .. code-block:: console
+
+      # cp /etc/openstack_deploy/conf.d/swift.yml.example \
+           /etc/openstack_deploy/conf.d/swift.yml
+
+#. In the ``/etc/openstack_deploy/conf.d/swift.yml`` file, update the
+   global override values as shown in the following example. The
+   parameters explained following the example.
+
+   .. code-block:: yaml
+
+      # global_overrides:
+      #   swift:
+      #     part_power: 8
+      #     weight: 100
+      #     min_part_hours: 1
+      #     repl_number: 3
+      #     storage_network: 'br-storage'
+      #     replication_network: 'br-repl'
+      #     drives:
+      #       - name: sdc
+      #       - name: sdd
+      #       - name: sde
+      #       - name: sdf
+      #     mount_point: /mnt
+      #     account:
+      #     container:
+      #     storage_policies:
+      #       - policy:
+      #           name: gold
+      #           index: 0
+      #           default: True
+      #       - policy:
+      #           name: silver
+      #           index: 1
+      #           repl_number: 3
+      #           deprecated: True
+
+   ``part_power``
+       Set the partition power value based on the total amount of
+       storage the entire ring will use.
+
+       Multiply the maximum number of drives ever used with this Object
+       Storage installation by 100 and round that value up to the
+       closest power of 2 value. For example, a maximum of 6 drives,
+       times 100, equals 600. The nearest power of 2 above 600 is 2
+       to the power of 9, so the partition power is 9. The
+       partition power cannot be changed after the Object Storage rings
+       are built.
+
+   ``weight``
+       The default weight is 100. If the drives are different sizes, set
+       the weight value to avoid uneven distribution of data. For
+       example, a 1 TB disk would have a weight of 100, while a 2 TB
+       drive would have a weight of 200.
+
+   ``min_part_hours``
+       The default value is 1. Set the minimum partition hours to the
+       amount of time to lock a partition's replicas after a partition
+       has been moved. Moving multiple replicas at the same time might
+       make data inaccessible. This value can be set separately in the
+       swift, container, account, and policy sections with the value in
+       other sections superseding the value in the swift section.
+
+       .. note::
+
+          For account and container rings, ``min_part_hours`` and
+          ``repl_number`` are the only values that can be set. Setting them
+          in this section overrides the defaults for the specific ring.
+
+   ``repl_number``
+       The default value is 3. Set the replication number to the number
+       of replicas of each object. This value can be set separately in
+       the swift, container, account, and policy sections with the value
+       in the more granular sections superseding the value in the swift
+       section.
+
+       .. note::
+
+          For account and container rings, ``min_part_hours`` and
+          ``repl_number`` are the only values that can be set. Setting them
+          in this section overrides the defaults for the specific ring.
+
+   ``storage_network``
+       By default, the swift services will listen on the default
+       management IP address. Optionally, specify the interface of the storage
+       network.
+
+       .. note::
+
+          If the ``storage_network`` value is not set, but the
+          ``storage_ips`` value per host is set (or the ``storage_ip`` value
+          is not set on the ``storage_network`` interface) the proxy server
+          cannot connect to the storage services.
+
+   ``replication_network``
+       Optionally, specify a dedicated replication network interface, so
+       dedicated replication can be set up. If this value is not
+       specified, no dedicated replication network is set.
+
+       .. note::
+
+          Replication does not work properly if the ``repl_ip`` is not able
+          to connect to other hosts' ``repl_ip``.
+
+   ``drives``
+       Set the default drives per host. This is useful when all hosts
+       have the same drives. These values can be overridden for each host.
+
+   ``mount_point``
+       Set the ``mount_point`` value to the location where the swift
+       drives are mounted. For example, with a mount point of ``/mnt``
+       and a drive of ``sdc``, a drive is mounted at ``/mnt/sdc`` on the
+       ``swift_host``. This value can be overridden for each host.
+
+   ``storage_policies``
+       Storage policies determine on which hardware data is stored, how
+       the data is stored across that hardware, and in which region the
+       data resides. Each storage policy must have an unique ``name``
+       and a unique ``index``. There must be a storage policy with an
+       index of 0 in the ``swift.yml`` file to use any legacy containers
+       created before storage policies were instituted.
+
+   ``default``
+       Set the ``default value`` to ``yes`` for at least one policy. This is
+       the default storage policy for any non-legacy containers that are
+       created.
+
+   ``deprecated``
+       Set the ``deprecated`` value to ``yes`` to turn off storage policies.
+
+       .. note::
+
+          For account and container rings, ``min_part_hours`` and
+          ``repl_number`` are the only values that can be set. Setting them
+          in this section overrides the defaults for the specific ring.
+
+#. In the ``/etc/openstack_deploy/conf.d/swift.yml`` file, update the
+   Object Storage proxy hosts values by setting the ``IP`` address of
+   the hosts to which Ansible will connect to deploy the swift-proxy
+   containers. The ``swift-proxy_hosts`` value should match the infra
+   nodes.
+
+   .. code-block:: yaml
+
+      # swift-proxy_hosts:
+      #   infra-node1:
+      #     ip: 192.0.2.1
+      #   infra-node2:
+      #     ip: 192.0.2.2
+      #   infra-node3:
+      #     ip: 192.0.2.3
+
+#. In the ``/etc/openstack_deploy/conf.d/swift.yml`` file, update the
+   Object Storage hosts values as shown in the following example. The
+   parameters are explained following the example.
+
+   .. code-block:: yaml
+
+      # swift_hosts:
+      #   swift-node1:
+      #     ip: 192.0.2.4
+      #     container_vars:
+      #       swift_vars:
+      #         zone: 0
+      #   swift-node2:
+      #     ip: 192.0.2.5
+      #     container_vars:
+      #       swift_vars:
+      #         zone: 1
+      #   swift-node3:
+      #     ip: 192.0.2.6
+      #     container_vars:
+      #       swift_vars:
+      #         zone: 2
+      #   swift-node4:
+      #     ip: 192.0.2.7
+      #     container_vars:
+      #       swift_vars:
+      #         zone: 3
+      #   swift-node5:
+      #     ip: 192.0.2.8
+      #     container_vars:
+      #       swift_vars:
+      #         storage_ip: 198.51.100.8
+      #         repl_ip: 203.0.113.8
+      #         zone: 4
+      #         region: 3
+      #         weight: 200
+      #         groups:
+      #           - account
+      #           - container
+      #           - silver
+      #         drives:
+      #           - name: sdb
+      #             weight: 75
+      #             groups:
+      #               - gold
+      #           - name: sdc
+      #           - name: sdd
+      #           - name: sde
+      #           - name: sdf
+
+   ``swift_hosts``
+       Specify the hosts to be used as the storage nodes. The ``ip`` value is
+       the address of the host to which Ansible connects. Set the name
+       and IP address of each Object Storage host. The ``swift_hosts``
+       section is not required.
+
+   ``swift_vars``
+       Contains the values specific to the Object Storage host.
+
+   ``storage_ip`` and ``repl_ip``
+       These values are based on the IP addresses of the host's
+       storage network or replication network. For example, if
+       the ``storage_network`` is ``br-storage`` and host1 has an IP
+       address of 1.1.1.1 on ``br-storage``, then that IP address
+       is used for the ``storage_ip`` value. If only the ``storage_ip`` value
+       is specified, the ``repl_ip`` value defaults to the ``storage_ip``
+       value. If neither are specified, both will default to the host IP
+       address.
+
+   ``zone``
+       The default is 0. Optionally, set the Object Storage zone for the
+       ring.
+
+   ``region``
+       Optionally, set the Object Storage region for the ring.
+
+   ``weight``
+       The default weight is 100. If the drives are different sizes, set
+       the weight value to avoid uneven distribution of data. You can specify
+       this value on a host or drive basis (if specified on both,
+       the drive setting takes precedence).
+
+   ``groups``
+       Set this value to list the rings to which a host's drive belongs.
+       You can set this value on a per drive basis which overrides the host
+       setting.
+
+   ``drives``
+       Set the names of the drives on this Object Storage host. At least
+       one name must be specified.
+
+   ``weight``
+       The default weight is 100. If the drives are different sizes, set
+       the weight value to avoid uneven distribution of data. You can specify
+       this value on a host or drive basis (if specified on both,
+       the drive setting takes precedence).
+
+   In the following example, ``swift-node5`` shows values in the
+   ``swift_hosts`` section that will override the global values.
+   Groups are set, which overrides the global settings for drive
+   ``sdb``. The weight is overridden for the host and specifically
+   adjusted for drive ``sdb``.
+
+   .. code-block:: yaml
+
+      #  swift-node5:
+      #     ip: 192.0.2.8
+      #     container_vars:
+      #       swift_vars:
+      #         storage_ip: 198.51.100.8
+      #         repl_ip: 203.0.113.8
+      #         zone: 4
+      #         region: 3
+      #         weight: 200
+      #         groups:
+      #           - account
+      #           - container
+      #           - silver
+      #         drives:
+      #           - name: sdb
+      #             weight: 75
+      #             groups:
+      #               - gold
+      #           - name: sdc
+      #           - name: sdd
+      #           - name: sde
+      #           - name: sdf
+
+#. Verify that the ``swift.yml`` file is in the
+   ``/etc/openstack_deploy/conf.d/`` folder.
+
+
+Storage policies
+^^^^^^^^^^^^^^^^
+
+Storage policies allow segmenting the cluster for various purposes
+through the creation of multiple object rings. Using policies,
+different devices can belong to different rings with varying levels of
+replication. By supporting multiple object rings, Object Storage can
+segregate the objects within a single cluster.
+
+Storage policies can be used for the following situations:
+
+-  Differing levels of replication: You might want to offer 2x
+   replication and 3x replication, but does not want to maintain two
+   separate clusters. You can set up a 2x policy and a 3x policy and
+   assign the nodes to their respective rings.
+
+-  Improving performance: Just as solid state drives (SSD) can be used
+   as the exclusive members of an account or database ring, an SSD-only
+   object ring can be created to implement a low-latency or high
+   performance policy.
+
+-  Collecting nodes into groups: Different object rings can have
+   different physical servers so that objects in specific storage
+   policies are always placed in a specific data center or geography.
+
+-  Differing storage implementations: A policy can be used to direct
+   traffic to collected nodes that use a different disk file (for
+   example, Kinetic or GlusterFS).
+
+Most storage clusters do not require more than one storage policy. The
+following problems can occur if multiple storage policies are used per
+cluster:
+
+-  Creating a second storage policy without any specified drives (all
+   drives are part of only the account, container, and default storage
+   policy groups) creates an empty ring for that storage policy.
+
+-  A non-default storage policy is used only if it is specified when
+   a container is created, by using the
+   ``X-Storage-Policy: <policy-name>`` header. After the
+   container is created, it uses the created storage policy. Other
+   containers continue to use the default storage policy or a non-default
+   storage policy that was specified when they were created.
+
+For more information about storage policies, see `Storage Policies
+<http://docs.openstack.org/developer/swift/overview_policies.html>`_ in the
+OpenStack documentation.
+
+Object Storage monitoring
+-------------------------
+
+The Rackspace Cloud Monitoring service enables Rackspace Private Cloud
+customers to monitor system performance and safeguard critical data.
+
+Service and response
+^^^^^^^^^^^^^^^^^^^^
+
+When a threshold is reached or functionality fails, the Rackspace Cloud
+Monitoring service generates an alert, which creates a ticket in the
+Rackspace ticketing system. This ticket moves into the RPCO support
+queue. Tickets flagged as monitoring alerts are given highest priority,
+and response is delivered according to the service level agreement
+(SLA). Refer to the SLA for detailed information about incident severity
+levels and corresponding response times.
+
+Specific monitoring alert guidelines can be set for the installation.
+These details should be arranged by a Rackspace account manager.
+
+Object Storage monitors
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Object Storage has its own set of monitors and alerts.
+
+The following checks are performed on services:
+
+-  Health checks on the services on each server
+
+   Object Storage makes a request to ``/healthcheck`` for each service
+   to ensure that it is responding appropriately. If this check fails,
+   determine why the service is failing and fix it accordingly.
+
+-  Health check against the proxy service on the virtual IP address (VIP)
+
+   Object Storage checks the load balancer address for the
+   ``swift-proxy-server`` service, and monitors the proxy servers as a
+   service health checks. If this check fails, it suggests that there is
+   no access to the VIP address or all of the services are failing.
+
+The following checks are performed against the output of the swift-recon
+middleware:
+
+-  md5sum checks on the ring files across all Object Storage nodes.
+
+   This check ensures that the ring files are the same on each node. If
+   this check fails, determine why the md5sum for the ring is different
+   and determine which of the ring files is correct. Copy the correct
+   ring file onto the node that is causing the md5sum check to fail.
+
+-  md5sum checks on the ``swift.conf`` files across all swift nodes.
+
+   If this check fails, determine why the ``swift.conf`` file is different
+   and determine which of the ``swift.conf`` files is correct. Copy the
+   correct ``swift.conf`` file onto the node that is causing the md5sum check
+   to fail.
+
+-  Asyncs pending requests
+
+   This check monitors the average number of async pending requests and
+   the percentage of requests that are put in async pending status. This
+   happens when a PUT or DELETE operation fails (because of timeouts,
+   heavy usage, failed disk, or other reasons). If this check fails,
+   determine why requests are failing and being put in async pending status,
+   and fix accordingly.
+
+-  Quarantine
+
+   This check monitors the percentage of objects that are quarantined
+   (objects that are found to have errors and are moved to quarantine). An
+   alert is set up against account, container, and object servers. If
+   this check fails, determine the cause of the corrupted objects and fix
+   accordingly.
+
+-  Replication
+
+   This check monitors he percentage of replication success. An alert is set
+   up against account, container, and object servers. If this check fails,
+   determine why objects are not replicating and fix accordingly.
+
+
+.. _allow-identity-users:
+
+Allow Identity users to use Object Storage (optional)
+-----------------------------------------------------
+
+Allow all Identity users to use Object Storage by setting
+``swift_allow_all_users`` in the ``user_osa_variables_overrides.yml``
+file to ``True``. Any users with the ``_member_`` role (all authorized
+Identity (keystone) users) can create containers and upload objects to
+Object Storage.
+
+.. note::
+
+   If this value is ``False``, then by default, only users with the
+   admin or swiftoperator role are allowed to create containers or
+   manage projects.
+
+   When the backend type for the Image Service (glance) is set to
+   ``swift``, the Image Service can access the Object Storage cluster
+   regardless of whether this value is ``True`` or ``False``.
+
+Deploy Object Storage on existing RPCO software (optional)
+----------------------------------------------------------
+
+To deploy Object Storage on a previously installed version of RPCO,
+complete the following steps:
+
+#. :ref:`configure-and-mount-storage-devices`.
+
+#. :ref:`configure-an-object-storage-deployment`.
+
+#. :ref:`allow-identity-users`.
+
+#. Run the Object Storage playbook:
+
+   .. code-block:: console
+
+      # cd /opt/openstack-ansible/playbooks
+      # openstack-ansible os-swift-install.yml
+
+
+Integrate Object Storage with the Image service (optional)
+----------------------------------------------------------
+
+The images created by the Image service (glance) can be
+stored using Object Storage.
+
+.. note::
+
+   If the Image service (glance) already has a back end (for example,
+   Cloud Files) but you want to add Object Storage (swift) as the
+   Image service back end, re-add any images from the Image service
+   after moving to Object Storage. If the Image service variables are
+   changed (as described in this section) and begin using Object
+   Storage, any images in the Image service are no longer available.
+
+This procedure requires the following software:
+
+-  Rackspace Private Cloud Powered By OpenStack |os-release| software
+
+-  Object Storage
+
+#. In the ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file,
+   update the glance options. The options are defined following the example.
+
+   .. code-block:: yaml
+
+      # Glance Options
+      glance_default_store: swift
+      glance_swift_store_auth_address: '{{ keystone_service_internalurl }}'
+      glance_swift_store_container: glance_images
+      glance_swift_store_endpoint_type: internalURL
+      glance_swift_store_key: '{{ glance_service_password }}'
+      glance_swift_store_region: RegionOne
+      glance_swift_store_user: 'service:glance'
+
+   -  ``glance_default_store``: Set the default store to ``swift``.
+
+      .. note::
+
+         If Object Storage hosts exist in the environment,
+         the ``glance_default_store`` variable is automatically
+         set to ``swift``.
+
+   -  ``glance_swift_store_auth_address``: Set to the local
+      authentication address using the
+      ``'{{ keystone_service_internalurl }}'`` variable.
+
+   -  ``glance_swift_store_container``: Set the container name.
+
+   -  ``glance_swift_store_endpoint_type``: Set the endpoint type to
+      ``internalURL``.
+
+   -  ``glance_swift_store_key``: Set the Image service password using
+      the ``'{{ glance_service_password }}'`` variable.
+
+   -  ``glance_swift_store_region``: Set the region. The default value
+      is ``RegionOne``.
+
+   -  ``glance_swift_store_user``: Set the project and user name to
+      ``'service:glance'``.
+
+#. Rerun the Image service (glance) configuration plays.
+
+#. Run the Image Service (glance) playbook:
+
+   .. code-block:: console
+
+      # cd /opt/openstack-ansible/playbooks
+      # openstack-ansible os-glance-install.yml --tags “glance-config”
+
+
+Configure Object Storage for multiple regions (optional)
+--------------------------------------------------------
+
+Object Storage is currently designed, by default, to work in a single
+`region`. A region is defined as a group of servers with
+high-bandwidth, low-latency links between them. However, Object
+Storage can also be run as a multiregion cluster with one primary RPCO
+Object Storage deployment and multiple additional standalone Object
+Storage deployments. The hardware requirements are the same as an RPCO
+with Object Storage deployment or a standalone Object Storage
+deployment respectively.
+
+**Create a multiregion Object Storage cluster**
+
+#. Set up the ``/etc/openstack-deploy/conf.d/swift.yml`` configuration file.
+
+   To view the configuration file, including information about which
+   variables are required and which are optional, see :ref:`appendix-a`.
+
+   .. note::
+      You must specify the ``region`` value. This value is not specific to
+      multiregion Object Storage, but it must be set specifically on a per
+      region basis. The ``region`` value is used you set up the
+      ``user_osa_variables_overrides.yml`` file. The ``swift_managed_regions``
+      list in the ``user_osa_variables_overrides.yml`` file must match the
+      ``region`` value for the ``swift_hosts`` in ``swift.yml`` file.
+
+#. Set up the ``/etc/openstack_deploy/user_osa_secrets.yml`` file in each
+   region. The following values in the ``user_osa_secrets.yml`` file should
+   be identical for all regions:
+
+   .. code-block:: yaml
+
+      ## Swift Options:
+      swift_hash_path_suffix:
+      swift_hash_path_prefix:
+
+   To view the configuration file, including information about which
+   variables are required and which are optional, see :ref:`appendix-a`.
+
+#. For each region's deployment, set the following entry in the
+   ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` file . Ensure
+   that each region's ``swift_managed_regions`` is specified correctly.
+   For example, in the primary region, the value would be as follows:
+
+   .. code-block:: yaml
+
+      swift_managed_regions:
+        - 1
+
+   .. note::
+      The ``swift_managed_regions`` setting must match the ``region:``
+      values for hosts and drives in the
+      ``/etc/openstack_deploy/conf.d/swift.yml`` file for the region's
+      deployment.
+
+#. Run a full RPCO deployment excluding Object Storage.
+
+#. Run the ``os-swift-setup.yml`` playbook. This playbook installs the
+   Object Storage services and sets up the SSH keys for the Object
+   Storage user.
+
+#. Repeat steps 1 through 5 for each additional region.
+
+#. Populate the ``/etc/openstack_deploy/conf.d/swift-remote.yml`` file for
+   each region. It should contain the storage hosts from the other
+   regions and their storage IP addresses, and the proxy nodes
+   from the other regions and their storage IP addresses.
+
+   When deploying a new region, with a new deployment host, put the
+   public keys from the existing deployment hosts and proxy nodes onto
+   each of the hosts in the new region. Then put the public key from the
+   new deployment host onto each of the hosts and proxy nodes in
+   existing regions that are included in the ``conf.d/swift-remote.yml`` file.
+   Doing this allows the public keys to synchronize through hosts and
+   containers.
+
+   For remote swift hosts only specify the IP address.
+
+   .. note::
+
+      Specify the IP address on the shared
+      network address range, which swift hosts and swift proxy_containers
+      can access one another on, and not necessarily the ansible SSH host
+      IP address from the remote Ansible installation. Additionally, for
+      proxy_containers it is the IP addresss of the container itself,
+      and not the IP address of the physical infrastructure host.
+      See the following example:
+
+   .. code-block:: yaml
+
+      swift-remote_hosts:
+        remote_storage01:
+          ip: 198.51.100.1
+        remote_storage02:
+          ip: 198.51.100.2
+        remote_storage03:
+          ip: 198.51.100.3
+        remote_storage04:
+          ip: 198.51.100.4
+        remote_storage05:
+          ip: 198.51.100.5
+        remote_proxy_container01:
+          ip: 198.51.100.6
+        remote_proxy_container02:
+          ip: 198.51.100.7
+        remote_proxy_container03:
+          ip: 198.51.100.8
+
+#. Run the ``os-swift-sync.yml`` playbook on each region.
+
+   .. note::
+
+      Do not run the playbook on more than one region at a time.
+      If Object Storage has already been fully deployed on one region,
+      begin with that region, and then, continue to run the playbook
+      on to the remaining regions.
+
+
+Configure Object Storage networks for multiple regions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section provides an example of how to set up routing between
+multiple Object Storage regions. In this setup, a storage network is
+used for retrieving or placing objects from the proxy servers to the
+object, account, or container storage services and from the storage
+service to the storage service. A replication network can also be used
+for replicating objects, accounts, or containers from the storage
+service to the storage service. In cases where network traffic is high
+a replication network prevents saturation of the storage network.
+
+**Prerequisite**
+
+The deployment must have its VPN tunnels configured with all the
+relevant VLANs, tunnels, and routes ready to place on the host
+machines.
+
+**Configure networks for multiple regions**
+
+#. Enable ``ip_forward`` on the host machine:
+
+   .. code-block:: console
+
+      # echo 1 > /proc/sys/net/ipv4/ip_forward
+
+#. On any host that will be part of the mesh, create a ``br-storage``
+   bridge that contains the host-local IP addresses. Any tunnels,
+   VLANs, and so on that need to be on the host belong in this bridge.
+   For more information about setting up a host, see the `Networking
+   configuration section
+   <http://docs.openstack.org/project-deploy-guide/openstack-ansible/newton/targethosts-networkconfig.html>`_
+   in the OpenStack-Ansible Deployment Guide.
+
+   The replication provider ``br-storage`` bridge has the following attributes:
+
+   -  Optional (but required for Object Storage for multiple regions)
+
+   -  Provides access to the inter-region networking mesh
+
+   -  Manually created and is given the host-local gateway IP addresses
+
+   -  Attaches to ``eth13`` in each associated container
+
+   .. note::
+
+      Static routes to the inter-region network from the containers
+      should be defined in the ``openstack_user_config.yml`` file. See
+      :ref:`configure static routes <configure-static-routes>` for
+      ``static_routes`` syntax.
+
+   The following is an example ``br-storage`` bridge for a simple
+   point-to-point VPN:
+
+   .. code-block:: yaml
+
+      # auto br-storage
+      #   iface br-storage inet static
+      #       bridge_stp off
+      #       bridge_waitport 0
+      #       bridge_fd 0
+      #       bridge_ports none
+      #       address HOST-LOCAL_GATEWAY
+      #       netmask NETMASK
+      #       # Create veth pair, ignore if already exists
+      #       pre-up ip link add br-storage-veth type veth peer name eth13 || true
+      #       # Set both ends UP
+      #       pre-up ip link set eth13 up
+      #       pre-up ip link set br-storage-veth up
+      #       # Add the routes
+      #       post-up ip route add MESH_CIDR via HOST-LOCAL_GATEWAY
+      #       # Delete veth pair on DOWN
+      #       post-down ip link del br-storage-veth || true
+      #       bridge_ports br-storage-veth
+
+   .. note::
+
+      This step should be repeated for each bridge.
+
+#. Add any additional interfaces into the bridge by using ``bridge_ports``.
+
+#. After the host side networking has been completed, add a
+   ``static_routes`` section to the
+   ``etc/openstack_deploy/openstack_user_config.yml`` file:
+
+   .. code-block:: yaml
+
+      # - network:
+      #  container_bridge: "br-storage"
+      #  container_type: "veth"
+      #  container_interface: "eth13"
+      #  ip_from_q: "storage"
+      #  group_binds:
+      #    - swift_proxy
+      #  static_routes:
+      #    - cidr: MESH_CIDR
+      #      gateway: IP_BR-STORAGE
+
+   The IP address on ``br-storage`` should explicitly define the gateway of
+   the mesh CIDR, not the IP address allocated from the network itself.
+   The mesh CIDR is not the ``br-storage`` CIDR of the local data center
+   but the ``br-storage`` CIDR of the remote data center.
+
+   Static routes are not added to interfaces that are currently running.
+   You can either restart the interface or manually add the static route.
+
+   To restart the interface:
+
+   .. code-block:: console
+
+      # ansible swift_proxy -m shell -a "ifdown eth13; ifup eth13"
+
+   To manually add the static route:
+
+   .. code-block:: console
+
+      # ip route add DESTINATION via GATEWAY
+
+   The ``DESTINATION`` is the CIDR network for the remote regions, and
+   ``GATEWAY`` is the network router on the ``br-storage`` bridge.
+
+
+   .. note::
+
+      Repeat this step for each bridge.
+
+   The following steps are required only when using a dedicated replication
+   network.
+
+#. When using a dedicated replication network (br-repl), you must create a
+   ``br-repl`` bridge on each Object Storage host.
+
+   The replication provider ``br-repl`` bridge has the following attributes:
+
+   -  Optional (but required for Object Storage dedicated replication for
+      multiple regions)
+
+   -  Provides access to the inter-region dedicated replication networking mesh
+
+   -  Manually created and is given the host-local gateway IP addresses
+
+
+   The following is an example ``br-repl`` bridge for a simple point-to-point
+   VPN:
+
+   .. code-block:: yaml
+
+      # auto br-repl
+      #   iface br-repl inet static
+      #       bridge_stp off
+      #       bridge_waitport 0
+      #       bridge_fd 0
+      #       bridge_ports none
+      #       address HOST-LOCAL_GATEWAY
+      #       netmask NETMASK
+      #       # Create veth pair, ignore if already exists
+      #       pre-up ip link add br-repl-veth type veth peer name eth13 || true
+      #       # Set both ends UP
+      #       pre-up ip link set eth13 up
+      #       pre-up ip link set br-repl-veth up
+      #       # Add the routes
+      #       post-up ip route add MESH_CIDR via HOST-LOCAL_GATEWAY
+      #       # Delete veth pair on DOWN
+      #       post-down ip link del br-repl-veth || true
+      #       bridge_ports br-repl-veth
+
+   .. note::
+
+      This step should be repeated for each bridge.
+
+#. Add any additional interfaces into the bridge by using ``bridge_ports``.
+
+#. After the host networking has been completed, add a
+   ``static_routes`` section to
+   the ``etc/openstack_deploy/openstack_user_config.yml`` file:
+
+   .. code-block:: yaml
+
+      # - network:
+      #  container_bridge: "br-repl"
+      #  container_type: "veth"
+      #  container_interface: "eth13"
+      #  ip_from_q: "repl"
+      #  group_binds:
+      #    - swift_proxy
+      #  static_routes:
+      #    - cidr: MESH_CIDR
+      #      gateway: IP_BR-REPL
+
+   Static routes are not added to interfaces that are currently running.
+   You can either restart the interface or manually add the static route.
+
+   To restart the interface:
+
+   .. code-block:: console
+
+      # ansible swift_proxy -m shell -a "ifdown eth13; ifup eth13"
+
+   To manually add the static route:
+
+   .. code-block:: console
+
+      # ip route add DESTINATION via GATEWAY
+
+   The ``DESTINATION`` is the CIDR network for the remote regions, and
+   ``GATEWAY`` is the network router on the ``br-storage`` bridge.
+
+
+   .. note::
+
+      Repeat this step for each bridge.
+
+
+Object Storage tuning (optional)
+--------------------------------
+
+The following variables can be set to tune Object Storage.
+
+In the ``etc/object-server.conf`` file, set ``fallocate_reserve`` to the
+number of bytes or percentage of disk space to fallocate to reserve,
+whether there is space for the given file size or not. A percentage value
+is used if the value ends with a ``%``.
+This is useful for systems that behave badly when they
+completely run out of space. You can make the services pretend they are
+out of space early. The default value is ``1%``.
+
+The ``os_swift`` role has three new variables that allow you
+to change the ``hard``, ``soft``, and ``fs.file-max`` limits. The ``hard``
+and ``soft`` limits are added to the ``limits.conf`` file for the
+Object Storage system user.
+The ``fs.file-max`` settings are added to storage hosts via kernel
+tuning. The new options are ``swift_hard_open_file_limits`` with a
+default of ``10240``, ``swift_soft_open_file_limits`` with a default of
+``4096`` and ``swift_max_file_limits`` with a default of 24 times the
+value of ``swift_hard_open_file_limits``.

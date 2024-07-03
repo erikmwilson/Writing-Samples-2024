@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ironic Bolt-On Installation Guide &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ops-internal/index.html">Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Ironic Bolt-On Installation Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ironic/bolt-on-ironic-deply-guide.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ironic-bolt-on-installation-guide">
+<h1>Ironic Bolt-On Installation Guide<a class="headerlink" href="#ironic-bolt-on-installation-guide" title="Permalink to this headline">#</a></h1>
+<div class="section" id="pre-requisites">
+<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">#</a></h2>
+<p>This assumes that <a class="reference external" href="https://github.com/rcbops/rpc-openstack/blob/newton/README.md">RPC-O Newton</a>
+is already configured and installed.</p>
+<p>r14.3.0 was tested and works</p>
+</div>
+<div class="section" id="ironic-setup">
+<h2>Ironic Setup<a class="headerlink" href="#ironic-setup" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Add entries into <code class="docutils literal"><span class="pre">/etc/openstack_deploy/conf.d/ironic.yml</span></code> that
+satisfy your specific environment. Example shown below.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">ironic-compute_hosts:</span>
+<span class="go">  infra01:</span>
+<span class="go">    ip: &lt;infra01_management_ip&gt;</span>
+<span class="go">  infra02:</span>
+<span class="go">    ip: &lt;infra02_management_ip&gt;</span>
+<span class="go">  infra03:</span>
+<span class="go">    ip: &lt;infra03_management_ip&gt;</span>
+<span class="go">ironic-infra_hosts:</span>
+<span class="go">  infra01:</span>
+<span class="go">    ip: &lt;infra01_management_ip&gt;</span>
+<span class="go">  infra02:</span>
+<span class="go">    ip: &lt;infra02_management_ip&gt;</span>
+<span class="go">  infra03:</span>
+<span class="go">    ip: &lt;infra02_management_ip&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Follow <a class="reference external" href="https://github.com/rcbops/privatecloud-docs/blob/master/doc/rpc-ironic/deploying-rpc-ironic.rst">pre-install steps</a>
+to add the variables specific for ironic.</p>
+</li>
+<li><p class="first">Re-run
+<code class="docutils literal"><span class="pre">/opt/rpc-openstack/openstack-ansible/scripts/dynamic-inventory.py</span></code>
+in order to update the inventory with the Ironic and Swift
+inventory items.</p>
+</li>
+<li><p class="first">After this is done, run the playbooks from
+<code class="docutils literal"><span class="pre">/opt/rpc-openstack/openstack-ansible/playbooks/</span></code></p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">openstack-ansible setup-hosts.yml --skip-tags=V-38660</span>
+<span class="go">openstack-ansible os-neutron-install.yml</span>
+<span class="go">openstack-ansible haproxy-install.yml</span>
+<span class="go">openstack-ansible os-swift-install.yml</span>
+<span class="go">openstack-ansible os-ironic-install.yml</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="set-up-and-configure-the-neutron-network">
+<h2>Set up and configure the neutron network<a class="headerlink" href="#set-up-and-configure-the-neutron-network" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Ensure you have fully deployed OpenStack before continuing.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As of the Ocata release, the neutron CLI is deprecated. Refer to
+the <a class="reference external" href="https://docs.openstack.org/python-openstackclient/latest/">openstack-pythonclient</a>
+documentation for more up-to-date commands.</p>
+</div>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">neutron net-create --shared --provider:physical_network tftp --provider:network_type flat tftp</span>
+<span class="go">neutron subnet-create --name ironic-tftp \</span>
+<span class="go">--allocation-pool start=&lt;NON_ALLOCATED_TFTP_RANGE_START&gt;,end=&lt;NON_ALLOCATED_TFTP_RANGE_END&gt; \</span>
+<span class="go">--dns-nameserver=8.8.4.4 tftp &lt;TFTP_NETWORK&gt;/&lt;TFTP_NETMASK&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Execute the following command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">neutron net-list | grep tftp | awk &#39;{print $2}&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Take the return UUID from the above command, and add the content to
+the <code class="docutils literal"><span class="pre">user_osa_variables_overrides.yml</span></code>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">ironic_ironic_conf_overrides:</span>
+  <span class="na">neutron:</span>
+    <span class="na">cleaning_network_uuid: &quot;&lt;NEUTRON_TFTP_NETWORK_UUID&gt;&quot;</span>
+  <span class="na">conductor:</span>
+    <span class="na">automated_clean: true</span>
+</pre></div>
+</div>
+<p>This automatically cleans the nodes on check-in.</p>
+</li>
+</ol>
+<p>Re-run <code class="docutils literal"><span class="pre">os-ironic-install.yml</span></code>.</p>
+<p>From here, you can use <a class="reference external" href="https://github.com/rcbops/privatecloud-docs/blob/master/doc/rpc-ironic/post-deploy-rpc-ironic.rst">ironic post install</a>
+to perform the post installation steps.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

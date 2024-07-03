@@ -1,0 +1,40 @@
+Magnum Centralized Logging
+==========================
+
+Components
+----------
+
+The Centralized Logging mechanism integrated into the Magnum Kubernetes
+driver is composed of 3 components:
+
+-  Elasticsearch - To aggregate and store the logs. This runs in pods on
+   the Kubernetes 'master' nodes
+-  Kibana - To easily view and filter the logs. This also runs in pods
+   on the Kubernetes 'master' nodes
+-  Fluentd - To capture logs from containers and send them to
+   Elasticsearch. This runs on all Kubernetes nodes.
+
+How to use
+----------
+
+Logging from a container
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to log from a container to Elasticsarch/Kibana, the application
+simply needs to log to 'stdout' or 'stderr'. Fluentd will then capture
+those logs and send them to Elasticsearch.
+
+Accessing the logs
+~~~~~~~~~~~~~~~~~~
+
+Access to Elasticsearch and Kibana are restricted via Kubernetes. In
+order to access them, you will need to connect to the Kubernetes cluster
+via Kube Proxy (kubectl proxy). Afterwards, you can connect to
+Elasticsearch or Kibana by using the URLs below (assuming the default
+'kubectl proxy' port):
+
+-  Elasticsearch:
+   http://127.0.0.1:8001/api/v1/proxy/namespaces/kube-system/services/elasticsearch-logging
+-  Kibana:
+   http://127.0.0.1:8001/api/v1/proxy/namespaces/kube-system/services/kibana-logging
+

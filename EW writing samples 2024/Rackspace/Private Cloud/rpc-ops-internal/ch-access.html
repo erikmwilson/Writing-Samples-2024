@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Access &mdash; Rackspace Private Cloud 14.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/privatecloud.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/bolditalic.css" type="text/css" />
+    <link rel="next" title="Instances" href="ch-instances.html" />
+    <link rel="prev" title="Verifying cloud deployment" href="ch-verify.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Rackspace Private Cloud
+          
+
+          
+            
+            <img src="../_static/privatecloud.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                r14-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Rackspace Private Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-external/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-ironic/index.html">Bare Metal Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-appformix-external/index.html">Optimization and Visualization User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-releasenotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-swift/index.html">Stand-alone Object Storage for RPCO Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Internal documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rpc-faq-internal/index.html">Technical FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-install-internal/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-magnum/index.html">Magnum Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-monitoring-internal/index.html">Monitoring and Logging Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Operations Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-verify.html">Verifying cloud deployment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-the-cloud-from-the-dashboard">Accessing the cloud from the Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viewing-and-setting-environment-variables">Viewing and setting environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-the-cloud-using-the-command-line">Managing the cloud using the command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openstack-client-utilities">OpenStack client utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-or-remove-clients">Upgrade or remove clients</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ch-instances.html">Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-images.html">Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-compute.html">Compute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-galera.html">Managing Galera clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-ceph.html">RPC Ceph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-swift.html">Managing Object Storage for multiple regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-containers.html">Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-lbaas.html">Load-Balancer-as-a-Service (LBaaS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch-backups.html">Backups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html">Document history and additional information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postface.html#disclaimer">Disclaimer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-sales-eng-internal/index.html">Rackspace Private Cloud Sales Engineering Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-exp/index.html">Upgrade Expectations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rpc-upgrade-internal/index.html">Upgrade Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rackspace Private Cloud</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Operations Guide</a> &raquo;</li>
+        
+      <li>Access</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/rpc-ops-internal/ch-access.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="access">
+<h1>Access<a class="headerlink" href="#access" title="Permalink to this headline">#</a></h1>
+<p>Accessing RPCO is achieved through several methods. The two main
+components of RPCO are the controller node and compute node. To perform
+most actions, use the compute node, controller node, or remotely access
+with a separate machine. Alternatively, use the web-based OpenStack
+Dashboard. A number of OpenStack client utilities are also available.
+These are described below.</p>
+<div class="section" id="accessing-the-cloud-from-the-dashboard">
+<h2>Accessing the cloud from the Dashboard<a class="headerlink" href="#accessing-the-cloud-from-the-dashboard" title="Permalink to this headline">#</a></h2>
+<p>Use the controller Dashboard to complete administration tasks.</p>
+<ol class="arabic">
+<li><p class="first">In a web browser, type either the hostname or IP address of the
+controller node in the address bar. The browser displays the
+OpenStack Dashboard login page:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/Access_Login.png"><img alt="OpenStack Dashboard login page" src="../_images/Access_Login.png" style="width: 6in;" /></a>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If unsure of the hostname or IP address of the controller node,
+contact Rackspace support for assistance.</p>
+</div>
+</li>
+<li><p class="first">Log in with the OpenStack username <strong>``admin``</strong> and the OpenStack
+admin password that was created during installation.</p>
+</li>
+<li><p class="first">Logged in as an administrator, the <strong>Project</strong> and <strong>Admin</strong> tab are
+displayed. Administrative users can use the <strong>Admin</strong> tab to view
+usage and to manage instances, volumes, flavors, images, projects,
+users, services, and quotas.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="viewing-and-setting-environment-variables">
+<h2>Viewing and setting environment variables<a class="headerlink" href="#viewing-and-setting-environment-variables" title="Permalink to this headline">#</a></h2>
+<p>To connect to the OpenStack installation using <code class="docutils literal"><span class="pre">python-novaclient</span></code> or
+other command line clients, set appropriate environment variables.
+OpenStack clients use environment variables to provide the information
+necessary to authenticate to the cloud. Variables can be viewed and
+downloaded from the Dashboard and set in the <code class="docutils literal"><span class="pre">admin-openrc.sh</span></code> file on
+the controller node.</p>
+<ol class="arabic">
+<li><p class="first">Log in to the Dashboard as the admin user.</p>
+</li>
+<li><p class="first">Select the <strong>Compute</strong> tab in the <strong>Project</strong> section of the
+navigation pane, then click <strong>Access &amp; Security</strong>.</p>
+</li>
+<li><p class="first">Select the <strong>API Access</strong> tab, then click the <strong>Download OpenStack RC
+File</strong> button. Save the <code class="docutils literal"><span class="pre">admin-openrc.sh</span></code> file to the local system.</p>
+</li>
+<li><p class="first">Open the <code class="docutils literal"><span class="pre">admin-openrc.sh</span></code> file in a text editor. The file will
+display:</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Be careful with the information contained in the <code class="docutils literal"><span class="pre">openrc</span></code>
+file. By default, this file contains administrative credentials.
+It is automatically maintained by the system, and should not by
+edited by hand.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># To use an Openstack cloud you need to authenticate against keystone, which</span>
+<span class="c1"># returns a **Token** and **Service Catalog**. The catalog contains the</span>
+<span class="c1"># endpoint for all services the user/tenant has access to - including nova,</span>
+<span class="c1"># glance, keystone, swift.</span>
+<span class="c1">#</span>
+<span class="nb">export</span> <span class="nv">OS_AUTH_URL</span><span class="o">=</span>http://192.168.0.7:5000/v3
+
+<span class="c1"># With the addition of Keystone we have standardized on the term **tenant**</span>
+<span class="c1"># as the entity that owns the resources.</span>
+<span class="nb">export</span> <span class="nv">OS_TENANT_ID</span><span class="o">=</span>25da08e142e24f55a9b27044bc0bdf4e
+<span class="nb">export</span> <span class="nv">OS_TENANT_NAME</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
+<span class="nb">export</span> <span class="nv">OS_PROJECT_NAME</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
+<span class="nb">export</span> <span class="nv">OS_USER_DOMAIN_NAME</span><span class="o">=</span>Default
+<span class="nb">export</span> <span class="nv">OS_PROJECT_DOMAIN_NAME</span><span class="o">=</span>Default
+
+<span class="c1"># In addition to the owning entity (tenant), OpenStack stores the entity</span>
+<span class="c1"># performing the action as the **user**.</span>
+<span class="nb">export</span> <span class="nv">OS_USERNAME</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
+
+<span class="c1"># With Keystone you pass the keystone password.</span>
+<span class="nb">echo</span> <span class="s2">&quot;Please enter your OpenStack Password: &quot;</span>
+<span class="nb">read</span> -sr OS_PASSWORD_INPUT
+<span class="nb">export</span> <span class="nv">OS_PASSWORD</span><span class="o">=</span><span class="nv">$OS_PASSWORD_INPUT</span>
+
+<span class="c1"># If your configuration has multiple regions, we set that information here.</span>
+<span class="c1"># OS_REGION_NAME is optional and only valid in certain environments.</span>
+<span class="nb">export</span> <span class="nv">OS_REGION_NAME</span><span class="o">=</span><span class="s2">&quot;RegionOne&quot;</span>
+<span class="c1"># Don&#39;t leave a blank variable, unset it if it was empty</span>
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$OS_REGION_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">unset</span> OS_REGION_NAME<span class="p">;</span> <span class="k">fi</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add the following environment variables entries to the
+<code class="docutils literal"><span class="pre">admin-openrc.sh</span></code> file to ensure the OpenStack clients connect to
+the correct endpoint type from the service catalog:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">CINDER_ENDPOINT_TYPE</span><span class="o">=</span><span class="s">internalURL</span>
+<span class="na">NOVA_ENDPOINT_TYPE</span><span class="o">=</span><span class="s">internalURL</span>
+<span class="na">OS_ENDPOINT_TYPE</span><span class="o">=</span><span class="s">internalURL</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Log in to the controller node.</p>
+</li>
+<li><p class="first">Before running commands, source the <code class="docutils literal"><span class="pre">admin-openrc</span></code> file to set
+environment variables. At the command prompt, type:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">source</span> admin-openrc
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="managing-the-cloud-using-the-command-line">
+<h2>Managing the cloud using the command line<a class="headerlink" href="#managing-the-cloud-using-the-command-line" title="Permalink to this headline">#</a></h2>
+<p>This section describes some of the more common commands to view and
+manage the cloud.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Log in to the controller node to run the following commands:</p>
+</div>
+</div></blockquote>
+<dl class="docutils">
+<dt>Server list</dt>
+<dd><dl class="first last docutils">
+<dt>The <strong>nova list</strong> command shows details about currently available</dt>
+<dd><p class="first">images:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova list
+<span class="go">+------------------+--------------+--------+---------------------------------+</span>
+<span class="go">|         ID       |    Name      | Status |          Networks               |</span>
+<span class="go">+------------------+--------------+--------+---------------------------------+</span>
+<span class="go">| [ID truncated]   | ExampleImage | ACTIVE | public=[&lt;networkIPAddresses&gt;]  |</span>
+<span class="go">+------------------+--------------+--------+---------------------------------+</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd>
+<dt>List services</dt>
+<dd><p class="first">The <strong>nova service-list</strong> command details the currently running
+services:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova service-list
+<span class="go">Binary           Host      Zone       Status     State Updated_At</span>
+<span class="go">nova-scheduler   ctrl      nova       enabled    :-)   2012-08-02 14:51:34</span>
+<span class="go">nova-consoleauth ctrl      nova       enabled    :-)   2012-08-02 14:51:41</span>
+<span class="go">nova-compute     compute1  nova       enabled    :-)   2012-08-02 14:51:35</span>
+</pre></div>
+</div>
+</dd>
+<dt>View logs</dt>
+<dd><p class="first">All logs are available in the <code class="docutils literal"><span class="pre">/var/log/</span></code> directory and its
+subdirectories. The <strong>tail</strong> command shows the most recent entries
+in a specified log file:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> tail /var/log/nova/nova.log
+</pre></div>
+</div>
+</dd>
+<dt>See available flavors</dt>
+<dd><p class="first">The <strong>nova flavor-list</strong> command lists the <em>flavors</em> that are
+available, which are different disk sizes that can be assigned to
+images:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova flavor-list
+<span class="go">+----+-----------+-----------+------+-----------+------+-------+-------------+</span>
+<span class="go">| ID |    Name   | Memory_MB | Disk | Ephemeral | Swap | VCPUs | RXTX_Factor |</span>
+<span class="go">+----+-----------+-----------+------+-----------+------+-------+-------------+</span>
+<span class="go">| 1  | m1.tiny   | 512       | 0    | 0         |      | 1     | 1.0         |</span>
+<span class="go">| 2  | m1.small  | 2048      | 10   | 20        |      | 1     | 1.0         |</span>
+<span class="go">| 3  | m1.medium | 4096      | 10   | 40        |      | 2     | 1.0         |</span>
+<span class="go">| 4  | m1.large  | 8192      | 10   | 80        |      | 4     | 1.0         |</span>
+<span class="go">| 5  | m1.xlarge | 16384     | 10   | 160       |      | 8     | 1.0         |</span>
+<span class="go">+----+-----------+-----------+------+-----------+------+-------+-------------+</span>
+</pre></div>
+</div>
+<div class="last admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Do not remove the default flavors. Doing so will cause problems
+with the Dashboard.</p>
+</div>
+</dd>
+<dt>List images</dt>
+<dd><p class="first">The <strong>nova image-list</strong> command lists the currently available
+images:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> nova image-list
+<span class="go">+--------------------------+----------------------------+--------+--------+</span>
+<span class="go">|                  ID      |           Name             | Status | Server |</span>
+<span class="go">+--------------------------+----------------------------+--------+--------+</span>
+<span class="go">| 033c0027-[ID truncated]  |        cirros-image        | ACTIVE |        |</span>
+<span class="go">| 0ccfc8c4-[ID truncated]  |         My Image 2         | ACTIVE |        |</span>
+<span class="go">| 85a0a926-[ID truncated]  |        precise-image       | ACTIVE |        |</span>
+<span class="go">+--------------------------+----------------------------+--------+--------+</span>
+</pre></div>
+</div>
+</dd>
+<dt>List floating IP addresses</dt>
+<dd><p class="first">The <strong>neutron floatingip-list</strong> command lists the currently
+available floating IP addresses and the instances they are
+associated with:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> neutron floatingip-list
+
+<span class="go">+------------------+------------------+---------------------+------------ +</span>
+<span class="go">| id               | fixed_ip_address | floating_ip_address | port_id     |</span>
+<span class="go">+------------------+------------------+---------------------+-------------+</span>
+<span class="go">| 0a88589a-ffac... |                  | 208.113.177.100     |             |</span>
+<span class="go">+------------------+------------------+---------------------+-------------+</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="openstack-client-utilities">
+<h2>OpenStack client utilities<a class="headerlink" href="#openstack-client-utilities" title="Permalink to this headline">#</a></h2>
+<p>OpenStack client utilities are a convenient way to interact with
+OpenStack from the command line on the workstation, without being logged
+in to the controller node.</p>
+<p>OpenStack Newton uses the following client utilities:</p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text"><strong>OpenStack client utilities</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Version</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>python-keystoneclient</td>
+<td>2.3.1</td>
+</tr>
+<tr class="row-odd"><td>python-openstackclient</td>
+<td>2.3.0</td>
+</tr>
+<tr class="row-even"><td>python-glanceclient</td>
+<td>2.0.1</td>
+</tr>
+<tr class="row-odd"><td>python-novaclient</td>
+<td>3.3.1</td>
+</tr>
+<tr class="row-even"><td>python-cinderclient</td>
+<td>1.6.0</td>
+</tr>
+<tr class="row-odd"><td>python-neutronclient</td>
+<td>4.1.1</td>
+</tr>
+<tr class="row-even"><td>python-heatclient</td>
+<td>1.1.0</td>
+</tr>
+<tr class="row-odd"><td>python-swiftclient</td>
+<td>3.0.0</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Python client utilities are available using the Python Package Index
+(PyPI), and can be installed on most Linux systems using these commands:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> pip install python-PROJECTclient
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The keystone client utility is deprecated. The OpenStackClient
+utility should be used which supports v2 and v3 Identity API.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="upgrade-or-remove-clients">
+<h2>Upgrade or remove clients<a class="headerlink" href="#upgrade-or-remove-clients" title="Permalink to this headline">#</a></h2>
+<p>To upgrade a client, add the <strong>&#8211;upgrade</strong> option to the command:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> pip install --upgrade python-PROJECTclient
+</pre></div>
+</div>
+</div></blockquote>
+<p>To remove a client, run the <strong>pip uninstall</strong> command:</p>
+<blockquote>
+<div><div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> pip uninstall python-PROJECTclient
+</pre></div>
+</div>
+</div></blockquote>
+<p>For more information about OpenStack client utilities, see these links:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.openstack.org/api/quick-start/content/index.html#cli-intro">OpenStack API Quick
+Start</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/developer/python-openstackclient/command-list.html">OpenStackClient
+commands</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/cli-reference/content/glanceclient_commands.html">Image Service (glance) CLI
+commands</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/user-guide/content/app_cheat_sheet.html#d6e5879">Image Service (glance) CLI command cheat
+sheet</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/cli-reference/content/novaclient_commands.html">Compute (nova) CLI
+commands</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/user-guide/content/app_cheat_sheet.html#d6e5925">Compute (nova) CLI command cheat
+sheet</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/cli-reference/content/neutronclient_commands.html">Networking (neutron) CLI
+commands</a></li>
+<li><a class="reference external" href="http://docs.openstack.org/user-guide/content/app_cheat_sheet.html#d6e6063">Networking (neutron) CLI command cheat
+sheet</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/python-keystoneclient/">python-keystoneclient</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/python-glanceclient/">python-glanceclient</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/python-novaclient/">python-novaclient</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/python-neutronclient/">python-neutronclient</a></li>
+</ul>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The OpenStack client utilities listed here are maintained by the
+OpenStack community and should be considered software in development.
+When in doubt, refer to the client utility documentation for the
+latest information.</p>
+</div>
+</div></blockquote>
+<p>A command line client is also available for the OpenStack Block
+Storage service (cinder). For more information about Block Storage,
+see <a class="reference external" href="https://developer.rackspace.com/docs/user-guides/infrastructure/cloud-interfaces/cli/cloudblockstorage-cli/">Configuring OpenStack Block Storage</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ch-instances.html" class="btn btn-neutral float-right" title="Instances" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ch-verify.html" class="btn btn-neutral float-left" title="Verifying cloud deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Rackspace
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

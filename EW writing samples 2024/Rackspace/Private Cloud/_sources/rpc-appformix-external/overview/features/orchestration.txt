@@ -1,0 +1,17 @@
+.. _orchestration-ug:
+
+=============
+Orchestration
+=============
+
+|service appformix| provides an OpenStack Nova scheduler filter plugin.
+This Python module is installed on the OpenStack controller node.
+Nova is configured to use the
+plugin to determine which hosts are eligible for an instance to be scheduled.
+The plug-in communicates with the AppFormix controller APIs and ensures that
+Nova schedules only new instances on hosts that meet the configured
+service level agreement (SLA).
+
+Other forms of orchestration are built around the notification service.
+The notification service can trigger actions that listen to the alarm
+and SLA events.

@@ -1,0 +1,63 @@
+=====================
+Magnum API monitoring
+=====================
+
+------
+Checks
+------
+
+Local API check
+===============
+
+Label: ``magnum_api_local_check``
+
+This check monitors the Magnum API by attempting an API operation
+(``GET /v1/clustertemplates``). If the response contains a 200-level status
+code, the ``magnum_api_local_status`` metric is set to ``1``. In all other
+cases it is set to ``0``. The response time is also recorded as a metric.
+
+Example output::
+
+    status okay
+    metric magnum_api_local_status uint32 1
+    metric magnum_api_local_response_time double 48.532 ms
+
+------
+Alarms
+------
+
+API status
+==========
+
+Label: ``magnum_api_local_status``
+
+This alarm activates when the ``magnum_api_local_status`` metric from
+``magnum_api_local_check`` switches to ``0``, signalling an abnormal status
+code when communicating with the API.
+
+To resolve this issue, :doc:`check the logs
+<../../rpc-monitoring-internal/logging/index>` for API emitted errors,
+address the root cause, and restart the API service if necessary.
+
+--------------
+Configurations
+--------------
+
+In ``/etc/openstack_deploy/user_rpco_variables_overrides.yml``, perform the
+following tasks::
+
+    # Use the following to alter the frequency and timeout for magnum api
+    checks.
+    maas_check_period_override:
+      - magnum_api_local_check: 60
+
+    maas_check_timeout_override:
+      - magnum_api_local_check: 120
+
+    # Add this to disable specific checks and all associated alarms by label.
+    maas_excluded_checks_regex:
+      - magnum_api_local_check
+
+    # Add this to disable specific alarms by label.
+    maas_excluded_alarms_regex:
+      - magnum_api_local_status

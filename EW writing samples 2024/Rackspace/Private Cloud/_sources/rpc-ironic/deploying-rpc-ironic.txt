@@ -1,0 +1,213 @@
+====================
+Ironic configuration
+====================
+
+This document will guide you through the necessary steps to
+configure and setup the Bare metal (Ironic) service for
+Rackspace Private Cloud Powered by OpenStack (RPCO).
+
+Pre-requisites
+~~~~~~~~~~~~~~
+
+By default, the ironic CLI will default to a very old version of the
+API. If you use the same shell throughout the enrollment process,
+you can set the API version to the latest compatible version via
+environment variable:
+
+.. code-block:: console
+
+   $ export IRONIC_API_VERSION=latest
+   $ ironic ...
+
+Configure the network
+~~~~~~~~~~~~~~~~~~~~~
+
+#. Before you begin, define the following new networks in
+   ``/etc/openstack_deploy/openstack_user_config.yml/``:
+
+   .. code-block:: ini
+
+      cidr_networks:
+         tftp: <IP network>/<netmask>
+         ironic-ipmi: <IP network>/<netmask>
+
+   ``tftp``
+       The base network for ironic hosts. This network contains the
+       interfaces used to provision the host via ``tftp``. It is also
+       the hosts default route.
+
+   ``ironic-ipmi``
+       This network touches the ``ipmi`` devices (drac, ilo or other)
+       of the ironic hosts. It allows ``ironic-conductor`` to control
+       the power status of the ironic hosts.
+
+   .. note::
+
+      Ensure you add used IPs from these networks to the ``used_ips``
+      list.
+
+#. Add the following two networks to ``provider_networks`` and connect
+   the ``ironic-ipmi`` network to the ``ironic-conductor`` containers:
+
+   .. code-block:: ini
+
+      - network:
+           container_bridge: "br-ironic-ipmi"
+           container_type: "veth"
+           container_interface: "eth_ipmi"
+           ip_from_q: "ironic-ipmi"
+           type: "raw"
+           group_binds:
+             - ironic-infra_hosts
+
+   .. code-block:: ini
+
+      - network:
+           container_bridge: "br-tftp"
+           container_type: "veth"
+           container_interface: "eth_tftp"
+           ip_from_q: "ironic-ipmi"
+           type: "flat"
+           net_name: "tftp"
+           ip_from_q: "tftp"
+           group_binds:
+             - neutron_linuxbridge_agent
+             - ironic_all
+
+   .. note::
+
+      This network connects neutron and all ironic containers to the base
+      network of the ironic nodes. Neutron needs to be connected as it
+      controls the IP assignment of ironic, along with providing
+      gateway access. Ironic needs access to provision the nodes.
+
+Defining host groups
+~~~~~~~~~~~~~~~~~~~~
+
+#. Create a new file ``ironic.yml`` in
+   ``/etc/openstack_deploy/conf.d/``.
+
+#. By default, if ``ironic-compute_hosts`` and ``ironic-infra_hosts``
+   are not defined, they will not be deployed. We recommend to put
+   these containers on the infrastructure hosts.
+
+   .. code-block:: ini
+
+      ironic-compute_hosts:
+         infra01:
+           ip: <infra01_management_ip>
+         infra02:
+           ip: <infra02_management_ip>
+         infra03:
+           ip: <infra03_management_ip>
+      ironic-infra_hosts:
+         infra01:
+           ip: <infra01_management_ip>
+         infra02:
+           ip: <infra02_management_ip>
+         infra03:
+           ip: <infra02_management_ip>
+
+Setting up ironic endpoints for health checks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ironic agent needs to be on the ``ironic-tftp`` network in order to
+access ``ironic-api`` and swift.
+
+#. The following variables need to be inserted and upated with the correct
+   values inside of ``user_osa_variables_overrides.yml``:
+
+   .. code-block:: ini
+
+      extra_lb_vip_addresses:
+         - <Ironic Provsioning Network IP Address>
+      ironic_openstack_api_url: "http(s)://<Ironic Provisioning Network IP Address>:{{ ironic_service_port }}"
+      ironic_swift_endpoint: "http(s)://<Ironic Provisioning Network IP Address>:8080"
+
+   .. note::
+
+      The IP addresses referenced should be the same one referenced in
+      ``extra_lb_vip_addresses`` that were setup during installation.
+
+Configuring neutron DHCP
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+To prevent conflicts occuring with an existing authoritative DHCP
+server, neutron needs to be set to ignore unknown requests.
+
+Set the following variables in ``user_osa_variables_overrides.yml``:
+
+.. code-block:: ini
+
+   neutron_dhcp_config:
+      dhcp-option-force: "26,1500"
+      dhcp-ignore: "tag:!known"
+      log-facility: "/var/log/neutron/dnsmasq.log"
+
+.. important::
+
+   For multi-hypervisor deployments that support both ironic and virtual
+   instances, the following needs to be added to
+   ``user_osa_variables_overrides.yml`` as a workaround for an issue where
+   the virtual instances always go to an ERROR status.
+
+   .. code-block:: ini
+
+      nova_scheduler_use_baremetal_filters: False
+
+Swift Setup
+~~~~~~~~~~~~~
+#. Follow the `Swift Docs
+   <https://pages.github.rackspace.com/rpc-internal/docs-rpc/rpc-install-internal/configure-opt/configure-object-storage.html>`_
+   to setup and configure Swift.
+
+#. The following variable needs to be set in
+   ``/etc/openstack_deploy/user_osa_variables_overrides.yml`` for
+   Swift to work with Ironic:
+
+ .. code-block:: console
+
+    ironic_swift_image_container: "{{ glance_swift_store_container }}"
+
+
+Set up and configure the neutron network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ensure you have fully deployed OpenStack before continuing.
+
+.. note::
+
+   As of the Ocata release, the neutron CLI is deprecated. Refer to
+   the `openstack-pythonclient
+   <https://docs.openstack.org/python-openstackclient/latest/>`_
+   documentation for more up-to-date commands.
+
+.. code-block:: console
+
+   $ neutron net-create --shared --provider:physical_network tftp --provider:network_type flat tftp
+   $ neutron subnet-create --name ironic-tftp \
+     --allocation-pool start=<NON_ALLOCATED_TFTP_RANGE_START>,end=<NON_ALLOCATED_TFTP_RANGE_END> \
+     --dns-nameserver=8.8.4.4 tftp <TFTP_NETWORK>/<TFTP_NETMASK>
+
+#. Execute the following command:
+
+   .. code-block:: console
+
+      $ neutron net-list | grep tftp | awk '{print $2}'
+
+
+#. Take the return UUID from the above command, and add the content to
+   the ``user_osa_variables_overrides.yml``:
+
+   .. code-block:: ini
+
+      ironic_ironic_conf_overrides:
+        neutron:
+          cleaning_network_uuid: "<NEUTRON_TFTP_NETWORK_UUID>"
+        conductor:
+          automated_clean: true
+
+   This automatically cleans the nodes on check-in.
+
+#. Re-run ``os-ironic-install.yml`` playbook to ensure the new
+   settings are active.

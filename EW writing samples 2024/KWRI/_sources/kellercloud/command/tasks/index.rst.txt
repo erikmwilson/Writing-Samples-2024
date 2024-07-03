@@ -1,0 +1,21 @@
+
+.. _tasks-index-command:
+
+Tasks
+=====
+
+Tasks in Command are used to track what you need to get accomplished for your business. These are either Contact Tasks or Opportunity Tasks. Opportunity Tasks come from Opportunity checklists you have set up in your pipelines. Opportunity tasks must have a due date assigned to show up in Tasks and for you to receive a Kelle notification when the task is due.
+
+The following sections contain information about the
+Tasks application.
+
+.. toctree::
+   :maxdepth: 1
+
+   view-contact-task-details
+   view-opportunity-task-details
+   filter-tasks
+   create-contact-task
+   mark-task-complete
+   snooze-task
+   delete-task

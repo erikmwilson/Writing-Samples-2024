@@ -1,0 +1,23 @@
+Magnum Architecture
+===================
+
+Components
+----------
+
+Magnum is comprised of two components, the API server (magnum-api) and
+the Conductor (magnum-conductor), which is responsible for performing
+the stack lifecycle operations, etc.
+
+API server
+~~~~~~~~~~
+
+This service is running in the 'magnum' container on all RPC control
+nodes. This service responds to all incoming API requests, and performs
+basic validation of commands.
+
+Conductor service
+~~~~~~~~~~~~~~~~~
+
+This service is also running in the 'magnum' container on all RPC
+control nodes. This service performs the creation, update, and deletion
+actions that are requested via the API.

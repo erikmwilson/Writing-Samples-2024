@@ -1,0 +1,22 @@
+
+.. _command-settings-index-command:
+
+Command Settings
+================
+
+The following sections contain information about how to configure
+settings for the Command application.
+
+.. toctree::
+   :maxdepth: 1
+
+   applications/index
+   add-admin
+   contacts/index
+   sales-pipeline/index
+   opportunity-archive
+   team-management
+   opportunity-settings/index
+   agent-sites/index
+   import-logs/index
+   lead-routing/index

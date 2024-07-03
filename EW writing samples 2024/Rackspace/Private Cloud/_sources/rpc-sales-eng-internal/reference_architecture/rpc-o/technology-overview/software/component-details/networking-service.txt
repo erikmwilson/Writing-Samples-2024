@@ -1,0 +1,57 @@
+============================
+Networking service (neutron)
+============================
+
+RCPO Networking handles creation and management of a virtual networking
+infrastructure in the cloud. Infrastructure elements include networks,
+subnets, and routers.
+
+Because RCPO Networking is software-defined, it can react in real-time
+to changing network needs, such as creation and assignment of new IP
+addresses.
+
+RCPO Networking advantages include:
+
+-  Users can create networks, control traffic, and connect servers and
+   devices to one or more networks.
+
+-  Flexible networking models can adapt to the network volume and
+   tenancy.
+
+-  IP addresses can be dedicated or floating, where floating IPs can be
+   used for dynamic traffic rerouting.
+
+
+.. list-table:: **Networking service (neutron) components**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+   * - neutron server (neutron-server and neutron-\*-plugin)
+     - This service runs on the network node to service the Networking
+       API and its extensions. It also enforces the network model and
+       IP addressing of each port. The neutron-server and plugin
+       agents require access to a database for persistent storage and
+       access to a message queue for inter-communication.
+   * - plugin agent (neutron-\*-agent)
+     - Runs on each compute node to manage local networking
+       configuration. The plug-in that you use determine which agents
+       run. This service requires message queue access and depends on
+       the plugin used.
+   * - neutron-dhcp-agent
+     - Provides DHCP services to tenant networks. This agent is the
+       same across all plug-ins and is responsible for maintaining
+       DHCP configuration. The neutron-dhcp-agent requires message
+       queue access.
+   * - neutron-ns-metadata-proxy
+     - Proxies metadata requests to the neutron-metadata-agent.
+   * - neutron-metadata-agent
+     - Handles the metadata request by getting the information from
+       Nova and Neutron.
+   * - neutron-bridge
+     - Linux bridge plugin.
+   * - neutron-linuxbridge-agent
+     - Linux bridge agent.
+   * - neutron
+     - Command-line client to access the API.

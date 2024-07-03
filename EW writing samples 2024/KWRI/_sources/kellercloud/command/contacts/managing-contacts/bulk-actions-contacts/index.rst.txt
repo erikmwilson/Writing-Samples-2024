@@ -1,0 +1,22 @@
+
+.. _bulk-actions-contacts-command:
+
+Bulk Actions
+============
+
+You can perform actions on multiple contacts by using the Bulk Action feature. The **Select Bulk Action** menu appears when you select one or more contacts from the **Contacts** list. The following pages contain information about bulk actions.
+
+.. toctree::
+   :maxdepth: 2
+
+   add-note-bulk
+   archive-bulk
+   send-sms-bulk
+   add-tags-bulk
+   add-to-email-bulk
+   share-bulk
+   mark-as-lead-bulk
+   unmark-as-lead-bulk
+   add-smartplan-bulk
+   export-bulk
+   export-mailing-labels-bulk

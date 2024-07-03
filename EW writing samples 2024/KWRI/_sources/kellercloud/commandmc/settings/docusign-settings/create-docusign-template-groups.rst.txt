@@ -1,0 +1,26 @@
+
+.. _create-docusign-template-groups-commandmc:
+
+Create Your Market Center Template Sharing Group in DocuSign
+============================================================
+
+When using DocuSign, the agents in your Market Center need access to a form that has not been added in DocuSign. You can create templates (forms that you manually upload and label) and share them with your agents using a template sharing group.
+
+To create a template sharing group in DocuSign, complete the following steps:
+
+.. include:: ../settings.rst
+
+#. On the left-hand Settings pane, click **CommandMC Settings** to display the
+   CommandMC settings.
+
+#. Click **DocuSign Settings**.
+
+#. Select your **Market Center** from the drop-down.
+
+#. Click the arrow to the far right of the **Create Market Center Group** heading and then click **Create Group**.
+
+#. On the **Create Market Center Group** pop-up, (the **Market Center Group Name** is not editable) click **Create Group**.
+
+After you have created your Market Center template group, you can create custom templates in DocuSign and share them with your new group.
+
+For more information, see :ref:`templates-opportunities-command`.

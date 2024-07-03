@@ -1,0 +1,79 @@
+======
+Checks
+======
+
+.. Includes content from
+   https://one.rackspace.com/pages/viewpage.action?pageId=192877963
+
+A **check** is a high-level specification of what to monitor and how
+to monitor it. Checks are the mid-level hierarchy underneath an
+entity. It must return one or more metrics (data points) used by an
+alarm to evaluate a current state (``OK``, ``WARNING``, or
+``CRITICAL``).
+
+The checks in an RPC environment are divided into two different
+categories:
+
+- Local checks are those run by the monitoring agent on each node,
+  checking not only hardware (CPU/Disk/Memory) but also any OpenStack
+  services running on that individual node. The metrics that local
+  checks gather are reported by the agent to the MaaS endpoints
+  through the MaaS API.
+
+- Remote checks are initiated from the MaaS endpoints and poll the
+  load balanced services from outside the environment to ensure
+  availability. These checks also produce metrics which are stored by
+  the MaaS endpoints.
+
+The combination of both local and remote checks ensure that Support
+Engineers are alerted when an individual service is down on a node
+(wherein the overall load balanced service would still be available),
+or where there are network issues that would prevent users from
+reaching the services through the load balancer (even if all services
+on each node are working fine).
+
+
+Each check can have multiple alarms. All checks are deployed with a
+``.yaml`` configuration file located in the
+``/etc/rackspace-monitoring-agent.conf.d/`` directory. These
+configuration files are authoritative. Any changes made to a check
+through the API will be reset to the configuration file specification
+when the ``rackspace-monitoring-agent`` service is restarted on the
+associated server. You can use Ansible to reconfigure the monitoring
+configuration and restart agents across an environment.
+
+
+Check elements
+~~~~~~~~~~~~~~
+
+.. list-table:: **Check Elements**
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Element
+     - Description
+   * - Active/scheduled suppressions
+     - Whether there is an active or future scheduled MaaS suppression
+       for this checkID.
+   * - checkID
+     - Unique ID of a check (starts with ``chXXXXXXXX``).
+   * - Details (plugin file/arguments)
+     - Depends on the check type. If ``agent.plugin``, the script (file)
+       and arguments are passed. ``agent.plugin`` scripts are
+       deployed to ``/usr/lib/rackspace-monitoring-agent/plugins/``.
+   * - Label
+     - The name of the check.
+   * - Monitoring zones poll
+     - The region where a remote check is executed. Available
+       regions are DFW, ORD, IAD, LON, SYD, and HKG.
+   * - Period (frequency)
+     - How often the specific check runs. All checks deployed for RPC
+       runs every 60 seconds by default.
+   * - Status
+     - Boolean - activates or disables a check.
+   * - Timeout
+     - After this time, the check times out and reports a failure. All
+       plugin-based checks are deployed with a 30 second timeout
+   * - Type
+     - RPC uses checks based on remote (``remote.{http,https}``) and agent
+       (``agent.{cpu,disk,filesystem,network,plugin``}).

@@ -1,0 +1,38 @@
+.. _appendix-a:
+
+=====================================
+OpenStack-Ansible configuration files
+=====================================
+
+The following OpenStack-Ansible (OSA) configuration files are used when
+installing Rackspace Private Cloud Powered By OpenStack (RPCO):
+
+- The `openstack_user_config.yml
+  <https://raw.githubusercontent.com/openstack/openstack-ansible/stable/newton/etc/openstack_deploy/openstack_user_config.yml.example>`_
+  file contains variables to configure target host networking and the
+  Block Storage service. RPCO has host networking sections that
+  specify the placement of the containers:
+
+  - shared-infra_hosts - MariaDB and memcache RabbitMQ containers.
+
+  - os-infra_hosts - OpenStack API minus the cinder and keystone containers.
+
+  - storage_hosts - Where the cinder-volumes service is running.
+
+  - repo-infra_hosts - Where a local copy of the RPCO installation packages
+    are stored, and Git directories and Python wheels are stored during the
+    build process.
+
+
+- `user_secrets.yml
+  <https://raw.githubusercontent.com/openstack/openstack-ansible/stable/newton/etc/openstack_deploy/user_secrets.yml>`_
+  This file is renamed to ``user_osa_secrets.yml`` throughout the RPCO
+  installation and is populated one time by
+  ``/opt/rpc-openstack/openstack-ansible/scripts/pw-token-gen.py`` in
+  order to generate randomized service credentials.
+
+- `swift.yml
+  <https://raw.githubusercontent.com/openstack/openstack-ansible/stable/newton/etc/openstack_deploy/conf.d/swift.yml.example>`_
+
+- `extra_container.yml
+  <https://raw.githubusercontent.com/openstack/openstack-ansible/stable/newton/etc/openstack_deploy/env.d/extra_container.yml.example>`_
